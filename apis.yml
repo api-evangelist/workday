@@ -1,0 +1,116 @@
+name: Workday APIs
+description: Collection of Workday REST APIs for human capital management, financial management, and enterprise planning
+image: https://www.workday.com/content/dam/web/images/logo/workday-logo.svg
+url: https://www.workday.com
+created: '2024-01-15'
+modified: '2024-01-15'
+apis:
+- name: Workday HCM API
+  description: Human Capital Management API for managing workforce data, recruiting, talent management, and payroll
+  image: https://www.workday.com/content/dam/web/images/logo/workday-logo.svg
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - HCM
+  - Human Resources
+  - Payroll
+  - Talent Management
+  - Workforce
+  properties:
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: OpenAPI
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/openapi.yaml
+  - type: Authentication
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  contact:
+  - FN: Workday Support
+    email: support@workday.com
+    url: https://www.workday.com/en-us/customer-service/support.html
+- name: Workday Financial Management API
+  description: Financial Management API for accounting, procurement, expenses, and financial reporting
+  image: https://www.workday.com/content/dam/web/images/logo/workday-logo.svg
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/financialManagement/
+  tags:
+  - Financial Management
+  - Accounting
+  - Procurement
+  - Expenses
+  - Revenue
+  properties:
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: OpenAPI
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/openapi.yaml
+- name: Workday Recruiting API
+  description: Recruiting API for managing job postings, candidates, applications, and hiring workflows
+  image: https://www.workday.com/content/dam/web/images/logo/workday-logo.svg
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/recruiting/
+  tags:
+  - Recruiting
+  - Candidates
+  - Job Postings
+  - Applications
+  - Hiring
+  properties:
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: OpenAPI
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/openapi.yaml
+- name: Workday Time Tracking API
+  description: Time Tracking API for managing employee time entry, timesheets, and absence tracking
+  image: https://www.workday.com/content/dam/web/images/logo/workday-logo.svg
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/timeTracking/
+  tags:
+  - Time Tracking
+  - Timesheets
+  - Absence
+  - Leave Management
+  properties:
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: OpenAPI
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/openapi.yaml
+- name: Workday Benefits API
+  description: Benefits API for managing employee benefits, enrollments, and coverage
+  image: https://www.workday.com/content/dam/web/images/logo/workday-logo.svg
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/benefits/
+  tags:
+  - Benefits
+  - Enrollments
+  - Coverage
+  - Health Insurance
+  properties:
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: OpenAPI
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/openapi.yaml
+common:
+- type: Getting Started
+  url: https://community.workday.com/api-start
+- type: Authentication
+  url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+- type: Rate Limits
+  url: https://community.workday.com/articles/16827
+- type: Status Page
+  url: https://status.workday.com/
+- type: Terms of Service
+  url: https://www.workday.com/en-us/legal.html
+- type: Privacy Policy
+  url: https://www.workday.com/en-us/privacy.html
+- type: API Community
+  url: https://community.workday.com/
+maintainers:
+- FN: Workday Developer Relations
+  email: developers@workday.com
+  url: https://community.workday.com/
+tags:
+- Enterprise Software
+- HCM
+- Financial Management
+- Cloud Computing
+- SaaS
