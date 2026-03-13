@@ -1,0 +1,340 @@
+openapi: 3.1.0
+info:
+  title: Workday Benefits API
+  description: >-
+    Benefits API for managing employee benefits, enrollments, and coverage.
+    Provides endpoints for benefits administration workflows.
+  version: v1
+  contact:
+    name: Workday Support
+    email: support@workday.com
+    url: https://www.workday.com/en-us/customer-service/support.html
+  license:
+    name: Proprietary
+    url: https://www.workday.com/en-us/legal.html
+servers:
+  - url: https://wd2-impl-services1.workday.com/ccx/api/benefits/v1/{tenant}
+    description: Workday REST API Server
+    variables:
+      tenant:
+        default: tenant_name
+        description: The Workday tenant identifier
+security:
+  - OAuth2:
+      - r_benefits
+      - w_benefits
+paths:
+  /workers/{ID}/benefitElections:
+    get:
+      operationId: getBenefitElections
+      summary: Get Benefit Elections
+      description: Returns current benefit elections for a worker.
+      tags:
+        - Benefit Elections
+      parameters:
+        - $ref: '#/components/parameters/ID'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Successful response containing benefit elections.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/BenefitElection'
+                  total:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /workers/{ID}/eligibleBenefitPlans:
+    get:
+      operationId: getEligibleBenefitPlans
+      summary: Get Eligible Benefit Plans
+      description: Returns benefit plans a worker is eligible for.
+      tags:
+        - Benefit Plans
+      parameters:
+        - $ref: '#/components/parameters/ID'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Successful response containing eligible benefit plans.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/BenefitPlan'
+                  total:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /workers/{ID}/dependents:
+    get:
+      operationId: getDependents
+      summary: Get Dependents
+      description: Returns dependents for a worker.
+      tags:
+        - Dependents
+      parameters:
+        - $ref: '#/components/parameters/ID'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Successful response containing dependents.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Dependent'
+                  total:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /workers/{ID}/changeBenefits:
+    post:
+      operationId: changeBenefits
+      summary: Change Benefits
+      description: Initiates a benefit change event for a worker.
+      tags:
+        - Benefit Elections
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BenefitChangeRequest'
+      responses:
+        '201':
+          description: Benefit change initiated successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  descriptor:
+                    type: string
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /benefitPlans:
+    get:
+      operationId: getBenefitPlans
+      summary: Get Benefit Plans
+      description: Returns a collection of benefit plans.
+      tags:
+        - Benefit Plans
+      parameters:
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Successful response containing benefit plans.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/BenefitPlan'
+                  total:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
+          tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
+          scopes:
+            r_benefits: Read benefits data
+            w_benefits: Write benefits data
+  parameters:
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the worker.
+      schema:
+        type: string
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: The maximum number of objects in a single response.
+      schema:
+        type: integer
+        default: 20
+        maximum: 100
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: The zero-based index of the first object in a response collection.
+      schema:
+        type: integer
+        default: 0
+  schemas:
+    BenefitElection:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        benefitPlan:
+          $ref: '#/components/schemas/ResourceReference'
+        coverageLevel:
+          $ref: '#/components/schemas/ResourceReference'
+        electionStatus:
+          type: string
+          description: The status of the election (e.g., Elected, Waived).
+        coverageBeginDate:
+          type: string
+          format: date
+        coverageEndDate:
+          type: string
+          format: date
+        employeeCost:
+          type: number
+          format: double
+        employerCost:
+          type: number
+          format: double
+        currency:
+          $ref: '#/components/schemas/ResourceReference'
+        dependents:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResourceReference'
+        beneficiaries:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResourceReference'
+    BenefitPlan:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        name:
+          type: string
+        benefitPlanType:
+          type: string
+          description: >-
+            The type of benefit plan (e.g., Medical, Dental, Vision,
+            Life Insurance, 401k).
+        carrier:
+          $ref: '#/components/schemas/ResourceReference'
+        isActive:
+          type: boolean
+    Dependent:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        fullName:
+          type: string
+        relationship:
+          $ref: '#/components/schemas/ResourceReference'
+        dateOfBirth:
+          type: string
+          format: date
+        gender:
+          $ref: '#/components/schemas/ResourceReference'
+    BenefitChangeRequest:
+      type: object
+      properties:
+        benefitEventType:
+          $ref: '#/components/schemas/ResourceReference'
+        eventDate:
+          type: string
+          format: date
+        reason:
+          $ref: '#/components/schemas/ResourceReference'
+      required:
+        - benefitEventType
+        - eventDate
+    ResourceReference:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        href:
+          type: string
+          format: uri
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+  responses:
+    BadRequest:
+      description: The request was invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+tags:
+  - name: Benefit Elections
+    description: Endpoints for managing benefit elections.
+  - name: Benefit Plans
+    description: Endpoints for managing benefit plans.
+  - name: Dependents
+    description: Endpoints for managing worker dependents.

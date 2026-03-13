@@ -1,0 +1,633 @@
+openapi: 3.1.0
+info:
+  title: Workday Prism Analytics API
+  description: >-
+    Prism Analytics REST API for working with Workday Prism Analytics tables,
+    data change tasks, and datasets. Enables programmatic creation and
+    management of analytics data.
+  version: v3
+  contact:
+    name: Workday Support
+    email: support@workday.com
+    url: https://www.workday.com/en-us/customer-service/support.html
+  license:
+    name: Proprietary
+    url: https://www.workday.com/en-us/legal.html
+servers:
+  - url: https://wd2-impl-services1.workday.com/ccx/api/prismAnalytics/v3/{tenant}
+    description: Workday REST API Server
+    variables:
+      tenant:
+        default: tenant_name
+        description: The Workday tenant identifier
+security:
+  - OAuth2:
+      - r_prism
+      - w_prism
+paths:
+  /datasets:
+    get:
+      operationId: getDatasets
+      summary: Get Datasets
+      description: Returns a collection of Prism Analytics datasets.
+      tags:
+        - Datasets
+      parameters:
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+        - name: name
+          in: query
+          description: Filter datasets by name.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response containing datasets.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Dataset'
+                  total:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createDataset
+      summary: Create Dataset
+      description: Creates a new Prism Analytics dataset with a specified schema.
+      tags:
+        - Datasets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DatasetCreateRequest'
+      responses:
+        '201':
+          description: Dataset created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dataset'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /datasets/{ID}:
+    get:
+      operationId: getDatasetById
+      summary: Get Dataset by ID
+      description: Returns detailed information for a specific dataset.
+      tags:
+        - Datasets
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          description: Successful response containing dataset details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dataset'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateDataset
+      summary: Update Dataset
+      description: Updates a dataset schema or metadata.
+      tags:
+        - Datasets
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DatasetUpdateRequest'
+      responses:
+        '200':
+          description: Dataset updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dataset'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteDataset
+      summary: Delete Dataset
+      description: Deletes a dataset.
+      tags:
+        - Datasets
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      responses:
+        '204':
+          description: Dataset deleted successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /dataChangeTasks:
+    get:
+      operationId: getDataChangeTasks
+      summary: Get Data Change Tasks
+      description: Returns a collection of data change tasks.
+      tags:
+        - Data Change Tasks
+      parameters:
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Successful response containing data change tasks.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DataChangeTask'
+                  total:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createDataChangeTask
+      summary: Create Data Change Task
+      description: >-
+        Creates a new data change task to load data into a dataset. The task
+        must be completed with file upload and activation steps.
+      tags:
+        - Data Change Tasks
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataChangeTaskCreateRequest'
+      responses:
+        '201':
+          description: Data change task created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataChangeTask'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /dataChangeTasks/{ID}:
+    get:
+      operationId: getDataChangeTaskById
+      summary: Get Data Change Task by ID
+      description: Returns detailed information for a specific data change task.
+      tags:
+        - Data Change Tasks
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          description: Successful response containing data change task details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataChangeTask'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /dataChangeTasks/{ID}/activities:
+    get:
+      operationId: getDataChangeTaskActivities
+      summary: Get Data Change Task Activities
+      description: Returns activities for a specific data change task.
+      tags:
+        - Data Change Tasks
+      parameters:
+        - $ref: '#/components/parameters/ID'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Successful response containing task activities.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DataChangeTaskActivity'
+                  total:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /fileContainers:
+    post:
+      operationId: createFileContainer
+      summary: Create File Container
+      description: Creates a file container for uploading data files for a data change task.
+      tags:
+        - File Containers
+      requestBody:
+        required: true
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+      responses:
+        '201':
+          description: File container created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileContainer'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /fileContainers/{ID}:
+    get:
+      operationId: getFileContainerById
+      summary: Get File Container by ID
+      description: Returns details of a file container.
+      tags:
+        - File Containers
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          description: Successful response containing file container details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileContainer'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /tables:
+    get:
+      operationId: getTables
+      summary: Get Tables
+      description: Returns a collection of Prism Analytics tables.
+      tags:
+        - Tables
+      parameters:
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+        - name: name
+          in: query
+          description: Filter tables by name.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response containing tables.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Table'
+                  total:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /tables/{ID}:
+    get:
+      operationId: getTableById
+      summary: Get Table by ID
+      description: Returns detailed information for a specific table.
+      tags:
+        - Tables
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          description: Successful response containing table details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Table'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
+          tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
+          scopes:
+            r_prism: Read Prism Analytics data
+            w_prism: Write Prism Analytics data
+  parameters:
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the resource.
+      schema:
+        type: string
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: The maximum number of objects in a single response.
+      schema:
+        type: integer
+        default: 20
+        maximum: 100
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: The zero-based index of the first object in a response collection.
+      schema:
+        type: integer
+        default: 0
+  schemas:
+    Dataset:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The Workday ID of the dataset.
+        descriptor:
+          type: string
+        name:
+          type: string
+          description: The name of the dataset.
+        displayName:
+          type: string
+          description: The display name of the dataset.
+        description:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/DatasetField'
+        rowCount:
+          type: integer
+          description: The number of rows in the dataset.
+        createdOn:
+          type: string
+          format: date-time
+        updatedOn:
+          type: string
+          format: date-time
+    DatasetField:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The field name.
+        displayName:
+          type: string
+          description: The display name of the field.
+        ordinal:
+          type: integer
+          description: The ordinal position of the field.
+        type:
+          type: object
+          properties:
+            id:
+              type: string
+            descriptor:
+              type: string
+          description: The data type of the field.
+        required:
+          type: boolean
+        externalId:
+          type: string
+    DatasetCreateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name for the new dataset.
+        displayName:
+          type: string
+          description: The display name for the dataset.
+        description:
+          type: string
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/DatasetField'
+        tags:
+          type: array
+          items:
+            type: string
+      required:
+        - name
+        - fields
+    DatasetUpdateRequest:
+      type: object
+      properties:
+        displayName:
+          type: string
+        description:
+          type: string
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/DatasetField'
+        tags:
+          type: array
+          items:
+            type: string
+    DataChangeTask:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The Workday ID of the data change task.
+        descriptor:
+          type: string
+        name:
+          type: string
+        targetDataset:
+          $ref: '#/components/schemas/ResourceReference'
+        status:
+          type: object
+          properties:
+            id:
+              type: string
+            descriptor:
+              type: string
+          description: The status of the task (e.g., New, Processing, Complete, Error).
+        operation:
+          type: object
+          properties:
+            id:
+              type: string
+            descriptor:
+              type: string
+          description: The operation type (e.g., FullReplace, Append).
+        fileContainer:
+          $ref: '#/components/schemas/ResourceReference'
+        createdOn:
+          type: string
+          format: date-time
+        completedOn:
+          type: string
+          format: date-time
+    DataChangeTaskCreateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name for the data change task.
+        targetDataset:
+          $ref: '#/components/schemas/ResourceReference'
+        operation:
+          type: object
+          properties:
+            id:
+              type: string
+              description: The operation type identifier (FullReplace or Append).
+        fileContainer:
+          $ref: '#/components/schemas/ResourceReference'
+      required:
+        - name
+        - targetDataset
+        - operation
+    DataChangeTaskActivity:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        activityType:
+          type: string
+        status:
+          type: string
+        startedOn:
+          type: string
+          format: date-time
+        completedOn:
+          type: string
+          format: date-time
+        rowsProcessed:
+          type: integer
+        rowsFailed:
+          type: integer
+    FileContainer:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The Workday ID of the file container.
+        descriptor:
+          type: string
+        expirationTime:
+          type: string
+          format: date-time
+    Table:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The Workday ID of the table.
+        descriptor:
+          type: string
+        name:
+          type: string
+          description: The name of the table.
+        displayName:
+          type: string
+        description:
+          type: string
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/DatasetField'
+        isAccessible:
+          type: boolean
+        documentCount:
+          type: integer
+    ResourceReference:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        href:
+          type: string
+          format: uri
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+  responses:
+    BadRequest:
+      description: The request was invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+tags:
+  - name: Datasets
+    description: Endpoints for managing Prism Analytics datasets.
+  - name: Data Change Tasks
+    description: Endpoints for managing data loading tasks.
+  - name: File Containers
+    description: Endpoints for file upload containers.
+  - name: Tables
+    description: Endpoints for managing Prism Analytics tables.

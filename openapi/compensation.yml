@@ -1,0 +1,444 @@
+openapi: 3.1.0
+info:
+  title: Workday Compensation API
+  description: >-
+    Compensation API for managing employee compensation plans, scorecards,
+    scorecard results, and one-time payment requests.
+  version: v1
+  contact:
+    name: Workday Support
+    email: support@workday.com
+    url: https://www.workday.com/en-us/customer-service/support.html
+  license:
+    name: Proprietary
+    url: https://www.workday.com/en-us/legal.html
+servers:
+  - url: https://wd2-impl-services1.workday.com/ccx/api/compensation/v1/{tenant}
+    description: Workday REST API Server
+    variables:
+      tenant:
+        default: tenant_name
+        description: The Workday tenant identifier
+security:
+  - OAuth2:
+      - r_compensation
+      - w_compensation
+paths:
+  /workers/{ID}/compensationPlans:
+    get:
+      operationId: getCompensationPlans
+      summary: Get Compensation Plans
+      description: Returns compensation plans assigned to a worker.
+      tags:
+        - Compensation Plans
+      parameters:
+        - $ref: '#/components/parameters/ID'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Successful response containing compensation plans.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CompensationPlan'
+                  total:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /workers/{ID}/requestCompensationChange:
+    post:
+      operationId: requestCompensationChange
+      summary: Request Compensation Change
+      description: Initiates a compensation change request for a worker.
+      tags:
+        - Compensation Plans
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CompensationChangeRequest'
+      responses:
+        '201':
+          description: Compensation change request created successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  descriptor:
+                    type: string
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /compensationScorecards:
+    get:
+      operationId: getCompensationScorecards
+      summary: Get Compensation Scorecards
+      description: Returns a collection of compensation scorecards.
+      tags:
+        - Scorecards
+      parameters:
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Successful response containing compensation scorecards.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CompensationScorecard'
+                  total:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /compensationScorecards/{ID}:
+    get:
+      operationId: getCompensationScorecardById
+      summary: Get Compensation Scorecard by ID
+      description: Returns a specific compensation scorecard.
+      tags:
+        - Scorecards
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          description: Successful response containing the compensation scorecard.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompensationScorecard'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /compensationScorecards/{ID}/results:
+    get:
+      operationId: getCompensationScorecardResults
+      summary: Get Compensation Scorecard Results
+      description: Returns results for a specific compensation scorecard.
+      tags:
+        - Scorecards
+      parameters:
+        - $ref: '#/components/parameters/ID'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Successful response containing scorecard results.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ScorecardResult'
+                  total:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /workers/{ID}/requestOneTimePayment:
+    post:
+      operationId: requestOneTimePayment
+      summary: Request One-Time Payment
+      description: Initiates a one-time payment request for a worker.
+      tags:
+        - One-Time Payments
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OneTimePaymentRequest'
+      responses:
+        '201':
+          description: One-time payment request created successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  descriptor:
+                    type: string
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /compensationGrades:
+    get:
+      operationId: getCompensationGrades
+      summary: Get Compensation Grades
+      description: Returns a collection of compensation grades.
+      tags:
+        - Compensation Plans
+      parameters:
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Successful response containing compensation grades.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CompensationGrade'
+                  total:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
+          tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
+          scopes:
+            r_compensation: Read compensation data
+            w_compensation: Write compensation data
+  parameters:
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the resource.
+      schema:
+        type: string
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: The maximum number of objects in a single response.
+      schema:
+        type: integer
+        default: 20
+        maximum: 100
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: The zero-based index of the first object in a response collection.
+      schema:
+        type: integer
+        default: 0
+  schemas:
+    CompensationPlan:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The Workday ID of the compensation plan.
+        descriptor:
+          type: string
+          description: A display descriptor for the plan.
+        compensationPlanType:
+          type: string
+          description: The type of compensation plan (e.g., Salary, Allowance, Bonus).
+        compensationPlan:
+          $ref: '#/components/schemas/ResourceReference'
+        amount:
+          type: number
+          format: double
+          description: The compensation amount.
+        currency:
+          $ref: '#/components/schemas/ResourceReference'
+        frequency:
+          $ref: '#/components/schemas/ResourceReference'
+        effectiveDate:
+          type: string
+          format: date
+        compensationGrade:
+          $ref: '#/components/schemas/ResourceReference'
+        compensationStep:
+          $ref: '#/components/schemas/ResourceReference'
+    CompensationChangeRequest:
+      type: object
+      properties:
+        effectiveDate:
+          type: string
+          format: date
+          description: The effective date of the compensation change.
+        reason:
+          $ref: '#/components/schemas/ResourceReference'
+        proposedCompensation:
+          type: object
+          properties:
+            amount:
+              type: number
+              format: double
+            currency:
+              $ref: '#/components/schemas/ResourceReference'
+            frequency:
+              $ref: '#/components/schemas/ResourceReference'
+            compensationGrade:
+              $ref: '#/components/schemas/ResourceReference'
+            compensationStep:
+              $ref: '#/components/schemas/ResourceReference'
+      required:
+        - effectiveDate
+        - reason
+    CompensationScorecard:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        name:
+          type: string
+        effectiveDate:
+          type: string
+          format: date
+        compensationReviewPeriod:
+          $ref: '#/components/schemas/ResourceReference'
+        status:
+          type: string
+    ScorecardResult:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        worker:
+          $ref: '#/components/schemas/ResourceReference'
+        currentBasePayAmount:
+          type: number
+          format: double
+        proposedBasePayAmount:
+          type: number
+          format: double
+        currency:
+          $ref: '#/components/schemas/ResourceReference'
+        percentChange:
+          type: number
+          format: double
+        meritAmount:
+          type: number
+          format: double
+        promotionAmount:
+          type: number
+          format: double
+    OneTimePaymentRequest:
+      type: object
+      properties:
+        effectiveDate:
+          type: string
+          format: date
+        reason:
+          $ref: '#/components/schemas/ResourceReference'
+        currency:
+          $ref: '#/components/schemas/ResourceReference'
+        amount:
+          type: number
+          format: double
+        payComponent:
+          $ref: '#/components/schemas/ResourceReference'
+      required:
+        - effectiveDate
+        - amount
+    CompensationGrade:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        name:
+          type: string
+        isInactive:
+          type: boolean
+        compensationGradeProfile:
+          $ref: '#/components/schemas/ResourceReference'
+        minimumAmount:
+          type: number
+          format: double
+        midpointAmount:
+          type: number
+          format: double
+        maximumAmount:
+          type: number
+          format: double
+        currency:
+          $ref: '#/components/schemas/ResourceReference'
+    ResourceReference:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        href:
+          type: string
+          format: uri
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+  responses:
+    BadRequest:
+      description: The request was invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+tags:
+  - name: Compensation Plans
+    description: Endpoints for managing compensation plans and grades.
+  - name: Scorecards
+    description: Endpoints for managing compensation scorecards and results.
+  - name: One-Time Payments
+    description: Endpoints for one-time payment requests.

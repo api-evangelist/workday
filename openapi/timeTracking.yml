@@ -1,0 +1,368 @@
+openapi: 3.1.0
+info:
+  title: Workday Time Tracking API
+  description: >-
+    Time Tracking API for managing employee time entry, timesheets, time clock
+    events, and time validations.
+  version: v1
+  contact:
+    name: Workday Support
+    email: support@workday.com
+    url: https://www.workday.com/en-us/customer-service/support.html
+  license:
+    name: Proprietary
+    url: https://www.workday.com/en-us/legal.html
+servers:
+  - url: https://wd2-impl-services1.workday.com/ccx/api/timeTracking/v1/{tenant}
+    description: Workday REST API Server
+    variables:
+      tenant:
+        default: tenant_name
+        description: The Workday tenant identifier
+security:
+  - OAuth2:
+      - r_timeTracking
+      - w_timeTracking
+paths:
+  /workers/{ID}/timeClockEvents:
+    get:
+      operationId: getTimeClockEvents
+      summary: Get Time Clock Events
+      description: Returns time clock events for a worker.
+      tags:
+        - Time Clock
+      parameters:
+        - $ref: '#/components/parameters/ID'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+        - name: fromDate
+          in: query
+          description: Filter events from this date.
+          schema:
+            type: string
+            format: date
+        - name: toDate
+          in: query
+          description: Filter events to this date.
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Successful response containing time clock events.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/TimeClockEvent'
+                  total:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      operationId: createTimeClockEvent
+      summary: Create Time Clock Event
+      description: Creates a time clock event (clock in/out) for a worker.
+      tags:
+        - Time Clock
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TimeClockEventRequest'
+      responses:
+        '201':
+          description: Time clock event created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimeClockEvent'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /workers/{ID}/timeEntries:
+    get:
+      operationId: getTimeEntries
+      summary: Get Time Entries
+      description: Returns time entries for a worker.
+      tags:
+        - Time Entries
+      parameters:
+        - $ref: '#/components/parameters/ID'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+        - name: fromDate
+          in: query
+          description: Filter entries from this date.
+          schema:
+            type: string
+            format: date
+        - name: toDate
+          in: query
+          description: Filter entries to this date.
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Successful response containing time entries.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/TimeEntry'
+                  total:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /workers/{ID}/timesheets:
+    get:
+      operationId: getTimesheets
+      summary: Get Timesheets
+      description: Returns timesheets for a worker.
+      tags:
+        - Timesheets
+      parameters:
+        - $ref: '#/components/parameters/ID'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Successful response containing timesheets.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Timesheet'
+                  total:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /workers/{ID}/requestTimeEntry:
+    post:
+      operationId: requestTimeEntry
+      summary: Request Time Entry
+      description: Creates a time entry for a worker.
+      tags:
+        - Time Entries
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TimeEntryRequest'
+      responses:
+        '201':
+          description: Time entry created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimeEntry'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
+          tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
+          scopes:
+            r_timeTracking: Read time tracking data
+            w_timeTracking: Write time tracking data
+  parameters:
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the worker.
+      schema:
+        type: string
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: The maximum number of objects in a single response.
+      schema:
+        type: integer
+        default: 20
+        maximum: 100
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: The zero-based index of the first object in a response collection.
+      schema:
+        type: integer
+        default: 0
+  schemas:
+    TimeClockEvent:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        clockEventType:
+          type: string
+          description: The type of event (e.g., Clock In, Clock Out, Meal Start, Meal End).
+        clockEventTime:
+          type: string
+          format: date-time
+        timeZone:
+          type: string
+        location:
+          $ref: '#/components/schemas/ResourceReference'
+    TimeClockEventRequest:
+      type: object
+      properties:
+        clockEventType:
+          $ref: '#/components/schemas/ResourceReference'
+        clockEventTime:
+          type: string
+          format: date-time
+        timeZone:
+          type: string
+      required:
+        - clockEventType
+        - clockEventTime
+    TimeEntry:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        date:
+          type: string
+          format: date
+        hours:
+          type: number
+          format: double
+          description: The number of hours entered.
+        timeEntryCode:
+          $ref: '#/components/schemas/ResourceReference'
+        worktag:
+          $ref: '#/components/schemas/ResourceReference'
+        comment:
+          type: string
+        status:
+          type: string
+    TimeEntryRequest:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+        hours:
+          type: number
+          format: double
+        timeEntryCode:
+          $ref: '#/components/schemas/ResourceReference'
+        worktag:
+          $ref: '#/components/schemas/ResourceReference'
+        comment:
+          type: string
+      required:
+        - date
+        - hours
+    Timesheet:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        periodStartDate:
+          type: string
+          format: date
+        periodEndDate:
+          type: string
+          format: date
+        totalHours:
+          type: number
+          format: double
+        status:
+          type: string
+          description: The status of the timesheet (e.g., Draft, Submitted, Approved).
+        calculatedEntries:
+          type: array
+          items:
+            $ref: '#/components/schemas/TimeEntry'
+    ResourceReference:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        href:
+          type: string
+          format: uri
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+  responses:
+    BadRequest:
+      description: The request was invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+tags:
+  - name: Time Clock
+    description: Endpoints for managing time clock events.
+  - name: Time Entries
+    description: Endpoints for managing time entries.
+  - name: Timesheets
+    description: Endpoints for managing timesheets.

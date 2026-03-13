@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://workday.com/schemas/organization.json",
+  "title": "Organization",
+  "description": "Represents an organization in Workday. Organizations include supervisory organizations, cost centers, companies, regions, and other organizational types used to structure the enterprise.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The Workday ID of the organization."
+    },
+    "descriptor": {
+      "type": "string",
+      "description": "A display descriptor for the organization."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the organization."
+    },
+    "code": {
+      "type": "string",
+      "description": "The organization reference ID or code."
+    },
+    "organizationType": {
+      "$ref": "#/$defs/ResourceReference",
+      "description": "The type of organization (e.g., Supervisory, Cost Center, Company, Region)."
+    },
+    "organizationSubType": {
+      "$ref": "#/$defs/ResourceReference",
+      "description": "The sub-type of the organization."
+    },
+    "superiorOrganization": {
+      "$ref": "#/$defs/ResourceReference",
+      "description": "The parent organization in the hierarchy."
+    },
+    "manager": {
+      "$ref": "#/$defs/ResourceReference",
+      "description": "The manager of the organization."
+    },
+    "location": {
+      "$ref": "#/$defs/ResourceReference",
+      "description": "The primary location of the organization."
+    },
+    "staffingModel": {
+      "type": "string",
+      "description": "The staffing model (e.g., Position Management, Job Management).",
+      "enum": ["Position_Management", "Job_Management"]
+    },
+    "memberCount": {
+      "type": "integer",
+      "description": "The number of members in the organization."
+    },
+    "subordinateOrganizations": {
+      "type": "array",
+      "description": "Subordinate organizations in the hierarchy.",
+      "items": {
+        "$ref": "#/$defs/ResourceReference"
+      }
+    },
+    "positions": {
+      "type": "array",
+      "description": "Positions within this organization.",
+      "items": {
+        "$ref": "#/$defs/ResourceReference"
+      }
+    },
+    "workers": {
+      "type": "array",
+      "description": "Workers assigned to this organization.",
+      "items": {
+        "$ref": "#/$defs/ResourceReference"
+      }
+    },
+    "isInactive": {
+      "type": "boolean",
+      "description": "Whether the organization is inactive."
+    },
+    "includeInactiveSubOrganizations": {
+      "type": "boolean",
+      "description": "Whether to include inactive subordinate organizations."
+    },
+    "availabilityDate": {
+      "type": ["string", "null"],
+      "format": "date",
+      "description": "The date the organization becomes available."
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The last time the organization was updated."
+    },
+    "externalID": {
+      "type": "string",
+      "description": "An external system identifier for the organization."
+    },
+    "href": {
+      "type": "string",
+      "format": "uri",
+      "description": "A link to the full organization resource."
+    }
+  },
+  "required": ["id", "descriptor"],
+  "$defs": {
+    "ResourceReference": {
+      "type": "object",
+      "description": "A reference to a Workday resource.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The Workday ID of the referenced resource."
+        },
+        "descriptor": {
+          "type": "string",
+          "description": "A display descriptor for the referenced resource."
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "A link to the referenced resource."
+        }
+      }
+    }
+  }
+}

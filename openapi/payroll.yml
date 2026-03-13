@@ -1,0 +1,331 @@
+openapi: 3.1.0
+info:
+  title: Workday Payroll API
+  description: >-
+    Payroll API for managing pay groups, pay group details, tax rates, payroll
+    inputs, and pay components.
+  version: v1
+  contact:
+    name: Workday Support
+    email: support@workday.com
+    url: https://www.workday.com/en-us/customer-service/support.html
+  license:
+    name: Proprietary
+    url: https://www.workday.com/en-us/legal.html
+servers:
+  - url: https://wd2-impl-services1.workday.com/ccx/api/payroll/v1/{tenant}
+    description: Workday REST API Server
+    variables:
+      tenant:
+        default: tenant_name
+        description: The Workday tenant identifier
+security:
+  - OAuth2:
+      - r_payroll
+      - w_payroll
+paths:
+  /payGroups:
+    get:
+      operationId: getPayGroups
+      summary: Get Pay Groups
+      description: Returns a collection of pay groups.
+      tags:
+        - Pay Groups
+      parameters:
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Successful response containing pay groups.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PayGroup'
+                  total:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /payGroups/{ID}:
+    get:
+      operationId: getPayGroupById
+      summary: Get Pay Group by ID
+      description: Returns details for a specific pay group.
+      tags:
+        - Pay Groups
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          description: Successful response containing pay group details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayGroup'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /payGroups/{ID}/payGroupDetails:
+    get:
+      operationId: getPayGroupDetails
+      summary: Get Pay Group Details
+      description: Returns detailed information for a pay group including pay periods.
+      tags:
+        - Pay Groups
+      parameters:
+        - $ref: '#/components/parameters/ID'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Successful response containing pay group details.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PayGroupDetail'
+                  total:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /workers/{ID}/payrollInputs:
+    get:
+      operationId: getPayrollInputs
+      summary: Get Payroll Inputs
+      description: Returns payroll inputs for a worker.
+      tags:
+        - Payroll Inputs
+      parameters:
+        - $ref: '#/components/parameters/ID'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Successful response containing payroll inputs.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PayrollInput'
+                  total:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /workers/{ID}/paySlips:
+    get:
+      operationId: getPaySlips
+      summary: Get Pay Slips
+      description: Returns pay slips for a worker.
+      tags:
+        - Pay Slips
+      parameters:
+        - $ref: '#/components/parameters/ID'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Successful response containing pay slips.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PaySlip'
+                  total:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
+          tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
+          scopes:
+            r_payroll: Read payroll data
+            w_payroll: Write payroll data
+  parameters:
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the resource.
+      schema:
+        type: string
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: The maximum number of objects in a single response.
+      schema:
+        type: integer
+        default: 20
+        maximum: 100
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: The zero-based index of the first object in a response collection.
+      schema:
+        type: integer
+        default: 0
+  schemas:
+    PayGroup:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        name:
+          type: string
+        country:
+          $ref: '#/components/schemas/ResourceReference'
+        payFrequency:
+          $ref: '#/components/schemas/ResourceReference'
+        currency:
+          $ref: '#/components/schemas/ResourceReference'
+        isActive:
+          type: boolean
+    PayGroupDetail:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        payPeriodStartDate:
+          type: string
+          format: date
+        payPeriodEndDate:
+          type: string
+          format: date
+        payDate:
+          type: string
+          format: date
+        payRunStatus:
+          type: string
+    PayrollInput:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        inputType:
+          type: string
+        payComponent:
+          $ref: '#/components/schemas/ResourceReference'
+        amount:
+          type: number
+          format: double
+        currency:
+          $ref: '#/components/schemas/ResourceReference'
+        startDate:
+          type: string
+          format: date
+        endDate:
+          type: string
+          format: date
+        comment:
+          type: string
+    PaySlip:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        payPeriodStartDate:
+          type: string
+          format: date
+        payPeriodEndDate:
+          type: string
+          format: date
+        payDate:
+          type: string
+          format: date
+        grossPay:
+          type: number
+          format: double
+        netPay:
+          type: number
+          format: double
+        totalDeductions:
+          type: number
+          format: double
+        totalTaxes:
+          type: number
+          format: double
+        currency:
+          $ref: '#/components/schemas/ResourceReference'
+        payGroup:
+          $ref: '#/components/schemas/ResourceReference'
+    ResourceReference:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        href:
+          type: string
+          format: uri
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+  responses:
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+tags:
+  - name: Pay Groups
+    description: Endpoints for managing pay groups and pay periods.
+  - name: Payroll Inputs
+    description: Endpoints for managing payroll inputs.
+  - name: Pay Slips
+    description: Endpoints for accessing pay slips.

@@ -1,0 +1,417 @@
+openapi: 3.1.0
+info:
+  title: Workday Talent Management API
+  description: >-
+    Talent Management API for managing mentorships, talent profiles, career
+    development, and succession planning.
+  version: v1
+  contact:
+    name: Workday Support
+    email: support@workday.com
+    url: https://www.workday.com/en-us/customer-service/support.html
+  license:
+    name: Proprietary
+    url: https://www.workday.com/en-us/legal.html
+servers:
+  - url: https://wd2-impl-services1.workday.com/ccx/api/talent/v1/{tenant}
+    description: Workday REST API Server
+    variables:
+      tenant:
+        default: tenant_name
+        description: The Workday tenant identifier
+security:
+  - OAuth2:
+      - r_talent
+      - w_talent
+paths:
+  /workers/{ID}/talentProfile:
+    get:
+      operationId: getTalentProfile
+      summary: Get Talent Profile
+      description: Returns the talent profile for a worker.
+      tags:
+        - Talent Profiles
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          description: Successful response containing the talent profile.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TalentProfile'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /workers/{ID}/mentorships:
+    get:
+      operationId: getMentorships
+      summary: Get Mentorships
+      description: Returns mentorship relationships for a worker.
+      tags:
+        - Mentorships
+      parameters:
+        - $ref: '#/components/parameters/ID'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Successful response containing mentorships.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Mentorship'
+                  total:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /workers/{ID}/skills:
+    get:
+      operationId: getWorkerSkills
+      summary: Get Worker Skills
+      description: Returns skills for a worker.
+      tags:
+        - Talent Profiles
+      parameters:
+        - $ref: '#/components/parameters/ID'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Successful response containing worker skills.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Skill'
+                  total:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /workers/{ID}/certifications:
+    get:
+      operationId: getWorkerCertifications
+      summary: Get Worker Certifications
+      description: Returns certifications for a worker.
+      tags:
+        - Talent Profiles
+      parameters:
+        - $ref: '#/components/parameters/ID'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Successful response containing certifications.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Certification'
+                  total:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /successionPlans:
+    get:
+      operationId: getSuccessionPlans
+      summary: Get Succession Plans
+      description: Returns succession plans.
+      tags:
+        - Succession Planning
+      parameters:
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Successful response containing succession plans.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SuccessionPlan'
+                  total:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /successionPlans/{ID}:
+    get:
+      operationId: getSuccessionPlanById
+      summary: Get Succession Plan by ID
+      description: Returns details for a specific succession plan.
+      tags:
+        - Succession Planning
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          description: Successful response containing succession plan details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessionPlan'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
+          tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
+          scopes:
+            r_talent: Read talent data
+            w_talent: Write talent data
+  parameters:
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the resource.
+      schema:
+        type: string
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: The maximum number of objects in a single response.
+      schema:
+        type: integer
+        default: 20
+        maximum: 100
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: The zero-based index of the first object in a response collection.
+      schema:
+        type: integer
+        default: 0
+  schemas:
+    TalentProfile:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        worker:
+          $ref: '#/components/schemas/ResourceReference'
+        jobHistory:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobHistoryEntry'
+        education:
+          type: array
+          items:
+            $ref: '#/components/schemas/EducationEntry'
+        skills:
+          type: array
+          items:
+            $ref: '#/components/schemas/Skill'
+        certifications:
+          type: array
+          items:
+            $ref: '#/components/schemas/Certification'
+        languages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Language'
+        careerInterests:
+          type: string
+    JobHistoryEntry:
+      type: object
+      properties:
+        id:
+          type: string
+        company:
+          type: string
+        jobTitle:
+          type: string
+        startDate:
+          type: string
+          format: date
+        endDate:
+          type: string
+          format: date
+        description:
+          type: string
+    EducationEntry:
+      type: object
+      properties:
+        id:
+          type: string
+        school:
+          type: string
+        degree:
+          $ref: '#/components/schemas/ResourceReference'
+        fieldOfStudy:
+          type: string
+        startDate:
+          type: string
+          format: date
+        endDate:
+          type: string
+          format: date
+    Skill:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        name:
+          type: string
+        category:
+          $ref: '#/components/schemas/ResourceReference'
+        proficiencyLevel:
+          $ref: '#/components/schemas/ResourceReference'
+    Certification:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        name:
+          type: string
+        issuer:
+          type: string
+        issuedDate:
+          type: string
+          format: date
+        expirationDate:
+          type: string
+          format: date
+    Language:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        language:
+          $ref: '#/components/schemas/ResourceReference'
+        proficiency:
+          $ref: '#/components/schemas/ResourceReference'
+        isNative:
+          type: boolean
+    Mentorship:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        mentor:
+          $ref: '#/components/schemas/ResourceReference'
+        mentee:
+          $ref: '#/components/schemas/ResourceReference'
+        mentorshipType:
+          $ref: '#/components/schemas/ResourceReference'
+        startDate:
+          type: string
+          format: date
+        endDate:
+          type: string
+          format: date
+        status:
+          type: string
+    SuccessionPlan:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        position:
+          $ref: '#/components/schemas/ResourceReference'
+        incumbent:
+          $ref: '#/components/schemas/ResourceReference'
+        readiness:
+          type: string
+          description: Readiness level (e.g., Ready Now, Ready in 1-2 Years).
+        candidates:
+          type: array
+          items:
+            type: object
+            properties:
+              worker:
+                $ref: '#/components/schemas/ResourceReference'
+              readiness:
+                type: string
+              ranking:
+                type: integer
+        lastUpdated:
+          type: string
+          format: date
+    ResourceReference:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        href:
+          type: string
+          format: uri
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+  responses:
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+tags:
+  - name: Talent Profiles
+    description: Endpoints for managing talent profiles and skills.
+  - name: Mentorships
+    description: Endpoints for managing mentorship relationships.
+  - name: Succession Planning
+    description: Endpoints for managing succession plans.

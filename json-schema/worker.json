@@ -1,0 +1,254 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://workday.com/schemas/worker.json",
+  "title": "Worker",
+  "description": "Represents a worker in Workday, including employees and contingent workers. A worker has personal information, job data, compensation, and organizational relationships.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The Workday ID of the worker."
+    },
+    "descriptor": {
+      "type": "string",
+      "description": "A display descriptor for the worker, typically the full name."
+    },
+    "workerID": {
+      "type": "string",
+      "description": "The employee ID or contingent worker ID."
+    },
+    "workerType": {
+      "$ref": "#/$defs/ResourceReference",
+      "description": "The type of worker (e.g., Employee, Contingent Worker)."
+    },
+    "personalInformation": {
+      "type": "object",
+      "description": "Personal information for the worker.",
+      "properties": {
+        "legalName": {
+          "$ref": "#/$defs/PersonName",
+          "description": "The legal name of the worker."
+        },
+        "preferredName": {
+          "$ref": "#/$defs/PersonName",
+          "description": "The preferred name of the worker."
+        },
+        "dateOfBirth": {
+          "type": "string",
+          "format": "date",
+          "description": "The date of birth."
+        },
+        "gender": {
+          "$ref": "#/$defs/ResourceReference"
+        },
+        "nationality": {
+          "$ref": "#/$defs/ResourceReference"
+        },
+        "maritalStatus": {
+          "$ref": "#/$defs/ResourceReference"
+        }
+      }
+    },
+    "contactInformation": {
+      "type": "object",
+      "description": "Contact information for the worker.",
+      "properties": {
+        "primaryWorkEmail": {
+          "type": "string",
+          "format": "email",
+          "description": "The primary work email address."
+        },
+        "primaryWorkPhone": {
+          "type": "string",
+          "description": "The primary work phone number."
+        },
+        "workAddress": {
+          "$ref": "#/$defs/Address",
+          "description": "The primary work address."
+        },
+        "homeAddress": {
+          "$ref": "#/$defs/Address",
+          "description": "The primary home address."
+        }
+      }
+    },
+    "jobData": {
+      "type": "object",
+      "description": "Primary job data for the worker.",
+      "properties": {
+        "businessTitle": {
+          "type": "string",
+          "description": "The business title for the worker."
+        },
+        "jobProfile": {
+          "$ref": "#/$defs/ResourceReference",
+          "description": "The job profile assigned to the worker."
+        },
+        "position": {
+          "$ref": "#/$defs/ResourceReference",
+          "description": "The position the worker holds."
+        },
+        "location": {
+          "$ref": "#/$defs/ResourceReference",
+          "description": "The work location."
+        },
+        "timeType": {
+          "$ref": "#/$defs/ResourceReference",
+          "description": "The time type (e.g., Full Time, Part Time)."
+        },
+        "workerSubType": {
+          "$ref": "#/$defs/ResourceReference",
+          "description": "The worker sub-type (e.g., Regular, Temporary)."
+        },
+        "isPrimaryJob": {
+          "type": "boolean",
+          "description": "Whether this is the primary job."
+        }
+      }
+    },
+    "organizationData": {
+      "type": "object",
+      "description": "Organizational assignment data.",
+      "properties": {
+        "primarySupervisoryOrganization": {
+          "$ref": "#/$defs/ResourceReference",
+          "description": "The primary supervisory organization."
+        },
+        "costCenter": {
+          "$ref": "#/$defs/ResourceReference",
+          "description": "The cost center assignment."
+        },
+        "company": {
+          "$ref": "#/$defs/ResourceReference",
+          "description": "The company the worker belongs to."
+        },
+        "region": {
+          "$ref": "#/$defs/ResourceReference",
+          "description": "The region assignment."
+        }
+      }
+    },
+    "managementData": {
+      "type": "object",
+      "description": "Management chain data.",
+      "properties": {
+        "isManager": {
+          "type": "boolean",
+          "description": "Whether the worker is a manager."
+        },
+        "manager": {
+          "$ref": "#/$defs/ResourceReference",
+          "description": "The worker's direct manager."
+        },
+        "managementLevel": {
+          "$ref": "#/$defs/ResourceReference",
+          "description": "The management level."
+        }
+      }
+    },
+    "hireDate": {
+      "type": "string",
+      "format": "date",
+      "description": "The original hire date."
+    },
+    "originalHireDate": {
+      "type": "string",
+      "format": "date",
+      "description": "The original hire date across all employments."
+    },
+    "terminationDate": {
+      "type": ["string", "null"],
+      "format": "date",
+      "description": "The termination date, if applicable."
+    },
+    "isActive": {
+      "type": "boolean",
+      "description": "Whether the worker is currently active."
+    },
+    "externalID": {
+      "type": "string",
+      "description": "An external system identifier for the worker."
+    },
+    "href": {
+      "type": "string",
+      "format": "uri",
+      "description": "A link to the full worker resource."
+    }
+  },
+  "required": ["id", "descriptor"],
+  "$defs": {
+    "ResourceReference": {
+      "type": "object",
+      "description": "A reference to a Workday resource.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The Workday ID of the referenced resource."
+        },
+        "descriptor": {
+          "type": "string",
+          "description": "A display descriptor for the referenced resource."
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "A link to the referenced resource."
+        }
+      }
+    },
+    "PersonName": {
+      "type": "object",
+      "description": "A person's name components.",
+      "properties": {
+        "firstName": {
+          "type": "string",
+          "description": "The first name."
+        },
+        "middleName": {
+          "type": "string",
+          "description": "The middle name."
+        },
+        "lastName": {
+          "type": "string",
+          "description": "The last name."
+        },
+        "fullName": {
+          "type": "string",
+          "description": "The full formatted name."
+        },
+        "prefix": {
+          "type": "string",
+          "description": "The name prefix (e.g., Mr., Dr.)."
+        },
+        "suffix": {
+          "type": "string",
+          "description": "The name suffix (e.g., Jr., III)."
+        }
+      }
+    },
+    "Address": {
+      "type": "object",
+      "description": "A physical address.",
+      "properties": {
+        "addressLine1": {
+          "type": "string"
+        },
+        "addressLine2": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "stateProvince": {
+          "$ref": "#/$defs/ResourceReference"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "country": {
+          "$ref": "#/$defs/ResourceReference"
+        }
+      }
+    }
+  }
+}

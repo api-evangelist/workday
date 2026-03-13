@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://workday.com/schemas/position.json",
+  "title": "Position",
+  "description": "Represents a position in Workday. A position defines a role within a supervisory organization and can be filled by a worker.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The Workday ID of the position."
+    },
+    "descriptor": {
+      "type": "string",
+      "description": "A display descriptor for the position."
+    },
+    "positionID": {
+      "type": "string",
+      "description": "The position reference ID (e.g., P-00001)."
+    },
+    "jobProfile": {
+      "$ref": "#/$defs/ResourceReference",
+      "description": "The job profile associated with this position."
+    },
+    "jobProfileName": {
+      "type": "string",
+      "description": "The name of the job profile."
+    },
+    "businessTitle": {
+      "type": "string",
+      "description": "The business title for this position."
+    },
+    "supervisoryOrganization": {
+      "$ref": "#/$defs/ResourceReference",
+      "description": "The supervisory organization this position belongs to."
+    },
+    "worker": {
+      "$ref": "#/$defs/ResourceReference",
+      "description": "The worker currently filling this position, if any."
+    },
+    "positionTimeType": {
+      "$ref": "#/$defs/ResourceReference",
+      "description": "The time type for the position (e.g., Full Time, Part Time)."
+    },
+    "workerType": {
+      "$ref": "#/$defs/ResourceReference",
+      "description": "The worker type for this position (e.g., Employee, Contingent Worker)."
+    },
+    "workerSubType": {
+      "$ref": "#/$defs/ResourceReference",
+      "description": "The worker sub-type for the position."
+    },
+    "location": {
+      "$ref": "#/$defs/ResourceReference",
+      "description": "The primary work location for the position."
+    },
+    "compensationGrade": {
+      "$ref": "#/$defs/ResourceReference",
+      "description": "The compensation grade associated with this position."
+    },
+    "payRateType": {
+      "$ref": "#/$defs/ResourceReference",
+      "description": "The pay rate type (e.g., Salary, Hourly)."
+    },
+    "isFilled": {
+      "type": "boolean",
+      "description": "Whether the position is currently filled by a worker."
+    },
+    "isAvailableForRecruit": {
+      "type": "boolean",
+      "description": "Whether the position is available for recruiting."
+    },
+    "isClosed": {
+      "type": "boolean",
+      "description": "Whether the position has been closed."
+    },
+    "isFrozen": {
+      "type": "boolean",
+      "description": "Whether the position is frozen."
+    },
+    "headcountCount": {
+      "type": "integer",
+      "description": "The headcount for this position."
+    },
+    "availableDate": {
+      "type": ["string", "null"],
+      "format": "date",
+      "description": "The date the position becomes available."
+    },
+    "earliestHireDate": {
+      "type": ["string", "null"],
+      "format": "date",
+      "description": "The earliest allowed hire date."
+    },
+    "href": {
+      "type": "string",
+      "format": "uri",
+      "description": "A link to the full position resource."
+    }
+  },
+  "required": ["id", "descriptor"],
+  "$defs": {
+    "ResourceReference": {
+      "type": "object",
+      "description": "A reference to a Workday resource.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The Workday ID of the referenced resource."
+        },
+        "descriptor": {
+          "type": "string",
+          "description": "A display descriptor for the referenced resource."
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "A link to the referenced resource."
+        }
+      }
+    }
+  }
+}

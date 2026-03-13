@@ -1,0 +1,231 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://workday.com/schemas/time-off.json",
+  "title": "Time Off",
+  "description": "Represents time-off data for a worker in Workday, including time-off requests, entries, balances, and leave of absence records.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The Workday ID of the time-off record."
+    },
+    "descriptor": {
+      "type": "string",
+      "description": "A display descriptor for the time-off record."
+    },
+    "worker": {
+      "$ref": "#/$defs/ResourceReference",
+      "description": "The worker this time-off record belongs to."
+    },
+    "timeOffType": {
+      "$ref": "#/$defs/ResourceReference",
+      "description": "The type of time off (e.g., Vacation, Sick, Personal)."
+    },
+    "timeOffEntries": {
+      "type": "array",
+      "description": "Individual time-off entries (one per day).",
+      "items": {
+        "$ref": "#/$defs/TimeOffEntry"
+      }
+    },
+    "status": {
+      "type": "string",
+      "description": "The status of the time-off request.",
+      "enum": ["Requested", "Approved", "Denied", "Cancelled", "In Progress"]
+    },
+    "totalQuantity": {
+      "type": "number",
+      "format": "double",
+      "description": "The total quantity of time off requested."
+    },
+    "unit": {
+      "type": "string",
+      "description": "The unit of measure for time off (e.g., Hours, Days).",
+      "enum": ["Hours", "Days"]
+    },
+    "comment": {
+      "type": "string",
+      "description": "A comment or reason for the time-off request."
+    },
+    "requestedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the time-off request was submitted."
+    },
+    "balances": {
+      "type": "array",
+      "description": "Time-off plan balances for the worker.",
+      "items": {
+        "$ref": "#/$defs/TimeOffBalance"
+      }
+    },
+    "leaveOfAbsence": {
+      "$ref": "#/$defs/LeaveOfAbsence",
+      "description": "Leave of absence details, if applicable."
+    },
+    "href": {
+      "type": "string",
+      "format": "uri",
+      "description": "A link to the full time-off resource."
+    }
+  },
+  "required": ["id"],
+  "$defs": {
+    "TimeOffEntry": {
+      "type": "object",
+      "description": "A single day's time-off entry.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The Workday ID of the entry."
+        },
+        "date": {
+          "type": "string",
+          "format": "date",
+          "description": "The date of the time off."
+        },
+        "dailyQuantity": {
+          "type": "number",
+          "format": "double",
+          "description": "The quantity of time off for the day."
+        },
+        "unit": {
+          "type": "string",
+          "description": "The unit of measurement (Hours or Days)."
+        },
+        "timeOffType": {
+          "$ref": "#/$defs/ResourceReference",
+          "description": "The time-off type for this entry."
+        },
+        "status": {
+          "type": "string",
+          "description": "The status of the entry."
+        },
+        "comment": {
+          "type": "string",
+          "description": "A comment for this specific day."
+        }
+      }
+    },
+    "TimeOffBalance": {
+      "type": "object",
+      "description": "A time-off plan balance for a worker.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The Workday ID of the balance record."
+        },
+        "descriptor": {
+          "type": "string"
+        },
+        "timeOffPlan": {
+          "$ref": "#/$defs/ResourceReference",
+          "description": "The time-off plan."
+        },
+        "balance": {
+          "type": "number",
+          "format": "double",
+          "description": "The current balance amount."
+        },
+        "unit": {
+          "type": "string",
+          "description": "The unit of the balance (Hours or Days)."
+        },
+        "asOfDate": {
+          "type": "string",
+          "format": "date",
+          "description": "The effective date of the balance."
+        },
+        "accrued": {
+          "type": "number",
+          "format": "double",
+          "description": "Total time off accrued."
+        },
+        "used": {
+          "type": "number",
+          "format": "double",
+          "description": "Total time off used."
+        },
+        "scheduled": {
+          "type": "number",
+          "format": "double",
+          "description": "Total time off scheduled but not yet taken."
+        },
+        "carryover": {
+          "type": "number",
+          "format": "double",
+          "description": "Carryover from previous period."
+        }
+      }
+    },
+    "LeaveOfAbsence": {
+      "type": "object",
+      "description": "A leave of absence record.",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "descriptor": {
+          "type": "string"
+        },
+        "leaveType": {
+          "$ref": "#/$defs/ResourceReference",
+          "description": "The type of leave (e.g., FMLA, Parental, Medical, Personal)."
+        },
+        "startDate": {
+          "type": "string",
+          "format": "date",
+          "description": "The start date of the leave."
+        },
+        "estimatedEndDate": {
+          "type": ["string", "null"],
+          "format": "date",
+          "description": "The estimated end date of the leave."
+        },
+        "actualEndDate": {
+          "type": ["string", "null"],
+          "format": "date",
+          "description": "The actual end date of the leave."
+        },
+        "lastDayOfWork": {
+          "type": "string",
+          "format": "date",
+          "description": "The last day of work before the leave."
+        },
+        "firstDayBackAtWork": {
+          "type": ["string", "null"],
+          "format": "date",
+          "description": "The first day back at work after the leave."
+        },
+        "status": {
+          "type": "string",
+          "description": "The status of the leave of absence.",
+          "enum": ["Requested", "Approved", "In Progress", "Completed", "Cancelled"]
+        },
+        "reason": {
+          "$ref": "#/$defs/ResourceReference",
+          "description": "The reason for the leave of absence."
+        }
+      }
+    },
+    "ResourceReference": {
+      "type": "object",
+      "description": "A reference to a Workday resource.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The Workday ID of the referenced resource."
+        },
+        "descriptor": {
+          "type": "string",
+          "description": "A display descriptor for the referenced resource."
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "A link to the referenced resource."
+        }
+      }
+    }
+  }
+}

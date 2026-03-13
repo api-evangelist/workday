@@ -1,0 +1,544 @@
+openapi: 3.1.0
+info:
+  title: Workday HCM API
+  description: >-
+    Human Capital Management API for managing workforce data, recruiting,
+    talent management, and payroll. Provides RESTful endpoints for core HR
+    operations including workers, organizations, and job data.
+  version: v1
+  contact:
+    name: Workday Support
+    email: support@workday.com
+    url: https://www.workday.com/en-us/customer-service/support.html
+  license:
+    name: Proprietary
+    url: https://www.workday.com/en-us/legal.html
+servers:
+  - url: https://wd2-impl-services1.workday.com/ccx/api/v1/{tenant}
+    description: Workday REST API Server
+    variables:
+      tenant:
+        default: tenant_name
+        description: The Workday tenant identifier
+security:
+  - OAuth2:
+      - r_worker
+      - w_worker
+paths:
+  /workers:
+    get:
+      operationId: getWorkers
+      summary: Get Workers
+      description: >-
+        Returns a collection of workers. Supports filtering, pagination, and
+        field-level selection of worker data.
+      tags:
+        - Workers
+      parameters:
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: Successful response containing a collection of workers.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/WorkerSummary'
+                  total:
+                    type: integer
+                    description: Total number of results available.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /workers/{ID}:
+    get:
+      operationId: getWorkerById
+      summary: Get Worker by ID
+      description: Returns detailed information for a specific worker by their Workday ID.
+      tags:
+        - Workers
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          description: Successful response containing worker details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Worker'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /workers/{ID}/history:
+    get:
+      operationId: getWorkerHistory
+      summary: Get Worker History
+      description: Returns the history of changes for a specific worker.
+      tags:
+        - Workers
+      parameters:
+        - $ref: '#/components/parameters/ID'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Successful response containing worker history records.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/WorkerHistoryEntry'
+                  total:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /workers/{ID}/photos:
+    get:
+      operationId: getWorkerPhoto
+      summary: Get Worker Photo
+      description: Returns the photo for a specific worker.
+      tags:
+        - Workers
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          description: Successful response containing worker photo data.
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /workers/{ID}/businessTitleChanges:
+    get:
+      operationId: getWorkerBusinessTitleChanges
+      summary: Get Business Title Changes
+      description: Returns business title change history for a specific worker.
+      tags:
+        - Workers
+      parameters:
+        - $ref: '#/components/parameters/ID'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Successful response containing business title changes.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/BusinessTitleChange'
+                  total:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /workers/{ID}/inboxTasks:
+    get:
+      operationId: getWorkerInboxTasks
+      summary: Get Worker Inbox Tasks
+      description: Returns inbox tasks for a specific worker.
+      tags:
+        - Workers
+      parameters:
+        - $ref: '#/components/parameters/ID'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Successful response containing inbox tasks.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/InboxTask'
+                  total:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /supervisoryOrganizations:
+    get:
+      operationId: getSupervisoryOrganizations
+      summary: Get Supervisory Organizations
+      description: Returns a collection of supervisory organizations.
+      tags:
+        - Organizations
+      parameters:
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: Successful response containing supervisory organizations.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SupervisoryOrganization'
+                  total:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /supervisoryOrganizations/{ID}:
+    get:
+      operationId: getSupervisoryOrganizationById
+      summary: Get Supervisory Organization by ID
+      description: Returns detailed information for a specific supervisory organization.
+      tags:
+        - Organizations
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          description: Successful response containing organization details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupervisoryOrganization'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /locations:
+    get:
+      operationId: getLocations
+      summary: Get Locations
+      description: Returns a collection of work locations.
+      tags:
+        - Locations
+      parameters:
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: Successful response containing locations.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Location'
+                  total:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /locations/{ID}:
+    get:
+      operationId: getLocationById
+      summary: Get Location by ID
+      description: Returns detailed information for a specific location.
+      tags:
+        - Locations
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          description: Successful response containing location details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Location'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
+          tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
+          scopes:
+            r_worker: Read worker data
+            w_worker: Write worker data
+  parameters:
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the resource.
+      schema:
+        type: string
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: The maximum number of objects in a single response. The default is 20. The maximum is 100.
+      schema:
+        type: integer
+        default: 20
+        maximum: 100
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: The zero-based index of the first object in a response collection.
+      schema:
+        type: integer
+        default: 0
+    search:
+      name: search
+      in: query
+      required: false
+      description: Searches workers by name. The search is case-insensitive.
+      schema:
+        type: string
+  schemas:
+    WorkerSummary:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The Workday ID of the worker.
+        descriptor:
+          type: string
+          description: A display descriptor for the worker (typically full name).
+        href:
+          type: string
+          format: uri
+          description: A link to the full worker resource.
+        primaryWorkEmail:
+          type: string
+          format: email
+          description: The primary work email address.
+        primaryWorkPhone:
+          type: string
+          description: The primary work phone number.
+        isPrimaryJob:
+          type: boolean
+          description: Whether this is the primary job for the worker.
+        businessTitle:
+          type: string
+          description: The business title for the worker.
+        primarySupervisoryOrganization:
+          $ref: '#/components/schemas/ResourceReference'
+    Worker:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The Workday ID of the worker.
+        descriptor:
+          type: string
+          description: A display descriptor for the worker.
+        workerID:
+          type: string
+          description: The employee or contingent worker ID.
+        primaryWorkEmail:
+          type: string
+          format: email
+        primaryWorkPhone:
+          type: string
+        businessTitle:
+          type: string
+        workerType:
+          $ref: '#/components/schemas/ResourceReference'
+        primarySupervisoryOrganization:
+          $ref: '#/components/schemas/ResourceReference'
+        location:
+          $ref: '#/components/schemas/ResourceReference'
+        hireDate:
+          type: string
+          format: date
+          description: The hire date for the worker.
+        terminationDate:
+          type: string
+          format: date
+          description: The termination date, if applicable.
+        isManager:
+          type: boolean
+          description: Whether the worker is a manager.
+        externalID:
+          type: string
+          description: The external ID for the worker.
+    WorkerHistoryEntry:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        effectiveDate:
+          type: string
+          format: date
+        businessProcess:
+          $ref: '#/components/schemas/ResourceReference'
+    BusinessTitleChange:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        proposedBusinessTitle:
+          type: string
+        effectiveDate:
+          type: string
+          format: date
+    InboxTask:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        status:
+          $ref: '#/components/schemas/ResourceReference'
+        assigned:
+          type: string
+          format: date-time
+        due:
+          type: string
+          format: date-time
+        overdue:
+          type: boolean
+        subject:
+          $ref: '#/components/schemas/ResourceReference'
+    SupervisoryOrganization:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The Workday ID of the organization.
+        descriptor:
+          type: string
+          description: A display descriptor for the organization.
+        name:
+          type: string
+          description: The name of the supervisory organization.
+        code:
+          type: string
+          description: The organization reference ID.
+        isInactive:
+          type: boolean
+          description: Whether the organization is inactive.
+        manager:
+          $ref: '#/components/schemas/ResourceReference'
+        superiorOrganization:
+          $ref: '#/components/schemas/ResourceReference'
+        location:
+          $ref: '#/components/schemas/ResourceReference'
+        staffingModel:
+          type: string
+          description: The staffing model for the organization.
+    Location:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The Workday ID of the location.
+        descriptor:
+          type: string
+          description: A display descriptor for the location.
+        name:
+          type: string
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        timeProfile:
+          $ref: '#/components/schemas/ResourceReference'
+        locale:
+          $ref: '#/components/schemas/ResourceReference'
+        usages:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResourceReference'
+    ResourceReference:
+      type: object
+      description: A reference to a Workday resource.
+      properties:
+        id:
+          type: string
+          description: The Workday ID of the referenced resource.
+        descriptor:
+          type: string
+          description: A display descriptor for the referenced resource.
+        href:
+          type: string
+          format: uri
+          description: A link to the referenced resource.
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: A message describing the error.
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+  responses:
+    BadRequest:
+      description: The request was invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+tags:
+  - name: Workers
+    description: Endpoints for managing worker data.
+  - name: Organizations
+    description: Endpoints for managing organizational data.
+  - name: Locations
+    description: Endpoints for managing location data.

@@ -1,0 +1,385 @@
+{
+  "@context": {
+    "@vocab": "https://workday.com/api/vocab#",
+    "wd": "https://workday.com/api/vocab#",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "org": "http://www.w3.org/ns/org#",
+    "vcard": "http://www.w3.org/2006/vcard/ns#",
+
+    "id": "@id",
+    "type": "@type",
+    "descriptor": "rdfs:label",
+    "href": {
+      "@id": "wd:href",
+      "@type": "@id"
+    },
+
+    "Worker": {
+      "@id": "wd:Worker",
+      "@context": {
+        "workerID": "wd:workerID",
+        "workerType": {
+          "@id": "wd:workerType",
+          "@type": "@id"
+        },
+        "businessTitle": "schema:jobTitle",
+        "hireDate": {
+          "@id": "wd:hireDate",
+          "@type": "xsd:date"
+        },
+        "originalHireDate": {
+          "@id": "wd:originalHireDate",
+          "@type": "xsd:date"
+        },
+        "terminationDate": {
+          "@id": "wd:terminationDate",
+          "@type": "xsd:date"
+        },
+        "isActive": {
+          "@id": "wd:isActive",
+          "@type": "xsd:boolean"
+        },
+        "isManager": {
+          "@id": "wd:isManager",
+          "@type": "xsd:boolean"
+        },
+        "primaryWorkEmail": "schema:email",
+        "primaryWorkPhone": "schema:telephone",
+        "externalID": "wd:externalID"
+      }
+    },
+
+    "PersonName": {
+      "@id": "wd:PersonName",
+      "@context": {
+        "firstName": "schema:givenName",
+        "middleName": "schema:additionalName",
+        "lastName": "schema:familyName",
+        "fullName": "schema:name",
+        "prefix": "schema:honorificPrefix",
+        "suffix": "schema:honorificSuffix"
+      }
+    },
+
+    "Position": {
+      "@id": "wd:Position",
+      "@context": {
+        "positionID": "wd:positionID",
+        "isFilled": {
+          "@id": "wd:isFilled",
+          "@type": "xsd:boolean"
+        },
+        "isAvailableForRecruit": {
+          "@id": "wd:isAvailableForRecruit",
+          "@type": "xsd:boolean"
+        },
+        "isClosed": {
+          "@id": "wd:isClosed",
+          "@type": "xsd:boolean"
+        },
+        "jobProfile": {
+          "@id": "wd:jobProfile",
+          "@type": "@id"
+        },
+        "supervisoryOrganization": {
+          "@id": "wd:supervisoryOrganization",
+          "@type": "@id"
+        },
+        "location": {
+          "@id": "wd:location",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "Organization": {
+      "@id": "org:Organization",
+      "@context": {
+        "name": "schema:name",
+        "code": "wd:organizationCode",
+        "organizationType": {
+          "@id": "wd:organizationType",
+          "@type": "@id"
+        },
+        "superiorOrganization": {
+          "@id": "org:subOrganizationOf",
+          "@type": "@id"
+        },
+        "subordinateOrganizations": {
+          "@id": "org:hasSubOrganization",
+          "@type": "@id",
+          "@container": "@set"
+        },
+        "manager": {
+          "@id": "org:headOf",
+          "@type": "@id"
+        },
+        "isInactive": {
+          "@id": "wd:isInactive",
+          "@type": "xsd:boolean"
+        },
+        "staffingModel": "wd:staffingModel",
+        "memberCount": {
+          "@id": "wd:memberCount",
+          "@type": "xsd:integer"
+        }
+      }
+    },
+
+    "SupervisoryOrganization": {
+      "@id": "wd:SupervisoryOrganization",
+      "@context": {
+        "name": "schema:name",
+        "manager": {
+          "@id": "org:headOf",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "JobProfile": {
+      "@id": "wd:JobProfile",
+      "@context": {
+        "jobProfileName": "schema:name",
+        "jobCode": "wd:jobCode",
+        "jobFamily": {
+          "@id": "wd:jobFamily",
+          "@type": "@id"
+        },
+        "jobCategory": {
+          "@id": "wd:jobCategory",
+          "@type": "@id"
+        },
+        "managementLevel": {
+          "@id": "wd:managementLevel",
+          "@type": "@id"
+        },
+        "summary": "schema:description"
+      }
+    },
+
+    "CompensationPlan": {
+      "@id": "wd:CompensationPlan",
+      "@context": {
+        "compensationPlanType": "wd:compensationPlanType",
+        "amount": {
+          "@id": "schema:amount",
+          "@type": "xsd:decimal"
+        },
+        "currency": {
+          "@id": "schema:currency",
+          "@type": "@id"
+        },
+        "frequency": {
+          "@id": "wd:frequency",
+          "@type": "@id"
+        },
+        "effectiveDate": {
+          "@id": "wd:effectiveDate",
+          "@type": "xsd:date"
+        }
+      }
+    },
+
+    "CompensationGrade": {
+      "@id": "wd:CompensationGrade",
+      "@context": {
+        "minimumAmount": {
+          "@id": "wd:minimumAmount",
+          "@type": "xsd:decimal"
+        },
+        "midpointAmount": {
+          "@id": "wd:midpointAmount",
+          "@type": "xsd:decimal"
+        },
+        "maximumAmount": {
+          "@id": "wd:maximumAmount",
+          "@type": "xsd:decimal"
+        }
+      }
+    },
+
+    "TimeOffEntry": {
+      "@id": "wd:TimeOffEntry",
+      "@context": {
+        "date": {
+          "@id": "wd:timeOffDate",
+          "@type": "xsd:date"
+        },
+        "dailyQuantity": {
+          "@id": "wd:dailyQuantity",
+          "@type": "xsd:decimal"
+        },
+        "timeOffType": {
+          "@id": "wd:timeOffType",
+          "@type": "@id"
+        },
+        "status": "wd:status"
+      }
+    },
+
+    "TimeOffBalance": {
+      "@id": "wd:TimeOffBalance",
+      "@context": {
+        "timeOffPlan": {
+          "@id": "wd:timeOffPlan",
+          "@type": "@id"
+        },
+        "balance": {
+          "@id": "wd:balance",
+          "@type": "xsd:decimal"
+        },
+        "unit": "wd:unit",
+        "asOfDate": {
+          "@id": "wd:asOfDate",
+          "@type": "xsd:date"
+        }
+      }
+    },
+
+    "LeaveOfAbsence": {
+      "@id": "wd:LeaveOfAbsence",
+      "@context": {
+        "leaveType": {
+          "@id": "wd:leaveType",
+          "@type": "@id"
+        },
+        "startDate": {
+          "@id": "schema:startDate",
+          "@type": "xsd:date"
+        },
+        "estimatedEndDate": {
+          "@id": "wd:estimatedEndDate",
+          "@type": "xsd:date"
+        },
+        "actualEndDate": {
+          "@id": "wd:actualEndDate",
+          "@type": "xsd:date"
+        },
+        "status": "wd:leaveStatus"
+      }
+    },
+
+    "Location": {
+      "@id": "schema:Place",
+      "@context": {
+        "name": "schema:name",
+        "latitude": {
+          "@id": "schema:latitude",
+          "@type": "xsd:double"
+        },
+        "longitude": {
+          "@id": "schema:longitude",
+          "@type": "xsd:double"
+        }
+      }
+    },
+
+    "BenefitElection": {
+      "@id": "wd:BenefitElection",
+      "@context": {
+        "benefitPlan": {
+          "@id": "wd:benefitPlan",
+          "@type": "@id"
+        },
+        "coverageLevel": {
+          "@id": "wd:coverageLevel",
+          "@type": "@id"
+        },
+        "coverageBeginDate": {
+          "@id": "wd:coverageBeginDate",
+          "@type": "xsd:date"
+        },
+        "coverageEndDate": {
+          "@id": "wd:coverageEndDate",
+          "@type": "xsd:date"
+        },
+        "employeeCost": {
+          "@id": "wd:employeeCost",
+          "@type": "xsd:decimal"
+        },
+        "employerCost": {
+          "@id": "wd:employerCost",
+          "@type": "xsd:decimal"
+        }
+      }
+    },
+
+    "Dataset": {
+      "@id": "wd:PrismDataset",
+      "@context": {
+        "name": "schema:name",
+        "displayName": "rdfs:label",
+        "description": "schema:description",
+        "rowCount": {
+          "@id": "wd:rowCount",
+          "@type": "xsd:integer"
+        },
+        "createdOn": {
+          "@id": "schema:dateCreated",
+          "@type": "xsd:dateTime"
+        },
+        "updatedOn": {
+          "@id": "schema:dateModified",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "JobRequisition": {
+      "@id": "wd:JobRequisition",
+      "@context": {
+        "requisitionNumber": "wd:requisitionNumber",
+        "jobTitle": "schema:title",
+        "numberOfOpenings": {
+          "@id": "wd:numberOfOpenings",
+          "@type": "xsd:integer"
+        },
+        "targetHireDate": {
+          "@id": "wd:targetHireDate",
+          "@type": "xsd:date"
+        }
+      }
+    },
+
+    "Candidate": {
+      "@id": "wd:Candidate",
+      "@context": {
+        "name": "schema:name",
+        "email": "schema:email",
+        "phone": "schema:telephone"
+      }
+    },
+
+    "PerformanceReview": {
+      "@id": "wd:PerformanceReview",
+      "@context": {
+        "overallRating": {
+          "@id": "wd:overallRating",
+          "@type": "@id"
+        },
+        "completedDate": {
+          "@id": "wd:completedDate",
+          "@type": "xsd:date"
+        }
+      }
+    },
+
+    "Goal": {
+      "@id": "wd:Goal",
+      "@context": {
+        "name": "schema:name",
+        "description": "schema:description",
+        "dueDate": {
+          "@id": "wd:dueDate",
+          "@type": "xsd:date"
+        },
+        "status": "wd:goalStatus"
+      }
+    }
+  }
+}

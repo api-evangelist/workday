@@ -1,0 +1,433 @@
+openapi: 3.1.0
+info:
+  title: Workday Financial Management API
+  description: >-
+    Financial Management API for accounting, procurement, expenses, and
+    financial reporting. Enables programmatic access to financial data and
+    workflows.
+  version: v1
+  contact:
+    name: Workday Support
+    email: support@workday.com
+    url: https://www.workday.com/en-us/customer-service/support.html
+  license:
+    name: Proprietary
+    url: https://www.workday.com/en-us/legal.html
+servers:
+  - url: https://wd2-impl-services1.workday.com/ccx/api/financialManagement/v1/{tenant}
+    description: Workday REST API Server
+    variables:
+      tenant:
+        default: tenant_name
+        description: The Workday tenant identifier
+security:
+  - OAuth2:
+      - r_financials
+      - w_financials
+paths:
+  /accountingJournals:
+    get:
+      operationId: getAccountingJournals
+      summary: Get Accounting Journals
+      description: Returns a collection of accounting journals.
+      tags:
+        - Accounting
+      parameters:
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Successful response containing accounting journals.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/AccountingJournal'
+                  total:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /accountingJournals/{ID}:
+    get:
+      operationId: getAccountingJournalById
+      summary: Get Accounting Journal by ID
+      description: Returns details for a specific accounting journal.
+      tags:
+        - Accounting
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          description: Successful response containing accounting journal details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountingJournal'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /suppliers:
+    get:
+      operationId: getSuppliers
+      summary: Get Suppliers
+      description: Returns a collection of suppliers.
+      tags:
+        - Procurement
+      parameters:
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: Successful response containing suppliers.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Supplier'
+                  total:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /suppliers/{ID}:
+    get:
+      operationId: getSupplierById
+      summary: Get Supplier by ID
+      description: Returns details for a specific supplier.
+      tags:
+        - Procurement
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          description: Successful response containing supplier details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Supplier'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /purchaseOrders:
+    get:
+      operationId: getPurchaseOrders
+      summary: Get Purchase Orders
+      description: Returns a collection of purchase orders.
+      tags:
+        - Procurement
+      parameters:
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Successful response containing purchase orders.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PurchaseOrder'
+                  total:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /expenseReports:
+    get:
+      operationId: getExpenseReports
+      summary: Get Expense Reports
+      description: Returns a collection of expense reports.
+      tags:
+        - Expenses
+      parameters:
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Successful response containing expense reports.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ExpenseReport'
+                  total:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /expenseReports/{ID}:
+    get:
+      operationId: getExpenseReportById
+      summary: Get Expense Report by ID
+      description: Returns details for a specific expense report.
+      tags:
+        - Expenses
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          description: Successful response containing expense report details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExpenseReport'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /customerInvoices:
+    get:
+      operationId: getCustomerInvoices
+      summary: Get Customer Invoices
+      description: Returns a collection of customer invoices.
+      tags:
+        - Revenue
+      parameters:
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Successful response containing customer invoices.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CustomerInvoice'
+                  total:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
+          tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
+          scopes:
+            r_financials: Read financial data
+            w_financials: Write financial data
+  parameters:
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the resource.
+      schema:
+        type: string
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: The maximum number of objects in a single response.
+      schema:
+        type: integer
+        default: 20
+        maximum: 100
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: The zero-based index of the first object in a response collection.
+      schema:
+        type: integer
+        default: 0
+    search:
+      name: search
+      in: query
+      required: false
+      description: Searches resources by name.
+      schema:
+        type: string
+  schemas:
+    AccountingJournal:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        journalNumber:
+          type: string
+        company:
+          $ref: '#/components/schemas/ResourceReference'
+        accountingDate:
+          type: string
+          format: date
+        status:
+          type: string
+        journalSource:
+          $ref: '#/components/schemas/ResourceReference'
+        totalDebitAmount:
+          type: number
+          format: double
+        totalCreditAmount:
+          type: number
+          format: double
+        currency:
+          $ref: '#/components/schemas/ResourceReference'
+    Supplier:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        supplierName:
+          type: string
+        supplierID:
+          type: string
+        supplierCategory:
+          $ref: '#/components/schemas/ResourceReference'
+        taxID:
+          type: string
+        paymentTerms:
+          $ref: '#/components/schemas/ResourceReference'
+        isActive:
+          type: boolean
+        address:
+          type: object
+          properties:
+            addressLine1:
+              type: string
+            city:
+              type: string
+            stateProvince:
+              $ref: '#/components/schemas/ResourceReference'
+            postalCode:
+              type: string
+            country:
+              $ref: '#/components/schemas/ResourceReference'
+    PurchaseOrder:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        purchaseOrderNumber:
+          type: string
+        supplier:
+          $ref: '#/components/schemas/ResourceReference'
+        orderDate:
+          type: string
+          format: date
+        totalAmount:
+          type: number
+          format: double
+        currency:
+          $ref: '#/components/schemas/ResourceReference'
+        status:
+          type: string
+    ExpenseReport:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        worker:
+          $ref: '#/components/schemas/ResourceReference'
+        createdDate:
+          type: string
+          format: date
+        totalAmount:
+          type: number
+          format: double
+        currency:
+          $ref: '#/components/schemas/ResourceReference'
+        status:
+          type: string
+          description: Status of the report (e.g., Draft, Submitted, Approved, Paid).
+        memo:
+          type: string
+    CustomerInvoice:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        invoiceNumber:
+          type: string
+        customer:
+          $ref: '#/components/schemas/ResourceReference'
+        invoiceDate:
+          type: string
+          format: date
+        dueDate:
+          type: string
+          format: date
+        totalAmount:
+          type: number
+          format: double
+        currency:
+          $ref: '#/components/schemas/ResourceReference'
+        status:
+          type: string
+    ResourceReference:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        href:
+          type: string
+          format: uri
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+  responses:
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+tags:
+  - name: Accounting
+    description: Endpoints for managing accounting journals.
+  - name: Procurement
+    description: Endpoints for managing suppliers and purchase orders.
+  - name: Expenses
+    description: Endpoints for managing expense reports.
+  - name: Revenue
+    description: Endpoints for managing customer invoices.

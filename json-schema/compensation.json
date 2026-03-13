@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://workday.com/schemas/compensation.json",
+  "title": "Compensation",
+  "description": "Represents compensation data for a worker in Workday, including salary plans, allowance plans, bonus plans, and total compensation details.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The Workday ID of the compensation record."
+    },
+    "descriptor": {
+      "type": "string",
+      "description": "A display descriptor for the compensation record."
+    },
+    "worker": {
+      "$ref": "#/$defs/ResourceReference",
+      "description": "The worker this compensation belongs to."
+    },
+    "effectiveDate": {
+      "type": "string",
+      "format": "date",
+      "description": "The effective date of the compensation."
+    },
+    "compensationPlans": {
+      "type": "array",
+      "description": "The compensation plans assigned to the worker.",
+      "items": {
+        "$ref": "#/$defs/CompensationPlan"
+      }
+    },
+    "totalBasePayAmount": {
+      "type": "number",
+      "format": "double",
+      "description": "The total base pay amount across all salary plans."
+    },
+    "totalBasePayAnnualizedAmount": {
+      "type": "number",
+      "format": "double",
+      "description": "The annualized total base pay amount."
+    },
+    "totalSalaryAndAllowancesAmount": {
+      "type": "number",
+      "format": "double",
+      "description": "Total salary and allowances combined."
+    },
+    "primaryCompensationBasis": {
+      "type": "number",
+      "format": "double",
+      "description": "The primary compensation basis amount."
+    },
+    "currency": {
+      "$ref": "#/$defs/ResourceReference",
+      "description": "The currency for compensation amounts."
+    },
+    "frequency": {
+      "$ref": "#/$defs/ResourceReference",
+      "description": "The pay frequency (e.g., Annual, Monthly, Bi-Weekly, Weekly)."
+    },
+    "compensationGrade": {
+      "$ref": "#/$defs/ResourceReference",
+      "description": "The compensation grade."
+    },
+    "compensationGradeProfile": {
+      "$ref": "#/$defs/ResourceReference",
+      "description": "The compensation grade profile."
+    },
+    "compensationStep": {
+      "$ref": "#/$defs/ResourceReference",
+      "description": "The compensation step within the grade."
+    },
+    "compaRatio": {
+      "type": "number",
+      "format": "double",
+      "description": "The compa-ratio (current pay relative to midpoint of compensation range)."
+    },
+    "rangePosition": {
+      "type": "number",
+      "format": "double",
+      "description": "The range position (where in the pay range the worker falls)."
+    },
+    "payRateType": {
+      "$ref": "#/$defs/ResourceReference",
+      "description": "The pay rate type (e.g., Salary, Hourly)."
+    },
+    "href": {
+      "type": "string",
+      "format": "uri",
+      "description": "A link to the full compensation resource."
+    }
+  },
+  "required": ["id"],
+  "$defs": {
+    "CompensationPlan": {
+      "type": "object",
+      "description": "A specific compensation plan assigned to a worker.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The Workday ID of the compensation plan assignment."
+        },
+        "descriptor": {
+          "type": "string",
+          "description": "A display descriptor for the plan."
+        },
+        "compensationPlanType": {
+          "type": "string",
+          "description": "The type of plan (e.g., Salary, Allowance, Bonus, Commission, Stock).",
+          "enum": ["Salary", "Allowance", "Bonus", "Commission", "Stock", "Merit", "One-Time Payment"]
+        },
+        "compensationPlan": {
+          "$ref": "#/$defs/ResourceReference",
+          "description": "The compensation plan definition."
+        },
+        "amount": {
+          "type": "number",
+          "format": "double",
+          "description": "The compensation amount."
+        },
+        "percentage": {
+          "type": "number",
+          "format": "double",
+          "description": "The compensation percentage (for percentage-based plans)."
+        },
+        "currency": {
+          "$ref": "#/$defs/ResourceReference",
+          "description": "The currency of the amount."
+        },
+        "frequency": {
+          "$ref": "#/$defs/ResourceReference",
+          "description": "The pay frequency for this plan."
+        },
+        "effectiveDate": {
+          "type": "string",
+          "format": "date",
+          "description": "The effective date of the plan assignment."
+        },
+        "compensationGrade": {
+          "$ref": "#/$defs/ResourceReference"
+        },
+        "compensationStep": {
+          "$ref": "#/$defs/ResourceReference"
+        }
+      }
+    },
+    "ResourceReference": {
+      "type": "object",
+      "description": "A reference to a Workday resource.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The Workday ID of the referenced resource."
+        },
+        "descriptor": {
+          "type": "string",
+          "description": "A display descriptor for the referenced resource."
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "A link to the referenced resource."
+        }
+      }
+    }
+  }
+}

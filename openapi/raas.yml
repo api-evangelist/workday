@@ -1,0 +1,169 @@
+openapi: 3.1.0
+info:
+  title: Workday Report-as-a-Service API
+  description: >-
+    Report-as-a-Service (RaaS) exposes custom reports as RESTful web services,
+    enabling programmatic access to report data. Supports query parameters for
+    filtering and returns data in multiple formats including JSON, CSV, and XML.
+  version: v1
+  contact:
+    name: Workday Support
+    email: support@workday.com
+    url: https://www.workday.com/en-us/customer-service/support.html
+  license:
+    name: Proprietary
+    url: https://www.workday.com/en-us/legal.html
+servers:
+  - url: https://wd2-impl-services1.workday.com/ccx/service/customreport2/{tenant}
+    description: Workday RaaS Server
+    variables:
+      tenant:
+        default: tenant_name
+        description: The Workday tenant identifier
+security:
+  - OAuth2:
+      - r_reports
+  - BasicAuth: []
+paths:
+  /{reportOwner}/{reportName}:
+    get:
+      operationId: getCustomReport
+      summary: Get Custom Report Data
+      description: >-
+        Returns data from a custom report published as a web service.
+        The report owner and report name form the path to the report.
+        Supports filtering via report-specific prompt parameters.
+      tags:
+        - Reports
+      parameters:
+        - name: reportOwner
+          in: path
+          required: true
+          description: The username of the report owner (e.g., ISU_report_owner).
+          schema:
+            type: string
+        - name: reportName
+          in: path
+          required: true
+          description: The name of the custom report.
+          schema:
+            type: string
+        - name: format
+          in: query
+          description: >-
+            The output format for the report data. Supported values are json,
+            csv, simplexml, and gdata.
+          schema:
+            type: string
+            enum:
+              - json
+              - csv
+              - simplexml
+              - gdata
+            default: json
+        - name: Worker!WID
+          in: query
+          description: Filter by worker Workday ID (example prompt parameter).
+          schema:
+            type: string
+        - name: Effective_as_of_Date
+          in: query
+          description: Filter by effective date (example prompt parameter).
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Successful response containing report data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportResponse'
+            text/csv:
+              schema:
+                type: string
+                description: CSV-formatted report data.
+            application/xml:
+              schema:
+                type: string
+                description: XML-formatted report data.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          description: The report was not found or is not published as a web service.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
+          tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
+          scopes:
+            r_reports: Read report data
+    BasicAuth:
+      type: http
+      scheme: basic
+      description: Basic authentication with Workday ISU credentials.
+  schemas:
+    ReportResponse:
+      type: object
+      properties:
+        Report_Entry:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+            description: >-
+              A report row with column names as keys. The actual fields depend
+              on the report definition.
+          description: The array of report data rows.
+      description: >-
+        The report response containing an array of report entries. Column
+        names correspond to the report field definitions.
+    ResourceReference:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        href:
+          type: string
+          format: uri
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+  responses:
+    BadRequest:
+      description: The request was invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+tags:
+  - name: Reports
+    description: Endpoints for accessing custom report data via RaaS.

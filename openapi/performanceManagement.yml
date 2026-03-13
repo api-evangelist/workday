@@ -1,0 +1,343 @@
+openapi: 3.1.0
+info:
+  title: Workday Performance Management API
+  description: >-
+    Performance Management API for managing performance reviews, feedback
+    badges, goals, and employee performance evaluations.
+  version: v1
+  contact:
+    name: Workday Support
+    email: support@workday.com
+    url: https://www.workday.com/en-us/customer-service/support.html
+  license:
+    name: Proprietary
+    url: https://www.workday.com/en-us/legal.html
+servers:
+  - url: https://wd2-impl-services1.workday.com/ccx/api/performanceManagement/v1/{tenant}
+    description: Workday REST API Server
+    variables:
+      tenant:
+        default: tenant_name
+        description: The Workday tenant identifier
+security:
+  - OAuth2:
+      - r_performance
+      - w_performance
+paths:
+  /workers/{ID}/goals:
+    get:
+      operationId: getWorkerGoals
+      summary: Get Worker Goals
+      description: Returns goals for a worker.
+      tags:
+        - Goals
+      parameters:
+        - $ref: '#/components/parameters/ID'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Successful response containing worker goals.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Goal'
+                  total:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /workers/{ID}/performanceReviews:
+    get:
+      operationId: getPerformanceReviews
+      summary: Get Performance Reviews
+      description: Returns performance reviews for a worker.
+      tags:
+        - Performance Reviews
+      parameters:
+        - $ref: '#/components/parameters/ID'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Successful response containing performance reviews.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PerformanceReview'
+                  total:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /workers/{ID}/feedbackBadges:
+    get:
+      operationId: getFeedbackBadges
+      summary: Get Feedback Badges
+      description: Returns feedback badges received by a worker.
+      tags:
+        - Feedback
+      parameters:
+        - $ref: '#/components/parameters/ID'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Successful response containing feedback badges.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/FeedbackBadge'
+                  total:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      operationId: giveFeedbackBadge
+      summary: Give Feedback Badge
+      description: Gives a feedback badge to a worker.
+      tags:
+        - Feedback
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FeedbackBadgeRequest'
+      responses:
+        '201':
+          description: Feedback badge given successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeedbackBadge'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /workers/{ID}/requestFeedback:
+    post:
+      operationId: requestFeedback
+      summary: Request Feedback
+      description: Initiates a request for feedback on a worker.
+      tags:
+        - Feedback
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FeedbackRequest'
+      responses:
+        '201':
+          description: Feedback request initiated successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  descriptor:
+                    type: string
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
+          tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
+          scopes:
+            r_performance: Read performance data
+            w_performance: Write performance data
+  parameters:
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the worker.
+      schema:
+        type: string
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: The maximum number of objects in a single response.
+      schema:
+        type: integer
+        default: 20
+        maximum: 100
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: The zero-based index of the first object in a response collection.
+      schema:
+        type: integer
+        default: 0
+  schemas:
+    Goal:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        status:
+          type: string
+          description: The status of the goal (e.g., Not Started, In Progress, Completed).
+        dueDate:
+          type: string
+          format: date
+        completionDate:
+          type: string
+          format: date
+        category:
+          $ref: '#/components/schemas/ResourceReference'
+        weight:
+          type: number
+          format: double
+    PerformanceReview:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        reviewPeriod:
+          $ref: '#/components/schemas/ResourceReference'
+        template:
+          $ref: '#/components/schemas/ResourceReference'
+        overallRating:
+          $ref: '#/components/schemas/ResourceReference'
+        status:
+          type: string
+          description: The review status (e.g., In Progress, Manager Evaluation, Completed).
+        manager:
+          $ref: '#/components/schemas/ResourceReference'
+        completedDate:
+          type: string
+          format: date
+    FeedbackBadge:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        badge:
+          $ref: '#/components/schemas/ResourceReference'
+        giver:
+          $ref: '#/components/schemas/ResourceReference'
+        comment:
+          type: string
+        givenDate:
+          type: string
+          format: date-time
+    FeedbackBadgeRequest:
+      type: object
+      properties:
+        badge:
+          $ref: '#/components/schemas/ResourceReference'
+        comment:
+          type: string
+      required:
+        - badge
+    FeedbackRequest:
+      type: object
+      properties:
+        respondents:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResourceReference'
+        questions:
+          type: array
+          items:
+            type: string
+        dueDate:
+          type: string
+          format: date
+      required:
+        - respondents
+    ResourceReference:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        href:
+          type: string
+          format: uri
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+  responses:
+    BadRequest:
+      description: The request was invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+tags:
+  - name: Goals
+    description: Endpoints for managing worker goals.
+  - name: Performance Reviews
+    description: Endpoints for managing performance reviews.
+  - name: Feedback
+    description: Endpoints for managing feedback and feedback badges.
