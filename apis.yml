@@ -1,13 +1,15 @@
-specificationVersion: '0.18'
+aid: workday
+specificationVersion: '0.19'
 name: Workday APIs
 description: >-
   Collection of Workday REST and SOAP APIs for human capital management,
   financial management, enterprise planning, analytics, and platform
   extensibility.
-image: https://www.workday.com/content/dam/web/images/logo/workday-logo.svg
-url: https://www.workday.com
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/workday/refs/heads/main/apis.yml
 created: '2024-01-15'
-modified: '2026-03-03'
+modified: '2026-03-16'
 tags:
   - Enterprise Software
   - HCM
