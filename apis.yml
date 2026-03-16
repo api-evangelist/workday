@@ -1,6 +1,6 @@
 aid: workday
 specificationVersion: '0.19'
-name: Workday APIs
+name: Workday
 description: >-
   Collection of Workday REST and SOAP APIs for human capital management,
   financial management, enterprise planning, analytics, and platform
