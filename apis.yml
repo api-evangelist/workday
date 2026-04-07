@@ -11,10 +11,10 @@ url: >-
 created: '2024-01-15'
 modified: '2026-03-16'
 tags:
-  - Enterprise Software
-  - HCM
-  - Financial Management
   - Cloud Computing
+  - Enterprise Software
+  - Financial Management
+  - HCM
   - SaaS
 apis:
   - name: Workday HCM API
@@ -59,10 +59,10 @@ apis:
     humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
     baseURL: https://wd2-impl-services1.workday.com/ccx/api/financialManagement/
     tags:
-      - Financial Management
       - Accounting
-      - Procurement
       - Expenses
+      - Financial Management
+      - Procurement
       - Revenue
     properties:
       - type: Documentation
@@ -81,11 +81,11 @@ apis:
     humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
     baseURL: https://wd2-impl-services1.workday.com/ccx/api/recruiting/
     tags:
-      - Recruiting
-      - Candidates
-      - Job Postings
       - Applications
+      - Candidates
       - Hiring
+      - Job Postings
+      - Recruiting
     properties:
       - type: Documentation
         url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
@@ -103,10 +103,10 @@ apis:
     humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
     baseURL: https://wd2-impl-services1.workday.com/ccx/api/timeTracking/
     tags:
-      - Time Tracking
-      - Timesheets
       - Absence
       - Leave Management
+      - Time Tracking
+      - Timesheets
     properties:
       - type: Documentation
         url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
@@ -125,8 +125,8 @@ apis:
     baseURL: https://wd2-impl-services1.workday.com/ccx/api/benefits/
     tags:
       - Benefits
-      - Enrollments
       - Coverage
+      - Enrollments
       - Health Insurance
     properties:
       - type: Documentation
@@ -146,9 +146,9 @@ apis:
     baseURL: https://wd2-impl-services1.workday.com/ccx/api/absenceManagement/
     tags:
       - Absence Management
-      - Time Off
-      - Leave Of Absence
       - Leave Balances
+      - Leave of Absence
+      - Time Off
     properties:
       - type: Documentation
         url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
@@ -169,9 +169,9 @@ apis:
     baseURL: https://wd2-impl-services1.workday.com/ccx/api/compensation/
     tags:
       - Compensation
-      - Scorecards
-      - Pay Plans
       - One-Time Payments
+      - Pay Plans
+      - Scorecards
     properties:
       - type: Documentation
         url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
@@ -191,10 +191,10 @@ apis:
     humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
     baseURL: https://wd2-impl-services1.workday.com/ccx/api/payroll/
     tags:
-      - Payroll
-      - Pay Groups
-      - Tax Rates
       - Pay Components
+      - Pay Groups
+      - Payroll
+      - Tax Rates
     properties:
       - type: Documentation
         url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
@@ -212,10 +212,10 @@ apis:
     humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
     baseURL: https://wd2-impl-services1.workday.com/ccx/api/person/
     tags:
+      - Contact Information
+      - Employee Data
       - Person
       - Workers
-      - Employee Data
-      - Contact Information
     properties:
       - type: Documentation
         url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
@@ -235,9 +235,9 @@ apis:
     humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
     baseURL: https://wd2-impl-services1.workday.com/ccx/api/performanceManagement/
     tags:
-      - Performance Management
       - Feedback
       - Goals
+      - Performance Management
       - Reviews
     properties:
       - type: Documentation
@@ -256,10 +256,10 @@ apis:
     humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
     baseURL: https://wd2-impl-services1.workday.com/ccx/api/talent/
     tags:
-      - Talent Management
-      - Mentorships
       - Career Development
+      - Mentorships
       - Succession Planning
+      - Talent Management
     properties:
       - type: Documentation
         url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
@@ -278,8 +278,8 @@ apis:
     baseURL: https://wd2-impl-services1.workday.com/ccx/api/common/
     tags:
       - Common
-      - Reference Data
       - Lookup Values
+      - Reference Data
       - Shared Services
     properties:
       - type: Documentation
@@ -298,10 +298,10 @@ apis:
     humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
     baseURL: https://wd2-impl-services1.workday.com/ccx/api/staffing/
     tags:
-      - Staffing
       - Job Profiles
-      - Positions
       - Organizations
+      - Positions
+      - Staffing
     properties:
       - type: Documentation
         url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
@@ -324,11 +324,11 @@ apis:
     humanURL: https://apidocs.workdayspend.com/
     baseURL: https://api.workdayspend.com/services/
     tags:
-      - Strategic Sourcing
-      - Procurement
-      - Suppliers
-      - Contracts
       - Awards
+      - Contracts
+      - Procurement
+      - Strategic Sourcing
+      - Suppliers
     properties:
       - type: Documentation
         url: https://apidocs.workdayspend.com/
@@ -343,10 +343,10 @@ apis:
     humanURL: https://community.workday.com/api
     baseURL: https://wd2-impl-services1.workday.com/ccx/service/
     tags:
+      - Enterprise Integration
       - SOAP API
       - Web Services
       - WSDL
-      - Enterprise Integration
     properties:
       - type: Documentation
         url: https://community.workday.com/api
@@ -361,10 +361,10 @@ apis:
     humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
     baseURL: https://wd2-impl-services1.workday.com/ccx/api/prismAnalytics/
     tags:
-      - Prism Analytics
       - Analytics
-      - Datasets
       - Business Intelligence
+      - Datasets
+      - Prism Analytics
     properties:
       - type: Documentation
         url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
@@ -383,10 +383,10 @@ apis:
     humanURL: https://www.workday.com/en-us/products/platform-product-extensions/app-development.html
     baseURL: https://wd2-impl-services1.workday.com/ccx/api/
     tags:
-      - Platform Extensibility
       - App Development
-      - Low Code
       - Custom Applications
+      - Low Code
+      - Platform Extensibility
     properties:
       - type: Documentation
         url: https://www.workday.com/en-us/products/platform-product-extensions/app-development.html
@@ -401,10 +401,10 @@ apis:
     humanURL: https://community.workday.com/api
     baseURL: https://wd2-impl-services1.workday.com/ccx/service/
     tags:
-      - Reporting
-      - Report As A Service
-      - Data Export
       - Custom Reports
+      - Data Export
+      - Report as a Service
+      - Reporting
     properties:
       - type: Documentation
         url: https://community.workday.com/api
@@ -425,8 +425,8 @@ apis:
     tags:
       - Adaptive Planning
       - Budgeting
-      - Forecasting
       - Financial Planning
+      - Forecasting
     properties:
       - type: Documentation
         url: https://doc.workday.com/adaptive-planning/en-us/integration/managing-data-integration/api-documentation/understanding-the-adaptive-planning-rest-api/api-methods/brk1623709249507.html
@@ -441,9 +441,9 @@ apis:
     humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
     baseURL: https://wd2-impl-services1.workday.com/ccx/api/wql/
     tags:
-      - Query Language
-      - Data Access
       - Analytics
+      - Data Access
+      - Query Language
       - Reporting
     properties:
       - type: Documentation
