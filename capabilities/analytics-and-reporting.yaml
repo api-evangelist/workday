@@ -1,0 +1,178 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Workday Analytics and Reporting"
+  description: "Unified analytics and reporting combining Prism Analytics, WQL, and Report-as-a-Service APIs for business analysts to query data, manage datasets, and access custom reports."
+  tags:
+    - Workday
+    - Analytics
+    - Reporting
+    - Business Intelligence
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      WORKDAY_OAUTH_TOKEN: WORKDAY_OAUTH_TOKEN
+
+capability:
+  consumes:
+    - import: workday-prism
+      location: ./shared/prism-analytics.yaml
+    - import: workday-wql
+      location: ./shared/wql.yaml
+    - import: workday-raas
+      location: ./shared/raas.yaml
+
+  exposes:
+    - type: rest
+      port: 8085
+      namespace: analytics-reporting-api
+      description: "Unified REST API for analytics and reporting."
+      resources:
+        - path: /v1/datasets
+          name: datasets
+          description: "Prism Analytics datasets"
+          operations:
+            - method: GET
+              name: list-datasets
+              description: "List datasets"
+              call: "workday-prism.get-datasets"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/wql-query
+          name: wql
+          description: "WQL query endpoint"
+          operations:
+            - method: POST
+              name: execute-query
+              description: "Execute a WQL query"
+              call: "workday-wql.execute-wql-query"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9085
+      namespace: analytics-reporting-mcp
+      transport: http
+      description: "MCP server for AI-assisted analytics and reporting."
+      tools:
+        - name: prism-list-datasets
+          description: "List all Prism Analytics datasets"
+          hints:
+            readOnly: true
+          call: "workday-prism.get-datasets"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: prism-create-dataset
+          description: "Create a new Prism Analytics dataset"
+          hints:
+            readOnly: false
+          call: "workday-prism.create-dataset"
+          with:
+            name: "tools.name"
+            fields: "tools.fields"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: prism-get-dataset
+          description: "Get a dataset by ID"
+          hints:
+            readOnly: true
+          call: "workday-prism.get-dataset-by-id"
+          with:
+            ID: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: prism-delete-dataset
+          description: "Delete a dataset"
+          hints:
+            readOnly: false
+            destructive: true
+          call: "workday-prism.delete-dataset"
+          with:
+            ID: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: prism-list-data-change-tasks
+          description: "List data change tasks"
+          hints:
+            readOnly: true
+          call: "workday-prism.get-data-change-tasks"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: prism-create-data-change-task
+          description: "Create a data change task"
+          hints:
+            readOnly: false
+          call: "workday-prism.create-data-change-task"
+          with:
+            targetDataset: "tools.targetDataset"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: prism-list-tables
+          description: "List all Prism tables"
+          hints:
+            readOnly: true
+          call: "workday-prism.get-tables"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: wql-execute-query
+          description: "Execute a WQL query against Workday data"
+          hints:
+            readOnly: true
+          call: "workday-wql.execute-wql-query"
+          with:
+            query: "tools.query"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: wql-list-data-sources
+          description: "List available WQL data sources"
+          hints:
+            readOnly: true
+          call: "workday-wql.get-data-sources"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: wql-get-data-source
+          description: "Get a WQL data source by ID"
+          hints:
+            readOnly: true
+          call: "workday-wql.get-data-source-by-id"
+          with:
+            ID: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: wql-get-data-source-fields
+          description: "Get fields for a WQL data source"
+          hints:
+            readOnly: true
+          call: "workday-wql.get-data-source-fields"
+          with:
+            ID: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: raas-get-report
+          description: "Retrieve a custom Workday report"
+          hints:
+            readOnly: true
+          call: "workday-raas.get-custom-report"
+          with:
+            report_owner: "tools.report_owner"
+            report_name: "tools.report_name"
+            format: "tools.format"
+          outputParameters:
+            - type: object
+              mapping: "$."

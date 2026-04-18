@@ -13,16 +13,16 @@ info:
     name: Proprietary
     url: https://www.workday.com/en-us/legal.html
 servers:
-  - url: https://wd2-impl-services1.workday.com/ccx/api/compensation/v1/{tenant}
-    description: Workday REST API Server
-    variables:
-      tenant:
-        default: tenant_name
-        description: The Workday tenant identifier
+- url: https://wd2-impl-services1.workday.com/ccx/api/compensation/v1/{tenant}
+  description: Workday REST API Server
+  variables:
+    tenant:
+      default: tenant_name
+      description: The Workday tenant identifier
 security:
-  - OAuth2:
-      - r_compensation
-      - w_compensation
+- OAuth2:
+  - r_compensation
+  - w_compensation
 paths:
   /workers/{ID}/compensationPlans:
     get:
@@ -30,11 +30,11 @@ paths:
       summary: Get Compensation Plans
       description: Returns compensation plans assigned to a worker.
       tags:
-        - Compensation Plans
+      - Compensation Plans
       parameters:
-        - $ref: '#/components/parameters/ID'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
       responses:
         '200':
           description: Successful response containing compensation plans.
@@ -49,25 +49,68 @@ paths:
                       $ref: '#/components/schemas/CompensationPlan'
                   total:
                     type: integer
+              examples:
+                Getcompensationplans200Example:
+                  summary: Default getCompensationPlans 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      compensationPlanType: example_value
+                      amount: 42.5
+                      effectiveDate: '2026-01-15'
+                    total: 10
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /workers/{ID}/requestCompensationChange:
     post:
       operationId: requestCompensationChange
       summary: Request Compensation Change
       description: Initiates a compensation change request for a worker.
       tags:
-        - Compensation Plans
+      - Compensation Plans
       parameters:
-        - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/ID'
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/CompensationChangeRequest'
+            examples:
+              RequestcompensationchangeRequestExample:
+                summary: Default requestCompensationChange request
+                x-microcks-default: true
+                value:
+                  effectiveDate: '2026-01-15'
+                  reason:
+                    id: abc123
+                    descriptor: example_value
+                    href: https://www.example.com
+                  proposedCompensation:
+                    amount: 42.5
+                    currency:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    frequency:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    compensationGrade:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    compensationStep:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
       responses:
         '201':
           description: Compensation change request created successfully.
@@ -80,20 +123,30 @@ paths:
                     type: string
                   descriptor:
                     type: string
+              examples:
+                Requestcompensationchange201Example:
+                  summary: Default requestCompensationChange 201 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    descriptor: example_value
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /compensationScorecards:
     get:
       operationId: getCompensationScorecards
       summary: Get Compensation Scorecards
       description: Returns a collection of compensation scorecards.
       tags:
-        - Scorecards
+      - Scorecards
       parameters:
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
       responses:
         '200':
           description: Successful response containing compensation scorecards.
@@ -108,17 +161,32 @@ paths:
                       $ref: '#/components/schemas/CompensationScorecard'
                   total:
                     type: integer
+              examples:
+                Getcompensationscorecards200Example:
+                  summary: Default getCompensationScorecards 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      name: Example Title
+                      effectiveDate: '2026-01-15'
+                      status: example_value
+                    total: 10
         '401':
           $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /compensationScorecards/{ID}:
     get:
       operationId: getCompensationScorecardById
-      summary: Get Compensation Scorecard by ID
+      summary: Get Compensation Scorecard by Id
       description: Returns a specific compensation scorecard.
       tags:
-        - Scorecards
+      - Scorecards
       parameters:
-        - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/ID'
       responses:
         '200':
           description: Successful response containing the compensation scorecard.
@@ -126,21 +194,38 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CompensationScorecard'
+              examples:
+                Getcompensationscorecardbyid200Example:
+                  summary: Default getCompensationScorecardById 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    descriptor: example_value
+                    name: Example Title
+                    effectiveDate: '2026-01-15'
+                    compensationReviewPeriod:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    status: example_value
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /compensationScorecards/{ID}/results:
     get:
       operationId: getCompensationScorecardResults
       summary: Get Compensation Scorecard Results
       description: Returns results for a specific compensation scorecard.
       tags:
-        - Scorecards
+      - Scorecards
       parameters:
-        - $ref: '#/components/parameters/ID'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
       responses:
         '200':
           description: Successful response containing scorecard results.
@@ -155,25 +240,61 @@ paths:
                       $ref: '#/components/schemas/ScorecardResult'
                   total:
                     type: integer
+              examples:
+                Getcompensationscorecardresults200Example:
+                  summary: Default getCompensationScorecardResults 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      currentBasePayAmount: 42.5
+                      proposedBasePayAmount: 42.5
+                      percentChange: 42.5
+                      meritAmount: 42.5
+                      promotionAmount: 42.5
+                    total: 10
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /workers/{ID}/requestOneTimePayment:
     post:
       operationId: requestOneTimePayment
-      summary: Request One-Time Payment
+      summary: Request One-time Payment
       description: Initiates a one-time payment request for a worker.
       tags:
-        - One-Time Payments
+      - One-Time Payments
       parameters:
-        - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/ID'
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/OneTimePaymentRequest'
+            examples:
+              RequestonetimepaymentRequestExample:
+                summary: Default requestOneTimePayment request
+                x-microcks-default: true
+                value:
+                  effectiveDate: '2026-01-15'
+                  reason:
+                    id: abc123
+                    descriptor: example_value
+                    href: https://www.example.com
+                  currency:
+                    id: abc123
+                    descriptor: example_value
+                    href: https://www.example.com
+                  amount: 42.5
+                  payComponent:
+                    id: abc123
+                    descriptor: example_value
+                    href: https://www.example.com
       responses:
         '201':
           description: One-time payment request created successfully.
@@ -186,20 +307,30 @@ paths:
                     type: string
                   descriptor:
                     type: string
+              examples:
+                Requestonetimepayment201Example:
+                  summary: Default requestOneTimePayment 201 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    descriptor: example_value
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /compensationGrades:
     get:
       operationId: getCompensationGrades
       summary: Get Compensation Grades
       description: Returns a collection of compensation grades.
       tags:
-        - Compensation Plans
+      - Compensation Plans
       parameters:
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
       responses:
         '200':
           description: Successful response containing compensation grades.
@@ -214,8 +345,25 @@ paths:
                       $ref: '#/components/schemas/CompensationGrade'
                   total:
                     type: integer
+              examples:
+                Getcompensationgrades200Example:
+                  summary: Default getCompensationGrades 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      name: Example Title
+                      isInactive: true
+                      minimumAmount: 42.5
+                      midpointAmount: 42.5
+                      maximumAmount: 42.5
+                    total: 10
         '401':
           $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   securitySchemes:
     OAuth2:
@@ -259,18 +407,22 @@ components:
         id:
           type: string
           description: The Workday ID of the compensation plan.
+          example: abc123
         descriptor:
           type: string
           description: A display descriptor for the plan.
+          example: example_value
         compensationPlanType:
           type: string
           description: The type of compensation plan (e.g., Salary, Allowance, Bonus).
+          example: example_value
         compensationPlan:
           $ref: '#/components/schemas/ResourceReference'
         amount:
           type: number
           format: double
           description: The compensation amount.
+          example: 42.5
         currency:
           $ref: '#/components/schemas/ResourceReference'
         frequency:
@@ -278,6 +430,7 @@ components:
         effectiveDate:
           type: string
           format: date
+          example: '2026-01-15'
         compensationGrade:
           $ref: '#/components/schemas/ResourceReference'
         compensationStep:
@@ -289,6 +442,7 @@ components:
           type: string
           format: date
           description: The effective date of the compensation change.
+          example: '2026-01-15'
         reason:
           $ref: '#/components/schemas/ResourceReference'
         proposedCompensation:
@@ -305,57 +459,71 @@ components:
               $ref: '#/components/schemas/ResourceReference'
             compensationStep:
               $ref: '#/components/schemas/ResourceReference'
+          example: example_value
       required:
-        - effectiveDate
-        - reason
+      - effectiveDate
+      - reason
     CompensationScorecard:
       type: object
       properties:
         id:
           type: string
+          example: abc123
         descriptor:
           type: string
+          example: example_value
         name:
           type: string
+          example: Example Title
         effectiveDate:
           type: string
           format: date
+          example: '2026-01-15'
         compensationReviewPeriod:
           $ref: '#/components/schemas/ResourceReference'
         status:
           type: string
+          example: example_value
     ScorecardResult:
       type: object
       properties:
         id:
           type: string
+          example: abc123
         descriptor:
           type: string
+          example: example_value
         worker:
           $ref: '#/components/schemas/ResourceReference'
         currentBasePayAmount:
           type: number
           format: double
+          example: 42.5
         proposedBasePayAmount:
           type: number
           format: double
+          example: 42.5
         currency:
           $ref: '#/components/schemas/ResourceReference'
         percentChange:
           type: number
           format: double
+          example: 42.5
         meritAmount:
           type: number
           format: double
+          example: 42.5
         promotionAmount:
           type: number
           format: double
+          example: 42.5
     OneTimePaymentRequest:
       type: object
       properties:
         effectiveDate:
           type: string
           format: date
+          example: '2026-01-15'
         reason:
           $ref: '#/components/schemas/ResourceReference'
         currency:
@@ -363,33 +531,41 @@ components:
         amount:
           type: number
           format: double
+          example: 42.5
         payComponent:
           $ref: '#/components/schemas/ResourceReference'
       required:
-        - effectiveDate
-        - amount
+      - effectiveDate
+      - amount
     CompensationGrade:
       type: object
       properties:
         id:
           type: string
+          example: abc123
         descriptor:
           type: string
+          example: example_value
         name:
           type: string
+          example: Example Title
         isInactive:
           type: boolean
+          example: true
         compensationGradeProfile:
           $ref: '#/components/schemas/ResourceReference'
         minimumAmount:
           type: number
           format: double
+          example: 42.5
         midpointAmount:
           type: number
           format: double
+          example: 42.5
         maximumAmount:
           type: number
           format: double
+          example: 42.5
         currency:
           $ref: '#/components/schemas/ResourceReference'
     ResourceReference:
@@ -397,16 +573,20 @@ components:
       properties:
         id:
           type: string
+          example: abc123
         descriptor:
           type: string
+          example: example_value
         href:
           type: string
           format: uri
+          example: https://www.example.com
     ErrorResponse:
       type: object
       properties:
         error:
           type: string
+          example: example_value
         errors:
           type: array
           items:
@@ -416,6 +596,7 @@ components:
                 type: string
               field:
                 type: string
+          example: []
   responses:
     BadRequest:
       description: The request was invalid or malformed.
@@ -436,9 +617,9 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
 tags:
-  - name: Compensation Plans
-    description: Endpoints for managing compensation plans and grades.
-  - name: Scorecards
-    description: Endpoints for managing compensation scorecards and results.
-  - name: One-Time Payments
-    description: Endpoints for one-time payment requests.
+- name: Compensation Plans
+  description: Endpoints for managing compensation plans and grades.
+- name: Scorecards
+  description: Endpoints for managing compensation scorecards and results.
+- name: One-Time Payments
+  description: Endpoints for one-time payment requests.

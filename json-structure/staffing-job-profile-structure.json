@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "JobProfile",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "jobProfileName": {
+      "type": "string"
+    },
+    "isInactive": {
+      "type": "boolean"
+    },
+    "jobCode": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "string"
+    }
+  }
+}

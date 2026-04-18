@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CompensationPlan",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The Workday ID of the compensation plan."
+    },
+    "descriptor": {
+      "type": "string",
+      "description": "A display descriptor for the plan."
+    },
+    "compensationPlanType": {
+      "type": "string",
+      "description": "The type of compensation plan (e.g., Salary, Allowance, Bonus)."
+    },
+    "amount": {
+      "type": "number",
+      "description": "The compensation amount."
+    },
+    "effectiveDate": {
+      "type": "string"
+    }
+  }
+}

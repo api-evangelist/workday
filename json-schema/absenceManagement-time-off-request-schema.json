@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TimeOffRequest",
+  "type": "object",
+  "properties": {
+    "days": {
+      "type": "array",
+      "description": "The list of days included in the time-off request."
+    }
+  }
+}

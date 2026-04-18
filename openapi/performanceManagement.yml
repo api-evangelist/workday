@@ -13,16 +13,16 @@ info:
     name: Proprietary
     url: https://www.workday.com/en-us/legal.html
 servers:
-  - url: https://wd2-impl-services1.workday.com/ccx/api/performanceManagement/v1/{tenant}
-    description: Workday REST API Server
-    variables:
-      tenant:
-        default: tenant_name
-        description: The Workday tenant identifier
+- url: https://wd2-impl-services1.workday.com/ccx/api/performanceManagement/v1/{tenant}
+  description: Workday REST API Server
+  variables:
+    tenant:
+      default: tenant_name
+      description: The Workday tenant identifier
 security:
-  - OAuth2:
-      - r_performance
-      - w_performance
+- OAuth2:
+  - r_performance
+  - w_performance
 paths:
   /workers/{ID}/goals:
     get:
@@ -30,11 +30,11 @@ paths:
       summary: Get Worker Goals
       description: Returns goals for a worker.
       tags:
-        - Goals
+      - Goals
       parameters:
-        - $ref: '#/components/parameters/ID'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
       responses:
         '200':
           description: Successful response containing worker goals.
@@ -49,21 +49,39 @@ paths:
                       $ref: '#/components/schemas/Goal'
                   total:
                     type: integer
+              examples:
+                Getworkergoals200Example:
+                  summary: Default getWorkerGoals 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      name: Example Title
+                      description: A sample description.
+                      status: example_value
+                      dueDate: '2026-01-15'
+                      completionDate: '2026-01-15'
+                      weight: 42.5
+                    total: 10
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /workers/{ID}/performanceReviews:
     get:
       operationId: getPerformanceReviews
       summary: Get Performance Reviews
       description: Returns performance reviews for a worker.
       tags:
-        - Performance Reviews
+      - Performance Reviews
       parameters:
-        - $ref: '#/components/parameters/ID'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
       responses:
         '200':
           description: Successful response containing performance reviews.
@@ -78,21 +96,35 @@ paths:
                       $ref: '#/components/schemas/PerformanceReview'
                   total:
                     type: integer
+              examples:
+                Getperformancereviews200Example:
+                  summary: Default getPerformanceReviews 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      status: example_value
+                      completedDate: '2026-01-15'
+                    total: 10
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /workers/{ID}/feedbackBadges:
     get:
       operationId: getFeedbackBadges
       summary: Get Feedback Badges
       description: Returns feedback badges received by a worker.
       tags:
-        - Feedback
+      - Feedback
       parameters:
-        - $ref: '#/components/parameters/ID'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
       responses:
         '200':
           description: Successful response containing feedback badges.
@@ -107,24 +139,48 @@ paths:
                       $ref: '#/components/schemas/FeedbackBadge'
                   total:
                     type: integer
+              examples:
+                Getfeedbackbadges200Example:
+                  summary: Default getFeedbackBadges 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      comment: example_value
+                      givenDate: '2026-01-15T10:30:00Z'
+                    total: 10
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       operationId: giveFeedbackBadge
       summary: Give Feedback Badge
       description: Gives a feedback badge to a worker.
       tags:
-        - Feedback
+      - Feedback
       parameters:
-        - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/ID'
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/FeedbackBadgeRequest'
+            examples:
+              GivefeedbackbadgeRequestExample:
+                summary: Default giveFeedbackBadge request
+                x-microcks-default: true
+                value:
+                  badge:
+                    id: abc123
+                    descriptor: example_value
+                    href: https://www.example.com
+                  comment: example_value
       responses:
         '201':
           description: Feedback badge given successfully.
@@ -132,25 +188,57 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/FeedbackBadge'
+              examples:
+                Givefeedbackbadge201Example:
+                  summary: Default giveFeedbackBadge 201 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    descriptor: example_value
+                    badge:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    giver:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    comment: example_value
+                    givenDate: '2026-01-15T10:30:00Z'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /workers/{ID}/requestFeedback:
     post:
       operationId: requestFeedback
       summary: Request Feedback
       description: Initiates a request for feedback on a worker.
       tags:
-        - Feedback
+      - Feedback
       parameters:
-        - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/ID'
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/FeedbackRequest'
+            examples:
+              RequestfeedbackRequestExample:
+                summary: Default requestFeedback request
+                x-microcks-default: true
+                value:
+                  respondents:
+                  - id: abc123
+                    descriptor: example_value
+                    href: https://www.example.com
+                  questions:
+                  - example_value
+                  dueDate: '2026-01-15'
       responses:
         '201':
           description: Feedback request initiated successfully.
@@ -163,10 +251,20 @@ paths:
                     type: string
                   descriptor:
                     type: string
+              examples:
+                Requestfeedback201Example:
+                  summary: Default requestFeedback 201 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    descriptor: example_value
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   securitySchemes:
     OAuth2:
@@ -209,33 +307,43 @@ components:
       properties:
         id:
           type: string
+          example: abc123
         descriptor:
           type: string
+          example: example_value
         name:
           type: string
+          example: Example Title
         description:
           type: string
+          example: A sample description.
         status:
           type: string
           description: The status of the goal (e.g., Not Started, In Progress, Completed).
+          example: example_value
         dueDate:
           type: string
           format: date
+          example: '2026-01-15'
         completionDate:
           type: string
           format: date
+          example: '2026-01-15'
         category:
           $ref: '#/components/schemas/ResourceReference'
         weight:
           type: number
           format: double
+          example: 42.5
     PerformanceReview:
       type: object
       properties:
         id:
           type: string
+          example: abc123
         descriptor:
           type: string
+          example: example_value
         reviewPeriod:
           $ref: '#/components/schemas/ResourceReference'
         template:
@@ -245,27 +353,33 @@ components:
         status:
           type: string
           description: The review status (e.g., In Progress, Manager Evaluation, Completed).
+          example: example_value
         manager:
           $ref: '#/components/schemas/ResourceReference'
         completedDate:
           type: string
           format: date
+          example: '2026-01-15'
     FeedbackBadge:
       type: object
       properties:
         id:
           type: string
+          example: abc123
         descriptor:
           type: string
+          example: example_value
         badge:
           $ref: '#/components/schemas/ResourceReference'
         giver:
           $ref: '#/components/schemas/ResourceReference'
         comment:
           type: string
+          example: example_value
         givenDate:
           type: string
           format: date-time
+          example: '2026-01-15T10:30:00Z'
     FeedbackBadgeRequest:
       type: object
       properties:
@@ -273,8 +387,9 @@ components:
           $ref: '#/components/schemas/ResourceReference'
         comment:
           type: string
+          example: example_value
       required:
-        - badge
+      - badge
     FeedbackRequest:
       type: object
       properties:
@@ -282,30 +397,37 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ResourceReference'
+          example: []
         questions:
           type: array
           items:
             type: string
+          example: []
         dueDate:
           type: string
           format: date
+          example: '2026-01-15'
       required:
-        - respondents
+      - respondents
     ResourceReference:
       type: object
       properties:
         id:
           type: string
+          example: abc123
         descriptor:
           type: string
+          example: example_value
         href:
           type: string
           format: uri
+          example: https://www.example.com
     ErrorResponse:
       type: object
       properties:
         error:
           type: string
+          example: example_value
         errors:
           type: array
           items:
@@ -315,6 +437,7 @@ components:
                 type: string
               field:
                 type: string
+          example: []
   responses:
     BadRequest:
       description: The request was invalid or malformed.
@@ -335,9 +458,9 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
 tags:
-  - name: Goals
-    description: Endpoints for managing worker goals.
-  - name: Performance Reviews
-    description: Endpoints for managing performance reviews.
-  - name: Feedback
-    description: Endpoints for managing feedback and feedback badges.
+- name: Goals
+  description: Endpoints for managing worker goals.
+- name: Performance Reviews
+  description: Endpoints for managing performance reviews.
+- name: Feedback
+  description: Endpoints for managing feedback and feedback badges.

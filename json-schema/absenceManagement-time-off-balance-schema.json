@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TimeOffBalance",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "balance": {
+      "type": "number",
+      "description": "The current balance."
+    },
+    "unit": {
+      "type": "string",
+      "description": "The unit of the balance (e.g., Hours, Days)."
+    },
+    "asOfDate": {
+      "type": "string",
+      "description": "The effective date of the balance."
+    }
+  }
+}

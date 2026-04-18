@@ -1,0 +1,169 @@
+naftiko: "1.0.0-alpha1"
+info:
+  label: "Workday Time Tracking"
+  description: "Time Tracking API for managing employee time entry, timesheets, and time clock events."
+  tags:
+    - Workday
+    - Time Tracking
+    - Timesheets
+  created: "2026-04-18"
+  modified: "2026-04-18"
+binds:
+  - namespace: env
+    keys:
+      WORKDAY_OAUTH_TOKEN: WORKDAY_OAUTH_TOKEN
+capability:
+  consumes:
+    - type: http
+      namespace: workday-time-tracking
+      baseUri: https://wd2-impl-services1.workday.com/ccx/api/v1/{tenant}/timeTracking
+      description: "Workday Time Tracking REST API."
+      authentication:
+        type: bearer
+        token: "{{WORKDAY_OAUTH_TOKEN}}"
+      resources:
+        - name: time-tracking
+          path: /
+          description: "Time tracking operations"
+          operations:
+            - name: get-time-clock-events
+              method: GET
+              description: "Returns time clock events for workers."
+              inputParameters:
+                - name: limit
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Maximum results."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-time-clock-event
+              method: POST
+              description: "Creates a time clock event."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  worker: "{{tools.worker}}"
+                  type: "{{tools.type}}"
+            - name: get-time-entries
+              method: GET
+              description: "Returns time entries."
+              inputParameters:
+                - name: limit
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Maximum results."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-timesheets
+              method: GET
+              description: "Returns timesheets."
+              inputParameters:
+                - name: limit
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Maximum results."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: request-time-entry
+              method: POST
+              description: "Submits a time entry request."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  worker: "{{tools.worker}}"
+                  hours: "{{tools.hours}}"
+  exposes:
+    - type: rest
+      port: 8105
+      namespace: workday-time-tracking-api
+      resources:
+        - path: /v1/time-entries
+          name: time-entries
+          description: "Time entry endpoints"
+          operations:
+            - method: GET
+              name: list-time-entries
+              description: "List time entries"
+              call: "workday-time-tracking.get-time-entries"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+    - type: mcp
+      port: 9105
+      namespace: workday-time-tracking-mcp
+      transport: http
+      tools:
+        - name: list-time-clock-events
+          description: "List time clock events"
+          hints:
+            readOnly: true
+          call: "workday-time-tracking.get-time-clock-events"
+          with:
+            limit: "tools.limit"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-time-clock-event
+          description: "Create a time clock event"
+          hints:
+            readOnly: false
+          call: "workday-time-tracking.create-time-clock-event"
+          with:
+            worker: "tools.worker"
+            type: "tools.type"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-time-entries
+          description: "List time entries"
+          hints:
+            readOnly: true
+          call: "workday-time-tracking.get-time-entries"
+          with:
+            limit: "tools.limit"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-timesheets
+          description: "List timesheets"
+          hints:
+            readOnly: true
+          call: "workday-time-tracking.get-timesheets"
+          with:
+            limit: "tools.limit"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: request-time-entry
+          description: "Submit a time entry request"
+          hints:
+            readOnly: false
+          call: "workday-time-tracking.request-time-entry"
+          with:
+            worker: "tools.worker"
+            hours: "tools.hours"
+          outputParameters:
+            - type: object
+              mapping: "$."

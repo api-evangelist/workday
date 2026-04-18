@@ -1,0 +1,141 @@
+naftiko: "1.0.0-alpha1"
+info:
+  label: "Workday Common"
+  description: "Common reference data, lookup values, and utility endpoints shared across Workday REST APIs."
+  tags:
+    - Workday
+    - Reference Data
+    - Common
+  created: "2026-04-18"
+  modified: "2026-04-18"
+binds:
+  - namespace: env
+    keys:
+      WORKDAY_OAUTH_TOKEN: WORKDAY_OAUTH_TOKEN
+capability:
+  consumes:
+    - type: http
+      namespace: workday-common
+      baseUri: https://wd2-impl-services1.workday.com/ccx/api/v1/{tenant}/common
+      description: "Workday Common REST API for reference data."
+      authentication:
+        type: bearer
+        token: "{{WORKDAY_OAUTH_TOKEN}}"
+      resources:
+        - name: reference-data
+          path: /
+          description: "Common reference data"
+          operations:
+            - name: get-countries
+              method: GET
+              description: "Returns a collection of countries."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-country-by-id
+              method: GET
+              description: "Returns a country by ID."
+              inputParameters:
+                - name: ID
+                  in: path
+                  type: string
+                  required: true
+                  description: "Country ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-currencies
+              method: GET
+              description: "Returns a collection of currencies."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-currency-by-id
+              method: GET
+              description: "Returns a currency by ID."
+              inputParameters:
+                - name: ID
+                  in: path
+                  type: string
+                  required: true
+                  description: "Currency ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-languages
+              method: GET
+              description: "Returns a collection of languages."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-genders
+              method: GET
+              description: "Returns gender reference values."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-marital-statuses
+              method: GET
+              description: "Returns marital status reference values."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+  exposes:
+    - type: rest
+      port: 8103
+      namespace: workday-common-api
+      resources:
+        - path: /v1/countries
+          name: countries
+          description: "Country reference data"
+          operations:
+            - method: GET
+              name: list-countries
+              description: "List all countries"
+              call: "workday-common.get-countries"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+    - type: mcp
+      port: 9103
+      namespace: workday-common-mcp
+      transport: http
+      tools:
+        - name: list-countries
+          description: "List all countries"
+          hints:
+            readOnly: true
+          call: "workday-common.get-countries"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-currencies
+          description: "List all currencies"
+          hints:
+            readOnly: true
+          call: "workday-common.get-currencies"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-languages
+          description: "List all languages"
+          hints:
+            readOnly: true
+          call: "workday-common.get-languages"
+          outputParameters:
+            - type: object
+              mapping: "$."

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SupervisoryOrganization",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The Workday ID of the organization."
+    },
+    "descriptor": {
+      "type": "string",
+      "description": "A display descriptor for the organization."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the supervisory organization."
+    },
+    "code": {
+      "type": "string",
+      "description": "The organization reference ID."
+    },
+    "isInactive": {
+      "type": "boolean",
+      "description": "Whether the organization is inactive."
+    },
+    "staffingModel": {
+      "type": "string",
+      "description": "The staffing model for the organization."
+    }
+  }
+}

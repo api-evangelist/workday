@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Timesheet",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "periodStartDate": {
+      "type": "string"
+    },
+    "periodEndDate": {
+      "type": "string"
+    },
+    "totalHours": {
+      "type": "number"
+    },
+    "status": {
+      "type": "string",
+      "description": "The status of the timesheet (e.g., Draft, Submitted, Approved)."
+    },
+    "calculatedEntries": {
+      "type": "array"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "JobPosting",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string",
+      "description": "The title of the job posting."
+    },
+    "startDate": {
+      "type": "string"
+    },
+    "endDate": {
+      "type": "string"
+    },
+    "jobDescription": {
+      "type": "string"
+    },
+    "isInternal": {
+      "type": "boolean"
+    },
+    "isExternal": {
+      "type": "boolean"
+    },
+    "postedOn": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "ExpenseReport",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "createdDate": {
+      "type": "string"
+    },
+    "totalAmount": {
+      "type": "number"
+    },
+    "status": {
+      "type": "string"
+    },
+    "memo": {
+      "type": "string"
+    }
+  }
+}

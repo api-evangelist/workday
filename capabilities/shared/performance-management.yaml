@@ -1,0 +1,153 @@
+naftiko: "1.0.0-alpha1"
+info:
+  label: "Workday Performance Management"
+  description: "Performance Management API for reviews, feedback badges, goals, and evaluations."
+  tags:
+    - Workday
+    - Performance Management
+    - Reviews
+  created: "2026-04-18"
+  modified: "2026-04-18"
+binds:
+  - namespace: env
+    keys:
+      WORKDAY_OAUTH_TOKEN: WORKDAY_OAUTH_TOKEN
+capability:
+  consumes:
+    - type: http
+      namespace: workday-performance
+      baseUri: https://wd2-impl-services1.workday.com/ccx/api/v1/{tenant}/performanceManagement
+      description: "Workday Performance Management REST API."
+      authentication:
+        type: bearer
+        token: "{{WORKDAY_OAUTH_TOKEN}}"
+      resources:
+        - name: performance
+          path: /
+          description: "Performance management operations"
+          operations:
+            - name: get-worker-goals
+              method: GET
+              description: "Returns goals for a worker."
+              inputParameters:
+                - name: worker
+                  in: query
+                  type: string
+                  required: true
+                  description: "Worker ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-performance-reviews
+              method: GET
+              description: "Returns performance reviews."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-feedback-badges
+              method: GET
+              description: "Returns feedback badges."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: give-feedback-badge
+              method: POST
+              description: "Gives a feedback badge to a worker."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  worker: "{{tools.worker}}"
+                  badge: "{{tools.badge}}"
+            - name: request-feedback
+              method: POST
+              description: "Requests feedback for a worker."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  worker: "{{tools.worker}}"
+                  message: "{{tools.message}}"
+  exposes:
+    - type: rest
+      port: 8110
+      namespace: workday-performance-api
+      resources:
+        - path: /v1/performance-reviews
+          name: reviews
+          description: "Performance review endpoints"
+          operations:
+            - method: GET
+              name: list-reviews
+              description: "List performance reviews"
+              call: "workday-performance.get-performance-reviews"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+    - type: mcp
+      port: 9110
+      namespace: workday-performance-mcp
+      transport: http
+      tools:
+        - name: get-worker-goals
+          description: "Get goals for a worker"
+          hints:
+            readOnly: true
+          call: "workday-performance.get-worker-goals"
+          with:
+            worker: "tools.worker"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-performance-reviews
+          description: "List performance reviews"
+          hints:
+            readOnly: true
+          call: "workday-performance.get-performance-reviews"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-feedback-badges
+          description: "List feedback badges"
+          hints:
+            readOnly: true
+          call: "workday-performance.get-feedback-badges"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: give-feedback-badge
+          description: "Give a feedback badge to a worker"
+          hints:
+            readOnly: false
+          call: "workday-performance.give-feedback-badge"
+          with:
+            worker: "tools.worker"
+            badge: "tools.badge"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: request-feedback
+          description: "Request feedback for a worker"
+          hints:
+            readOnly: false
+          call: "workday-performance.request-feedback"
+          with:
+            worker: "tools.worker"
+            message: "tools.message"
+          outputParameters:
+            - type: object
+              mapping: "$."

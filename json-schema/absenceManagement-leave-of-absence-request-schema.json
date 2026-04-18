@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LeaveOfAbsenceRequest",
+  "type": "object",
+  "properties": {
+    "firstDayOfLeave": {
+      "type": "string"
+    },
+    "estimatedLastDayOfLeave": {
+      "type": "string"
+    },
+    "lastDayOfWork": {
+      "type": "string"
+    },
+    "firstDayBackAtWork": {
+      "type": "string"
+    },
+    "comment": {
+      "type": "string"
+    }
+  }
+}

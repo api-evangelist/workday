@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Dependent",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "fullName": {
+      "type": "string"
+    },
+    "dateOfBirth": {
+      "type": "string"
+    }
+  }
+}

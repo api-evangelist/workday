@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ExpenseReport",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "createdDate": {
+      "type": "string"
+    },
+    "totalAmount": {
+      "type": "number"
+    },
+    "status": {
+      "type": "string",
+      "description": "Status of the report (e.g., Draft, Submitted, Approved, Paid)."
+    },
+    "memo": {
+      "type": "string"
+    }
+  }
+}

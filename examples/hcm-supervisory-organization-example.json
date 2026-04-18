@@ -1,0 +1,8 @@
+{
+  "id": "abc123",
+  "descriptor": "example_value",
+  "name": "Example Title",
+  "code": "example_value",
+  "isInactive": true,
+  "staffingModel": "example_value"
+}

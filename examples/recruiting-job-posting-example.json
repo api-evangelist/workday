@@ -1,0 +1,11 @@
+{
+  "id": "abc123",
+  "descriptor": "example_value",
+  "title": "Example Title",
+  "startDate": "example_value",
+  "endDate": "example_value",
+  "jobDescription": "example_value",
+  "isInternal": true,
+  "isExternal": true,
+  "postedOn": "example_value"
+}

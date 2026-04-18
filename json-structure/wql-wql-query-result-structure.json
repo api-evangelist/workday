@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "WqlQueryResult",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array"
+    },
+    "total": {
+      "type": "integer"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "DataSourceField",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "alias": {
+      "type": "string"
+    },
+    "columnName": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "isRequired": {
+      "type": "boolean"
+    },
+    "isSortable": {
+      "type": "boolean"
+    },
+    "isFilterable": {
+      "type": "boolean"
+    }
+  }
+}

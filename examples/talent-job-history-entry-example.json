@@ -1,0 +1,8 @@
+{
+  "id": "abc123",
+  "company": "example_value",
+  "jobTitle": "example_value",
+  "startDate": "example_value",
+  "endDate": "example_value",
+  "description": "A sample description."
+}

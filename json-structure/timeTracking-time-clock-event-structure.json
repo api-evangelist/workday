@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "TimeClockEvent",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "clockEventType": {
+      "type": "string"
+    },
+    "clockEventTime": {
+      "type": "string"
+    },
+    "timeZone": {
+      "type": "string"
+    }
+  }
+}

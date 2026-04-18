@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SuccessionPlan",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "readiness": {
+      "type": "string",
+      "description": "Readiness level (e.g., Ready Now, Ready in 1-2 Years)."
+    },
+    "candidates": {
+      "type": "array"
+    },
+    "lastUpdated": {
+      "type": "string"
+    }
+  }
+}

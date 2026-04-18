@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AbsenceType",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The Workday ID of the absence type."
+    },
+    "descriptor": {
+      "type": "string",
+      "description": "A display descriptor for the absence type."
+    },
+    "absenceTypeCategory": {
+      "type": "string",
+      "description": "The category of the absence type (e.g., Vacation, Sick)."
+    },
+    "unit": {
+      "type": "string",
+      "description": "The unit of measurement (e.g., Hours, Days)."
+    }
+  }
+}

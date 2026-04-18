@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DataChangeTask",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The Workday ID of the data change task."
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "status": {
+      "type": "object",
+      "description": "The status of the task (e.g., New, Processing, Complete, Error)."
+    },
+    "operation": {
+      "type": "object",
+      "description": "The operation type (e.g., FullReplace, Append)."
+    },
+    "createdOn": {
+      "type": "string"
+    },
+    "completedOn": {
+      "type": "string"
+    }
+  }
+}

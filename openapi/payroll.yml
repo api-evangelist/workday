@@ -13,16 +13,16 @@ info:
     name: Proprietary
     url: https://www.workday.com/en-us/legal.html
 servers:
-  - url: https://wd2-impl-services1.workday.com/ccx/api/payroll/v1/{tenant}
-    description: Workday REST API Server
-    variables:
-      tenant:
-        default: tenant_name
-        description: The Workday tenant identifier
+- url: https://wd2-impl-services1.workday.com/ccx/api/payroll/v1/{tenant}
+  description: Workday REST API Server
+  variables:
+    tenant:
+      default: tenant_name
+      description: The Workday tenant identifier
 security:
-  - OAuth2:
-      - r_payroll
-      - w_payroll
+- OAuth2:
+  - r_payroll
+  - w_payroll
 paths:
   /payGroups:
     get:
@@ -30,10 +30,10 @@ paths:
       summary: Get Pay Groups
       description: Returns a collection of pay groups.
       tags:
-        - Pay Groups
+      - Pay Groups
       parameters:
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
       responses:
         '200':
           description: Successful response containing pay groups.
@@ -48,17 +48,31 @@ paths:
                       $ref: '#/components/schemas/PayGroup'
                   total:
                     type: integer
+              examples:
+                Getpaygroups200Example:
+                  summary: Default getPayGroups 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      name: Example Title
+                      isActive: true
+                    total: 10
         '401':
           $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /payGroups/{ID}:
     get:
       operationId: getPayGroupById
-      summary: Get Pay Group by ID
+      summary: Get Pay Group by Id
       description: Returns details for a specific pay group.
       tags:
-        - Pay Groups
+      - Pay Groups
       parameters:
-        - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/ID'
       responses:
         '200':
           description: Successful response containing pay group details.
@@ -66,21 +80,45 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PayGroup'
+              examples:
+                Getpaygroupbyid200Example:
+                  summary: Default getPayGroupById 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    descriptor: example_value
+                    name: Example Title
+                    country:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    payFrequency:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    currency:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    isActive: true
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /payGroups/{ID}/payGroupDetails:
     get:
       operationId: getPayGroupDetails
       summary: Get Pay Group Details
       description: Returns detailed information for a pay group including pay periods.
       tags:
-        - Pay Groups
+      - Pay Groups
       parameters:
-        - $ref: '#/components/parameters/ID'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
       responses:
         '200':
           description: Successful response containing pay group details.
@@ -95,21 +133,37 @@ paths:
                       $ref: '#/components/schemas/PayGroupDetail'
                   total:
                     type: integer
+              examples:
+                Getpaygroupdetails200Example:
+                  summary: Default getPayGroupDetails 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      payPeriodStartDate: '2026-01-15'
+                      payPeriodEndDate: '2026-01-15'
+                      payDate: '2026-01-15'
+                      payRunStatus: example_value
+                    total: 10
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /workers/{ID}/payrollInputs:
     get:
       operationId: getPayrollInputs
       summary: Get Payroll Inputs
       description: Returns payroll inputs for a worker.
       tags:
-        - Payroll Inputs
+      - Payroll Inputs
       parameters:
-        - $ref: '#/components/parameters/ID'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
       responses:
         '200':
           description: Successful response containing payroll inputs.
@@ -124,21 +178,38 @@ paths:
                       $ref: '#/components/schemas/PayrollInput'
                   total:
                     type: integer
+              examples:
+                Getpayrollinputs200Example:
+                  summary: Default getPayrollInputs 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      inputType: example_value
+                      amount: 42.5
+                      startDate: '2026-01-15'
+                      endDate: '2026-01-15'
+                      comment: example_value
+                    total: 10
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /workers/{ID}/paySlips:
     get:
       operationId: getPaySlips
       summary: Get Pay Slips
       description: Returns pay slips for a worker.
       tags:
-        - Pay Slips
+      - Pay Slips
       parameters:
-        - $ref: '#/components/parameters/ID'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
       responses:
         '200':
           description: Successful response containing pay slips.
@@ -153,10 +224,29 @@ paths:
                       $ref: '#/components/schemas/PaySlip'
                   total:
                     type: integer
+              examples:
+                Getpayslips200Example:
+                  summary: Default getPaySlips 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      payPeriodStartDate: '2026-01-15'
+                      payPeriodEndDate: '2026-01-15'
+                      payDate: '2026-01-15'
+                      grossPay: 42.5
+                      netPay: 42.5
+                      totalDeductions: 42.5
+                      totalTaxes: 42.5
+                    total: 10
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   securitySchemes:
     OAuth2:
@@ -199,10 +289,13 @@ components:
       properties:
         id:
           type: string
+          example: abc123
         descriptor:
           type: string
+          example: example_value
         name:
           type: string
+          example: Example Title
         country:
           $ref: '#/components/schemas/ResourceReference'
         payFrequency:
@@ -211,76 +304,99 @@ components:
           $ref: '#/components/schemas/ResourceReference'
         isActive:
           type: boolean
+          example: true
     PayGroupDetail:
       type: object
       properties:
         id:
           type: string
+          example: abc123
         descriptor:
           type: string
+          example: example_value
         payPeriodStartDate:
           type: string
           format: date
+          example: '2026-01-15'
         payPeriodEndDate:
           type: string
           format: date
+          example: '2026-01-15'
         payDate:
           type: string
           format: date
+          example: '2026-01-15'
         payRunStatus:
           type: string
+          example: example_value
     PayrollInput:
       type: object
       properties:
         id:
           type: string
+          example: abc123
         descriptor:
           type: string
+          example: example_value
         inputType:
           type: string
+          example: example_value
         payComponent:
           $ref: '#/components/schemas/ResourceReference'
         amount:
           type: number
           format: double
+          example: 42.5
         currency:
           $ref: '#/components/schemas/ResourceReference'
         startDate:
           type: string
           format: date
+          example: '2026-01-15'
         endDate:
           type: string
           format: date
+          example: '2026-01-15'
         comment:
           type: string
+          example: example_value
     PaySlip:
       type: object
       properties:
         id:
           type: string
+          example: abc123
         descriptor:
           type: string
+          example: example_value
         payPeriodStartDate:
           type: string
           format: date
+          example: '2026-01-15'
         payPeriodEndDate:
           type: string
           format: date
+          example: '2026-01-15'
         payDate:
           type: string
           format: date
+          example: '2026-01-15'
         grossPay:
           type: number
           format: double
+          example: 42.5
         netPay:
           type: number
           format: double
+          example: 42.5
         totalDeductions:
           type: number
           format: double
+          example: 42.5
         totalTaxes:
           type: number
           format: double
+          example: 42.5
         currency:
           $ref: '#/components/schemas/ResourceReference'
         payGroup:
@@ -290,16 +406,20 @@ components:
       properties:
         id:
           type: string
+          example: abc123
         descriptor:
           type: string
+          example: example_value
         href:
           type: string
           format: uri
+          example: https://www.example.com
     ErrorResponse:
       type: object
       properties:
         error:
           type: string
+          example: example_value
         errors:
           type: array
           items:
@@ -309,6 +429,7 @@ components:
                 type: string
               field:
                 type: string
+          example: []
   responses:
     Unauthorized:
       description: Authentication credentials were missing or invalid.
@@ -323,9 +444,9 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
 tags:
-  - name: Pay Groups
-    description: Endpoints for managing pay groups and pay periods.
-  - name: Payroll Inputs
-    description: Endpoints for managing payroll inputs.
-  - name: Pay Slips
-    description: Endpoints for accessing pay slips.
+- name: Pay Groups
+  description: Endpoints for managing pay groups and pay periods.
+- name: Payroll Inputs
+  description: Endpoints for managing payroll inputs.
+- name: Pay Slips
+  description: Endpoints for accessing pay slips.

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TimeOffEntry",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The Workday ID of the time-off entry."
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "date": {
+      "type": "string",
+      "description": "The date of the time off."
+    },
+    "dailyQuantity": {
+      "type": "number",
+      "description": "The quantity of time off taken."
+    },
+    "status": {
+      "type": "string",
+      "description": "The status of the time-off entry."
+    }
+  }
+}

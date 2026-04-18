@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DatasetField",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The field name."
+    },
+    "displayName": {
+      "type": "string",
+      "description": "The display name of the field."
+    },
+    "ordinal": {
+      "type": "integer",
+      "description": "The ordinal position of the field."
+    },
+    "type": {
+      "type": "object",
+      "description": "The data type of the field."
+    },
+    "required": {
+      "type": "boolean"
+    },
+    "externalId": {
+      "type": "string"
+    }
+  }
+}

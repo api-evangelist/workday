@@ -1,0 +1,11 @@
+{
+  "id": "abc123",
+  "descriptor": "example_value",
+  "payPeriodStartDate": "example_value",
+  "payPeriodEndDate": "example_value",
+  "payDate": "example_value",
+  "grossPay": 42.5,
+  "netPay": 42.5,
+  "totalDeductions": 42.5,
+  "totalTaxes": 42.5
+}

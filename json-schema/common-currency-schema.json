@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Currency",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "currencyCode": {
+      "type": "string",
+      "description": "The ISO 4217 currency code."
+    },
+    "name": {
+      "type": "string"
+    },
+    "numericCode": {
+      "type": "string"
+    }
+  }
+}

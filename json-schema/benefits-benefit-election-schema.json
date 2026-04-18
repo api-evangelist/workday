@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BenefitElection",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "electionStatus": {
+      "type": "string",
+      "description": "The status of the election (e.g., Elected, Waived)."
+    },
+    "coverageBeginDate": {
+      "type": "string"
+    },
+    "coverageEndDate": {
+      "type": "string"
+    },
+    "employeeCost": {
+      "type": "number"
+    },
+    "employerCost": {
+      "type": "number"
+    },
+    "dependents": {
+      "type": "array"
+    },
+    "beneficiaries": {
+      "type": "array"
+    }
+  }
+}

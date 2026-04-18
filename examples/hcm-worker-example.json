@@ -1,0 +1,12 @@
+{
+  "id": "abc123",
+  "descriptor": "example_value",
+  "workerID": "500123",
+  "primaryWorkEmail": "user@example.com",
+  "primaryWorkPhone": "example_value",
+  "businessTitle": "example_value",
+  "hireDate": "example_value",
+  "terminationDate": "example_value",
+  "isManager": true,
+  "externalID": "500123"
+}

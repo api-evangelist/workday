@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "JobProfile",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The Workday ID of the job profile."
+    },
+    "descriptor": {
+      "type": "string",
+      "description": "A display descriptor for the job profile."
+    },
+    "jobProfileName": {
+      "type": "string",
+      "description": "The name of the job profile."
+    },
+    "isInactive": {
+      "type": "boolean"
+    },
+    "jobCode": {
+      "type": "string",
+      "description": "The job code identifier."
+    },
+    "summary": {
+      "type": "string",
+      "description": "Summary description of the job profile."
+    }
+  }
+}

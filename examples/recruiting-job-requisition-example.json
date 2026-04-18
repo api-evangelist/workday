@@ -1,0 +1,10 @@
+{
+  "id": "abc123",
+  "descriptor": "example_value",
+  "requisitionNumber": "example_value",
+  "jobTitle": "example_value",
+  "status": "example_value",
+  "numberOfOpenings": 10,
+  "createdOn": "example_value",
+  "targetHireDate": "example_value"
+}

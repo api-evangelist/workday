@@ -1,0 +1,9 @@
+{
+  "id": "abc123",
+  "descriptor": "example_value",
+  "periodStartDate": "example_value",
+  "periodEndDate": "example_value",
+  "totalHours": 42.5,
+  "status": "example_value",
+  "calculatedEntries": []
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PerformanceReview",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "description": "The review status (e.g., In Progress, Manager Evaluation, Completed)."
+    },
+    "completedDate": {
+      "type": "string"
+    }
+  }
+}

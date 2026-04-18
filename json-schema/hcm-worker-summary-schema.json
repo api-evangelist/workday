@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WorkerSummary",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The Workday ID of the worker."
+    },
+    "descriptor": {
+      "type": "string",
+      "description": "A display descriptor for the worker (typically full name)."
+    },
+    "href": {
+      "type": "string",
+      "description": "A link to the full worker resource."
+    },
+    "primaryWorkEmail": {
+      "type": "string",
+      "description": "The primary work email address."
+    },
+    "primaryWorkPhone": {
+      "type": "string",
+      "description": "The primary work phone number."
+    },
+    "isPrimaryJob": {
+      "type": "boolean",
+      "description": "Whether this is the primary job for the worker."
+    },
+    "businessTitle": {
+      "type": "string",
+      "description": "The business title for the worker."
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "PayGroupDetail",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "payPeriodStartDate": {
+      "type": "string"
+    },
+    "payPeriodEndDate": {
+      "type": "string"
+    },
+    "payDate": {
+      "type": "string"
+    },
+    "payRunStatus": {
+      "type": "string"
+    }
+  }
+}

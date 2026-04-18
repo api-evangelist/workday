@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Goal",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "description": "The status of the goal (e.g., Not Started, In Progress, Completed)."
+    },
+    "dueDate": {
+      "type": "string"
+    },
+    "completionDate": {
+      "type": "string"
+    },
+    "weight": {
+      "type": "number"
+    }
+  }
+}

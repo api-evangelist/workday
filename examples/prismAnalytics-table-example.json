@@ -1,0 +1,10 @@
+{
+  "id": "abc123",
+  "descriptor": "example_value",
+  "name": "Example Title",
+  "displayName": "example_value",
+  "description": "A sample description.",
+  "fields": [],
+  "isAccessible": true,
+  "documentCount": 10
+}

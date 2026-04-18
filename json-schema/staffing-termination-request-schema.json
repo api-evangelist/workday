@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TerminationRequest",
+  "type": "object",
+  "properties": {
+    "terminationDate": {
+      "type": "string"
+    },
+    "lastDayOfWork": {
+      "type": "string"
+    },
+    "regrettable": {
+      "type": "boolean"
+    },
+    "notifyEmployee": {
+      "type": "boolean"
+    }
+  }
+}

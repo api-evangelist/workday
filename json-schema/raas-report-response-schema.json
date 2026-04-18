@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ReportResponse",
+  "type": "object",
+  "description": "The report response containing an array of report entries. Column names correspond to the report field definitions.",
+  "properties": {
+    "Report_Entry": {
+      "type": "array",
+      "description": "The array of report data rows."
+    }
+  }
+}

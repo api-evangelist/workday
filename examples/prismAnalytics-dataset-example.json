@@ -1,0 +1,12 @@
+{
+  "id": "abc123",
+  "descriptor": "example_value",
+  "name": "Example Title",
+  "displayName": "example_value",
+  "description": "A sample description.",
+  "tags": [],
+  "fields": [],
+  "rowCount": 10,
+  "createdOn": "example_value",
+  "updatedOn": "example_value"
+}

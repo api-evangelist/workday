@@ -14,16 +14,16 @@ info:
     name: Proprietary
     url: https://www.workday.com/en-us/legal.html
 servers:
-  - url: https://wd2-impl-services1.workday.com/ccx/service/customreport2/{tenant}
-    description: Workday RaaS Server
-    variables:
-      tenant:
-        default: tenant_name
-        description: The Workday tenant identifier
+- url: https://wd2-impl-services1.workday.com/ccx/service/customreport2/{tenant}
+  description: Workday RaaS Server
+  variables:
+    tenant:
+      default: tenant_name
+      description: The Workday tenant identifier
 security:
-  - OAuth2:
-      - r_reports
-  - BasicAuth: []
+- OAuth2:
+  - r_reports
+- BasicAuth: []
 paths:
   /{reportOwner}/{reportName}:
     get:
@@ -34,44 +34,49 @@ paths:
         The report owner and report name form the path to the report.
         Supports filtering via report-specific prompt parameters.
       tags:
-        - Reports
+      - Reports
       parameters:
-        - name: reportOwner
-          in: path
-          required: true
-          description: The username of the report owner (e.g., ISU_report_owner).
-          schema:
-            type: string
-        - name: reportName
-          in: path
-          required: true
-          description: The name of the custom report.
-          schema:
-            type: string
-        - name: format
-          in: query
-          description: >-
-            The output format for the report data. Supported values are json,
-            csv, simplexml, and gdata.
-          schema:
-            type: string
-            enum:
-              - json
-              - csv
-              - simplexml
-              - gdata
-            default: json
-        - name: Worker!WID
-          in: query
-          description: Filter by worker Workday ID (example prompt parameter).
-          schema:
-            type: string
-        - name: Effective_as_of_Date
-          in: query
-          description: Filter by effective date (example prompt parameter).
-          schema:
-            type: string
-            format: date
+      - name: reportOwner
+        in: path
+        required: true
+        description: The username of the report owner (e.g., ISU_report_owner).
+        schema:
+          type: string
+        example: example_value
+      - name: reportName
+        in: path
+        required: true
+        description: The name of the custom report.
+        schema:
+          type: string
+        example: example_value
+      - name: format
+        in: query
+        description: >-
+          The output format for the report data. Supported values are json,
+          csv, simplexml, and gdata.
+        schema:
+          type: string
+          enum:
+          - json
+          - csv
+          - simplexml
+          - gdata
+          default: json
+        example: json
+      - name: Worker!WID
+        in: query
+        description: Filter by worker Workday ID (example prompt parameter).
+        schema:
+          type: string
+        example: '500123'
+      - name: Effective_as_of_Date
+        in: query
+        description: Filter by effective date (example prompt parameter).
+        schema:
+          type: string
+          format: date
+        example: '2026-01-15'
       responses:
         '200':
           description: Successful response containing report data.
@@ -79,14 +84,31 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ReportResponse'
+              examples:
+                Getcustomreport200Example:
+                  summary: Default getCustomReport 200 response
+                  x-microcks-default: true
+                  value:
+                    Report_Entry:
+                    - {}
             text/csv:
               schema:
                 type: string
                 description: CSV-formatted report data.
+              examples:
+                Getcustomreport200Example:
+                  summary: Default getCustomReport 200 response
+                  x-microcks-default: true
+                  value: example_value
             application/xml:
               schema:
                 type: string
                 description: XML-formatted report data.
+              examples:
+                Getcustomreport200Example:
+                  summary: Default getCustomReport 200 response
+                  x-microcks-default: true
+                  value: example_value
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -97,6 +119,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getcustomreport404Example:
+                  summary: Default getCustomReport 404 response
+                  x-microcks-default: true
+                  value:
+                    error: example_value
+                    errors:
+                    - error: example_value
+                      field: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   securitySchemes:
     OAuth2:
@@ -124,6 +158,7 @@ components:
               A report row with column names as keys. The actual fields depend
               on the report definition.
           description: The array of report data rows.
+          example: []
       description: >-
         The report response containing an array of report entries. Column
         names correspond to the report field definitions.
@@ -132,16 +167,20 @@ components:
       properties:
         id:
           type: string
+          example: abc123
         descriptor:
           type: string
+          example: example_value
         href:
           type: string
           format: uri
+          example: https://www.example.com
     ErrorResponse:
       type: object
       properties:
         error:
           type: string
+          example: example_value
         errors:
           type: array
           items:
@@ -151,6 +190,7 @@ components:
                 type: string
               field:
                 type: string
+          example: []
   responses:
     BadRequest:
       description: The request was invalid or malformed.
@@ -165,5 +205,5 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
 tags:
-  - name: Reports
-    description: Endpoints for accessing custom report data via RaaS.
+- name: Reports
+  description: Endpoints for accessing custom report data via RaaS.

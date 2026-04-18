@@ -1,0 +1,9 @@
+{
+  "id": "abc123",
+  "descriptor": "example_value",
+  "currentBasePayAmount": 42.5,
+  "proposedBasePayAmount": 42.5,
+  "percentChange": 42.5,
+  "meritAmount": 42.5,
+  "promotionAmount": 42.5
+}

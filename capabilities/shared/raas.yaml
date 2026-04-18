@@ -1,0 +1,88 @@
+naftiko: "1.0.0-alpha1"
+info:
+  label: "Workday Report-as-a-Service"
+  description: "RaaS API for accessing custom Workday reports as RESTful web services."
+  tags:
+    - Workday
+    - Reporting
+    - Data Export
+  created: "2026-04-18"
+  modified: "2026-04-18"
+binds:
+  - namespace: env
+    keys:
+      WORKDAY_OAUTH_TOKEN: WORKDAY_OAUTH_TOKEN
+capability:
+  consumes:
+    - type: http
+      namespace: workday-raas
+      baseUri: https://wd2-impl-services1.workday.com/ccx/service/{tenant}
+      description: "Workday Report-as-a-Service API."
+      authentication:
+        type: bearer
+        token: "{{WORKDAY_OAUTH_TOKEN}}"
+      resources:
+        - name: reports
+          path: /
+          description: "Report operations"
+          operations:
+            - name: get-custom-report
+              method: GET
+              description: "Retrieves a custom report by owner and name."
+              inputParameters:
+                - name: report_owner
+                  in: path
+                  type: string
+                  required: true
+                  description: "Report owner username."
+                - name: report_name
+                  in: path
+                  type: string
+                  required: true
+                  description: "Report name."
+                - name: format
+                  in: query
+                  type: string
+                  required: false
+                  description: "Output format (json, csv, xml)."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+  exposes:
+    - type: rest
+      port: 8115
+      namespace: workday-raas-api
+      resources:
+        - path: /v1/reports
+          name: reports
+          description: "Report endpoints"
+          operations:
+            - method: GET
+              name: get-report
+              description: "Get a custom report"
+              call: "workday-raas.get-custom-report"
+              with:
+                report_owner: "rest.owner"
+                report_name: "rest.name"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+    - type: mcp
+      port: 9115
+      namespace: workday-raas-mcp
+      transport: http
+      tools:
+        - name: get-custom-report
+          description: "Retrieve a custom Workday report by owner and name"
+          hints:
+            readOnly: true
+          call: "workday-raas.get-custom-report"
+          with:
+            report_owner: "tools.report_owner"
+            report_name: "tools.report_name"
+            format: "tools.format"
+          outputParameters:
+            - type: object
+              mapping: "$."

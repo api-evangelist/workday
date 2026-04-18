@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ResourceReference",
+  "type": "object",
+  "description": "A reference to a Workday resource.",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "href": {
+      "type": "string"
+    }
+  }
+}

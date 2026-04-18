@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DataSource",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The Workday ID of the data source."
+    },
+    "descriptor": {
+      "type": "string",
+      "description": "A display descriptor for the data source."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the data source used in WQL FROM clauses."
+    },
+    "pluralName": {
+      "type": "string",
+      "description": "The plural name of the data source."
+    },
+    "fields": {
+      "type": "array",
+      "description": "The fields available in this data source."
+    }
+  }
+}

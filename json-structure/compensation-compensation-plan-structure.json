@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "CompensationPlan",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "compensationPlanType": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "number"
+    },
+    "effectiveDate": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WqlQueryResult",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "description": "The array of result rows from the WQL query."
+    },
+    "total": {
+      "type": "integer",
+      "description": "The total number of results available."
+    }
+  }
+}

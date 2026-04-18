@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "InboxTask",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "assigned": {
+      "type": "string"
+    },
+    "due": {
+      "type": "string"
+    },
+    "overdue": {
+      "type": "boolean"
+    }
+  }
+}

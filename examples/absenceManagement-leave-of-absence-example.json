@@ -1,0 +1,10 @@
+{
+  "id": "abc123",
+  "descriptor": "example_value",
+  "startDate": "example_value",
+  "estimatedEndDate": "example_value",
+  "actualEndDate": "example_value",
+  "status": "example_value",
+  "lastDayOfWork": "example_value",
+  "firstDayOfWork": "example_value"
+}

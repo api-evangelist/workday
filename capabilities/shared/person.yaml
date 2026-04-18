@@ -1,0 +1,175 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Workday Person"
+  description: "Person API for managing worker personal information, contact details, and organizational relationships."
+  tags:
+    - Workday
+    - Person Data
+    - Contact Information
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      WORKDAY_OAUTH_TOKEN: WORKDAY_OAUTH_TOKEN
+
+capability:
+  consumes:
+    - type: http
+      namespace: workday-person
+      baseUri: https://wd2-impl-services1.workday.com/ccx/api/v1/{tenant}/person
+      description: "Workday Person REST API for personal data management."
+      authentication:
+        type: bearer
+        token: "{{WORKDAY_OAUTH_TOKEN}}"
+      resources:
+        - name: people
+          path: /
+          description: "Person data management"
+          operations:
+            - name: get-people
+              method: GET
+              description: "Returns a collection of people."
+              inputParameters:
+                - name: limit
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Maximum number of results."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-person-by-id
+              method: GET
+              description: "Returns a single person by ID."
+              inputParameters:
+                - name: ID
+                  in: path
+                  type: string
+                  required: true
+                  description: "Person identifier."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-home-contact-information
+              method: GET
+              description: "Returns home contact information for a person."
+              inputParameters:
+                - name: ID
+                  in: path
+                  type: string
+                  required: true
+                  description: "Person identifier."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-work-contact-information
+              method: GET
+              description: "Returns work contact information for a person."
+              inputParameters:
+                - name: ID
+                  in: path
+                  type: string
+                  required: true
+                  description: "Person identifier."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-personal-information
+              method: GET
+              description: "Returns personal information for a person."
+              inputParameters:
+                - name: ID
+                  in: path
+                  type: string
+                  required: true
+                  description: "Person identifier."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8101
+      namespace: workday-person-api
+      resources:
+        - path: /v1/people
+          name: people
+          description: "Person data endpoints"
+          operations:
+            - method: GET
+              name: list-people
+              description: "List all people"
+              call: "workday-person.get-people"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9101
+      namespace: workday-person-mcp
+      transport: http
+      tools:
+        - name: list-people
+          description: "List all people"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "workday-person.get-people"
+          with:
+            limit: "tools.limit"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-person
+          description: "Get a person by ID"
+          hints:
+            readOnly: true
+          call: "workday-person.get-person-by-id"
+          with:
+            ID: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-home-contact
+          description: "Get home contact information for a person"
+          hints:
+            readOnly: true
+          call: "workday-person.get-home-contact-information"
+          with:
+            ID: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-work-contact
+          description: "Get work contact information for a person"
+          hints:
+            readOnly: true
+          call: "workday-person.get-work-contact-information"
+          with:
+            ID: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-personal-information
+          description: "Get personal information for a person"
+          hints:
+            readOnly: true
+          call: "workday-person.get-personal-information"
+          with:
+            ID: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."

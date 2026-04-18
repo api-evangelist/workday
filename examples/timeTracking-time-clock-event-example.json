@@ -1,0 +1,7 @@
+{
+  "id": "abc123",
+  "descriptor": "example_value",
+  "clockEventType": "example_value",
+  "clockEventTime": "example_value",
+  "timeZone": "example_value"
+}

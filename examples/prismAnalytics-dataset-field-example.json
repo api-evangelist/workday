@@ -1,0 +1,8 @@
+{
+  "name": "Example Title",
+  "displayName": "example_value",
+  "ordinal": 10,
+  "type": "example_value",
+  "required": true,
+  "externalId": "500123"
+}

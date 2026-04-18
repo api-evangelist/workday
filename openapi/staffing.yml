@@ -13,16 +13,16 @@ info:
     name: Proprietary
     url: https://www.workday.com/en-us/legal.html
 servers:
-  - url: https://wd2-impl-services1.workday.com/ccx/api/staffing/v1/{tenant}
-    description: Workday REST API Server
-    variables:
-      tenant:
-        default: tenant_name
-        description: The Workday tenant identifier
+- url: https://wd2-impl-services1.workday.com/ccx/api/staffing/v1/{tenant}
+  description: Workday REST API Server
+  variables:
+    tenant:
+      default: tenant_name
+      description: The Workday tenant identifier
 security:
-  - OAuth2:
-      - r_staffing
-      - w_staffing
+- OAuth2:
+  - r_staffing
+  - w_staffing
 paths:
   /workers/{ID}/organizationAssignments:
     get:
@@ -30,11 +30,11 @@ paths:
       summary: Get Organization Assignments
       description: Returns a collection of organization assignments for a worker.
       tags:
-        - Staffing
+      - Staffing
       parameters:
-        - $ref: '#/components/parameters/ID'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
       responses:
         '200':
           description: Successful response containing organization assignments.
@@ -49,25 +49,61 @@ paths:
                       $ref: '#/components/schemas/OrganizationAssignment'
                   total:
                     type: integer
+              examples:
+                Getorganizationassignments200Example:
+                  summary: Default getOrganizationAssignments 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      isPrimary: true
+                    total: 10
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /workers/{ID}/jobChanges:
     post:
       operationId: createJobChange
       summary: Create Job Change
       description: Initiates a job change event for a worker.
       tags:
-        - Staffing
+      - Staffing
       parameters:
-        - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/ID'
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/JobChangeRequest'
+            examples:
+              CreatejobchangeRequestExample:
+                summary: Default createJobChange request
+                x-microcks-default: true
+                value:
+                  effectiveDate: '2026-01-15'
+                  reason:
+                    id: abc123
+                    descriptor: example_value
+                    href: https://www.example.com
+                  proposedPosition:
+                    id: abc123
+                    descriptor: example_value
+                    href: https://www.example.com
+                  proposedLocation:
+                    id: abc123
+                    descriptor: example_value
+                    href: https://www.example.com
+                  proposedBusinessTitle: example_value
+                  proposedJobProfile:
+                    id: abc123
+                    descriptor: example_value
+                    href: https://www.example.com
       responses:
         '201':
           description: Job change created successfully.
@@ -75,21 +111,40 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/JobChange'
+              examples:
+                Createjobchange201Example:
+                  summary: Default createJobChange 201 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    descriptor: example_value
+                    effectiveDate: '2026-01-15'
+                    worker:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    reason:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /jobProfiles:
     get:
       operationId: getJobProfiles
       summary: Get Job Profiles
       description: Returns a collection of job profiles.
       tags:
-        - Job Profiles
+      - Job Profiles
       parameters:
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/offset'
-        - $ref: '#/components/parameters/search'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/search'
       responses:
         '200':
           description: Successful response containing job profiles.
@@ -104,17 +159,33 @@ paths:
                       $ref: '#/components/schemas/JobProfile'
                   total:
                     type: integer
+              examples:
+                Getjobprofiles200Example:
+                  summary: Default getJobProfiles 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      jobProfileName: example_value
+                      isInactive: true
+                      jobCode: example_value
+                      summary: example_value
+                    total: 10
         '401':
           $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /jobProfiles/{ID}:
     get:
       operationId: getJobProfileById
-      summary: Get Job Profile by ID
+      summary: Get Job Profile by Id
       description: Returns detailed information for a specific job profile.
       tags:
-        - Job Profiles
+      - Job Profiles
       parameters:
-        - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/ID'
       responses:
         '200':
           description: Successful response containing job profile details.
@@ -122,21 +193,47 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/JobProfile'
+              examples:
+                Getjobprofilebyid200Example:
+                  summary: Default getJobProfileById 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    descriptor: example_value
+                    jobProfileName: example_value
+                    managementLevel:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    jobFamily:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    jobCategory:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    isInactive: true
+                    jobCode: example_value
+                    summary: example_value
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /positions:
     get:
       operationId: getPositions
       summary: Get Positions
       description: Returns a collection of positions.
       tags:
-        - Positions
+      - Positions
       parameters:
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/offset'
-        - $ref: '#/components/parameters/search'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/search'
       responses:
         '200':
           description: Successful response containing positions.
@@ -151,17 +248,33 @@ paths:
                       $ref: '#/components/schemas/Position'
                   total:
                     type: integer
+              examples:
+                Getpositions200Example:
+                  summary: Default getPositions 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      positionID: '500123'
+                      isFilled: true
+                      isAvailableForRecruit: true
+                      isClosed: true
+                    total: 10
         '401':
           $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /positions/{ID}:
     get:
       operationId: getPositionById
-      summary: Get Position by ID
+      summary: Get Position by Id
       description: Returns detailed information for a specific position.
       tags:
-        - Positions
+      - Positions
       parameters:
-        - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/ID'
       responses:
         '200':
           description: Successful response containing position details.
@@ -169,25 +282,82 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Position'
+              examples:
+                Getpositionbyid200Example:
+                  summary: Default getPositionById 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    descriptor: example_value
+                    positionID: '500123'
+                    isFilled: true
+                    isAvailableForRecruit: true
+                    isClosed: true
+                    jobProfile:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    supervisoryOrganization:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    worker:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    positionTimeType:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    workerType:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    location:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /workers/{ID}/requestOneTimePayment:
     post:
       operationId: requestOneTimePayment
-      summary: Request One-Time Payment
+      summary: Request One-time Payment
       description: Initiates a one-time payment request for a worker.
       tags:
-        - Staffing
+      - Staffing
       parameters:
-        - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/ID'
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/OneTimePaymentRequest'
+            examples:
+              RequestonetimepaymentRequestExample:
+                summary: Default requestOneTimePayment request
+                x-microcks-default: true
+                value:
+                  effectiveDate: '2026-01-15'
+                  reason:
+                    id: abc123
+                    descriptor: example_value
+                    href: https://www.example.com
+                  currency:
+                    id: abc123
+                    descriptor: example_value
+                    href: https://www.example.com
+                  amount: 42.5
+                  payComponent:
+                    id: abc123
+                    descriptor: example_value
+                    href: https://www.example.com
       responses:
         '201':
           description: One-time payment request created.
@@ -200,25 +370,52 @@ paths:
                     type: string
                   descriptor:
                     type: string
+              examples:
+                Requestonetimepayment201Example:
+                  summary: Default requestOneTimePayment 201 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    descriptor: example_value
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /workers/{ID}/terminate:
     post:
       operationId: terminateWorker
       summary: Terminate Worker
       description: Initiates a termination event for a worker.
       tags:
-        - Staffing
+      - Staffing
       parameters:
-        - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/ID'
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/TerminationRequest'
+            examples:
+              TerminateworkerRequestExample:
+                summary: Default terminateWorker request
+                x-microcks-default: true
+                value:
+                  terminationDate: '2026-01-15'
+                  lastDayOfWork: '2026-01-15'
+                  primaryReason:
+                    id: abc123
+                    descriptor: example_value
+                    href: https://www.example.com
+                  localTerminationReason:
+                    id: abc123
+                    descriptor: example_value
+                    href: https://www.example.com
+                  regrettable: true
+                  notifyEmployee: true
       responses:
         '201':
           description: Termination initiated successfully.
@@ -231,10 +428,20 @@ paths:
                     type: string
                   descriptor:
                     type: string
+              examples:
+                Terminateworker201Example:
+                  summary: Default terminateWorker 201 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    descriptor: example_value
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   securitySchemes:
     OAuth2:
@@ -284,8 +491,10 @@ components:
       properties:
         id:
           type: string
+          example: abc123
         descriptor:
           type: string
+          example: example_value
         organizationType:
           $ref: '#/components/schemas/ResourceReference'
         organization:
@@ -293,6 +502,7 @@ components:
         isPrimary:
           type: boolean
           description: Whether this is the primary organization assignment.
+          example: true
     JobChangeRequest:
       type: object
       properties:
@@ -300,6 +510,7 @@ components:
           type: string
           format: date
           description: The effective date of the job change.
+          example: '2026-01-15'
         reason:
           $ref: '#/components/schemas/ResourceReference'
         proposedPosition:
@@ -308,21 +519,25 @@ components:
           $ref: '#/components/schemas/ResourceReference'
         proposedBusinessTitle:
           type: string
+          example: example_value
         proposedJobProfile:
           $ref: '#/components/schemas/ResourceReference'
       required:
-        - effectiveDate
-        - reason
+      - effectiveDate
+      - reason
     JobChange:
       type: object
       properties:
         id:
           type: string
+          example: abc123
         descriptor:
           type: string
+          example: example_value
         effectiveDate:
           type: string
           format: date
+          example: '2026-01-15'
         worker:
           $ref: '#/components/schemas/ResourceReference'
         reason:
@@ -333,12 +548,15 @@ components:
         id:
           type: string
           description: The Workday ID of the job profile.
+          example: abc123
         descriptor:
           type: string
           description: A display descriptor for the job profile.
+          example: example_value
         jobProfileName:
           type: string
           description: The name of the job profile.
+          example: example_value
         managementLevel:
           $ref: '#/components/schemas/ResourceReference'
         jobFamily:
@@ -347,33 +565,42 @@ components:
           $ref: '#/components/schemas/ResourceReference'
         isInactive:
           type: boolean
+          example: true
         jobCode:
           type: string
           description: The job code identifier.
+          example: example_value
         summary:
           type: string
           description: Summary description of the job profile.
+          example: example_value
     Position:
       type: object
       properties:
         id:
           type: string
           description: The Workday ID of the position.
+          example: abc123
         descriptor:
           type: string
           description: A display descriptor for the position.
+          example: example_value
         positionID:
           type: string
           description: The position reference ID.
+          example: '500123'
         isFilled:
           type: boolean
           description: Whether the position is currently filled.
+          example: true
         isAvailableForRecruit:
           type: boolean
           description: Whether the position is available for recruiting.
+          example: true
         isClosed:
           type: boolean
           description: Whether the position has been closed.
+          example: true
         jobProfile:
           $ref: '#/components/schemas/ResourceReference'
         supervisoryOrganization:
@@ -392,6 +619,7 @@ components:
         effectiveDate:
           type: string
           format: date
+          example: '2026-01-15'
         reason:
           $ref: '#/components/schemas/ResourceReference'
         currency:
@@ -399,47 +627,56 @@ components:
         amount:
           type: number
           format: double
+          example: 42.5
         payComponent:
           $ref: '#/components/schemas/ResourceReference'
       required:
-        - effectiveDate
-        - amount
+      - effectiveDate
+      - amount
     TerminationRequest:
       type: object
       properties:
         terminationDate:
           type: string
           format: date
+          example: '2026-01-15'
         lastDayOfWork:
           type: string
           format: date
+          example: '2026-01-15'
         primaryReason:
           $ref: '#/components/schemas/ResourceReference'
         localTerminationReason:
           $ref: '#/components/schemas/ResourceReference'
         regrettable:
           type: boolean
+          example: true
         notifyEmployee:
           type: boolean
+          example: true
       required:
-        - terminationDate
-        - primaryReason
+      - terminationDate
+      - primaryReason
     ResourceReference:
       type: object
       description: A reference to a Workday resource.
       properties:
         id:
           type: string
+          example: abc123
         descriptor:
           type: string
+          example: example_value
         href:
           type: string
           format: uri
+          example: https://www.example.com
     ErrorResponse:
       type: object
       properties:
         error:
           type: string
+          example: example_value
         errors:
           type: array
           items:
@@ -449,6 +686,7 @@ components:
                 type: string
               field:
                 type: string
+          example: []
   responses:
     BadRequest:
       description: The request was invalid or malformed.
@@ -469,9 +707,9 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
 tags:
-  - name: Staffing
-    description: Endpoints for staffing events and organization assignments.
-  - name: Job Profiles
-    description: Endpoints for managing job profiles.
-  - name: Positions
-    description: Endpoints for managing positions.
+- name: Staffing
+  description: Endpoints for staffing events and organization assignments.
+- name: Job Profiles
+  description: Endpoints for managing job profiles.
+- name: Positions
+  description: Endpoints for managing positions.

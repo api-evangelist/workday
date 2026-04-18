@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LeaveOfAbsence",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "startDate": {
+      "type": "string",
+      "description": "The start date of the leave."
+    },
+    "estimatedEndDate": {
+      "type": "string",
+      "description": "The estimated end date of the leave."
+    },
+    "actualEndDate": {
+      "type": "string",
+      "description": "The actual end date of the leave."
+    },
+    "status": {
+      "type": "string",
+      "description": "The status of the leave (e.g., In Progress, Completed)."
+    },
+    "lastDayOfWork": {
+      "type": "string"
+    },
+    "firstDayOfWork": {
+      "type": "string"
+    }
+  }
+}

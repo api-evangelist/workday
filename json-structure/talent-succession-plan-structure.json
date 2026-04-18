@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "SuccessionPlan",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "readiness": {
+      "type": "string"
+    },
+    "candidates": {
+      "type": "array"
+    },
+    "lastUpdated": {
+      "type": "string"
+    }
+  }
+}

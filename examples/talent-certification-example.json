@@ -1,0 +1,8 @@
+{
+  "id": "abc123",
+  "descriptor": "example_value",
+  "name": "Example Title",
+  "issuer": "example_value",
+  "issuedDate": "example_value",
+  "expirationDate": "example_value"
+}

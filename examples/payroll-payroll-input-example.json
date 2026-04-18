@@ -1,0 +1,9 @@
+{
+  "id": "abc123",
+  "descriptor": "example_value",
+  "inputType": "example_value",
+  "amount": 42.5,
+  "startDate": "example_value",
+  "endDate": "example_value",
+  "comment": "example_value"
+}

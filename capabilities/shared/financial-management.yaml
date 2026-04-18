@@ -1,0 +1,201 @@
+naftiko: "1.0.0-alpha1"
+info:
+  label: "Workday Financial Management"
+  description: "Financial Management API for accounting journals, suppliers, purchase orders, expenses, and invoices."
+  tags:
+    - Workday
+    - Financial Management
+    - Accounting
+  created: "2026-04-18"
+  modified: "2026-04-18"
+binds:
+  - namespace: env
+    keys:
+      WORKDAY_OAUTH_TOKEN: WORKDAY_OAUTH_TOKEN
+capability:
+  consumes:
+    - type: http
+      namespace: workday-finance
+      baseUri: https://wd2-impl-services1.workday.com/ccx/api/v1/{tenant}/financialManagement
+      description: "Workday Financial Management REST API."
+      authentication:
+        type: bearer
+        token: "{{WORKDAY_OAUTH_TOKEN}}"
+      resources:
+        - name: finance
+          path: /
+          description: "Financial management operations"
+          operations:
+            - name: get-accounting-journals
+              method: GET
+              description: "Returns accounting journals."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-accounting-journal-by-id
+              method: GET
+              description: "Returns an accounting journal by ID."
+              inputParameters:
+                - name: ID
+                  in: path
+                  type: string
+                  required: true
+                  description: "Journal ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-suppliers
+              method: GET
+              description: "Returns suppliers."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-supplier-by-id
+              method: GET
+              description: "Returns a supplier by ID."
+              inputParameters:
+                - name: ID
+                  in: path
+                  type: string
+                  required: true
+                  description: "Supplier ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-purchase-orders
+              method: GET
+              description: "Returns purchase orders."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-expense-reports
+              method: GET
+              description: "Returns expense reports."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-expense-report-by-id
+              method: GET
+              description: "Returns an expense report by ID."
+              inputParameters:
+                - name: ID
+                  in: path
+                  type: string
+                  required: true
+                  description: "Expense report ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-customer-invoices
+              method: GET
+              description: "Returns customer invoices."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+  exposes:
+    - type: rest
+      port: 8112
+      namespace: workday-finance-api
+      resources:
+        - path: /v1/accounting-journals
+          name: journals
+          description: "Accounting journal endpoints"
+          operations:
+            - method: GET
+              name: list-journals
+              description: "List accounting journals"
+              call: "workday-finance.get-accounting-journals"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+    - type: mcp
+      port: 9112
+      namespace: workday-finance-mcp
+      transport: http
+      tools:
+        - name: list-accounting-journals
+          description: "List accounting journals"
+          hints:
+            readOnly: true
+          call: "workday-finance.get-accounting-journals"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-accounting-journal
+          description: "Get an accounting journal by ID"
+          hints:
+            readOnly: true
+          call: "workday-finance.get-accounting-journal-by-id"
+          with:
+            ID: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-suppliers
+          description: "List suppliers"
+          hints:
+            readOnly: true
+          call: "workday-finance.get-suppliers"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-supplier
+          description: "Get a supplier by ID"
+          hints:
+            readOnly: true
+          call: "workday-finance.get-supplier-by-id"
+          with:
+            ID: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-purchase-orders
+          description: "List purchase orders"
+          hints:
+            readOnly: true
+          call: "workday-finance.get-purchase-orders"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-expense-reports
+          description: "List expense reports"
+          hints:
+            readOnly: true
+          call: "workday-finance.get-expense-reports"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-expense-report
+          description: "Get an expense report by ID"
+          hints:
+            readOnly: true
+          call: "workday-finance.get-expense-report-by-id"
+          with:
+            ID: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-customer-invoices
+          description: "List customer invoices"
+          hints:
+            readOnly: true
+          call: "workday-finance.get-customer-invoices"
+          outputParameters:
+            - type: object
+              mapping: "$."

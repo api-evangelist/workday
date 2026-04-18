@@ -1,0 +1,9 @@
+{
+  "id": "abc123",
+  "descriptor": "example_value",
+  "journalNumber": "example_value",
+  "accountingDate": "example_value",
+  "status": "example_value",
+  "totalDebitAmount": 42.5,
+  "totalCreditAmount": 42.5
+}

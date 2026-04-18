@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "CustomerInvoice",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "invoiceNumber": {
+      "type": "string"
+    },
+    "invoiceDate": {
+      "type": "string"
+    },
+    "dueDate": {
+      "type": "string"
+    },
+    "totalAmount": {
+      "type": "number"
+    },
+    "status": {
+      "type": "string"
+    }
+  }
+}

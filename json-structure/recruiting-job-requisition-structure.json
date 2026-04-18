@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "JobRequisition",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "requisitionNumber": {
+      "type": "string"
+    },
+    "jobTitle": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "numberOfOpenings": {
+      "type": "integer"
+    },
+    "createdOn": {
+      "type": "string"
+    },
+    "targetHireDate": {
+      "type": "string"
+    }
+  }
+}

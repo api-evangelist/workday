@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Worker",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The Workday ID of the worker."
+    },
+    "descriptor": {
+      "type": "string",
+      "description": "A display descriptor for the worker."
+    },
+    "workerID": {
+      "type": "string",
+      "description": "The employee or contingent worker ID."
+    },
+    "primaryWorkEmail": {
+      "type": "string"
+    },
+    "primaryWorkPhone": {
+      "type": "string"
+    },
+    "businessTitle": {
+      "type": "string"
+    },
+    "hireDate": {
+      "type": "string",
+      "description": "The hire date for the worker."
+    },
+    "terminationDate": {
+      "type": "string",
+      "description": "The termination date, if applicable."
+    },
+    "isManager": {
+      "type": "boolean",
+      "description": "Whether the worker is a manager."
+    },
+    "externalID": {
+      "type": "string",
+      "description": "The external ID for the worker."
+    }
+  }
+}

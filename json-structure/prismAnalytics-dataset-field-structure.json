@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "DatasetField",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "displayName": {
+      "type": "string"
+    },
+    "ordinal": {
+      "type": "integer"
+    },
+    "type": {
+      "type": "object"
+    },
+    "required": {
+      "type": "boolean"
+    },
+    "externalId": {
+      "type": "string"
+    }
+  }
+}

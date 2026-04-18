@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Position",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "positionID": {
+      "type": "string"
+    },
+    "isFilled": {
+      "type": "boolean"
+    },
+    "isAvailableForRecruit": {
+      "type": "boolean"
+    },
+    "isClosed": {
+      "type": "boolean"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "ScorecardResult",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "currentBasePayAmount": {
+      "type": "number"
+    },
+    "proposedBasePayAmount": {
+      "type": "number"
+    },
+    "percentChange": {
+      "type": "number"
+    },
+    "meritAmount": {
+      "type": "number"
+    },
+    "promotionAmount": {
+      "type": "number"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CompensationChangeRequest",
+  "type": "object",
+  "properties": {
+    "effectiveDate": {
+      "type": "string",
+      "description": "The effective date of the compensation change."
+    },
+    "proposedCompensation": {
+      "type": "object"
+    }
+  }
+}

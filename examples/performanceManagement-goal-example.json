@@ -1,0 +1,10 @@
+{
+  "id": "abc123",
+  "descriptor": "example_value",
+  "name": "Example Title",
+  "description": "A sample description.",
+  "status": "example_value",
+  "dueDate": "example_value",
+  "completionDate": "example_value",
+  "weight": 42.5
+}

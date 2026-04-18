@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "TimeOffBalance",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "balance": {
+      "type": "number"
+    },
+    "unit": {
+      "type": "string"
+    },
+    "asOfDate": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BusinessTitleChange",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "proposedBusinessTitle": {
+      "type": "string"
+    },
+    "effectiveDate": {
+      "type": "string"
+    }
+  }
+}

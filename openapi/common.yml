@@ -13,15 +13,15 @@ info:
     name: Proprietary
     url: https://www.workday.com/en-us/legal.html
 servers:
-  - url: https://wd2-impl-services1.workday.com/ccx/api/common/v1/{tenant}
-    description: Workday REST API Server
-    variables:
-      tenant:
-        default: tenant_name
-        description: The Workday tenant identifier
+- url: https://wd2-impl-services1.workday.com/ccx/api/common/v1/{tenant}
+  description: Workday REST API Server
+  variables:
+    tenant:
+      default: tenant_name
+      description: The Workday tenant identifier
 security:
-  - OAuth2:
-      - r_common
+- OAuth2:
+  - r_common
 paths:
   /countries:
     get:
@@ -29,11 +29,11 @@ paths:
       summary: Get Countries
       description: Returns a collection of countries.
       tags:
-        - Reference Data
+      - Reference Data
       parameters:
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/offset'
-        - $ref: '#/components/parameters/search'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/search'
       responses:
         '200':
           description: Successful response containing countries.
@@ -48,17 +48,32 @@ paths:
                       $ref: '#/components/schemas/Country'
                   total:
                     type: integer
+              examples:
+                Getcountries200Example:
+                  summary: Default getCountries 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      countryCode: example_value
+                      alpha2Code: example_value
+                      name: Example Title
+                    total: 10
         '401':
           $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /countries/{ID}:
     get:
       operationId: getCountryById
-      summary: Get Country by ID
+      summary: Get Country by Id
       description: Returns details for a specific country.
       tags:
-        - Reference Data
+      - Reference Data
       parameters:
-        - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/ID'
       responses:
         '200':
           description: Successful response containing country details.
@@ -66,20 +81,33 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Country'
+              examples:
+                Getcountrybyid200Example:
+                  summary: Default getCountryById 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    descriptor: example_value
+                    countryCode: example_value
+                    alpha2Code: example_value
+                    name: Example Title
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /currencies:
     get:
       operationId: getCurrencies
       summary: Get Currencies
       description: Returns a collection of currencies.
       tags:
-        - Reference Data
+      - Reference Data
       parameters:
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
       responses:
         '200':
           description: Successful response containing currencies.
@@ -94,17 +122,32 @@ paths:
                       $ref: '#/components/schemas/Currency'
                   total:
                     type: integer
+              examples:
+                Getcurrencies200Example:
+                  summary: Default getCurrencies 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      currencyCode: example_value
+                      name: Example Title
+                      numericCode: example_value
+                    total: 10
         '401':
           $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /currencies/{ID}:
     get:
       operationId: getCurrencyById
-      summary: Get Currency by ID
+      summary: Get Currency by Id
       description: Returns details for a specific currency.
       tags:
-        - Reference Data
+      - Reference Data
       parameters:
-        - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/ID'
       responses:
         '200':
           description: Successful response containing currency details.
@@ -112,20 +155,33 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Currency'
+              examples:
+                Getcurrencybyid200Example:
+                  summary: Default getCurrencyById 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    descriptor: example_value
+                    currencyCode: example_value
+                    name: Example Title
+                    numericCode: example_value
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /languages:
     get:
       operationId: getLanguages
       summary: Get Languages
       description: Returns a collection of languages.
       tags:
-        - Reference Data
+      - Reference Data
       parameters:
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
       responses:
         '200':
           description: Successful response containing languages.
@@ -140,18 +196,32 @@ paths:
                       $ref: '#/components/schemas/Language'
                   total:
                     type: integer
+              examples:
+                Getlanguages200Example:
+                  summary: Default getLanguages 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      languageCode: example_value
+                      name: Example Title
+                    total: 10
         '401':
           $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /genders:
     get:
       operationId: getGenders
       summary: Get Genders
       description: Returns a collection of gender values.
       tags:
-        - Reference Data
+      - Reference Data
       parameters:
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
       responses:
         '200':
           description: Successful response containing genders.
@@ -166,18 +236,30 @@ paths:
                       $ref: '#/components/schemas/ReferenceValue'
                   total:
                     type: integer
+              examples:
+                Getgenders200Example:
+                  summary: Default getGenders 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                    total: 10
         '401':
           $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /maritalStatuses:
     get:
       operationId: getMaritalStatuses
       summary: Get Marital Statuses
       description: Returns a collection of marital status values.
       tags:
-        - Reference Data
+      - Reference Data
       parameters:
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
       responses:
         '200':
           description: Successful response containing marital statuses.
@@ -192,8 +274,20 @@ paths:
                       $ref: '#/components/schemas/ReferenceValue'
                   total:
                     type: integer
+              examples:
+                Getmaritalstatuses200Example:
+                  summary: Default getMaritalStatuses 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                    total: 10
         '401':
           $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   securitySchemes:
     OAuth2:
@@ -242,63 +336,83 @@ components:
       properties:
         id:
           type: string
+          example: abc123
         descriptor:
           type: string
+          example: example_value
         countryCode:
           type: string
           description: The ISO 3166-1 alpha-3 country code.
+          example: example_value
         alpha2Code:
           type: string
           description: The ISO 3166-1 alpha-2 country code.
+          example: example_value
         name:
           type: string
+          example: Example Title
     Currency:
       type: object
       properties:
         id:
           type: string
+          example: abc123
         descriptor:
           type: string
+          example: example_value
         currencyCode:
           type: string
           description: The ISO 4217 currency code.
+          example: example_value
         name:
           type: string
+          example: Example Title
         numericCode:
           type: string
+          example: example_value
     Language:
       type: object
       properties:
         id:
           type: string
+          example: abc123
         descriptor:
           type: string
+          example: example_value
         languageCode:
           type: string
+          example: example_value
         name:
           type: string
+          example: Example Title
     ReferenceValue:
       type: object
       properties:
         id:
           type: string
+          example: abc123
         descriptor:
           type: string
+          example: example_value
     ResourceReference:
       type: object
       properties:
         id:
           type: string
+          example: abc123
         descriptor:
           type: string
+          example: example_value
         href:
           type: string
           format: uri
+          example: https://www.example.com
     ErrorResponse:
       type: object
       properties:
         error:
           type: string
+          example: example_value
         errors:
           type: array
           items:
@@ -308,6 +422,7 @@ components:
                 type: string
               field:
                 type: string
+          example: []
   responses:
     Unauthorized:
       description: Authentication credentials were missing or invalid.
@@ -322,5 +437,5 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
 tags:
-  - name: Reference Data
-    description: Endpoints for accessing common reference data and lookup values.
+- name: Reference Data
+  description: Endpoints for accessing common reference data and lookup values.

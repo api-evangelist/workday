@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Country",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "countryCode": {
+      "type": "string"
+    },
+    "alpha2Code": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "abc123",
+  "descriptor": "example_value",
+  "electionStatus": "example_value",
+  "coverageBeginDate": "example_value",
+  "coverageEndDate": "example_value",
+  "employeeCost": 42.5,
+  "employerCost": 42.5,
+  "dependents": [],
+  "beneficiaries": []
+}

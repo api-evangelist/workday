@@ -1,0 +1,7 @@
+{
+  "id": "abc123",
+  "descriptor": "example_value",
+  "compensationPlanType": "example_value",
+  "amount": 42.5,
+  "effectiveDate": "example_value"
+}

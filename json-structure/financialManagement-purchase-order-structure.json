@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "PurchaseOrder",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "purchaseOrderNumber": {
+      "type": "string"
+    },
+    "orderDate": {
+      "type": "string"
+    },
+    "totalAmount": {
+      "type": "number"
+    },
+    "status": {
+      "type": "string"
+    }
+  }
+}

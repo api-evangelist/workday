@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Timesheet",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "periodStartDate": {
+      "type": "string"
+    },
+    "periodEndDate": {
+      "type": "string"
+    },
+    "totalHours": {
+      "type": "number"
+    },
+    "status": {
+      "type": "string"
+    },
+    "calculatedEntries": {
+      "type": "array"
+    }
+  }
+}

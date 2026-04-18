@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "JobApplication",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "appliedOn": {
+      "type": "string"
+    },
+    "hiredOn": {
+      "type": "string"
+    }
+  }
+}

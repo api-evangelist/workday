@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BenefitPlan",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "benefitPlanType": {
+      "type": "string",
+      "description": "The type of benefit plan (e.g., Medical, Dental, Vision, Life Insurance, 401k)."
+    },
+    "isActive": {
+      "type": "boolean"
+    }
+  }
+}

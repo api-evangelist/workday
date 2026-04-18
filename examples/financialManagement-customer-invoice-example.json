@@ -1,0 +1,9 @@
+{
+  "id": "abc123",
+  "descriptor": "example_value",
+  "invoiceNumber": "example_value",
+  "invoiceDate": "example_value",
+  "dueDate": "example_value",
+  "totalAmount": 42.5,
+  "status": "example_value"
+}

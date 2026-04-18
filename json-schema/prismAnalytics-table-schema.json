@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Table",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The Workday ID of the table."
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the table."
+    },
+    "displayName": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "fields": {
+      "type": "array"
+    },
+    "isAccessible": {
+      "type": "boolean"
+    },
+    "documentCount": {
+      "type": "integer"
+    }
+  }
+}

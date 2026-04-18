@@ -1,0 +1,53 @@
+name: workday API Vocabulary
+provider: workday
+created: '2026-04-18'
+modified: '2026-04-18'
+operations: 104
+schemas: 116
+tags:
+- Absence Types
+- Accounting
+- Benefit Elections
+- Benefit Plans
+- Candidates
+- Compensation Plans
+- Contact Information
+- Data Change Tasks
+- Data Sources
+- Datasets
+- Dependents
+- Expenses
+- Feedback
+- File Containers
+- Goals
+- Job Applications
+- Job Postings
+- Job Profiles
+- Job Requisitions
+- Leave of Absence
+- Locations
+- Mentorships
+- One-Time Payments
+- Organizations
+- Pay Groups
+- Pay Slips
+- Payroll Inputs
+- People
+- Performance Reviews
+- Positions
+- Procurement
+- Prospects
+- Query
+- Reference Data
+- Reports
+- Revenue
+- Scorecards
+- Staffing
+- Succession Planning
+- Tables
+- Talent Profiles
+- Time Clock
+- Time Entries
+- Time Off
+- Timesheets
+- Workers

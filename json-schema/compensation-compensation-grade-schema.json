@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CompensationGrade",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "isInactive": {
+      "type": "boolean"
+    },
+    "minimumAmount": {
+      "type": "number"
+    },
+    "midpointAmount": {
+      "type": "number"
+    },
+    "maximumAmount": {
+      "type": "number"
+    }
+  }
+}

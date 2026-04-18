@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Dataset",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The Workday ID of the dataset."
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the dataset."
+    },
+    "displayName": {
+      "type": "string",
+      "description": "The display name of the dataset."
+    },
+    "description": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array"
+    },
+    "fields": {
+      "type": "array"
+    },
+    "rowCount": {
+      "type": "integer",
+      "description": "The number of rows in the dataset."
+    },
+    "createdOn": {
+      "type": "string"
+    },
+    "updatedOn": {
+      "type": "string"
+    }
+  }
+}

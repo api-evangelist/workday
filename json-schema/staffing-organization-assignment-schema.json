@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OrganizationAssignment",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "isPrimary": {
+      "type": "boolean",
+      "description": "Whether this is the primary organization assignment."
+    }
+  }
+}

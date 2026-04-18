@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FileContainer",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The Workday ID of the file container."
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "expirationTime": {
+      "type": "string"
+    }
+  }
+}

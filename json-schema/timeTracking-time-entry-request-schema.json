@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TimeEntryRequest",
+  "type": "object",
+  "properties": {
+    "date": {
+      "type": "string"
+    },
+    "hours": {
+      "type": "number"
+    },
+    "comment": {
+      "type": "string"
+    }
+  }
+}

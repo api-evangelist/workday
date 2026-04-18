@@ -1,0 +1,10 @@
+{
+  "id": "abc123",
+  "descriptor": "example_value",
+  "activityType": "example_value",
+  "status": "example_value",
+  "startedOn": "example_value",
+  "completedOn": "example_value",
+  "rowsProcessed": 10,
+  "rowsFailed": 10
+}

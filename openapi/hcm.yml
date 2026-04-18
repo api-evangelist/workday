@@ -14,16 +14,16 @@ info:
     name: Proprietary
     url: https://www.workday.com/en-us/legal.html
 servers:
-  - url: https://wd2-impl-services1.workday.com/ccx/api/v1/{tenant}
-    description: Workday REST API Server
-    variables:
-      tenant:
-        default: tenant_name
-        description: The Workday tenant identifier
+- url: https://wd2-impl-services1.workday.com/ccx/api/v1/{tenant}
+  description: Workday REST API Server
+  variables:
+    tenant:
+      default: tenant_name
+      description: The Workday tenant identifier
 security:
-  - OAuth2:
-      - r_worker
-      - w_worker
+- OAuth2:
+  - r_worker
+  - w_worker
 paths:
   /workers:
     get:
@@ -33,11 +33,11 @@ paths:
         Returns a collection of workers. Supports filtering, pagination, and
         field-level selection of worker data.
       tags:
-        - Workers
+      - Workers
       parameters:
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/offset'
-        - $ref: '#/components/parameters/search'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/search'
       responses:
         '200':
           description: Successful response containing a collection of workers.
@@ -53,21 +53,38 @@ paths:
                   total:
                     type: integer
                     description: Total number of results available.
+              examples:
+                Getworkers200Example:
+                  summary: Default getWorkers 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                      primaryWorkEmail: user@example.com
+                      primaryWorkPhone: example_value
+                      isPrimaryJob: true
+                      businessTitle: example_value
+                    total: 10
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /workers/{ID}:
     get:
       operationId: getWorkerById
-      summary: Get Worker by ID
+      summary: Get Worker by Id
       description: Returns detailed information for a specific worker by their Workday ID.
       tags:
-        - Workers
+      - Workers
       parameters:
-        - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/ID'
       responses:
         '200':
           description: Successful response containing worker details.
@@ -75,21 +92,51 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Worker'
+              examples:
+                Getworkerbyid200Example:
+                  summary: Default getWorkerById 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    descriptor: example_value
+                    workerID: '500123'
+                    primaryWorkEmail: user@example.com
+                    primaryWorkPhone: example_value
+                    businessTitle: example_value
+                    workerType:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    primarySupervisoryOrganization:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    location:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    hireDate: '2026-01-15'
+                    terminationDate: '2026-01-15'
+                    isManager: true
+                    externalID: '500123'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /workers/{ID}/history:
     get:
       operationId: getWorkerHistory
       summary: Get Worker History
       description: Returns the history of changes for a specific worker.
       tags:
-        - Workers
+      - Workers
       parameters:
-        - $ref: '#/components/parameters/ID'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
       responses:
         '200':
           description: Successful response containing worker history records.
@@ -104,19 +151,32 @@ paths:
                       $ref: '#/components/schemas/WorkerHistoryEntry'
                   total:
                     type: integer
+              examples:
+                Getworkerhistory200Example:
+                  summary: Default getWorkerHistory 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      effectiveDate: '2026-01-15'
+                    total: 10
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /workers/{ID}/photos:
     get:
       operationId: getWorkerPhoto
       summary: Get Worker Photo
       description: Returns the photo for a specific worker.
       tags:
-        - Workers
+      - Workers
       parameters:
-        - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/ID'
       responses:
         '200':
           description: Successful response containing worker photo data.
@@ -125,21 +185,29 @@ paths:
               schema:
                 type: string
                 format: binary
+              examples:
+                Getworkerphoto200Example:
+                  summary: Default getWorkerPhoto 200 response
+                  x-microcks-default: true
+                  value: example_value
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /workers/{ID}/businessTitleChanges:
     get:
       operationId: getWorkerBusinessTitleChanges
       summary: Get Business Title Changes
       description: Returns business title change history for a specific worker.
       tags:
-        - Workers
+      - Workers
       parameters:
-        - $ref: '#/components/parameters/ID'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
       responses:
         '200':
           description: Successful response containing business title changes.
@@ -154,21 +222,35 @@ paths:
                       $ref: '#/components/schemas/BusinessTitleChange'
                   total:
                     type: integer
+              examples:
+                Getworkerbusinesstitlechanges200Example:
+                  summary: Default getWorkerBusinessTitleChanges 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      proposedBusinessTitle: example_value
+                      effectiveDate: '2026-01-15'
+                    total: 10
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /workers/{ID}/inboxTasks:
     get:
       operationId: getWorkerInboxTasks
       summary: Get Worker Inbox Tasks
       description: Returns inbox tasks for a specific worker.
       tags:
-        - Workers
+      - Workers
       parameters:
-        - $ref: '#/components/parameters/ID'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
       responses:
         '200':
           description: Successful response containing inbox tasks.
@@ -183,21 +265,36 @@ paths:
                       $ref: '#/components/schemas/InboxTask'
                   total:
                     type: integer
+              examples:
+                Getworkerinboxtasks200Example:
+                  summary: Default getWorkerInboxTasks 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      assigned: '2026-01-15T10:30:00Z'
+                      due: '2026-01-15T10:30:00Z'
+                      overdue: true
+                    total: 10
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /supervisoryOrganizations:
     get:
       operationId: getSupervisoryOrganizations
       summary: Get Supervisory Organizations
       description: Returns a collection of supervisory organizations.
       tags:
-        - Organizations
+      - Organizations
       parameters:
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/offset'
-        - $ref: '#/components/parameters/search'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/search'
       responses:
         '200':
           description: Successful response containing supervisory organizations.
@@ -212,17 +309,33 @@ paths:
                       $ref: '#/components/schemas/SupervisoryOrganization'
                   total:
                     type: integer
+              examples:
+                Getsupervisoryorganizations200Example:
+                  summary: Default getSupervisoryOrganizations 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      name: Example Title
+                      code: example_value
+                      isInactive: true
+                      staffingModel: example_value
+                    total: 10
         '401':
           $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /supervisoryOrganizations/{ID}:
     get:
       operationId: getSupervisoryOrganizationById
-      summary: Get Supervisory Organization by ID
+      summary: Get Supervisory Organization by Id
       description: Returns detailed information for a specific supervisory organization.
       tags:
-        - Organizations
+      - Organizations
       parameters:
-        - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/ID'
       responses:
         '200':
           description: Successful response containing organization details.
@@ -230,21 +343,47 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SupervisoryOrganization'
+              examples:
+                Getsupervisoryorganizationbyid200Example:
+                  summary: Default getSupervisoryOrganizationById 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    descriptor: example_value
+                    name: Example Title
+                    code: example_value
+                    isInactive: true
+                    manager:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    superiorOrganization:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    location:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    staffingModel: example_value
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /locations:
     get:
       operationId: getLocations
       summary: Get Locations
       description: Returns a collection of work locations.
       tags:
-        - Locations
+      - Locations
       parameters:
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/offset'
-        - $ref: '#/components/parameters/search'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/search'
       responses:
         '200':
           description: Successful response containing locations.
@@ -259,17 +398,34 @@ paths:
                       $ref: '#/components/schemas/Location'
                   total:
                     type: integer
+              examples:
+                Getlocations200Example:
+                  summary: Default getLocations 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      name: Example Title
+                      latitude: 42.5
+                      longitude: 42.5
+                      usages:
+                      - {}
+                    total: 10
         '401':
           $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /locations/{ID}:
     get:
       operationId: getLocationById
-      summary: Get Location by ID
+      summary: Get Location by Id
       description: Returns detailed information for a specific location.
       tags:
-        - Locations
+      - Locations
       parameters:
-        - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/ID'
       responses:
         '200':
           description: Successful response containing location details.
@@ -277,10 +433,35 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Location'
+              examples:
+                Getlocationbyid200Example:
+                  summary: Default getLocationById 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    descriptor: example_value
+                    name: Example Title
+                    latitude: 42.5
+                    longitude: 42.5
+                    timeProfile:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    locale:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    usages:
+                    - id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   securitySchemes:
     OAuth2:
@@ -331,26 +512,33 @@ components:
         id:
           type: string
           description: The Workday ID of the worker.
+          example: abc123
         descriptor:
           type: string
           description: A display descriptor for the worker (typically full name).
+          example: example_value
         href:
           type: string
           format: uri
           description: A link to the full worker resource.
+          example: https://www.example.com
         primaryWorkEmail:
           type: string
           format: email
           description: The primary work email address.
+          example: user@example.com
         primaryWorkPhone:
           type: string
           description: The primary work phone number.
+          example: example_value
         isPrimaryJob:
           type: boolean
           description: Whether this is the primary job for the worker.
+          example: true
         businessTitle:
           type: string
           description: The business title for the worker.
+          example: example_value
         primarySupervisoryOrganization:
           $ref: '#/components/schemas/ResourceReference'
     Worker:
@@ -359,19 +547,25 @@ components:
         id:
           type: string
           description: The Workday ID of the worker.
+          example: abc123
         descriptor:
           type: string
           description: A display descriptor for the worker.
+          example: example_value
         workerID:
           type: string
           description: The employee or contingent worker ID.
+          example: '500123'
         primaryWorkEmail:
           type: string
           format: email
+          example: user@example.com
         primaryWorkPhone:
           type: string
+          example: example_value
         businessTitle:
           type: string
+          example: example_value
         workerType:
           $ref: '#/components/schemas/ResourceReference'
         primarySupervisoryOrganization:
@@ -382,26 +576,33 @@ components:
           type: string
           format: date
           description: The hire date for the worker.
+          example: '2026-01-15'
         terminationDate:
           type: string
           format: date
           description: The termination date, if applicable.
+          example: '2026-01-15'
         isManager:
           type: boolean
           description: Whether the worker is a manager.
+          example: true
         externalID:
           type: string
           description: The external ID for the worker.
+          example: '500123'
     WorkerHistoryEntry:
       type: object
       properties:
         id:
           type: string
+          example: abc123
         descriptor:
           type: string
+          example: example_value
         effectiveDate:
           type: string
           format: date
+          example: '2026-01-15'
         businessProcess:
           $ref: '#/components/schemas/ResourceReference'
     BusinessTitleChange:
@@ -409,30 +610,39 @@ components:
       properties:
         id:
           type: string
+          example: abc123
         descriptor:
           type: string
+          example: example_value
         proposedBusinessTitle:
           type: string
+          example: example_value
         effectiveDate:
           type: string
           format: date
+          example: '2026-01-15'
     InboxTask:
       type: object
       properties:
         id:
           type: string
+          example: abc123
         descriptor:
           type: string
+          example: example_value
         status:
           $ref: '#/components/schemas/ResourceReference'
         assigned:
           type: string
           format: date-time
+          example: '2026-01-15T10:30:00Z'
         due:
           type: string
           format: date-time
+          example: '2026-01-15T10:30:00Z'
         overdue:
           type: boolean
+          example: true
         subject:
           $ref: '#/components/schemas/ResourceReference'
     SupervisoryOrganization:
@@ -441,18 +651,23 @@ components:
         id:
           type: string
           description: The Workday ID of the organization.
+          example: abc123
         descriptor:
           type: string
           description: A display descriptor for the organization.
+          example: example_value
         name:
           type: string
           description: The name of the supervisory organization.
+          example: Example Title
         code:
           type: string
           description: The organization reference ID.
+          example: example_value
         isInactive:
           type: boolean
           description: Whether the organization is inactive.
+          example: true
         manager:
           $ref: '#/components/schemas/ResourceReference'
         superiorOrganization:
@@ -462,23 +677,29 @@ components:
         staffingModel:
           type: string
           description: The staffing model for the organization.
+          example: example_value
     Location:
       type: object
       properties:
         id:
           type: string
           description: The Workday ID of the location.
+          example: abc123
         descriptor:
           type: string
           description: A display descriptor for the location.
+          example: example_value
         name:
           type: string
+          example: Example Title
         latitude:
           type: number
           format: double
+          example: 42.5
         longitude:
           type: number
           format: double
+          example: 42.5
         timeProfile:
           $ref: '#/components/schemas/ResourceReference'
         locale:
@@ -487,6 +708,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ResourceReference'
+          example: []
     ResourceReference:
       type: object
       description: A reference to a Workday resource.
@@ -494,19 +716,23 @@ components:
         id:
           type: string
           description: The Workday ID of the referenced resource.
+          example: abc123
         descriptor:
           type: string
           description: A display descriptor for the referenced resource.
+          example: example_value
         href:
           type: string
           format: uri
           description: A link to the referenced resource.
+          example: https://www.example.com
     ErrorResponse:
       type: object
       properties:
         error:
           type: string
           description: A message describing the error.
+          example: example_value
         errors:
           type: array
           items:
@@ -516,6 +742,7 @@ components:
                 type: string
               field:
                 type: string
+          example: []
   responses:
     BadRequest:
       description: The request was invalid or malformed.
@@ -536,9 +763,9 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
 tags:
-  - name: Workers
-    description: Endpoints for managing worker data.
-  - name: Organizations
-    description: Endpoints for managing organizational data.
-  - name: Locations
-    description: Endpoints for managing location data.
+- name: Workers
+  description: Endpoints for managing worker data.
+- name: Organizations
+  description: Endpoints for managing organizational data.
+- name: Locations
+  description: Endpoints for managing location data.

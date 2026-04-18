@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AccountingJournal",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "journalNumber": {
+      "type": "string"
+    },
+    "accountingDate": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "totalDebitAmount": {
+      "type": "number"
+    },
+    "totalCreditAmount": {
+      "type": "number"
+    }
+  }
+}

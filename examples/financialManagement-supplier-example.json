@@ -1,0 +1,9 @@
+{
+  "id": "abc123",
+  "descriptor": "example_value",
+  "supplierName": "example_value",
+  "supplierID": "500123",
+  "taxID": "500123",
+  "isActive": true,
+  "address": "example_value"
+}

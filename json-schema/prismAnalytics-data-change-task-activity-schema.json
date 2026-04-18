@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DataChangeTaskActivity",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "activityType": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "startedOn": {
+      "type": "string"
+    },
+    "completedOn": {
+      "type": "string"
+    },
+    "rowsProcessed": {
+      "type": "integer"
+    },
+    "rowsFailed": {
+      "type": "integer"
+    }
+  }
+}

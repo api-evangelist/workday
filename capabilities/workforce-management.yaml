@@ -1,0 +1,271 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Workday Workforce Management"
+  description: "Unified workforce management combining HCM, Person, Staffing, and Common APIs for HR administrators to manage workers, organizations, positions, and reference data."
+  tags:
+    - Workday
+    - Workforce Management
+    - Human Resources
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      WORKDAY_OAUTH_TOKEN: WORKDAY_OAUTH_TOKEN
+
+capability:
+  consumes:
+    - import: workday-hcm
+      location: ./shared/hcm.yaml
+    - import: workday-person
+      location: ./shared/person.yaml
+    - import: workday-staffing
+      location: ./shared/staffing.yaml
+    - import: workday-common
+      location: ./shared/common.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: workforce-management-api
+      description: "Unified REST API for workforce management operations."
+      resources:
+        - path: /v1/workers
+          name: workers
+          description: "Worker management"
+          operations:
+            - method: GET
+              name: list-workers
+              description: "List all workers"
+              call: "workday-hcm.get-workers"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/workers/{id}
+          name: worker-detail
+          description: "Worker detail"
+          operations:
+            - method: GET
+              name: get-worker
+              description: "Get a worker by ID"
+              call: "workday-hcm.get-worker-by-id"
+              with:
+                ID: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/people
+          name: people
+          description: "Person data"
+          operations:
+            - method: GET
+              name: list-people
+              description: "List all people"
+              call: "workday-person.get-people"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/positions
+          name: positions
+          description: "Position management"
+          operations:
+            - method: GET
+              name: list-positions
+              description: "List all positions"
+              call: "workday-staffing.get-positions"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/organizations
+          name: organizations
+          description: "Supervisory organizations"
+          operations:
+            - method: GET
+              name: list-organizations
+              description: "List supervisory organizations"
+              call: "workday-hcm.get-supervisory-organizations"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/countries
+          name: countries
+          description: "Country reference data"
+          operations:
+            - method: GET
+              name: list-countries
+              description: "List all countries"
+              call: "workday-common.get-countries"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9080
+      namespace: workforce-management-mcp
+      transport: http
+      description: "MCP server for AI-assisted workforce management."
+      tools:
+        - name: hcm-list-workers
+          description: "List all workers with optional search and pagination"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "workday-hcm.get-workers"
+          with:
+            limit: "tools.limit"
+            offset: "tools.offset"
+            search: "tools.search"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: hcm-get-worker
+          description: "Get a specific worker by ID"
+          hints:
+            readOnly: true
+          call: "workday-hcm.get-worker-by-id"
+          with:
+            ID: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: hcm-get-worker-history
+          description: "Get change history for a worker"
+          hints:
+            readOnly: true
+          call: "workday-hcm.get-worker-history"
+          with:
+            ID: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: hcm-get-worker-inbox-tasks
+          description: "Get inbox tasks for a worker"
+          hints:
+            readOnly: true
+          call: "workday-hcm.get-worker-inbox-tasks"
+          with:
+            ID: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: hcm-list-organizations
+          description: "List supervisory organizations"
+          hints:
+            readOnly: true
+          call: "workday-hcm.get-supervisory-organizations"
+          with:
+            limit: "tools.limit"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: hcm-list-locations
+          description: "List all locations"
+          hints:
+            readOnly: true
+          call: "workday-hcm.get-locations"
+          with:
+            limit: "tools.limit"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: person-list-people
+          description: "List all people"
+          hints:
+            readOnly: true
+          call: "workday-person.get-people"
+          with:
+            limit: "tools.limit"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: person-get-person
+          description: "Get a person by ID"
+          hints:
+            readOnly: true
+          call: "workday-person.get-person-by-id"
+          with:
+            ID: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: person-get-home-contact
+          description: "Get home contact information"
+          hints:
+            readOnly: true
+          call: "workday-person.get-home-contact-information"
+          with:
+            ID: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: person-get-work-contact
+          description: "Get work contact information"
+          hints:
+            readOnly: true
+          call: "workday-person.get-work-contact-information"
+          with:
+            ID: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: staffing-list-positions
+          description: "List all positions"
+          hints:
+            readOnly: true
+          call: "workday-staffing.get-positions"
+          with:
+            limit: "tools.limit"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: staffing-list-job-profiles
+          description: "List all job profiles"
+          hints:
+            readOnly: true
+          call: "workday-staffing.get-job-profiles"
+          with:
+            limit: "tools.limit"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: staffing-create-job-change
+          description: "Create a job change request"
+          hints:
+            readOnly: false
+          call: "workday-staffing.create-job-change"
+          with:
+            worker: "tools.worker"
+            proposedJob: "tools.proposedJob"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: staffing-terminate-worker
+          description: "Initiate a worker termination"
+          hints:
+            readOnly: false
+            destructive: true
+          call: "workday-staffing.terminate-worker"
+          with:
+            worker: "tools.worker"
+            terminationDate: "tools.terminationDate"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: common-list-countries
+          description: "List all countries"
+          hints:
+            readOnly: true
+          call: "workday-common.get-countries"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: common-list-currencies
+          description: "List all currencies"
+          hints:
+            readOnly: true
+          call: "workday-common.get-currencies"
+          outputParameters:
+            - type: object
+              mapping: "$."

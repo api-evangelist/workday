@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "TimeOffEntry",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "date": {
+      "type": "string"
+    },
+    "dailyQuantity": {
+      "type": "number"
+    },
+    "status": {
+      "type": "string"
+    }
+  }
+}

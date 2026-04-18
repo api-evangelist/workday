@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "TalentProfile",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "jobHistory": {
+      "type": "array"
+    },
+    "education": {
+      "type": "array"
+    },
+    "skills": {
+      "type": "array"
+    },
+    "certifications": {
+      "type": "array"
+    },
+    "languages": {
+      "type": "array"
+    },
+    "careerInterests": {
+      "type": "string"
+    }
+  }
+}

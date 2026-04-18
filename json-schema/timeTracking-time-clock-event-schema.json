@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TimeClockEvent",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "clockEventType": {
+      "type": "string",
+      "description": "The type of event (e.g., Clock In, Clock Out, Meal Start, Meal End)."
+    },
+    "clockEventTime": {
+      "type": "string"
+    },
+    "timeZone": {
+      "type": "string"
+    }
+  }
+}

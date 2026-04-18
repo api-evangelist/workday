@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FeedbackRequest",
+  "type": "object",
+  "properties": {
+    "respondents": {
+      "type": "array"
+    },
+    "questions": {
+      "type": "array"
+    },
+    "dueDate": {
+      "type": "string"
+    }
+  }
+}

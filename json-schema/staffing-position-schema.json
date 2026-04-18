@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Position",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The Workday ID of the position."
+    },
+    "descriptor": {
+      "type": "string",
+      "description": "A display descriptor for the position."
+    },
+    "positionID": {
+      "type": "string",
+      "description": "The position reference ID."
+    },
+    "isFilled": {
+      "type": "boolean",
+      "description": "Whether the position is currently filled."
+    },
+    "isAvailableForRecruit": {
+      "type": "boolean",
+      "description": "Whether the position is available for recruiting."
+    },
+    "isClosed": {
+      "type": "boolean",
+      "description": "Whether the position has been closed."
+    }
+  }
+}

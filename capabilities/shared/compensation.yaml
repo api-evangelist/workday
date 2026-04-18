@@ -1,0 +1,167 @@
+naftiko: "1.0.0-alpha1"
+info:
+  label: "Workday Compensation"
+  description: "Compensation API for managing compensation plans, scorecards, grades, and one-time payments."
+  tags:
+    - Workday
+    - Compensation
+    - Pay Plans
+  created: "2026-04-18"
+  modified: "2026-04-18"
+binds:
+  - namespace: env
+    keys:
+      WORKDAY_OAUTH_TOKEN: WORKDAY_OAUTH_TOKEN
+capability:
+  consumes:
+    - type: http
+      namespace: workday-compensation
+      baseUri: https://wd2-impl-services1.workday.com/ccx/api/v1/{tenant}/compensation
+      description: "Workday Compensation REST API."
+      authentication:
+        type: bearer
+        token: "{{WORKDAY_OAUTH_TOKEN}}"
+      resources:
+        - name: compensation
+          path: /
+          description: "Compensation operations"
+          operations:
+            - name: get-compensation-plans
+              method: GET
+              description: "Returns compensation plans."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: request-compensation-change
+              method: POST
+              description: "Submits a compensation change request."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  worker: "{{tools.worker}}"
+                  proposedCompensation: "{{tools.proposedCompensation}}"
+            - name: get-compensation-scorecards
+              method: GET
+              description: "Returns compensation scorecards."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-compensation-scorecard-by-id
+              method: GET
+              description: "Returns a compensation scorecard by ID."
+              inputParameters:
+                - name: ID
+                  in: path
+                  type: string
+                  required: true
+                  description: "Scorecard ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-compensation-scorecard-results
+              method: GET
+              description: "Returns scorecard results."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: request-one-time-payment
+              method: POST
+              description: "Requests a one-time payment."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  worker: "{{tools.worker}}"
+                  amount: "{{tools.amount}}"
+            - name: get-compensation-grades
+              method: GET
+              description: "Returns compensation grades."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+  exposes:
+    - type: rest
+      port: 8108
+      namespace: workday-compensation-api
+      resources:
+        - path: /v1/compensation-plans
+          name: plans
+          description: "Compensation plan endpoints"
+          operations:
+            - method: GET
+              name: list-plans
+              description: "List compensation plans"
+              call: "workday-compensation.get-compensation-plans"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+    - type: mcp
+      port: 9108
+      namespace: workday-compensation-mcp
+      transport: http
+      tools:
+        - name: list-compensation-plans
+          description: "List compensation plans"
+          hints:
+            readOnly: true
+          call: "workday-compensation.get-compensation-plans"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: request-compensation-change
+          description: "Submit a compensation change request"
+          hints:
+            readOnly: false
+          call: "workday-compensation.request-compensation-change"
+          with:
+            worker: "tools.worker"
+            proposedCompensation: "tools.proposedCompensation"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-compensation-scorecards
+          description: "List compensation scorecards"
+          hints:
+            readOnly: true
+          call: "workday-compensation.get-compensation-scorecards"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: request-one-time-payment
+          description: "Request a one-time payment"
+          hints:
+            readOnly: false
+          call: "workday-compensation.request-one-time-payment"
+          with:
+            worker: "tools.worker"
+            amount: "tools.amount"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-compensation-grades
+          description: "List compensation grades"
+          hints:
+            readOnly: true
+          call: "workday-compensation.get-compensation-grades"
+          outputParameters:
+            - type: object
+              mapping: "$."

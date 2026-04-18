@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Currency",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "currencyCode": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "numericCode": {
+      "type": "string"
+    }
+  }
+}

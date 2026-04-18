@@ -1,0 +1,9 @@
+{
+  "id": "abc123",
+  "descriptor": "example_value",
+  "name": "Example Title",
+  "isInactive": true,
+  "minimumAmount": 42.5,
+  "midpointAmount": 42.5,
+  "maximumAmount": 42.5
+}

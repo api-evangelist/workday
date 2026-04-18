@@ -1,0 +1,9 @@
+{
+  "id": "abc123",
+  "descriptor": "example_value",
+  "href": "example_value",
+  "primaryWorkEmail": "user@example.com",
+  "primaryWorkPhone": "example_value",
+  "isPrimaryJob": true,
+  "businessTitle": "example_value"
+}

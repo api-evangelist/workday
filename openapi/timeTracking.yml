@@ -13,16 +13,16 @@ info:
     name: Proprietary
     url: https://www.workday.com/en-us/legal.html
 servers:
-  - url: https://wd2-impl-services1.workday.com/ccx/api/timeTracking/v1/{tenant}
-    description: Workday REST API Server
-    variables:
-      tenant:
-        default: tenant_name
-        description: The Workday tenant identifier
+- url: https://wd2-impl-services1.workday.com/ccx/api/timeTracking/v1/{tenant}
+  description: Workday REST API Server
+  variables:
+    tenant:
+      default: tenant_name
+      description: The Workday tenant identifier
 security:
-  - OAuth2:
-      - r_timeTracking
-      - w_timeTracking
+- OAuth2:
+  - r_timeTracking
+  - w_timeTracking
 paths:
   /workers/{ID}/timeClockEvents:
     get:
@@ -30,23 +30,25 @@ paths:
       summary: Get Time Clock Events
       description: Returns time clock events for a worker.
       tags:
-        - Time Clock
+      - Time Clock
       parameters:
-        - $ref: '#/components/parameters/ID'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/offset'
-        - name: fromDate
-          in: query
-          description: Filter events from this date.
-          schema:
-            type: string
-            format: date
-        - name: toDate
-          in: query
-          description: Filter events to this date.
-          schema:
-            type: string
-            format: date
+      - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
+      - name: fromDate
+        in: query
+        description: Filter events from this date.
+        schema:
+          type: string
+          format: date
+        example: '2026-01-15'
+      - name: toDate
+        in: query
+        description: Filter events to this date.
+        schema:
+          type: string
+          format: date
+        example: '2026-01-15'
       responses:
         '200':
           description: Successful response containing time clock events.
@@ -61,24 +63,50 @@ paths:
                       $ref: '#/components/schemas/TimeClockEvent'
                   total:
                     type: integer
+              examples:
+                Gettimeclockevents200Example:
+                  summary: Default getTimeClockEvents 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      clockEventType: example_value
+                      clockEventTime: '2026-01-15T10:30:00Z'
+                      timeZone: example_value
+                    total: 10
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       operationId: createTimeClockEvent
       summary: Create Time Clock Event
       description: Creates a time clock event (clock in/out) for a worker.
       tags:
-        - Time Clock
+      - Time Clock
       parameters:
-        - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/ID'
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/TimeClockEventRequest'
+            examples:
+              CreatetimeclockeventRequestExample:
+                summary: Default createTimeClockEvent request
+                x-microcks-default: true
+                value:
+                  clockEventType:
+                    id: abc123
+                    descriptor: example_value
+                    href: https://www.example.com
+                  clockEventTime: '2026-01-15T10:30:00Z'
+                  timeZone: example_value
       responses:
         '201':
           description: Time clock event created successfully.
@@ -86,33 +114,52 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TimeClockEvent'
+              examples:
+                Createtimeclockevent201Example:
+                  summary: Default createTimeClockEvent 201 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    descriptor: example_value
+                    clockEventType: example_value
+                    clockEventTime: '2026-01-15T10:30:00Z'
+                    timeZone: example_value
+                    location:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /workers/{ID}/timeEntries:
     get:
       operationId: getTimeEntries
       summary: Get Time Entries
       description: Returns time entries for a worker.
       tags:
-        - Time Entries
+      - Time Entries
       parameters:
-        - $ref: '#/components/parameters/ID'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/offset'
-        - name: fromDate
-          in: query
-          description: Filter entries from this date.
-          schema:
-            type: string
-            format: date
-        - name: toDate
-          in: query
-          description: Filter entries to this date.
-          schema:
-            type: string
-            format: date
+      - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
+      - name: fromDate
+        in: query
+        description: Filter entries from this date.
+        schema:
+          type: string
+          format: date
+        example: '2026-01-15'
+      - name: toDate
+        in: query
+        description: Filter entries to this date.
+        schema:
+          type: string
+          format: date
+        example: '2026-01-15'
       responses:
         '200':
           description: Successful response containing time entries.
@@ -127,21 +174,37 @@ paths:
                       $ref: '#/components/schemas/TimeEntry'
                   total:
                     type: integer
+              examples:
+                Gettimeentries200Example:
+                  summary: Default getTimeEntries 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      date: '2026-01-15'
+                      hours: 42.5
+                      comment: example_value
+                      status: example_value
+                    total: 10
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /workers/{ID}/timesheets:
     get:
       operationId: getTimesheets
       summary: Get Timesheets
       description: Returns timesheets for a worker.
       tags:
-        - Timesheets
+      - Timesheets
       parameters:
-        - $ref: '#/components/parameters/ID'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
       responses:
         '200':
           description: Successful response containing timesheets.
@@ -156,25 +219,59 @@ paths:
                       $ref: '#/components/schemas/Timesheet'
                   total:
                     type: integer
+              examples:
+                Gettimesheets200Example:
+                  summary: Default getTimesheets 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      periodStartDate: '2026-01-15'
+                      periodEndDate: '2026-01-15'
+                      totalHours: 42.5
+                      status: example_value
+                      calculatedEntries:
+                      - {}
+                    total: 10
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /workers/{ID}/requestTimeEntry:
     post:
       operationId: requestTimeEntry
       summary: Request Time Entry
       description: Creates a time entry for a worker.
       tags:
-        - Time Entries
+      - Time Entries
       parameters:
-        - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/ID'
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/TimeEntryRequest'
+            examples:
+              RequesttimeentryRequestExample:
+                summary: Default requestTimeEntry request
+                x-microcks-default: true
+                value:
+                  date: '2026-01-15'
+                  hours: 42.5
+                  timeEntryCode:
+                    id: abc123
+                    descriptor: example_value
+                    href: https://www.example.com
+                  worktag:
+                    id: abc123
+                    descriptor: example_value
+                    href: https://www.example.com
+                  comment: example_value
       responses:
         '201':
           description: Time entry created successfully.
@@ -182,10 +279,32 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TimeEntry'
+              examples:
+                Requesttimeentry201Example:
+                  summary: Default requestTimeEntry 201 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    descriptor: example_value
+                    date: '2026-01-15'
+                    hours: 42.5
+                    timeEntryCode:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    worktag:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    comment: example_value
+                    status: example_value
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   securitySchemes:
     OAuth2:
@@ -228,16 +347,21 @@ components:
       properties:
         id:
           type: string
+          example: abc123
         descriptor:
           type: string
+          example: example_value
         clockEventType:
           type: string
           description: The type of event (e.g., Clock In, Clock Out, Meal Start, Meal End).
+          example: example_value
         clockEventTime:
           type: string
           format: date-time
+          example: '2026-01-15T10:30:00Z'
         timeZone:
           type: string
+          example: example_value
         location:
           $ref: '#/components/schemas/ResourceReference'
     TimeClockEventRequest:
@@ -248,89 +372,111 @@ components:
         clockEventTime:
           type: string
           format: date-time
+          example: '2026-01-15T10:30:00Z'
         timeZone:
           type: string
+          example: example_value
       required:
-        - clockEventType
-        - clockEventTime
+      - clockEventType
+      - clockEventTime
     TimeEntry:
       type: object
       properties:
         id:
           type: string
+          example: abc123
         descriptor:
           type: string
+          example: example_value
         date:
           type: string
           format: date
+          example: '2026-01-15'
         hours:
           type: number
           format: double
           description: The number of hours entered.
+          example: 42.5
         timeEntryCode:
           $ref: '#/components/schemas/ResourceReference'
         worktag:
           $ref: '#/components/schemas/ResourceReference'
         comment:
           type: string
+          example: example_value
         status:
           type: string
+          example: example_value
     TimeEntryRequest:
       type: object
       properties:
         date:
           type: string
           format: date
+          example: '2026-01-15'
         hours:
           type: number
           format: double
+          example: 42.5
         timeEntryCode:
           $ref: '#/components/schemas/ResourceReference'
         worktag:
           $ref: '#/components/schemas/ResourceReference'
         comment:
           type: string
+          example: example_value
       required:
-        - date
-        - hours
+      - date
+      - hours
     Timesheet:
       type: object
       properties:
         id:
           type: string
+          example: abc123
         descriptor:
           type: string
+          example: example_value
         periodStartDate:
           type: string
           format: date
+          example: '2026-01-15'
         periodEndDate:
           type: string
           format: date
+          example: '2026-01-15'
         totalHours:
           type: number
           format: double
+          example: 42.5
         status:
           type: string
           description: The status of the timesheet (e.g., Draft, Submitted, Approved).
+          example: example_value
         calculatedEntries:
           type: array
           items:
             $ref: '#/components/schemas/TimeEntry'
+          example: []
     ResourceReference:
       type: object
       properties:
         id:
           type: string
+          example: abc123
         descriptor:
           type: string
+          example: example_value
         href:
           type: string
           format: uri
+          example: https://www.example.com
     ErrorResponse:
       type: object
       properties:
         error:
           type: string
+          example: example_value
         errors:
           type: array
           items:
@@ -340,6 +486,7 @@ components:
                 type: string
               field:
                 type: string
+          example: []
   responses:
     BadRequest:
       description: The request was invalid or malformed.
@@ -360,9 +507,9 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
 tags:
-  - name: Time Clock
-    description: Endpoints for managing time clock events.
-  - name: Time Entries
-    description: Endpoints for managing time entries.
-  - name: Timesheets
-    description: Endpoints for managing timesheets.
+- name: Time Clock
+  description: Endpoints for managing time clock events.
+- name: Time Entries
+  description: Endpoints for managing time entries.
+- name: Timesheets
+  description: Endpoints for managing timesheets.

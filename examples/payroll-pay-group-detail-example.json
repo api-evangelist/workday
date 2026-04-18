@@ -1,0 +1,8 @@
+{
+  "id": "abc123",
+  "descriptor": "example_value",
+  "payPeriodStartDate": "example_value",
+  "payPeriodEndDate": "example_value",
+  "payDate": "example_value",
+  "payRunStatus": "example_value"
+}
