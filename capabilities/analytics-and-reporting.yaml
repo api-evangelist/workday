@@ -1,178 +1,417 @@
-naftiko: "1.0.0-alpha1"
-
+naftiko: 1.0.0-alpha2
 info:
-  label: "Workday Analytics and Reporting"
-  description: "Unified analytics and reporting combining Prism Analytics, WQL, and Report-as-a-Service APIs for business analysts to query data, manage datasets, and access custom reports."
+  label: Workday Analytics and Reporting
+  description: Unified analytics and reporting combining Prism Analytics, WQL, and Report-as-a-Service APIs for business analysts
+    to query data, manage datasets, and access custom reports.
   tags:
-    - Workday
-    - Analytics
-    - Reporting
-    - Business Intelligence
-  created: "2026-04-18"
-  modified: "2026-04-18"
-
+  - Workday
+  - Analytics
+  - Reporting
+  - Business Intelligence
+  created: '2026-04-18'
+  modified: '2026-05-06'
 binds:
-  - namespace: env
-    keys:
-      WORKDAY_OAUTH_TOKEN: WORKDAY_OAUTH_TOKEN
-
+- namespace: env
+  keys:
+    WORKDAY_OAUTH_TOKEN: WORKDAY_OAUTH_TOKEN
 capability:
   consumes:
-    - import: workday-prism
-      location: ./shared/prism-analytics.yaml
-    - import: workday-wql
-      location: ./shared/wql.yaml
-    - import: workday-raas
-      location: ./shared/raas.yaml
-
+  - type: http
+    namespace: workday-prism
+    baseUri: https://wd2-impl-services1.workday.com/ccx/api/v1/{tenant}/prismAnalytics
+    description: Workday Prism Analytics REST API.
+    authentication:
+      type: bearer
+      token: '{{WORKDAY_OAUTH_TOKEN}}'
+    resources:
+    - name: prism
+      path: /
+      description: Prism Analytics operations
+      operations:
+      - name: get-datasets
+        method: GET
+        description: Returns datasets.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-dataset
+        method: POST
+        description: Creates a new dataset.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            name: '{{tools.name}}'
+            fields: '{{tools.fields}}'
+      - name: get-dataset-by-id
+        method: GET
+        description: Returns a dataset by ID.
+        inputParameters:
+        - name: ID
+          in: path
+          type: string
+          required: true
+          description: Dataset ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: update-dataset
+        method: PUT
+        description: Updates a dataset.
+        inputParameters:
+        - name: ID
+          in: path
+          type: string
+          required: true
+          description: Dataset ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: delete-dataset
+        method: DELETE
+        description: Deletes a dataset.
+        inputParameters:
+        - name: ID
+          in: path
+          type: string
+          required: true
+          description: Dataset ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-data-change-tasks
+        method: GET
+        description: Returns data change tasks.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-data-change-task
+        method: POST
+        description: Creates a data change task.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            targetDataset: '{{tools.targetDataset}}'
+      - name: get-tables
+        method: GET
+        description: Returns tables.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-table-by-id
+        method: GET
+        description: Returns a table by ID.
+        inputParameters:
+        - name: ID
+          in: path
+          type: string
+          required: true
+          description: Table ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-file-container
+        method: POST
+        description: Creates a file container for data upload.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-file-container-by-id
+        method: GET
+        description: Returns a file container by ID.
+        inputParameters:
+        - name: ID
+          in: path
+          type: string
+          required: true
+          description: File container ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-data-change-task-activities
+        method: GET
+        description: Returns activities for a data change task.
+        inputParameters:
+        - name: ID
+          in: path
+          type: string
+          required: true
+          description: Data change task ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  - type: http
+    namespace: workday-wql
+    baseUri: https://wd2-impl-services1.workday.com/ccx/api/v1/{tenant}/wql
+    description: Workday WQL REST API.
+    authentication:
+      type: bearer
+      token: '{{WORKDAY_OAUTH_TOKEN}}'
+    resources:
+    - name: wql
+      path: /
+      description: WQL query operations
+      operations:
+      - name: execute-wql-query
+        method: POST
+        description: Executes a WQL query.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            query: '{{tools.query}}'
+      - name: get-data-sources
+        method: GET
+        description: Returns available data sources.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-data-source-by-id
+        method: GET
+        description: Returns a data source by ID.
+        inputParameters:
+        - name: ID
+          in: path
+          type: string
+          required: true
+          description: Data source ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-data-source-fields
+        method: GET
+        description: Returns fields for a data source.
+        inputParameters:
+        - name: ID
+          in: path
+          type: string
+          required: true
+          description: Data source ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  - type: http
+    namespace: workday-raas
+    baseUri: https://wd2-impl-services1.workday.com/ccx/service/{tenant}
+    description: Workday Report-as-a-Service API.
+    authentication:
+      type: bearer
+      token: '{{WORKDAY_OAUTH_TOKEN}}'
+    resources:
+    - name: reports
+      path: /
+      description: Report operations
+      operations:
+      - name: get-custom-report
+        method: GET
+        description: Retrieves a custom report by owner and name.
+        inputParameters:
+        - name: report_owner
+          in: path
+          type: string
+          required: true
+          description: Report owner username.
+        - name: report_name
+          in: path
+          type: string
+          required: true
+          description: Report name.
+        - name: format
+          in: query
+          type: string
+          required: false
+          description: Output format (json, csv, xml).
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
   exposes:
-    - type: rest
-      port: 8085
-      namespace: analytics-reporting-api
-      description: "Unified REST API for analytics and reporting."
-      resources:
-        - path: /v1/datasets
-          name: datasets
-          description: "Prism Analytics datasets"
-          operations:
-            - method: GET
-              name: list-datasets
-              description: "List datasets"
-              call: "workday-prism.get-datasets"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/wql-query
-          name: wql
-          description: "WQL query endpoint"
-          operations:
-            - method: POST
-              name: execute-query
-              description: "Execute a WQL query"
-              call: "workday-wql.execute-wql-query"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-    - type: mcp
-      port: 9085
-      namespace: analytics-reporting-mcp
-      transport: http
-      description: "MCP server for AI-assisted analytics and reporting."
-      tools:
-        - name: prism-list-datasets
-          description: "List all Prism Analytics datasets"
-          hints:
-            readOnly: true
-          call: "workday-prism.get-datasets"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: prism-create-dataset
-          description: "Create a new Prism Analytics dataset"
-          hints:
-            readOnly: false
-          call: "workday-prism.create-dataset"
-          with:
-            name: "tools.name"
-            fields: "tools.fields"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: prism-get-dataset
-          description: "Get a dataset by ID"
-          hints:
-            readOnly: true
-          call: "workday-prism.get-dataset-by-id"
-          with:
-            ID: "tools.id"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: prism-delete-dataset
-          description: "Delete a dataset"
-          hints:
-            readOnly: false
-            destructive: true
-          call: "workday-prism.delete-dataset"
-          with:
-            ID: "tools.id"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: prism-list-data-change-tasks
-          description: "List data change tasks"
-          hints:
-            readOnly: true
-          call: "workday-prism.get-data-change-tasks"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: prism-create-data-change-task
-          description: "Create a data change task"
-          hints:
-            readOnly: false
-          call: "workday-prism.create-data-change-task"
-          with:
-            targetDataset: "tools.targetDataset"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: prism-list-tables
-          description: "List all Prism tables"
-          hints:
-            readOnly: true
-          call: "workday-prism.get-tables"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: wql-execute-query
-          description: "Execute a WQL query against Workday data"
-          hints:
-            readOnly: true
-          call: "workday-wql.execute-wql-query"
-          with:
-            query: "tools.query"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: wql-list-data-sources
-          description: "List available WQL data sources"
-          hints:
-            readOnly: true
-          call: "workday-wql.get-data-sources"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: wql-get-data-source
-          description: "Get a WQL data source by ID"
-          hints:
-            readOnly: true
-          call: "workday-wql.get-data-source-by-id"
-          with:
-            ID: "tools.id"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: wql-get-data-source-fields
-          description: "Get fields for a WQL data source"
-          hints:
-            readOnly: true
-          call: "workday-wql.get-data-source-fields"
-          with:
-            ID: "tools.id"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: raas-get-report
-          description: "Retrieve a custom Workday report"
-          hints:
-            readOnly: true
-          call: "workday-raas.get-custom-report"
-          with:
-            report_owner: "tools.report_owner"
-            report_name: "tools.report_name"
-            format: "tools.format"
-          outputParameters:
-            - type: object
-              mapping: "$."
+  - type: rest
+    port: 8085
+    namespace: analytics-reporting-api
+    description: Unified REST API for analytics and reporting.
+    resources:
+    - path: /v1/datasets
+      name: datasets
+      description: Prism Analytics datasets
+      operations:
+      - method: GET
+        name: list-datasets
+        description: List datasets
+        call: workday-prism.get-datasets
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/wql-query
+      name: wql
+      description: WQL query endpoint
+      operations:
+      - method: POST
+        name: execute-query
+        description: Execute a WQL query
+        call: workday-wql.execute-wql-query
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9085
+    namespace: analytics-reporting-mcp
+    transport: http
+    description: MCP server for AI-assisted analytics and reporting.
+    tools:
+    - name: prism-list-datasets
+      description: List all Prism Analytics datasets
+      hints:
+        readOnly: true
+      call: workday-prism.get-datasets
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: prism-create-dataset
+      description: Create a new Prism Analytics dataset
+      hints:
+        readOnly: false
+      call: workday-prism.create-dataset
+      with:
+        name: tools.name
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: prism-get-dataset
+      description: Get a dataset by ID
+      hints:
+        readOnly: true
+      call: workday-prism.get-dataset-by-id
+      with:
+        ID: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: prism-delete-dataset
+      description: Delete a dataset
+      hints:
+        readOnly: false
+        destructive: true
+      call: workday-prism.delete-dataset
+      with:
+        ID: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: prism-list-data-change-tasks
+      description: List data change tasks
+      hints:
+        readOnly: true
+      call: workday-prism.get-data-change-tasks
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: prism-create-data-change-task
+      description: Create a data change task
+      hints:
+        readOnly: false
+      call: workday-prism.create-data-change-task
+      with:
+        targetDataset: tools.targetDataset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: prism-list-tables
+      description: List all Prism tables
+      hints:
+        readOnly: true
+      call: workday-prism.get-tables
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wql-execute-query
+      description: Execute a WQL query against Workday data
+      hints:
+        readOnly: true
+      call: workday-wql.execute-wql-query
+      with:
+        query: tools.query
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wql-list-data-sources
+      description: List available WQL data sources
+      hints:
+        readOnly: true
+      call: workday-wql.get-data-sources
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wql-get-data-source
+      description: Get a WQL data source by ID
+      hints:
+        readOnly: true
+      call: workday-wql.get-data-source-by-id
+      with:
+        ID: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wql-get-data-source-fields
+      description: Get fields for a WQL data source
+      hints:
+        readOnly: true
+      call: workday-wql.get-data-source-fields
+      with:
+        ID: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: raas-get-report
+      description: Retrieve a custom Workday report
+      hints:
+        readOnly: true
+      call: workday-raas.get-custom-report
+      with:
+        report_owner: tools.report_owner
+        report_name: tools.report_name
+        format: tools.format
+      outputParameters:
+      - type: object
+        mapping: $.
