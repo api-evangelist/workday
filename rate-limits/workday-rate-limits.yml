@@ -4,182 +4,29 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Workday
 providerId: workday
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
-  - Cloud Computing
   - Enterprise Software
-  - Financial Management
   - HCM
-  - SaaS
+  - ERP
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Workday API surface. Captures per-tier quotas,
-  burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to be replaced
-  with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
-responseCodes:
-  throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
+description: Workday tenant APIs (REST and SOAP) are subject to per-tenant transactional and integration concurrency limits that Workday does not publish on its public marketing site; details, including any throttling response codes, are gated behind Workday Community / Customer Center authentication. Numeric limits captured here are intentionally left as references rather than fabricated values.
+sources:
+  - https://www.workday.com/en-us/enterprise-resource-planning.html
+notes: Public marketing pages do not document API rate limits; Workday Community articles describing tenant transaction limits, integration concurrency, and Studio throttling are behind login. Scaffold per-minute / per-month numbers have been removed.
+responseCodes: {}
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Workday HCM API
-      - Workday Financial Management API
-      - Workday Recruiting API
-      - Workday Time Tracking API
-      - Workday Benefits API
-      - Workday Absence Management API
-      - Workday Compensation API
-      - Workday Payroll API
-      - Workday Person API
-      - Workday Performance Management API
-      - Workday Talent Management API
-      - Workday Common API
-      - Workday Staffing API
-      - Workday Strategic Sourcing API
-      - Workday SOAP Web Services API
-      - Workday Prism Analytics API
-      - Workday Extend API
-      - Workday Report-as-a-Service API
-      - Workday Adaptive Planning API
-      - Workday WQL API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Workday HCM API
-      - Workday Financial Management API
-      - Workday Recruiting API
-      - Workday Time Tracking API
-      - Workday Benefits API
-      - Workday Absence Management API
-      - Workday Compensation API
-      - Workday Payroll API
-      - Workday Person API
-      - Workday Performance Management API
-      - Workday Talent Management API
-      - Workday Common API
-      - Workday Staffing API
-      - Workday Strategic Sourcing API
-      - Workday SOAP Web Services API
-      - Workday Prism Analytics API
-      - Workday Extend API
-      - Workday Report-as-a-Service API
-      - Workday Adaptive Planning API
-      - Workday WQL API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Workday HCM API
-      - Workday Financial Management API
-      - Workday Recruiting API
-      - Workday Time Tracking API
-      - Workday Benefits API
-      - Workday Absence Management API
-      - Workday Compensation API
-      - Workday Payroll API
-      - Workday Person API
-      - Workday Performance Management API
-      - Workday Talent Management API
-      - Workday Common API
-      - Workday Staffing API
-      - Workday Strategic Sourcing API
-      - Workday SOAP Web Services API
-      - Workday Prism Analytics API
-      - Workday Extend API
-      - Workday Report-as-a-Service API
-      - Workday Adaptive Planning API
-      - Workday WQL API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Workday HCM API
-      - Workday Financial Management API
-      - Workday Recruiting API
-      - Workday Time Tracking API
-      - Workday Benefits API
-      - Workday Absence Management API
-      - Workday Compensation API
-      - Workday Payroll API
-      - Workday Person API
-      - Workday Performance Management API
-      - Workday Talent Management API
-      - Workday Common API
-      - Workday Staffing API
-      - Workday Strategic Sourcing API
-      - Workday SOAP Web Services API
-      - Workday Prism Analytics API
-      - Workday Extend API
-      - Workday Report-as-a-Service API
-      - Workday Adaptive Planning API
-      - Workday WQL API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Workday HCM API
-      - Workday Financial Management API
-      - Workday Recruiting API
-      - Workday Time Tracking API
-      - Workday Benefits API
-      - Workday Absence Management API
-      - Workday Compensation API
-      - Workday Payroll API
-      - Workday Person API
-      - Workday Performance Management API
-      - Workday Talent Management API
-      - Workday Common API
-      - Workday Staffing API
-      - Workday Strategic Sourcing API
-      - Workday SOAP Web Services API
-      - Workday Prism Analytics API
-      - Workday Extend API
-      - Workday Report-as-a-Service API
-      - Workday Adaptive Planning API
-      - Workday WQL API
+  - name: Tenant API Throughput
+    scope: tenant
+    metric: varies
+    limit: per-tenant transactional limits documented in Workday Community (login required)
+    notes: Workday governs API throughput, integration concurrency, and Studio batch behavior at the tenant level; specific numeric thresholds are not publicly published.
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: Customer Center Documentation
+    description: Operational throttling, retry, and integration-failure policies are published in Workday Community / Customer Center articles available to authenticated Workday customers and partners.
+  - name: Tenant Isolation
+    description: Limits apply per tenant rather than per API key; production and implementation tenants have distinct throughput envelopes.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
-    url: https://apievangelist.com

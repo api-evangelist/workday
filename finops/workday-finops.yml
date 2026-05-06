@@ -1,309 +1,66 @@
 specification: FinOps Framework
 specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Workday
+providerId: workday
+created: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
+tags:
+  - Enterprise Software
+  - HCM
+  - ERP
+  - FinOps
+  - FOCUS
+description: FOCUS-aligned FinOps stub for Workday's enterprise SaaS platform. Workday is sold as a multi-year per-customer subscription quoted by sales; per-API-call pricing and a self-serve usage API are not published, so meters and invoice line items here describe the contractual shape rather than runtime telemetry.
+sources:
+  - https://www.workday.com/en-us/enterprise-resource-planning.html
+notes: Workday does not publish a public usage/billing API. Generic api_request / data_egress / compute_seconds meters from the scaffold have been removed; remaining meters describe the negotiated subscription shape.
 alignedWith:
   framework: FinOps Foundation Framework
   frameworkUrl: https://www.finops.org/framework/
   dataSpec: FOCUS
   dataSpecVersion: '1.3'
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
-provider: Workday
-providerId: workday
-publisherName: Workday
-serviceCategory: API
-created: '2026-05-04'
-modified: '2026-05-04'
-tags:
-  - Cloud Computing
-  - Enterprise Software
-  - Financial Management
-  - HCM
-  - SaaS
-  - FinOps
-  - Cost Management
-  - FOCUS
-description: FinOps framework definition for the Workday API surface. Provides a FOCUS-aligned mapping
-  for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
-principles:
-  - name: Visibility
-    description: Make API consumption costs visible to engineering, product, and finance teams in near
-      real-time.
-  - name: Allocation
-    description: Tag every chargeable API call with the consuming team, environment, application, and
-      feature so cost can be allocated.
-  - name: Optimization
-    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
-      cost per useful unit of work.
-  - name: Accountability
-    description: Establish budget owners and chargeback or showback flows for each consuming team.
-domains:
-  - name: Understand Usage and Cost
-    capabilities:
-      - Data Ingestion
-      - Allocation
-      - Reporting and Analytics
-      - Anomaly Management
-  - name: Quantify Business Value
-    capabilities:
-      - Planning and Estimating
-      - Forecasting
-      - Budgeting
-      - Benchmarking
-      - Unit Economics
-  - name: Optimize Usage and Cost
-    capabilities:
-      - Architecting for Cloud
-      - Rate Optimization
-      - Workload Optimization
-      - Cloud Sustainability
-      - Licensing and SaaS
-  - name: Manage the FinOps Practice
-    capabilities:
-      - FinOps Practice Operations
-      - FinOps Education and Enablement
-      - Invoicing and Chargeback
-      - Onboarding Workloads
-      - Intersecting Disciplines
+publisherName: Workday, Inc.
+serviceCategory: Enterprise SaaS
 billingModel:
-  pricingCategory: Usage-Based
-  billingFrequency: Monthly
+  pricingCategory: Subscription
+  billingFrequency: Annual
   billingCurrency: USD
   chargeCategories:
-    - Usage
     - Purchase
-    - Tax
-    - Credit
-    - Adjustment
-  chargeFrequency: Recurring
 focusColumns:
   ServiceName: Workday
-  ServiceCategory: Developer Tools / API
+  ServiceCategory: Enterprise SaaS
   ProviderName: Workday
-  PublisherName: Workday
-  InvoiceIssuerName: Workday
-  PricingCategory: Usage-Based
-  PricingUnit: request
+  PublisherName: Workday, Inc.
+  InvoiceIssuerName: Workday, Inc.
   BillingCurrency: USD
-  ChargeCategory: Usage
 meters:
-  - name: api_requests
-    description: Count of billable API requests
-    unit: request
-    aggregation: sum
+  - name: tenant_subscription
+    description: Negotiated annual subscription for the Workday tenant covering HCM, Financial Management, and platform modules included in the contract.
+    unit: month
+    aggregation: max
     dimensions:
-      - api
-      - endpoint
-      - tier
-      - region
-      - consumer
-  - name: data_egress
-    description: Bytes returned over the network in API responses
-    unit: GB
-    aggregation: sum
+      - tenant
+      - module
+  - name: workforce_seats
+    description: Licensed workforce count used to size the Workday subscription; included in the negotiated price rather than billed as overage.
+    unit: seat
+    aggregation: max
     dimensions:
-      - api
-      - region
-      - consumer
-  - name: compute_seconds
-    description: Server-side compute consumed by the request, where applicable
-    unit: second
-    aggregation: sum
-    dimensions:
-      - api
-      - endpoint
-      - tier
-apis:
-  - name: Workday HCM API
-    baseURL: https://wd2-impl-services1.workday.com/ccx/api/
-    tags:
-      - Human Capital Management
-      - Human Resources
-      - Payroll
-      - Talent Management
-      - Workforce
-    serviceName: Workday HCM API
-    serviceCategory: API
-  - name: Workday Financial Management API
-    baseURL: https://wd2-impl-services1.workday.com/ccx/api/financialManagement/
-    tags:
-      - Accounting
-      - Expenses
-      - Financial Management
-      - Procurement
-      - Revenue
-    serviceName: Workday Financial Management API
-    serviceCategory: API
-  - name: Workday Recruiting API
-    baseURL: https://wd2-impl-services1.workday.com/ccx/api/recruiting/
-    tags:
-      - Applications
-      - Candidates
-      - Hiring
-      - Job Postings
-      - Recruiting
-    serviceName: Workday Recruiting API
-    serviceCategory: API
-  - name: Workday Time Tracking API
-    baseURL: https://wd2-impl-services1.workday.com/ccx/api/timeTracking/
-    tags:
-      - Absence
-      - Leave Management
-      - Time Tracking
-      - Timesheets
-    serviceName: Workday Time Tracking API
-    serviceCategory: API
-  - name: Workday Benefits API
-    baseURL: https://wd2-impl-services1.workday.com/ccx/api/benefits/
-    tags:
-      - Benefits
-      - Coverage
-      - Enrollments
-      - Health Insurance
-    serviceName: Workday Benefits API
-    serviceCategory: API
-  - name: Workday Absence Management API
-    baseURL: https://wd2-impl-services1.workday.com/ccx/api/absenceManagement/
-    tags:
-      - Absence Management
-      - Leave Balances
-      - Leave of Absence
-      - Time Off
-    serviceName: Workday Absence Management API
-    serviceCategory: API
-  - name: Workday Compensation API
-    baseURL: https://wd2-impl-services1.workday.com/ccx/api/compensation/
-    tags:
-      - Compensation
-      - One-Time Payments
-      - Pay Plans
-      - Scorecards
-    serviceName: Workday Compensation API
-    serviceCategory: API
-  - name: Workday Payroll API
-    baseURL: https://wd2-impl-services1.workday.com/ccx/api/payroll/
-    tags:
-      - Pay Components
-      - Pay Groups
-      - Payroll
-      - Tax Rates
-    serviceName: Workday Payroll API
-    serviceCategory: API
-  - name: Workday Person API
-    baseURL: https://wd2-impl-services1.workday.com/ccx/api/person/
-    tags:
-      - Contact Information
-      - Employee Data
-      - Person
-      - Workers
-    serviceName: Workday Person API
-    serviceCategory: API
-  - name: Workday Performance Management API
-    baseURL: https://wd2-impl-services1.workday.com/ccx/api/performanceManagement/
-    tags:
-      - Feedback
-      - Goals
-      - Performance Management
-      - Reviews
-    serviceName: Workday Performance Management API
-    serviceCategory: API
-  - name: Workday Talent Management API
-    baseURL: https://wd2-impl-services1.workday.com/ccx/api/talent/
-    tags:
-      - Career Development
-      - Mentorships
-      - Succession Planning
-      - Talent Management
-    serviceName: Workday Talent Management API
-    serviceCategory: API
-  - name: Workday Common API
-    baseURL: https://wd2-impl-services1.workday.com/ccx/api/common/
-    tags:
-      - Common
-      - Lookup Values
-      - Reference Data
-      - Shared Services
-    serviceName: Workday Common API
-    serviceCategory: API
-  - name: Workday Staffing API
-    baseURL: https://wd2-impl-services1.workday.com/ccx/api/staffing/
-    tags:
-      - Job Profiles
-      - Organizations
-      - Positions
-      - Staffing
-    serviceName: Workday Staffing API
-    serviceCategory: API
-  - name: Workday Strategic Sourcing API
-    baseURL: https://api.workdayspend.com/services/
-    tags:
-      - Awards
-      - Contracts
-      - Procurement
-      - Strategic Sourcing
-      - Suppliers
-    serviceName: Workday Strategic Sourcing API
-    serviceCategory: API
-  - name: Workday SOAP Web Services API
-    baseURL: https://wd2-impl-services1.workday.com/ccx/service/
-    tags:
-      - Enterprise Integration
-      - SOAP API
-      - Web Services
-      - WSDL
-    serviceName: Workday SOAP Web Services API
-    serviceCategory: API
-  - name: Workday Prism Analytics API
-    baseURL: https://wd2-impl-services1.workday.com/ccx/api/prismAnalytics/
-    tags:
-      - Analytics
-      - Business Intelligence
-      - Datasets
-      - Prism Analytics
-    serviceName: Workday Prism Analytics API
-    serviceCategory: API
-  - name: Workday Extend API
-    baseURL: https://wd2-impl-services1.workday.com/ccx/api/
-    tags:
-      - App Development
-      - Custom Applications
-      - Low Code
-      - Platform Extensibility
-    serviceName: Workday Extend API
-    serviceCategory: API
-  - name: Workday Report-as-a-Service API
-    baseURL: https://wd2-impl-services1.workday.com/ccx/service/
-    tags:
-      - Custom Reports
-      - Data Export
-      - Report as a Service
-      - Reporting
-    serviceName: Workday Report-as-a-Service API
-    serviceCategory: API
-  - name: Workday Adaptive Planning API
-    baseURL: https://api.adaptiveinsights.com/api/
-    tags:
-      - Adaptive Planning
-      - Budgeting
-      - Financial Planning
-      - Forecasting
-    serviceName: Workday Adaptive Planning API
-    serviceCategory: API
-  - name: Workday WQL API
-    baseURL: https://wd2-impl-services1.workday.com/ccx/api/wql/
-    tags:
-      - Analytics
-      - Data Access
-      - Query Language
-      - Reporting
-    serviceName: Workday WQL API
-    serviceCategory: API
-unitEconomics:
-  - name: Cost per 1K Requests
-    metric: billed_cost / (api_requests / 1000)
-    target: TBD
-  - name: Cost per Active Consumer
-    metric: billed_cost / active_consumers
-    target: TBD
+      - tenant
+      - module
+principles:
+  - name: Visibility
+    description: Treat Workday spend as a contract-level line item; reconcile against signed order forms and renewal worksheets rather than a usage API. Use the Workday tenant audit reports and Tenant Health dashboards to track entitlement consumption (modules deployed, integrations live).
+  - name: Allocation
+    description: Allocate the Workday subscription across HR, Finance, and IT cost centers based on the modules each function uses; integrations and Extend apps can be tagged at the project level for chargeback against the platform fee.
+  - name: Optimization
+    description: Optimize at renewal by right-sizing licensed workforce counts, retiring unused modules, consolidating sandbox tenants, and avoiding low-value Extend / Integration Cloud add-ons; tactical optimization at runtime is limited because pricing is not metered.
+  - name: Accountability
+    description: Designate a Workday HRIS / ERP owner who reviews module utilization quarterly with Workday's Customer Success team and signs off on renewals, true-ups, and add-on SKUs.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
-    url: https://apievangelist.com
