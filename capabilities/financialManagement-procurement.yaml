@@ -1,0 +1,134 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Workday Financial Management API — Procurement
+  description: 'Workday Financial Management API — Procurement. 3 operations. Lead operation: Get Purchase Orders. Self-contained
+    Naftiko capability covering one Workday business surface.'
+  tags:
+  - Workday
+  - Procurement
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WORKDAY_API_KEY: WORKDAY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: financialManagement-procurement
+    baseUri: https://wd2-impl-services1.workday.com/ccx/api/financialManagement/v1/{tenant}
+    description: Workday Financial Management API — Procurement business capability. Self-contained, no shared references.
+    resources:
+    - name: purchaseOrders
+      path: /purchaseOrders
+      operations:
+      - name: getpurchaseorders
+        method: GET
+        description: Get Purchase Orders
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: suppliers
+      path: /suppliers
+      operations:
+      - name: getsuppliers
+        method: GET
+        description: Get Suppliers
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: suppliers-ID
+      path: /suppliers/{ID}
+      operations:
+      - name: getsupplierbyid
+        method: GET
+        description: Get Supplier by Id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.WORKDAY_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: financialManagement-procurement-rest
+    port: 8080
+    description: REST adapter for Workday Financial Management API — Procurement. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/purchaseorders
+      name: purchaseorders
+      description: REST surface for purchaseOrders.
+      operations:
+      - method: GET
+        name: getpurchaseorders
+        description: Get Purchase Orders
+        call: financialManagement-procurement.getpurchaseorders
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/suppliers
+      name: suppliers
+      description: REST surface for suppliers.
+      operations:
+      - method: GET
+        name: getsuppliers
+        description: Get Suppliers
+        call: financialManagement-procurement.getsuppliers
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/suppliers/{id}
+      name: suppliers-id
+      description: REST surface for suppliers-ID.
+      operations:
+      - method: GET
+        name: getsupplierbyid
+        description: Get Supplier by Id
+        call: financialManagement-procurement.getsupplierbyid
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: financialManagement-procurement-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Workday Financial Management API — Procurement. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: get-purchase-orders
+      description: Get Purchase Orders
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: financialManagement-procurement.getpurchaseorders
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-suppliers
+      description: Get Suppliers
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: financialManagement-procurement.getsuppliers
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-supplier-id
+      description: Get Supplier by Id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: financialManagement-procurement.getsupplierbyid
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,81 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Workday WQL API — Query
+  description: 'Workday WQL API — Query. 1 operations. Lead operation: Execute Wql Query. Self-contained Naftiko capability
+    covering one Workday business surface.'
+  tags:
+  - Workday
+  - Query
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WORKDAY_API_KEY: WORKDAY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: wql-query
+    baseUri: https://wd2-impl-services1.workday.com/ccx/api/wql/v1/{tenant}
+    description: Workday WQL API — Query business capability. Self-contained, no shared references.
+    resources:
+    - name: data
+      path: /data
+      operations:
+      - name: executewqlquery
+        method: GET
+        description: Execute Wql Query
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: query
+          in: query
+          type: string
+          description: 'The WQL query string. Example: SELECT workdayID, fullName, businessTitle FROM allWorkers WHERE isActive
+            = true'
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.WORKDAY_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: wql-query-rest
+    port: 8080
+    description: REST adapter for Workday WQL API — Query. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/data
+      name: data
+      description: REST surface for data.
+      operations:
+      - method: GET
+        name: executewqlquery
+        description: Execute Wql Query
+        call: wql-query.executewqlquery
+        with:
+          query: rest.query
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: wql-query-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Workday WQL API — Query. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: execute-wql-query
+      description: Execute Wql Query
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wql-query.executewqlquery
+      with:
+        query: tools.query
+      outputParameters:
+      - type: object
+        mapping: $.

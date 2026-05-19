@@ -1,0 +1,262 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Workday Common API — Reference Data
+  description: 'Workday Common API — Reference Data. 7 operations. Lead operation: Get Countries. Self-contained Naftiko capability
+    covering one Workday business surface.'
+  tags:
+  - Workday
+  - Reference Data
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WORKDAY_API_KEY: WORKDAY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: common-reference-data
+    baseUri: https://wd2-impl-services1.workday.com/ccx/api/common/v1/{tenant}
+    description: Workday Common API — Reference Data business capability. Self-contained, no shared references.
+    resources:
+    - name: countries
+      path: /countries
+      operations:
+      - name: getcountries
+        method: GET
+        description: Get Countries
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: countries-ID
+      path: /countries/{ID}
+      operations:
+      - name: getcountrybyid
+        method: GET
+        description: Get Country by Id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: currencies
+      path: /currencies
+      operations:
+      - name: getcurrencies
+        method: GET
+        description: Get Currencies
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: currencies-ID
+      path: /currencies/{ID}
+      operations:
+      - name: getcurrencybyid
+        method: GET
+        description: Get Currency by Id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: genders
+      path: /genders
+      operations:
+      - name: getgenders
+        method: GET
+        description: Get Genders
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: languages
+      path: /languages
+      operations:
+      - name: getlanguages
+        method: GET
+        description: Get Languages
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: maritalStatuses
+      path: /maritalStatuses
+      operations:
+      - name: getmaritalstatuses
+        method: GET
+        description: Get Marital Statuses
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.WORKDAY_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: common-reference-data-rest
+    port: 8080
+    description: REST adapter for Workday Common API — Reference Data. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/countries
+      name: countries
+      description: REST surface for countries.
+      operations:
+      - method: GET
+        name: getcountries
+        description: Get Countries
+        call: common-reference-data.getcountries
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/countries/{id}
+      name: countries-id
+      description: REST surface for countries-ID.
+      operations:
+      - method: GET
+        name: getcountrybyid
+        description: Get Country by Id
+        call: common-reference-data.getcountrybyid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/currencies
+      name: currencies
+      description: REST surface for currencies.
+      operations:
+      - method: GET
+        name: getcurrencies
+        description: Get Currencies
+        call: common-reference-data.getcurrencies
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/currencies/{id}
+      name: currencies-id
+      description: REST surface for currencies-ID.
+      operations:
+      - method: GET
+        name: getcurrencybyid
+        description: Get Currency by Id
+        call: common-reference-data.getcurrencybyid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/genders
+      name: genders
+      description: REST surface for genders.
+      operations:
+      - method: GET
+        name: getgenders
+        description: Get Genders
+        call: common-reference-data.getgenders
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/languages
+      name: languages
+      description: REST surface for languages.
+      operations:
+      - method: GET
+        name: getlanguages
+        description: Get Languages
+        call: common-reference-data.getlanguages
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/maritalstatuses
+      name: maritalstatuses
+      description: REST surface for maritalStatuses.
+      operations:
+      - method: GET
+        name: getmaritalstatuses
+        description: Get Marital Statuses
+        call: common-reference-data.getmaritalstatuses
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: common-reference-data-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Workday Common API — Reference Data. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-countries
+      description: Get Countries
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: common-reference-data.getcountries
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-country-id
+      description: Get Country by Id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: common-reference-data.getcountrybyid
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-currencies
+      description: Get Currencies
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: common-reference-data.getcurrencies
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-currency-id
+      description: Get Currency by Id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: common-reference-data.getcurrencybyid
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-genders
+      description: Get Genders
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: common-reference-data.getgenders
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-languages
+      description: Get Languages
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: common-reference-data.getlanguages
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-marital-statuses
+      description: Get Marital Statuses
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: common-reference-data.getmaritalstatuses
+      outputParameters:
+      - type: object
+        mapping: $.

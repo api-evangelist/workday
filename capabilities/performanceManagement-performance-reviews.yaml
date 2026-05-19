@@ -1,0 +1,70 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Workday Performance Management API — Performance Reviews
+  description: 'Workday Performance Management API — Performance Reviews. 1 operations. Lead operation: Get Performance Reviews.
+    Self-contained Naftiko capability covering one Workday business surface.'
+  tags:
+  - Workday
+  - Performance Reviews
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WORKDAY_API_KEY: WORKDAY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: performanceManagement-performance-reviews
+    baseUri: https://wd2-impl-services1.workday.com/ccx/api/performanceManagement/v1/{tenant}
+    description: Workday Performance Management API — Performance Reviews business capability. Self-contained, no shared references.
+    resources:
+    - name: workers-ID-performanceReviews
+      path: /workers/{ID}/performanceReviews
+      operations:
+      - name: getperformancereviews
+        method: GET
+        description: Get Performance Reviews
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.WORKDAY_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: performanceManagement-performance-reviews-rest
+    port: 8080
+    description: REST adapter for Workday Performance Management API — Performance Reviews. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/workers/{id}/performancereviews
+      name: workers-id-performancereviews
+      description: REST surface for workers-ID-performanceReviews.
+      operations:
+      - method: GET
+        name: getperformancereviews
+        description: Get Performance Reviews
+        call: performanceManagement-performance-reviews.getperformancereviews
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: performanceManagement-performance-reviews-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Workday Performance Management API — Performance Reviews. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: get-performance-reviews
+      description: Get Performance Reviews
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: performanceManagement-performance-reviews.getperformancereviews
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,70 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Workday Time Tracking API — Timesheets
+  description: 'Workday Time Tracking API — Timesheets. 1 operations. Lead operation: Get Timesheets. Self-contained Naftiko
+    capability covering one Workday business surface.'
+  tags:
+  - Workday
+  - Timesheets
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WORKDAY_API_KEY: WORKDAY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: timeTracking-timesheets
+    baseUri: https://wd2-impl-services1.workday.com/ccx/api/timeTracking/v1/{tenant}
+    description: Workday Time Tracking API — Timesheets business capability. Self-contained, no shared references.
+    resources:
+    - name: workers-ID-timesheets
+      path: /workers/{ID}/timesheets
+      operations:
+      - name: gettimesheets
+        method: GET
+        description: Get Timesheets
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.WORKDAY_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: timeTracking-timesheets-rest
+    port: 8080
+    description: REST adapter for Workday Time Tracking API — Timesheets. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/workers/{id}/timesheets
+      name: workers-id-timesheets
+      description: REST surface for workers-ID-timesheets.
+      operations:
+      - method: GET
+        name: gettimesheets
+        description: Get Timesheets
+        call: timeTracking-timesheets.gettimesheets
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: timeTracking-timesheets-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Workday Time Tracking API — Timesheets. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-timesheets
+      description: Get Timesheets
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: timeTracking-timesheets.gettimesheets
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,143 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Workday WQL API — Data Sources
+  description: 'Workday WQL API — Data Sources. 3 operations. Lead operation: Get Data Sources. Self-contained Naftiko capability
+    covering one Workday business surface.'
+  tags:
+  - Workday
+  - Data Sources
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WORKDAY_API_KEY: WORKDAY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: wql-data-sources
+    baseUri: https://wd2-impl-services1.workday.com/ccx/api/wql/v1/{tenant}
+    description: Workday WQL API — Data Sources business capability. Self-contained, no shared references.
+    resources:
+    - name: dataSources
+      path: /dataSources
+      operations:
+      - name: getdatasources
+        method: GET
+        description: Get Data Sources
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: search
+          in: query
+          type: string
+          description: Filter data sources by name.
+    - name: dataSources-ID
+      path: /dataSources/{ID}
+      operations:
+      - name: getdatasourcebyid
+        method: GET
+        description: Get Data Source by Id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: dataSources-ID-fields
+      path: /dataSources/{ID}/fields
+      operations:
+      - name: getdatasourcefields
+        method: GET
+        description: Get Data Source Fields
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.WORKDAY_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: wql-data-sources-rest
+    port: 8080
+    description: REST adapter for Workday WQL API — Data Sources. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/datasources
+      name: datasources
+      description: REST surface for dataSources.
+      operations:
+      - method: GET
+        name: getdatasources
+        description: Get Data Sources
+        call: wql-data-sources.getdatasources
+        with:
+          search: rest.search
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/datasources/{id}
+      name: datasources-id
+      description: REST surface for dataSources-ID.
+      operations:
+      - method: GET
+        name: getdatasourcebyid
+        description: Get Data Source by Id
+        call: wql-data-sources.getdatasourcebyid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/datasources/{id}/fields
+      name: datasources-id-fields
+      description: REST surface for dataSources-ID-fields.
+      operations:
+      - method: GET
+        name: getdatasourcefields
+        description: Get Data Source Fields
+        call: wql-data-sources.getdatasourcefields
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: wql-data-sources-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Workday WQL API — Data Sources. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-data-sources
+      description: Get Data Sources
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wql-data-sources.getdatasources
+      with:
+        search: tools.search
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-data-source-id
+      description: Get Data Source by Id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wql-data-sources.getdatasourcebyid
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-data-source-fields
+      description: Get Data Source Fields
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wql-data-sources.getdatasourcefields
+      outputParameters:
+      - type: object
+        mapping: $.

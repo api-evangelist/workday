@@ -1,0 +1,169 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Workday Prism Analytics API — Data Change Tasks
+  description: 'Workday Prism Analytics API — Data Change Tasks. 4 operations. Lead operation: Get Data Change Tasks. Self-contained
+    Naftiko capability covering one Workday business surface.'
+  tags:
+  - Workday
+  - Data Change Tasks
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WORKDAY_API_KEY: WORKDAY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: prismAnalytics-data-change-tasks
+    baseUri: https://wd2-impl-services1.workday.com/ccx/api/prismAnalytics/v3/{tenant}
+    description: Workday Prism Analytics API — Data Change Tasks business capability. Self-contained, no shared references.
+    resources:
+    - name: dataChangeTasks
+      path: /dataChangeTasks
+      operations:
+      - name: getdatachangetasks
+        method: GET
+        description: Get Data Change Tasks
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createdatachangetask
+        method: POST
+        description: Create Data Change Task
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: dataChangeTasks-ID
+      path: /dataChangeTasks/{ID}
+      operations:
+      - name: getdatachangetaskbyid
+        method: GET
+        description: Get Data Change Task by Id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: dataChangeTasks-ID-activities
+      path: /dataChangeTasks/{ID}/activities
+      operations:
+      - name: getdatachangetaskactivities
+        method: GET
+        description: Get Data Change Task Activities
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.WORKDAY_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: prismAnalytics-data-change-tasks-rest
+    port: 8080
+    description: REST adapter for Workday Prism Analytics API — Data Change Tasks. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/datachangetasks
+      name: datachangetasks
+      description: REST surface for dataChangeTasks.
+      operations:
+      - method: GET
+        name: getdatachangetasks
+        description: Get Data Change Tasks
+        call: prismAnalytics-data-change-tasks.getdatachangetasks
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createdatachangetask
+        description: Create Data Change Task
+        call: prismAnalytics-data-change-tasks.createdatachangetask
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/datachangetasks/{id}
+      name: datachangetasks-id
+      description: REST surface for dataChangeTasks-ID.
+      operations:
+      - method: GET
+        name: getdatachangetaskbyid
+        description: Get Data Change Task by Id
+        call: prismAnalytics-data-change-tasks.getdatachangetaskbyid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/datachangetasks/{id}/activities
+      name: datachangetasks-id-activities
+      description: REST surface for dataChangeTasks-ID-activities.
+      operations:
+      - method: GET
+        name: getdatachangetaskactivities
+        description: Get Data Change Task Activities
+        call: prismAnalytics-data-change-tasks.getdatachangetaskactivities
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: prismAnalytics-data-change-tasks-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Workday Prism Analytics API — Data Change Tasks. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: get-data-change-tasks
+      description: Get Data Change Tasks
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: prismAnalytics-data-change-tasks.getdatachangetasks
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-data-change-task
+      description: Create Data Change Task
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: prismAnalytics-data-change-tasks.createdatachangetask
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-data-change-task-id
+      description: Get Data Change Task by Id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: prismAnalytics-data-change-tasks.getdatachangetaskbyid
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-data-change-task-activities
+      description: Get Data Change Task Activities
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: prismAnalytics-data-change-tasks.getdatachangetaskactivities
+      outputParameters:
+      - type: object
+        mapping: $.

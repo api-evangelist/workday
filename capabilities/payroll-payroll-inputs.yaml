@@ -1,0 +1,70 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Workday Payroll API — Payroll Inputs
+  description: 'Workday Payroll API — Payroll Inputs. 1 operations. Lead operation: Get Payroll Inputs. Self-contained Naftiko
+    capability covering one Workday business surface.'
+  tags:
+  - Workday
+  - Payroll Inputs
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WORKDAY_API_KEY: WORKDAY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: payroll-payroll-inputs
+    baseUri: https://wd2-impl-services1.workday.com/ccx/api/payroll/v1/{tenant}
+    description: Workday Payroll API — Payroll Inputs business capability. Self-contained, no shared references.
+    resources:
+    - name: workers-ID-payrollInputs
+      path: /workers/{ID}/payrollInputs
+      operations:
+      - name: getpayrollinputs
+        method: GET
+        description: Get Payroll Inputs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.WORKDAY_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: payroll-payroll-inputs-rest
+    port: 8080
+    description: REST adapter for Workday Payroll API — Payroll Inputs. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/workers/{id}/payrollinputs
+      name: workers-id-payrollinputs
+      description: REST surface for workers-ID-payrollInputs.
+      operations:
+      - method: GET
+        name: getpayrollinputs
+        description: Get Payroll Inputs
+        call: payroll-payroll-inputs.getpayrollinputs
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: payroll-payroll-inputs-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Workday Payroll API — Payroll Inputs. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-payroll-inputs
+      description: Get Payroll Inputs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payroll-payroll-inputs.getpayrollinputs
+      outputParameters:
+      - type: object
+        mapping: $.

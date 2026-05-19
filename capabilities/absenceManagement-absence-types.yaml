@@ -1,0 +1,70 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Workday Absence Management API — Absence Types
+  description: 'Workday Absence Management API — Absence Types. 1 operations. Lead operation: Get Eligible Absence Types.
+    Self-contained Naftiko capability covering one Workday business surface.'
+  tags:
+  - Workday
+  - Absence Types
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WORKDAY_API_KEY: WORKDAY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: absenceManagement-absence-types
+    baseUri: https://wd2-impl-services1.workday.com/ccx/api/absenceManagement/v1/{tenant}
+    description: Workday Absence Management API — Absence Types business capability. Self-contained, no shared references.
+    resources:
+    - name: workers-ID-eligibleAbsenceTypes
+      path: /workers/{ID}/eligibleAbsenceTypes
+      operations:
+      - name: geteligibleabsencetypes
+        method: GET
+        description: Get Eligible Absence Types
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.WORKDAY_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: absenceManagement-absence-types-rest
+    port: 8080
+    description: REST adapter for Workday Absence Management API — Absence Types. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/workers/{id}/eligibleabsencetypes
+      name: workers-id-eligibleabsencetypes
+      description: REST surface for workers-ID-eligibleAbsenceTypes.
+      operations:
+      - method: GET
+        name: geteligibleabsencetypes
+        description: Get Eligible Absence Types
+        call: absenceManagement-absence-types.geteligibleabsencetypes
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: absenceManagement-absence-types-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Workday Absence Management API — Absence Types. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: get-eligible-absence-types
+      description: Get Eligible Absence Types
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: absenceManagement-absence-types.geteligibleabsencetypes
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Workday Compensation API — One-Time Payments
+  description: 'Workday Compensation API — One-Time Payments. 1 operations. Lead operation: Request One-time Payment. Self-contained
+    Naftiko capability covering one Workday business surface.'
+  tags:
+  - Workday
+  - One-Time Payments
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WORKDAY_API_KEY: WORKDAY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: compensation-one-time-payments
+    baseUri: https://wd2-impl-services1.workday.com/ccx/api/compensation/v1/{tenant}
+    description: Workday Compensation API — One-Time Payments business capability. Self-contained, no shared references.
+    resources:
+    - name: workers-ID-requestOneTimePayment
+      path: /workers/{ID}/requestOneTimePayment
+      operations:
+      - name: requestonetimepayment
+        method: POST
+        description: Request One-time Payment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.WORKDAY_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: compensation-one-time-payments-rest
+    port: 8080
+    description: REST adapter for Workday Compensation API — One-Time Payments. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/workers/{id}/requestonetimepayment
+      name: workers-id-requestonetimepayment
+      description: REST surface for workers-ID-requestOneTimePayment.
+      operations:
+      - method: POST
+        name: requestonetimepayment
+        description: Request One-time Payment
+        call: compensation-one-time-payments.requestonetimepayment
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: compensation-one-time-payments-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Workday Compensation API — One-Time Payments. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: request-one-time-payment
+      description: Request One-time Payment
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: compensation-one-time-payments.requestonetimepayment
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

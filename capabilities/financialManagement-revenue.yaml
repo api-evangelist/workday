@@ -1,0 +1,70 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Workday Financial Management API — Revenue
+  description: 'Workday Financial Management API — Revenue. 1 operations. Lead operation: Get Customer Invoices. Self-contained
+    Naftiko capability covering one Workday business surface.'
+  tags:
+  - Workday
+  - Revenue
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WORKDAY_API_KEY: WORKDAY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: financialManagement-revenue
+    baseUri: https://wd2-impl-services1.workday.com/ccx/api/financialManagement/v1/{tenant}
+    description: Workday Financial Management API — Revenue business capability. Self-contained, no shared references.
+    resources:
+    - name: customerInvoices
+      path: /customerInvoices
+      operations:
+      - name: getcustomerinvoices
+        method: GET
+        description: Get Customer Invoices
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.WORKDAY_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: financialManagement-revenue-rest
+    port: 8080
+    description: REST adapter for Workday Financial Management API — Revenue. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/customerinvoices
+      name: customerinvoices
+      description: REST surface for customerInvoices.
+      operations:
+      - method: GET
+        name: getcustomerinvoices
+        description: Get Customer Invoices
+        call: financialManagement-revenue.getcustomerinvoices
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: financialManagement-revenue-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Workday Financial Management API — Revenue. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: get-customer-invoices
+      description: Get Customer Invoices
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: financialManagement-revenue.getcustomerinvoices
+      outputParameters:
+      - type: object
+        mapping: $.

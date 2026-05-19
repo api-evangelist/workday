@@ -1,0 +1,70 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Workday Recruiting API — Prospects
+  description: 'Workday Recruiting API — Prospects. 1 operations. Lead operation: Get Prospects. Self-contained Naftiko capability
+    covering one Workday business surface.'
+  tags:
+  - Workday
+  - Prospects
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WORKDAY_API_KEY: WORKDAY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: recruiting-prospects
+    baseUri: https://wd2-impl-services1.workday.com/ccx/api/recruiting/v1/{tenant}
+    description: Workday Recruiting API — Prospects business capability. Self-contained, no shared references.
+    resources:
+    - name: prospects
+      path: /prospects
+      operations:
+      - name: getprospects
+        method: GET
+        description: Get Prospects
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.WORKDAY_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: recruiting-prospects-rest
+    port: 8080
+    description: REST adapter for Workday Recruiting API — Prospects. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/prospects
+      name: prospects
+      description: REST surface for prospects.
+      operations:
+      - method: GET
+        name: getprospects
+        description: Get Prospects
+        call: recruiting-prospects.getprospects
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: recruiting-prospects-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Workday Recruiting API — Prospects. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-prospects
+      description: Get Prospects
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: recruiting-prospects.getprospects
+      outputParameters:
+      - type: object
+        mapping: $.

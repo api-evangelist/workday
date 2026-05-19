@@ -1,0 +1,134 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Workday Person API — People
+  description: 'Workday Person API — People. 3 operations. Lead operation: Get People. Self-contained Naftiko capability covering
+    one Workday business surface.'
+  tags:
+  - Workday
+  - People
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WORKDAY_API_KEY: WORKDAY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: person-people
+    baseUri: https://wd2-impl-services1.workday.com/ccx/api/person/v1/{tenant}
+    description: Workday Person API — People business capability. Self-contained, no shared references.
+    resources:
+    - name: people
+      path: /people
+      operations:
+      - name: getpeople
+        method: GET
+        description: Get People
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: people-ID
+      path: /people/{ID}
+      operations:
+      - name: getpersonbyid
+        method: GET
+        description: Get Person by Id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: people-ID-personalInformation
+      path: /people/{ID}/personalInformation
+      operations:
+      - name: getpersonalinformation
+        method: GET
+        description: Get Personal Information
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.WORKDAY_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: person-people-rest
+    port: 8080
+    description: REST adapter for Workday Person API — People. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/people
+      name: people
+      description: REST surface for people.
+      operations:
+      - method: GET
+        name: getpeople
+        description: Get People
+        call: person-people.getpeople
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/people/{id}
+      name: people-id
+      description: REST surface for people-ID.
+      operations:
+      - method: GET
+        name: getpersonbyid
+        description: Get Person by Id
+        call: person-people.getpersonbyid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/people/{id}/personalinformation
+      name: people-id-personalinformation
+      description: REST surface for people-ID-personalInformation.
+      operations:
+      - method: GET
+        name: getpersonalinformation
+        description: Get Personal Information
+        call: person-people.getpersonalinformation
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: person-people-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Workday Person API — People. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-people
+      description: Get People
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: person-people.getpeople
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-person-id
+      description: Get Person by Id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: person-people.getpersonbyid
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-personal-information
+      description: Get Personal Information
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: person-people.getpersonalinformation
+      outputParameters:
+      - type: object
+        mapping: $.

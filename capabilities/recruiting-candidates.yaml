@@ -1,0 +1,102 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Workday Recruiting API — Candidates
+  description: 'Workday Recruiting API — Candidates. 2 operations. Lead operation: Get Candidates. Self-contained Naftiko
+    capability covering one Workday business surface.'
+  tags:
+  - Workday
+  - Candidates
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WORKDAY_API_KEY: WORKDAY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: recruiting-candidates
+    baseUri: https://wd2-impl-services1.workday.com/ccx/api/recruiting/v1/{tenant}
+    description: Workday Recruiting API — Candidates business capability. Self-contained, no shared references.
+    resources:
+    - name: candidates
+      path: /candidates
+      operations:
+      - name: getcandidates
+        method: GET
+        description: Get Candidates
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: candidates-ID
+      path: /candidates/{ID}
+      operations:
+      - name: getcandidatebyid
+        method: GET
+        description: Get Candidate by Id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.WORKDAY_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: recruiting-candidates-rest
+    port: 8080
+    description: REST adapter for Workday Recruiting API — Candidates. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/candidates
+      name: candidates
+      description: REST surface for candidates.
+      operations:
+      - method: GET
+        name: getcandidates
+        description: Get Candidates
+        call: recruiting-candidates.getcandidates
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/candidates/{id}
+      name: candidates-id
+      description: REST surface for candidates-ID.
+      operations:
+      - method: GET
+        name: getcandidatebyid
+        description: Get Candidate by Id
+        call: recruiting-candidates.getcandidatebyid
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: recruiting-candidates-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Workday Recruiting API — Candidates. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-candidates
+      description: Get Candidates
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: recruiting-candidates.getcandidates
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-candidate-id
+      description: Get Candidate by Id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: recruiting-candidates.getcandidatebyid
+      outputParameters:
+      - type: object
+        mapping: $.

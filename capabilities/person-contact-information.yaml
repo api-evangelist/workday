@@ -1,0 +1,102 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Workday Person API — Contact Information
+  description: 'Workday Person API — Contact Information. 2 operations. Lead operation: Get Home Contact Information. Self-contained
+    Naftiko capability covering one Workday business surface.'
+  tags:
+  - Workday
+  - Contact Information
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WORKDAY_API_KEY: WORKDAY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: person-contact-information
+    baseUri: https://wd2-impl-services1.workday.com/ccx/api/person/v1/{tenant}
+    description: Workday Person API — Contact Information business capability. Self-contained, no shared references.
+    resources:
+    - name: people-ID-homeContactInformation
+      path: /people/{ID}/homeContactInformation
+      operations:
+      - name: gethomecontactinformation
+        method: GET
+        description: Get Home Contact Information
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: people-ID-workContactInformation
+      path: /people/{ID}/workContactInformation
+      operations:
+      - name: getworkcontactinformation
+        method: GET
+        description: Get Work Contact Information
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.WORKDAY_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: person-contact-information-rest
+    port: 8080
+    description: REST adapter for Workday Person API — Contact Information. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/people/{id}/homecontactinformation
+      name: people-id-homecontactinformation
+      description: REST surface for people-ID-homeContactInformation.
+      operations:
+      - method: GET
+        name: gethomecontactinformation
+        description: Get Home Contact Information
+        call: person-contact-information.gethomecontactinformation
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/people/{id}/workcontactinformation
+      name: people-id-workcontactinformation
+      description: REST surface for people-ID-workContactInformation.
+      operations:
+      - method: GET
+        name: getworkcontactinformation
+        description: Get Work Contact Information
+        call: person-contact-information.getworkcontactinformation
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: person-contact-information-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Workday Person API — Contact Information. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: get-home-contact-information
+      description: Get Home Contact Information
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: person-contact-information.gethomecontactinformation
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-work-contact-information
+      description: Get Work Contact Information
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: person-contact-information.getworkcontactinformation
+      outputParameters:
+      - type: object
+        mapping: $.

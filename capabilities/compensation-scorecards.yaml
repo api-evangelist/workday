@@ -1,0 +1,134 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Workday Compensation API — Scorecards
+  description: 'Workday Compensation API — Scorecards. 3 operations. Lead operation: Get Compensation Scorecards. Self-contained
+    Naftiko capability covering one Workday business surface.'
+  tags:
+  - Workday
+  - Scorecards
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WORKDAY_API_KEY: WORKDAY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: compensation-scorecards
+    baseUri: https://wd2-impl-services1.workday.com/ccx/api/compensation/v1/{tenant}
+    description: Workday Compensation API — Scorecards business capability. Self-contained, no shared references.
+    resources:
+    - name: compensationScorecards
+      path: /compensationScorecards
+      operations:
+      - name: getcompensationscorecards
+        method: GET
+        description: Get Compensation Scorecards
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: compensationScorecards-ID
+      path: /compensationScorecards/{ID}
+      operations:
+      - name: getcompensationscorecardbyid
+        method: GET
+        description: Get Compensation Scorecard by Id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: compensationScorecards-ID-results
+      path: /compensationScorecards/{ID}/results
+      operations:
+      - name: getcompensationscorecardresults
+        method: GET
+        description: Get Compensation Scorecard Results
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.WORKDAY_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: compensation-scorecards-rest
+    port: 8080
+    description: REST adapter for Workday Compensation API — Scorecards. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/compensationscorecards
+      name: compensationscorecards
+      description: REST surface for compensationScorecards.
+      operations:
+      - method: GET
+        name: getcompensationscorecards
+        description: Get Compensation Scorecards
+        call: compensation-scorecards.getcompensationscorecards
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/compensationscorecards/{id}
+      name: compensationscorecards-id
+      description: REST surface for compensationScorecards-ID.
+      operations:
+      - method: GET
+        name: getcompensationscorecardbyid
+        description: Get Compensation Scorecard by Id
+        call: compensation-scorecards.getcompensationscorecardbyid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/compensationscorecards/{id}/results
+      name: compensationscorecards-id-results
+      description: REST surface for compensationScorecards-ID-results.
+      operations:
+      - method: GET
+        name: getcompensationscorecardresults
+        description: Get Compensation Scorecard Results
+        call: compensation-scorecards.getcompensationscorecardresults
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: compensation-scorecards-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Workday Compensation API — Scorecards. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-compensation-scorecards
+      description: Get Compensation Scorecards
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: compensation-scorecards.getcompensationscorecards
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-compensation-scorecard-id
+      description: Get Compensation Scorecard by Id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: compensation-scorecards.getcompensationscorecardbyid
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-compensation-scorecard-results
+      description: Get Compensation Scorecard Results
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: compensation-scorecards.getcompensationscorecardresults
+      outputParameters:
+      - type: object
+        mapping: $.

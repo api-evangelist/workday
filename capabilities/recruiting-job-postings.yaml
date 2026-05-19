@@ -1,0 +1,102 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Workday Recruiting API — Job Postings
+  description: 'Workday Recruiting API — Job Postings. 2 operations. Lead operation: Get Job Postings. Self-contained Naftiko
+    capability covering one Workday business surface.'
+  tags:
+  - Workday
+  - Job Postings
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WORKDAY_API_KEY: WORKDAY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: recruiting-job-postings
+    baseUri: https://wd2-impl-services1.workday.com/ccx/api/recruiting/v1/{tenant}
+    description: Workday Recruiting API — Job Postings business capability. Self-contained, no shared references.
+    resources:
+    - name: jobPostings
+      path: /jobPostings
+      operations:
+      - name: getjobpostings
+        method: GET
+        description: Get Job Postings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: jobPostings-ID
+      path: /jobPostings/{ID}
+      operations:
+      - name: getjobpostingbyid
+        method: GET
+        description: Get Job Posting by Id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.WORKDAY_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: recruiting-job-postings-rest
+    port: 8080
+    description: REST adapter for Workday Recruiting API — Job Postings. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/jobpostings
+      name: jobpostings
+      description: REST surface for jobPostings.
+      operations:
+      - method: GET
+        name: getjobpostings
+        description: Get Job Postings
+        call: recruiting-job-postings.getjobpostings
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/jobpostings/{id}
+      name: jobpostings-id
+      description: REST surface for jobPostings-ID.
+      operations:
+      - method: GET
+        name: getjobpostingbyid
+        description: Get Job Posting by Id
+        call: recruiting-job-postings.getjobpostingbyid
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: recruiting-job-postings-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Workday Recruiting API — Job Postings. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-job-postings
+      description: Get Job Postings
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: recruiting-job-postings.getjobpostings
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-job-posting-id
+      description: Get Job Posting by Id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: recruiting-job-postings.getjobpostingbyid
+      outputParameters:
+      - type: object
+        mapping: $.
