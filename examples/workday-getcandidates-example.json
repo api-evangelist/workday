@@ -1,0 +1,29 @@
+{
+  "operationId": "getCandidates",
+  "method": "GET",
+  "path": "/candidates",
+  "summary": "Get Candidates",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getcandidates200Example",
+      "example": {
+        "data": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "name": "Example Title",
+            "email": "user@example.com",
+            "phone": "example_value",
+            "attachments": [
+              {}
+            ]
+          }
+        ],
+        "total": 10
+      }
+    }
+  ]
+}

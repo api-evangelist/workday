@@ -1,0 +1,25 @@
+{
+  "operationId": "getLanguages",
+  "method": "GET",
+  "path": "/languages",
+  "summary": "Get Languages",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getlanguages200Example",
+      "example": {
+        "data": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "languageCode": "example_value",
+            "name": "Example Title"
+          }
+        ],
+        "total": 10
+      }
+    }
+  ]
+}

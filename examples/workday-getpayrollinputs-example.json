@@ -1,0 +1,28 @@
+{
+  "operationId": "getPayrollInputs",
+  "method": "GET",
+  "path": "/workers/{ID}/payrollInputs",
+  "summary": "Get Payroll Inputs",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getpayrollinputs200Example",
+      "example": {
+        "data": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "inputType": "example_value",
+            "amount": 42.5,
+            "startDate": "2026-01-15",
+            "endDate": "2026-01-15",
+            "comment": "example_value"
+          }
+        ],
+        "total": 10
+      }
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "operationId": "getPurchaseOrders",
+  "method": "GET",
+  "path": "/purchaseOrders",
+  "summary": "Get Purchase Orders",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getpurchaseorders200Example",
+      "example": {
+        "data": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "purchaseOrderNumber": "example_value",
+            "orderDate": "2026-01-15",
+            "totalAmount": 42.5,
+            "status": "example_value"
+          }
+        ],
+        "total": 10
+      }
+    }
+  ]
+}

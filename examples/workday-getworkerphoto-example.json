@@ -1,0 +1,15 @@
+{
+  "operationId": "getWorkerPhoto",
+  "method": "GET",
+  "path": "/workers/{ID}/photos",
+  "summary": "Get Worker Photo",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "image/png",
+      "name": "Getworkerphoto200Example",
+      "example": "example_value"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "operationId": "getJobApplicationById",
+  "method": "GET",
+  "path": "/jobApplications/{ID}",
+  "summary": "Get Job Application by Id",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getjobapplicationbyid200Example",
+      "example": {
+        "id": "abc123",
+        "descriptor": "example_value",
+        "candidate": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "jobRequisition": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "status": "example_value",
+        "stage": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "appliedOn": "2026-01-15T10:30:00Z",
+        "hiredOn": "2026-01-15T10:30:00Z"
+      }
+    }
+  ]
+}

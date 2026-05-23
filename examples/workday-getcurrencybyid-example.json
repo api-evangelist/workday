@@ -1,0 +1,21 @@
+{
+  "operationId": "getCurrencyById",
+  "method": "GET",
+  "path": "/currencies/{ID}",
+  "summary": "Get Currency by Id",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getcurrencybyid200Example",
+      "example": {
+        "id": "abc123",
+        "descriptor": "example_value",
+        "currencyCode": "example_value",
+        "name": "Example Title",
+        "numericCode": "example_value"
+      }
+    }
+  ]
+}

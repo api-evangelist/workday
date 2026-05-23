@@ -1,0 +1,51 @@
+{
+  "operationId": "requestLeaveOfAbsence",
+  "method": "POST",
+  "path": "/workers/{ID}/requestLeaveOfAbsence",
+  "summary": "Request Leave of Absence",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "RequestleaveofabsenceRequestExample",
+      "example": {
+        "leaveType": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "firstDayOfLeave": "2026-01-15",
+        "estimatedLastDayOfLeave": "2026-01-15",
+        "lastDayOfWork": "2026-01-15",
+        "firstDayBackAtWork": "2026-01-15",
+        "reason": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "comment": "example_value"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "201",
+      "contentType": "application/json",
+      "name": "Requestleaveofabsence201Example",
+      "example": {
+        "id": "abc123",
+        "descriptor": "example_value",
+        "leaveType": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "startDate": "2026-01-15",
+        "estimatedEndDate": "2026-01-15",
+        "actualEndDate": "2026-01-15",
+        "status": "example_value",
+        "lastDayOfWork": "2026-01-15",
+        "firstDayOfWork": "2026-01-15"
+      }
+    }
+  ]
+}

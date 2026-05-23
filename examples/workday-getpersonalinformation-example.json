@@ -1,0 +1,61 @@
+{
+  "operationId": "getPersonalInformation",
+  "method": "GET",
+  "path": "/people/{ID}/personalInformation",
+  "summary": "Get Personal Information",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getpersonalinformation200Example",
+      "example": {
+        "id": "abc123",
+        "legalName": {
+          "firstName": "example_value",
+          "middleName": "example_value",
+          "lastName": "example_value",
+          "fullName": "example_value",
+          "prefix": "example_value",
+          "suffix": "example_value"
+        },
+        "preferredName": {
+          "firstName": "example_value",
+          "middleName": "example_value",
+          "lastName": "example_value",
+          "fullName": "example_value",
+          "prefix": "example_value",
+          "suffix": "example_value"
+        },
+        "dateOfBirth": "2026-01-15",
+        "gender": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "maritalStatus": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "ethnicity": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "militaryStatus": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "disability": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "href": "https://www.example.com"
+          }
+        ]
+      }
+    }
+  ]
+}

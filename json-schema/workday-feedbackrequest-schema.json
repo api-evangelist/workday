@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FeedbackRequest",
+  "title": "FeedbackRequest",
+  "type": "object",
+  "properties": {
+    "respondents": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ResourceReference"
+      },
+      "example": []
+    },
+    "questions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "example": []
+    },
+    "dueDate": {
+      "type": "string",
+      "format": "date",
+      "example": "2026-01-15"
+    }
+  },
+  "required": [
+    "respondents"
+  ]
+}

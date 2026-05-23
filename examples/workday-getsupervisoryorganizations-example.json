@@ -1,0 +1,27 @@
+{
+  "operationId": "getSupervisoryOrganizations",
+  "method": "GET",
+  "path": "/supervisoryOrganizations",
+  "summary": "Get Supervisory Organizations",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getsupervisoryorganizations200Example",
+      "example": {
+        "data": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "name": "Example Title",
+            "code": "example_value",
+            "isInactive": true,
+            "staffingModel": "example_value"
+          }
+        ],
+        "total": 10
+      }
+    }
+  ]
+}

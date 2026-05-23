@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DataChangeTaskActivity",
+  "title": "DataChangeTaskActivity",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "abc123"
+    },
+    "descriptor": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "activityType": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "status": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "startedOn": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "completedOn": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "rowsProcessed": {
+      "type": "integer",
+      "example": 10
+    },
+    "rowsFailed": {
+      "type": "integer",
+      "example": 10
+    }
+  }
+}

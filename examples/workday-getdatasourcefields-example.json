@@ -1,0 +1,29 @@
+{
+  "operationId": "getDataSourceFields",
+  "method": "GET",
+  "path": "/dataSources/{ID}/fields",
+  "summary": "Get Data Source Fields",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getdatasourcefields200Example",
+      "example": {
+        "data": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "alias": "example_value",
+            "columnName": "example_value",
+            "type": "example_value",
+            "isRequired": true,
+            "isSortable": true,
+            "isFilterable": true
+          }
+        ],
+        "total": 10
+      }
+    }
+  ]
+}

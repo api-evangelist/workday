@@ -1,0 +1,24 @@
+{
+  "operationId": "getOrganizationAssignments",
+  "method": "GET",
+  "path": "/workers/{ID}/organizationAssignments",
+  "summary": "Get Organization Assignments",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getorganizationassignments200Example",
+      "example": {
+        "data": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "isPrimary": true
+          }
+        ],
+        "total": 10
+      }
+    }
+  ]
+}

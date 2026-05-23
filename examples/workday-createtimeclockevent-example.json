@@ -1,0 +1,40 @@
+{
+  "operationId": "createTimeClockEvent",
+  "method": "POST",
+  "path": "/workers/{ID}/timeClockEvents",
+  "summary": "Create Time Clock Event",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "CreatetimeclockeventRequestExample",
+      "example": {
+        "clockEventType": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "clockEventTime": "2026-01-15T10:30:00Z",
+        "timeZone": "example_value"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "201",
+      "contentType": "application/json",
+      "name": "Createtimeclockevent201Example",
+      "example": {
+        "id": "abc123",
+        "descriptor": "example_value",
+        "clockEventType": "example_value",
+        "clockEventTime": "2026-01-15T10:30:00Z",
+        "timeZone": "example_value",
+        "location": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        }
+      }
+    }
+  ]
+}

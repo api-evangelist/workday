@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OrganizationAssignment",
+  "title": "OrganizationAssignment",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "abc123"
+    },
+    "descriptor": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "organizationType": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "organization": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "isPrimary": {
+      "type": "boolean",
+      "description": "Whether this is the primary organization assignment.",
+      "example": true
+    }
+  }
+}

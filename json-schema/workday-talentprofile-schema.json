@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TalentProfile",
+  "title": "TalentProfile",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "abc123"
+    },
+    "descriptor": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "worker": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "jobHistory": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/JobHistoryEntry"
+      },
+      "example": []
+    },
+    "education": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/EducationEntry"
+      },
+      "example": []
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Skill"
+      },
+      "example": []
+    },
+    "certifications": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Certification"
+      },
+      "example": []
+    },
+    "languages": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Language"
+      },
+      "example": []
+    },
+    "careerInterests": {
+      "type": "string",
+      "example": "example_value"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "operationId": "getDataChangeTaskById",
+  "method": "GET",
+  "path": "/dataChangeTasks/{ID}",
+  "summary": "Get Data Change Task by Id",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getdatachangetaskbyid200Example",
+      "example": {
+        "id": "abc123",
+        "descriptor": "example_value",
+        "name": "Example Title",
+        "targetDataset": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "status": {
+          "id": "abc123",
+          "descriptor": "example_value"
+        },
+        "operation": {
+          "id": "abc123",
+          "descriptor": "example_value"
+        },
+        "fileContainer": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "createdOn": "2026-01-15T10:30:00Z",
+        "completedOn": "2026-01-15T10:30:00Z"
+      }
+    }
+  ]
+}

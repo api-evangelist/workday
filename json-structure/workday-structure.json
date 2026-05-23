@@ -1,0 +1,202 @@
+{
+  "provider": "Workday",
+  "providerId": "workday",
+  "kind": "json-structure",
+  "description": "Structural overview of the Workday API surface; extracted from openapi/.",
+  "schemaCount": 11,
+  "operationCount": 13,
+  "schemas": [
+    {
+      "name": "Dataset",
+      "type": "object",
+      "propertyCount": 10,
+      "required": []
+    },
+    {
+      "name": "DatasetField",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "DatasetCreateRequest",
+      "type": "object",
+      "propertyCount": 5,
+      "required": [
+        "name",
+        "fields"
+      ]
+    },
+    {
+      "name": "DatasetUpdateRequest",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "DataChangeTask",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "DataChangeTaskCreateRequest",
+      "type": "object",
+      "propertyCount": 4,
+      "required": [
+        "name",
+        "targetDataset",
+        "operation"
+      ]
+    },
+    {
+      "name": "DataChangeTaskActivity",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "FileContainer",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "Table",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "ResourceReference",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "ErrorResponse",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/datasets",
+      "operationId": "getDatasets",
+      "summary": "Get Datasets",
+      "tags": [
+        "Datasets"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/datasets",
+      "operationId": "createDataset",
+      "summary": "Create Dataset",
+      "tags": [
+        "Datasets"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/datasets/{ID}",
+      "operationId": "getDatasetById",
+      "summary": "Get Dataset by Id",
+      "tags": [
+        "Datasets"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/datasets/{ID}",
+      "operationId": "updateDataset",
+      "summary": "Update Dataset",
+      "tags": [
+        "Datasets"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/datasets/{ID}",
+      "operationId": "deleteDataset",
+      "summary": "Delete Dataset",
+      "tags": [
+        "Datasets"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/dataChangeTasks",
+      "operationId": "getDataChangeTasks",
+      "summary": "Get Data Change Tasks",
+      "tags": [
+        "Data Change Tasks"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/dataChangeTasks",
+      "operationId": "createDataChangeTask",
+      "summary": "Create Data Change Task",
+      "tags": [
+        "Data Change Tasks"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/dataChangeTasks/{ID}",
+      "operationId": "getDataChangeTaskById",
+      "summary": "Get Data Change Task by Id",
+      "tags": [
+        "Data Change Tasks"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/dataChangeTasks/{ID}/activities",
+      "operationId": "getDataChangeTaskActivities",
+      "summary": "Get Data Change Task Activities",
+      "tags": [
+        "Data Change Tasks"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/fileContainers",
+      "operationId": "createFileContainer",
+      "summary": "Create File Container",
+      "tags": [
+        "File Containers"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/fileContainers/{ID}",
+      "operationId": "getFileContainerById",
+      "summary": "Get File Container by Id",
+      "tags": [
+        "File Containers"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/tables",
+      "operationId": "getTables",
+      "summary": "Get Tables",
+      "tags": [
+        "Tables"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/tables/{ID}",
+      "operationId": "getTableById",
+      "summary": "Get Table by Id",
+      "tags": [
+        "Tables"
+      ]
+    }
+  ]
+}

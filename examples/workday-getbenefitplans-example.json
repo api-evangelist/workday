@@ -1,0 +1,26 @@
+{
+  "operationId": "getBenefitPlans",
+  "method": "GET",
+  "path": "/benefitPlans",
+  "summary": "Get Benefit Plans",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getbenefitplans200Example",
+      "example": {
+        "data": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "name": "Example Title",
+            "benefitPlanType": "example_value",
+            "isActive": true
+          }
+        ],
+        "total": 10
+      }
+    }
+  ]
+}

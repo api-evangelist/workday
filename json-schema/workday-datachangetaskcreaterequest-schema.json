@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DataChangeTaskCreateRequest",
+  "title": "DataChangeTaskCreateRequest",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name for the data change task.",
+      "example": "Example Title"
+    },
+    "targetDataset": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "operation": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The operation type identifier (FullReplace or Append)."
+        }
+      },
+      "example": "example_value"
+    },
+    "fileContainer": {
+      "$ref": "#/components/schemas/ResourceReference"
+    }
+  },
+  "required": [
+    "name",
+    "targetDataset",
+    "operation"
+  ]
+}

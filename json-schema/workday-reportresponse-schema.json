@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ReportResponse",
+  "title": "ReportResponse",
+  "type": "object",
+  "properties": {
+    "Report_Entry": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "description": "A report row with column names as keys. The actual fields depend on the report definition."
+      },
+      "description": "The array of report data rows.",
+      "example": []
+    }
+  },
+  "description": "The report response containing an array of report entries. Column names correspond to the report field definitions."
+}

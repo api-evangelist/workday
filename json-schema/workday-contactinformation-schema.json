@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ContactInformation",
+  "title": "ContactInformation",
+  "type": "object",
+  "properties": {
+    "emails": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "emailAddress": {
+            "type": "string",
+            "format": "email"
+          },
+          "type": {
+            "$ref": "#/components/schemas/ResourceReference"
+          },
+          "isPrimary": {
+            "type": "boolean"
+          }
+        }
+      },
+      "example": "user@example.com"
+    },
+    "phones": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "phoneNumber": {
+            "type": "string"
+          },
+          "type": {
+            "$ref": "#/components/schemas/ResourceReference"
+          },
+          "isPrimary": {
+            "type": "boolean"
+          },
+          "countryCode": {
+            "type": "string"
+          }
+        }
+      },
+      "example": []
+    },
+    "addresses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "addressLine1": {
+            "type": "string"
+          },
+          "addressLine2": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "stateProvince": {
+            "$ref": "#/components/schemas/ResourceReference"
+          },
+          "postalCode": {
+            "type": "string"
+          },
+          "country": {
+            "$ref": "#/components/schemas/ResourceReference"
+          },
+          "type": {
+            "$ref": "#/components/schemas/ResourceReference"
+          },
+          "isPrimary": {
+            "type": "boolean"
+          }
+        }
+      },
+      "example": []
+    }
+  }
+}

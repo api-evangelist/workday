@@ -1,0 +1,28 @@
+{
+  "operationId": "getAccountingJournals",
+  "method": "GET",
+  "path": "/accountingJournals",
+  "summary": "Get Accounting Journals",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getaccountingjournals200Example",
+      "example": {
+        "data": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "journalNumber": "example_value",
+            "accountingDate": "2026-01-15",
+            "status": "example_value",
+            "totalDebitAmount": 42.5,
+            "totalCreditAmount": 42.5
+          }
+        ],
+        "total": 10
+      }
+    }
+  ]
+}

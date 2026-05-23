@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PurchaseOrder",
+  "title": "PurchaseOrder",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "abc123"
+    },
+    "descriptor": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "purchaseOrderNumber": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "supplier": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "orderDate": {
+      "type": "string",
+      "format": "date",
+      "example": "2026-01-15"
+    },
+    "totalAmount": {
+      "type": "number",
+      "format": "double",
+      "example": 42.5
+    },
+    "currency": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "status": {
+      "type": "string",
+      "example": "example_value"
+    }
+  }
+}

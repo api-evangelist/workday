@@ -1,0 +1,13 @@
+name: Workday Domain Vocabulary
+provider: Workday
+providerId: workday
+description: Tag-derived vocabulary for the Workday API surface; sourced from openapi/ tags.
+terms:
+- term: Datasets
+  description: Endpoints for managing Prism Analytics datasets.
+- term: Data Change Tasks
+  description: Endpoints for managing data loading tasks.
+- term: File Containers
+  description: Endpoints for file upload containers.
+- term: Tables
+  description: Endpoints for managing Prism Analytics tables.

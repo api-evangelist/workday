@@ -1,0 +1,28 @@
+{
+  "operationId": "getDataSources",
+  "method": "GET",
+  "path": "/dataSources",
+  "summary": "Get Data Sources",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getdatasources200Example",
+      "example": {
+        "data": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "name": "Example Title",
+            "pluralName": "example_value",
+            "fields": [
+              {}
+            ]
+          }
+        ],
+        "total": 10
+      }
+    }
+  ]
+}

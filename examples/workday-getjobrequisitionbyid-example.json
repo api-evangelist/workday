@@ -1,0 +1,49 @@
+{
+  "operationId": "getJobRequisitionById",
+  "method": "GET",
+  "path": "/jobRequisitions/{ID}",
+  "summary": "Get Job Requisition by Id",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getjobrequisitionbyid200Example",
+      "example": {
+        "id": "abc123",
+        "descriptor": "example_value",
+        "requisitionNumber": "example_value",
+        "jobTitle": "example_value",
+        "jobProfile": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "supervisoryOrganization": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "hiringManager": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "recruiter": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "status": "example_value",
+        "numberOfOpenings": 10,
+        "createdOn": "2026-01-15T10:30:00Z",
+        "targetHireDate": "2026-01-15",
+        "location": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DatasetField",
+  "title": "DatasetField",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The field name.",
+      "example": "Example Title"
+    },
+    "displayName": {
+      "type": "string",
+      "description": "The display name of the field.",
+      "example": "example_value"
+    },
+    "ordinal": {
+      "type": "integer",
+      "description": "The ordinal position of the field.",
+      "example": 10
+    },
+    "type": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "descriptor": {
+          "type": "string"
+        }
+      },
+      "description": "The data type of the field.",
+      "example": "example_value"
+    },
+    "required": {
+      "type": "boolean",
+      "example": true
+    },
+    "externalId": {
+      "type": "string",
+      "example": "500123"
+    }
+  }
+}

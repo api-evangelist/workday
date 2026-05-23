@@ -1,0 +1,31 @@
+{
+  "operationId": "getTables",
+  "method": "GET",
+  "path": "/tables",
+  "summary": "Get Tables",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Gettables200Example",
+      "example": {
+        "data": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "name": "Example Title",
+            "displayName": "example_value",
+            "description": "A sample description.",
+            "fields": [
+              {}
+            ],
+            "isAccessible": true,
+            "documentCount": 10
+          }
+        ],
+        "total": 10
+      }
+    }
+  ]
+}

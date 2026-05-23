@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/JobChange",
+  "title": "JobChange",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "abc123"
+    },
+    "descriptor": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "effectiveDate": {
+      "type": "string",
+      "format": "date",
+      "example": "2026-01-15"
+    },
+    "worker": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "reason": {
+      "$ref": "#/components/schemas/ResourceReference"
+    }
+  }
+}

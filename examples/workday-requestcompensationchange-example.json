@@ -1,0 +1,54 @@
+{
+  "operationId": "requestCompensationChange",
+  "method": "POST",
+  "path": "/workers/{ID}/requestCompensationChange",
+  "summary": "Request Compensation Change",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "RequestcompensationchangeRequestExample",
+      "example": {
+        "effectiveDate": "2026-01-15",
+        "reason": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "proposedCompensation": {
+          "amount": 42.5,
+          "currency": {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "href": "https://www.example.com"
+          },
+          "frequency": {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "href": "https://www.example.com"
+          },
+          "compensationGrade": {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "href": "https://www.example.com"
+          },
+          "compensationStep": {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "href": "https://www.example.com"
+          }
+        }
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "201",
+      "contentType": "application/json",
+      "name": "Requestcompensationchange201Example",
+      "example": {
+        "id": "abc123",
+        "descriptor": "example_value"
+      }
+    }
+  ]
+}

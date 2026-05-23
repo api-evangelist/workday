@@ -1,0 +1,33 @@
+{
+  "operationId": "getTableById",
+  "method": "GET",
+  "path": "/tables/{ID}",
+  "summary": "Get Table by Id",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Gettablebyid200Example",
+      "example": {
+        "id": "abc123",
+        "descriptor": "example_value",
+        "name": "Example Title",
+        "displayName": "example_value",
+        "description": "A sample description.",
+        "fields": [
+          {
+            "name": "Example Title",
+            "displayName": "example_value",
+            "ordinal": 10,
+            "type": {},
+            "required": true,
+            "externalId": "500123"
+          }
+        ],
+        "isAccessible": true,
+        "documentCount": 10
+      }
+    }
+  ]
+}

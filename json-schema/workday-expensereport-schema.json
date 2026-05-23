@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ExpenseReport",
+  "title": "ExpenseReport",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "abc123"
+    },
+    "descriptor": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "worker": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "createdDate": {
+      "type": "string",
+      "format": "date",
+      "example": "2026-01-15"
+    },
+    "totalAmount": {
+      "type": "number",
+      "format": "double",
+      "example": 42.5
+    },
+    "currency": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "status": {
+      "type": "string",
+      "description": "Status of the report (e.g., Draft, Submitted, Approved, Paid).",
+      "example": "example_value"
+    },
+    "memo": {
+      "type": "string",
+      "example": "example_value"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "operationId": "getEligibleBenefitPlans",
+  "method": "GET",
+  "path": "/workers/{ID}/eligibleBenefitPlans",
+  "summary": "Get Eligible Benefit Plans",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Geteligiblebenefitplans200Example",
+      "example": {
+        "data": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "name": "Example Title",
+            "benefitPlanType": "example_value",
+            "isActive": true
+          }
+        ],
+        "total": 10
+      }
+    }
+  ]
+}

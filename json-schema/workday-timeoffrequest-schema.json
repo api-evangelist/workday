@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TimeOffRequest",
+  "title": "TimeOffRequest",
+  "type": "object",
+  "properties": {
+    "days": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date",
+            "description": "The date for time off."
+          },
+          "dailyQuantity": {
+            "type": "number",
+            "format": "double",
+            "description": "The quantity of time off for the day."
+          },
+          "comment": {
+            "type": "string",
+            "description": "A comment for the time-off day."
+          },
+          "timeOffType": {
+            "$ref": "#/components/schemas/ResourceReference"
+          }
+        }
+      },
+      "description": "The list of days included in the time-off request.",
+      "example": []
+    }
+  },
+  "required": [
+    "days"
+  ]
+}

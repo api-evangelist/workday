@@ -1,0 +1,42 @@
+{
+  "operationId": "requestOneTimePayment",
+  "method": "POST",
+  "path": "/workers/{ID}/requestOneTimePayment",
+  "summary": "Request One-time Payment",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "RequestonetimepaymentRequestExample",
+      "example": {
+        "effectiveDate": "2026-01-15",
+        "reason": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "currency": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "amount": 42.5,
+        "payComponent": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        }
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "201",
+      "contentType": "application/json",
+      "name": "Requestonetimepayment201Example",
+      "example": {
+        "id": "abc123",
+        "descriptor": "example_value"
+      }
+    }
+  ]
+}

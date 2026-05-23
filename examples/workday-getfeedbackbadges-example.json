@@ -1,0 +1,25 @@
+{
+  "operationId": "getFeedbackBadges",
+  "method": "GET",
+  "path": "/workers/{ID}/feedbackBadges",
+  "summary": "Get Feedback Badges",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getfeedbackbadges200Example",
+      "example": {
+        "data": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "comment": "example_value",
+            "givenDate": "2026-01-15T10:30:00Z"
+          }
+        ],
+        "total": 10
+      }
+    }
+  ]
+}

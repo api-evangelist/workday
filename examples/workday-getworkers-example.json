@@ -1,0 +1,28 @@
+{
+  "operationId": "getWorkers",
+  "method": "GET",
+  "path": "/workers",
+  "summary": "Get Workers",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getworkers200Example",
+      "example": {
+        "data": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "href": "https://www.example.com",
+            "primaryWorkEmail": "user@example.com",
+            "primaryWorkPhone": "example_value",
+            "isPrimaryJob": true,
+            "businessTitle": "example_value"
+          }
+        ],
+        "total": 10
+      }
+    }
+  ]
+}

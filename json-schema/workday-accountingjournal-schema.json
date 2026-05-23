@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AccountingJournal",
+  "title": "AccountingJournal",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "abc123"
+    },
+    "descriptor": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "journalNumber": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "company": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "accountingDate": {
+      "type": "string",
+      "format": "date",
+      "example": "2026-01-15"
+    },
+    "status": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "journalSource": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "totalDebitAmount": {
+      "type": "number",
+      "format": "double",
+      "example": 42.5
+    },
+    "totalCreditAmount": {
+      "type": "number",
+      "format": "double",
+      "example": 42.5
+    },
+    "currency": {
+      "$ref": "#/components/schemas/ResourceReference"
+    }
+  }
+}

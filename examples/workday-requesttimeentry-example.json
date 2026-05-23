@@ -1,0 +1,52 @@
+{
+  "operationId": "requestTimeEntry",
+  "method": "POST",
+  "path": "/workers/{ID}/requestTimeEntry",
+  "summary": "Request Time Entry",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "RequesttimeentryRequestExample",
+      "example": {
+        "date": "2026-01-15",
+        "hours": 42.5,
+        "timeEntryCode": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "worktag": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "comment": "example_value"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "201",
+      "contentType": "application/json",
+      "name": "Requesttimeentry201Example",
+      "example": {
+        "id": "abc123",
+        "descriptor": "example_value",
+        "date": "2026-01-15",
+        "hours": 42.5,
+        "timeEntryCode": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "worktag": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "comment": "example_value",
+        "status": "example_value"
+      }
+    }
+  ]
+}

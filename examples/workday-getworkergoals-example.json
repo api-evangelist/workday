@@ -1,0 +1,29 @@
+{
+  "operationId": "getWorkerGoals",
+  "method": "GET",
+  "path": "/workers/{ID}/goals",
+  "summary": "Get Worker Goals",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getworkergoals200Example",
+      "example": {
+        "data": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "name": "Example Title",
+            "description": "A sample description.",
+            "status": "example_value",
+            "dueDate": "2026-01-15",
+            "completionDate": "2026-01-15",
+            "weight": 42.5
+          }
+        ],
+        "total": 10
+      }
+    }
+  ]
+}

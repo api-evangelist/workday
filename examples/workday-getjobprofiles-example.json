@@ -1,0 +1,27 @@
+{
+  "operationId": "getJobProfiles",
+  "method": "GET",
+  "path": "/jobProfiles",
+  "summary": "Get Job Profiles",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getjobprofiles200Example",
+      "example": {
+        "data": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "jobProfileName": "example_value",
+            "isInactive": true,
+            "jobCode": "example_value",
+            "summary": "example_value"
+          }
+        ],
+        "total": 10
+      }
+    }
+  ]
+}

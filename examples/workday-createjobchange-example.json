@@ -1,0 +1,58 @@
+{
+  "operationId": "createJobChange",
+  "method": "POST",
+  "path": "/workers/{ID}/jobChanges",
+  "summary": "Create Job Change",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "CreatejobchangeRequestExample",
+      "example": {
+        "effectiveDate": "2026-01-15",
+        "reason": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "proposedPosition": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "proposedLocation": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "proposedBusinessTitle": "example_value",
+        "proposedJobProfile": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        }
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "201",
+      "contentType": "application/json",
+      "name": "Createjobchange201Example",
+      "example": {
+        "id": "abc123",
+        "descriptor": "example_value",
+        "effectiveDate": "2026-01-15",
+        "worker": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "reason": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        }
+      }
+    }
+  ]
+}

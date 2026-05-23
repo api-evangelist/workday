@@ -1,0 +1,28 @@
+{
+  "operationId": "getCompensationGrades",
+  "method": "GET",
+  "path": "/compensationGrades",
+  "summary": "Get Compensation Grades",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getcompensationgrades200Example",
+      "example": {
+        "data": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "name": "Example Title",
+            "isInactive": true,
+            "minimumAmount": 42.5,
+            "midpointAmount": 42.5,
+            "maximumAmount": 42.5
+          }
+        ],
+        "total": 10
+      }
+    }
+  ]
+}

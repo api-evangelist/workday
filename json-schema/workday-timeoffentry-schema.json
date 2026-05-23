@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TimeOffEntry",
+  "title": "TimeOffEntry",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The Workday ID of the time-off entry.",
+      "example": "abc123"
+    },
+    "descriptor": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "description": "The date of the time off.",
+      "example": "2026-01-15"
+    },
+    "dailyQuantity": {
+      "type": "number",
+      "format": "double",
+      "description": "The quantity of time off taken.",
+      "example": 42.5
+    },
+    "unit": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "timeOffType": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "status": {
+      "type": "string",
+      "description": "The status of the time-off entry.",
+      "example": "example_value"
+    }
+  }
+}

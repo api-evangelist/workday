@@ -1,0 +1,24 @@
+{
+  "operationId": "getWorkerSkills",
+  "method": "GET",
+  "path": "/workers/{ID}/skills",
+  "summary": "Get Worker Skills",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getworkerskills200Example",
+      "example": {
+        "data": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "name": "Example Title"
+          }
+        ],
+        "total": 10
+      }
+    }
+  ]
+}

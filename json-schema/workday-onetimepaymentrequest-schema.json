@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OneTimePaymentRequest",
+  "title": "OneTimePaymentRequest",
+  "type": "object",
+  "properties": {
+    "effectiveDate": {
+      "type": "string",
+      "format": "date",
+      "example": "2026-01-15"
+    },
+    "reason": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "currency": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "amount": {
+      "type": "number",
+      "format": "double",
+      "example": 42.5
+    },
+    "payComponent": {
+      "$ref": "#/components/schemas/ResourceReference"
+    }
+  },
+  "required": [
+    "effectiveDate",
+    "amount"
+  ]
+}

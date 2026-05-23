@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PayGroupDetail",
+  "title": "PayGroupDetail",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "abc123"
+    },
+    "descriptor": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "payPeriodStartDate": {
+      "type": "string",
+      "format": "date",
+      "example": "2026-01-15"
+    },
+    "payPeriodEndDate": {
+      "type": "string",
+      "format": "date",
+      "example": "2026-01-15"
+    },
+    "payDate": {
+      "type": "string",
+      "format": "date",
+      "example": "2026-01-15"
+    },
+    "payRunStatus": {
+      "type": "string",
+      "example": "example_value"
+    }
+  }
+}

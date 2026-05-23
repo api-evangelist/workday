@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DataSourceField",
+  "title": "DataSourceField",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "abc123"
+    },
+    "descriptor": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "alias": {
+      "type": "string",
+      "description": "The alias used to reference this field in WQL queries.",
+      "example": "example_value"
+    },
+    "columnName": {
+      "type": "string",
+      "description": "The column name for the field.",
+      "example": "example_value"
+    },
+    "type": {
+      "type": "string",
+      "description": "The data type of the field (e.g., Text, Numeric, Date, Boolean).",
+      "example": "example_value"
+    },
+    "isRequired": {
+      "type": "boolean",
+      "example": true
+    },
+    "isSortable": {
+      "type": "boolean",
+      "example": true
+    },
+    "isFilterable": {
+      "type": "boolean",
+      "example": true
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "operationId": "getSuppliers",
+  "method": "GET",
+  "path": "/suppliers",
+  "summary": "Get Suppliers",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getsuppliers200Example",
+      "example": {
+        "data": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "supplierName": "example_value",
+            "supplierID": "500123",
+            "taxID": "500123",
+            "isActive": true,
+            "address": {
+              "addressLine1": "example_value",
+              "city": "example_value",
+              "postalCode": "example_value"
+            }
+          }
+        ],
+        "total": 10
+      }
+    }
+  ]
+}

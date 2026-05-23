@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LeaveOfAbsenceRequest",
+  "title": "LeaveOfAbsenceRequest",
+  "type": "object",
+  "properties": {
+    "leaveType": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "firstDayOfLeave": {
+      "type": "string",
+      "format": "date",
+      "example": "2026-01-15"
+    },
+    "estimatedLastDayOfLeave": {
+      "type": "string",
+      "format": "date",
+      "example": "2026-01-15"
+    },
+    "lastDayOfWork": {
+      "type": "string",
+      "format": "date",
+      "example": "2026-01-15"
+    },
+    "firstDayBackAtWork": {
+      "type": "string",
+      "format": "date",
+      "example": "2026-01-15"
+    },
+    "reason": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "comment": {
+      "type": "string",
+      "example": "example_value"
+    }
+  },
+  "required": [
+    "leaveType",
+    "firstDayOfLeave"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "operationId": "getCompensationScorecardResults",
+  "method": "GET",
+  "path": "/compensationScorecards/{ID}/results",
+  "summary": "Get Compensation Scorecard Results",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getcompensationscorecardresults200Example",
+      "example": {
+        "data": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "currentBasePayAmount": 42.5,
+            "proposedBasePayAmount": 42.5,
+            "percentChange": 42.5,
+            "meritAmount": 42.5,
+            "promotionAmount": 42.5
+          }
+        ],
+        "total": 10
+      }
+    }
+  ]
+}

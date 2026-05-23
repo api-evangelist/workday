@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TerminationRequest",
+  "title": "TerminationRequest",
+  "type": "object",
+  "properties": {
+    "terminationDate": {
+      "type": "string",
+      "format": "date",
+      "example": "2026-01-15"
+    },
+    "lastDayOfWork": {
+      "type": "string",
+      "format": "date",
+      "example": "2026-01-15"
+    },
+    "primaryReason": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "localTerminationReason": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "regrettable": {
+      "type": "boolean",
+      "example": true
+    },
+    "notifyEmployee": {
+      "type": "boolean",
+      "example": true
+    }
+  },
+  "required": [
+    "terminationDate",
+    "primaryReason"
+  ]
+}

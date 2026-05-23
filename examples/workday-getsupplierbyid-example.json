@@ -1,0 +1,47 @@
+{
+  "operationId": "getSupplierById",
+  "method": "GET",
+  "path": "/suppliers/{ID}",
+  "summary": "Get Supplier by Id",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getsupplierbyid200Example",
+      "example": {
+        "id": "abc123",
+        "descriptor": "example_value",
+        "supplierName": "example_value",
+        "supplierID": "500123",
+        "supplierCategory": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "taxID": "500123",
+        "paymentTerms": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "isActive": true,
+        "address": {
+          "addressLine1": "example_value",
+          "city": "example_value",
+          "stateProvince": {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "href": "https://www.example.com"
+          },
+          "postalCode": "example_value",
+          "country": {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "href": "https://www.example.com"
+          }
+        }
+      }
+    }
+  ]
+}

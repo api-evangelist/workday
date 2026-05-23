@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/InboxTask",
+  "title": "InboxTask",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "abc123"
+    },
+    "descriptor": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "status": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "assigned": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "due": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "overdue": {
+      "type": "boolean",
+      "example": true
+    },
+    "subject": {
+      "$ref": "#/components/schemas/ResourceReference"
+    }
+  }
+}

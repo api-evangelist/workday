@@ -1,0 +1,30 @@
+{
+  "operationId": "getTimesheets",
+  "method": "GET",
+  "path": "/workers/{ID}/timesheets",
+  "summary": "Get Timesheets",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Gettimesheets200Example",
+      "example": {
+        "data": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "periodStartDate": "2026-01-15",
+            "periodEndDate": "2026-01-15",
+            "totalHours": 42.5,
+            "status": "example_value",
+            "calculatedEntries": [
+              {}
+            ]
+          }
+        ],
+        "total": 10
+      }
+    }
+  ]
+}

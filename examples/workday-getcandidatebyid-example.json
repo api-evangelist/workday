@@ -1,0 +1,38 @@
+{
+  "operationId": "getCandidateById",
+  "method": "GET",
+  "path": "/candidates/{ID}",
+  "summary": "Get Candidate by Id",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getcandidatebyid200Example",
+      "example": {
+        "id": "abc123",
+        "descriptor": "example_value",
+        "name": "Example Title",
+        "email": "user@example.com",
+        "phone": "example_value",
+        "source": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "referredBy": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "attachments": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "href": "https://www.example.com"
+          }
+        ]
+      }
+    }
+  ]
+}

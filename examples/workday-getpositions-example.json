@@ -1,0 +1,27 @@
+{
+  "operationId": "getPositions",
+  "method": "GET",
+  "path": "/positions",
+  "summary": "Get Positions",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getpositions200Example",
+      "example": {
+        "data": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "positionID": "500123",
+            "isFilled": true,
+            "isAvailableForRecruit": true,
+            "isClosed": true
+          }
+        ],
+        "total": 10
+      }
+    }
+  ]
+}

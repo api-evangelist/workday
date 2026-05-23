@@ -1,0 +1,29 @@
+{
+  "operationId": "getJobRequisitions",
+  "method": "GET",
+  "path": "/jobRequisitions",
+  "summary": "Get Job Requisitions",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getjobrequisitions200Example",
+      "example": {
+        "data": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "requisitionNumber": "example_value",
+            "jobTitle": "example_value",
+            "status": "example_value",
+            "numberOfOpenings": 10,
+            "createdOn": "2026-01-15T10:30:00Z",
+            "targetHireDate": "2026-01-15"
+          }
+        ],
+        "total": 10
+      }
+    }
+  ]
+}

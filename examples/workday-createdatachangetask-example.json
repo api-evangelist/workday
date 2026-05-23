@@ -1,0 +1,60 @@
+{
+  "operationId": "createDataChangeTask",
+  "method": "POST",
+  "path": "/dataChangeTasks",
+  "summary": "Create Data Change Task",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "CreatedatachangetaskRequestExample",
+      "example": {
+        "name": "Example Title",
+        "targetDataset": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "operation": {
+          "id": "abc123"
+        },
+        "fileContainer": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        }
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "201",
+      "contentType": "application/json",
+      "name": "Createdatachangetask201Example",
+      "example": {
+        "id": "abc123",
+        "descriptor": "example_value",
+        "name": "Example Title",
+        "targetDataset": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "status": {
+          "id": "abc123",
+          "descriptor": "example_value"
+        },
+        "operation": {
+          "id": "abc123",
+          "descriptor": "example_value"
+        },
+        "fileContainer": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "createdOn": "2026-01-15T10:30:00Z",
+        "completedOn": "2026-01-15T10:30:00Z"
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "operationId": "getLocations",
+  "method": "GET",
+  "path": "/locations",
+  "summary": "Get Locations",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getlocations200Example",
+      "example": {
+        "data": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "name": "Example Title",
+            "latitude": 42.5,
+            "longitude": 42.5,
+            "usages": [
+              {}
+            ]
+          }
+        ],
+        "total": 10
+      }
+    }
+  ]
+}

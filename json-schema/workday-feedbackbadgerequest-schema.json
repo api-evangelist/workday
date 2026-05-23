@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FeedbackBadgeRequest",
+  "title": "FeedbackBadgeRequest",
+  "type": "object",
+  "properties": {
+    "badge": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "comment": {
+      "type": "string",
+      "example": "example_value"
+    }
+  },
+  "required": [
+    "badge"
+  ]
+}

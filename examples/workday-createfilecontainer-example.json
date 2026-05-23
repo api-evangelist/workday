@@ -1,0 +1,25 @@
+{
+  "operationId": "createFileContainer",
+  "method": "POST",
+  "path": "/fileContainers",
+  "summary": "Create File Container",
+  "requestExamples": [
+    {
+      "contentType": "application/octet-stream",
+      "name": "CreatefilecontainerRequestExample",
+      "example": "example_value"
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "201",
+      "contentType": "application/json",
+      "name": "Createfilecontainer201Example",
+      "example": {
+        "id": "abc123",
+        "descriptor": "example_value",
+        "expirationTime": "2026-01-15T10:30:00Z"
+      }
+    }
+  ]
+}

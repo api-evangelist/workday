@@ -1,0 +1,35 @@
+{
+  "operationId": "getJobPostingById",
+  "method": "GET",
+  "path": "/jobPostings/{ID}",
+  "summary": "Get Job Posting by Id",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getjobpostingbyid200Example",
+      "example": {
+        "id": "abc123",
+        "descriptor": "example_value",
+        "title": "Example Title",
+        "jobRequisition": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "startDate": "2026-01-15",
+        "endDate": "2026-01-15",
+        "jobDescription": "example_value",
+        "location": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "isInternal": true,
+        "isExternal": true,
+        "postedOn": "2026-01-15T10:30:00Z"
+      }
+    }
+  ]
+}

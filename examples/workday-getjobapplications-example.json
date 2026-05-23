@@ -1,0 +1,26 @@
+{
+  "operationId": "getJobApplications",
+  "method": "GET",
+  "path": "/jobApplications",
+  "summary": "Get Job Applications",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getjobapplications200Example",
+      "example": {
+        "data": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "status": "example_value",
+            "appliedOn": "2026-01-15T10:30:00Z",
+            "hiredOn": "2026-01-15T10:30:00Z"
+          }
+        ],
+        "total": 10
+      }
+    }
+  ]
+}

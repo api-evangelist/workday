@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Worker",
+  "title": "Worker",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The Workday ID of the worker.",
+      "example": "abc123"
+    },
+    "descriptor": {
+      "type": "string",
+      "description": "A display descriptor for the worker.",
+      "example": "example_value"
+    },
+    "workerID": {
+      "type": "string",
+      "description": "The employee or contingent worker ID.",
+      "example": "500123"
+    },
+    "primaryWorkEmail": {
+      "type": "string",
+      "format": "email",
+      "example": "user@example.com"
+    },
+    "primaryWorkPhone": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "businessTitle": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "workerType": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "primarySupervisoryOrganization": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "location": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "hireDate": {
+      "type": "string",
+      "format": "date",
+      "description": "The hire date for the worker.",
+      "example": "2026-01-15"
+    },
+    "terminationDate": {
+      "type": "string",
+      "format": "date",
+      "description": "The termination date, if applicable.",
+      "example": "2026-01-15"
+    },
+    "isManager": {
+      "type": "boolean",
+      "description": "Whether the worker is a manager.",
+      "example": true
+    },
+    "externalID": {
+      "type": "string",
+      "description": "The external ID for the worker.",
+      "example": "500123"
+    }
+  }
+}

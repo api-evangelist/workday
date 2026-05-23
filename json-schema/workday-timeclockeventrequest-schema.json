@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TimeClockEventRequest",
+  "title": "TimeClockEventRequest",
+  "type": "object",
+  "properties": {
+    "clockEventType": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "clockEventTime": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "timeZone": {
+      "type": "string",
+      "example": "example_value"
+    }
+  },
+  "required": [
+    "clockEventType",
+    "clockEventTime"
+  ]
+}

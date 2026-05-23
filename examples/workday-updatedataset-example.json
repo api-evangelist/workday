@@ -1,0 +1,59 @@
+{
+  "operationId": "updateDataset",
+  "method": "PUT",
+  "path": "/datasets/{ID}",
+  "summary": "Update Dataset",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "UpdatedatasetRequestExample",
+      "example": {
+        "displayName": "example_value",
+        "description": "A sample description.",
+        "fields": [
+          {
+            "name": "Example Title",
+            "displayName": "example_value",
+            "ordinal": 10,
+            "type": {},
+            "required": true,
+            "externalId": "500123"
+          }
+        ],
+        "tags": [
+          "example_value"
+        ]
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Updatedataset200Example",
+      "example": {
+        "id": "abc123",
+        "descriptor": "example_value",
+        "name": "Example Title",
+        "displayName": "example_value",
+        "description": "A sample description.",
+        "tags": [
+          "example_value"
+        ],
+        "fields": [
+          {
+            "name": "Example Title",
+            "displayName": "example_value",
+            "ordinal": 10,
+            "type": {},
+            "required": true,
+            "externalId": "500123"
+          }
+        ],
+        "rowCount": 10,
+        "createdOn": "2026-01-15T10:30:00Z",
+        "updatedOn": "2026-01-15T10:30:00Z"
+      }
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Candidate",
+  "title": "Candidate",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "abc123"
+    },
+    "descriptor": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "name": {
+      "type": "string",
+      "description": "The full name of the candidate.",
+      "example": "Example Title"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "example": "user@example.com"
+    },
+    "phone": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "source": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "referredBy": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "attachments": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ResourceReference"
+      },
+      "example": []
+    }
+  }
+}

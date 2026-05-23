@@ -1,0 +1,45 @@
+{
+  "operationId": "getCustomReport",
+  "method": "GET",
+  "path": "/{reportOwner}/{reportName}",
+  "summary": "Get Custom Report Data",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getcustomreport200Example",
+      "example": {
+        "Report_Entry": [
+          {}
+        ]
+      }
+    },
+    {
+      "status": "200",
+      "contentType": "text/csv",
+      "name": "Getcustomreport200Example",
+      "example": "example_value"
+    },
+    {
+      "status": "200",
+      "contentType": "application/xml",
+      "name": "Getcustomreport200Example",
+      "example": "example_value"
+    },
+    {
+      "status": "404",
+      "contentType": "application/json",
+      "name": "Getcustomreport404Example",
+      "example": {
+        "error": "example_value",
+        "errors": [
+          {
+            "error": "example_value",
+            "field": "example_value"
+          }
+        ]
+      }
+    }
+  ]
+}

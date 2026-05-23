@@ -1,0 +1,26 @@
+{
+  "operationId": "getCompensationScorecardById",
+  "method": "GET",
+  "path": "/compensationScorecards/{ID}",
+  "summary": "Get Compensation Scorecard by Id",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getcompensationscorecardbyid200Example",
+      "example": {
+        "id": "abc123",
+        "descriptor": "example_value",
+        "name": "Example Title",
+        "effectiveDate": "2026-01-15",
+        "compensationReviewPeriod": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "status": "example_value"
+      }
+    }
+  ]
+}

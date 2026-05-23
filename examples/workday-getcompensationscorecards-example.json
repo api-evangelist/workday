@@ -1,0 +1,26 @@
+{
+  "operationId": "getCompensationScorecards",
+  "method": "GET",
+  "path": "/compensationScorecards",
+  "summary": "Get Compensation Scorecards",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getcompensationscorecards200Example",
+      "example": {
+        "data": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "name": "Example Title",
+            "effectiveDate": "2026-01-15",
+            "status": "example_value"
+          }
+        ],
+        "total": 10
+      }
+    }
+  ]
+}

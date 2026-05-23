@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Position",
+  "title": "Position",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The Workday ID of the position.",
+      "example": "abc123"
+    },
+    "descriptor": {
+      "type": "string",
+      "description": "A display descriptor for the position.",
+      "example": "example_value"
+    },
+    "positionID": {
+      "type": "string",
+      "description": "The position reference ID.",
+      "example": "500123"
+    },
+    "isFilled": {
+      "type": "boolean",
+      "description": "Whether the position is currently filled.",
+      "example": true
+    },
+    "isAvailableForRecruit": {
+      "type": "boolean",
+      "description": "Whether the position is available for recruiting.",
+      "example": true
+    },
+    "isClosed": {
+      "type": "boolean",
+      "description": "Whether the position has been closed.",
+      "example": true
+    },
+    "jobProfile": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "supervisoryOrganization": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "worker": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "positionTimeType": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "workerType": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "location": {
+      "$ref": "#/components/schemas/ResourceReference"
+    }
+  }
+}

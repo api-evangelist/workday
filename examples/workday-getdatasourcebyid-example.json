@@ -1,0 +1,32 @@
+{
+  "operationId": "getDataSourceById",
+  "method": "GET",
+  "path": "/dataSources/{ID}",
+  "summary": "Get Data Source by Id",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getdatasourcebyid200Example",
+      "example": {
+        "id": "abc123",
+        "descriptor": "example_value",
+        "name": "Example Title",
+        "pluralName": "example_value",
+        "fields": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "alias": "example_value",
+            "columnName": "example_value",
+            "type": "example_value",
+            "isRequired": true,
+            "isSortable": true,
+            "isFilterable": true
+          }
+        ]
+      }
+    }
+  ]
+}

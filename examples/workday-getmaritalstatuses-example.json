@@ -1,0 +1,23 @@
+{
+  "operationId": "getMaritalStatuses",
+  "method": "GET",
+  "path": "/maritalStatuses",
+  "summary": "Get Marital Statuses",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getmaritalstatuses200Example",
+      "example": {
+        "data": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value"
+          }
+        ],
+        "total": 10
+      }
+    }
+  ]
+}

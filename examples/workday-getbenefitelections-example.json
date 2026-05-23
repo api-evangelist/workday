@@ -1,0 +1,34 @@
+{
+  "operationId": "getBenefitElections",
+  "method": "GET",
+  "path": "/workers/{ID}/benefitElections",
+  "summary": "Get Benefit Elections",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getbenefitelections200Example",
+      "example": {
+        "data": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "electionStatus": "example_value",
+            "coverageBeginDate": "2026-01-15",
+            "coverageEndDate": "2026-01-15",
+            "employeeCost": 42.5,
+            "employerCost": 42.5,
+            "dependents": [
+              {}
+            ],
+            "beneficiaries": [
+              {}
+            ]
+          }
+        ],
+        "total": 10
+      }
+    }
+  ]
+}

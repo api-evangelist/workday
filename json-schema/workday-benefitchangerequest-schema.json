@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BenefitChangeRequest",
+  "title": "BenefitChangeRequest",
+  "type": "object",
+  "properties": {
+    "benefitEventType": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "eventDate": {
+      "type": "string",
+      "format": "date",
+      "example": "2026-01-15"
+    },
+    "reason": {
+      "$ref": "#/components/schemas/ResourceReference"
+    }
+  },
+  "required": [
+    "benefitEventType",
+    "eventDate"
+  ]
+}

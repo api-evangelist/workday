@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Timesheet",
+  "title": "Timesheet",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "abc123"
+    },
+    "descriptor": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "periodStartDate": {
+      "type": "string",
+      "format": "date",
+      "example": "2026-01-15"
+    },
+    "periodEndDate": {
+      "type": "string",
+      "format": "date",
+      "example": "2026-01-15"
+    },
+    "totalHours": {
+      "type": "number",
+      "format": "double",
+      "example": 42.5
+    },
+    "status": {
+      "type": "string",
+      "description": "The status of the timesheet (e.g., Draft, Submitted, Approved).",
+      "example": "example_value"
+    },
+    "calculatedEntries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/TimeEntry"
+      },
+      "example": []
+    }
+  }
+}

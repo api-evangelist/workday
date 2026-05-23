@@ -1,0 +1,39 @@
+{
+  "operationId": "terminateWorker",
+  "method": "POST",
+  "path": "/workers/{ID}/terminate",
+  "summary": "Terminate Worker",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "TerminateworkerRequestExample",
+      "example": {
+        "terminationDate": "2026-01-15",
+        "lastDayOfWork": "2026-01-15",
+        "primaryReason": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "localTerminationReason": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "regrettable": true,
+        "notifyEmployee": true
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "201",
+      "contentType": "application/json",
+      "name": "Terminateworker201Example",
+      "example": {
+        "id": "abc123",
+        "descriptor": "example_value"
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "operationId": "getWorkContactInformation",
+  "method": "GET",
+  "path": "/people/{ID}/workContactInformation",
+  "summary": "Get Work Contact Information",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getworkcontactinformation200Example",
+      "example": {
+        "emails": [
+          {
+            "emailAddress": "user@example.com",
+            "isPrimary": true
+          }
+        ],
+        "phones": [
+          {
+            "phoneNumber": "example_value",
+            "isPrimary": true,
+            "countryCode": "example_value"
+          }
+        ],
+        "addresses": [
+          {
+            "addressLine1": "example_value",
+            "addressLine2": "example_value",
+            "city": "example_value",
+            "postalCode": "example_value",
+            "isPrimary": true
+          }
+        ]
+      }
+    }
+  ]
+}

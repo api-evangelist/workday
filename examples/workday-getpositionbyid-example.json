@@ -1,0 +1,52 @@
+{
+  "operationId": "getPositionById",
+  "method": "GET",
+  "path": "/positions/{ID}",
+  "summary": "Get Position by Id",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getpositionbyid200Example",
+      "example": {
+        "id": "abc123",
+        "descriptor": "example_value",
+        "positionID": "500123",
+        "isFilled": true,
+        "isAvailableForRecruit": true,
+        "isClosed": true,
+        "jobProfile": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "supervisoryOrganization": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "worker": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "positionTimeType": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "workerType": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "location": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        }
+      }
+    }
+  ]
+}

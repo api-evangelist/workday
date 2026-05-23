@@ -1,0 +1,29 @@
+{
+  "operationId": "getDataChangeTaskActivities",
+  "method": "GET",
+  "path": "/dataChangeTasks/{ID}/activities",
+  "summary": "Get Data Change Task Activities",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getdatachangetaskactivities200Example",
+      "example": {
+        "data": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "activityType": "example_value",
+            "status": "example_value",
+            "startedOn": "2026-01-15T10:30:00Z",
+            "completedOn": "2026-01-15T10:30:00Z",
+            "rowsProcessed": 10,
+            "rowsFailed": 10
+          }
+        ],
+        "total": 10
+      }
+    }
+  ]
+}

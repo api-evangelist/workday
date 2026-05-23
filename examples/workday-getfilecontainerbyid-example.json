@@ -1,0 +1,19 @@
+{
+  "operationId": "getFileContainerById",
+  "method": "GET",
+  "path": "/fileContainers/{ID}",
+  "summary": "Get File Container by Id",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getfilecontainerbyid200Example",
+      "example": {
+        "id": "abc123",
+        "descriptor": "example_value",
+        "expirationTime": "2026-01-15T10:30:00Z"
+      }
+    }
+  ]
+}

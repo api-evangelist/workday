@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ScorecardResult",
+  "title": "ScorecardResult",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "abc123"
+    },
+    "descriptor": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "worker": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "currentBasePayAmount": {
+      "type": "number",
+      "format": "double",
+      "example": 42.5
+    },
+    "proposedBasePayAmount": {
+      "type": "number",
+      "format": "double",
+      "example": 42.5
+    },
+    "currency": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "percentChange": {
+      "type": "number",
+      "format": "double",
+      "example": 42.5
+    },
+    "meritAmount": {
+      "type": "number",
+      "format": "double",
+      "example": 42.5
+    },
+    "promotionAmount": {
+      "type": "number",
+      "format": "double",
+      "example": 42.5
+    }
+  }
+}

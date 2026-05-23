@@ -1,0 +1,36 @@
+{
+  "operationId": "changeBenefits",
+  "method": "POST",
+  "path": "/workers/{ID}/changeBenefits",
+  "summary": "Change Benefits",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "ChangebenefitsRequestExample",
+      "example": {
+        "benefitEventType": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "eventDate": "2026-01-15",
+        "reason": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        }
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "201",
+      "contentType": "application/json",
+      "name": "Changebenefits201Example",
+      "example": {
+        "id": "abc123",
+        "descriptor": "example_value"
+      }
+    }
+  ]
+}

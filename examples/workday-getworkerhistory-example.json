@@ -1,0 +1,24 @@
+{
+  "operationId": "getWorkerHistory",
+  "method": "GET",
+  "path": "/workers/{ID}/history",
+  "summary": "Get Worker History",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getworkerhistory200Example",
+      "example": {
+        "data": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "effectiveDate": "2026-01-15"
+          }
+        ],
+        "total": 10
+      }
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/JobProfile",
+  "title": "JobProfile",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The Workday ID of the job profile.",
+      "example": "abc123"
+    },
+    "descriptor": {
+      "type": "string",
+      "description": "A display descriptor for the job profile.",
+      "example": "example_value"
+    },
+    "jobProfileName": {
+      "type": "string",
+      "description": "The name of the job profile.",
+      "example": "example_value"
+    },
+    "managementLevel": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "jobFamily": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "jobCategory": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "isInactive": {
+      "type": "boolean",
+      "example": true
+    },
+    "jobCode": {
+      "type": "string",
+      "description": "The job code identifier.",
+      "example": "example_value"
+    },
+    "summary": {
+      "type": "string",
+      "description": "Summary description of the job profile.",
+      "example": "example_value"
+    }
+  }
+}

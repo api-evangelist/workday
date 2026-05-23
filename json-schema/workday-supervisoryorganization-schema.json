@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SupervisoryOrganization",
+  "title": "SupervisoryOrganization",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The Workday ID of the organization.",
+      "example": "abc123"
+    },
+    "descriptor": {
+      "type": "string",
+      "description": "A display descriptor for the organization.",
+      "example": "example_value"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the supervisory organization.",
+      "example": "Example Title"
+    },
+    "code": {
+      "type": "string",
+      "description": "The organization reference ID.",
+      "example": "example_value"
+    },
+    "isInactive": {
+      "type": "boolean",
+      "description": "Whether the organization is inactive.",
+      "example": true
+    },
+    "manager": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "superiorOrganization": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "location": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "staffingModel": {
+      "type": "string",
+      "description": "The staffing model for the organization.",
+      "example": "example_value"
+    }
+  }
+}

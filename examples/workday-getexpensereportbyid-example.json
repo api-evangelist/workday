@@ -1,0 +1,32 @@
+{
+  "operationId": "getExpenseReportById",
+  "method": "GET",
+  "path": "/expenseReports/{ID}",
+  "summary": "Get Expense Report by Id",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getexpensereportbyid200Example",
+      "example": {
+        "id": "abc123",
+        "descriptor": "example_value",
+        "worker": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "createdDate": "2026-01-15",
+        "totalAmount": 42.5,
+        "currency": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "status": "example_value",
+        "memo": "example_value"
+      }
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "operationId": "getPeople",
+  "method": "GET",
+  "path": "/people",
+  "summary": "Get People",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getpeople200Example",
+      "example": {
+        "data": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "href": "https://www.example.com"
+          }
+        ],
+        "total": 10
+      }
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TimeClockEvent",
+  "title": "TimeClockEvent",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "abc123"
+    },
+    "descriptor": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "clockEventType": {
+      "type": "string",
+      "description": "The type of event (e.g., Clock In, Clock Out, Meal Start, Meal End).",
+      "example": "example_value"
+    },
+    "clockEventTime": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "timeZone": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "location": {
+      "$ref": "#/components/schemas/ResourceReference"
+    }
+  }
+}

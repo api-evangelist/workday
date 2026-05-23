@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EducationEntry",
+  "title": "EducationEntry",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "abc123"
+    },
+    "school": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "degree": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "fieldOfStudy": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "startDate": {
+      "type": "string",
+      "format": "date",
+      "example": "2026-01-15"
+    },
+    "endDate": {
+      "type": "string",
+      "format": "date",
+      "example": "2026-01-15"
+    }
+  }
+}

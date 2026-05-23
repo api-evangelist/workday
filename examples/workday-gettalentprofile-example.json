@@ -1,0 +1,67 @@
+{
+  "operationId": "getTalentProfile",
+  "method": "GET",
+  "path": "/workers/{ID}/talentProfile",
+  "summary": "Get Talent Profile",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Gettalentprofile200Example",
+      "example": {
+        "id": "abc123",
+        "descriptor": "example_value",
+        "worker": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "jobHistory": [
+          {
+            "id": "abc123",
+            "company": "example_value",
+            "jobTitle": "example_value",
+            "startDate": "2026-01-15",
+            "endDate": "2026-01-15",
+            "description": "A sample description."
+          }
+        ],
+        "education": [
+          {
+            "id": "abc123",
+            "school": "example_value",
+            "fieldOfStudy": "example_value",
+            "startDate": "2026-01-15",
+            "endDate": "2026-01-15"
+          }
+        ],
+        "skills": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "name": "Example Title"
+          }
+        ],
+        "certifications": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "name": "Example Title",
+            "issuer": "example_value",
+            "issuedDate": "2026-01-15",
+            "expirationDate": "2026-01-15"
+          }
+        ],
+        "languages": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "isNative": true
+          }
+        ],
+        "careerInterests": "example_value"
+      }
+    }
+  ]
+}

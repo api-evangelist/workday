@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Supplier",
+  "title": "Supplier",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "abc123"
+    },
+    "descriptor": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "supplierName": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "supplierID": {
+      "type": "string",
+      "example": "500123"
+    },
+    "supplierCategory": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "taxID": {
+      "type": "string",
+      "example": "500123"
+    },
+    "paymentTerms": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "isActive": {
+      "type": "boolean",
+      "example": true
+    },
+    "address": {
+      "type": "object",
+      "properties": {
+        "addressLine1": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "stateProvince": {
+          "$ref": "#/components/schemas/ResourceReference"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "country": {
+          "$ref": "#/components/schemas/ResourceReference"
+        }
+      },
+      "example": "example_value"
+    }
+  }
+}

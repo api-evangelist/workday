@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DatasetCreateRequest",
+  "title": "DatasetCreateRequest",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name for the new dataset.",
+      "example": "Example Title"
+    },
+    "displayName": {
+      "type": "string",
+      "description": "The display name for the dataset.",
+      "example": "example_value"
+    },
+    "description": {
+      "type": "string",
+      "example": "A sample description."
+    },
+    "fields": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/DatasetField"
+      },
+      "example": []
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "example": []
+    }
+  },
+  "required": [
+    "name",
+    "fields"
+  ]
+}

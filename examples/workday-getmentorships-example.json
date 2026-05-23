@@ -1,0 +1,26 @@
+{
+  "operationId": "getMentorships",
+  "method": "GET",
+  "path": "/workers/{ID}/mentorships",
+  "summary": "Get Mentorships",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getmentorships200Example",
+      "example": {
+        "data": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "startDate": "2026-01-15",
+            "endDate": "2026-01-15",
+            "status": "example_value"
+          }
+        ],
+        "total": 10
+      }
+    }
+  ]
+}

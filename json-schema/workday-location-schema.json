@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Location",
+  "title": "Location",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The Workday ID of the location.",
+      "example": "abc123"
+    },
+    "descriptor": {
+      "type": "string",
+      "description": "A display descriptor for the location.",
+      "example": "example_value"
+    },
+    "name": {
+      "type": "string",
+      "example": "Example Title"
+    },
+    "latitude": {
+      "type": "number",
+      "format": "double",
+      "example": 42.5
+    },
+    "longitude": {
+      "type": "number",
+      "format": "double",
+      "example": 42.5
+    },
+    "timeProfile": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "locale": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "usages": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ResourceReference"
+      },
+      "example": []
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/JobRequisition",
+  "title": "JobRequisition",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "abc123"
+    },
+    "descriptor": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "requisitionNumber": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "jobTitle": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "jobProfile": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "supervisoryOrganization": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "hiringManager": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "recruiter": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "status": {
+      "type": "string",
+      "description": "The status of the requisition (e.g., Open, Filled, Closed).",
+      "example": "example_value"
+    },
+    "numberOfOpenings": {
+      "type": "integer",
+      "example": 10
+    },
+    "createdOn": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "targetHireDate": {
+      "type": "string",
+      "format": "date",
+      "example": "2026-01-15"
+    },
+    "location": {
+      "$ref": "#/components/schemas/ResourceReference"
+    }
+  }
+}

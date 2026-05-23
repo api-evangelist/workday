@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Dataset",
+  "title": "Dataset",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The Workday ID of the dataset.",
+      "example": "abc123"
+    },
+    "descriptor": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the dataset.",
+      "example": "Example Title"
+    },
+    "displayName": {
+      "type": "string",
+      "description": "The display name of the dataset.",
+      "example": "example_value"
+    },
+    "description": {
+      "type": "string",
+      "example": "A sample description."
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "example": []
+    },
+    "fields": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/DatasetField"
+      },
+      "example": []
+    },
+    "rowCount": {
+      "type": "integer",
+      "description": "The number of rows in the dataset.",
+      "example": 10
+    },
+    "createdOn": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "updatedOn": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2026-01-15T10:30:00Z"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/WqlQueryResult",
+  "title": "WqlQueryResult",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "description": "A result row with field names as keys and their values."
+      },
+      "description": "The array of result rows from the WQL query.",
+      "example": []
+    },
+    "total": {
+      "type": "integer",
+      "description": "The total number of results available.",
+      "example": 10
+    }
+  }
+}

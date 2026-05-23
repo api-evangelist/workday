@@ -1,0 +1,28 @@
+{
+  "operationId": "getSuccessionPlans",
+  "method": "GET",
+  "path": "/successionPlans",
+  "summary": "Get Succession Plans",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getsuccessionplans200Example",
+      "example": {
+        "data": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "readiness": "example_value",
+            "candidates": [
+              {}
+            ],
+            "lastUpdated": "2026-01-15"
+          }
+        ],
+        "total": 10
+      }
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TimeOffBalance",
+  "title": "TimeOffBalance",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "abc123"
+    },
+    "descriptor": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "timeOffPlan": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "balance": {
+      "type": "number",
+      "format": "double",
+      "description": "The current balance.",
+      "example": 42.5
+    },
+    "unit": {
+      "type": "string",
+      "description": "The unit of the balance (e.g., Hours, Days).",
+      "example": "example_value"
+    },
+    "asOfDate": {
+      "type": "string",
+      "format": "date",
+      "description": "The effective date of the balance.",
+      "example": "2026-01-15"
+    }
+  }
+}

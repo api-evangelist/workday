@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PersonalInformation",
+  "title": "PersonalInformation",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "abc123"
+    },
+    "legalName": {
+      "$ref": "#/components/schemas/PersonName"
+    },
+    "preferredName": {
+      "$ref": "#/components/schemas/PersonName"
+    },
+    "dateOfBirth": {
+      "type": "string",
+      "format": "date",
+      "example": "2026-01-15"
+    },
+    "gender": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "maritalStatus": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "ethnicity": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "militaryStatus": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "disability": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ResourceReference"
+      },
+      "example": []
+    }
+  }
+}

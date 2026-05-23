@@ -1,0 +1,38 @@
+{
+  "operationId": "getLocationById",
+  "method": "GET",
+  "path": "/locations/{ID}",
+  "summary": "Get Location by Id",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getlocationbyid200Example",
+      "example": {
+        "id": "abc123",
+        "descriptor": "example_value",
+        "name": "Example Title",
+        "latitude": 42.5,
+        "longitude": 42.5,
+        "timeProfile": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "locale": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "usages": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "href": "https://www.example.com"
+          }
+        ]
+      }
+    }
+  ]
+}

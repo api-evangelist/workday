@@ -1,0 +1,37 @@
+{
+  "operationId": "getSupervisoryOrganizationById",
+  "method": "GET",
+  "path": "/supervisoryOrganizations/{ID}",
+  "summary": "Get Supervisory Organization by Id",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getsupervisoryorganizationbyid200Example",
+      "example": {
+        "id": "abc123",
+        "descriptor": "example_value",
+        "name": "Example Title",
+        "code": "example_value",
+        "isInactive": true,
+        "manager": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "superiorOrganization": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "location": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "staffingModel": "example_value"
+      }
+    }
+  ]
+}

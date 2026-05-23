@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TimeEntry",
+  "title": "TimeEntry",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "abc123"
+    },
+    "descriptor": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "example": "2026-01-15"
+    },
+    "hours": {
+      "type": "number",
+      "format": "double",
+      "description": "The number of hours entered.",
+      "example": 42.5
+    },
+    "timeEntryCode": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "worktag": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "comment": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "status": {
+      "type": "string",
+      "example": "example_value"
+    }
+  }
+}

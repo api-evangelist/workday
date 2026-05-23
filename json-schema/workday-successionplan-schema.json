@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SuccessionPlan",
+  "title": "SuccessionPlan",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "abc123"
+    },
+    "descriptor": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "position": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "incumbent": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "readiness": {
+      "type": "string",
+      "description": "Readiness level (e.g., Ready Now, Ready in 1-2 Years).",
+      "example": "example_value"
+    },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "worker": {
+            "$ref": "#/components/schemas/ResourceReference"
+          },
+          "readiness": {
+            "type": "string"
+          },
+          "ranking": {
+            "type": "integer"
+          }
+        }
+      },
+      "example": []
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date",
+      "example": "2026-01-15"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "operationId": "getExpenseReports",
+  "method": "GET",
+  "path": "/expenseReports",
+  "summary": "Get Expense Reports",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getexpensereports200Example",
+      "example": {
+        "data": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "createdDate": "2026-01-15",
+            "totalAmount": 42.5,
+            "status": "example_value",
+            "memo": "example_value"
+          }
+        ],
+        "total": 10
+      }
+    }
+  ]
+}

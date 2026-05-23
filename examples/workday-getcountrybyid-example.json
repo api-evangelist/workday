@@ -1,0 +1,21 @@
+{
+  "operationId": "getCountryById",
+  "method": "GET",
+  "path": "/countries/{ID}",
+  "summary": "Get Country by Id",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getcountrybyid200Example",
+      "example": {
+        "id": "abc123",
+        "descriptor": "example_value",
+        "countryCode": "example_value",
+        "alpha2Code": "example_value",
+        "name": "Example Title"
+      }
+    }
+  ]
+}

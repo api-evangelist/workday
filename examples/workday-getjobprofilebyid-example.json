@@ -1,0 +1,37 @@
+{
+  "operationId": "getJobProfileById",
+  "method": "GET",
+  "path": "/jobProfiles/{ID}",
+  "summary": "Get Job Profile by Id",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getjobprofilebyid200Example",
+      "example": {
+        "id": "abc123",
+        "descriptor": "example_value",
+        "jobProfileName": "example_value",
+        "managementLevel": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "jobFamily": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "jobCategory": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "isInactive": true,
+        "jobCode": "example_value",
+        "summary": "example_value"
+      }
+    }
+  ]
+}

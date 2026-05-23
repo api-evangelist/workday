@@ -1,0 +1,26 @@
+{
+  "operationId": "getTimeOffEntries",
+  "method": "GET",
+  "path": "/workers/{ID}/timeOffEntries",
+  "summary": "Get Time Off Entries",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Gettimeoffentries200Example",
+      "example": {
+        "data": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "date": "2026-01-15",
+            "dailyQuantity": 42.5,
+            "status": "example_value"
+          }
+        ],
+        "total": 10
+      }
+    }
+  ]
+}

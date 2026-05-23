@@ -1,0 +1,25 @@
+{
+  "operationId": "getPayGroups",
+  "method": "GET",
+  "path": "/payGroups",
+  "summary": "Get Pay Groups",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getpaygroups200Example",
+      "example": {
+        "data": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "name": "Example Title",
+            "isActive": true
+          }
+        ],
+        "total": 10
+      }
+    }
+  ]
+}

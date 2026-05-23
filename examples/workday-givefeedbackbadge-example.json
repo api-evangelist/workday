@@ -1,0 +1,43 @@
+{
+  "operationId": "giveFeedbackBadge",
+  "method": "POST",
+  "path": "/workers/{ID}/feedbackBadges",
+  "summary": "Give Feedback Badge",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "GivefeedbackbadgeRequestExample",
+      "example": {
+        "badge": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "comment": "example_value"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "201",
+      "contentType": "application/json",
+      "name": "Givefeedbackbadge201Example",
+      "example": {
+        "id": "abc123",
+        "descriptor": "example_value",
+        "badge": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "giver": {
+          "id": "abc123",
+          "descriptor": "example_value",
+          "href": "https://www.example.com"
+        },
+        "comment": "example_value",
+        "givenDate": "2026-01-15T10:30:00Z"
+      }
+    }
+  ]
+}

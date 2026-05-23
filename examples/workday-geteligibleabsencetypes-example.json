@@ -1,0 +1,25 @@
+{
+  "operationId": "getEligibleAbsenceTypes",
+  "method": "GET",
+  "path": "/workers/{ID}/eligibleAbsenceTypes",
+  "summary": "Get Eligible Absence Types",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Geteligibleabsencetypes200Example",
+      "example": {
+        "data": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "absenceTypeCategory": "example_value",
+            "unit": "example_value"
+          }
+        ],
+        "total": 10
+      }
+    }
+  ]
+}

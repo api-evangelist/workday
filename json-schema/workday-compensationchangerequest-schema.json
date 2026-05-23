@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CompensationChangeRequest",
+  "title": "CompensationChangeRequest",
+  "type": "object",
+  "properties": {
+    "effectiveDate": {
+      "type": "string",
+      "format": "date",
+      "description": "The effective date of the compensation change.",
+      "example": "2026-01-15"
+    },
+    "reason": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "proposedCompensation": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "number",
+          "format": "double"
+        },
+        "currency": {
+          "$ref": "#/components/schemas/ResourceReference"
+        },
+        "frequency": {
+          "$ref": "#/components/schemas/ResourceReference"
+        },
+        "compensationGrade": {
+          "$ref": "#/components/schemas/ResourceReference"
+        },
+        "compensationStep": {
+          "$ref": "#/components/schemas/ResourceReference"
+        }
+      },
+      "example": "example_value"
+    }
+  },
+  "required": [
+    "effectiveDate",
+    "reason"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CompensationPlan",
+  "title": "CompensationPlan",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The Workday ID of the compensation plan.",
+      "example": "abc123"
+    },
+    "descriptor": {
+      "type": "string",
+      "description": "A display descriptor for the plan.",
+      "example": "example_value"
+    },
+    "compensationPlanType": {
+      "type": "string",
+      "description": "The type of compensation plan (e.g., Salary, Allowance, Bonus).",
+      "example": "example_value"
+    },
+    "compensationPlan": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "amount": {
+      "type": "number",
+      "format": "double",
+      "description": "The compensation amount.",
+      "example": 42.5
+    },
+    "currency": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "frequency": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "effectiveDate": {
+      "type": "string",
+      "format": "date",
+      "example": "2026-01-15"
+    },
+    "compensationGrade": {
+      "$ref": "#/components/schemas/ResourceReference"
+    },
+    "compensationStep": {
+      "$ref": "#/components/schemas/ResourceReference"
+    }
+  }
+}

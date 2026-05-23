@@ -1,0 +1,27 @@
+{
+  "operationId": "getPayGroupDetails",
+  "method": "GET",
+  "path": "/payGroups/{ID}/payGroupDetails",
+  "summary": "Get Pay Group Details",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getpaygroupdetails200Example",
+      "example": {
+        "data": [
+          {
+            "id": "abc123",
+            "descriptor": "example_value",
+            "payPeriodStartDate": "2026-01-15",
+            "payPeriodEndDate": "2026-01-15",
+            "payDate": "2026-01-15",
+            "payRunStatus": "example_value"
+          }
+        ],
+        "total": 10
+      }
+    }
+  ]
+}
