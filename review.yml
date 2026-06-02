@@ -1,0 +1,21 @@
+name: Workday
+description: Workday webhook and event/streaming surface review.
+url: https://raw.githubusercontent.com/api-evangelist/workday/refs/heads/main/review.yml
+created: '2026-05-30'
+modified: '2026-05-30'
+reviews:
+- date: '2026-05-30'
+  rating: 1
+  summary: Workday does not publish a documented public webhook or event subscription API. There is no developer-facing endpoint to register a callback URL, subscribe to event types, or receive HTTP push deliveries against the REST APIs (HCM, Financial Management, Recruiting, Staffing, Talent, Payroll, Time Tracking, Absence, Benefits, Compensation, Performance, Prism Analytics, WQL, RaaS). Event-driven integration in Workday is delivered through tenant-side configuration rather than a public webhook surface
+- date: '2026-05-30'
+  rating: 1
+  summary: The closest documented mechanisms are tenant-configured patterns reachable only with a customer or partner login to community.workday.com. These include the Business Process Framework notifications, Outbound EIB (Enterprise Interface Builder), Workday Studio integrations, Integration System / Outbound Subscription configured against SOAP Web Services, and Workday Orchestrate (formerly Workday Extend) flows. None of these expose a public, self-service webhook registration endpoint with a published schema.
+- date: '2026-05-30'
+  rating: 1
+  summary: Public documentation at community.workday.com/sites/default/files/file-hosting/restapi/index.html is gated behind authentication and does not surface webhook, callback, event subscription, streaming, or push notification operations. Per API Evangelist hard rules, no webhook OpenAPI was modeled for Workday and no apis.yml property was added, because no public, non-gated source documents an event/subscription API surface.
+- date: '2026-05-30'
+  rating: 2
+  summary: Practical event delivery for Workday today is handled by polling the REST/RaaS APIs (typically 15-60 minute intervals) or by an iPaaS / unified-API layer (Workato, Knit, Rollout, Unified.to, etc.) that polls Workday and re-emits change events as virtual webhooks to downstream consumers. Real-time outbound messaging from Workday to a customer endpoint is possible but requires tenant administrators to build and own that integration inside Workday Studio or as a configured Integration System / Outbound Subscription.
+- date: '2026-05-30'
+  rating: 1
+  summary: Recommendation - re-evaluate when Workday publishes a non-gated developer reference for an event subscription / webhook API surface (registration, event catalog, delivery payload schema, retry semantics, signature verification). At that point an openapi/webhooks.yml spec and a corresponding apis.yml entry with a NaftikoCapability for event subscription should be added. Until then, this repo intentionally models only the request/response REST surfaces already present under openapi/ and capabilities/.
