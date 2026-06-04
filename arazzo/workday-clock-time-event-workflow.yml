@@ -1,0 +1,101 @@
+arazzo: 1.0.1
+info:
+  title: Workday Clock Time Event
+  summary: Confirm a worker and read their recent clock events, then record a new clock in/out event.
+  description: >-
+    A time clock flow. It resolves the worker, reads their recent time clock
+    events so a duplicate clock event can be avoided, and then records a new
+    clock in or clock out event. Every step spells out its request inline so the
+    flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: hcmApi
+  url: ../openapi/hcm.yml
+  type: openapi
+- name: timeTrackingApi
+  url: ../openapi/timeTracking.yml
+  type: openapi
+workflows:
+- workflowId: clock-time-event
+  summary: Resolve a worker, read recent clock events, then record a new clock event.
+  description: >-
+    Reads the worker and their recent time clock events, then records a new
+    clock event with the supplied event type, time, and time zone.
+  inputs:
+    type: object
+    required:
+    - authorization
+    - workerId
+    - clockEventType
+    - clockEventTime
+    properties:
+      authorization:
+        type: string
+        description: OAuth2 bearer token, e.g. "Bearer eyJ...".
+      workerId:
+        type: string
+        description: The Workday ID of the worker clocking in or out.
+      clockEventType:
+        type: object
+        description: The clock event type reference object (id, descriptor, href).
+      clockEventTime:
+        type: string
+        description: The clock event time (ISO 8601 date-time).
+      timeZone:
+        type: string
+        description: The time zone of the clock event.
+  steps:
+  - stepId: getWorker
+    description: Confirm the worker exists before recording a clock event.
+    operationId: getWorkerById
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: ID
+      in: path
+      value: $inputs.workerId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      workerDescriptor: $response.body#/descriptor
+  - stepId: getRecentEvents
+    description: Read the worker's recent time clock events to avoid duplicates.
+    operationId: getTimeClockEvents
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: ID
+      in: path
+      value: $inputs.workerId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      recentEvents: $response.body#/data
+  - stepId: recordEvent
+    description: Record the new clock in or clock out event for the worker.
+    operationId: createTimeClockEvent
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: ID
+      in: path
+      value: $inputs.workerId
+    requestBody:
+      contentType: application/json
+      payload:
+        clockEventType: $inputs.clockEventType
+        clockEventTime: $inputs.clockEventTime
+        timeZone: $inputs.timeZone
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      eventId: $response.body#/id
+      eventTime: $response.body#/clockEventTime
+  outputs:
+    workerDescriptor: $steps.getWorker.outputs.workerDescriptor
+    recentEvents: $steps.getRecentEvents.outputs.recentEvents
+    eventId: $steps.recordEvent.outputs.eventId

@@ -1,0 +1,114 @@
+arazzo: 1.0.1
+info:
+  title: Workday Request Compensation Change
+  summary: Read a worker's current compensation and available grades, then request a compensation change.
+  description: >-
+    A compensation flow. It resolves the worker, reads their current
+    compensation plans and the catalog of compensation grades so the proposed
+    grade is valid, and then submits a compensation change request. Every step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: hcmApi
+  url: ../openapi/hcm.yml
+  type: openapi
+- name: compensationApi
+  url: ../openapi/compensation.yml
+  type: openapi
+workflows:
+- workflowId: request-compensation-change
+  summary: Read current compensation and grades, then submit a compensation change.
+  description: >-
+    Reads the worker, their current compensation plans, and the available
+    compensation grades, then submits a compensation change request with the
+    supplied effective date, reason, and proposed compensation.
+  inputs:
+    type: object
+    required:
+    - authorization
+    - workerId
+    - effectiveDate
+    - reason
+    - proposedCompensation
+    properties:
+      authorization:
+        type: string
+        description: OAuth2 bearer token, e.g. "Bearer eyJ...".
+      workerId:
+        type: string
+        description: The Workday ID of the worker.
+      effectiveDate:
+        type: string
+        description: The effective date of the compensation change (YYYY-MM-DD).
+      reason:
+        type: object
+        description: The compensation change reason reference object (id, descriptor, href).
+      proposedCompensation:
+        type: object
+        description: The proposed compensation object (amount, currency, frequency, compensationGrade, compensationStep).
+  steps:
+  - stepId: getWorker
+    description: Confirm the worker exists before reading compensation.
+    operationId: getWorkerById
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: ID
+      in: path
+      value: $inputs.workerId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      workerDescriptor: $response.body#/descriptor
+  - stepId: getCurrentPlans
+    description: Read the worker's current compensation plans.
+    operationId: getCompensationPlans
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: ID
+      in: path
+      value: $inputs.workerId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      currentPlans: $response.body#/data
+  - stepId: getGrades
+    description: Read the catalog of compensation grades to validate the proposal.
+    operationId: getCompensationGrades
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      grades: $response.body#/data
+  - stepId: requestChange
+    description: Submit the compensation change request for the worker.
+    operationId: requestCompensationChange
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: ID
+      in: path
+      value: $inputs.workerId
+    requestBody:
+      contentType: application/json
+      payload:
+        effectiveDate: $inputs.effectiveDate
+        reason: $inputs.reason
+        proposedCompensation: $inputs.proposedCompensation
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      changeId: $response.body#/id
+      changeDescriptor: $response.body#/descriptor
+  outputs:
+    workerDescriptor: $steps.getWorker.outputs.workerDescriptor
+    currentPlans: $steps.getCurrentPlans.outputs.currentPlans
+    changeId: $steps.requestChange.outputs.changeId

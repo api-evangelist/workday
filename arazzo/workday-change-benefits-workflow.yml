@@ -1,0 +1,116 @@
+arazzo: 1.0.1
+info:
+  title: Workday Change Benefits
+  summary: Read a worker's current benefit elections and eligible plans, then initiate a benefit change event.
+  description: >-
+    A benefits flow tied to a life event. It resolves the worker, reads their
+    current benefit elections and the plans they are eligible for, and then
+    initiates a benefit change event for the supplied event type and date.
+    Every step spells out its request inline so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: hcmApi
+  url: ../openapi/hcm.yml
+  type: openapi
+- name: benefitsApi
+  url: ../openapi/benefits.yml
+  type: openapi
+workflows:
+- workflowId: change-benefits
+  summary: Read current elections and eligible plans, then initiate a benefit change.
+  description: >-
+    Reads the worker, their current benefit elections, and the plans they are
+    eligible for, then initiates a benefit change event with the supplied event
+    type, date, and reason.
+  inputs:
+    type: object
+    required:
+    - authorization
+    - workerId
+    - benefitEventType
+    - eventDate
+    properties:
+      authorization:
+        type: string
+        description: OAuth2 bearer token, e.g. "Bearer eyJ...".
+      workerId:
+        type: string
+        description: The Workday ID of the worker.
+      benefitEventType:
+        type: object
+        description: The benefit event type reference object (id, descriptor, href).
+      eventDate:
+        type: string
+        description: The date of the benefit event (YYYY-MM-DD).
+      reason:
+        type: object
+        description: The benefit change reason reference object (id, descriptor, href).
+  steps:
+  - stepId: getWorker
+    description: Confirm the worker exists before reading benefit data.
+    operationId: getWorkerById
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: ID
+      in: path
+      value: $inputs.workerId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      workerDescriptor: $response.body#/descriptor
+  - stepId: getCurrentElections
+    description: Read the worker's current benefit elections.
+    operationId: getBenefitElections
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: ID
+      in: path
+      value: $inputs.workerId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      currentElections: $response.body#/data
+  - stepId: getEligiblePlans
+    description: Read the plans the worker is eligible to elect.
+    operationId: getEligibleBenefitPlans
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: ID
+      in: path
+      value: $inputs.workerId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      eligiblePlans: $response.body#/data
+  - stepId: changeBenefits
+    description: Initiate the benefit change event for the worker.
+    operationId: changeBenefits
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: ID
+      in: path
+      value: $inputs.workerId
+    requestBody:
+      contentType: application/json
+      payload:
+        benefitEventType: $inputs.benefitEventType
+        eventDate: $inputs.eventDate
+        reason: $inputs.reason
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      eventId: $response.body#/id
+      eventDescriptor: $response.body#/descriptor
+  outputs:
+    workerDescriptor: $steps.getWorker.outputs.workerDescriptor
+    currentElections: $steps.getCurrentElections.outputs.currentElections
+    eventId: $steps.changeBenefits.outputs.eventId

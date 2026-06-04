@@ -1,0 +1,98 @@
+arazzo: 1.0.1
+info:
+  title: Workday Review Supplier Spend
+  summary: List suppliers, load the first supplier's detail, then review purchase orders and customer invoices.
+  description: >-
+    A procurement review flow. It lists suppliers and branches on whether any
+    exist: when at least one is returned it loads the first supplier's detail,
+    lists purchase orders, and lists customer invoices to build a spend picture,
+    and when none are returned it ends. Every step spells out its request inline
+    so the flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: financialManagementApi
+  url: ../openapi/financialManagement.yml
+  type: openapi
+workflows:
+- workflowId: review-supplier-spend
+  summary: List suppliers, load the first, then review purchase orders and invoices.
+  description: >-
+    Lists suppliers, then branches: if any exist it loads the first supplier's
+    detail, lists purchase orders, and lists customer invoices, otherwise it
+    ends.
+  inputs:
+    type: object
+    required:
+    - authorization
+    properties:
+      authorization:
+        type: string
+        description: OAuth2 bearer token, e.g. "Bearer eyJ...".
+  steps:
+  - stepId: listSuppliers
+    description: List suppliers.
+    operationId: getSuppliers
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firstSupplierId: $response.body#/data/0/id
+    onSuccess:
+    - name: hasSuppliers
+      type: goto
+      stepId: getSupplierDetail
+      criteria:
+      - context: $response.body
+        condition: $.data.length > 0
+        type: jsonpath
+    - name: noSuppliers
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.data.length == 0
+        type: jsonpath
+  - stepId: getSupplierDetail
+    description: Load the detail record for the first supplier.
+    operationId: getSupplierById
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: ID
+      in: path
+      value: $steps.listSuppliers.outputs.firstSupplierId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      supplierDescriptor: $response.body#/descriptor
+  - stepId: listPurchaseOrders
+    description: List purchase orders to assess committed spend.
+    operationId: getPurchaseOrders
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      purchaseOrders: $response.body#/data
+  - stepId: listInvoices
+    description: List customer invoices to round out the spend picture.
+    operationId: getCustomerInvoices
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      invoices: $response.body#/data
+  outputs:
+    firstSupplierId: $steps.listSuppliers.outputs.firstSupplierId
+    supplierDescriptor: $steps.getSupplierDetail.outputs.supplierDescriptor
+    purchaseOrders: $steps.listPurchaseOrders.outputs.purchaseOrders
+    invoices: $steps.listInvoices.outputs.invoices

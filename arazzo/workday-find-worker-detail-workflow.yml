@@ -1,0 +1,104 @@
+arazzo: 1.0.1
+info:
+  title: Workday Find Worker and Load Detail
+  summary: Search workers by name, then load the matched worker's full detail and recent history.
+  description: >-
+    A worker lookup flow. It searches the worker collection by name and
+    branches on whether a match was found: when at least one worker matches it
+    loads the first match's full detail record and recent change history, and
+    when nothing matches it ends without further calls. Every step spells out
+    its request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: hcmApi
+  url: ../openapi/hcm.yml
+  type: openapi
+workflows:
+- workflowId: find-worker-detail
+  summary: Search workers by name and load the first match's detail and history.
+  description: >-
+    Searches workers by name, then branches: if a worker matched it loads the
+    worker's detail and history, otherwise it ends.
+  inputs:
+    type: object
+    required:
+    - authorization
+    - search
+    properties:
+      authorization:
+        type: string
+        description: OAuth2 bearer token, e.g. "Bearer eyJ...".
+      search:
+        type: string
+        description: The case-insensitive name to search workers by.
+      limit:
+        type: integer
+        description: Maximum number of workers to return (default 20, max 100).
+  steps:
+  - stepId: searchWorkers
+    description: Search the worker collection by name.
+    operationId: getWorkers
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: search
+      in: query
+      value: $inputs.search
+    - name: limit
+      in: query
+      value: $inputs.limit
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      matchedWorkerId: $response.body#/data/0/id
+      total: $response.body#/total
+    onSuccess:
+    - name: workerFound
+      type: goto
+      stepId: getDetail
+      criteria:
+      - context: $response.body
+        condition: $.data.length > 0
+        type: jsonpath
+    - name: noWorker
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.data.length == 0
+        type: jsonpath
+  - stepId: getDetail
+    description: Load the full detail record for the first matched worker.
+    operationId: getWorkerById
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: ID
+      in: path
+      value: $steps.searchWorkers.outputs.matchedWorkerId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      workerId: $response.body#/id
+      businessTitle: $response.body#/businessTitle
+      primarySupervisoryOrganization: $response.body#/primarySupervisoryOrganization
+  - stepId: getHistory
+    description: Load recent change history for the matched worker.
+    operationId: getWorkerHistory
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: ID
+      in: path
+      value: $steps.searchWorkers.outputs.matchedWorkerId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      history: $response.body#/data
+  outputs:
+    matchedWorkerId: $steps.searchWorkers.outputs.matchedWorkerId
+    businessTitle: $steps.getDetail.outputs.businessTitle
+    history: $steps.getHistory.outputs.history

@@ -1,0 +1,118 @@
+arazzo: 1.0.1
+info:
+  title: Workday Request Leave of Absence
+  summary: Confirm a worker, review existing leaves, then submit a new leave of absence request.
+  description: >-
+    A leave management flow. It resolves the worker, reads their existing
+    leaves of absence so an overlapping leave can be detected, and then submits
+    a new leave of absence request with the supplied dates and reason. Every
+    step spells out its request inline so the flow can be read and executed
+    without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: hcmApi
+  url: ../openapi/hcm.yml
+  type: openapi
+- name: absenceManagementApi
+  url: ../openapi/absenceManagement.yml
+  type: openapi
+workflows:
+- workflowId: request-leave-of-absence
+  summary: Resolve a worker, review existing leaves, and submit a new leave request.
+  description: >-
+    Reads the worker and their existing leaves of absence, then submits a new
+    leave of absence request for the supplied leave type, dates, and reason.
+  inputs:
+    type: object
+    required:
+    - authorization
+    - workerId
+    - leaveType
+    - firstDayOfLeave
+    - reason
+    properties:
+      authorization:
+        type: string
+        description: OAuth2 bearer token, e.g. "Bearer eyJ...".
+      workerId:
+        type: string
+        description: The Workday ID of the worker requesting leave.
+      leaveType:
+        type: object
+        description: The leave type reference object (id, descriptor, href).
+      firstDayOfLeave:
+        type: string
+        description: The first day of the leave (YYYY-MM-DD).
+      estimatedLastDayOfLeave:
+        type: string
+        description: The estimated last day of the leave (YYYY-MM-DD).
+      lastDayOfWork:
+        type: string
+        description: The worker's last day of work before leave (YYYY-MM-DD).
+      firstDayBackAtWork:
+        type: string
+        description: The expected first day back at work (YYYY-MM-DD).
+      reason:
+        type: object
+        description: The leave reason reference object (id, descriptor, href).
+      comment:
+        type: string
+        description: An optional comment for the leave request.
+  steps:
+  - stepId: getWorker
+    description: Confirm the worker exists before reviewing leave data.
+    operationId: getWorkerById
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: ID
+      in: path
+      value: $inputs.workerId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      workerDescriptor: $response.body#/descriptor
+  - stepId: getExistingLeaves
+    description: Read the worker's existing leaves of absence to detect overlap.
+    operationId: getLeavesOfAbsence
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: ID
+      in: path
+      value: $inputs.workerId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      existingLeaves: $response.body#/data
+  - stepId: submitLeave
+    description: Submit the new leave of absence request.
+    operationId: requestLeaveOfAbsence
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: ID
+      in: path
+      value: $inputs.workerId
+    requestBody:
+      contentType: application/json
+      payload:
+        leaveType: $inputs.leaveType
+        firstDayOfLeave: $inputs.firstDayOfLeave
+        estimatedLastDayOfLeave: $inputs.estimatedLastDayOfLeave
+        lastDayOfWork: $inputs.lastDayOfWork
+        firstDayBackAtWork: $inputs.firstDayBackAtWork
+        reason: $inputs.reason
+        comment: $inputs.comment
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      leaveId: $response.body#/id
+      startDate: $response.body#/startDate
+  outputs:
+    workerDescriptor: $steps.getWorker.outputs.workerDescriptor
+    existingLeaves: $steps.getExistingLeaves.outputs.existingLeaves
+    leaveId: $steps.submitLeave.outputs.leaveId

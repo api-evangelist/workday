@@ -1,0 +1,109 @@
+arazzo: 1.0.1
+info:
+  title: Workday Submit Time Off
+  summary: Confirm a worker, check eligible absence types and balances, then submit a time-off request.
+  description: >-
+    A self-service absence flow. It resolves the worker, lists the absence
+    types the worker is eligible for, reads current time-off balances so the
+    request can be validated against available days, and then submits the
+    time-off request. Every step spells out its request inline so the flow can
+    be read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: hcmApi
+  url: ../openapi/hcm.yml
+  type: openapi
+- name: absenceManagementApi
+  url: ../openapi/absenceManagement.yml
+  type: openapi
+workflows:
+- workflowId: submit-time-off
+  summary: Validate eligibility and balances, then submit a worker time-off request.
+  description: >-
+    Reads the worker, the eligible absence types, and the worker's current
+    time-off balances, then submits a time-off request for the supplied days.
+  inputs:
+    type: object
+    required:
+    - authorization
+    - workerId
+    - days
+    properties:
+      authorization:
+        type: string
+        description: OAuth2 bearer token, e.g. "Bearer eyJ...".
+      workerId:
+        type: string
+        description: The Workday ID of the worker requesting time off.
+      days:
+        type: array
+        description: The list of day objects (date, dailyQuantity, comment) to request off.
+        items:
+          type: object
+  steps:
+  - stepId: getWorker
+    description: Confirm the worker exists before reading absence data.
+    operationId: getWorkerById
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: ID
+      in: path
+      value: $inputs.workerId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      workerDescriptor: $response.body#/descriptor
+  - stepId: getEligibleTypes
+    description: List the absence types the worker is eligible to request.
+    operationId: getEligibleAbsenceTypes
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: ID
+      in: path
+      value: $inputs.workerId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      eligibleTypes: $response.body#/data
+  - stepId: getBalances
+    description: Read the worker's current time-off balances to validate the request.
+    operationId: getTimeOffBalances
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: ID
+      in: path
+      value: $inputs.workerId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      balances: $response.body#/data
+  - stepId: submitRequest
+    description: Submit the time-off request for the supplied days.
+    operationId: requestTimeOff
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: ID
+      in: path
+      value: $inputs.workerId
+    requestBody:
+      contentType: application/json
+      payload:
+        days: $inputs.days
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      entryId: $response.body#/id
+      status: $response.body#/status
+  outputs:
+    workerDescriptor: $steps.getWorker.outputs.workerDescriptor
+    balances: $steps.getBalances.outputs.balances
+    entryId: $steps.submitRequest.outputs.entryId
+    status: $steps.submitRequest.outputs.status

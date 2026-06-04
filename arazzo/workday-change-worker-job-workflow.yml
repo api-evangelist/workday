@@ -1,0 +1,131 @@
+arazzo: 1.0.1
+info:
+  title: Workday Change Worker Job
+  summary: Confirm a worker, look up the target job profile and position, then initiate a job change.
+  description: >-
+    A staffing flow that moves a worker into a new role. It resolves the worker,
+    loads the target job profile and the target position so the proposed change
+    references valid objects, and then initiates the job change event. Every
+    step spells out its request inline so the flow can be read and executed
+    without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: hcmApi
+  url: ../openapi/hcm.yml
+  type: openapi
+- name: staffingApi
+  url: ../openapi/staffing.yml
+  type: openapi
+workflows:
+- workflowId: change-worker-job
+  summary: Resolve a worker, validate the target profile and position, then create a job change.
+  description: >-
+    Reads the worker, the target job profile, and the target position, then
+    initiates a job change event for the worker with the supplied effective
+    date and proposals.
+  inputs:
+    type: object
+    required:
+    - authorization
+    - workerId
+    - jobProfileId
+    - positionId
+    - effectiveDate
+    - reason
+    properties:
+      authorization:
+        type: string
+        description: OAuth2 bearer token, e.g. "Bearer eyJ...".
+      workerId:
+        type: string
+        description: The Workday ID of the worker changing jobs.
+      jobProfileId:
+        type: string
+        description: The Workday ID of the proposed job profile.
+      positionId:
+        type: string
+        description: The Workday ID of the proposed position.
+      effectiveDate:
+        type: string
+        description: The effective date of the job change (YYYY-MM-DD).
+      reason:
+        type: object
+        description: The job change reason reference object (id, descriptor, href).
+      proposedPosition:
+        type: object
+        description: The proposed position reference object (id, descriptor, href).
+      proposedJobProfile:
+        type: object
+        description: The proposed job profile reference object (id, descriptor, href).
+      proposedBusinessTitle:
+        type: string
+        description: The proposed business title.
+  steps:
+  - stepId: getWorker
+    description: Confirm the worker exists before initiating a job change.
+    operationId: getWorkerById
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: ID
+      in: path
+      value: $inputs.workerId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      workerDescriptor: $response.body#/descriptor
+  - stepId: getJobProfile
+    description: Load the target job profile to validate the proposed profile.
+    operationId: getJobProfileById
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: ID
+      in: path
+      value: $inputs.jobProfileId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      jobProfileDescriptor: $response.body#/descriptor
+  - stepId: getPosition
+    description: Load the target position to validate the proposed position.
+    operationId: getPositionById
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: ID
+      in: path
+      value: $inputs.positionId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      positionDescriptor: $response.body#/descriptor
+  - stepId: createChange
+    description: Initiate the job change event for the worker.
+    operationId: createJobChange
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: ID
+      in: path
+      value: $inputs.workerId
+    requestBody:
+      contentType: application/json
+      payload:
+        effectiveDate: $inputs.effectiveDate
+        reason: $inputs.reason
+        proposedPosition: $inputs.proposedPosition
+        proposedBusinessTitle: $inputs.proposedBusinessTitle
+        proposedJobProfile: $inputs.proposedJobProfile
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      jobChangeId: $response.body#/id
+      jobChangeEffectiveDate: $response.body#/effectiveDate
+  outputs:
+    workerDescriptor: $steps.getWorker.outputs.workerDescriptor
+    jobChangeId: $steps.createChange.outputs.jobChangeId

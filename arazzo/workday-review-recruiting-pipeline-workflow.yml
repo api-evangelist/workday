@@ -1,0 +1,107 @@
+arazzo: 1.0.1
+info:
+  title: Workday Review Recruiting Pipeline
+  summary: List job requisitions, load a requisition's detail and its posting, then review job applications.
+  description: >-
+    A recruiting review flow. It lists open job requisitions and branches on
+    whether any exist: when at least one requisition is returned it loads the
+    first requisition's detail, loads the job posting for it, and reviews the
+    application pipeline, and when none are returned it ends. Every step spells
+    out its request inline so the flow can be read and executed without opening
+    the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: recruitingApi
+  url: ../openapi/recruiting.yml
+  type: openapi
+workflows:
+- workflowId: review-recruiting-pipeline
+  summary: List requisitions, load the first one and its posting, then review applications.
+  description: >-
+    Lists job requisitions, then branches: if any exist it loads the first
+    requisition's detail, its job posting, and the job application pipeline,
+    otherwise it ends.
+  inputs:
+    type: object
+    required:
+    - authorization
+    properties:
+      authorization:
+        type: string
+        description: OAuth2 bearer token, e.g. "Bearer eyJ...".
+      postingId:
+        type: string
+        description: The Workday ID of the job posting to load detail for.
+  steps:
+  - stepId: listRequisitions
+    description: List open job requisitions.
+    operationId: getJobRequisitions
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firstRequisitionId: $response.body#/data/0/id
+    onSuccess:
+    - name: hasRequisitions
+      type: goto
+      stepId: getRequisitionDetail
+      criteria:
+      - context: $response.body
+        condition: $.data.length > 0
+        type: jsonpath
+    - name: noRequisitions
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.data.length == 0
+        type: jsonpath
+  - stepId: getRequisitionDetail
+    description: Load the detail record for the first requisition.
+    operationId: getJobRequisitionById
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: ID
+      in: path
+      value: $steps.listRequisitions.outputs.firstRequisitionId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      requisitionDescriptor: $response.body#/descriptor
+  - stepId: getPosting
+    description: Load the job posting detail for the supplied posting id.
+    operationId: getJobPostingById
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: ID
+      in: path
+      value: $inputs.postingId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      postingDescriptor: $response.body#/descriptor
+  - stepId: reviewApplications
+    description: Review the job application pipeline.
+    operationId: getJobApplications
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: limit
+      in: query
+      value: 100
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      applications: $response.body#/data
+      total: $response.body#/total
+  outputs:
+    firstRequisitionId: $steps.listRequisitions.outputs.firstRequisitionId
+    requisitionDescriptor: $steps.getRequisitionDetail.outputs.requisitionDescriptor
+    applications: $steps.reviewApplications.outputs.applications

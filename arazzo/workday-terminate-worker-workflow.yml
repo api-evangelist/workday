@@ -1,0 +1,114 @@
+arazzo: 1.0.1
+info:
+  title: Workday Terminate Worker
+  summary: Confirm a worker and review their organization assignments, then initiate a termination event.
+  description: >-
+    An offboarding flow. It resolves the worker, reviews their current
+    organization assignments so the offboarding context is captured, and then
+    initiates a termination event with the supplied dates and reasons. Every
+    step spells out its request inline so the flow can be read and executed
+    without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: hcmApi
+  url: ../openapi/hcm.yml
+  type: openapi
+- name: staffingApi
+  url: ../openapi/staffing.yml
+  type: openapi
+workflows:
+- workflowId: terminate-worker
+  summary: Resolve a worker, review assignments, then initiate a termination event.
+  description: >-
+    Reads the worker and their organization assignments, then initiates a
+    termination event with the supplied termination date, last day of work, and
+    reasons.
+  inputs:
+    type: object
+    required:
+    - authorization
+    - workerId
+    - terminationDate
+    - primaryReason
+    properties:
+      authorization:
+        type: string
+        description: OAuth2 bearer token, e.g. "Bearer eyJ...".
+      workerId:
+        type: string
+        description: The Workday ID of the worker to terminate.
+      terminationDate:
+        type: string
+        description: The termination date (YYYY-MM-DD).
+      lastDayOfWork:
+        type: string
+        description: The worker's last day of work (YYYY-MM-DD).
+      primaryReason:
+        type: object
+        description: The primary termination reason reference object (id, descriptor, href).
+      localTerminationReason:
+        type: object
+        description: The local termination reason reference object (id, descriptor, href).
+      regrettable:
+        type: boolean
+        description: Whether the termination is regrettable.
+      notifyEmployee:
+        type: boolean
+        description: Whether to notify the employee.
+  steps:
+  - stepId: getWorker
+    description: Confirm the worker exists before initiating a termination.
+    operationId: getWorkerById
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: ID
+      in: path
+      value: $inputs.workerId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      workerDescriptor: $response.body#/descriptor
+  - stepId: getAssignments
+    description: Review the worker's current organization assignments.
+    operationId: getOrganizationAssignments
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: ID
+      in: path
+      value: $inputs.workerId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      assignments: $response.body#/data
+  - stepId: terminate
+    description: Initiate the termination event for the worker.
+    operationId: terminateWorker
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: ID
+      in: path
+      value: $inputs.workerId
+    requestBody:
+      contentType: application/json
+      payload:
+        terminationDate: $inputs.terminationDate
+        lastDayOfWork: $inputs.lastDayOfWork
+        primaryReason: $inputs.primaryReason
+        localTerminationReason: $inputs.localTerminationReason
+        regrettable: $inputs.regrettable
+        notifyEmployee: $inputs.notifyEmployee
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      terminationId: $response.body#/id
+      terminationDescriptor: $response.body#/descriptor
+  outputs:
+    workerDescriptor: $steps.getWorker.outputs.workerDescriptor
+    assignments: $steps.getAssignments.outputs.assignments
+    terminationId: $steps.terminate.outputs.terminationId

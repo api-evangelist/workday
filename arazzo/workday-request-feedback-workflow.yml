@@ -1,0 +1,120 @@
+arazzo: 1.0.1
+info:
+  title: Workday Request Feedback
+  summary: Read a worker's goals and reviews, then request feedback from respondents.
+  description: >-
+    A performance flow. It resolves the worker, reads their goals and existing
+    performance reviews to ground the feedback request, and then initiates a
+    request for feedback from a set of respondents. Every step spells out its
+    request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: hcmApi
+  url: ../openapi/hcm.yml
+  type: openapi
+- name: performanceManagementApi
+  url: ../openapi/performanceManagement.yml
+  type: openapi
+workflows:
+- workflowId: request-feedback
+  summary: Read goals and reviews, then request feedback from respondents.
+  description: >-
+    Reads the worker, their goals, and their performance reviews, then
+    initiates a feedback request to the supplied respondents with the supplied
+    questions and due date.
+  inputs:
+    type: object
+    required:
+    - authorization
+    - workerId
+    - respondents
+    - questions
+    properties:
+      authorization:
+        type: string
+        description: OAuth2 bearer token, e.g. "Bearer eyJ...".
+      workerId:
+        type: string
+        description: The Workday ID of the worker the feedback is about.
+      respondents:
+        type: array
+        description: The list of respondent reference objects (id, descriptor, href).
+        items:
+          type: object
+      questions:
+        type: array
+        description: The list of feedback question strings.
+        items:
+          type: string
+      dueDate:
+        type: string
+        description: The due date for the feedback (YYYY-MM-DD).
+  steps:
+  - stepId: getWorker
+    description: Confirm the worker exists before requesting feedback.
+    operationId: getWorkerById
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: ID
+      in: path
+      value: $inputs.workerId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      workerDescriptor: $response.body#/descriptor
+  - stepId: getGoals
+    description: Read the worker's goals to ground the feedback request.
+    operationId: getWorkerGoals
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: ID
+      in: path
+      value: $inputs.workerId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      goals: $response.body#/data
+  - stepId: getReviews
+    description: Read the worker's performance reviews for additional context.
+    operationId: getPerformanceReviews
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: ID
+      in: path
+      value: $inputs.workerId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      reviews: $response.body#/data
+  - stepId: requestFeedback
+    description: Initiate the feedback request to the respondents.
+    operationId: requestFeedback
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: ID
+      in: path
+      value: $inputs.workerId
+    requestBody:
+      contentType: application/json
+      payload:
+        respondents: $inputs.respondents
+        questions: $inputs.questions
+        dueDate: $inputs.dueDate
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      feedbackRequestId: $response.body#/id
+      feedbackRequestDescriptor: $response.body#/descriptor
+  outputs:
+    workerDescriptor: $steps.getWorker.outputs.workerDescriptor
+    goals: $steps.getGoals.outputs.goals
+    feedbackRequestId: $steps.requestFeedback.outputs.feedbackRequestId

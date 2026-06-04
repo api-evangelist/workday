@@ -1,0 +1,116 @@
+arazzo: 1.0.1
+info:
+  title: Workday Request One-Time Payment
+  summary: Confirm a worker and read their pay slips, then submit a one-time payment request.
+  description: >-
+    A one-time payment flow. It resolves the worker, reads recent pay slips for
+    context, and then submits a one-time payment request. The one-time payment
+    operation is defined in both the Compensation and Staffing specs, so it is
+    referenced by its explicit source. Every step spells out its request inline
+    so the flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: hcmApi
+  url: ../openapi/hcm.yml
+  type: openapi
+- name: payrollApi
+  url: ../openapi/payroll.yml
+  type: openapi
+- name: compensationApi
+  url: ../openapi/compensation.yml
+  type: openapi
+workflows:
+- workflowId: request-one-time-payment
+  summary: Resolve a worker, read pay slips, then submit a one-time payment.
+  description: >-
+    Reads the worker and recent pay slips, then submits a one-time payment
+    request with the supplied effective date, amount, currency, and pay
+    component.
+  inputs:
+    type: object
+    required:
+    - authorization
+    - workerId
+    - effectiveDate
+    - amount
+    - currency
+    - payComponent
+    properties:
+      authorization:
+        type: string
+        description: OAuth2 bearer token, e.g. "Bearer eyJ...".
+      workerId:
+        type: string
+        description: The Workday ID of the worker.
+      effectiveDate:
+        type: string
+        description: The effective date of the payment (YYYY-MM-DD).
+      reason:
+        type: object
+        description: The payment reason reference object (id, descriptor, href).
+      currency:
+        type: object
+        description: The currency reference object (id, descriptor, href).
+      amount:
+        type: number
+        description: The payment amount.
+      payComponent:
+        type: object
+        description: The pay component reference object (id, descriptor, href).
+  steps:
+  - stepId: getWorker
+    description: Confirm the worker exists before reading payroll data.
+    operationId: getWorkerById
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: ID
+      in: path
+      value: $inputs.workerId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      workerDescriptor: $response.body#/descriptor
+  - stepId: getPaySlips
+    description: Read recent pay slips for the worker for context.
+    operationId: getPaySlips
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: ID
+      in: path
+      value: $inputs.workerId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      paySlips: $response.body#/data
+  - stepId: requestPayment
+    description: Submit the one-time payment request for the worker.
+    operationPath: '{$sourceDescriptions.compensationApi.url}#/paths/~1workers~1{ID}~1requestOneTimePayment/post'
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: ID
+      in: path
+      value: $inputs.workerId
+    requestBody:
+      contentType: application/json
+      payload:
+        effectiveDate: $inputs.effectiveDate
+        reason: $inputs.reason
+        currency: $inputs.currency
+        amount: $inputs.amount
+        payComponent: $inputs.payComponent
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      paymentId: $response.body#/id
+      paymentDescriptor: $response.body#/descriptor
+  outputs:
+    workerDescriptor: $steps.getWorker.outputs.workerDescriptor
+    paySlips: $steps.getPaySlips.outputs.paySlips
+    paymentId: $steps.requestPayment.outputs.paymentId

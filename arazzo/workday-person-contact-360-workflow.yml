@@ -1,0 +1,111 @@
+arazzo: 1.0.1
+info:
+  title: Workday Person Contact 360
+  summary: Search people, load the first match's detail, then gather home and work contact information.
+  description: >-
+    A person contact lookup flow. It searches the people collection by name and
+    branches on whether a match was found: when at least one person matches it
+    loads the person detail and gathers both home and work contact information,
+    and when nothing matches it ends. Every step spells out its request inline
+    so the flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: personApi
+  url: ../openapi/person.yml
+  type: openapi
+workflows:
+- workflowId: person-contact-360
+  summary: Search people, load the first match, then gather home and work contact info.
+  description: >-
+    Searches people by name, then branches: if a person matched it loads the
+    person's detail and both home and work contact information, otherwise it
+    ends.
+  inputs:
+    type: object
+    required:
+    - authorization
+    - search
+    properties:
+      authorization:
+        type: string
+        description: OAuth2 bearer token, e.g. "Bearer eyJ...".
+      search:
+        type: string
+        description: The name to search people by.
+  steps:
+  - stepId: searchPeople
+    description: Search the people collection by name.
+    operationId: getPeople
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: search
+      in: query
+      value: $inputs.search
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      matchedPersonId: $response.body#/data/0/id
+    onSuccess:
+    - name: personFound
+      type: goto
+      stepId: getPersonDetail
+      criteria:
+      - context: $response.body
+        condition: $.data.length > 0
+        type: jsonpath
+    - name: noPerson
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.data.length == 0
+        type: jsonpath
+  - stepId: getPersonDetail
+    description: Load the detail record for the first matched person.
+    operationId: getPersonById
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: ID
+      in: path
+      value: $steps.searchPeople.outputs.matchedPersonId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      personDescriptor: $response.body#/descriptor
+  - stepId: getHomeContact
+    description: Gather the person's home contact information.
+    operationId: getHomeContactInformation
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: ID
+      in: path
+      value: $steps.searchPeople.outputs.matchedPersonId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      homeContact: $response.body
+  - stepId: getWorkContact
+    description: Gather the person's work contact information.
+    operationId: getWorkContactInformation
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: ID
+      in: path
+      value: $steps.searchPeople.outputs.matchedPersonId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      workContact: $response.body
+  outputs:
+    matchedPersonId: $steps.searchPeople.outputs.matchedPersonId
+    personDescriptor: $steps.getPersonDetail.outputs.personDescriptor
+    homeContact: $steps.getHomeContact.outputs.homeContact
+    workContact: $steps.getWorkContact.outputs.workContact

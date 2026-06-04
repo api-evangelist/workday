@@ -1,0 +1,128 @@
+arazzo: 1.0.1
+info:
+  title: Workday Prism Load Dataset
+  summary: Create a Prism dataset, stage a file container, create a data change task, and confirm its status.
+  description: >-
+    A Prism Analytics ingestion flow. It creates a new dataset with a schema,
+    creates a file container to stage uploaded data, creates a data change task
+    that loads the staged file into the dataset, and then reads the task back to
+    confirm its status. Every step spells out its request inline so the flow can
+    be read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: prismAnalyticsApi
+  url: ../openapi/prismAnalytics.yml
+  type: openapi
+workflows:
+- workflowId: prism-load-dataset
+  summary: Create a dataset, stage a file container, load it via a data change task, and confirm.
+  description: >-
+    Creates a Prism dataset, creates a file container to stage data, creates a
+    data change task to load the file into the dataset, then reads the task back
+    to confirm its status.
+  inputs:
+    type: object
+    required:
+    - authorization
+    - name
+    - fields
+    - operation
+    properties:
+      authorization:
+        type: string
+        description: OAuth2 bearer token, e.g. "Bearer eyJ...".
+      name:
+        type: string
+        description: The dataset name.
+      displayName:
+        type: string
+        description: The dataset display name.
+      description:
+        type: string
+        description: The dataset description.
+      fields:
+        type: array
+        description: The dataset field schema definitions.
+        items:
+          type: object
+      tags:
+        type: array
+        description: Optional tags for the dataset.
+        items:
+          type: string
+      operation:
+        type: object
+        description: The data change task operation reference (id).
+  steps:
+  - stepId: createDataset
+    description: Create the Prism dataset with the supplied schema.
+    operationId: createDataset
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.name
+        displayName: $inputs.displayName
+        description: $inputs.description
+        fields: $inputs.fields
+        tags: $inputs.tags
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      datasetId: $response.body#/id
+  - stepId: createFileContainer
+    description: Create a file container to stage the data file for loading.
+    operationId: createFileContainer
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    requestBody:
+      contentType: application/octet-stream
+      payload: $inputs.name
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      fileContainerId: $response.body#/id
+  - stepId: createTask
+    description: Create a data change task that loads the staged file into the dataset.
+    operationId: createDataChangeTask
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.name
+        targetDataset:
+          id: $steps.createDataset.outputs.datasetId
+        operation: $inputs.operation
+        fileContainer:
+          id: $steps.createFileContainer.outputs.fileContainerId
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      taskId: $response.body#/id
+  - stepId: confirmTask
+    description: Read the data change task back to confirm its status.
+    operationId: getDataChangeTaskById
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: ID
+      in: path
+      value: $steps.createTask.outputs.taskId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      taskStatus: $response.body#/status
+      completedOn: $response.body#/completedOn
+  outputs:
+    datasetId: $steps.createDataset.outputs.datasetId
+    taskId: $steps.createTask.outputs.taskId
+    taskStatus: $steps.confirmTask.outputs.taskStatus

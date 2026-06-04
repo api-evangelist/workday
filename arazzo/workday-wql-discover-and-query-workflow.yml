@@ -1,0 +1,98 @@
+arazzo: 1.0.1
+info:
+  title: Workday WQL Discover and Query
+  summary: Discover a WQL data source and its fields, then execute a WQL query against it.
+  description: >-
+    A WQL reporting flow. It lists the available WQL data sources, branches on
+    whether any exist, loads the fields of the first data source so the query
+    can reference valid columns, and then executes a supplied WQL query and
+    returns the result set. Every step spells out its request inline so the flow
+    can be read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: wqlApi
+  url: ../openapi/wql.yml
+  type: openapi
+workflows:
+- workflowId: wql-discover-and-query
+  summary: Discover a data source and its fields, then run a WQL query.
+  description: >-
+    Lists WQL data sources, then branches: if any exist it loads the first data
+    source's fields and executes the supplied WQL query, otherwise it ends.
+  inputs:
+    type: object
+    required:
+    - authorization
+    - query
+    properties:
+      authorization:
+        type: string
+        description: OAuth2 bearer token, e.g. "Bearer eyJ...".
+      query:
+        type: string
+        description: The WQL query string to execute.
+      limit:
+        type: integer
+        description: Maximum number of result rows (default 20, max 100).
+  steps:
+  - stepId: listDataSources
+    description: List the available WQL data sources.
+    operationId: getDataSources
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firstDataSourceId: $response.body#/data/0/id
+    onSuccess:
+    - name: hasDataSources
+      type: goto
+      stepId: getFields
+      criteria:
+      - context: $response.body
+        condition: $.data.length > 0
+        type: jsonpath
+    - name: noDataSources
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.data.length == 0
+        type: jsonpath
+  - stepId: getFields
+    description: Load the fields of the first data source to validate query columns.
+    operationId: getDataSourceFields
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: ID
+      in: path
+      value: $steps.listDataSources.outputs.firstDataSourceId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      fields: $response.body#/data
+  - stepId: runQuery
+    description: Execute the supplied WQL query and return the result set.
+    operationId: executeWqlQuery
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: query
+      in: query
+      value: $inputs.query
+    - name: limit
+      in: query
+      value: $inputs.limit
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      rows: $response.body#/data
+      total: $response.body#/total
+  outputs:
+    firstDataSourceId: $steps.listDataSources.outputs.firstDataSourceId
+    fields: $steps.getFields.outputs.fields
+    rows: $steps.runQuery.outputs.rows
