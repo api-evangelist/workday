@@ -1,0 +1,1612 @@
+"""
+Workday GraphQL Schema
+Conceptual schema representing the Workday HCM and Financial Management data model.
+Workday does not offer a native public GraphQL endpoint; this schema is derived from
+the Workday REST API and SOAP Web Services definitions for integration tooling purposes.
+Source: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+"""
+
+scalar Date
+scalar DateTime
+scalar JSON
+
+# ─────────────────────────────────────────────
+# Pagination
+# ─────────────────────────────────────────────
+
+type PageInfo {
+  total: Int!
+  offset: Int!
+  limit: Int!
+  hasNextPage: Boolean!
+}
+
+# ─────────────────────────────────────────────
+# Worker and Employment
+# ─────────────────────────────────────────────
+
+"""A person working for the organization, either as an employee or contingent worker."""
+type Worker {
+  id: ID!
+  workerID: String!
+  workerType: WorkerType!
+  primaryJob: Job
+  person: Person
+  employee: Employee
+  contingentWorker: ContingentWorker
+  positions: [Position!]
+  organization: Organization
+  managedWorkers: [Worker!]
+  manager: Worker
+  hireDate: Date
+  terminationDate: Date
+  employmentStatus: EmploymentStatus!
+  compensations: [Compensation!]
+  benefits: [BenefitsEnrollment!]
+  leaveBalances: [LeaveBalance!]
+  absenceRequests: [AbsenceRequest!]
+  timesheets: [Timesheet!]
+  performanceReviews: [PerformanceReview!]
+  goals: [Goal!]
+  talentProfile: TalentProfile
+  documents: [Document!]
+  payslips: [Payslip!]
+}
+
+enum WorkerType {
+  EMPLOYEE
+  CONTINGENT_WORKER
+}
+
+enum EmploymentStatus {
+  ACTIVE
+  INACTIVE
+  TERMINATED
+  LEAVE_OF_ABSENCE
+  SUSPENDED
+}
+
+"""A regular, direct-hire employee of the organization."""
+type Employee {
+  id: ID!
+  worker: Worker!
+  employeeID: String!
+  employmentType: EmploymentType!
+  fullTimeEquivalent: Float
+  regularHoursPerWeek: Float
+  startDate: Date
+  endDate: Date
+  probationEndDate: Date
+  seniorityDate: Date
+  continuousServiceDate: Date
+  payGroup: PayGroup
+}
+
+enum EmploymentType {
+  FULL_TIME
+  PART_TIME
+  TEMPORARY
+  SEASONAL
+  INTERN
+}
+
+"""A non-employee contingent worker such as a contractor or consultant."""
+type ContingentWorker {
+  id: ID!
+  worker: Worker!
+  contingentWorkerID: String!
+  contractStartDate: Date
+  contractEndDate: Date
+  vendorName: String
+  contractType: String
+  agencyName: String
+}
+
+# ─────────────────────────────────────────────
+# Person
+# ─────────────────────────────────────────────
+
+"""Personal information for a worker."""
+type Person {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  middleName: String
+  preferredName: String
+  legalName: String
+  dateOfBirth: Date
+  gender: String
+  nationality: String
+  primaryEmail: String
+  primaryPhone: String
+  addresses: [Address!]
+  emails: [ContactEmail!]
+  phones: [ContactPhone!]
+  nationalIDs: [NationalID!]
+}
+
+type Address {
+  id: ID!
+  addressType: String
+  line1: String
+  line2: String
+  city: String
+  state: String
+  postalCode: String
+  country: String!
+  isPrimary: Boolean!
+  effectiveDate: Date
+}
+
+type ContactEmail {
+  id: ID!
+  emailType: String
+  address: String!
+  isPrimary: Boolean!
+}
+
+type ContactPhone {
+  id: ID!
+  phoneType: String
+  number: String!
+  countryCode: String
+  isPrimary: Boolean!
+}
+
+type NationalID {
+  id: ID!
+  idType: String!
+  idNumber: String!
+  country: String!
+  issuedDate: Date
+  expirationDate: Date
+}
+
+# ─────────────────────────────────────────────
+# Organization
+# ─────────────────────────────────────────────
+
+"""An organizational unit within the enterprise."""
+interface Organization {
+  id: ID!
+  name: String!
+  code: String
+  organizationType: OrganizationType!
+  externalID: String
+  active: Boolean!
+  parentOrganization: Organization
+  childOrganizations: [Organization!]
+  workers: [Worker!]
+  manager: Worker
+}
+
+enum OrganizationType {
+  COMPANY
+  DEPARTMENT
+  COST_CENTER
+  SUPERVISORY
+  MATRIX
+  GEOGRAPHIC
+  PAY_GROUP
+  LOCATION_HIERARCHY
+}
+
+"""A legal entity or company within the organization hierarchy."""
+type Company implements Organization {
+  id: ID!
+  name: String!
+  code: String
+  organizationType: OrganizationType!
+  externalID: String
+  active: Boolean!
+  parentOrganization: Organization
+  childOrganizations: [Organization!]
+  workers: [Worker!]
+  manager: Worker
+  taxID: String
+  currency: String
+  country: String
+  legalName: String
+}
+
+"""A functional department grouping workers by function."""
+type Department implements Organization {
+  id: ID!
+  name: String!
+  code: String
+  organizationType: OrganizationType!
+  externalID: String
+  active: Boolean!
+  parentOrganization: Organization
+  childOrganizations: [Organization!]
+  workers: [Worker!]
+  manager: Worker
+  costCenter: CostCenter
+}
+
+"""A financial cost center for budgeting and expense allocation."""
+type CostCenter implements Organization {
+  id: ID!
+  name: String!
+  code: String
+  organizationType: OrganizationType!
+  externalID: String
+  active: Boolean!
+  parentOrganization: Organization
+  childOrganizations: [Organization!]
+  workers: [Worker!]
+  manager: Worker
+  budget: Budget
+  ledgerAccounts: [Account!]
+}
+
+# ─────────────────────────────────────────────
+# Location
+# ─────────────────────────────────────────────
+
+"""A physical or virtual work location."""
+type Location {
+  id: ID!
+  name: String!
+  locationCode: String
+  locationType: LocationType!
+  address: Address
+  timeZone: String
+  active: Boolean!
+  sites: [Site!]
+  workers: [Worker!]
+}
+
+enum LocationType {
+  OFFICE
+  REMOTE
+  WAREHOUSE
+  RETAIL
+  DATA_CENTER
+  HOME_OFFICE
+}
+
+"""A physical site or facility within a location."""
+type Site {
+  id: ID!
+  name: String!
+  siteCode: String
+  location: Location!
+  address: Address
+  capacity: Int
+  active: Boolean!
+}
+
+# ─────────────────────────────────────────────
+# Job and Position
+# ─────────────────────────────────────────────
+
+"""A worker's current job assignment linking a worker to a position."""
+type Job {
+  id: ID!
+  worker: Worker!
+  position: Position!
+  jobProfile: JobProfile!
+  startDate: Date!
+  endDate: Date
+  primaryPosition: Boolean!
+  location: Location
+  organization: Organization
+  compensation: Compensation
+  jobTitle: String
+  businessTitle: String
+  timeType: TimeType
+}
+
+enum TimeType {
+  FULL_TIME
+  PART_TIME
+}
+
+"""An unfilled or filled slot in the organizational structure."""
+type Position {
+  id: ID!
+  positionID: String!
+  name: String!
+  jobProfile: JobProfile!
+  organization: Organization!
+  location: Location
+  headcount: Int!
+  filledHeadcount: Int!
+  status: PositionStatus!
+  effectiveDate: Date!
+  budgetedPosition: Boolean!
+  compensationGrade: CompensationGrade
+  workers: [Worker!]
+  hiringRequisitions: [HiringRequisition!]
+}
+
+enum PositionStatus {
+  OPEN
+  FILLED
+  FROZEN
+  CLOSED
+}
+
+"""A job classification template defining role requirements."""
+type JobProfile {
+  id: ID!
+  name: String!
+  jobCode: String
+  jobFamily: JobFamily
+  jobClassification: String
+  summary: String
+  workShift: String
+  compensationGrade: CompensationGrade
+  jobLevel: String
+  managementLevel: String
+  criticalJob: Boolean
+  publicJob: Boolean
+  effectiveDate: Date!
+  inactive: Boolean!
+  positions: [Position!]
+}
+
+"""A grouping of related job profiles."""
+type JobFamily {
+  id: ID!
+  name: String!
+  jobProfiles: [JobProfile!]
+}
+
+# ─────────────────────────────────────────────
+# Compensation
+# ─────────────────────────────────────────────
+
+"""A worker's compensation package and pay details."""
+type Compensation {
+  id: ID!
+  worker: Worker!
+  effectiveDate: Date!
+  compensationPlan: CompensationPlan
+  compensationGrade: CompensationGrade
+  annualizedAmount: Float
+  currency: String!
+  payRate: Float
+  payRateType: PayRateType
+  payFrequency: String
+  components: [CompensationComponent!]
+}
+
+enum PayRateType {
+  SALARY
+  HOURLY
+  DAILY
+  WEEKLY
+  MONTHLY
+}
+
+"""A compensation plan defining pay structure rules."""
+type CompensationPlan {
+  id: ID!
+  name: String!
+  planType: CompensationPlanType!
+  currency: String
+  compensationGrades: [CompensationGrade!]
+  effectiveDate: Date!
+  inactive: Boolean!
+}
+
+enum CompensationPlanType {
+  SALARY
+  HOURLY
+  UNIT
+  ALLOWANCE
+  MERIT
+  BONUS
+  COMMISSION
+  STOCK
+}
+
+"""A grade band within a compensation plan."""
+type CompensationGrade {
+  id: ID!
+  name: String!
+  gradeCode: String
+  minimumAmount: Float
+  midpointAmount: Float
+  maximumAmount: Float
+  currency: String
+  compensationPlan: CompensationPlan
+}
+
+"""An individual pay component within a compensation record."""
+type CompensationComponent {
+  id: ID!
+  compensation: Compensation!
+  componentType: String!
+  amount: Float!
+  currency: String!
+  frequency: String
+}
+
+# ─────────────────────────────────────────────
+# Pay Group and Payroll
+# ─────────────────────────────────────────────
+
+"""A group of workers processed together in payroll."""
+type PayGroup {
+  id: ID!
+  name: String!
+  payGroupCode: String
+  frequency: PayFrequency!
+  country: String!
+  currency: String!
+  company: Company
+  workers: [Worker!]
+  payslips: [Payslip!]
+}
+
+enum PayFrequency {
+  WEEKLY
+  BIWEEKLY
+  SEMIMONTHLY
+  MONTHLY
+  QUARTERLY
+  ANNUAL
+}
+
+"""An individual pay statement issued to a worker."""
+type Payslip {
+  id: ID!
+  worker: Worker!
+  payGroup: PayGroup!
+  periodStartDate: Date!
+  periodEndDate: Date!
+  payDate: Date!
+  grossPay: Float!
+  netPay: Float!
+  currency: String!
+  payComponents: [PayComponent!]
+  deductions: [Deduction!]
+  taxes: [TaxEntry!]
+}
+
+"""A line item on a payslip representing earnings."""
+type PayComponent {
+  id: ID!
+  payslip: Payslip!
+  name: String!
+  amount: Float!
+  hours: Float
+  rate: Float
+}
+
+"""A deduction line item on a payslip."""
+type Deduction {
+  id: ID!
+  payslip: Payslip!
+  name: String!
+  amount: Float!
+  deductionType: String
+  preTax: Boolean!
+}
+
+"""A tax withholding entry on a payslip."""
+type TaxEntry {
+  id: ID!
+  payslip: Payslip!
+  taxType: String!
+  taxAuthority: String
+  amount: Float!
+  taxableWages: Float
+}
+
+"""An annual tax form issued to a worker (e.g., W-2, T4)."""
+type TaxForm {
+  id: ID!
+  worker: Worker!
+  formType: String!
+  taxYear: Int!
+  issueDate: Date
+  url: String
+}
+
+# ─────────────────────────────────────────────
+# Benefits
+# ─────────────────────────────────────────────
+
+"""A benefits plan available to workers."""
+type BenefitsPlan {
+  id: ID!
+  name: String!
+  planType: BenefitsPlanType!
+  provider: String
+  coverageType: String
+  effectiveDate: Date!
+  endDate: Date
+  active: Boolean!
+  enrollments: [BenefitsEnrollment!]
+}
+
+enum BenefitsPlanType {
+  MEDICAL
+  DENTAL
+  VISION
+  LIFE
+  DISABILITY
+  RETIREMENT_401K
+  RETIREMENT_403B
+  HSA
+  FSA
+  SUPPLEMENTAL
+}
+
+"""A worker's enrollment in a benefits plan."""
+type BenefitsEnrollment {
+  id: ID!
+  worker: Worker!
+  plan: BenefitsPlan!
+  enrollmentDate: Date!
+  terminationDate: Date
+  coverageLevel: String
+  dependents: [Dependent!]
+  employeeContribution: Float
+  employerContribution: Float
+  currency: String
+}
+
+"""A dependent covered under a worker's benefits enrollment."""
+type Dependent {
+  id: ID!
+  enrollment: BenefitsEnrollment!
+  firstName: String!
+  lastName: String!
+  relationship: String!
+  dateOfBirth: Date
+}
+
+# ─────────────────────────────────────────────
+# Absence and Leave
+# ─────────────────────────────────────────────
+
+"""A worker's accrued leave balance for a specific absence type."""
+type LeaveBalance {
+  id: ID!
+  worker: Worker!
+  absenceType: AbsenceType!
+  balance: Float!
+  unit: LeaveUnit!
+  asOfDate: Date!
+  yearToDateAccrual: Float
+  yearToDateTaken: Float
+}
+
+"""An eligible absence type defined in Workday."""
+type AbsenceType {
+  id: ID!
+  name: String!
+  code: String
+  unit: LeaveUnit!
+  paidLeave: Boolean!
+  active: Boolean!
+}
+
+enum LeaveUnit {
+  HOURS
+  DAYS
+}
+
+"""A request by a worker to take time off or a leave of absence."""
+type AbsenceRequest {
+  id: ID!
+  worker: Worker!
+  absenceType: AbsenceType!
+  startDate: Date!
+  endDate: Date!
+  status: AbsenceRequestStatus!
+  requestDate: DateTime!
+  approvedDate: DateTime
+  approver: Worker
+  comment: String
+  totalDays: Float
+  totalHours: Float
+}
+
+enum AbsenceRequestStatus {
+  PENDING
+  APPROVED
+  DENIED
+  CANCELLED
+  IN_REVIEW
+}
+
+# ─────────────────────────────────────────────
+# Time Tracking
+# ─────────────────────────────────────────────
+
+"""A worker's timesheet for a pay period."""
+type Timesheet {
+  id: ID!
+  worker: Worker!
+  periodStartDate: Date!
+  periodEndDate: Date!
+  status: TimesheetStatus!
+  totalHours: Float!
+  entries: [TimeEntry!]
+  submittedDate: DateTime
+  approvedDate: DateTime
+  approver: Worker
+}
+
+enum TimesheetStatus {
+  IN_PROGRESS
+  SUBMITTED
+  APPROVED
+  DENIED
+  PAID
+}
+
+"""An individual time entry on a timesheet."""
+type TimeEntry {
+  id: ID!
+  timesheet: Timesheet!
+  worker: Worker!
+  date: Date!
+  hours: Float!
+  timeType: String
+  project: Project
+  task: String
+  comment: String
+  status: TimeEntryStatus!
+}
+
+enum TimeEntryStatus {
+  DRAFT
+  SUBMITTED
+  APPROVED
+  DENIED
+}
+
+"""A clock-in or clock-out event for hourly workers."""
+type ClockEvent {
+  id: ID!
+  worker: Worker!
+  eventType: ClockEventType!
+  eventDateTime: DateTime!
+  location: Location
+  device: String
+}
+
+enum ClockEventType {
+  CLOCK_IN
+  CLOCK_OUT
+  BREAK_START
+  BREAK_END
+}
+
+# ─────────────────────────────────────────────
+# Performance and Talent
+# ─────────────────────────────────────────────
+
+"""A formal performance review for a worker in a review period."""
+type PerformanceReview {
+  id: ID!
+  worker: Worker!
+  reviewPeriodStart: Date!
+  reviewPeriodEnd: Date!
+  status: ReviewStatus!
+  overallRating: String
+  overallScore: Float
+  reviewer: Worker
+  goals: [Goal!]
+  completedDate: DateTime
+  template: String
+}
+
+enum ReviewStatus {
+  NOT_STARTED
+  IN_PROGRESS
+  SUBMITTED
+  ACKNOWLEDGED
+  CLOSED
+}
+
+"""A goal associated with a worker's performance or development plan."""
+type Goal {
+  id: ID!
+  worker: Worker!
+  title: String!
+  description: String
+  category: String
+  status: GoalStatus!
+  dueDate: Date
+  completionPercentage: Float
+  weight: Float
+  performanceReview: PerformanceReview
+  developmentPlan: DevelopmentPlan
+}
+
+enum GoalStatus {
+  NOT_STARTED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+  ON_HOLD
+}
+
+"""A worker's development plan for career growth and learning."""
+type DevelopmentPlan {
+  id: ID!
+  worker: Worker!
+  title: String!
+  startDate: Date
+  endDate: Date
+  status: String
+  goals: [Goal!]
+  activities: [DevelopmentActivity!]
+}
+
+"""An individual development activity within a development plan."""
+type DevelopmentActivity {
+  id: ID!
+  plan: DevelopmentPlan!
+  activityType: String!
+  name: String!
+  description: String
+  dueDate: Date
+  completedDate: Date
+  status: String
+}
+
+"""A worker's talent profile capturing skills, certifications, and career interests."""
+type TalentProfile {
+  id: ID!
+  worker: Worker!
+  skills: [Skill!]
+  certifications: [Certification!]
+  education: [Education!]
+  careerPreferences: [String!]
+  languages: [Language!]
+  awards: [Award!]
+  updatedDate: DateTime
+}
+
+"""A skill associated with a worker's talent profile."""
+type Skill {
+  id: ID!
+  name: String!
+  category: String
+  proficiencyLevel: String
+  yearsOfExperience: Float
+}
+
+"""A certification or credential held by a worker."""
+type Certification {
+  id: ID!
+  name: String!
+  issuingAuthority: String
+  issuedDate: Date
+  expirationDate: Date
+  certificationNumber: String
+}
+
+"""An educational qualification held by a worker."""
+type Education {
+  id: ID!
+  institution: String!
+  degree: String
+  fieldOfStudy: String
+  startDate: Date
+  endDate: Date
+  gpa: Float
+}
+
+"""A language spoken by a worker."""
+type Language {
+  id: ID!
+  name: String!
+  proficiencyLevel: String
+  nativeLanguage: Boolean
+}
+
+"""An award or recognition received by a worker."""
+type Award {
+  id: ID!
+  name: String!
+  issuingOrganization: String
+  dateReceived: Date
+  description: String
+}
+
+"""A succession plan linking a worker to potential successors for a position."""
+type Succession {
+  id: ID!
+  position: Position!
+  worker: Worker!
+  successors: [SuccessionCandidate!]
+  lastUpdated: DateTime
+}
+
+"""A candidate in a succession plan for a given position."""
+type SuccessionCandidate {
+  id: ID!
+  succession: Succession!
+  worker: Worker!
+  readinessLevel: ReadinessLevel!
+  rank: Int
+  retentionRisk: String
+  impactOfLoss: String
+}
+
+enum ReadinessLevel {
+  READY_NOW
+  READY_IN_1_2_YEARS
+  READY_IN_3_5_YEARS
+  NOT_READY
+}
+
+# ─────────────────────────────────────────────
+# Recruiting
+# ─────────────────────────────────────────────
+
+"""A job requisition representing an open role to be filled."""
+type HiringRequisition {
+  id: ID!
+  requisitionID: String!
+  jobProfile: JobProfile!
+  position: Position
+  organization: Organization!
+  location: Location
+  status: RequisitionStatus!
+  openDate: Date!
+  targetFillDate: Date
+  hiringManager: Worker
+  recruiter: Worker
+  jobApplications: [JobApplication!]
+  jobPostings: [JobPosting!]
+}
+
+enum RequisitionStatus {
+  DRAFT
+  OPEN
+  ON_HOLD
+  CLOSED
+  FILLED
+  CANCELLED
+}
+
+"""A public job posting derived from a hiring requisition."""
+type JobPosting {
+  id: ID!
+  requisition: HiringRequisition!
+  title: String!
+  description: String
+  location: Location
+  postedDate: Date
+  closingDate: Date
+  externalURL: String
+  status: String
+}
+
+"""A candidate applying for a position."""
+type Candidate {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  email: String!
+  phone: String
+  sourceType: String
+  sourceName: String
+  applications: [JobApplication!]
+  resume: Document
+  createdDate: DateTime!
+}
+
+"""An application submitted by a candidate for a job requisition."""
+type JobApplication {
+  id: ID!
+  candidate: Candidate!
+  requisition: HiringRequisition!
+  applicationDate: DateTime!
+  status: ApplicationStatus!
+  stage: String
+  offer: Offer
+  interviewFeedback: [InterviewFeedback!]
+}
+
+enum ApplicationStatus {
+  APPLIED
+  SCREENING
+  INTERVIEW
+  OFFER_EXTENDED
+  OFFER_ACCEPTED
+  OFFER_DECLINED
+  HIRED
+  REJECTED
+  WITHDRAWN
+}
+
+"""Interview feedback submitted by an interviewer for a job application."""
+type InterviewFeedback {
+  id: ID!
+  application: JobApplication!
+  interviewer: Worker!
+  interviewDate: DateTime!
+  overallRecommendation: String
+  rating: String
+  comments: String
+  submittedDate: DateTime
+}
+
+"""An offer of employment extended to a candidate."""
+type Offer {
+  id: ID!
+  application: JobApplication!
+  offerDate: Date!
+  status: OfferStatus!
+  startDate: Date
+  position: Position
+  compensationPlan: CompensationPlan
+  salary: Float
+  currency: String
+  expirationDate: Date
+  acceptedDate: Date
+  declinedDate: Date
+  declineReason: String
+}
+
+enum OfferStatus {
+  DRAFT
+  EXTENDED
+  ACCEPTED
+  DECLINED
+  RESCINDED
+  EXPIRED
+}
+
+"""An onboarding task or checklist for a newly hired worker."""
+type Onboarding {
+  id: ID!
+  worker: Worker!
+  startDate: Date!
+  status: OnboardingStatus!
+  tasks: [OnboardingTask!]
+  completedDate: Date
+  assignedHRPartner: Worker
+}
+
+enum OnboardingStatus {
+  NOT_STARTED
+  IN_PROGRESS
+  COMPLETED
+}
+
+"""An individual onboarding task assigned to a new hire."""
+type OnboardingTask {
+  id: ID!
+  onboarding: Onboarding!
+  title: String!
+  description: String
+  dueDate: Date
+  completedDate: Date
+  assignedTo: Worker
+  required: Boolean!
+  status: String
+}
+
+# ─────────────────────────────────────────────
+# Financial Management
+# ─────────────────────────────────────────────
+
+"""A project for tracking time, costs, and resources."""
+type Project {
+  id: ID!
+  name: String!
+  projectCode: String
+  status: ProjectStatus!
+  startDate: Date
+  endDate: Date
+  budget: Float
+  currency: String
+  projectManager: Worker
+  costCenter: CostCenter
+  timeEntries: [TimeEntry!]
+}
+
+enum ProjectStatus {
+  PLANNING
+  ACTIVE
+  ON_HOLD
+  COMPLETED
+  CANCELLED
+}
+
+"""An employee expense report submitted for reimbursement."""
+type ExpenseReport {
+  id: ID!
+  reportNumber: String!
+  worker: Worker!
+  status: ExpenseReportStatus!
+  submittedDate: DateTime
+  approvedDate: DateTime
+  approver: Worker
+  totalAmount: Float!
+  currency: String!
+  expenses: [Expense!]
+  paymentDate: Date
+}
+
+enum ExpenseReportStatus {
+  DRAFT
+  SUBMITTED
+  IN_REVIEW
+  APPROVED
+  PAID
+  CANCELLED
+}
+
+"""An individual expense line item on an expense report."""
+type Expense {
+  id: ID!
+  expenseReport: ExpenseReport!
+  expenseDate: Date!
+  expenseType: String!
+  amount: Float!
+  currency: String!
+  description: String
+  merchant: String
+  project: Project
+  costCenter: CostCenter
+  receipts: [Attachment!]
+  billable: Boolean
+}
+
+"""A purchase order issued to a supplier."""
+type PurchaseOrder {
+  id: ID!
+  orderNumber: String!
+  supplier: Supplier!
+  status: PurchaseOrderStatus!
+  orderDate: Date!
+  requiredDate: Date
+  totalAmount: Float!
+  currency: String!
+  lines: [PurchaseOrderLine!]
+  costCenter: CostCenter
+  approvedBy: Worker
+  approvedDate: DateTime
+}
+
+enum PurchaseOrderStatus {
+  DRAFT
+  PENDING_APPROVAL
+  APPROVED
+  SENT
+  PARTIALLY_RECEIVED
+  FULLY_RECEIVED
+  CLOSED
+  CANCELLED
+}
+
+"""A line item on a purchase order."""
+type PurchaseOrderLine {
+  id: ID!
+  purchaseOrder: PurchaseOrder!
+  lineNumber: Int!
+  description: String!
+  quantity: Float!
+  unitPrice: Float!
+  totalPrice: Float!
+  deliveredQuantity: Float
+}
+
+"""A supplier or vendor in the procurement system."""
+type Supplier {
+  id: ID!
+  name: String!
+  supplierID: String!
+  status: String
+  taxID: String
+  primaryContact: String
+  primaryEmail: String
+  primaryPhone: String
+  address: Address
+  purchaseOrders: [PurchaseOrder!]
+  invoices: [Invoice!]
+}
+
+"""A supplier invoice awaiting payment."""
+type Invoice {
+  id: ID!
+  invoiceNumber: String!
+  supplier: Supplier!
+  purchaseOrder: PurchaseOrder
+  status: InvoiceStatus!
+  invoiceDate: Date!
+  dueDate: Date
+  totalAmount: Float!
+  currency: String!
+  lines: [InvoiceLine!]
+  payments: [Payment!]
+}
+
+enum InvoiceStatus {
+  DRAFT
+  SUBMITTED
+  IN_REVIEW
+  APPROVED
+  PARTIALLY_PAID
+  PAID
+  VOID
+  DISPUTED
+}
+
+"""A line item on an invoice."""
+type InvoiceLine {
+  id: ID!
+  invoice: Invoice!
+  lineNumber: Int!
+  description: String!
+  quantity: Float!
+  unitPrice: Float!
+  totalAmount: Float!
+  account: Account
+  costCenter: CostCenter
+}
+
+"""A payment made against an invoice."""
+type Payment {
+  id: ID!
+  invoice: Invoice
+  paymentDate: Date!
+  amount: Float!
+  currency: String!
+  paymentMethod: String
+  referenceNumber: String
+  status: PaymentStatus!
+  worker: Worker
+}
+
+enum PaymentStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  VOIDED
+  FAILED
+}
+
+"""A financial budget for a cost center or project."""
+type Budget {
+  id: ID!
+  name: String!
+  fiscalYear: Int!
+  costCenter: CostCenter
+  project: Project
+  totalAmount: Float!
+  currency: String!
+  spentAmount: Float
+  committedAmount: Float
+  remainingAmount: Float
+  status: BudgetStatus!
+}
+
+enum BudgetStatus {
+  DRAFT
+  APPROVED
+  ACTIVE
+  CLOSED
+}
+
+"""A general ledger account."""
+type Account {
+  id: ID!
+  accountNumber: String!
+  name: String!
+  accountType: AccountType!
+  currency: String
+  active: Boolean!
+  company: Company
+  parentAccount: Account
+  childAccounts: [Account!]
+}
+
+enum AccountType {
+  ASSET
+  LIABILITY
+  EQUITY
+  REVENUE
+  EXPENSE
+  GAIN_LOSS
+}
+
+"""A financial ledger grouping accounts for reporting."""
+type Ledger {
+  id: ID!
+  name: String!
+  ledgerType: String
+  currency: String!
+  company: Company!
+  accounts: [Account!]
+  journalEntries: [JournalEntry!]
+}
+
+"""A journal entry recording a financial transaction."""
+type JournalEntry {
+  id: ID!
+  ledger: Ledger!
+  journalEntryNumber: String!
+  entryDate: Date!
+  postingDate: Date
+  status: JournalEntryStatus!
+  memo: String
+  totalDebit: Float!
+  totalCredit: Float!
+  currency: String!
+  lines: [JournalEntryLine!]
+  createdBy: Worker
+  createdDate: DateTime!
+}
+
+enum JournalEntryStatus {
+  DRAFT
+  POSTED
+  VOID
+}
+
+"""A debit or credit line within a journal entry."""
+type JournalEntryLine {
+  id: ID!
+  journalEntry: JournalEntry!
+  lineNumber: Int!
+  account: Account!
+  debitAmount: Float
+  creditAmount: Float
+  memo: String
+  costCenter: CostCenter
+  project: Project
+}
+
+# ─────────────────────────────────────────────
+# Platform, Security, and Workflow
+# ─────────────────────────────────────────────
+
+"""A Workday tenant instance."""
+type Tenant {
+  id: ID!
+  tenantName: String!
+  tenantAlias: String
+  environment: TenantEnvironment!
+  region: String
+  version: String
+  active: Boolean!
+}
+
+enum TenantEnvironment {
+  PRODUCTION
+  IMPLEMENTATION
+  SANDBOX
+  PREVIEW
+}
+
+"""A Workday user account for authentication and authorization."""
+type WorkdayAccount {
+  id: ID!
+  userName: String!
+  email: String
+  worker: Worker
+  active: Boolean!
+  lastLoginDate: DateTime
+  securityGroups: [SecurityGroup!]
+  createdDate: DateTime!
+}
+
+"""A security group controlling access to Workday resources."""
+type SecurityGroup {
+  id: ID!
+  name: String!
+  securityGroupType: String!
+  description: String
+  permissions: [Permission!]
+  members: [WorkdayAccount!]
+}
+
+"""A permission controlling access to a specific Workday domain or task."""
+type Permission {
+  id: ID!
+  securityGroup: SecurityGroup!
+  domain: String!
+  accessType: AccessType!
+  description: String
+}
+
+enum AccessType {
+  VIEW
+  MODIFY
+  GET
+  PUT
+  POST
+  DELETE
+  PROCESS
+}
+
+"""A business process template defining workflow steps in Workday."""
+type BusinessProcess {
+  id: ID!
+  name: String!
+  processType: String!
+  status: BusinessProcessStatus!
+  initiator: Worker
+  initiatedDate: DateTime
+  completedDate: DateTime
+  steps: [WorkflowStep!]
+  targetObject: String
+  targetObjectID: String
+}
+
+enum BusinessProcessStatus {
+  INITIATED
+  IN_PROGRESS
+  APPROVED
+  DENIED
+  CANCELLED
+  COMPLETE
+}
+
+"""A step within a business process workflow."""
+type WorkflowStep {
+  id: ID!
+  businessProcess: BusinessProcess!
+  stepNumber: Int!
+  stepType: StepType!
+  status: StepStatus!
+  assignedTo: Worker
+  dueDate: DateTime
+  completedDate: DateTime
+  comment: String
+}
+
+enum StepType {
+  APPROVAL
+  TO_DO
+  REVIEW
+  SIGN_OFF
+  NOTIFICATION
+  ACTION
+}
+
+enum StepStatus {
+  PENDING
+  IN_PROGRESS
+  APPROVED
+  DENIED
+  CANCELLED
+  COMPLETE
+  SKIPPED
+}
+
+"""An approval action taken on a business process step."""
+type Approval {
+  id: ID!
+  workflowStep: WorkflowStep!
+  approver: Worker!
+  action: ApprovalAction!
+  actionDate: DateTime!
+  comment: String
+}
+
+enum ApprovalAction {
+  APPROVE
+  DENY
+  SEND_BACK
+  CANCEL
+}
+
+# ─────────────────────────────────────────────
+# Documents and Reporting
+# ─────────────────────────────────────────────
+
+"""A document stored in the Workday document management system."""
+type Document {
+  id: ID!
+  name: String!
+  documentType: String
+  category: String
+  worker: Worker
+  createdDate: DateTime!
+  modifiedDate: DateTime
+  expirationDate: Date
+  status: String
+  attachments: [Attachment!]
+}
+
+"""A file attachment linked to a document or record."""
+type Attachment {
+  id: ID!
+  fileName: String!
+  mimeType: String
+  fileSize: Int
+  uploadedDate: DateTime!
+  uploadedBy: Worker
+  url: String
+  document: Document
+}
+
+"""A Workday report exposed via Report-as-a-Service."""
+type Report {
+  id: ID!
+  name: String!
+  reportType: ReportType!
+  owner: Worker
+  url: String
+  description: String
+  lastRunDate: DateTime
+  parameters: JSON
+}
+
+enum ReportType {
+  SIMPLE
+  ADVANCED
+  MATRIX
+  TRENDING
+  CUSTOM
+  COMPOSITE
+  TRANSPOSED
+}
+
+"""A Workday service area such as HCM, Payroll, or Financial Management."""
+type Service {
+  id: ID!
+  name: String!
+  serviceCode: String!
+  version: String
+  description: String
+  baseURL: String
+  status: String
+  documentation: String
+}
+
+"""An integration definition connecting Workday to an external system."""
+type Integration {
+  id: ID!
+  name: String!
+  integrationType: String!
+  status: IntegrationStatus!
+  sourceSystem: String
+  targetSystem: String
+  lastRunDate: DateTime
+  lastRunStatus: String
+  schedule: String
+  tenant: Tenant
+}
+
+enum IntegrationStatus {
+  ACTIVE
+  INACTIVE
+  ERROR
+  PROCESSING
+  SUSPENDED
+}
+
+# ─────────────────────────────────────────────
+# Root Query Type
+# ─────────────────────────────────────────────
+
+type Query {
+  # Workers
+  worker(id: ID!): Worker
+  workers(status: EmploymentStatus, organizationId: ID, limit: Int, offset: Int): WorkerPage!
+
+  # Organizations
+  organization(id: ID!): Organization
+  organizations(type: OrganizationType, limit: Int, offset: Int): OrganizationPage!
+  company(id: ID!): Company
+  department(id: ID!): Department
+  costCenter(id: ID!): CostCenter
+
+  # Positions and Jobs
+  position(id: ID!): Position
+  positions(organizationId: ID, status: PositionStatus, limit: Int, offset: Int): PositionPage!
+  jobProfile(id: ID!): JobProfile
+  jobProfiles(limit: Int, offset: Int): JobProfilePage!
+
+  # Compensation
+  compensationGrade(id: ID!): CompensationGrade
+  compensationPlan(id: ID!): CompensationPlan
+
+  # Payroll
+  payGroup(id: ID!): PayGroup
+  payGroups(limit: Int, offset: Int): PayGroupPage!
+  payslip(id: ID!): Payslip
+  payslips(workerId: ID!, limit: Int, offset: Int): PayslipPage!
+
+  # Benefits
+  benefitsPlan(id: ID!): BenefitsPlan
+  benefitsPlans(planType: BenefitsPlanType, limit: Int, offset: Int): BenefitsPlanPage!
+
+  # Absence
+  leaveBalance(workerId: ID!, absenceTypeId: ID!): LeaveBalance
+  leaveBalances(workerId: ID!): [LeaveBalance!]!
+  absenceRequest(id: ID!): AbsenceRequest
+  absenceRequests(workerId: ID, status: AbsenceRequestStatus, limit: Int, offset: Int): AbsenceRequestPage!
+
+  # Time Tracking
+  timesheet(id: ID!): Timesheet
+  timesheets(workerId: ID!, limit: Int, offset: Int): TimesheetPage!
+  timeEntry(id: ID!): TimeEntry
+
+  # Performance and Talent
+  performanceReview(id: ID!): PerformanceReview
+  performanceReviews(workerId: ID, status: ReviewStatus, limit: Int, offset: Int): PerformanceReviewPage!
+  goal(id: ID!): Goal
+  goals(workerId: ID!, limit: Int, offset: Int): GoalPage!
+  talentProfile(workerId: ID!): TalentProfile
+  succession(positionId: ID!): Succession
+
+  # Recruiting
+  hiringRequisition(id: ID!): HiringRequisition
+  hiringRequisitions(status: RequisitionStatus, organizationId: ID, limit: Int, offset: Int): HiringRequisitionPage!
+  candidate(id: ID!): Candidate
+  candidates(limit: Int, offset: Int): CandidatePage!
+  jobApplication(id: ID!): JobApplication
+  jobApplications(requisitionId: ID, status: ApplicationStatus, limit: Int, offset: Int): JobApplicationPage!
+  offer(id: ID!): Offer
+
+  # Financial Management
+  expenseReport(id: ID!): ExpenseReport
+  expenseReports(workerId: ID, status: ExpenseReportStatus, limit: Int, offset: Int): ExpenseReportPage!
+  purchaseOrder(id: ID!): PurchaseOrder
+  purchaseOrders(supplierId: ID, status: PurchaseOrderStatus, limit: Int, offset: Int): PurchaseOrderPage!
+  supplier(id: ID!): Supplier
+  suppliers(limit: Int, offset: Int): SupplierPage!
+  invoice(id: ID!): Invoice
+  invoices(supplierId: ID, status: InvoiceStatus, limit: Int, offset: Int): InvoicePage!
+  budget(id: ID!): Budget
+  account(id: ID!): Account
+  accounts(accountType: AccountType, companyId: ID, limit: Int, offset: Int): AccountPage!
+  ledger(id: ID!): Ledger
+  journalEntry(id: ID!): JournalEntry
+  journalEntries(ledgerId: ID!, limit: Int, offset: Int): JournalEntryPage!
+
+  # Platform
+  tenant(id: ID!): Tenant
+  workdayAccount(id: ID!): WorkdayAccount
+  securityGroup(id: ID!): SecurityGroup
+  securityGroups(limit: Int, offset: Int): SecurityGroupPage!
+  businessProcess(id: ID!): BusinessProcess
+  businessProcesses(status: BusinessProcessStatus, limit: Int, offset: Int): BusinessProcessPage!
+  integration(id: ID!): Integration
+  integrations(status: IntegrationStatus, limit: Int, offset: Int): IntegrationPage!
+  report(id: ID!): Report
+  reports(limit: Int, offset: Int): ReportPage!
+  location(id: ID!): Location
+  locations(limit: Int, offset: Int): LocationPage!
+  project(id: ID!): Project
+  projects(status: ProjectStatus, limit: Int, offset: Int): ProjectPage!
+}
+
+# ─────────────────────────────────────────────
+# Paged Result Types
+# ─────────────────────────────────────────────
+
+type WorkerPage { data: [Worker!]! pageInfo: PageInfo! }
+type OrganizationPage { data: [Organization!]! pageInfo: PageInfo! }
+type PositionPage { data: [Position!]! pageInfo: PageInfo! }
+type JobProfilePage { data: [JobProfile!]! pageInfo: PageInfo! }
+type PayGroupPage { data: [PayGroup!]! pageInfo: PageInfo! }
+type PayslipPage { data: [Payslip!]! pageInfo: PageInfo! }
+type BenefitsPlanPage { data: [BenefitsPlan!]! pageInfo: PageInfo! }
+type AbsenceRequestPage { data: [AbsenceRequest!]! pageInfo: PageInfo! }
+type TimesheetPage { data: [Timesheet!]! pageInfo: PageInfo! }
+type PerformanceReviewPage { data: [PerformanceReview!]! pageInfo: PageInfo! }
+type GoalPage { data: [Goal!]! pageInfo: PageInfo! }
+type HiringRequisitionPage { data: [HiringRequisition!]! pageInfo: PageInfo! }
+type CandidatePage { data: [Candidate!]! pageInfo: PageInfo! }
+type JobApplicationPage { data: [JobApplication!]! pageInfo: PageInfo! }
+type ExpenseReportPage { data: [ExpenseReport!]! pageInfo: PageInfo! }
+type PurchaseOrderPage { data: [PurchaseOrder!]! pageInfo: PageInfo! }
+type SupplierPage { data: [Supplier!]! pageInfo: PageInfo! }
+type InvoicePage { data: [Invoice!]! pageInfo: PageInfo! }
+type AccountPage { data: [Account!]! pageInfo: PageInfo! }
+type JournalEntryPage { data: [JournalEntry!]! pageInfo: PageInfo! }
+type SecurityGroupPage { data: [SecurityGroup!]! pageInfo: PageInfo! }
+type BusinessProcessPage { data: [BusinessProcess!]! pageInfo: PageInfo! }
+type IntegrationPage { data: [Integration!]! pageInfo: PageInfo! }
+type ReportPage { data: [Report!]! pageInfo: PageInfo! }
+type LocationPage { data: [Location!]! pageInfo: PageInfo! }
+type ProjectPage { data: [Project!]! pageInfo: PageInfo! }
