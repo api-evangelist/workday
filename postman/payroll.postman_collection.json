@@ -1,0 +1,1155 @@
+{
+  "info": {
+    "_postman_id": "4f1badd5-d3f9-4b88-ba7a-9eac14d133f3",
+    "name": "Workday Payroll API",
+    "description": "Payroll API for managing pay groups, pay group details, tax rates, payroll inputs, and pay components.\n\nContact Support:\n Name: Workday Support\n Email: support@workday.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:21:47.000Z",
+    "updatedAt": "2026-06-05T15:21:47.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4f1badd5-d3f9-4b88-ba7a-9eac14d133f3"
+  },
+  "item": [
+    {
+      "name": "payGroups",
+      "item": [
+        {
+          "name": "{ID}",
+          "item": [
+            {
+              "name": "payGroupDetails",
+              "item": [
+                {
+                  "name": "Get Pay Group Details",
+                  "id": "1741428c-0242-4514-b83a-338a70922548",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payGroups/:ID/payGroupDetails?limit=20&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payGroups",
+                        ":ID",
+                        "payGroupDetails"
+                      ],
+                      "query": [
+                        {
+                          "description": "The maximum number of objects in a single response.",
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "description": "The zero-based index of the first object in a response collection.",
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "03333e83-4bcc-448b-976c-695137f6de86",
+                          "key": "ID",
+                          "value": "<string>",
+                          "description": "(Required) The Workday ID of the resource."
+                        }
+                      ]
+                    },
+                    "description": "Returns detailed information for a pay group including pay periods."
+                  },
+                  "response": [
+                    {
+                      "id": "79d080f3-7901-4d9a-87f4-868ca22c32c3",
+                      "name": "Successful response containing pay group details.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payGroups/:ID/payGroupDetails?limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payGroups",
+                            ":ID",
+                            "payGroupDetails"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"payPeriodStartDate\": \"<date>\",\n      \"payPeriodEndDate\": \"<date>\",\n      \"payDate\": \"<date>\",\n      \"payRunStatus\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"payPeriodStartDate\": \"<date>\",\n      \"payPeriodEndDate\": \"<date>\",\n      \"payDate\": \"<date>\",\n      \"payRunStatus\": \"<string>\"\n    }\n  ],\n  \"total\": \"<integer>\"\n}",
+                      "createdAt": "2026-06-05T15:21:47.000Z",
+                      "updatedAt": "2026-06-05T15:21:47.000Z",
+                      "uid": "35240-79d080f3-7901-4d9a-87f4-868ca22c32c3"
+                    },
+                    {
+                      "id": "326b6093-c063-411b-94af-70594191a0f4",
+                      "name": "Authentication credentials were missing or invalid.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payGroups/:ID/payGroupDetails?limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payGroups",
+                            ":ID",
+                            "payGroupDetails"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:47.000Z",
+                      "updatedAt": "2026-06-05T15:21:47.000Z",
+                      "uid": "35240-326b6093-c063-411b-94af-70594191a0f4"
+                    },
+                    {
+                      "id": "56d36ae0-5fb2-431b-b03d-62ae1ebca9bd",
+                      "name": "The requested resource was not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payGroups/:ID/payGroupDetails?limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payGroups",
+                            ":ID",
+                            "payGroupDetails"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:47.000Z",
+                      "updatedAt": "2026-06-05T15:21:47.000Z",
+                      "uid": "35240-56d36ae0-5fb2-431b-b03d-62ae1ebca9bd"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:47.000Z",
+                  "updatedAt": "2026-06-05T15:21:47.000Z",
+                  "uid": "35240-1741428c-0242-4514-b83a-338a70922548"
+                }
+              ],
+              "id": "67734b8e-2fe7-4b8f-ac21-8a9d27c338b3",
+              "createdAt": "2026-06-05T15:21:47.000Z",
+              "updatedAt": "2026-06-05T15:21:47.000Z",
+              "uid": "35240-67734b8e-2fe7-4b8f-ac21-8a9d27c338b3"
+            },
+            {
+              "name": "Get Pay Group by Id",
+              "id": "50de25b6-e437-4f5e-b79e-0270a3206660",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payGroups/:ID",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payGroups",
+                    ":ID"
+                  ],
+                  "variable": [
+                    {
+                      "id": "1f8a916e-5855-4450-bf0b-e9e63f995860",
+                      "key": "ID",
+                      "value": "<string>",
+                      "description": "(Required) The Workday ID of the resource."
+                    }
+                  ]
+                },
+                "description": "Returns details for a specific pay group."
+              },
+              "response": [
+                {
+                  "id": "06dfdf45-9b41-4925-9566-ef6f4c5b75c3",
+                  "name": "Successful response containing pay group details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payGroups/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payGroups",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"descriptor\": \"<string>\",\n  \"name\": \"<string>\",\n  \"country\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"payFrequency\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"currency\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"isActive\": \"<boolean>\"\n}",
+                  "createdAt": "2026-06-05T15:21:47.000Z",
+                  "updatedAt": "2026-06-05T15:21:47.000Z",
+                  "uid": "35240-06dfdf45-9b41-4925-9566-ef6f4c5b75c3"
+                },
+                {
+                  "id": "4d571d6e-56e2-4994-b4af-e3580c621bf5",
+                  "name": "Authentication credentials were missing or invalid.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payGroups/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payGroups",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:47.000Z",
+                  "updatedAt": "2026-06-05T15:21:47.000Z",
+                  "uid": "35240-4d571d6e-56e2-4994-b4af-e3580c621bf5"
+                },
+                {
+                  "id": "32023f71-60db-492c-bde8-ef14c1465954",
+                  "name": "The requested resource was not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payGroups/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payGroups",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:47.000Z",
+                  "updatedAt": "2026-06-05T15:21:47.000Z",
+                  "uid": "35240-32023f71-60db-492c-bde8-ef14c1465954"
+                }
+              ],
+              "createdAt": "2026-06-05T15:21:47.000Z",
+              "updatedAt": "2026-06-05T15:21:47.000Z",
+              "uid": "35240-50de25b6-e437-4f5e-b79e-0270a3206660"
+            }
+          ],
+          "id": "c9cf14c4-887a-4ca5-a65d-6417de780849",
+          "createdAt": "2026-06-05T15:21:47.000Z",
+          "updatedAt": "2026-06-05T15:21:47.000Z",
+          "uid": "35240-c9cf14c4-887a-4ca5-a65d-6417de780849"
+        },
+        {
+          "name": "Get Pay Groups",
+          "id": "0e392ffc-872a-4768-87e1-62f2dc1ecf47",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/payGroups?limit=20&offset=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "payGroups"
+              ],
+              "query": [
+                {
+                  "description": "The maximum number of objects in a single response.",
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "description": "The zero-based index of the first object in a response collection.",
+                  "key": "offset",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Returns a collection of pay groups."
+          },
+          "response": [
+            {
+              "id": "25e9ef08-a8b0-4892-894c-5b718553df28",
+              "name": "Successful response containing pay groups.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payGroups?limit=20&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payGroups"
+                  ],
+                  "query": [
+                    {
+                      "description": "The maximum number of objects in a single response.",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection.",
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"name\": \"<string>\",\n      \"country\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"payFrequency\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"currency\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"isActive\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"name\": \"<string>\",\n      \"country\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"payFrequency\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"currency\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"isActive\": \"<boolean>\"\n    }\n  ],\n  \"total\": \"<integer>\"\n}",
+              "createdAt": "2026-06-05T15:21:47.000Z",
+              "updatedAt": "2026-06-05T15:21:47.000Z",
+              "uid": "35240-25e9ef08-a8b0-4892-894c-5b718553df28"
+            },
+            {
+              "id": "0c7d42b5-35c7-44d4-893d-b8e59aa2d2bc",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payGroups?limit=20&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payGroups"
+                  ],
+                  "query": [
+                    {
+                      "description": "The maximum number of objects in a single response.",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection.",
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:21:47.000Z",
+              "updatedAt": "2026-06-05T15:21:47.000Z",
+              "uid": "35240-0c7d42b5-35c7-44d4-893d-b8e59aa2d2bc"
+            }
+          ],
+          "createdAt": "2026-06-05T15:21:47.000Z",
+          "updatedAt": "2026-06-05T15:21:47.000Z",
+          "uid": "35240-0e392ffc-872a-4768-87e1-62f2dc1ecf47"
+        }
+      ],
+      "id": "d7f6157a-0e96-419a-98de-e238834349f2",
+      "createdAt": "2026-06-05T15:21:47.000Z",
+      "updatedAt": "2026-06-05T15:21:47.000Z",
+      "uid": "35240-d7f6157a-0e96-419a-98de-e238834349f2"
+    },
+    {
+      "name": "workers",
+      "item": [
+        {
+          "name": "{ID}",
+          "item": [
+            {
+              "name": "payrollInputs",
+              "item": [
+                {
+                  "name": "Get Payroll Inputs",
+                  "id": "c23580de-04cc-475f-a277-5e9be798f6bb",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/workers/:ID/payrollInputs?limit=20&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "workers",
+                        ":ID",
+                        "payrollInputs"
+                      ],
+                      "query": [
+                        {
+                          "description": "The maximum number of objects in a single response.",
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "description": "The zero-based index of the first object in a response collection.",
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "33939e21-9227-4641-8298-b4846be13383",
+                          "key": "ID",
+                          "value": "<string>",
+                          "description": "(Required) The Workday ID of the resource."
+                        }
+                      ]
+                    },
+                    "description": "Returns payroll inputs for a worker."
+                  },
+                  "response": [
+                    {
+                      "id": "8c1e6920-b322-4ec3-9097-c2d31d17acd5",
+                      "name": "Successful response containing payroll inputs.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/payrollInputs?limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "payrollInputs"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"inputType\": \"<string>\",\n      \"payComponent\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"amount\": \"<double>\",\n      \"currency\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"comment\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"inputType\": \"<string>\",\n      \"payComponent\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"amount\": \"<double>\",\n      \"currency\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"comment\": \"<string>\"\n    }\n  ],\n  \"total\": \"<integer>\"\n}",
+                      "createdAt": "2026-06-05T15:21:47.000Z",
+                      "updatedAt": "2026-06-05T15:21:47.000Z",
+                      "uid": "35240-8c1e6920-b322-4ec3-9097-c2d31d17acd5"
+                    },
+                    {
+                      "id": "ca0a7eb4-3e17-401a-8f78-704318504a7b",
+                      "name": "Authentication credentials were missing or invalid.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/payrollInputs?limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "payrollInputs"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:47.000Z",
+                      "updatedAt": "2026-06-05T15:21:47.000Z",
+                      "uid": "35240-ca0a7eb4-3e17-401a-8f78-704318504a7b"
+                    },
+                    {
+                      "id": "54568317-5cad-4213-aec4-b9c1eadc4f6c",
+                      "name": "The requested resource was not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/payrollInputs?limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "payrollInputs"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:47.000Z",
+                      "updatedAt": "2026-06-05T15:21:47.000Z",
+                      "uid": "35240-54568317-5cad-4213-aec4-b9c1eadc4f6c"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:47.000Z",
+                  "updatedAt": "2026-06-05T15:21:47.000Z",
+                  "uid": "35240-c23580de-04cc-475f-a277-5e9be798f6bb"
+                }
+              ],
+              "id": "1bd9b4e7-13df-4c60-b74a-8164790347a1",
+              "createdAt": "2026-06-05T15:21:47.000Z",
+              "updatedAt": "2026-06-05T15:21:47.000Z",
+              "uid": "35240-1bd9b4e7-13df-4c60-b74a-8164790347a1"
+            },
+            {
+              "name": "paySlips",
+              "item": [
+                {
+                  "name": "Get Pay Slips",
+                  "id": "6ea7c0b2-be74-480f-b773-0f7329d4e0f1",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/workers/:ID/paySlips?limit=20&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "workers",
+                        ":ID",
+                        "paySlips"
+                      ],
+                      "query": [
+                        {
+                          "description": "The maximum number of objects in a single response.",
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "description": "The zero-based index of the first object in a response collection.",
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "ae232412-2aaf-45ed-904f-fdc1234a17af",
+                          "key": "ID",
+                          "value": "<string>",
+                          "description": "(Required) The Workday ID of the resource."
+                        }
+                      ]
+                    },
+                    "description": "Returns pay slips for a worker."
+                  },
+                  "response": [
+                    {
+                      "id": "c3289438-0537-4430-a2fa-67e6ca5ec447",
+                      "name": "Successful response containing pay slips.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/paySlips?limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "paySlips"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"payPeriodStartDate\": \"<date>\",\n      \"payPeriodEndDate\": \"<date>\",\n      \"payDate\": \"<date>\",\n      \"grossPay\": \"<double>\",\n      \"netPay\": \"<double>\",\n      \"totalDeductions\": \"<double>\",\n      \"totalTaxes\": \"<double>\",\n      \"currency\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"payGroup\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"payPeriodStartDate\": \"<date>\",\n      \"payPeriodEndDate\": \"<date>\",\n      \"payDate\": \"<date>\",\n      \"grossPay\": \"<double>\",\n      \"netPay\": \"<double>\",\n      \"totalDeductions\": \"<double>\",\n      \"totalTaxes\": \"<double>\",\n      \"currency\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"payGroup\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      }\n    }\n  ],\n  \"total\": \"<integer>\"\n}",
+                      "createdAt": "2026-06-05T15:21:47.000Z",
+                      "updatedAt": "2026-06-05T15:21:47.000Z",
+                      "uid": "35240-c3289438-0537-4430-a2fa-67e6ca5ec447"
+                    },
+                    {
+                      "id": "b0fe0fa2-5ff4-46ff-b1ec-4c2b696ecd7f",
+                      "name": "Authentication credentials were missing or invalid.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/paySlips?limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "paySlips"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:47.000Z",
+                      "updatedAt": "2026-06-05T15:21:47.000Z",
+                      "uid": "35240-b0fe0fa2-5ff4-46ff-b1ec-4c2b696ecd7f"
+                    },
+                    {
+                      "id": "6ad02787-0447-4399-8e7c-e055bc7d4e20",
+                      "name": "The requested resource was not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/paySlips?limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "paySlips"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:47.000Z",
+                      "updatedAt": "2026-06-05T15:21:47.000Z",
+                      "uid": "35240-6ad02787-0447-4399-8e7c-e055bc7d4e20"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:47.000Z",
+                  "updatedAt": "2026-06-05T15:21:47.000Z",
+                  "uid": "35240-6ea7c0b2-be74-480f-b773-0f7329d4e0f1"
+                }
+              ],
+              "id": "22983b46-5245-4938-aff8-f43fbcdeb470",
+              "createdAt": "2026-06-05T15:21:47.000Z",
+              "updatedAt": "2026-06-05T15:21:47.000Z",
+              "uid": "35240-22983b46-5245-4938-aff8-f43fbcdeb470"
+            }
+          ],
+          "id": "46f77453-ac0b-41d4-b3a7-619996af0a35",
+          "createdAt": "2026-06-05T15:21:47.000Z",
+          "updatedAt": "2026-06-05T15:21:47.000Z",
+          "uid": "35240-46f77453-ac0b-41d4-b3a7-619996af0a35"
+        }
+      ],
+      "id": "612db8e7-ddaf-43db-a79b-7f90524c9968",
+      "createdAt": "2026-06-05T15:21:47.000Z",
+      "updatedAt": "2026-06-05T15:21:47.000Z",
+      "uid": "35240-612db8e7-ddaf-43db-a79b-7f90524c9968"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "r_payroll w_payroll",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "tenant",
+      "value": "tenant_name"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://wd2-impl-services1.workday.com/ccx/api/payroll/v1/{{tenant}}"
+    }
+  ]
+}

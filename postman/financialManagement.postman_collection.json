@@ -1,0 +1,1443 @@
+{
+  "info": {
+    "_postman_id": "cf13eeec-76a5-4373-aa5a-4a7575c00800",
+    "name": "Workday Financial Management API",
+    "description": "Financial Management API for accounting, procurement, expenses, and financial reporting. Enables programmatic access to financial data and workflows.\n\nContact Support:\n Name: Workday Support\n Email: support@workday.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:21:39.000Z",
+    "updatedAt": "2026-06-05T15:21:40.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-cf13eeec-76a5-4373-aa5a-4a7575c00800"
+  },
+  "item": [
+    {
+      "name": "accountingJournals",
+      "item": [
+        {
+          "name": "{ID}",
+          "item": [
+            {
+              "name": "Get Accounting Journal by Id",
+              "id": "67264543-f9c6-4403-9f0e-5af8e9ff625a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/accountingJournals/:ID",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "accountingJournals",
+                    ":ID"
+                  ],
+                  "variable": [
+                    {
+                      "id": "33e5e449-5d73-449e-b74d-85edd16e3f0f",
+                      "key": "ID",
+                      "value": "<string>",
+                      "description": "(Required) The Workday ID of the resource."
+                    }
+                  ]
+                },
+                "description": "Returns details for a specific accounting journal."
+              },
+              "response": [
+                {
+                  "id": "db19f2d9-6670-4729-bfcf-df7d6db2d874",
+                  "name": "Successful response containing accounting journal details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accountingJournals/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accountingJournals",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"descriptor\": \"<string>\",\n  \"journalNumber\": \"<string>\",\n  \"company\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"accountingDate\": \"<date>\",\n  \"status\": \"<string>\",\n  \"journalSource\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"totalDebitAmount\": \"<double>\",\n  \"totalCreditAmount\": \"<double>\",\n  \"currency\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  }\n}",
+                  "createdAt": "2026-06-05T15:21:40.000Z",
+                  "updatedAt": "2026-06-05T15:21:40.000Z",
+                  "uid": "35240-db19f2d9-6670-4729-bfcf-df7d6db2d874"
+                },
+                {
+                  "id": "c4072c77-54be-4bc6-95fb-24421a9a2782",
+                  "name": "Authentication credentials were missing or invalid.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accountingJournals/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accountingJournals",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:40.000Z",
+                  "updatedAt": "2026-06-05T15:21:40.000Z",
+                  "uid": "35240-c4072c77-54be-4bc6-95fb-24421a9a2782"
+                },
+                {
+                  "id": "64839c66-24ac-4907-8f35-e3f8db1fbf2b",
+                  "name": "The requested resource was not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accountingJournals/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accountingJournals",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:40.000Z",
+                  "updatedAt": "2026-06-05T15:21:40.000Z",
+                  "uid": "35240-64839c66-24ac-4907-8f35-e3f8db1fbf2b"
+                }
+              ],
+              "createdAt": "2026-06-05T15:21:40.000Z",
+              "updatedAt": "2026-06-05T15:21:40.000Z",
+              "uid": "35240-67264543-f9c6-4403-9f0e-5af8e9ff625a"
+            }
+          ],
+          "id": "6b29f76d-ea93-4596-ac36-85a2dcd4d173",
+          "createdAt": "2026-06-05T15:21:40.000Z",
+          "updatedAt": "2026-06-05T15:21:40.000Z",
+          "uid": "35240-6b29f76d-ea93-4596-ac36-85a2dcd4d173"
+        },
+        {
+          "name": "Get Accounting Journals",
+          "id": "c8d74486-250f-4882-937b-27c9b4f20758",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/accountingJournals?limit=20&offset=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "accountingJournals"
+              ],
+              "query": [
+                {
+                  "description": "The maximum number of objects in a single response.",
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "description": "The zero-based index of the first object in a response collection.",
+                  "key": "offset",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Returns a collection of accounting journals."
+          },
+          "response": [
+            {
+              "id": "4c6458b1-9aa8-4282-afef-c606b994b867",
+              "name": "Successful response containing accounting journals.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/accountingJournals?limit=20&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "accountingJournals"
+                  ],
+                  "query": [
+                    {
+                      "description": "The maximum number of objects in a single response.",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection.",
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"journalNumber\": \"<string>\",\n      \"company\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"accountingDate\": \"<date>\",\n      \"status\": \"<string>\",\n      \"journalSource\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"totalDebitAmount\": \"<double>\",\n      \"totalCreditAmount\": \"<double>\",\n      \"currency\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"journalNumber\": \"<string>\",\n      \"company\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"accountingDate\": \"<date>\",\n      \"status\": \"<string>\",\n      \"journalSource\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"totalDebitAmount\": \"<double>\",\n      \"totalCreditAmount\": \"<double>\",\n      \"currency\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      }\n    }\n  ],\n  \"total\": \"<integer>\"\n}",
+              "createdAt": "2026-06-05T15:21:40.000Z",
+              "updatedAt": "2026-06-05T15:21:40.000Z",
+              "uid": "35240-4c6458b1-9aa8-4282-afef-c606b994b867"
+            },
+            {
+              "id": "cea67079-fdc0-44fa-b5bf-efd71928250e",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/accountingJournals?limit=20&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "accountingJournals"
+                  ],
+                  "query": [
+                    {
+                      "description": "The maximum number of objects in a single response.",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection.",
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:21:40.000Z",
+              "updatedAt": "2026-06-05T15:21:40.000Z",
+              "uid": "35240-cea67079-fdc0-44fa-b5bf-efd71928250e"
+            }
+          ],
+          "createdAt": "2026-06-05T15:21:40.000Z",
+          "updatedAt": "2026-06-05T15:21:40.000Z",
+          "uid": "35240-c8d74486-250f-4882-937b-27c9b4f20758"
+        }
+      ],
+      "id": "052eebb4-2a61-4e71-9c87-26cdcd46d6af",
+      "createdAt": "2026-06-05T15:21:40.000Z",
+      "updatedAt": "2026-06-05T15:21:40.000Z",
+      "uid": "35240-052eebb4-2a61-4e71-9c87-26cdcd46d6af"
+    },
+    {
+      "name": "suppliers",
+      "item": [
+        {
+          "name": "{ID}",
+          "item": [
+            {
+              "name": "Get Supplier by Id",
+              "id": "4fe015b0-42a7-4d48-bb73-342b00c2f77c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/suppliers/:ID",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "suppliers",
+                    ":ID"
+                  ],
+                  "variable": [
+                    {
+                      "id": "7e045bbf-be1b-47bc-9f55-01b42f294994",
+                      "key": "ID",
+                      "value": "<string>",
+                      "description": "(Required) The Workday ID of the resource."
+                    }
+                  ]
+                },
+                "description": "Returns details for a specific supplier."
+              },
+              "response": [
+                {
+                  "id": "43bcb829-2c54-49bb-a43b-bdf1c2273523",
+                  "name": "Successful response containing supplier details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/suppliers/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "suppliers",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"descriptor\": \"<string>\",\n  \"supplierName\": \"<string>\",\n  \"supplierID\": \"<string>\",\n  \"supplierCategory\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"taxID\": \"<string>\",\n  \"paymentTerms\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"isActive\": \"<boolean>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"city\": \"<string>\",\n    \"stateProvince\": {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"href\": \"<uri>\"\n    },\n    \"postalCode\": \"<string>\",\n    \"country\": {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"href\": \"<uri>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:21:40.000Z",
+                  "updatedAt": "2026-06-05T15:21:40.000Z",
+                  "uid": "35240-43bcb829-2c54-49bb-a43b-bdf1c2273523"
+                },
+                {
+                  "id": "c2619b86-36af-40f1-a637-6e2ae190830c",
+                  "name": "Authentication credentials were missing or invalid.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/suppliers/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "suppliers",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:40.000Z",
+                  "updatedAt": "2026-06-05T15:21:40.000Z",
+                  "uid": "35240-c2619b86-36af-40f1-a637-6e2ae190830c"
+                },
+                {
+                  "id": "66aebd57-3f66-4902-a07b-5e96fb06889e",
+                  "name": "The requested resource was not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/suppliers/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "suppliers",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:40.000Z",
+                  "updatedAt": "2026-06-05T15:21:40.000Z",
+                  "uid": "35240-66aebd57-3f66-4902-a07b-5e96fb06889e"
+                }
+              ],
+              "createdAt": "2026-06-05T15:21:40.000Z",
+              "updatedAt": "2026-06-05T15:21:40.000Z",
+              "uid": "35240-4fe015b0-42a7-4d48-bb73-342b00c2f77c"
+            }
+          ],
+          "id": "6ef29805-37b3-4973-961d-f0d5d82c0b35",
+          "createdAt": "2026-06-05T15:21:40.000Z",
+          "updatedAt": "2026-06-05T15:21:40.000Z",
+          "uid": "35240-6ef29805-37b3-4973-961d-f0d5d82c0b35"
+        },
+        {
+          "name": "Get Suppliers",
+          "id": "a5930de4-a23a-4b6b-b40f-2004a164109f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/suppliers?limit=20&offset=0&search=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "suppliers"
+              ],
+              "query": [
+                {
+                  "description": "The maximum number of objects in a single response.",
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "description": "The zero-based index of the first object in a response collection.",
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "description": "Searches resources by name.",
+                  "key": "search",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns a collection of suppliers."
+          },
+          "response": [
+            {
+              "id": "64408f2c-048a-4159-9f90-f9a0217d307d",
+              "name": "Successful response containing suppliers.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/suppliers?limit=20&offset=0&search=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "suppliers"
+                  ],
+                  "query": [
+                    {
+                      "description": "The maximum number of objects in a single response.",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection.",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Searches resources by name.",
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"supplierName\": \"<string>\",\n      \"supplierID\": \"<string>\",\n      \"supplierCategory\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"taxID\": \"<string>\",\n      \"paymentTerms\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"isActive\": \"<boolean>\",\n      \"address\": {\n        \"addressLine1\": \"<string>\",\n        \"city\": \"<string>\",\n        \"stateProvince\": {\n          \"id\": \"<string>\",\n          \"descriptor\": \"<string>\",\n          \"href\": \"<uri>\"\n        },\n        \"postalCode\": \"<string>\",\n        \"country\": {\n          \"id\": \"<string>\",\n          \"descriptor\": \"<string>\",\n          \"href\": \"<uri>\"\n        }\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"supplierName\": \"<string>\",\n      \"supplierID\": \"<string>\",\n      \"supplierCategory\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"taxID\": \"<string>\",\n      \"paymentTerms\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"isActive\": \"<boolean>\",\n      \"address\": {\n        \"addressLine1\": \"<string>\",\n        \"city\": \"<string>\",\n        \"stateProvince\": {\n          \"id\": \"<string>\",\n          \"descriptor\": \"<string>\",\n          \"href\": \"<uri>\"\n        },\n        \"postalCode\": \"<string>\",\n        \"country\": {\n          \"id\": \"<string>\",\n          \"descriptor\": \"<string>\",\n          \"href\": \"<uri>\"\n        }\n      }\n    }\n  ],\n  \"total\": \"<integer>\"\n}",
+              "createdAt": "2026-06-05T15:21:40.000Z",
+              "updatedAt": "2026-06-05T15:21:40.000Z",
+              "uid": "35240-64408f2c-048a-4159-9f90-f9a0217d307d"
+            },
+            {
+              "id": "1f32120c-b0ad-46b1-81c0-ce2ce4b9d20b",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/suppliers?limit=20&offset=0&search=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "suppliers"
+                  ],
+                  "query": [
+                    {
+                      "description": "The maximum number of objects in a single response.",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection.",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Searches resources by name.",
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:21:40.000Z",
+              "updatedAt": "2026-06-05T15:21:40.000Z",
+              "uid": "35240-1f32120c-b0ad-46b1-81c0-ce2ce4b9d20b"
+            }
+          ],
+          "createdAt": "2026-06-05T15:21:40.000Z",
+          "updatedAt": "2026-06-05T15:21:40.000Z",
+          "uid": "35240-a5930de4-a23a-4b6b-b40f-2004a164109f"
+        }
+      ],
+      "id": "8e0bf171-1472-44f6-a51d-b165e0dc078d",
+      "createdAt": "2026-06-05T15:21:40.000Z",
+      "updatedAt": "2026-06-05T15:21:40.000Z",
+      "uid": "35240-8e0bf171-1472-44f6-a51d-b165e0dc078d"
+    },
+    {
+      "name": "purchaseOrders",
+      "item": [
+        {
+          "name": "Get Purchase Orders",
+          "id": "8f10ddc0-f574-4795-a002-1fc96c8e3e1f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/purchaseOrders?limit=20&offset=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "purchaseOrders"
+              ],
+              "query": [
+                {
+                  "description": "The maximum number of objects in a single response.",
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "description": "The zero-based index of the first object in a response collection.",
+                  "key": "offset",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Returns a collection of purchase orders."
+          },
+          "response": [
+            {
+              "id": "5645166c-3be5-4b9b-a8d8-76fdbd9a691a",
+              "name": "Successful response containing purchase orders.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/purchaseOrders?limit=20&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "purchaseOrders"
+                  ],
+                  "query": [
+                    {
+                      "description": "The maximum number of objects in a single response.",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection.",
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"purchaseOrderNumber\": \"<string>\",\n      \"supplier\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"orderDate\": \"<date>\",\n      \"totalAmount\": \"<double>\",\n      \"currency\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"status\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"purchaseOrderNumber\": \"<string>\",\n      \"supplier\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"orderDate\": \"<date>\",\n      \"totalAmount\": \"<double>\",\n      \"currency\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"status\": \"<string>\"\n    }\n  ],\n  \"total\": \"<integer>\"\n}",
+              "createdAt": "2026-06-05T15:21:40.000Z",
+              "updatedAt": "2026-06-05T15:21:40.000Z",
+              "uid": "35240-5645166c-3be5-4b9b-a8d8-76fdbd9a691a"
+            },
+            {
+              "id": "7feb07a2-010c-40b0-9b99-9ecb77e1b5f9",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/purchaseOrders?limit=20&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "purchaseOrders"
+                  ],
+                  "query": [
+                    {
+                      "description": "The maximum number of objects in a single response.",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection.",
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:21:40.000Z",
+              "updatedAt": "2026-06-05T15:21:40.000Z",
+              "uid": "35240-7feb07a2-010c-40b0-9b99-9ecb77e1b5f9"
+            }
+          ],
+          "createdAt": "2026-06-05T15:21:40.000Z",
+          "updatedAt": "2026-06-05T15:21:40.000Z",
+          "uid": "35240-8f10ddc0-f574-4795-a002-1fc96c8e3e1f"
+        }
+      ],
+      "id": "58e8672a-4806-47ca-beb7-d921ce6dd5cc",
+      "createdAt": "2026-06-05T15:21:40.000Z",
+      "updatedAt": "2026-06-05T15:21:40.000Z",
+      "uid": "35240-58e8672a-4806-47ca-beb7-d921ce6dd5cc"
+    },
+    {
+      "name": "expenseReports",
+      "item": [
+        {
+          "name": "{ID}",
+          "item": [
+            {
+              "name": "Get Expense Report by Id",
+              "id": "2fcf4f0f-37a7-4f21-a9a9-33ce16a44595",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/expenseReports/:ID",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "expenseReports",
+                    ":ID"
+                  ],
+                  "variable": [
+                    {
+                      "id": "3cd1d77c-f5d8-41c9-88fc-cb58caf77ab5",
+                      "key": "ID",
+                      "value": "<string>",
+                      "description": "(Required) The Workday ID of the resource."
+                    }
+                  ]
+                },
+                "description": "Returns details for a specific expense report."
+              },
+              "response": [
+                {
+                  "id": "ca132ce3-095f-405e-a428-8a09d20fdfdd",
+                  "name": "Successful response containing expense report details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/expenseReports/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "expenseReports",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"descriptor\": \"<string>\",\n  \"worker\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"createdDate\": \"<date>\",\n  \"totalAmount\": \"<double>\",\n  \"currency\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"status\": \"<string>\",\n  \"memo\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:21:40.000Z",
+                  "updatedAt": "2026-06-05T15:21:40.000Z",
+                  "uid": "35240-ca132ce3-095f-405e-a428-8a09d20fdfdd"
+                },
+                {
+                  "id": "2ccb065d-5122-4160-965c-90450ae6edd8",
+                  "name": "Authentication credentials were missing or invalid.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/expenseReports/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "expenseReports",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:40.000Z",
+                  "updatedAt": "2026-06-05T15:21:40.000Z",
+                  "uid": "35240-2ccb065d-5122-4160-965c-90450ae6edd8"
+                },
+                {
+                  "id": "995d699f-79f4-43cf-83bc-8f4d3d6baed0",
+                  "name": "The requested resource was not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/expenseReports/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "expenseReports",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:40.000Z",
+                  "updatedAt": "2026-06-05T15:21:40.000Z",
+                  "uid": "35240-995d699f-79f4-43cf-83bc-8f4d3d6baed0"
+                }
+              ],
+              "createdAt": "2026-06-05T15:21:40.000Z",
+              "updatedAt": "2026-06-05T15:21:40.000Z",
+              "uid": "35240-2fcf4f0f-37a7-4f21-a9a9-33ce16a44595"
+            }
+          ],
+          "id": "c3dfe5d3-5b90-46c4-99c0-9f282d13e5a2",
+          "createdAt": "2026-06-05T15:21:40.000Z",
+          "updatedAt": "2026-06-05T15:21:40.000Z",
+          "uid": "35240-c3dfe5d3-5b90-46c4-99c0-9f282d13e5a2"
+        },
+        {
+          "name": "Get Expense Reports",
+          "id": "39806cea-d9a0-423c-845c-50e66c4a0c00",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/expenseReports?limit=20&offset=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "expenseReports"
+              ],
+              "query": [
+                {
+                  "description": "The maximum number of objects in a single response.",
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "description": "The zero-based index of the first object in a response collection.",
+                  "key": "offset",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Returns a collection of expense reports."
+          },
+          "response": [
+            {
+              "id": "4674f790-6869-4cdb-8c9b-2f64def906b8",
+              "name": "Successful response containing expense reports.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/expenseReports?limit=20&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "expenseReports"
+                  ],
+                  "query": [
+                    {
+                      "description": "The maximum number of objects in a single response.",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection.",
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"worker\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"createdDate\": \"<date>\",\n      \"totalAmount\": \"<double>\",\n      \"currency\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"status\": \"<string>\",\n      \"memo\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"worker\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"createdDate\": \"<date>\",\n      \"totalAmount\": \"<double>\",\n      \"currency\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"status\": \"<string>\",\n      \"memo\": \"<string>\"\n    }\n  ],\n  \"total\": \"<integer>\"\n}",
+              "createdAt": "2026-06-05T15:21:40.000Z",
+              "updatedAt": "2026-06-05T15:21:40.000Z",
+              "uid": "35240-4674f790-6869-4cdb-8c9b-2f64def906b8"
+            },
+            {
+              "id": "7a04c852-51ee-4332-a11c-2e73b8a948d2",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/expenseReports?limit=20&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "expenseReports"
+                  ],
+                  "query": [
+                    {
+                      "description": "The maximum number of objects in a single response.",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection.",
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:21:40.000Z",
+              "updatedAt": "2026-06-05T15:21:40.000Z",
+              "uid": "35240-7a04c852-51ee-4332-a11c-2e73b8a948d2"
+            }
+          ],
+          "createdAt": "2026-06-05T15:21:40.000Z",
+          "updatedAt": "2026-06-05T15:21:40.000Z",
+          "uid": "35240-39806cea-d9a0-423c-845c-50e66c4a0c00"
+        }
+      ],
+      "id": "35449397-bb67-4c9e-929f-be5ba58ebf8d",
+      "createdAt": "2026-06-05T15:21:40.000Z",
+      "updatedAt": "2026-06-05T15:21:40.000Z",
+      "uid": "35240-35449397-bb67-4c9e-929f-be5ba58ebf8d"
+    },
+    {
+      "name": "customerInvoices",
+      "item": [
+        {
+          "name": "Get Customer Invoices",
+          "id": "71f8142f-7226-4557-81d2-71f0aa52c27a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/customerInvoices?limit=20&offset=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "customerInvoices"
+              ],
+              "query": [
+                {
+                  "description": "The maximum number of objects in a single response.",
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "description": "The zero-based index of the first object in a response collection.",
+                  "key": "offset",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Returns a collection of customer invoices."
+          },
+          "response": [
+            {
+              "id": "f379644e-1ec3-4a31-91b1-2234de1b65f9",
+              "name": "Successful response containing customer invoices.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/customerInvoices?limit=20&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "customerInvoices"
+                  ],
+                  "query": [
+                    {
+                      "description": "The maximum number of objects in a single response.",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection.",
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"invoiceNumber\": \"<string>\",\n      \"customer\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"invoiceDate\": \"<date>\",\n      \"dueDate\": \"<date>\",\n      \"totalAmount\": \"<double>\",\n      \"currency\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"status\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"invoiceNumber\": \"<string>\",\n      \"customer\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"invoiceDate\": \"<date>\",\n      \"dueDate\": \"<date>\",\n      \"totalAmount\": \"<double>\",\n      \"currency\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"status\": \"<string>\"\n    }\n  ],\n  \"total\": \"<integer>\"\n}",
+              "createdAt": "2026-06-05T15:21:40.000Z",
+              "updatedAt": "2026-06-05T15:21:40.000Z",
+              "uid": "35240-f379644e-1ec3-4a31-91b1-2234de1b65f9"
+            },
+            {
+              "id": "b03e3364-b2f4-4380-94ea-f246079dcc46",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/customerInvoices?limit=20&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "customerInvoices"
+                  ],
+                  "query": [
+                    {
+                      "description": "The maximum number of objects in a single response.",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection.",
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:21:40.000Z",
+              "updatedAt": "2026-06-05T15:21:40.000Z",
+              "uid": "35240-b03e3364-b2f4-4380-94ea-f246079dcc46"
+            }
+          ],
+          "createdAt": "2026-06-05T15:21:40.000Z",
+          "updatedAt": "2026-06-05T15:21:40.000Z",
+          "uid": "35240-71f8142f-7226-4557-81d2-71f0aa52c27a"
+        }
+      ],
+      "id": "2e437929-0aaa-457b-8f47-9debb6f1ff61",
+      "createdAt": "2026-06-05T15:21:40.000Z",
+      "updatedAt": "2026-06-05T15:21:40.000Z",
+      "uid": "35240-2e437929-0aaa-457b-8f47-9debb6f1ff61"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "r_financials w_financials",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "tenant",
+      "value": "tenant_name"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://wd2-impl-services1.workday.com/ccx/api/financialManagement/v1/{{tenant}}"
+    }
+  ]
+}

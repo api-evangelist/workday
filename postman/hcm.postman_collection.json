@@ -1,0 +1,2203 @@
+{
+  "info": {
+    "_postman_id": "91c55e21-3287-4d92-82d9-ca305fe55de7",
+    "name": "Workday HCM API",
+    "description": "Human Capital Management API for managing workforce data, recruiting, talent management, and payroll. Provides RESTful endpoints for core HR operations including workers, organizations, and job data.\n\nContact Support:\n Name: Workday Support\n Email: support@workday.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:21:38.000Z",
+    "updatedAt": "2026-06-05T15:21:38.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-91c55e21-3287-4d92-82d9-ca305fe55de7"
+  },
+  "item": [
+    {
+      "name": "workers",
+      "item": [
+        {
+          "name": "{ID}",
+          "item": [
+            {
+              "name": "history",
+              "item": [
+                {
+                  "name": "Get Worker History",
+                  "id": "f7fb35fc-c4cf-42e7-9998-92842ffcd3e8",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/workers/:ID/history?limit=20&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "workers",
+                        ":ID",
+                        "history"
+                      ],
+                      "query": [
+                        {
+                          "description": "The maximum number of objects in a single response. The default is 20. The maximum is 100.",
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "description": "The zero-based index of the first object in a response collection.",
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "6f16bbb4-a7c0-4f2d-b4a4-64ba70cf09ed",
+                          "key": "ID",
+                          "value": "<string>",
+                          "description": "(Required) The Workday ID of the resource."
+                        }
+                      ]
+                    },
+                    "description": "Returns the history of changes for a specific worker."
+                  },
+                  "response": [
+                    {
+                      "id": "53f57791-a554-4a71-addb-dc269f03ad98",
+                      "name": "Successful response containing worker history records.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/history?limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "history"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response. The default is 20. The maximum is 100.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"effectiveDate\": \"<date>\",\n      \"businessProcess\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"effectiveDate\": \"<date>\",\n      \"businessProcess\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      }\n    }\n  ],\n  \"total\": \"<integer>\"\n}",
+                      "createdAt": "2026-06-05T15:21:39.000Z",
+                      "updatedAt": "2026-06-05T15:21:39.000Z",
+                      "uid": "35240-53f57791-a554-4a71-addb-dc269f03ad98"
+                    },
+                    {
+                      "id": "c05634e2-76eb-4dc5-bfc6-7029498c54c0",
+                      "name": "Authentication credentials were missing or invalid.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/history?limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "history"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response. The default is 20. The maximum is 100.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:39.000Z",
+                      "updatedAt": "2026-06-05T15:21:39.000Z",
+                      "uid": "35240-c05634e2-76eb-4dc5-bfc6-7029498c54c0"
+                    },
+                    {
+                      "id": "5b9dfce2-c7ef-44e7-b0a7-e840a8c409b2",
+                      "name": "The requested resource was not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/history?limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "history"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response. The default is 20. The maximum is 100.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:39.000Z",
+                      "updatedAt": "2026-06-05T15:21:39.000Z",
+                      "uid": "35240-5b9dfce2-c7ef-44e7-b0a7-e840a8c409b2"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:39.000Z",
+                  "updatedAt": "2026-06-05T15:21:39.000Z",
+                  "uid": "35240-f7fb35fc-c4cf-42e7-9998-92842ffcd3e8"
+                }
+              ],
+              "id": "329a3316-f3dc-45f4-9d73-afa99a494990",
+              "createdAt": "2026-06-05T15:21:39.000Z",
+              "updatedAt": "2026-06-05T15:21:39.000Z",
+              "uid": "35240-329a3316-f3dc-45f4-9d73-afa99a494990"
+            },
+            {
+              "name": "photos",
+              "item": [
+                {
+                  "name": "Get Worker Photo",
+                  "id": "f4ed1fdc-4ce9-459d-a861-39f6419b47fb",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "image/png"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/workers/:ID/photos",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "workers",
+                        ":ID",
+                        "photos"
+                      ],
+                      "variable": [
+                        {
+                          "id": "5015f3fc-7f92-41a2-a9b6-ddfddd904c01",
+                          "key": "ID",
+                          "value": "<string>",
+                          "description": "(Required) The Workday ID of the resource."
+                        }
+                      ]
+                    },
+                    "description": "Returns the photo for a specific worker."
+                  },
+                  "response": [
+                    {
+                      "id": "c4c5465c-e4e8-4553-94dc-39b194f3d6fa",
+                      "name": "Successful response containing worker photo data.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "image/png"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/photos",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "photos"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "image/png"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<binary>",
+                      "createdAt": "2026-06-05T15:21:39.000Z",
+                      "updatedAt": "2026-06-05T15:21:39.000Z",
+                      "uid": "35240-c4c5465c-e4e8-4553-94dc-39b194f3d6fa"
+                    },
+                    {
+                      "id": "35492327-dce5-4a57-bc67-65b7b4c8b4b5",
+                      "name": "Authentication credentials were missing or invalid.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/photos",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "photos"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:39.000Z",
+                      "updatedAt": "2026-06-05T15:21:39.000Z",
+                      "uid": "35240-35492327-dce5-4a57-bc67-65b7b4c8b4b5"
+                    },
+                    {
+                      "id": "a8693aa0-e7bf-456b-97b4-10d74a1d057d",
+                      "name": "The requested resource was not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/photos",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "photos"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:39.000Z",
+                      "updatedAt": "2026-06-05T15:21:39.000Z",
+                      "uid": "35240-a8693aa0-e7bf-456b-97b4-10d74a1d057d"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:39.000Z",
+                  "updatedAt": "2026-06-05T15:21:39.000Z",
+                  "uid": "35240-f4ed1fdc-4ce9-459d-a861-39f6419b47fb"
+                }
+              ],
+              "id": "4657201d-32f6-4af6-89d4-d2bd84b44746",
+              "createdAt": "2026-06-05T15:21:39.000Z",
+              "updatedAt": "2026-06-05T15:21:39.000Z",
+              "uid": "35240-4657201d-32f6-4af6-89d4-d2bd84b44746"
+            },
+            {
+              "name": "businessTitleChanges",
+              "item": [
+                {
+                  "name": "Get Business Title Changes",
+                  "id": "49161658-dfc1-4489-9097-575858ff69ef",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/workers/:ID/businessTitleChanges?limit=20&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "workers",
+                        ":ID",
+                        "businessTitleChanges"
+                      ],
+                      "query": [
+                        {
+                          "description": "The maximum number of objects in a single response. The default is 20. The maximum is 100.",
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "description": "The zero-based index of the first object in a response collection.",
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "778b8079-a01d-4646-9ed0-dcb76d1f0c51",
+                          "key": "ID",
+                          "value": "<string>",
+                          "description": "(Required) The Workday ID of the resource."
+                        }
+                      ]
+                    },
+                    "description": "Returns business title change history for a specific worker."
+                  },
+                  "response": [
+                    {
+                      "id": "b98e903c-7324-4686-8b74-439d046d5113",
+                      "name": "Successful response containing business title changes.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/businessTitleChanges?limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "businessTitleChanges"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response. The default is 20. The maximum is 100.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"proposedBusinessTitle\": \"<string>\",\n      \"effectiveDate\": \"<date>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"proposedBusinessTitle\": \"<string>\",\n      \"effectiveDate\": \"<date>\"\n    }\n  ],\n  \"total\": \"<integer>\"\n}",
+                      "createdAt": "2026-06-05T15:21:39.000Z",
+                      "updatedAt": "2026-06-05T15:21:39.000Z",
+                      "uid": "35240-b98e903c-7324-4686-8b74-439d046d5113"
+                    },
+                    {
+                      "id": "d74b7c25-3736-4fb3-a6e1-951672358ec5",
+                      "name": "Authentication credentials were missing or invalid.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/businessTitleChanges?limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "businessTitleChanges"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response. The default is 20. The maximum is 100.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:39.000Z",
+                      "updatedAt": "2026-06-05T15:21:39.000Z",
+                      "uid": "35240-d74b7c25-3736-4fb3-a6e1-951672358ec5"
+                    },
+                    {
+                      "id": "5787f84a-e6fa-4a57-838d-1871cc6f2e89",
+                      "name": "The requested resource was not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/businessTitleChanges?limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "businessTitleChanges"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response. The default is 20. The maximum is 100.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:39.000Z",
+                      "updatedAt": "2026-06-05T15:21:39.000Z",
+                      "uid": "35240-5787f84a-e6fa-4a57-838d-1871cc6f2e89"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:39.000Z",
+                  "updatedAt": "2026-06-05T15:21:39.000Z",
+                  "uid": "35240-49161658-dfc1-4489-9097-575858ff69ef"
+                }
+              ],
+              "id": "d6bd5b44-b335-4113-acf5-e48faeb1d759",
+              "createdAt": "2026-06-05T15:21:39.000Z",
+              "updatedAt": "2026-06-05T15:21:39.000Z",
+              "uid": "35240-d6bd5b44-b335-4113-acf5-e48faeb1d759"
+            },
+            {
+              "name": "inboxTasks",
+              "item": [
+                {
+                  "name": "Get Worker Inbox Tasks",
+                  "id": "29d116e3-410d-4502-aabe-7f9e753efae4",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/workers/:ID/inboxTasks?limit=20&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "workers",
+                        ":ID",
+                        "inboxTasks"
+                      ],
+                      "query": [
+                        {
+                          "description": "The maximum number of objects in a single response. The default is 20. The maximum is 100.",
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "description": "The zero-based index of the first object in a response collection.",
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "a70d38ef-e59e-4d09-860c-be1f0c9a4c9f",
+                          "key": "ID",
+                          "value": "<string>",
+                          "description": "(Required) The Workday ID of the resource."
+                        }
+                      ]
+                    },
+                    "description": "Returns inbox tasks for a specific worker."
+                  },
+                  "response": [
+                    {
+                      "id": "d85ead41-25e1-4157-8a6d-b965c3c5017b",
+                      "name": "Successful response containing inbox tasks.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/inboxTasks?limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "inboxTasks"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response. The default is 20. The maximum is 100.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"status\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"assigned\": \"<dateTime>\",\n      \"due\": \"<dateTime>\",\n      \"overdue\": \"<boolean>\",\n      \"subject\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"status\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"assigned\": \"<dateTime>\",\n      \"due\": \"<dateTime>\",\n      \"overdue\": \"<boolean>\",\n      \"subject\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      }\n    }\n  ],\n  \"total\": \"<integer>\"\n}",
+                      "createdAt": "2026-06-05T15:21:39.000Z",
+                      "updatedAt": "2026-06-05T15:21:39.000Z",
+                      "uid": "35240-d85ead41-25e1-4157-8a6d-b965c3c5017b"
+                    },
+                    {
+                      "id": "c19685da-68e6-40b5-be25-356e41e4c48e",
+                      "name": "Authentication credentials were missing or invalid.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/inboxTasks?limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "inboxTasks"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response. The default is 20. The maximum is 100.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:39.000Z",
+                      "updatedAt": "2026-06-05T15:21:39.000Z",
+                      "uid": "35240-c19685da-68e6-40b5-be25-356e41e4c48e"
+                    },
+                    {
+                      "id": "b61bfc30-af4f-45e9-8a8b-6f5143e854ee",
+                      "name": "The requested resource was not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/inboxTasks?limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "inboxTasks"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response. The default is 20. The maximum is 100.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:39.000Z",
+                      "updatedAt": "2026-06-05T15:21:39.000Z",
+                      "uid": "35240-b61bfc30-af4f-45e9-8a8b-6f5143e854ee"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:39.000Z",
+                  "updatedAt": "2026-06-05T15:21:39.000Z",
+                  "uid": "35240-29d116e3-410d-4502-aabe-7f9e753efae4"
+                }
+              ],
+              "id": "9b86de9f-9282-4dca-886f-b3ef82c20aa4",
+              "createdAt": "2026-06-05T15:21:39.000Z",
+              "updatedAt": "2026-06-05T15:21:39.000Z",
+              "uid": "35240-9b86de9f-9282-4dca-886f-b3ef82c20aa4"
+            },
+            {
+              "name": "Get Worker by Id",
+              "id": "d679ba5d-0172-4f56-adb9-1cadd3c369bf",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/workers/:ID",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "workers",
+                    ":ID"
+                  ],
+                  "variable": [
+                    {
+                      "id": "8b525b94-f10b-4f48-a1a3-d27e00d5709b",
+                      "key": "ID",
+                      "value": "<string>",
+                      "description": "(Required) The Workday ID of the resource."
+                    }
+                  ]
+                },
+                "description": "Returns detailed information for a specific worker by their Workday ID."
+              },
+              "response": [
+                {
+                  "id": "53715bc3-4ca1-4ab5-9ca7-e239ba502edf",
+                  "name": "Successful response containing worker details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/workers/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "workers",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"descriptor\": \"<string>\",\n  \"workerID\": \"<string>\",\n  \"primaryWorkEmail\": \"<email>\",\n  \"primaryWorkPhone\": \"<string>\",\n  \"businessTitle\": \"<string>\",\n  \"workerType\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"primarySupervisoryOrganization\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"location\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"hireDate\": \"<date>\",\n  \"terminationDate\": \"<date>\",\n  \"isManager\": \"<boolean>\",\n  \"externalID\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:21:39.000Z",
+                  "updatedAt": "2026-06-05T15:21:39.000Z",
+                  "uid": "35240-53715bc3-4ca1-4ab5-9ca7-e239ba502edf"
+                },
+                {
+                  "id": "db1c19dc-f490-4dbb-97b9-b726d378bdc4",
+                  "name": "Authentication credentials were missing or invalid.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/workers/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "workers",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:39.000Z",
+                  "updatedAt": "2026-06-05T15:21:39.000Z",
+                  "uid": "35240-db1c19dc-f490-4dbb-97b9-b726d378bdc4"
+                },
+                {
+                  "id": "a6830a17-9861-4a75-8f18-b546e5957245",
+                  "name": "The requested resource was not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/workers/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "workers",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:39.000Z",
+                  "updatedAt": "2026-06-05T15:21:39.000Z",
+                  "uid": "35240-a6830a17-9861-4a75-8f18-b546e5957245"
+                }
+              ],
+              "createdAt": "2026-06-05T15:21:39.000Z",
+              "updatedAt": "2026-06-05T15:21:39.000Z",
+              "uid": "35240-d679ba5d-0172-4f56-adb9-1cadd3c369bf"
+            }
+          ],
+          "id": "070d335a-9940-4020-954f-d0877fa1956d",
+          "createdAt": "2026-06-05T15:21:39.000Z",
+          "updatedAt": "2026-06-05T15:21:39.000Z",
+          "uid": "35240-070d335a-9940-4020-954f-d0877fa1956d"
+        },
+        {
+          "name": "Get Workers",
+          "id": "0fe5f73f-5aa8-43f5-a17c-edab14b644ef",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/workers?limit=20&offset=0&search=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "workers"
+              ],
+              "query": [
+                {
+                  "description": "The maximum number of objects in a single response. The default is 20. The maximum is 100.",
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "description": "The zero-based index of the first object in a response collection.",
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "description": "Searches workers by name. The search is case-insensitive.",
+                  "key": "search",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns a collection of workers. Supports filtering, pagination, and field-level selection of worker data."
+          },
+          "response": [
+            {
+              "id": "bb216b09-c5ba-4f30-903d-05754018d17c",
+              "name": "Successful response containing a collection of workers.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/workers?limit=20&offset=0&search=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "workers"
+                  ],
+                  "query": [
+                    {
+                      "description": "The maximum number of objects in a single response. The default is 20. The maximum is 100.",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection.",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Searches workers by name. The search is case-insensitive.",
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"href\": \"<uri>\",\n      \"primaryWorkEmail\": \"<email>\",\n      \"primaryWorkPhone\": \"<string>\",\n      \"isPrimaryJob\": \"<boolean>\",\n      \"businessTitle\": \"<string>\",\n      \"primarySupervisoryOrganization\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"href\": \"<uri>\",\n      \"primaryWorkEmail\": \"<email>\",\n      \"primaryWorkPhone\": \"<string>\",\n      \"isPrimaryJob\": \"<boolean>\",\n      \"businessTitle\": \"<string>\",\n      \"primarySupervisoryOrganization\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      }\n    }\n  ],\n  \"total\": \"<integer>\"\n}",
+              "createdAt": "2026-06-05T15:21:39.000Z",
+              "updatedAt": "2026-06-05T15:21:39.000Z",
+              "uid": "35240-bb216b09-c5ba-4f30-903d-05754018d17c"
+            },
+            {
+              "id": "0952b064-560b-4569-b718-d78ae0d1f6f6",
+              "name": "The request was invalid or malformed.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/workers?limit=20&offset=0&search=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "workers"
+                  ],
+                  "query": [
+                    {
+                      "description": "The maximum number of objects in a single response. The default is 20. The maximum is 100.",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection.",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Searches workers by name. The search is case-insensitive.",
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:21:39.000Z",
+              "updatedAt": "2026-06-05T15:21:39.000Z",
+              "uid": "35240-0952b064-560b-4569-b718-d78ae0d1f6f6"
+            },
+            {
+              "id": "0ba98ff2-cd18-4bdc-855e-c3c08a096c68",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/workers?limit=20&offset=0&search=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "workers"
+                  ],
+                  "query": [
+                    {
+                      "description": "The maximum number of objects in a single response. The default is 20. The maximum is 100.",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection.",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Searches workers by name. The search is case-insensitive.",
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:21:39.000Z",
+              "updatedAt": "2026-06-05T15:21:39.000Z",
+              "uid": "35240-0ba98ff2-cd18-4bdc-855e-c3c08a096c68"
+            },
+            {
+              "id": "f3adf17d-1b44-42c5-9486-abcd33dc6673",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/workers?limit=20&offset=0&search=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "workers"
+                  ],
+                  "query": [
+                    {
+                      "description": "The maximum number of objects in a single response. The default is 20. The maximum is 100.",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection.",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Searches workers by name. The search is case-insensitive.",
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:21:39.000Z",
+              "updatedAt": "2026-06-05T15:21:39.000Z",
+              "uid": "35240-f3adf17d-1b44-42c5-9486-abcd33dc6673"
+            }
+          ],
+          "createdAt": "2026-06-05T15:21:39.000Z",
+          "updatedAt": "2026-06-05T15:21:39.000Z",
+          "uid": "35240-0fe5f73f-5aa8-43f5-a17c-edab14b644ef"
+        }
+      ],
+      "id": "de3e1e56-1941-4eda-aad3-ae705648a0de",
+      "createdAt": "2026-06-05T15:21:39.000Z",
+      "updatedAt": "2026-06-05T15:21:39.000Z",
+      "uid": "35240-de3e1e56-1941-4eda-aad3-ae705648a0de"
+    },
+    {
+      "name": "supervisoryOrganizations",
+      "item": [
+        {
+          "name": "{ID}",
+          "item": [
+            {
+              "name": "Get Supervisory Organization by Id",
+              "id": "73681331-6f6d-4cfd-990a-cad252f7a12f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/supervisoryOrganizations/:ID",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "supervisoryOrganizations",
+                    ":ID"
+                  ],
+                  "variable": [
+                    {
+                      "id": "a3ffda50-d4f5-4b3d-8af1-ad95c1387090",
+                      "key": "ID",
+                      "value": "<string>",
+                      "description": "(Required) The Workday ID of the resource."
+                    }
+                  ]
+                },
+                "description": "Returns detailed information for a specific supervisory organization."
+              },
+              "response": [
+                {
+                  "id": "4309a57b-eb78-4024-8c54-56106d94b36c",
+                  "name": "Successful response containing organization details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/supervisoryOrganizations/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "supervisoryOrganizations",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"descriptor\": \"<string>\",\n  \"name\": \"<string>\",\n  \"code\": \"<string>\",\n  \"isInactive\": \"<boolean>\",\n  \"manager\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"superiorOrganization\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"location\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"staffingModel\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:21:39.000Z",
+                  "updatedAt": "2026-06-05T15:21:39.000Z",
+                  "uid": "35240-4309a57b-eb78-4024-8c54-56106d94b36c"
+                },
+                {
+                  "id": "8f4787b1-ee5e-43ae-b42a-f299232680d1",
+                  "name": "Authentication credentials were missing or invalid.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/supervisoryOrganizations/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "supervisoryOrganizations",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:39.000Z",
+                  "updatedAt": "2026-06-05T15:21:39.000Z",
+                  "uid": "35240-8f4787b1-ee5e-43ae-b42a-f299232680d1"
+                },
+                {
+                  "id": "39ec14fa-7b62-4faa-a786-b7b7be907262",
+                  "name": "The requested resource was not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/supervisoryOrganizations/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "supervisoryOrganizations",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:39.000Z",
+                  "updatedAt": "2026-06-05T15:21:39.000Z",
+                  "uid": "35240-39ec14fa-7b62-4faa-a786-b7b7be907262"
+                }
+              ],
+              "createdAt": "2026-06-05T15:21:39.000Z",
+              "updatedAt": "2026-06-05T15:21:39.000Z",
+              "uid": "35240-73681331-6f6d-4cfd-990a-cad252f7a12f"
+            }
+          ],
+          "id": "ba95ec91-84c5-4037-a789-14640ec39ec8",
+          "createdAt": "2026-06-05T15:21:39.000Z",
+          "updatedAt": "2026-06-05T15:21:39.000Z",
+          "uid": "35240-ba95ec91-84c5-4037-a789-14640ec39ec8"
+        },
+        {
+          "name": "Get Supervisory Organizations",
+          "id": "c541863e-1c06-4eb5-90e4-e94f709bd851",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/supervisoryOrganizations?limit=20&offset=0&search=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "supervisoryOrganizations"
+              ],
+              "query": [
+                {
+                  "description": "The maximum number of objects in a single response. The default is 20. The maximum is 100.",
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "description": "The zero-based index of the first object in a response collection.",
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "description": "Searches workers by name. The search is case-insensitive.",
+                  "key": "search",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns a collection of supervisory organizations."
+          },
+          "response": [
+            {
+              "id": "26237835-0b2f-498a-9903-92b9d5bffe8c",
+              "name": "Successful response containing supervisory organizations.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/supervisoryOrganizations?limit=20&offset=0&search=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "supervisoryOrganizations"
+                  ],
+                  "query": [
+                    {
+                      "description": "The maximum number of objects in a single response. The default is 20. The maximum is 100.",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection.",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Searches workers by name. The search is case-insensitive.",
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"name\": \"<string>\",\n      \"code\": \"<string>\",\n      \"isInactive\": \"<boolean>\",\n      \"manager\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"superiorOrganization\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"location\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"staffingModel\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"name\": \"<string>\",\n      \"code\": \"<string>\",\n      \"isInactive\": \"<boolean>\",\n      \"manager\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"superiorOrganization\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"location\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"staffingModel\": \"<string>\"\n    }\n  ],\n  \"total\": \"<integer>\"\n}",
+              "createdAt": "2026-06-05T15:21:39.000Z",
+              "updatedAt": "2026-06-05T15:21:39.000Z",
+              "uid": "35240-26237835-0b2f-498a-9903-92b9d5bffe8c"
+            },
+            {
+              "id": "cba0ae24-569f-445d-8770-d9610ae04a14",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/supervisoryOrganizations?limit=20&offset=0&search=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "supervisoryOrganizations"
+                  ],
+                  "query": [
+                    {
+                      "description": "The maximum number of objects in a single response. The default is 20. The maximum is 100.",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection.",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Searches workers by name. The search is case-insensitive.",
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:21:39.000Z",
+              "updatedAt": "2026-06-05T15:21:39.000Z",
+              "uid": "35240-cba0ae24-569f-445d-8770-d9610ae04a14"
+            }
+          ],
+          "createdAt": "2026-06-05T15:21:39.000Z",
+          "updatedAt": "2026-06-05T15:21:39.000Z",
+          "uid": "35240-c541863e-1c06-4eb5-90e4-e94f709bd851"
+        }
+      ],
+      "id": "691a5845-3d07-4c0a-8563-9d5b92005c80",
+      "createdAt": "2026-06-05T15:21:39.000Z",
+      "updatedAt": "2026-06-05T15:21:39.000Z",
+      "uid": "35240-691a5845-3d07-4c0a-8563-9d5b92005c80"
+    },
+    {
+      "name": "locations",
+      "item": [
+        {
+          "name": "{ID}",
+          "item": [
+            {
+              "name": "Get Location by Id",
+              "id": "82ba8e89-4f17-4557-bf13-0fb3f57ccffb",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/locations/:ID",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "locations",
+                    ":ID"
+                  ],
+                  "variable": [
+                    {
+                      "id": "7de2cbd4-389d-4cf5-901d-76f153ce191f",
+                      "key": "ID",
+                      "value": "<string>",
+                      "description": "(Required) The Workday ID of the resource."
+                    }
+                  ]
+                },
+                "description": "Returns detailed information for a specific location."
+              },
+              "response": [
+                {
+                  "id": "8a492e8b-6509-40a0-9feb-f04c0e12ed62",
+                  "name": "Successful response containing location details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/locations/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "locations",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"descriptor\": \"<string>\",\n  \"name\": \"<string>\",\n  \"latitude\": \"<double>\",\n  \"longitude\": \"<double>\",\n  \"timeProfile\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"locale\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"usages\": [\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"href\": \"<uri>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"href\": \"<uri>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:39.000Z",
+                  "updatedAt": "2026-06-05T15:21:39.000Z",
+                  "uid": "35240-8a492e8b-6509-40a0-9feb-f04c0e12ed62"
+                },
+                {
+                  "id": "e9117dff-ac9c-4c7a-857b-79a3d7f63066",
+                  "name": "Authentication credentials were missing or invalid.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/locations/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "locations",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:39.000Z",
+                  "updatedAt": "2026-06-05T15:21:39.000Z",
+                  "uid": "35240-e9117dff-ac9c-4c7a-857b-79a3d7f63066"
+                },
+                {
+                  "id": "b75bca15-c7ae-45bf-8ce3-0e924dba6b5b",
+                  "name": "The requested resource was not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/locations/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "locations",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:39.000Z",
+                  "updatedAt": "2026-06-05T15:21:39.000Z",
+                  "uid": "35240-b75bca15-c7ae-45bf-8ce3-0e924dba6b5b"
+                }
+              ],
+              "createdAt": "2026-06-05T15:21:39.000Z",
+              "updatedAt": "2026-06-05T15:21:39.000Z",
+              "uid": "35240-82ba8e89-4f17-4557-bf13-0fb3f57ccffb"
+            }
+          ],
+          "id": "15b474fa-1a9d-4cde-aa72-d95be228a6d5",
+          "createdAt": "2026-06-05T15:21:39.000Z",
+          "updatedAt": "2026-06-05T15:21:39.000Z",
+          "uid": "35240-15b474fa-1a9d-4cde-aa72-d95be228a6d5"
+        },
+        {
+          "name": "Get Locations",
+          "id": "b7a169f3-845d-495d-9bf8-ca298424cf99",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/locations?limit=20&offset=0&search=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "locations"
+              ],
+              "query": [
+                {
+                  "description": "The maximum number of objects in a single response. The default is 20. The maximum is 100.",
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "description": "The zero-based index of the first object in a response collection.",
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "description": "Searches workers by name. The search is case-insensitive.",
+                  "key": "search",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns a collection of work locations."
+          },
+          "response": [
+            {
+              "id": "2aefaf76-c7ab-421f-9b4c-0a1b1c1e798d",
+              "name": "Successful response containing locations.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/locations?limit=20&offset=0&search=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "locations"
+                  ],
+                  "query": [
+                    {
+                      "description": "The maximum number of objects in a single response. The default is 20. The maximum is 100.",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection.",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Searches workers by name. The search is case-insensitive.",
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"name\": \"<string>\",\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\",\n      \"timeProfile\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"locale\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"usages\": [\n        {\n          \"id\": \"<string>\",\n          \"descriptor\": \"<string>\",\n          \"href\": \"<uri>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"descriptor\": \"<string>\",\n          \"href\": \"<uri>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"name\": \"<string>\",\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\",\n      \"timeProfile\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"locale\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"usages\": [\n        {\n          \"id\": \"<string>\",\n          \"descriptor\": \"<string>\",\n          \"href\": \"<uri>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"descriptor\": \"<string>\",\n          \"href\": \"<uri>\"\n        }\n      ]\n    }\n  ],\n  \"total\": \"<integer>\"\n}",
+              "createdAt": "2026-06-05T15:21:39.000Z",
+              "updatedAt": "2026-06-05T15:21:39.000Z",
+              "uid": "35240-2aefaf76-c7ab-421f-9b4c-0a1b1c1e798d"
+            },
+            {
+              "id": "6cf44399-baa9-4ccd-b1bd-84100316f9b5",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/locations?limit=20&offset=0&search=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "locations"
+                  ],
+                  "query": [
+                    {
+                      "description": "The maximum number of objects in a single response. The default is 20. The maximum is 100.",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection.",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Searches workers by name. The search is case-insensitive.",
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:21:39.000Z",
+              "updatedAt": "2026-06-05T15:21:39.000Z",
+              "uid": "35240-6cf44399-baa9-4ccd-b1bd-84100316f9b5"
+            }
+          ],
+          "createdAt": "2026-06-05T15:21:39.000Z",
+          "updatedAt": "2026-06-05T15:21:39.000Z",
+          "uid": "35240-b7a169f3-845d-495d-9bf8-ca298424cf99"
+        }
+      ],
+      "id": "df7cf7b9-690b-49e5-ab27-1ed0a65a222c",
+      "createdAt": "2026-06-05T15:21:39.000Z",
+      "updatedAt": "2026-06-05T15:21:39.000Z",
+      "uid": "35240-df7cf7b9-690b-49e5-ab27-1ed0a65a222c"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "r_worker w_worker",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "tenant",
+      "value": "tenant_name"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://wd2-impl-services1.workday.com/ccx/api/v1/{{tenant}}"
+    }
+  ]
+}

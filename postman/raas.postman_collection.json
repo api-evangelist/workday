@@ -1,0 +1,402 @@
+{
+  "info": {
+    "_postman_id": "b7fb158c-8098-45cf-9546-c978d3d70f75",
+    "name": "Workday Report-as-a-Service API",
+    "description": "Report-as-a-Service (RaaS) exposes custom reports as RESTful web services, enabling programmatic access to report data. Supports query parameters for filtering and returns data in multiple formats including JSON, CSV, and XML.\n\nContact Support:\n Name: Workday Support\n Email: support@workday.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:22:28.000Z",
+    "updatedAt": "2026-06-05T15:22:28.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b7fb158c-8098-45cf-9546-c978d3d70f75"
+  },
+  "item": [
+    {
+      "name": "{reportOwner}",
+      "item": [
+        {
+          "name": "{reportName}",
+          "item": [
+            {
+              "name": "Get Custom Report Data",
+              "id": "8d1912f9-43d3-4fde-87c5-3b2cb569644e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/:reportOwner/:reportName?format=json&Worker!WID=<string>&Effective_as_of_Date=<date>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":reportOwner",
+                    ":reportName"
+                  ],
+                  "query": [
+                    {
+                      "description": "The output format for the report data. Supported values are json, csv, simplexml, and gdata.",
+                      "key": "format",
+                      "value": "json"
+                    },
+                    {
+                      "description": "Filter by worker Workday ID (example prompt parameter).",
+                      "key": "Worker!WID",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by effective date (example prompt parameter).",
+                      "key": "Effective_as_of_Date",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "af4aaa3b-2547-42b1-8e62-bad6605a19a9",
+                      "key": "reportOwner",
+                      "value": "<string>",
+                      "description": "(Required) The username of the report owner (e.g., ISU_report_owner)."
+                    },
+                    {
+                      "id": "34566111-be2f-4b8e-ba45-ba08b91e3f8a",
+                      "key": "reportName",
+                      "value": "<string>",
+                      "description": "(Required) The name of the custom report."
+                    }
+                  ]
+                },
+                "description": "Returns data from a custom report published as a web service. The report owner and report name form the path to the report. Supports filtering via report-specific prompt parameters."
+              },
+              "response": [
+                {
+                  "id": "885df738-4998-451d-8c1d-7bcebb48ad01",
+                  "name": "Successful response containing report data.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:reportOwner/:reportName?format=json&Worker!WID=<string>&Effective_as_of_Date=<date>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":reportOwner",
+                        ":reportName"
+                      ],
+                      "query": [
+                        {
+                          "description": "The output format for the report data. Supported values are json, csv, simplexml, and gdata.",
+                          "key": "format",
+                          "value": "json"
+                        },
+                        {
+                          "description": "Filter by worker Workday ID (example prompt parameter).",
+                          "key": "Worker!WID",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by effective date (example prompt parameter).",
+                          "key": "Effective_as_of_Date",
+                          "value": "<date>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "reportOwner"
+                        },
+                        {
+                          "key": "reportName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Report_Entry\": [\n    {\n      \"fugiat7_\": \"voluptate anim in non magna\"\n    },\n    {\n      \"nostrud01\": false,\n      \"voluptatee8b\": true,\n      \"elit_7c\": true\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:22:29.000Z",
+                  "updatedAt": "2026-06-05T15:22:29.000Z",
+                  "uid": "35240-885df738-4998-451d-8c1d-7bcebb48ad01"
+                },
+                {
+                  "id": "bdcfa924-5ebb-47b9-99d3-6892af011f63",
+                  "name": "The request was invalid or malformed.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:reportOwner/:reportName?format=json&Worker!WID=<string>&Effective_as_of_Date=<date>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":reportOwner",
+                        ":reportName"
+                      ],
+                      "query": [
+                        {
+                          "description": "The output format for the report data. Supported values are json, csv, simplexml, and gdata.",
+                          "key": "format",
+                          "value": "json"
+                        },
+                        {
+                          "description": "Filter by worker Workday ID (example prompt parameter).",
+                          "key": "Worker!WID",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by effective date (example prompt parameter).",
+                          "key": "Effective_as_of_Date",
+                          "value": "<date>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "reportOwner"
+                        },
+                        {
+                          "key": "reportName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:22:29.000Z",
+                  "updatedAt": "2026-06-05T15:22:29.000Z",
+                  "uid": "35240-bdcfa924-5ebb-47b9-99d3-6892af011f63"
+                },
+                {
+                  "id": "132cca4a-1b55-4a4b-b8e2-b3b0e98cec63",
+                  "name": "Authentication credentials were missing or invalid.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:reportOwner/:reportName?format=json&Worker!WID=<string>&Effective_as_of_Date=<date>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":reportOwner",
+                        ":reportName"
+                      ],
+                      "query": [
+                        {
+                          "description": "The output format for the report data. Supported values are json, csv, simplexml, and gdata.",
+                          "key": "format",
+                          "value": "json"
+                        },
+                        {
+                          "description": "Filter by worker Workday ID (example prompt parameter).",
+                          "key": "Worker!WID",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by effective date (example prompt parameter).",
+                          "key": "Effective_as_of_Date",
+                          "value": "<date>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "reportOwner"
+                        },
+                        {
+                          "key": "reportName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:22:29.000Z",
+                  "updatedAt": "2026-06-05T15:22:29.000Z",
+                  "uid": "35240-132cca4a-1b55-4a4b-b8e2-b3b0e98cec63"
+                },
+                {
+                  "id": "f4ae15e4-3a14-4f47-9a6d-fc1c8c41c76e",
+                  "name": "The report was not found or is not published as a web service.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:reportOwner/:reportName?format=json&Worker!WID=<string>&Effective_as_of_Date=<date>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":reportOwner",
+                        ":reportName"
+                      ],
+                      "query": [
+                        {
+                          "description": "The output format for the report data. Supported values are json, csv, simplexml, and gdata.",
+                          "key": "format",
+                          "value": "json"
+                        },
+                        {
+                          "description": "Filter by worker Workday ID (example prompt parameter).",
+                          "key": "Worker!WID",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by effective date (example prompt parameter).",
+                          "key": "Effective_as_of_Date",
+                          "value": "<date>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "reportOwner"
+                        },
+                        {
+                          "key": "reportName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:22:29.000Z",
+                  "updatedAt": "2026-06-05T15:22:29.000Z",
+                  "uid": "35240-f4ae15e4-3a14-4f47-9a6d-fc1c8c41c76e"
+                }
+              ],
+              "createdAt": "2026-06-05T15:22:29.000Z",
+              "updatedAt": "2026-06-05T15:22:29.000Z",
+              "uid": "35240-8d1912f9-43d3-4fde-87c5-3b2cb569644e"
+            }
+          ],
+          "id": "7440555a-4fc2-4289-a794-1cb228460c78",
+          "createdAt": "2026-06-05T15:22:29.000Z",
+          "updatedAt": "2026-06-05T15:22:29.000Z",
+          "uid": "35240-7440555a-4fc2-4289-a794-1cb228460c78"
+        }
+      ],
+      "id": "dc9c0216-8ef6-4f38-9765-038aba2bb4a8",
+      "createdAt": "2026-06-05T15:22:29.000Z",
+      "updatedAt": "2026-06-05T15:22:29.000Z",
+      "uid": "35240-dc9c0216-8ef6-4f38-9765-038aba2bb4a8"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "r_reports",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "tenant",
+      "value": "tenant_name"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://wd2-impl-services1.workday.com/ccx/service/customreport2/{{tenant}}"
+    }
+  ]
+}

@@ -1,0 +1,228 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Workday Absence Management API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize",
+      "accessTokenUrl": "https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Absence Types",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Eligible Absence Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://wd2-impl-services1.workday.com/ccx/api/absenceManagement/v1/{tenant}/workers/:ID/eligibleAbsenceTypes",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path",
+                "description": "The Workday ID of the worker."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of objects in a single response."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The zero-based index of the first object in a response collection."
+              }
+            ]
+          },
+          "docs": "Returns the absence types a worker is eligible for."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Time Off",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Request Time Off",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://wd2-impl-services1.workday.com/ccx/api/absenceManagement/v1/{tenant}/workers/:ID/requestTimeOff",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path",
+                "description": "The Workday ID of the worker."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submits a time-off request for a worker."
+        },
+        {
+          "info": {
+            "name": "Get Time Off Entries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://wd2-impl-services1.workday.com/ccx/api/absenceManagement/v1/{tenant}/workers/:ID/timeOffEntries",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path",
+                "description": "The Workday ID of the worker."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of objects in a single response."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The zero-based index of the first object in a response collection."
+              },
+              {
+                "name": "fromDate",
+                "value": "2026-01-15",
+                "type": "query",
+                "description": "Filters entries on or after this date."
+              },
+              {
+                "name": "toDate",
+                "value": "2026-01-15",
+                "type": "query",
+                "description": "Filters entries on or before this date."
+              }
+            ]
+          },
+          "docs": "Returns time-off entries for a worker."
+        },
+        {
+          "info": {
+            "name": "Get Time Off Balances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://wd2-impl-services1.workday.com/ccx/api/absenceManagement/v1/{tenant}/workers/:ID/timeOffBalances",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path",
+                "description": "The Workday ID of the worker."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of objects in a single response."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The zero-based index of the first object in a response collection."
+              }
+            ]
+          },
+          "docs": "Returns time-off plan balances for a worker."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Leave of Absence",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Leaves of Absence",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://wd2-impl-services1.workday.com/ccx/api/absenceManagement/v1/{tenant}/workers/:ID/leaveOfAbsences",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path",
+                "description": "The Workday ID of the worker."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of objects in a single response."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The zero-based index of the first object in a response collection."
+              }
+            ]
+          },
+          "docs": "Returns leaves of absence for a worker."
+        },
+        {
+          "info": {
+            "name": "Request Leave of Absence",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://wd2-impl-services1.workday.com/ccx/api/absenceManagement/v1/{tenant}/workers/:ID/requestLeaveOfAbsence",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path",
+                "description": "The Workday ID of the worker."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initiates a leave of absence request for a worker."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

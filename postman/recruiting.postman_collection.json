@@ -1,0 +1,1681 @@
+{
+  "info": {
+    "_postman_id": "a1a06ac8-b96d-4e25-b11c-6726a718d2f7",
+    "name": "Workday Recruiting API",
+    "description": "Recruiting API for managing job postings, candidates, applications, and hiring workflows. Supports interview feedback and prospect management.\n\nContact Support:\n Name: Workday Support\n Email: support@workday.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:21:41.000Z",
+    "updatedAt": "2026-06-05T15:21:41.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a1a06ac8-b96d-4e25-b11c-6726a718d2f7"
+  },
+  "item": [
+    {
+      "name": "jobRequisitions",
+      "item": [
+        {
+          "name": "{ID}",
+          "item": [
+            {
+              "name": "Get Job Requisition by Id",
+              "id": "77849498-8ab8-4cfd-9766-d34b8521e02c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/jobRequisitions/:ID",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "jobRequisitions",
+                    ":ID"
+                  ],
+                  "variable": [
+                    {
+                      "id": "5673bbf9-b40b-4171-87e0-ca06bc9a2726",
+                      "key": "ID",
+                      "value": "<string>",
+                      "description": "(Required) The Workday ID of the resource."
+                    }
+                  ]
+                },
+                "description": "Returns details for a specific job requisition."
+              },
+              "response": [
+                {
+                  "id": "5bddd359-6385-4124-a554-7537b87d1459",
+                  "name": "Successful response containing job requisition details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/jobRequisitions/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "jobRequisitions",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"descriptor\": \"<string>\",\n  \"requisitionNumber\": \"<string>\",\n  \"jobTitle\": \"<string>\",\n  \"jobProfile\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"supervisoryOrganization\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"hiringManager\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"recruiter\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"status\": \"<string>\",\n  \"numberOfOpenings\": \"<integer>\",\n  \"createdOn\": \"<dateTime>\",\n  \"targetHireDate\": \"<date>\",\n  \"location\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  }\n}",
+                  "createdAt": "2026-06-05T15:21:41.000Z",
+                  "updatedAt": "2026-06-05T15:21:41.000Z",
+                  "uid": "35240-5bddd359-6385-4124-a554-7537b87d1459"
+                },
+                {
+                  "id": "7a6656dd-ea04-4ee4-afe0-1d842d134dbb",
+                  "name": "Authentication credentials were missing or invalid.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/jobRequisitions/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "jobRequisitions",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:41.000Z",
+                  "updatedAt": "2026-06-05T15:21:41.000Z",
+                  "uid": "35240-7a6656dd-ea04-4ee4-afe0-1d842d134dbb"
+                },
+                {
+                  "id": "84a458dc-6510-4dce-b713-71a041856e62",
+                  "name": "The requested resource was not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/jobRequisitions/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "jobRequisitions",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:41.000Z",
+                  "updatedAt": "2026-06-05T15:21:41.000Z",
+                  "uid": "35240-84a458dc-6510-4dce-b713-71a041856e62"
+                }
+              ],
+              "createdAt": "2026-06-05T15:21:41.000Z",
+              "updatedAt": "2026-06-05T15:21:41.000Z",
+              "uid": "35240-77849498-8ab8-4cfd-9766-d34b8521e02c"
+            }
+          ],
+          "id": "3ede09dd-7379-4cd0-8512-b72e0769c49e",
+          "createdAt": "2026-06-05T15:21:41.000Z",
+          "updatedAt": "2026-06-05T15:21:41.000Z",
+          "uid": "35240-3ede09dd-7379-4cd0-8512-b72e0769c49e"
+        },
+        {
+          "name": "Get Job Requisitions",
+          "id": "caee9441-e8f6-4355-90f9-bb06b0b40088",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/jobRequisitions?limit=20&offset=0&search=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "jobRequisitions"
+              ],
+              "query": [
+                {
+                  "description": "The maximum number of objects in a single response.",
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "description": "The zero-based index of the first object in a response collection.",
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "description": "Searches resources by name. The search is case-insensitive.",
+                  "key": "search",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns a collection of job requisitions."
+          },
+          "response": [
+            {
+              "id": "877c2fdd-c3ac-402e-be6f-76ec35485d88",
+              "name": "Successful response containing job requisitions.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/jobRequisitions?limit=20&offset=0&search=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "jobRequisitions"
+                  ],
+                  "query": [
+                    {
+                      "description": "The maximum number of objects in a single response.",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection.",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Searches resources by name. The search is case-insensitive.",
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"requisitionNumber\": \"<string>\",\n      \"jobTitle\": \"<string>\",\n      \"jobProfile\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"supervisoryOrganization\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"hiringManager\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"recruiter\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"status\": \"<string>\",\n      \"numberOfOpenings\": \"<integer>\",\n      \"createdOn\": \"<dateTime>\",\n      \"targetHireDate\": \"<date>\",\n      \"location\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"requisitionNumber\": \"<string>\",\n      \"jobTitle\": \"<string>\",\n      \"jobProfile\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"supervisoryOrganization\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"hiringManager\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"recruiter\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"status\": \"<string>\",\n      \"numberOfOpenings\": \"<integer>\",\n      \"createdOn\": \"<dateTime>\",\n      \"targetHireDate\": \"<date>\",\n      \"location\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      }\n    }\n  ],\n  \"total\": \"<integer>\"\n}",
+              "createdAt": "2026-06-05T15:21:41.000Z",
+              "updatedAt": "2026-06-05T15:21:41.000Z",
+              "uid": "35240-877c2fdd-c3ac-402e-be6f-76ec35485d88"
+            },
+            {
+              "id": "383c5ac6-86dc-4188-960b-0907a584e0eb",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/jobRequisitions?limit=20&offset=0&search=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "jobRequisitions"
+                  ],
+                  "query": [
+                    {
+                      "description": "The maximum number of objects in a single response.",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection.",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Searches resources by name. The search is case-insensitive.",
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:21:41.000Z",
+              "updatedAt": "2026-06-05T15:21:41.000Z",
+              "uid": "35240-383c5ac6-86dc-4188-960b-0907a584e0eb"
+            }
+          ],
+          "createdAt": "2026-06-05T15:21:41.000Z",
+          "updatedAt": "2026-06-05T15:21:41.000Z",
+          "uid": "35240-caee9441-e8f6-4355-90f9-bb06b0b40088"
+        }
+      ],
+      "id": "4939a21c-46b7-4c6d-8f10-c5547717b0ee",
+      "createdAt": "2026-06-05T15:21:41.000Z",
+      "updatedAt": "2026-06-05T15:21:41.000Z",
+      "uid": "35240-4939a21c-46b7-4c6d-8f10-c5547717b0ee"
+    },
+    {
+      "name": "jobPostings",
+      "item": [
+        {
+          "name": "{ID}",
+          "item": [
+            {
+              "name": "Get Job Posting by Id",
+              "id": "3697f014-a1e3-4b6d-bcac-e139879713a3",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/jobPostings/:ID",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "jobPostings",
+                    ":ID"
+                  ],
+                  "variable": [
+                    {
+                      "id": "d4d8f312-8df5-4541-9388-3d56fb882df5",
+                      "key": "ID",
+                      "value": "<string>",
+                      "description": "(Required) The Workday ID of the resource."
+                    }
+                  ]
+                },
+                "description": "Returns details for a specific job posting."
+              },
+              "response": [
+                {
+                  "id": "11b2d75a-5171-4bc2-8b30-c7758a6a3487",
+                  "name": "Successful response containing job posting details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/jobPostings/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "jobPostings",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"descriptor\": \"<string>\",\n  \"title\": \"<string>\",\n  \"jobRequisition\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\",\n  \"jobDescription\": \"<string>\",\n  \"location\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"isInternal\": \"<boolean>\",\n  \"isExternal\": \"<boolean>\",\n  \"postedOn\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-06-05T15:21:41.000Z",
+                  "updatedAt": "2026-06-05T15:21:41.000Z",
+                  "uid": "35240-11b2d75a-5171-4bc2-8b30-c7758a6a3487"
+                },
+                {
+                  "id": "ef4923e1-6a2b-4e8e-82a1-f68e0d9d155a",
+                  "name": "Authentication credentials were missing or invalid.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/jobPostings/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "jobPostings",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:41.000Z",
+                  "updatedAt": "2026-06-05T15:21:41.000Z",
+                  "uid": "35240-ef4923e1-6a2b-4e8e-82a1-f68e0d9d155a"
+                },
+                {
+                  "id": "6b86ae58-f054-41e4-bfb8-afcdeb53c3d4",
+                  "name": "The requested resource was not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/jobPostings/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "jobPostings",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:41.000Z",
+                  "updatedAt": "2026-06-05T15:21:41.000Z",
+                  "uid": "35240-6b86ae58-f054-41e4-bfb8-afcdeb53c3d4"
+                }
+              ],
+              "createdAt": "2026-06-05T15:21:41.000Z",
+              "updatedAt": "2026-06-05T15:21:41.000Z",
+              "uid": "35240-3697f014-a1e3-4b6d-bcac-e139879713a3"
+            }
+          ],
+          "id": "e552b583-8a9d-4545-93db-f7ccc95be7c3",
+          "createdAt": "2026-06-05T15:21:41.000Z",
+          "updatedAt": "2026-06-05T15:21:41.000Z",
+          "uid": "35240-e552b583-8a9d-4545-93db-f7ccc95be7c3"
+        },
+        {
+          "name": "Get Job Postings",
+          "id": "fea5b077-8884-45dd-bb5b-ecea48ea4b41",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/jobPostings?limit=20&offset=0&search=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "jobPostings"
+              ],
+              "query": [
+                {
+                  "description": "The maximum number of objects in a single response.",
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "description": "The zero-based index of the first object in a response collection.",
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "description": "Searches resources by name. The search is case-insensitive.",
+                  "key": "search",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns a collection of job postings."
+          },
+          "response": [
+            {
+              "id": "2c9cf4ad-dea3-4747-8efd-37e57281b528",
+              "name": "Successful response containing job postings.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/jobPostings?limit=20&offset=0&search=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "jobPostings"
+                  ],
+                  "query": [
+                    {
+                      "description": "The maximum number of objects in a single response.",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection.",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Searches resources by name. The search is case-insensitive.",
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"title\": \"<string>\",\n      \"jobRequisition\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"jobDescription\": \"<string>\",\n      \"location\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"isInternal\": \"<boolean>\",\n      \"isExternal\": \"<boolean>\",\n      \"postedOn\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"title\": \"<string>\",\n      \"jobRequisition\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"jobDescription\": \"<string>\",\n      \"location\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"isInternal\": \"<boolean>\",\n      \"isExternal\": \"<boolean>\",\n      \"postedOn\": \"<dateTime>\"\n    }\n  ],\n  \"total\": \"<integer>\"\n}",
+              "createdAt": "2026-06-05T15:21:41.000Z",
+              "updatedAt": "2026-06-05T15:21:41.000Z",
+              "uid": "35240-2c9cf4ad-dea3-4747-8efd-37e57281b528"
+            },
+            {
+              "id": "affb121b-bef1-465a-84bc-7b3e979b2ba0",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/jobPostings?limit=20&offset=0&search=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "jobPostings"
+                  ],
+                  "query": [
+                    {
+                      "description": "The maximum number of objects in a single response.",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection.",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Searches resources by name. The search is case-insensitive.",
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:21:41.000Z",
+              "updatedAt": "2026-06-05T15:21:41.000Z",
+              "uid": "35240-affb121b-bef1-465a-84bc-7b3e979b2ba0"
+            }
+          ],
+          "createdAt": "2026-06-05T15:21:41.000Z",
+          "updatedAt": "2026-06-05T15:21:41.000Z",
+          "uid": "35240-fea5b077-8884-45dd-bb5b-ecea48ea4b41"
+        }
+      ],
+      "id": "4721aec5-5675-46a4-9f57-b2d77ad129a8",
+      "createdAt": "2026-06-05T15:21:41.000Z",
+      "updatedAt": "2026-06-05T15:21:41.000Z",
+      "uid": "35240-4721aec5-5675-46a4-9f57-b2d77ad129a8"
+    },
+    {
+      "name": "candidates",
+      "item": [
+        {
+          "name": "{ID}",
+          "item": [
+            {
+              "name": "Get Candidate by Id",
+              "id": "f2915cfc-6ff8-4319-b6f0-1d3b2971f0c3",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/candidates/:ID",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "candidates",
+                    ":ID"
+                  ],
+                  "variable": [
+                    {
+                      "id": "a35f7c8d-67b5-4527-8005-85b80c883cae",
+                      "key": "ID",
+                      "value": "<string>",
+                      "description": "(Required) The Workday ID of the resource."
+                    }
+                  ]
+                },
+                "description": "Returns details for a specific candidate."
+              },
+              "response": [
+                {
+                  "id": "b136b4e6-a778-4266-aaa1-7a4dd78ca9bb",
+                  "name": "Successful response containing candidate details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/candidates/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "candidates",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"descriptor\": \"<string>\",\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"phone\": \"<string>\",\n  \"source\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"referredBy\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"attachments\": [\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"href\": \"<uri>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"href\": \"<uri>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:41.000Z",
+                  "updatedAt": "2026-06-05T15:21:41.000Z",
+                  "uid": "35240-b136b4e6-a778-4266-aaa1-7a4dd78ca9bb"
+                },
+                {
+                  "id": "65536e41-6ace-4f8a-93f7-d4d2c35b28f1",
+                  "name": "Authentication credentials were missing or invalid.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/candidates/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "candidates",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:41.000Z",
+                  "updatedAt": "2026-06-05T15:21:41.000Z",
+                  "uid": "35240-65536e41-6ace-4f8a-93f7-d4d2c35b28f1"
+                },
+                {
+                  "id": "cd48d898-d496-4492-bcb0-03ad9e72cde7",
+                  "name": "The requested resource was not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/candidates/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "candidates",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:41.000Z",
+                  "updatedAt": "2026-06-05T15:21:41.000Z",
+                  "uid": "35240-cd48d898-d496-4492-bcb0-03ad9e72cde7"
+                }
+              ],
+              "createdAt": "2026-06-05T15:21:41.000Z",
+              "updatedAt": "2026-06-05T15:21:41.000Z",
+              "uid": "35240-f2915cfc-6ff8-4319-b6f0-1d3b2971f0c3"
+            }
+          ],
+          "id": "70901cc2-1e0d-4042-b450-ae9986cff02b",
+          "createdAt": "2026-06-05T15:21:41.000Z",
+          "updatedAt": "2026-06-05T15:21:41.000Z",
+          "uid": "35240-70901cc2-1e0d-4042-b450-ae9986cff02b"
+        },
+        {
+          "name": "Get Candidates",
+          "id": "13262564-e0c7-4374-a59d-1d7ec877fe8d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/candidates?limit=20&offset=0&search=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "candidates"
+              ],
+              "query": [
+                {
+                  "description": "The maximum number of objects in a single response.",
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "description": "The zero-based index of the first object in a response collection.",
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "description": "Searches resources by name. The search is case-insensitive.",
+                  "key": "search",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns a collection of candidates."
+          },
+          "response": [
+            {
+              "id": "ce38d31e-7d41-4990-a705-da6eb4e43c4f",
+              "name": "Successful response containing candidates.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/candidates?limit=20&offset=0&search=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "candidates"
+                  ],
+                  "query": [
+                    {
+                      "description": "The maximum number of objects in a single response.",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection.",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Searches resources by name. The search is case-insensitive.",
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"phone\": \"<string>\",\n      \"source\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"referredBy\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"attachments\": [\n        {\n          \"id\": \"<string>\",\n          \"descriptor\": \"<string>\",\n          \"href\": \"<uri>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"descriptor\": \"<string>\",\n          \"href\": \"<uri>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"phone\": \"<string>\",\n      \"source\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"referredBy\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"attachments\": [\n        {\n          \"id\": \"<string>\",\n          \"descriptor\": \"<string>\",\n          \"href\": \"<uri>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"descriptor\": \"<string>\",\n          \"href\": \"<uri>\"\n        }\n      ]\n    }\n  ],\n  \"total\": \"<integer>\"\n}",
+              "createdAt": "2026-06-05T15:21:41.000Z",
+              "updatedAt": "2026-06-05T15:21:41.000Z",
+              "uid": "35240-ce38d31e-7d41-4990-a705-da6eb4e43c4f"
+            },
+            {
+              "id": "fcc4ef77-f37f-43c8-83d3-073b34f015af",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/candidates?limit=20&offset=0&search=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "candidates"
+                  ],
+                  "query": [
+                    {
+                      "description": "The maximum number of objects in a single response.",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection.",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Searches resources by name. The search is case-insensitive.",
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:21:41.000Z",
+              "updatedAt": "2026-06-05T15:21:41.000Z",
+              "uid": "35240-fcc4ef77-f37f-43c8-83d3-073b34f015af"
+            }
+          ],
+          "createdAt": "2026-06-05T15:21:41.000Z",
+          "updatedAt": "2026-06-05T15:21:41.000Z",
+          "uid": "35240-13262564-e0c7-4374-a59d-1d7ec877fe8d"
+        }
+      ],
+      "id": "ca1f71cc-96a9-4be1-a0db-5cf063e9b42f",
+      "createdAt": "2026-06-05T15:21:41.000Z",
+      "updatedAt": "2026-06-05T15:21:41.000Z",
+      "uid": "35240-ca1f71cc-96a9-4be1-a0db-5cf063e9b42f"
+    },
+    {
+      "name": "jobApplications",
+      "item": [
+        {
+          "name": "{ID}",
+          "item": [
+            {
+              "name": "Get Job Application by Id",
+              "id": "4a9abe65-970c-4266-88cd-9070ce465cf4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/jobApplications/:ID",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "jobApplications",
+                    ":ID"
+                  ],
+                  "variable": [
+                    {
+                      "id": "a726ffab-0c60-4b21-aa76-9f399ce2ca6b",
+                      "key": "ID",
+                      "value": "<string>",
+                      "description": "(Required) The Workday ID of the resource."
+                    }
+                  ]
+                },
+                "description": "Returns details for a specific job application."
+              },
+              "response": [
+                {
+                  "id": "5347d180-4b11-40b6-8529-e0a93ccbce3f",
+                  "name": "Successful response containing job application details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/jobApplications/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "jobApplications",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"descriptor\": \"<string>\",\n  \"candidate\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"jobRequisition\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"status\": \"<string>\",\n  \"stage\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"appliedOn\": \"<dateTime>\",\n  \"hiredOn\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-06-05T15:21:41.000Z",
+                  "updatedAt": "2026-06-05T15:21:41.000Z",
+                  "uid": "35240-5347d180-4b11-40b6-8529-e0a93ccbce3f"
+                },
+                {
+                  "id": "a9a57b2e-54f1-4232-b298-aa5d9eee44f6",
+                  "name": "Authentication credentials were missing or invalid.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/jobApplications/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "jobApplications",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:41.000Z",
+                  "updatedAt": "2026-06-05T15:21:41.000Z",
+                  "uid": "35240-a9a57b2e-54f1-4232-b298-aa5d9eee44f6"
+                },
+                {
+                  "id": "a2e426c1-82fb-48cc-8ddc-b0c5f43b26ec",
+                  "name": "The requested resource was not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/jobApplications/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "jobApplications",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:41.000Z",
+                  "updatedAt": "2026-06-05T15:21:41.000Z",
+                  "uid": "35240-a2e426c1-82fb-48cc-8ddc-b0c5f43b26ec"
+                }
+              ],
+              "createdAt": "2026-06-05T15:21:41.000Z",
+              "updatedAt": "2026-06-05T15:21:41.000Z",
+              "uid": "35240-4a9abe65-970c-4266-88cd-9070ce465cf4"
+            }
+          ],
+          "id": "c5ea650b-845d-4489-aa44-7d308c703ce1",
+          "createdAt": "2026-06-05T15:21:41.000Z",
+          "updatedAt": "2026-06-05T15:21:41.000Z",
+          "uid": "35240-c5ea650b-845d-4489-aa44-7d308c703ce1"
+        },
+        {
+          "name": "Get Job Applications",
+          "id": "d374fd20-cb63-4a6d-9409-789d210a770f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/jobApplications?limit=20&offset=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "jobApplications"
+              ],
+              "query": [
+                {
+                  "description": "The maximum number of objects in a single response.",
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "description": "The zero-based index of the first object in a response collection.",
+                  "key": "offset",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Returns a collection of job applications."
+          },
+          "response": [
+            {
+              "id": "bafc7a4c-647a-4fbd-b3d8-997263583036",
+              "name": "Successful response containing job applications.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/jobApplications?limit=20&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "jobApplications"
+                  ],
+                  "query": [
+                    {
+                      "description": "The maximum number of objects in a single response.",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection.",
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"candidate\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"jobRequisition\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"status\": \"<string>\",\n      \"stage\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"appliedOn\": \"<dateTime>\",\n      \"hiredOn\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"candidate\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"jobRequisition\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"status\": \"<string>\",\n      \"stage\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"appliedOn\": \"<dateTime>\",\n      \"hiredOn\": \"<dateTime>\"\n    }\n  ],\n  \"total\": \"<integer>\"\n}",
+              "createdAt": "2026-06-05T15:21:41.000Z",
+              "updatedAt": "2026-06-05T15:21:41.000Z",
+              "uid": "35240-bafc7a4c-647a-4fbd-b3d8-997263583036"
+            },
+            {
+              "id": "8c19b7f7-4d05-40d0-b16b-fbaaa37ff67d",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/jobApplications?limit=20&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "jobApplications"
+                  ],
+                  "query": [
+                    {
+                      "description": "The maximum number of objects in a single response.",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection.",
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:21:41.000Z",
+              "updatedAt": "2026-06-05T15:21:41.000Z",
+              "uid": "35240-8c19b7f7-4d05-40d0-b16b-fbaaa37ff67d"
+            }
+          ],
+          "createdAt": "2026-06-05T15:21:41.000Z",
+          "updatedAt": "2026-06-05T15:21:41.000Z",
+          "uid": "35240-d374fd20-cb63-4a6d-9409-789d210a770f"
+        }
+      ],
+      "id": "7c6da4ba-9b1b-4f57-b426-745bae1a8319",
+      "createdAt": "2026-06-05T15:21:41.000Z",
+      "updatedAt": "2026-06-05T15:21:41.000Z",
+      "uid": "35240-7c6da4ba-9b1b-4f57-b426-745bae1a8319"
+    },
+    {
+      "name": "prospects",
+      "item": [
+        {
+          "name": "Get Prospects",
+          "id": "e10ce267-7ce2-44b8-b838-83adc68278d4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/prospects?limit=20&offset=0&search=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "prospects"
+              ],
+              "query": [
+                {
+                  "description": "The maximum number of objects in a single response.",
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "description": "The zero-based index of the first object in a response collection.",
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "description": "Searches resources by name. The search is case-insensitive.",
+                  "key": "search",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns a collection of recruiting prospects."
+          },
+          "response": [
+            {
+              "id": "28759341-5fa7-41d6-a64d-7a692f4d85ea",
+              "name": "Successful response containing prospects.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/prospects?limit=20&offset=0&search=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "prospects"
+                  ],
+                  "query": [
+                    {
+                      "description": "The maximum number of objects in a single response.",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection.",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Searches resources by name. The search is case-insensitive.",
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"phone\": \"<string>\",\n      \"talentPool\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"source\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"phone\": \"<string>\",\n      \"talentPool\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"source\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      }\n    }\n  ],\n  \"total\": \"<integer>\"\n}",
+              "createdAt": "2026-06-05T15:21:41.000Z",
+              "updatedAt": "2026-06-05T15:21:41.000Z",
+              "uid": "35240-28759341-5fa7-41d6-a64d-7a692f4d85ea"
+            },
+            {
+              "id": "12125d26-9508-43d1-b9f2-0433ab334ab8",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/prospects?limit=20&offset=0&search=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "prospects"
+                  ],
+                  "query": [
+                    {
+                      "description": "The maximum number of objects in a single response.",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection.",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Searches resources by name. The search is case-insensitive.",
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:21:41.000Z",
+              "updatedAt": "2026-06-05T15:21:41.000Z",
+              "uid": "35240-12125d26-9508-43d1-b9f2-0433ab334ab8"
+            }
+          ],
+          "createdAt": "2026-06-05T15:21:41.000Z",
+          "updatedAt": "2026-06-05T15:21:41.000Z",
+          "uid": "35240-e10ce267-7ce2-44b8-b838-83adc68278d4"
+        }
+      ],
+      "id": "b129fd14-b917-4278-aeae-d406382a9072",
+      "createdAt": "2026-06-05T15:21:41.000Z",
+      "updatedAt": "2026-06-05T15:21:41.000Z",
+      "uid": "35240-b129fd14-b917-4278-aeae-d406382a9072"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "r_recruiting w_recruiting",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "tenant",
+      "value": "tenant_name"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://wd2-impl-services1.workday.com/ccx/api/recruiting/v1/{{tenant}}"
+    }
+  ]
+}

@@ -1,0 +1,331 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Workday Prism Analytics API",
+    "version": "v3"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize",
+      "accessTokenUrl": "https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Datasets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Datasets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://wd2-impl-services1.workday.com/ccx/api/prismAnalytics/v3/{tenant}/datasets",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of objects in a single response."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The zero-based index of the first object in a response collection."
+              },
+              {
+                "name": "name",
+                "value": "Example Title",
+                "type": "query",
+                "description": "Filter datasets by name."
+              }
+            ]
+          },
+          "docs": "Returns a collection of Prism Analytics datasets."
+        },
+        {
+          "info": {
+            "name": "Create Dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://wd2-impl-services1.workday.com/ccx/api/prismAnalytics/v3/{tenant}/datasets",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new Prism Analytics dataset with a specified schema."
+        },
+        {
+          "info": {
+            "name": "Get Dataset by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://wd2-impl-services1.workday.com/ccx/api/prismAnalytics/v3/{tenant}/datasets/:ID",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path",
+                "description": "The Workday ID of the resource."
+              }
+            ]
+          },
+          "docs": "Returns detailed information for a specific dataset."
+        },
+        {
+          "info": {
+            "name": "Update Dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://wd2-impl-services1.workday.com/ccx/api/prismAnalytics/v3/{tenant}/datasets/:ID",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path",
+                "description": "The Workday ID of the resource."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a dataset schema or metadata."
+        },
+        {
+          "info": {
+            "name": "Delete Dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://wd2-impl-services1.workday.com/ccx/api/prismAnalytics/v3/{tenant}/datasets/:ID",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path",
+                "description": "The Workday ID of the resource."
+              }
+            ]
+          },
+          "docs": "Deletes a dataset."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Data Change Tasks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Data Change Tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://wd2-impl-services1.workday.com/ccx/api/prismAnalytics/v3/{tenant}/dataChangeTasks",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of objects in a single response."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The zero-based index of the first object in a response collection."
+              }
+            ]
+          },
+          "docs": "Returns a collection of data change tasks."
+        },
+        {
+          "info": {
+            "name": "Create Data Change Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://wd2-impl-services1.workday.com/ccx/api/prismAnalytics/v3/{tenant}/dataChangeTasks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new data change task to load data into a dataset. The task must be completed with file upload and activation steps."
+        },
+        {
+          "info": {
+            "name": "Get Data Change Task by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://wd2-impl-services1.workday.com/ccx/api/prismAnalytics/v3/{tenant}/dataChangeTasks/:ID",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path",
+                "description": "The Workday ID of the resource."
+              }
+            ]
+          },
+          "docs": "Returns detailed information for a specific data change task."
+        },
+        {
+          "info": {
+            "name": "Get Data Change Task Activities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://wd2-impl-services1.workday.com/ccx/api/prismAnalytics/v3/{tenant}/dataChangeTasks/:ID/activities",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path",
+                "description": "The Workday ID of the resource."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of objects in a single response."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The zero-based index of the first object in a response collection."
+              }
+            ]
+          },
+          "docs": "Returns activities for a specific data change task."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "File Containers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create File Container",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://wd2-impl-services1.workday.com/ccx/api/prismAnalytics/v3/{tenant}/fileContainers"
+          },
+          "docs": "Creates a file container for uploading data files for a data change task."
+        },
+        {
+          "info": {
+            "name": "Get File Container by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://wd2-impl-services1.workday.com/ccx/api/prismAnalytics/v3/{tenant}/fileContainers/:ID",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path",
+                "description": "The Workday ID of the resource."
+              }
+            ]
+          },
+          "docs": "Returns details of a file container."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tables",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Tables",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://wd2-impl-services1.workday.com/ccx/api/prismAnalytics/v3/{tenant}/tables",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of objects in a single response."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The zero-based index of the first object in a response collection."
+              },
+              {
+                "name": "name",
+                "value": "Example Title",
+                "type": "query",
+                "description": "Filter tables by name."
+              }
+            ]
+          },
+          "docs": "Returns a collection of Prism Analytics tables."
+        },
+        {
+          "info": {
+            "name": "Get Table by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://wd2-impl-services1.workday.com/ccx/api/prismAnalytics/v3/{tenant}/tables/:ID",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path",
+                "description": "The Workday ID of the resource."
+              }
+            ]
+          },
+          "docs": "Returns detailed information for a specific table."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

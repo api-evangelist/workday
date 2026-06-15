@@ -1,0 +1,1008 @@
+{
+  "info": {
+    "_postman_id": "4cdaffa7-1bad-4dde-b35d-fece4a3aa12e",
+    "name": "Workday Person API",
+    "description": "Person API for managing worker person data including personal information, contact details, and organizational relationships.\n\nContact Support:\n Name: Workday Support\n Email: support@workday.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:21:48.000Z",
+    "updatedAt": "2026-06-05T15:21:48.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4cdaffa7-1bad-4dde-b35d-fece4a3aa12e"
+  },
+  "item": [
+    {
+      "name": "people",
+      "item": [
+        {
+          "name": "{ID}",
+          "item": [
+            {
+              "name": "homeContactInformation",
+              "item": [
+                {
+                  "name": "Get Home Contact Information",
+                  "id": "0fc60734-4993-4669-888c-4c81376da7b9",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/people/:ID/homeContactInformation",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "people",
+                        ":ID",
+                        "homeContactInformation"
+                      ],
+                      "variable": [
+                        {
+                          "id": "9cbd2cc4-75a7-4fed-9a44-2f78afc0f128",
+                          "key": "ID",
+                          "value": "<string>",
+                          "description": "(Required) The Workday ID of the person."
+                        }
+                      ]
+                    },
+                    "description": "Returns home contact information for a person."
+                  },
+                  "response": [
+                    {
+                      "id": "d9b6ed14-69c1-4706-bec9-ffdec9018d22",
+                      "name": "Successful response containing home contact information.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/people/:ID/homeContactInformation",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "people",
+                            ":ID",
+                            "homeContactInformation"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"emails\": [\n    {\n      \"emailAddress\": \"<email>\",\n      \"type\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"isPrimary\": \"<boolean>\"\n    },\n    {\n      \"emailAddress\": \"<email>\",\n      \"type\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"isPrimary\": \"<boolean>\"\n    }\n  ],\n  \"phones\": [\n    {\n      \"phoneNumber\": \"<string>\",\n      \"type\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"isPrimary\": \"<boolean>\",\n      \"countryCode\": \"<string>\"\n    },\n    {\n      \"phoneNumber\": \"<string>\",\n      \"type\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"isPrimary\": \"<boolean>\",\n      \"countryCode\": \"<string>\"\n    }\n  ],\n  \"addresses\": [\n    {\n      \"addressLine1\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"stateProvince\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"postalCode\": \"<string>\",\n      \"country\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"type\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"isPrimary\": \"<boolean>\"\n    },\n    {\n      \"addressLine1\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"stateProvince\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"postalCode\": \"<string>\",\n      \"country\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"type\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"isPrimary\": \"<boolean>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:48.000Z",
+                      "updatedAt": "2026-06-05T15:21:48.000Z",
+                      "uid": "35240-d9b6ed14-69c1-4706-bec9-ffdec9018d22"
+                    },
+                    {
+                      "id": "c14e89a4-5274-4e8d-a200-f4db45f31f03",
+                      "name": "Authentication credentials were missing or invalid.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/people/:ID/homeContactInformation",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "people",
+                            ":ID",
+                            "homeContactInformation"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:48.000Z",
+                      "updatedAt": "2026-06-05T15:21:48.000Z",
+                      "uid": "35240-c14e89a4-5274-4e8d-a200-f4db45f31f03"
+                    },
+                    {
+                      "id": "ee1f2319-817a-4d1d-9950-403467e199ab",
+                      "name": "The requested resource was not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/people/:ID/homeContactInformation",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "people",
+                            ":ID",
+                            "homeContactInformation"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:48.000Z",
+                      "updatedAt": "2026-06-05T15:21:48.000Z",
+                      "uid": "35240-ee1f2319-817a-4d1d-9950-403467e199ab"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:48.000Z",
+                  "updatedAt": "2026-06-05T15:21:48.000Z",
+                  "uid": "35240-0fc60734-4993-4669-888c-4c81376da7b9"
+                }
+              ],
+              "id": "70a6ff00-29d6-4fa0-92f9-d321834941d7",
+              "createdAt": "2026-06-05T15:21:48.000Z",
+              "updatedAt": "2026-06-05T15:21:48.000Z",
+              "uid": "35240-70a6ff00-29d6-4fa0-92f9-d321834941d7"
+            },
+            {
+              "name": "workContactInformation",
+              "item": [
+                {
+                  "name": "Get Work Contact Information",
+                  "id": "61439084-4d79-4a7b-a469-0585ff0fa592",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/people/:ID/workContactInformation",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "people",
+                        ":ID",
+                        "workContactInformation"
+                      ],
+                      "variable": [
+                        {
+                          "id": "fd0054e6-7aab-4dfe-835b-9886e7857379",
+                          "key": "ID",
+                          "value": "<string>",
+                          "description": "(Required) The Workday ID of the person."
+                        }
+                      ]
+                    },
+                    "description": "Returns work contact information for a person."
+                  },
+                  "response": [
+                    {
+                      "id": "8ba0a468-8e64-41c7-aae6-df84190a2507",
+                      "name": "Successful response containing work contact information.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/people/:ID/workContactInformation",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "people",
+                            ":ID",
+                            "workContactInformation"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"emails\": [\n    {\n      \"emailAddress\": \"<email>\",\n      \"type\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"isPrimary\": \"<boolean>\"\n    },\n    {\n      \"emailAddress\": \"<email>\",\n      \"type\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"isPrimary\": \"<boolean>\"\n    }\n  ],\n  \"phones\": [\n    {\n      \"phoneNumber\": \"<string>\",\n      \"type\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"isPrimary\": \"<boolean>\",\n      \"countryCode\": \"<string>\"\n    },\n    {\n      \"phoneNumber\": \"<string>\",\n      \"type\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"isPrimary\": \"<boolean>\",\n      \"countryCode\": \"<string>\"\n    }\n  ],\n  \"addresses\": [\n    {\n      \"addressLine1\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"stateProvince\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"postalCode\": \"<string>\",\n      \"country\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"type\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"isPrimary\": \"<boolean>\"\n    },\n    {\n      \"addressLine1\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"stateProvince\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"postalCode\": \"<string>\",\n      \"country\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"type\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"isPrimary\": \"<boolean>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:48.000Z",
+                      "updatedAt": "2026-06-05T15:21:48.000Z",
+                      "uid": "35240-8ba0a468-8e64-41c7-aae6-df84190a2507"
+                    },
+                    {
+                      "id": "604a6a17-0118-4e76-9efb-43b3514fd617",
+                      "name": "Authentication credentials were missing or invalid.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/people/:ID/workContactInformation",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "people",
+                            ":ID",
+                            "workContactInformation"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:48.000Z",
+                      "updatedAt": "2026-06-05T15:21:48.000Z",
+                      "uid": "35240-604a6a17-0118-4e76-9efb-43b3514fd617"
+                    },
+                    {
+                      "id": "a1df0ccd-c4de-41a4-a59f-72e6fe247d61",
+                      "name": "The requested resource was not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/people/:ID/workContactInformation",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "people",
+                            ":ID",
+                            "workContactInformation"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:48.000Z",
+                      "updatedAt": "2026-06-05T15:21:48.000Z",
+                      "uid": "35240-a1df0ccd-c4de-41a4-a59f-72e6fe247d61"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:48.000Z",
+                  "updatedAt": "2026-06-05T15:21:48.000Z",
+                  "uid": "35240-61439084-4d79-4a7b-a469-0585ff0fa592"
+                }
+              ],
+              "id": "dad0bf20-ada1-453d-8d1d-e33b1c26652f",
+              "createdAt": "2026-06-05T15:21:48.000Z",
+              "updatedAt": "2026-06-05T15:21:48.000Z",
+              "uid": "35240-dad0bf20-ada1-453d-8d1d-e33b1c26652f"
+            },
+            {
+              "name": "personalInformation",
+              "item": [
+                {
+                  "name": "Get Personal Information",
+                  "id": "23dbf225-8cd8-4abb-b497-656f7a751966",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/people/:ID/personalInformation",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "people",
+                        ":ID",
+                        "personalInformation"
+                      ],
+                      "variable": [
+                        {
+                          "id": "38f9bded-7da8-47a5-98ee-616b345da328",
+                          "key": "ID",
+                          "value": "<string>",
+                          "description": "(Required) The Workday ID of the person."
+                        }
+                      ]
+                    },
+                    "description": "Returns personal information for a person (name, date of birth, etc.)."
+                  },
+                  "response": [
+                    {
+                      "id": "f288d2b8-e3d0-4d6f-873e-5d09b689f256",
+                      "name": "Successful response containing personal information.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/people/:ID/personalInformation",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "people",
+                            ":ID",
+                            "personalInformation"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"legalName\": {\n    \"firstName\": \"<string>\",\n    \"middleName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"fullName\": \"<string>\",\n    \"prefix\": \"<string>\",\n    \"suffix\": \"<string>\"\n  },\n  \"preferredName\": {\n    \"firstName\": \"<string>\",\n    \"middleName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"fullName\": \"<string>\",\n    \"prefix\": \"<string>\",\n    \"suffix\": \"<string>\"\n  },\n  \"dateOfBirth\": \"<date>\",\n  \"gender\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"maritalStatus\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"ethnicity\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"militaryStatus\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"disability\": [\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"href\": \"<uri>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"href\": \"<uri>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:48.000Z",
+                      "updatedAt": "2026-06-05T15:21:48.000Z",
+                      "uid": "35240-f288d2b8-e3d0-4d6f-873e-5d09b689f256"
+                    },
+                    {
+                      "id": "5ef43250-7bd0-468b-8ae7-f1d46c71f966",
+                      "name": "Authentication credentials were missing or invalid.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/people/:ID/personalInformation",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "people",
+                            ":ID",
+                            "personalInformation"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:48.000Z",
+                      "updatedAt": "2026-06-05T15:21:48.000Z",
+                      "uid": "35240-5ef43250-7bd0-468b-8ae7-f1d46c71f966"
+                    },
+                    {
+                      "id": "8290f02a-d3df-4e7a-b173-de291fd95029",
+                      "name": "The requested resource was not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/people/:ID/personalInformation",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "people",
+                            ":ID",
+                            "personalInformation"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:48.000Z",
+                      "updatedAt": "2026-06-05T15:21:48.000Z",
+                      "uid": "35240-8290f02a-d3df-4e7a-b173-de291fd95029"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:48.000Z",
+                  "updatedAt": "2026-06-05T15:21:48.000Z",
+                  "uid": "35240-23dbf225-8cd8-4abb-b497-656f7a751966"
+                }
+              ],
+              "id": "7f9b8c10-fdd6-46e6-94aa-45d74e11a0a5",
+              "createdAt": "2026-06-05T15:21:48.000Z",
+              "updatedAt": "2026-06-05T15:21:48.000Z",
+              "uid": "35240-7f9b8c10-fdd6-46e6-94aa-45d74e11a0a5"
+            },
+            {
+              "name": "Get Person by Id",
+              "id": "8f41a5b8-805b-4147-b6ff-dae1196fa2f0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/people/:ID",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "people",
+                    ":ID"
+                  ],
+                  "variable": [
+                    {
+                      "id": "9b5d6cd5-3ec7-465a-99de-95c6a7d52b11",
+                      "key": "ID",
+                      "value": "<string>",
+                      "description": "(Required) The Workday ID of the person."
+                    }
+                  ]
+                },
+                "description": "Returns detailed person data for a specific individual."
+              },
+              "response": [
+                {
+                  "id": "3ca8bab6-0bc2-4b0c-b7c1-fe708ac5d97f",
+                  "name": "Successful response containing person details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/people/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "people",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"descriptor\": \"<string>\",\n  \"legalName\": {\n    \"firstName\": \"<string>\",\n    \"middleName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"fullName\": \"<string>\",\n    \"prefix\": \"<string>\",\n    \"suffix\": \"<string>\"\n  },\n  \"preferredName\": {\n    \"firstName\": \"<string>\",\n    \"middleName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"fullName\": \"<string>\",\n    \"prefix\": \"<string>\",\n    \"suffix\": \"<string>\"\n  },\n  \"dateOfBirth\": \"<date>\",\n  \"gender\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"nationality\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"citizenship\": [\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"href\": \"<uri>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"href\": \"<uri>\"\n    }\n  ],\n  \"maritalStatus\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  }\n}",
+                  "createdAt": "2026-06-05T15:21:48.000Z",
+                  "updatedAt": "2026-06-05T15:21:48.000Z",
+                  "uid": "35240-3ca8bab6-0bc2-4b0c-b7c1-fe708ac5d97f"
+                },
+                {
+                  "id": "0def6bd0-773a-443c-80f1-eb818d8cdf0c",
+                  "name": "Authentication credentials were missing or invalid.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/people/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "people",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:48.000Z",
+                  "updatedAt": "2026-06-05T15:21:48.000Z",
+                  "uid": "35240-0def6bd0-773a-443c-80f1-eb818d8cdf0c"
+                },
+                {
+                  "id": "63008c1a-b0dc-43fa-a6b1-10e146470233",
+                  "name": "The requested resource was not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/people/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "people",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:21:48.000Z",
+                  "updatedAt": "2026-06-05T15:21:48.000Z",
+                  "uid": "35240-63008c1a-b0dc-43fa-a6b1-10e146470233"
+                }
+              ],
+              "createdAt": "2026-06-05T15:21:48.000Z",
+              "updatedAt": "2026-06-05T15:21:48.000Z",
+              "uid": "35240-8f41a5b8-805b-4147-b6ff-dae1196fa2f0"
+            }
+          ],
+          "id": "5aee113e-9d87-4f8f-bb66-24169c30d561",
+          "createdAt": "2026-06-05T15:21:48.000Z",
+          "updatedAt": "2026-06-05T15:21:48.000Z",
+          "uid": "35240-5aee113e-9d87-4f8f-bb66-24169c30d561"
+        },
+        {
+          "name": "Get People",
+          "id": "c15d40f3-16f7-46f9-bd4d-f665b63d77dc",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/people?limit=20&offset=0&search=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "people"
+              ],
+              "query": [
+                {
+                  "description": "The maximum number of objects in a single response.",
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "description": "The zero-based index of the first object in a response collection.",
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "description": "Searches resources by name.",
+                  "key": "search",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns a collection of people."
+          },
+          "response": [
+            {
+              "id": "0d54d027-1c13-4943-9023-c06d2a8c2ad5",
+              "name": "Successful response containing people.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/people?limit=20&offset=0&search=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "people"
+                  ],
+                  "query": [
+                    {
+                      "description": "The maximum number of objects in a single response.",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection.",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Searches resources by name.",
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"href\": \"<uri>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"href\": \"<uri>\"\n    }\n  ],\n  \"total\": \"<integer>\"\n}",
+              "createdAt": "2026-06-05T15:21:48.000Z",
+              "updatedAt": "2026-06-05T15:21:48.000Z",
+              "uid": "35240-0d54d027-1c13-4943-9023-c06d2a8c2ad5"
+            },
+            {
+              "id": "54322325-a3e4-41ca-8abb-ba96f92331a5",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/people?limit=20&offset=0&search=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "people"
+                  ],
+                  "query": [
+                    {
+                      "description": "The maximum number of objects in a single response.",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection.",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Searches resources by name.",
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:21:48.000Z",
+              "updatedAt": "2026-06-05T15:21:48.000Z",
+              "uid": "35240-54322325-a3e4-41ca-8abb-ba96f92331a5"
+            }
+          ],
+          "createdAt": "2026-06-05T15:21:48.000Z",
+          "updatedAt": "2026-06-05T15:21:48.000Z",
+          "uid": "35240-c15d40f3-16f7-46f9-bd4d-f665b63d77dc"
+        }
+      ],
+      "id": "2863ad82-7f94-4522-a5d8-72e974725824",
+      "createdAt": "2026-06-05T15:21:48.000Z",
+      "updatedAt": "2026-06-05T15:21:48.000Z",
+      "uid": "35240-2863ad82-7f94-4522-a5d8-72e974725824"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "r_person w_person",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "tenant",
+      "value": "tenant_name"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://wd2-impl-services1.workday.com/ccx/api/person/v1/{{tenant}}"
+    }
+  ]
+}

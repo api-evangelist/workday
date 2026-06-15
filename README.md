@@ -1,297 +1,624 @@
 # Workday (workday)
+
 Collection of Workday REST and SOAP APIs for human capital management, financial management, enterprise planning, analytics, and platform extensibility.
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/workday/refs/heads/main/apis.yml)
+**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/workday/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/workday/refs/heads/main/apis.yml)
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## Scope
 
-## Tags:
+- **Type:** Index
 
- - Cloud Computing, Enterprise Software, Financial Management, HCM, SaaS
+## Tags
+
+- Cloud Computing
+- Enterprise Software
+- Financial Management
+- HCM
+- SaaS
 
 ## Timestamps
 
 - **Created:** 2024-01-15
-- **Modified:** 2026-04-18
+- **Modified:** 2026-05-30
 
 ## APIs
 
 ### Workday HCM API
-Human Capital Management API for managing workforce data, recruiting, talent management, and payroll.
 
-**Human URL:** [https://community.workday.com/sites/default/files/file-hosting/restapi/index.html](https://community.workday.com/sites/default/files/file-hosting/restapi/index.html)
+Human Capital Management API for managing workforce data, recruiting, talent management, and payroll. Provides RESTful endpoints for core HR operations.
 
-#### Tags:
+- **Human URL:** [https://community.workday.com/sites/default/files/file-hosting/restapi/index.html](https://community.workday.com/sites/default/files/file-hosting/restapi/index.html)
+- **Base URL:** `https://wd2-impl-services1.workday.com/ccx/api/`
 
- - Human Capital Management, Human Resources, Payroll, Talent Management, Workforce
+#### Tags
+
+- Human Capital Management
+- Human Resources
+- Payroll
+- Talent Management
+- Workforce
 
 #### Properties
 
 - [Documentation](https://community.workday.com/sites/default/files/file-hosting/restapi/index.html)
-- [OpenAPI](openapi/hcm.yml)
-- [JSONSchema](json-schema/worker.json)
-- [JSONLD](json-ld/hcm-context.jsonld)
+- [OpenAPI](openapi/hcm.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/hcm.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/hcm.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [JSON Schema](json-schema/worker.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON Schema](json-schema/organization.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON-LD](json-ld/hcm-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+- [Authentication](https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication)
 
 ### Workday Financial Management API
-Financial Management API for accounting, procurement, expenses, and financial reporting.
 
-**Human URL:** [https://community.workday.com/sites/default/files/file-hosting/restapi/index.html](https://community.workday.com/sites/default/files/file-hosting/restapi/index.html)
+Financial Management API for accounting, procurement, expenses, and financial reporting. Enables programmatic access to financial data and workflows.
+
+- **Human URL:** [https://community.workday.com/sites/default/files/file-hosting/restapi/index.html](https://community.workday.com/sites/default/files/file-hosting/restapi/index.html)
+- **Base URL:** `https://wd2-impl-services1.workday.com/ccx/api/financialManagement/`
+
+#### Tags
+
+- Accounting
+- Expenses
+- Financial Management
+- Procurement
+- Revenue
 
 #### Properties
 
-- [OpenAPI](openapi/financialManagement.yml)
+- [Documentation](https://community.workday.com/sites/default/files/file-hosting/restapi/index.html)
+- [OpenAPI](openapi/financialManagement.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/financialManagement.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/financialManagement.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [JSON-LD](json-ld/financialManagement-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
 
 ### Workday Recruiting API
-Recruiting API for managing job postings, candidates, applications, and hiring workflows.
+
+Recruiting API for managing job postings, candidates, applications, and hiring workflows. Supports interview feedback and prospect management.
+
+- **Human URL:** [https://community.workday.com/sites/default/files/file-hosting/restapi/index.html](https://community.workday.com/sites/default/files/file-hosting/restapi/index.html)
+- **Base URL:** `https://wd2-impl-services1.workday.com/ccx/api/recruiting/`
+
+#### Tags
+
+- Applications
+- Candidates
+- Hiring
+- Job Postings
+- Recruiting
 
 #### Properties
 
-- [OpenAPI](openapi/recruiting.yml)
+- [Documentation](https://community.workday.com/sites/default/files/file-hosting/restapi/index.html)
+- [OpenAPI](openapi/recruiting.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/recruiting.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/recruiting.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [JSON-LD](json-ld/recruiting-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
 
 ### Workday Time Tracking API
-Time Tracking API for managing employee time entry, timesheets, and time clock events.
+
+Time Tracking API for managing employee time entry, timesheets, time clock events, and time validations.
+
+- **Human URL:** [https://community.workday.com/sites/default/files/file-hosting/restapi/index.html](https://community.workday.com/sites/default/files/file-hosting/restapi/index.html)
+- **Base URL:** `https://wd2-impl-services1.workday.com/ccx/api/timeTracking/`
+
+#### Tags
+
+- Absence
+- Leave Management
+- Time Tracking
+- Timesheets
 
 #### Properties
 
-- [OpenAPI](openapi/timeTracking.yml)
+- [Documentation](https://community.workday.com/sites/default/files/file-hosting/restapi/index.html)
+- [OpenAPI](openapi/timeTracking.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/timeTracking.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/timeTracking.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [JSON-LD](json-ld/timeTracking-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
 
 ### Workday Benefits API
-Benefits API for managing employee benefits, enrollments, and coverage.
+
+Benefits API for managing employee benefits, enrollments, and coverage. Provides endpoints for benefits administration workflows.
+
+- **Human URL:** [https://community.workday.com/sites/default/files/file-hosting/restapi/index.html](https://community.workday.com/sites/default/files/file-hosting/restapi/index.html)
+- **Base URL:** `https://wd2-impl-services1.workday.com/ccx/api/benefits/`
+
+#### Tags
+
+- Benefits
+- Coverage
+- Enrollments
+- Health Insurance
 
 #### Properties
 
-- [OpenAPI](openapi/benefits.yml)
+- [Documentation](https://community.workday.com/sites/default/files/file-hosting/restapi/index.html)
+- [OpenAPI](openapi/benefits.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/benefits.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/benefits.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [JSON-LD](json-ld/benefits-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
 
 ### Workday Absence Management API
-Absence Management API for managing leave balances, time-off requests, and leaves of absence.
+
+Absence Management API for managing leave balances, time-off requests, leaves of absence, and eligible absence types for workers.
+
+- **Human URL:** [https://community.workday.com/sites/default/files/file-hosting/restapi/index.html](https://community.workday.com/sites/default/files/file-hosting/restapi/index.html)
+- **Base URL:** `https://wd2-impl-services1.workday.com/ccx/api/absenceManagement/`
+
+#### Tags
+
+- Absence Management
+- Leave Balances
+- Leave of Absence
+- Time Off
 
 #### Properties
 
-- [OpenAPI](openapi/absenceManagement.yml)
+- [Documentation](https://community.workday.com/sites/default/files/file-hosting/restapi/index.html)
+- [OpenAPI](openapi/absenceManagement.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/absenceManagement.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/absenceManagement.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [JSON Schema](json-schema/time-off.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON-LD](json-ld/absenceManagement-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
 
 ### Workday Compensation API
-Compensation API for managing compensation plans, scorecards, and one-time payments.
+
+Compensation API for managing employee compensation plans, scorecards, scorecard results, and one-time payment requests.
+
+- **Human URL:** [https://community.workday.com/sites/default/files/file-hosting/restapi/index.html](https://community.workday.com/sites/default/files/file-hosting/restapi/index.html)
+- **Base URL:** `https://wd2-impl-services1.workday.com/ccx/api/compensation/`
+
+#### Tags
+
+- Compensation
+- One-Time Payments
+- Pay Plans
+- Scorecards
 
 #### Properties
 
-- [OpenAPI](openapi/compensation.yml)
+- [Documentation](https://community.workday.com/sites/default/files/file-hosting/restapi/index.html)
+- [OpenAPI](openapi/compensation.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/compensation.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/compensation.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [JSON Schema](json-schema/compensation.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON-LD](json-ld/compensation-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
 
 ### Workday Payroll API
-Payroll API for managing pay groups, payroll inputs, and pay slips.
+
+Payroll API for managing pay groups, pay group details, tax rates, payroll inputs, and pay components.
+
+- **Human URL:** [https://community.workday.com/sites/default/files/file-hosting/restapi/index.html](https://community.workday.com/sites/default/files/file-hosting/restapi/index.html)
+- **Base URL:** `https://wd2-impl-services1.workday.com/ccx/api/payroll/`
+
+#### Tags
+
+- Pay Components
+- Pay Groups
+- Payroll
+- Tax Rates
 
 #### Properties
 
-- [OpenAPI](openapi/payroll.yml)
+- [Documentation](https://community.workday.com/sites/default/files/file-hosting/restapi/index.html)
+- [OpenAPI](openapi/payroll.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/payroll.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/payroll.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [JSON-LD](json-ld/payroll-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
 
 ### Workday Person API
-Person API for managing worker personal information and contact details.
+
+Person API for managing worker person data including personal information, contact details, and organizational relationships.
+
+- **Human URL:** [https://community.workday.com/sites/default/files/file-hosting/restapi/index.html](https://community.workday.com/sites/default/files/file-hosting/restapi/index.html)
+- **Base URL:** `https://wd2-impl-services1.workday.com/ccx/api/person/`
+
+#### Tags
+
+- Contact Information
+- Employee Data
+- Person
+- Workers
 
 #### Properties
 
-- [OpenAPI](openapi/person.yml)
+- [Documentation](https://community.workday.com/sites/default/files/file-hosting/restapi/index.html)
+- [OpenAPI](openapi/person.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/person.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/person.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [JSON Schema](json-schema/worker.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON-LD](json-ld/person-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
 
 ### Workday Performance Management API
-Performance Management API for reviews, feedback badges, and goals.
+
+Performance Management API for managing performance reviews, feedback badges, goals, and employee performance evaluations.
+
+- **Human URL:** [https://community.workday.com/sites/default/files/file-hosting/restapi/index.html](https://community.workday.com/sites/default/files/file-hosting/restapi/index.html)
+- **Base URL:** `https://wd2-impl-services1.workday.com/ccx/api/performanceManagement/`
+
+#### Tags
+
+- Feedback
+- Goals
+- Performance Management
+- Reviews
 
 #### Properties
 
-- [OpenAPI](openapi/performanceManagement.yml)
+- [Documentation](https://community.workday.com/sites/default/files/file-hosting/restapi/index.html)
+- [OpenAPI](openapi/performanceManagement.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/performanceManagement.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/performanceManagement.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [JSON-LD](json-ld/performanceManagement-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
 
 ### Workday Talent Management API
-Talent Management API for mentorships, talent profiles, and succession planning.
+
+Talent Management API for managing mentorships, talent profiles, career development, and succession planning.
+
+- **Human URL:** [https://community.workday.com/sites/default/files/file-hosting/restapi/index.html](https://community.workday.com/sites/default/files/file-hosting/restapi/index.html)
+- **Base URL:** `https://wd2-impl-services1.workday.com/ccx/api/talent/`
+
+#### Tags
+
+- Career Development
+- Mentorships
+- Succession Planning
+- Talent Management
 
 #### Properties
 
-- [OpenAPI](openapi/talent.yml)
+- [Documentation](https://community.workday.com/sites/default/files/file-hosting/restapi/index.html)
+- [OpenAPI](openapi/talent.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/talent.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/talent.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [JSON-LD](json-ld/talent-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
 
 ### Workday Common API
-Common reference data, lookup values, and utility endpoints.
+
+Common API providing shared reference data, lookup values, and utility endpoints used across other Workday REST API services.
+
+- **Human URL:** [https://community.workday.com/sites/default/files/file-hosting/restapi/index.html](https://community.workday.com/sites/default/files/file-hosting/restapi/index.html)
+- **Base URL:** `https://wd2-impl-services1.workday.com/ccx/api/common/`
+
+#### Tags
+
+- Common
+- Lookup Values
+- Reference Data
+- Shared Services
 
 #### Properties
 
-- [OpenAPI](openapi/common.yml)
+- [Documentation](https://community.workday.com/sites/default/files/file-hosting/restapi/index.html)
+- [OpenAPI](openapi/common.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/common.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/common.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [JSON-LD](json-ld/common-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
 
 ### Workday Staffing API
-Staffing API for organizational assignments, job profiles, and positions.
+
+Staffing API for managing organizational assignments, job profiles, positions, supervisory organizations, and worker staffing events.
+
+- **Human URL:** [https://community.workday.com/sites/default/files/file-hosting/restapi/index.html](https://community.workday.com/sites/default/files/file-hosting/restapi/index.html)
+- **Base URL:** `https://wd2-impl-services1.workday.com/ccx/api/staffing/`
+
+#### Tags
+
+- Job Profiles
+- Organizations
+- Positions
+- Staffing
 
 #### Properties
 
-- [OpenAPI](openapi/staffing.yml)
-
-### Workday Prism Analytics API
-Prism Analytics REST API for datasets, data change tasks, and tables.
-
-#### Properties
-
-- [OpenAPI](openapi/prismAnalytics.yml)
-
-### Workday Report-as-a-Service API
-RaaS exposes custom reports as RESTful web services.
-
-#### Properties
-
-- [OpenAPI](openapi/raas.yml)
-
-### Workday WQL API
-Workday Query Language API for SQL-like querying of Workday data.
-
-#### Properties
-
-- [OpenAPI](openapi/wql.yml)
+- [Documentation](https://community.workday.com/sites/default/files/file-hosting/restapi/index.html)
+- [OpenAPI](openapi/staffing.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/staffing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/staffing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [JSON Schema](json-schema/position.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON Schema](json-schema/organization.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON-LD](json-ld/staffing-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
 
 ### Workday Strategic Sourcing API
-Strategic Sourcing API for sourcing events, awards, contracts, and suppliers.
+
+Strategic Sourcing API for managing sourcing events, awards, contracts, suppliers, spend categories, and procurement workflows.
+
+- **Human URL:** [https://apidocs.workdayspend.com/](https://apidocs.workdayspend.com/)
+- **Base URL:** `https://api.workdayspend.com/services/`
+
+#### Tags
+
+- Awards
+- Contracts
+- Procurement
+- Strategic Sourcing
+- Suppliers
 
 #### Properties
 
 - [Documentation](https://apidocs.workdayspend.com/)
+- [Authentication](https://apidocs.workdayspend.com/services/events/v1.html)
+- [Postman Collection](collections/absenceManagement.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/absenceManagement.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/benefits.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/benefits.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/common.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/common.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/compensation.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/compensation.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/financialManagement.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/financialManagement.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/hcm.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/hcm.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/payroll.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/payroll.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/performanceManagement.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/performanceManagement.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/person.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/person.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/prismAnalytics.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/prismAnalytics.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/raas.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/raas.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/recruiting.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/recruiting.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/staffing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/staffing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/talent.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/talent.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/timeTracking.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/timeTracking.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/wql.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/wql.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
 ### Workday SOAP Web Services API
-Standards-based SOAP API covering 55 service areas.
+
+Standards-based SOAP API providing programmatic access to Workday business management services with WSDL and XML Schema definitions. Covers 55 service areas including Human Resources, Payroll, Benefits, and Financial Management.
+
+- **Human URL:** [https://community.workday.com/api](https://community.workday.com/api)
+- **Base URL:** `https://wd2-impl-services1.workday.com/ccx/service/`
+
+#### Tags
+
+- Enterprise Integration
+- SOAP API
+- Web Services
+- WSDL
 
 #### Properties
 
 - [Documentation](https://community.workday.com/api)
-- [APIReference](https://community.workday.com/sites/default/files/file-hosting/productionapi/index.html)
+- [API Reference](https://community.workday.com/sites/default/files/file-hosting/productionapi/index.html)
+- [Postman Collection](collections/absenceManagement.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/absenceManagement.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/benefits.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/benefits.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/common.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/common.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/compensation.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/compensation.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/financialManagement.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/financialManagement.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/hcm.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/hcm.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/payroll.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/payroll.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/performanceManagement.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/performanceManagement.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/person.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/person.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/prismAnalytics.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/prismAnalytics.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/raas.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/raas.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/recruiting.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/recruiting.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/staffing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/staffing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/talent.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/talent.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/timeTracking.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/timeTracking.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/wql.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/wql.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+### Workday Prism Analytics API
+
+Prism Analytics REST API for working with Workday Prism Analytics tables, data change tasks, and datasets. Enables programmatic creation and management of analytics data.
+
+- **Human URL:** [https://community.workday.com/sites/default/files/file-hosting/restapi/index.html](https://community.workday.com/sites/default/files/file-hosting/restapi/index.html)
+- **Base URL:** `https://wd2-impl-services1.workday.com/ccx/api/prismAnalytics/`
+
+#### Tags
+
+- Analytics
+- Business Intelligence
+- Datasets
+- Prism Analytics
+
+#### Properties
+
+- [Documentation](https://community.workday.com/sites/default/files/file-hosting/restapi/index.html)
+- [OpenAPI](openapi/prismAnalytics.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/prismAnalytics.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/prismAnalytics.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [JSON-LD](json-ld/prismAnalytics-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
 
 ### Workday Extend API
-Low-code platform for building custom applications that integrate with Workday.
+
+Workday Extend platform for building custom applications that integrate with Workday. Provides low-code and no-code developer tools for creating business solutions.
+
+- **Human URL:** [https://www.workday.com/en-us/products/platform-product-extensions/app-development.html](https://www.workday.com/en-us/products/platform-product-extensions/app-development.html)
+- **Base URL:** `https://wd2-impl-services1.workday.com/ccx/api/`
+
+#### Tags
+
+- App Development
+- Custom Applications
+- Low Code
+- Platform Extensibility
 
 #### Properties
 
 - [Documentation](https://www.workday.com/en-us/products/platform-product-extensions/app-development.html)
-- [GettingStarted](https://developer.workday.com/about)
+- [Getting Started](https://developer.workday.com/about)
+- [Postman Collection](collections/absenceManagement.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/absenceManagement.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/benefits.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/benefits.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/common.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/common.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/compensation.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/compensation.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/financialManagement.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/financialManagement.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/hcm.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/hcm.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/payroll.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/payroll.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/performanceManagement.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/performanceManagement.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/person.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/person.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/prismAnalytics.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/prismAnalytics.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/raas.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/raas.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/recruiting.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/recruiting.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/staffing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/staffing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/talent.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/talent.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/timeTracking.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/timeTracking.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/wql.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/wql.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+### Workday Report-as-a-Service API
+
+Report-as-a-Service (RaaS) exposes custom reports as RESTful web services, enabling programmatic access to report data. Supports query parameters for filtering and returns data in multiple formats.
+
+- **Human URL:** [https://community.workday.com/api](https://community.workday.com/api)
+- **Base URL:** `https://wd2-impl-services1.workday.com/ccx/service/`
+
+#### Tags
+
+- Custom Reports
+- Data Export
+- Report as a Service
+- Reporting
+
+#### Properties
+
+- [Documentation](https://community.workday.com/api)
+- [OpenAPI](openapi/raas.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/raas.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/raas.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [JSON-LD](json-ld/raas-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
 
 ### Workday Adaptive Planning API
-Adaptive Planning REST and XML APIs for planning data and budgeting.
+
+Adaptive Planning REST and XML APIs for managing planning data, accounts, dimensions, and custom reports. Supports integration with enterprise planning and budgeting workflows.
+
+- **Human URL:** [https://doc.workday.com/adaptive-planning/en-us/integration/managing-data-integration/api-documentation/understanding-the-adaptive-planning-rest-api/api-methods/brk1623709249507.html](https://doc.workday.com/adaptive-planning/en-us/integration/managing-data-integration/api-documentation/understanding-the-adaptive-planning-rest-api/api-methods/brk1623709249507.html)
+- **Base URL:** `https://api.adaptiveinsights.com/api/`
+
+#### Tags
+
+- Adaptive Planning
+- Budgeting
+- Financial Planning
+- Forecasting
 
 #### Properties
 
 - [Documentation](https://doc.workday.com/adaptive-planning/en-us/integration/managing-data-integration/api-documentation/understanding-the-adaptive-planning-rest-api/api-methods/brk1623709249507.html)
+- [Changelog](https://doc.workday.com/adaptive-planning/en-us/workday-adaptive-planning-documentation/integration/managing-data-integration/api-documentation/understanding-the-adaptive-planning-rest-api/vmo1623708512342.html)
+- [Postman Collection](collections/absenceManagement.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/absenceManagement.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/benefits.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/benefits.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/common.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/common.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/compensation.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/compensation.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/financialManagement.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/financialManagement.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/hcm.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/hcm.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/payroll.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/payroll.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/performanceManagement.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/performanceManagement.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/person.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/person.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/prismAnalytics.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/prismAnalytics.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/raas.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/raas.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/recruiting.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/recruiting.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/staffing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/staffing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/talent.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/talent.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/timeTracking.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/timeTracking.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/wql.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/wql.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+### Workday WQL API
+
+Workday Query Language (WQL) API enabling SQL-like querying of Workday data through REST endpoints. Provides high-performance data access controlled via OAuth 2.0 tokens.
+
+- **Human URL:** [https://community.workday.com/sites/default/files/file-hosting/restapi/index.html](https://community.workday.com/sites/default/files/file-hosting/restapi/index.html)
+- **Base URL:** `https://wd2-impl-services1.workday.com/ccx/api/wql/`
+
+#### Tags
+
+- Analytics
+- Data Access
+- Query Language
+- Reporting
+
+#### Properties
+
+- [Documentation](https://community.workday.com/sites/default/files/file-hosting/restapi/index.html)
+- [OpenAPI](openapi/wql.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/wql.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/wql.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [JSON-LD](json-ld/wql-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
 
 ## Common Properties
 
-- [GettingStarted](https://community.workday.com/api-start)
+- [Arazzo Workflows](arazzo/) — [Arazzo Specification](https://spec.openapis.org/arazzo/latest.html)
+- [LinkedIn](https://www.linkedin.com/company/workday)
+- [Getting Started](https://community.workday.com/api-start)
 - [Authentication](https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication)
-- [RateLimits](https://community.workday.com/articles/16827)
-- [StatusPage](https://community.workday.com/trust/status)
-- [TermsOfService](https://www.workday.com/en-us/legal.html)
-- [PrivacyPolicy](https://www.workday.com/en-us/privacy.html)
+- [Rate Limits](https://community.workday.com/articles/16827)
+- [Status Page](https://community.workday.com/trust/status)
+- [Terms of Service](https://www.workday.com/en-us/legal.html)
+- [Privacy Policy](https://www.workday.com/en-us/privacy.html)
 - [Documentation](https://community.workday.com/api)
 - [Console](https://developer.workday.com/about)
 - [Blog](https://blog.workday.com/en-us/application-development.html)
-- [GitHubOrganization](https://github.com/workday)
-- [SignUp](https://resourcecenter.workday.com/)
+- [GitHub Organization](https://github.com/workday)
+- [Sign Up](https://resourcecenter.workday.com/)
 - [Support](https://www.workday.com/en-us/services/support.html)
 - [Marketplace](https://marketplace.workday.com/en-US/home)
 - [Partners](https://www.workday.com/en-us/company/partners/overview.html)
-
-## Features
-
-| Name | Description |
-|------|-------------|
-| Human Capital Management | Comprehensive HCM suite for managing the entire employee lifecycle from hiring to retirement with global compliance. |
-| Financial Management | Cloud-native financial management with real-time accounting, procurement, expenses, and revenue management. |
-| Adaptive Planning | Enterprise planning and budgeting with collaborative forecasting, scenario modeling, and rolling forecasts. |
-| Prism Analytics | Augmented analytics platform combining Workday and third-party data for actionable business intelligence. |
-| Recruiting | End-to-end recruiting solution with job requisitions, candidate management, and interview scheduling. |
-| Talent Management | Skills-based talent optimization with performance reviews, succession planning, and career development. |
-| Payroll | Global payroll processing with automated calculations, tax compliance, and pay slip generation. |
-| Time and Absence Tracking | Automated time entry, timesheet management, leave balances, and absence request workflows. |
-| Workday Extend | Low-code platform for building custom applications that integrate natively with the Workday ecosystem. |
-| Report-as-a-Service | Expose custom Workday reports as RESTful web services for programmatic data access and integration. |
-
-## Use Cases
-
-| Name | Description |
-|------|-------------|
-| Employee Onboarding | Automate new hire onboarding workflows including position assignment, benefits enrollment, and system provisioning. |
-| Workforce Planning | Model headcount scenarios, track open positions, and align workforce supply with business demand. |
-| Expense Management | Streamline employee expense reporting with automated policy enforcement, approval workflows, and reimbursement. |
-| Compliance Reporting | Generate regulatory compliance reports for labor laws, tax requirements, and industry-specific mandates. |
-| Performance Reviews | Conduct structured performance evaluations with goal tracking, feedback collection, and calibration. |
-| Payroll Integration | Integrate payroll data with third-party systems for tax filing, benefits administration, and general ledger posting. |
-
-## Integrations
-
-| Name | Description |
-|------|-------------|
-| Salesforce | Sync workforce and customer data between Workday HCM and Salesforce CRM for unified employee and customer insights. |
-| Microsoft 365 | Integrate Workday with Microsoft Teams, Outlook, and Azure AD for single sign-on and productivity workflows. |
-| ServiceNow | Connect Workday HR processes with ServiceNow ITSM for automated employee service delivery and ticket management. |
-| Slack | Enable Workday notifications, approvals, and time-off requests directly within Slack channels and DMs. |
-| ADP | Integrate Workday payroll with ADP for third-party payroll processing and tax filing services. |
-| SAP | Connect Workday financial management with SAP ERP for cross-system accounting and procurement workflows. |
-| Greenhouse | Integrate Workday with Greenhouse recruiting for seamless candidate pipeline management and hiring workflows. |
-| Okta | Connect Workday with Okta for identity management, single sign-on, and automated user provisioning. |
-
-## Artifacts
-
-Machine-readable API specifications organized by format.
-
-### OpenAPI
-
-- [HCM](openapi/hcm.yml)
-- [Financial Management](openapi/financialManagement.yml)
-- [Recruiting](openapi/recruiting.yml)
-- [Time Tracking](openapi/timeTracking.yml)
-- [Benefits](openapi/benefits.yml)
-- [Absence Management](openapi/absenceManagement.yml)
-- [Compensation](openapi/compensation.yml)
-- [Payroll](openapi/payroll.yml)
-- [Person](openapi/person.yml)
-- [Performance Management](openapi/performanceManagement.yml)
-- [Talent](openapi/talent.yml)
-- [Common](openapi/common.yml)
-- [Staffing](openapi/staffing.yml)
-- [Prism Analytics](openapi/prismAnalytics.yml)
-- [Report-as-a-Service](openapi/raas.yml)
-- [WQL](openapi/wql.yml)
-
-## Capabilities
-
-Naftiko capabilities organized as shared per-API definitions composed into customer-facing workflows.
-
-### Shared Per-API Definitions
-
-- [HCM](capabilities/shared/hcm.yaml) -- 10 operations for worker and organization management
-- [Person](capabilities/shared/person.yaml) -- 5 operations for personal data management
-- [Staffing](capabilities/shared/staffing.yaml) -- 8 operations for position and job management
-- [Common](capabilities/shared/common.yaml) -- 7 operations for reference data
-- [Recruiting](capabilities/shared/recruiting.yaml) -- 9 operations for hiring pipeline management
-- [Talent](capabilities/shared/talent.yaml) -- 6 operations for talent and succession planning
-- [Performance Management](capabilities/shared/performance-management.yaml) -- 5 operations for reviews and feedback
-- [Compensation](capabilities/shared/compensation.yaml) -- 7 operations for pay plan management
-- [Payroll](capabilities/shared/payroll.yaml) -- 5 operations for payroll processing
-- [Benefits](capabilities/shared/benefits.yaml) -- 5 operations for benefits administration
-- [Time Tracking](capabilities/shared/time-tracking.yaml) -- 5 operations for time entry management
-- [Absence Management](capabilities/shared/absence-management.yaml) -- 6 operations for leave management
-- [Financial Management](capabilities/shared/financial-management.yaml) -- 8 operations for accounting and procurement
-- [Prism Analytics](capabilities/shared/prism-analytics.yaml) -- 12 operations for dataset management
-- [WQL](capabilities/shared/wql.yaml) -- 4 operations for data querying
-- [Report-as-a-Service](capabilities/shared/raas.yaml) -- 1 operation for custom report access
-
-### Workflow Capabilities
-
-| Workflow | APIs Combined | Tools | Persona |
-|----------|--------------|-------|---------|
-| [Workforce Management](capabilities/workforce-management.yaml) | HCM + Person + Staffing + Common | 16 | HR Administrator |
-| [Talent and Performance](capabilities/talent-and-performance.yaml) | Recruiting + Talent + Performance Management | 18 | HR/Talent Lead |
-| [Compensation and Payroll](capabilities/compensation-and-payroll.yaml) | Compensation + Payroll + Benefits | 15 | Payroll Administrator |
-| [Time and Absence](capabilities/time-and-absence.yaml) | Time Tracking + Absence Management | 11 | HR Operations |
-| [Finance and Procurement](capabilities/finance-and-procurement.yaml) | Financial Management | 8 | Finance Team |
-| [Analytics and Reporting](capabilities/analytics-and-reporting.yaml) | Prism Analytics + WQL + RaaS | 12 | Business Analyst |
-
-## Rules
-
-- [Workday Spectral Rules](rules/workday-spectral-rules.yml)
-
-## Vocabulary
-
-- [Workday Vocabulary](vocabulary/workday-vocabulary.yaml)
+- [API Reference](https://community.workday.com/sites/default/files/file-hosting/productionapi/index.html)
+- [JSON-LD](json-ld/context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+- [Spectral Rules](rules/workday-spectral-rules.yml)
+- [Vocabulary](vocabulary/workday-vocabulary.yaml)
+- [Features](https://www.workday.com/en-us/products.html)
+- [Use Cases](https://www.workday.com/en-us/solutions.html)
+- [Integrations](https://marketplace.workday.com/en-US/home)
 
 ## Maintainers
 
 **FN:** Kin Lane
-
 **Email:** kin@apievangelist.com
+**URL:** https://apievangelist.com

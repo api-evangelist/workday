@@ -1,0 +1,1719 @@
+{
+  "info": {
+    "_postman_id": "0a1c357d-051d-498a-b460-48bbd4e21a65",
+    "name": "Workday Absence Management API",
+    "description": "Absence Management API for managing leave balances, time-off requests, leaves of absence, and eligible absence types for workers.\n\nContact Support:\n Name: Workday Support\n Email: support@workday.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:21:44.000Z",
+    "updatedAt": "2026-06-05T15:21:44.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0a1c357d-051d-498a-b460-48bbd4e21a65"
+  },
+  "item": [
+    {
+      "name": "workers",
+      "item": [
+        {
+          "name": "{ID}",
+          "item": [
+            {
+              "name": "eligibleAbsenceTypes",
+              "item": [
+                {
+                  "name": "Get Eligible Absence Types",
+                  "id": "65cc3d21-3902-4db9-bb5b-e6d830fb070d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/workers/:ID/eligibleAbsenceTypes?limit=20&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "workers",
+                        ":ID",
+                        "eligibleAbsenceTypes"
+                      ],
+                      "query": [
+                        {
+                          "description": "The maximum number of objects in a single response.",
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "description": "The zero-based index of the first object in a response collection.",
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "10652cc6-d8b3-4550-b06e-5ecbdc359d92",
+                          "key": "ID",
+                          "value": "<string>",
+                          "description": "(Required) The Workday ID of the worker."
+                        }
+                      ]
+                    },
+                    "description": "Returns the absence types a worker is eligible for."
+                  },
+                  "response": [
+                    {
+                      "id": "d5a1ee14-681f-4009-b3e6-52a6ab7d137d",
+                      "name": "Successful response containing eligible absence types.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/eligibleAbsenceTypes?limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "eligibleAbsenceTypes"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"absenceTypeCategory\": \"<string>\",\n      \"unit\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"absenceTypeCategory\": \"<string>\",\n      \"unit\": \"<string>\"\n    }\n  ],\n  \"total\": \"<integer>\"\n}",
+                      "createdAt": "2026-06-05T15:21:45.000Z",
+                      "updatedAt": "2026-06-05T15:21:45.000Z",
+                      "uid": "35240-d5a1ee14-681f-4009-b3e6-52a6ab7d137d"
+                    },
+                    {
+                      "id": "e04979f2-f615-4e23-a068-6dd84c53e080",
+                      "name": "Authentication credentials were missing or invalid.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/eligibleAbsenceTypes?limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "eligibleAbsenceTypes"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:45.000Z",
+                      "updatedAt": "2026-06-05T15:21:45.000Z",
+                      "uid": "35240-e04979f2-f615-4e23-a068-6dd84c53e080"
+                    },
+                    {
+                      "id": "d234afca-e272-4eb9-a20e-2839d861f79e",
+                      "name": "The requested resource was not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/eligibleAbsenceTypes?limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "eligibleAbsenceTypes"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:45.000Z",
+                      "updatedAt": "2026-06-05T15:21:45.000Z",
+                      "uid": "35240-d234afca-e272-4eb9-a20e-2839d861f79e"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:45.000Z",
+                  "updatedAt": "2026-06-05T15:21:45.000Z",
+                  "uid": "35240-65cc3d21-3902-4db9-bb5b-e6d830fb070d"
+                }
+              ],
+              "id": "e545c3a4-0cab-4a9d-869e-27159847d8d3",
+              "createdAt": "2026-06-05T15:21:45.000Z",
+              "updatedAt": "2026-06-05T15:21:45.000Z",
+              "uid": "35240-e545c3a4-0cab-4a9d-869e-27159847d8d3"
+            },
+            {
+              "name": "requestTimeOff",
+              "item": [
+                {
+                  "name": "Request Time Off",
+                  "id": "23eca3a3-7970-4c96-b04d-96cafb25edae",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"days\": [\n    {\n      \"date\": \"<date>\",\n      \"dailyQuantity\": \"<double>\",\n      \"comment\": \"<string>\",\n      \"timeOffType\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      }\n    },\n    {\n      \"date\": \"<date>\",\n      \"dailyQuantity\": \"<double>\",\n      \"comment\": \"<string>\",\n      \"timeOffType\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      }\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/workers/:ID/requestTimeOff",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "workers",
+                        ":ID",
+                        "requestTimeOff"
+                      ],
+                      "variable": [
+                        {
+                          "id": "f3ef9a2d-a299-49ab-9a2e-58b37b48482b",
+                          "key": "ID",
+                          "value": "<string>",
+                          "description": "(Required) The Workday ID of the worker."
+                        }
+                      ]
+                    },
+                    "description": "Submits a time-off request for a worker."
+                  },
+                  "response": [
+                    {
+                      "id": "7aa8d3c0-3b2d-4e70-bd7c-e27e42be62a7",
+                      "name": "Time-off request created successfully.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"days\": [\n    {\n      \"date\": \"<date>\",\n      \"dailyQuantity\": \"<double>\",\n      \"comment\": \"<string>\",\n      \"timeOffType\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      }\n    },\n    {\n      \"date\": \"<date>\",\n      \"dailyQuantity\": \"<double>\",\n      \"comment\": \"<string>\",\n      \"timeOffType\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      }\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/requestTimeOff",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "requestTimeOff"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"descriptor\": \"<string>\",\n  \"date\": \"<date>\",\n  \"dailyQuantity\": \"<double>\",\n  \"unit\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"timeOffType\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"status\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:21:45.000Z",
+                      "updatedAt": "2026-06-05T15:21:45.000Z",
+                      "uid": "35240-7aa8d3c0-3b2d-4e70-bd7c-e27e42be62a7"
+                    },
+                    {
+                      "id": "ed2ff51b-9f9c-4bc9-8bf7-43b817b5e691",
+                      "name": "The request was invalid or malformed.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"days\": [\n    {\n      \"date\": \"<date>\",\n      \"dailyQuantity\": \"<double>\",\n      \"comment\": \"<string>\",\n      \"timeOffType\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      }\n    },\n    {\n      \"date\": \"<date>\",\n      \"dailyQuantity\": \"<double>\",\n      \"comment\": \"<string>\",\n      \"timeOffType\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      }\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/requestTimeOff",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "requestTimeOff"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:45.000Z",
+                      "updatedAt": "2026-06-05T15:21:45.000Z",
+                      "uid": "35240-ed2ff51b-9f9c-4bc9-8bf7-43b817b5e691"
+                    },
+                    {
+                      "id": "53832447-bf8e-41d8-af18-3ab8e827b08a",
+                      "name": "Authentication credentials were missing or invalid.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"days\": [\n    {\n      \"date\": \"<date>\",\n      \"dailyQuantity\": \"<double>\",\n      \"comment\": \"<string>\",\n      \"timeOffType\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      }\n    },\n    {\n      \"date\": \"<date>\",\n      \"dailyQuantity\": \"<double>\",\n      \"comment\": \"<string>\",\n      \"timeOffType\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      }\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/requestTimeOff",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "requestTimeOff"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:45.000Z",
+                      "updatedAt": "2026-06-05T15:21:45.000Z",
+                      "uid": "35240-53832447-bf8e-41d8-af18-3ab8e827b08a"
+                    },
+                    {
+                      "id": "825a4e6e-ebfa-45ae-afe0-11b514cfc44d",
+                      "name": "The requested resource was not found.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"days\": [\n    {\n      \"date\": \"<date>\",\n      \"dailyQuantity\": \"<double>\",\n      \"comment\": \"<string>\",\n      \"timeOffType\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      }\n    },\n    {\n      \"date\": \"<date>\",\n      \"dailyQuantity\": \"<double>\",\n      \"comment\": \"<string>\",\n      \"timeOffType\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      }\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/requestTimeOff",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "requestTimeOff"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:45.000Z",
+                      "updatedAt": "2026-06-05T15:21:45.000Z",
+                      "uid": "35240-825a4e6e-ebfa-45ae-afe0-11b514cfc44d"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:45.000Z",
+                  "updatedAt": "2026-06-05T15:21:45.000Z",
+                  "uid": "35240-23eca3a3-7970-4c96-b04d-96cafb25edae"
+                }
+              ],
+              "id": "2b375e7a-ec3b-4649-918b-9c99399f2528",
+              "createdAt": "2026-06-05T15:21:45.000Z",
+              "updatedAt": "2026-06-05T15:21:45.000Z",
+              "uid": "35240-2b375e7a-ec3b-4649-918b-9c99399f2528"
+            },
+            {
+              "name": "timeOffEntries",
+              "item": [
+                {
+                  "name": "Get Time Off Entries",
+                  "id": "67264b60-053d-4e34-911e-ed6986dd3e1e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/workers/:ID/timeOffEntries?limit=20&offset=0&fromDate=<date>&toDate=<date>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "workers",
+                        ":ID",
+                        "timeOffEntries"
+                      ],
+                      "query": [
+                        {
+                          "description": "The maximum number of objects in a single response.",
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "description": "The zero-based index of the first object in a response collection.",
+                          "key": "offset",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Filters entries on or after this date.",
+                          "key": "fromDate",
+                          "value": "<date>"
+                        },
+                        {
+                          "description": "Filters entries on or before this date.",
+                          "key": "toDate",
+                          "value": "<date>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "4298b2ce-b601-4a77-8d6e-9e34f418e0c4",
+                          "key": "ID",
+                          "value": "<string>",
+                          "description": "(Required) The Workday ID of the worker."
+                        }
+                      ]
+                    },
+                    "description": "Returns time-off entries for a worker."
+                  },
+                  "response": [
+                    {
+                      "id": "fce12a14-f08b-442d-b56f-0cefd7d57a75",
+                      "name": "Successful response containing time-off entries.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/timeOffEntries?limit=20&offset=0&fromDate=<date>&toDate=<date>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "timeOffEntries"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Filters entries on or after this date.",
+                              "key": "fromDate",
+                              "value": "<date>"
+                            },
+                            {
+                              "description": "Filters entries on or before this date.",
+                              "key": "toDate",
+                              "value": "<date>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"date\": \"<date>\",\n      \"dailyQuantity\": \"<double>\",\n      \"unit\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"timeOffType\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"status\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"date\": \"<date>\",\n      \"dailyQuantity\": \"<double>\",\n      \"unit\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"timeOffType\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"status\": \"<string>\"\n    }\n  ],\n  \"total\": \"<integer>\"\n}",
+                      "createdAt": "2026-06-05T15:21:45.000Z",
+                      "updatedAt": "2026-06-05T15:21:45.000Z",
+                      "uid": "35240-fce12a14-f08b-442d-b56f-0cefd7d57a75"
+                    },
+                    {
+                      "id": "d266e038-546e-467d-bee1-f55d44a690cc",
+                      "name": "Authentication credentials were missing or invalid.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/timeOffEntries?limit=20&offset=0&fromDate=<date>&toDate=<date>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "timeOffEntries"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Filters entries on or after this date.",
+                              "key": "fromDate",
+                              "value": "<date>"
+                            },
+                            {
+                              "description": "Filters entries on or before this date.",
+                              "key": "toDate",
+                              "value": "<date>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:45.000Z",
+                      "updatedAt": "2026-06-05T15:21:45.000Z",
+                      "uid": "35240-d266e038-546e-467d-bee1-f55d44a690cc"
+                    },
+                    {
+                      "id": "79c960a7-6df9-4789-9297-9fe71969c55d",
+                      "name": "The requested resource was not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/timeOffEntries?limit=20&offset=0&fromDate=<date>&toDate=<date>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "timeOffEntries"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Filters entries on or after this date.",
+                              "key": "fromDate",
+                              "value": "<date>"
+                            },
+                            {
+                              "description": "Filters entries on or before this date.",
+                              "key": "toDate",
+                              "value": "<date>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:45.000Z",
+                      "updatedAt": "2026-06-05T15:21:45.000Z",
+                      "uid": "35240-79c960a7-6df9-4789-9297-9fe71969c55d"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:45.000Z",
+                  "updatedAt": "2026-06-05T15:21:45.000Z",
+                  "uid": "35240-67264b60-053d-4e34-911e-ed6986dd3e1e"
+                }
+              ],
+              "id": "c079603e-ba7f-43db-b98c-4738beb6a227",
+              "createdAt": "2026-06-05T15:21:45.000Z",
+              "updatedAt": "2026-06-05T15:21:45.000Z",
+              "uid": "35240-c079603e-ba7f-43db-b98c-4738beb6a227"
+            },
+            {
+              "name": "timeOffBalances",
+              "item": [
+                {
+                  "name": "Get Time Off Balances",
+                  "id": "d8f390af-80e9-463f-942e-8845575a38cb",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/workers/:ID/timeOffBalances?limit=20&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "workers",
+                        ":ID",
+                        "timeOffBalances"
+                      ],
+                      "query": [
+                        {
+                          "description": "The maximum number of objects in a single response.",
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "description": "The zero-based index of the first object in a response collection.",
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "d75b8b56-3708-4447-89ec-1b0d8eaada43",
+                          "key": "ID",
+                          "value": "<string>",
+                          "description": "(Required) The Workday ID of the worker."
+                        }
+                      ]
+                    },
+                    "description": "Returns time-off plan balances for a worker."
+                  },
+                  "response": [
+                    {
+                      "id": "a18a5750-ecbd-4490-a956-1610a87a6da1",
+                      "name": "Successful response containing time-off balances.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/timeOffBalances?limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "timeOffBalances"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"timeOffPlan\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"balance\": \"<double>\",\n      \"unit\": \"<string>\",\n      \"asOfDate\": \"<date>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"timeOffPlan\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"balance\": \"<double>\",\n      \"unit\": \"<string>\",\n      \"asOfDate\": \"<date>\"\n    }\n  ],\n  \"total\": \"<integer>\"\n}",
+                      "createdAt": "2026-06-05T15:21:45.000Z",
+                      "updatedAt": "2026-06-05T15:21:45.000Z",
+                      "uid": "35240-a18a5750-ecbd-4490-a956-1610a87a6da1"
+                    },
+                    {
+                      "id": "dea2f7e7-87aa-46ea-80b9-0a94a8bd9129",
+                      "name": "Authentication credentials were missing or invalid.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/timeOffBalances?limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "timeOffBalances"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:45.000Z",
+                      "updatedAt": "2026-06-05T15:21:45.000Z",
+                      "uid": "35240-dea2f7e7-87aa-46ea-80b9-0a94a8bd9129"
+                    },
+                    {
+                      "id": "39af43ab-ef64-4ed7-a2f8-3f1c993afbcd",
+                      "name": "The requested resource was not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/timeOffBalances?limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "timeOffBalances"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:45.000Z",
+                      "updatedAt": "2026-06-05T15:21:45.000Z",
+                      "uid": "35240-39af43ab-ef64-4ed7-a2f8-3f1c993afbcd"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:45.000Z",
+                  "updatedAt": "2026-06-05T15:21:45.000Z",
+                  "uid": "35240-d8f390af-80e9-463f-942e-8845575a38cb"
+                }
+              ],
+              "id": "70b092ca-639d-4e2e-b660-7af2afd82a06",
+              "createdAt": "2026-06-05T15:21:45.000Z",
+              "updatedAt": "2026-06-05T15:21:45.000Z",
+              "uid": "35240-70b092ca-639d-4e2e-b660-7af2afd82a06"
+            },
+            {
+              "name": "leaveOfAbsences",
+              "item": [
+                {
+                  "name": "Get Leaves of Absence",
+                  "id": "fe64c750-0377-44e2-85b3-9604d756bbc4",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/workers/:ID/leaveOfAbsences?limit=20&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "workers",
+                        ":ID",
+                        "leaveOfAbsences"
+                      ],
+                      "query": [
+                        {
+                          "description": "The maximum number of objects in a single response.",
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "description": "The zero-based index of the first object in a response collection.",
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "86effdd2-97d1-4a3c-a5fd-46ce055c425e",
+                          "key": "ID",
+                          "value": "<string>",
+                          "description": "(Required) The Workday ID of the worker."
+                        }
+                      ]
+                    },
+                    "description": "Returns leaves of absence for a worker."
+                  },
+                  "response": [
+                    {
+                      "id": "fa89755d-4abe-4526-bfcd-0cb453c3fe5b",
+                      "name": "Successful response containing leave of absence records.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/leaveOfAbsences?limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "leaveOfAbsences"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"leaveType\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"startDate\": \"<date>\",\n      \"estimatedEndDate\": \"<date>\",\n      \"actualEndDate\": \"<date>\",\n      \"status\": \"<string>\",\n      \"lastDayOfWork\": \"<date>\",\n      \"firstDayOfWork\": \"<date>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"leaveType\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"startDate\": \"<date>\",\n      \"estimatedEndDate\": \"<date>\",\n      \"actualEndDate\": \"<date>\",\n      \"status\": \"<string>\",\n      \"lastDayOfWork\": \"<date>\",\n      \"firstDayOfWork\": \"<date>\"\n    }\n  ],\n  \"total\": \"<integer>\"\n}",
+                      "createdAt": "2026-06-05T15:21:45.000Z",
+                      "updatedAt": "2026-06-05T15:21:45.000Z",
+                      "uid": "35240-fa89755d-4abe-4526-bfcd-0cb453c3fe5b"
+                    },
+                    {
+                      "id": "9ee29f17-00d5-43fa-ab45-e2ae6760c3f4",
+                      "name": "Authentication credentials were missing or invalid.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/leaveOfAbsences?limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "leaveOfAbsences"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:45.000Z",
+                      "updatedAt": "2026-06-05T15:21:45.000Z",
+                      "uid": "35240-9ee29f17-00d5-43fa-ab45-e2ae6760c3f4"
+                    },
+                    {
+                      "id": "27e23129-97dd-43bf-ba33-210a90cac7f4",
+                      "name": "The requested resource was not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/leaveOfAbsences?limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "leaveOfAbsences"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:45.000Z",
+                      "updatedAt": "2026-06-05T15:21:45.000Z",
+                      "uid": "35240-27e23129-97dd-43bf-ba33-210a90cac7f4"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:45.000Z",
+                  "updatedAt": "2026-06-05T15:21:45.000Z",
+                  "uid": "35240-fe64c750-0377-44e2-85b3-9604d756bbc4"
+                }
+              ],
+              "id": "44a6826a-fe7e-4adf-87aa-d3750cd49e0a",
+              "createdAt": "2026-06-05T15:21:45.000Z",
+              "updatedAt": "2026-06-05T15:21:45.000Z",
+              "uid": "35240-44a6826a-fe7e-4adf-87aa-d3750cd49e0a"
+            },
+            {
+              "name": "requestLeaveOfAbsence",
+              "item": [
+                {
+                  "name": "Request Leave of Absence",
+                  "id": "b9fdc071-cbb0-46be-84c3-1a3795637d17",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"leaveType\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"firstDayOfLeave\": \"<date>\",\n  \"estimatedLastDayOfLeave\": \"<date>\",\n  \"lastDayOfWork\": \"<date>\",\n  \"firstDayBackAtWork\": \"<date>\",\n  \"reason\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"comment\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/workers/:ID/requestLeaveOfAbsence",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "workers",
+                        ":ID",
+                        "requestLeaveOfAbsence"
+                      ],
+                      "variable": [
+                        {
+                          "id": "6788b15a-c7ce-4403-8f93-199059806f76",
+                          "key": "ID",
+                          "value": "<string>",
+                          "description": "(Required) The Workday ID of the worker."
+                        }
+                      ]
+                    },
+                    "description": "Initiates a leave of absence request for a worker."
+                  },
+                  "response": [
+                    {
+                      "id": "202f7e2a-9f14-425d-9a9a-5ef985f60122",
+                      "name": "Leave of absence request created successfully.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"leaveType\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"firstDayOfLeave\": \"<date>\",\n  \"estimatedLastDayOfLeave\": \"<date>\",\n  \"lastDayOfWork\": \"<date>\",\n  \"firstDayBackAtWork\": \"<date>\",\n  \"reason\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"comment\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/requestLeaveOfAbsence",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "requestLeaveOfAbsence"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"descriptor\": \"<string>\",\n  \"leaveType\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"startDate\": \"<date>\",\n  \"estimatedEndDate\": \"<date>\",\n  \"actualEndDate\": \"<date>\",\n  \"status\": \"<string>\",\n  \"lastDayOfWork\": \"<date>\",\n  \"firstDayOfWork\": \"<date>\"\n}",
+                      "createdAt": "2026-06-05T15:21:45.000Z",
+                      "updatedAt": "2026-06-05T15:21:45.000Z",
+                      "uid": "35240-202f7e2a-9f14-425d-9a9a-5ef985f60122"
+                    },
+                    {
+                      "id": "6208fc16-6012-4bf0-84f0-2f26b66c3300",
+                      "name": "The request was invalid or malformed.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"leaveType\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"firstDayOfLeave\": \"<date>\",\n  \"estimatedLastDayOfLeave\": \"<date>\",\n  \"lastDayOfWork\": \"<date>\",\n  \"firstDayBackAtWork\": \"<date>\",\n  \"reason\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"comment\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/requestLeaveOfAbsence",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "requestLeaveOfAbsence"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:45.000Z",
+                      "updatedAt": "2026-06-05T15:21:45.000Z",
+                      "uid": "35240-6208fc16-6012-4bf0-84f0-2f26b66c3300"
+                    },
+                    {
+                      "id": "53ca35a8-73a0-47be-ba1c-f555489afbec",
+                      "name": "Authentication credentials were missing or invalid.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"leaveType\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"firstDayOfLeave\": \"<date>\",\n  \"estimatedLastDayOfLeave\": \"<date>\",\n  \"lastDayOfWork\": \"<date>\",\n  \"firstDayBackAtWork\": \"<date>\",\n  \"reason\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"comment\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/requestLeaveOfAbsence",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "requestLeaveOfAbsence"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:45.000Z",
+                      "updatedAt": "2026-06-05T15:21:45.000Z",
+                      "uid": "35240-53ca35a8-73a0-47be-ba1c-f555489afbec"
+                    },
+                    {
+                      "id": "7e4a2e98-bd64-4362-9c4e-3e8bfb3daf1a",
+                      "name": "The requested resource was not found.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"leaveType\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"firstDayOfLeave\": \"<date>\",\n  \"estimatedLastDayOfLeave\": \"<date>\",\n  \"lastDayOfWork\": \"<date>\",\n  \"firstDayBackAtWork\": \"<date>\",\n  \"reason\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"comment\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/requestLeaveOfAbsence",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "requestLeaveOfAbsence"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:45.000Z",
+                      "updatedAt": "2026-06-05T15:21:45.000Z",
+                      "uid": "35240-7e4a2e98-bd64-4362-9c4e-3e8bfb3daf1a"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:45.000Z",
+                  "updatedAt": "2026-06-05T15:21:45.000Z",
+                  "uid": "35240-b9fdc071-cbb0-46be-84c3-1a3795637d17"
+                }
+              ],
+              "id": "1f5395f6-5345-4fd9-8478-ff428fb7edc0",
+              "createdAt": "2026-06-05T15:21:45.000Z",
+              "updatedAt": "2026-06-05T15:21:45.000Z",
+              "uid": "35240-1f5395f6-5345-4fd9-8478-ff428fb7edc0"
+            }
+          ],
+          "id": "b40adfa5-3ccd-49e1-97fe-2e4c9232df20",
+          "createdAt": "2026-06-05T15:21:45.000Z",
+          "updatedAt": "2026-06-05T15:21:45.000Z",
+          "uid": "35240-b40adfa5-3ccd-49e1-97fe-2e4c9232df20"
+        }
+      ],
+      "id": "a72437c6-ad59-4568-92e5-7201ab6f9ba7",
+      "createdAt": "2026-06-05T15:21:45.000Z",
+      "updatedAt": "2026-06-05T15:21:45.000Z",
+      "uid": "35240-a72437c6-ad59-4568-92e5-7201ab6f9ba7"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "r_absence w_absence",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "tenant",
+      "value": "tenant_name"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://wd2-impl-services1.workday.com/ccx/api/absenceManagement/v1/{{tenant}}"
+    }
+  ]
+}

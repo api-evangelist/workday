@@ -1,0 +1,73 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Workday Report-as-a-Service API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize",
+      "accessTokenUrl": "https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Custom Report Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://wd2-impl-services1.workday.com/ccx/service/customreport2/{tenant}/:reportOwner/:reportName",
+            "params": [
+              {
+                "name": "reportOwner",
+                "value": "example_value",
+                "type": "path",
+                "description": "The username of the report owner (e.g., ISU_report_owner)."
+              },
+              {
+                "name": "reportName",
+                "value": "example_value",
+                "type": "path",
+                "description": "The name of the custom report."
+              },
+              {
+                "name": "format",
+                "value": "json",
+                "type": "query",
+                "description": "The output format for the report data. Supported values are json, csv, simplexml, and gdata."
+              },
+              {
+                "name": "Worker!WID",
+                "value": "500123",
+                "type": "query",
+                "description": "Filter by worker Workday ID (example prompt parameter)."
+              },
+              {
+                "name": "Effective_as_of_Date",
+                "value": "2026-01-15",
+                "type": "query",
+                "description": "Filter by effective date (example prompt parameter)."
+              }
+            ]
+          },
+          "docs": "Returns data from a custom report published as a web service. The report owner and report name form the path to the report. Supports filtering via report-specific prompt parameters."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

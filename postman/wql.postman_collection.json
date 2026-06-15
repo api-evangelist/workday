@@ -1,0 +1,896 @@
+{
+  "info": {
+    "_postman_id": "8c71c06d-47a4-437e-b755-2591856e5fa3",
+    "name": "Workday WQL API",
+    "description": "Workday Query Language (WQL) API enabling SQL-like querying of Workday data through REST endpoints. Provides high-performance data access controlled via OAuth 2.0 tokens.\n\nContact Support:\n Name: Workday Support\n Email: support@workday.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:22:29.000Z",
+    "updatedAt": "2026-06-05T15:22:29.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8c71c06d-47a4-437e-b755-2591856e5fa3"
+  },
+  "item": [
+    {
+      "name": "data",
+      "item": [
+        {
+          "name": "Execute Wql Query",
+          "id": "509fe533-bf71-425e-a25a-f2adfcdb2bfa",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/data?query=<string>&limit=20&offset=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "data"
+              ],
+              "query": [
+                {
+                  "description": "(Required) The WQL query string. Example: SELECT workdayID, fullName, businessTitle FROM allWorkers WHERE isActive = true",
+                  "key": "query",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The maximum number of objects in a single response.",
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "description": "The zero-based index of the first object in a response collection.",
+                  "key": "offset",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Executes a WQL query and returns the result set. Supports pagination through limit and offset parameters."
+          },
+          "response": [
+            {
+              "id": "a4ec2b06-5f98-4d24-8c00-281477251151",
+              "name": "Successful response containing the WQL query results.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/data?query=<string>&limit=20&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "data"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The WQL query string. Example: SELECT workdayID, fullName, businessTitle FROM allWorkers WHERE isActive = true",
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of objects in a single response.",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection.",
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"laboris9\": false,\n      \"Ut_6f\": false\n    },\n    {\n      \"sit_21c\": -36480261,\n      \"mollit89a\": true\n    }\n  ],\n  \"total\": \"<integer>\"\n}",
+              "createdAt": "2026-06-05T15:22:30.000Z",
+              "updatedAt": "2026-06-05T15:22:30.000Z",
+              "uid": "35240-a4ec2b06-5f98-4d24-8c00-281477251151"
+            },
+            {
+              "id": "68299bf7-8764-4a6a-b2be-679478301882",
+              "name": "The WQL query syntax is invalid.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/data?query=<string>&limit=20&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "data"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The WQL query string. Example: SELECT workdayID, fullName, businessTitle FROM allWorkers WHERE isActive = true",
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of objects in a single response.",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection.",
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:22:30.000Z",
+              "updatedAt": "2026-06-05T15:22:30.000Z",
+              "uid": "35240-68299bf7-8764-4a6a-b2be-679478301882"
+            },
+            {
+              "id": "b40a3ee0-cc99-4b7f-b953-55bc6519bf6b",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/data?query=<string>&limit=20&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "data"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The WQL query string. Example: SELECT workdayID, fullName, businessTitle FROM allWorkers WHERE isActive = true",
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of objects in a single response.",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection.",
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:22:30.000Z",
+              "updatedAt": "2026-06-05T15:22:30.000Z",
+              "uid": "35240-b40a3ee0-cc99-4b7f-b953-55bc6519bf6b"
+            }
+          ],
+          "createdAt": "2026-06-05T15:22:30.000Z",
+          "updatedAt": "2026-06-05T15:22:30.000Z",
+          "uid": "35240-509fe533-bf71-425e-a25a-f2adfcdb2bfa"
+        }
+      ],
+      "id": "5784c2f4-fc00-48e2-a88a-ef686b9b2508",
+      "createdAt": "2026-06-05T15:22:30.000Z",
+      "updatedAt": "2026-06-05T15:22:30.000Z",
+      "uid": "35240-5784c2f4-fc00-48e2-a88a-ef686b9b2508"
+    },
+    {
+      "name": "dataSources",
+      "item": [
+        {
+          "name": "{ID}",
+          "item": [
+            {
+              "name": "fields",
+              "item": [
+                {
+                  "name": "Get Data Source Fields",
+                  "id": "8e9ddb91-209c-42cc-8016-602942a02211",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/dataSources/:ID/fields?limit=20&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "dataSources",
+                        ":ID",
+                        "fields"
+                      ],
+                      "query": [
+                        {
+                          "description": "The maximum number of objects in a single response.",
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "description": "The zero-based index of the first object in a response collection.",
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "26a281a8-b76d-4e64-851f-4245abf5b66f",
+                          "key": "ID",
+                          "value": "<string>",
+                          "description": "(Required) The Workday ID of the resource."
+                        }
+                      ]
+                    },
+                    "description": "Returns the fields available for a specific data source."
+                  },
+                  "response": [
+                    {
+                      "id": "fbad1851-e62c-4a86-afd4-57fdebd303f0",
+                      "name": "Successful response containing data source fields.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/dataSources/:ID/fields?limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "dataSources",
+                            ":ID",
+                            "fields"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"alias\": \"<string>\",\n      \"columnName\": \"<string>\",\n      \"type\": \"<string>\",\n      \"isRequired\": \"<boolean>\",\n      \"isSortable\": \"<boolean>\",\n      \"isFilterable\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"alias\": \"<string>\",\n      \"columnName\": \"<string>\",\n      \"type\": \"<string>\",\n      \"isRequired\": \"<boolean>\",\n      \"isSortable\": \"<boolean>\",\n      \"isFilterable\": \"<boolean>\"\n    }\n  ],\n  \"total\": \"<integer>\"\n}",
+                      "createdAt": "2026-06-05T15:22:30.000Z",
+                      "updatedAt": "2026-06-05T15:22:30.000Z",
+                      "uid": "35240-fbad1851-e62c-4a86-afd4-57fdebd303f0"
+                    },
+                    {
+                      "id": "0a48f572-4cc8-41b7-97f3-c8522dd0e6a2",
+                      "name": "Authentication credentials were missing or invalid.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/dataSources/:ID/fields?limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "dataSources",
+                            ":ID",
+                            "fields"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:22:30.000Z",
+                      "updatedAt": "2026-06-05T15:22:30.000Z",
+                      "uid": "35240-0a48f572-4cc8-41b7-97f3-c8522dd0e6a2"
+                    },
+                    {
+                      "id": "27cd1e3e-ba42-44ce-8b52-b4f6a767dbea",
+                      "name": "The requested resource was not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/dataSources/:ID/fields?limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "dataSources",
+                            ":ID",
+                            "fields"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:22:30.000Z",
+                      "updatedAt": "2026-06-05T15:22:30.000Z",
+                      "uid": "35240-27cd1e3e-ba42-44ce-8b52-b4f6a767dbea"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:22:30.000Z",
+                  "updatedAt": "2026-06-05T15:22:30.000Z",
+                  "uid": "35240-8e9ddb91-209c-42cc-8016-602942a02211"
+                }
+              ],
+              "id": "6e44ed10-171a-42d6-97a1-b1969479d93f",
+              "createdAt": "2026-06-05T15:22:30.000Z",
+              "updatedAt": "2026-06-05T15:22:30.000Z",
+              "uid": "35240-6e44ed10-171a-42d6-97a1-b1969479d93f"
+            },
+            {
+              "name": "Get Data Source by Id",
+              "id": "728aafec-7a40-47c3-b34f-23cc3d051381",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/dataSources/:ID",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "dataSources",
+                    ":ID"
+                  ],
+                  "variable": [
+                    {
+                      "id": "04f48ced-c5e1-455e-8162-53a8b9451010",
+                      "key": "ID",
+                      "value": "<string>",
+                      "description": "(Required) The Workday ID of the resource."
+                    }
+                  ]
+                },
+                "description": "Returns detailed information for a specific data source including its available fields."
+              },
+              "response": [
+                {
+                  "id": "1a64950c-894b-409c-a5a7-9830595b931a",
+                  "name": "Successful response containing data source details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/dataSources/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "dataSources",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"descriptor\": \"<string>\",\n  \"name\": \"<string>\",\n  \"pluralName\": \"<string>\",\n  \"fields\": [\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"alias\": \"<string>\",\n      \"columnName\": \"<string>\",\n      \"type\": \"<string>\",\n      \"isRequired\": \"<boolean>\",\n      \"isSortable\": \"<boolean>\",\n      \"isFilterable\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"alias\": \"<string>\",\n      \"columnName\": \"<string>\",\n      \"type\": \"<string>\",\n      \"isRequired\": \"<boolean>\",\n      \"isSortable\": \"<boolean>\",\n      \"isFilterable\": \"<boolean>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:22:30.000Z",
+                  "updatedAt": "2026-06-05T15:22:30.000Z",
+                  "uid": "35240-1a64950c-894b-409c-a5a7-9830595b931a"
+                },
+                {
+                  "id": "4df357a5-fa65-4678-aad2-aa1b30b2bad4",
+                  "name": "Authentication credentials were missing or invalid.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/dataSources/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "dataSources",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:22:30.000Z",
+                  "updatedAt": "2026-06-05T15:22:30.000Z",
+                  "uid": "35240-4df357a5-fa65-4678-aad2-aa1b30b2bad4"
+                },
+                {
+                  "id": "c322b5d9-85b3-48b3-ab8e-8cc93abe3e09",
+                  "name": "The requested resource was not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/dataSources/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "dataSources",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:22:30.000Z",
+                  "updatedAt": "2026-06-05T15:22:30.000Z",
+                  "uid": "35240-c322b5d9-85b3-48b3-ab8e-8cc93abe3e09"
+                }
+              ],
+              "createdAt": "2026-06-05T15:22:30.000Z",
+              "updatedAt": "2026-06-05T15:22:30.000Z",
+              "uid": "35240-728aafec-7a40-47c3-b34f-23cc3d051381"
+            }
+          ],
+          "id": "899c474e-199e-43c5-a44b-7147162123f6",
+          "createdAt": "2026-06-05T15:22:30.000Z",
+          "updatedAt": "2026-06-05T15:22:30.000Z",
+          "uid": "35240-899c474e-199e-43c5-a44b-7147162123f6"
+        },
+        {
+          "name": "Get Data Sources",
+          "id": "43ce715a-4d8b-46bb-bbce-c00457c6a872",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/dataSources?limit=20&offset=0&search=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "dataSources"
+              ],
+              "query": [
+                {
+                  "description": "The maximum number of objects in a single response.",
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "description": "The zero-based index of the first object in a response collection.",
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "description": "Filter data sources by name.",
+                  "key": "search",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns a collection of available WQL data sources that can be queried."
+          },
+          "response": [
+            {
+              "id": "3ab4738e-76fb-48ff-8513-5d3d69f02a43",
+              "name": "Successful response containing data sources.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/dataSources?limit=20&offset=0&search=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "dataSources"
+                  ],
+                  "query": [
+                    {
+                      "description": "The maximum number of objects in a single response.",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection.",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Filter data sources by name.",
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"name\": \"<string>\",\n      \"pluralName\": \"<string>\",\n      \"fields\": [\n        {\n          \"id\": \"<string>\",\n          \"descriptor\": \"<string>\",\n          \"alias\": \"<string>\",\n          \"columnName\": \"<string>\",\n          \"type\": \"<string>\",\n          \"isRequired\": \"<boolean>\",\n          \"isSortable\": \"<boolean>\",\n          \"isFilterable\": \"<boolean>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"descriptor\": \"<string>\",\n          \"alias\": \"<string>\",\n          \"columnName\": \"<string>\",\n          \"type\": \"<string>\",\n          \"isRequired\": \"<boolean>\",\n          \"isSortable\": \"<boolean>\",\n          \"isFilterable\": \"<boolean>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"name\": \"<string>\",\n      \"pluralName\": \"<string>\",\n      \"fields\": [\n        {\n          \"id\": \"<string>\",\n          \"descriptor\": \"<string>\",\n          \"alias\": \"<string>\",\n          \"columnName\": \"<string>\",\n          \"type\": \"<string>\",\n          \"isRequired\": \"<boolean>\",\n          \"isSortable\": \"<boolean>\",\n          \"isFilterable\": \"<boolean>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"descriptor\": \"<string>\",\n          \"alias\": \"<string>\",\n          \"columnName\": \"<string>\",\n          \"type\": \"<string>\",\n          \"isRequired\": \"<boolean>\",\n          \"isSortable\": \"<boolean>\",\n          \"isFilterable\": \"<boolean>\"\n        }\n      ]\n    }\n  ],\n  \"total\": \"<integer>\"\n}",
+              "createdAt": "2026-06-05T15:22:30.000Z",
+              "updatedAt": "2026-06-05T15:22:30.000Z",
+              "uid": "35240-3ab4738e-76fb-48ff-8513-5d3d69f02a43"
+            },
+            {
+              "id": "aa1cf85a-4f90-44d6-9fd6-b22cf2b80dfc",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/dataSources?limit=20&offset=0&search=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "dataSources"
+                  ],
+                  "query": [
+                    {
+                      "description": "The maximum number of objects in a single response.",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection.",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Filter data sources by name.",
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:22:30.000Z",
+              "updatedAt": "2026-06-05T15:22:30.000Z",
+              "uid": "35240-aa1cf85a-4f90-44d6-9fd6-b22cf2b80dfc"
+            }
+          ],
+          "createdAt": "2026-06-05T15:22:30.000Z",
+          "updatedAt": "2026-06-05T15:22:30.000Z",
+          "uid": "35240-43ce715a-4d8b-46bb-bbce-c00457c6a872"
+        }
+      ],
+      "id": "12b5a8ba-2ce4-41e2-ba0b-ea5f38e86467",
+      "createdAt": "2026-06-05T15:22:30.000Z",
+      "updatedAt": "2026-06-05T15:22:30.000Z",
+      "uid": "35240-12b5a8ba-2ce4-41e2-ba0b-ea5f38e86467"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "r_wql",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "tenant",
+      "value": "tenant_name"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://wd2-impl-services1.workday.com/ccx/api/wql/v1/{{tenant}}"
+    }
+  ]
+}

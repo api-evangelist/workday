@@ -1,0 +1,1379 @@
+{
+  "info": {
+    "_postman_id": "6e980182-f615-469b-b8c5-43e775822f80",
+    "name": "Workday Time Tracking API",
+    "description": "Time Tracking API for managing employee time entry, timesheets, time clock events, and time validations.\n\nContact Support:\n Name: Workday Support\n Email: support@workday.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:21:42.000Z",
+    "updatedAt": "2026-06-05T15:21:42.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6e980182-f615-469b-b8c5-43e775822f80"
+  },
+  "item": [
+    {
+      "name": "workers",
+      "item": [
+        {
+          "name": "{ID}",
+          "item": [
+            {
+              "name": "timeClockEvents",
+              "item": [
+                {
+                  "name": "Get Time Clock Events",
+                  "id": "df5a62c0-8785-4342-bd4f-a5f835b66c4b",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/workers/:ID/timeClockEvents?limit=20&offset=0&fromDate=<date>&toDate=<date>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "workers",
+                        ":ID",
+                        "timeClockEvents"
+                      ],
+                      "query": [
+                        {
+                          "description": "The maximum number of objects in a single response.",
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "description": "The zero-based index of the first object in a response collection.",
+                          "key": "offset",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Filter events from this date.",
+                          "key": "fromDate",
+                          "value": "<date>"
+                        },
+                        {
+                          "description": "Filter events to this date.",
+                          "key": "toDate",
+                          "value": "<date>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "cefd4b31-818c-4705-b21f-65fb0fcf4eb0",
+                          "key": "ID",
+                          "value": "<string>",
+                          "description": "(Required) The Workday ID of the worker."
+                        }
+                      ]
+                    },
+                    "description": "Returns time clock events for a worker."
+                  },
+                  "response": [
+                    {
+                      "id": "f7fbc057-a597-4105-a60d-0af59137f5a4",
+                      "name": "Successful response containing time clock events.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/timeClockEvents?limit=20&offset=0&fromDate=<date>&toDate=<date>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "timeClockEvents"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Filter events from this date.",
+                              "key": "fromDate",
+                              "value": "<date>"
+                            },
+                            {
+                              "description": "Filter events to this date.",
+                              "key": "toDate",
+                              "value": "<date>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"clockEventType\": \"<string>\",\n      \"clockEventTime\": \"<dateTime>\",\n      \"timeZone\": \"<string>\",\n      \"location\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"clockEventType\": \"<string>\",\n      \"clockEventTime\": \"<dateTime>\",\n      \"timeZone\": \"<string>\",\n      \"location\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      }\n    }\n  ],\n  \"total\": \"<integer>\"\n}",
+                      "createdAt": "2026-06-05T15:21:42.000Z",
+                      "updatedAt": "2026-06-05T15:21:42.000Z",
+                      "uid": "35240-f7fbc057-a597-4105-a60d-0af59137f5a4"
+                    },
+                    {
+                      "id": "8529ba1e-d3cb-4608-988f-7156a2b8fe63",
+                      "name": "Authentication credentials were missing or invalid.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/timeClockEvents?limit=20&offset=0&fromDate=<date>&toDate=<date>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "timeClockEvents"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Filter events from this date.",
+                              "key": "fromDate",
+                              "value": "<date>"
+                            },
+                            {
+                              "description": "Filter events to this date.",
+                              "key": "toDate",
+                              "value": "<date>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:42.000Z",
+                      "updatedAt": "2026-06-05T15:21:42.000Z",
+                      "uid": "35240-8529ba1e-d3cb-4608-988f-7156a2b8fe63"
+                    },
+                    {
+                      "id": "fc8c8150-a008-4930-98ae-67c97e7fcbd3",
+                      "name": "The requested resource was not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/timeClockEvents?limit=20&offset=0&fromDate=<date>&toDate=<date>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "timeClockEvents"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Filter events from this date.",
+                              "key": "fromDate",
+                              "value": "<date>"
+                            },
+                            {
+                              "description": "Filter events to this date.",
+                              "key": "toDate",
+                              "value": "<date>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:42.000Z",
+                      "updatedAt": "2026-06-05T15:21:42.000Z",
+                      "uid": "35240-fc8c8150-a008-4930-98ae-67c97e7fcbd3"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:42.000Z",
+                  "updatedAt": "2026-06-05T15:21:42.000Z",
+                  "uid": "35240-df5a62c0-8785-4342-bd4f-a5f835b66c4b"
+                },
+                {
+                  "name": "Create Time Clock Event",
+                  "id": "33bb02a2-826d-4c99-8703-bb77f467ca85",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"clockEventType\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"clockEventTime\": \"<dateTime>\",\n  \"timeZone\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/workers/:ID/timeClockEvents",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "workers",
+                        ":ID",
+                        "timeClockEvents"
+                      ],
+                      "variable": [
+                        {
+                          "id": "3571c829-ba3d-49c9-b095-dc06307b56b6",
+                          "key": "ID",
+                          "value": "<string>",
+                          "description": "(Required) The Workday ID of the worker."
+                        }
+                      ]
+                    },
+                    "description": "Creates a time clock event (clock in/out) for a worker."
+                  },
+                  "response": [
+                    {
+                      "id": "a9cebf0e-d640-4d2c-947e-f300fa9e498a",
+                      "name": "Time clock event created successfully.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"clockEventType\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"clockEventTime\": \"<dateTime>\",\n  \"timeZone\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/timeClockEvents",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "timeClockEvents"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"descriptor\": \"<string>\",\n  \"clockEventType\": \"<string>\",\n  \"clockEventTime\": \"<dateTime>\",\n  \"timeZone\": \"<string>\",\n  \"location\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:21:42.000Z",
+                      "updatedAt": "2026-06-05T15:21:42.000Z",
+                      "uid": "35240-a9cebf0e-d640-4d2c-947e-f300fa9e498a"
+                    },
+                    {
+                      "id": "cd7f95f2-5dbc-4c92-9104-1e2a8aa35b5c",
+                      "name": "The request was invalid or malformed.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"clockEventType\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"clockEventTime\": \"<dateTime>\",\n  \"timeZone\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/timeClockEvents",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "timeClockEvents"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:42.000Z",
+                      "updatedAt": "2026-06-05T15:21:42.000Z",
+                      "uid": "35240-cd7f95f2-5dbc-4c92-9104-1e2a8aa35b5c"
+                    },
+                    {
+                      "id": "f82dac1f-06cd-4d29-b1df-7139bd941111",
+                      "name": "Authentication credentials were missing or invalid.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"clockEventType\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"clockEventTime\": \"<dateTime>\",\n  \"timeZone\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/timeClockEvents",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "timeClockEvents"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:42.000Z",
+                      "updatedAt": "2026-06-05T15:21:42.000Z",
+                      "uid": "35240-f82dac1f-06cd-4d29-b1df-7139bd941111"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:42.000Z",
+                  "updatedAt": "2026-06-05T15:21:42.000Z",
+                  "uid": "35240-33bb02a2-826d-4c99-8703-bb77f467ca85"
+                }
+              ],
+              "id": "092a03ec-8ac1-4283-bfc6-a71ed3453a1e",
+              "createdAt": "2026-06-05T15:21:42.000Z",
+              "updatedAt": "2026-06-05T15:21:42.000Z",
+              "uid": "35240-092a03ec-8ac1-4283-bfc6-a71ed3453a1e"
+            },
+            {
+              "name": "timeEntries",
+              "item": [
+                {
+                  "name": "Get Time Entries",
+                  "id": "31a10909-59ec-49c9-a42e-90debf8e199e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/workers/:ID/timeEntries?limit=20&offset=0&fromDate=<date>&toDate=<date>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "workers",
+                        ":ID",
+                        "timeEntries"
+                      ],
+                      "query": [
+                        {
+                          "description": "The maximum number of objects in a single response.",
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "description": "The zero-based index of the first object in a response collection.",
+                          "key": "offset",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Filter entries from this date.",
+                          "key": "fromDate",
+                          "value": "<date>"
+                        },
+                        {
+                          "description": "Filter entries to this date.",
+                          "key": "toDate",
+                          "value": "<date>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "e8190efb-a83a-4dfd-8770-a727f800d388",
+                          "key": "ID",
+                          "value": "<string>",
+                          "description": "(Required) The Workday ID of the worker."
+                        }
+                      ]
+                    },
+                    "description": "Returns time entries for a worker."
+                  },
+                  "response": [
+                    {
+                      "id": "7c63c376-6697-4237-8f3b-6a04181b74af",
+                      "name": "Successful response containing time entries.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/timeEntries?limit=20&offset=0&fromDate=<date>&toDate=<date>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "timeEntries"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Filter entries from this date.",
+                              "key": "fromDate",
+                              "value": "<date>"
+                            },
+                            {
+                              "description": "Filter entries to this date.",
+                              "key": "toDate",
+                              "value": "<date>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"date\": \"<date>\",\n      \"hours\": \"<double>\",\n      \"timeEntryCode\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"worktag\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"comment\": \"<string>\",\n      \"status\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"date\": \"<date>\",\n      \"hours\": \"<double>\",\n      \"timeEntryCode\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"worktag\": {\n        \"id\": \"<string>\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<uri>\"\n      },\n      \"comment\": \"<string>\",\n      \"status\": \"<string>\"\n    }\n  ],\n  \"total\": \"<integer>\"\n}",
+                      "createdAt": "2026-06-05T15:21:42.000Z",
+                      "updatedAt": "2026-06-05T15:21:42.000Z",
+                      "uid": "35240-7c63c376-6697-4237-8f3b-6a04181b74af"
+                    },
+                    {
+                      "id": "1778c0ac-d3f0-4feb-a655-5724b94b2039",
+                      "name": "Authentication credentials were missing or invalid.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/timeEntries?limit=20&offset=0&fromDate=<date>&toDate=<date>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "timeEntries"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Filter entries from this date.",
+                              "key": "fromDate",
+                              "value": "<date>"
+                            },
+                            {
+                              "description": "Filter entries to this date.",
+                              "key": "toDate",
+                              "value": "<date>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:42.000Z",
+                      "updatedAt": "2026-06-05T15:21:42.000Z",
+                      "uid": "35240-1778c0ac-d3f0-4feb-a655-5724b94b2039"
+                    },
+                    {
+                      "id": "1ac78e30-d61c-4dd1-9213-53bb55f11057",
+                      "name": "The requested resource was not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/timeEntries?limit=20&offset=0&fromDate=<date>&toDate=<date>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "timeEntries"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Filter entries from this date.",
+                              "key": "fromDate",
+                              "value": "<date>"
+                            },
+                            {
+                              "description": "Filter entries to this date.",
+                              "key": "toDate",
+                              "value": "<date>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:42.000Z",
+                      "updatedAt": "2026-06-05T15:21:42.000Z",
+                      "uid": "35240-1ac78e30-d61c-4dd1-9213-53bb55f11057"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:42.000Z",
+                  "updatedAt": "2026-06-05T15:21:42.000Z",
+                  "uid": "35240-31a10909-59ec-49c9-a42e-90debf8e199e"
+                }
+              ],
+              "id": "b97f364c-e245-4bd1-9e24-e753d6cb8257",
+              "createdAt": "2026-06-05T15:21:42.000Z",
+              "updatedAt": "2026-06-05T15:21:42.000Z",
+              "uid": "35240-b97f364c-e245-4bd1-9e24-e753d6cb8257"
+            },
+            {
+              "name": "timesheets",
+              "item": [
+                {
+                  "name": "Get Timesheets",
+                  "id": "52e61684-3b16-44f9-88a1-2777752dd568",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/workers/:ID/timesheets?limit=20&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "workers",
+                        ":ID",
+                        "timesheets"
+                      ],
+                      "query": [
+                        {
+                          "description": "The maximum number of objects in a single response.",
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "description": "The zero-based index of the first object in a response collection.",
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "c11d1cd5-4e4e-47cd-ab3a-ad578b9607f5",
+                          "key": "ID",
+                          "value": "<string>",
+                          "description": "(Required) The Workday ID of the worker."
+                        }
+                      ]
+                    },
+                    "description": "Returns timesheets for a worker."
+                  },
+                  "response": [
+                    {
+                      "id": "84635444-cc6c-4d7a-8cf4-59c7b74e7a60",
+                      "name": "Successful response containing timesheets.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/timesheets?limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "timesheets"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"periodStartDate\": \"<date>\",\n      \"periodEndDate\": \"<date>\",\n      \"totalHours\": \"<double>\",\n      \"status\": \"<string>\",\n      \"calculatedEntries\": [\n        {\n          \"id\": \"<string>\",\n          \"descriptor\": \"<string>\",\n          \"date\": \"<date>\",\n          \"hours\": \"<double>\",\n          \"timeEntryCode\": {\n            \"id\": \"<string>\",\n            \"descriptor\": \"<string>\",\n            \"href\": \"<uri>\"\n          },\n          \"worktag\": {\n            \"id\": \"<string>\",\n            \"descriptor\": \"<string>\",\n            \"href\": \"<uri>\"\n          },\n          \"comment\": \"<string>\",\n          \"status\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"descriptor\": \"<string>\",\n          \"date\": \"<date>\",\n          \"hours\": \"<double>\",\n          \"timeEntryCode\": {\n            \"id\": \"<string>\",\n            \"descriptor\": \"<string>\",\n            \"href\": \"<uri>\"\n          },\n          \"worktag\": {\n            \"id\": \"<string>\",\n            \"descriptor\": \"<string>\",\n            \"href\": \"<uri>\"\n          },\n          \"comment\": \"<string>\",\n          \"status\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"periodStartDate\": \"<date>\",\n      \"periodEndDate\": \"<date>\",\n      \"totalHours\": \"<double>\",\n      \"status\": \"<string>\",\n      \"calculatedEntries\": [\n        {\n          \"id\": \"<string>\",\n          \"descriptor\": \"<string>\",\n          \"date\": \"<date>\",\n          \"hours\": \"<double>\",\n          \"timeEntryCode\": {\n            \"id\": \"<string>\",\n            \"descriptor\": \"<string>\",\n            \"href\": \"<uri>\"\n          },\n          \"worktag\": {\n            \"id\": \"<string>\",\n            \"descriptor\": \"<string>\",\n            \"href\": \"<uri>\"\n          },\n          \"comment\": \"<string>\",\n          \"status\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"descriptor\": \"<string>\",\n          \"date\": \"<date>\",\n          \"hours\": \"<double>\",\n          \"timeEntryCode\": {\n            \"id\": \"<string>\",\n            \"descriptor\": \"<string>\",\n            \"href\": \"<uri>\"\n          },\n          \"worktag\": {\n            \"id\": \"<string>\",\n            \"descriptor\": \"<string>\",\n            \"href\": \"<uri>\"\n          },\n          \"comment\": \"<string>\",\n          \"status\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"total\": \"<integer>\"\n}",
+                      "createdAt": "2026-06-05T15:21:42.000Z",
+                      "updatedAt": "2026-06-05T15:21:42.000Z",
+                      "uid": "35240-84635444-cc6c-4d7a-8cf4-59c7b74e7a60"
+                    },
+                    {
+                      "id": "bc7853a5-7567-48c8-9f08-9a84a5a0ca9e",
+                      "name": "Authentication credentials were missing or invalid.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/timesheets?limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "timesheets"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:42.000Z",
+                      "updatedAt": "2026-06-05T15:21:42.000Z",
+                      "uid": "35240-bc7853a5-7567-48c8-9f08-9a84a5a0ca9e"
+                    },
+                    {
+                      "id": "e21a1b72-b0e0-48b4-84a0-c74a79ebc8fe",
+                      "name": "The requested resource was not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/timesheets?limit=20&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "timesheets"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection.",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:42.000Z",
+                      "updatedAt": "2026-06-05T15:21:42.000Z",
+                      "uid": "35240-e21a1b72-b0e0-48b4-84a0-c74a79ebc8fe"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:42.000Z",
+                  "updatedAt": "2026-06-05T15:21:42.000Z",
+                  "uid": "35240-52e61684-3b16-44f9-88a1-2777752dd568"
+                }
+              ],
+              "id": "e2b086fd-1498-430b-8d36-fa8f1d039b11",
+              "createdAt": "2026-06-05T15:21:42.000Z",
+              "updatedAt": "2026-06-05T15:21:42.000Z",
+              "uid": "35240-e2b086fd-1498-430b-8d36-fa8f1d039b11"
+            },
+            {
+              "name": "requestTimeEntry",
+              "item": [
+                {
+                  "name": "Request Time Entry",
+                  "id": "b8362da4-140f-4851-81f7-ecf13134c47b",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"date\": \"<date>\",\n  \"hours\": \"<double>\",\n  \"timeEntryCode\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"worktag\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"comment\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/workers/:ID/requestTimeEntry",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "workers",
+                        ":ID",
+                        "requestTimeEntry"
+                      ],
+                      "variable": [
+                        {
+                          "id": "fbc11a45-9716-49b9-95c1-206e0e92b833",
+                          "key": "ID",
+                          "value": "<string>",
+                          "description": "(Required) The Workday ID of the worker."
+                        }
+                      ]
+                    },
+                    "description": "Creates a time entry for a worker."
+                  },
+                  "response": [
+                    {
+                      "id": "d08d2e13-cca6-43af-ad5d-55b75991c1ad",
+                      "name": "Time entry created successfully.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"date\": \"<date>\",\n  \"hours\": \"<double>\",\n  \"timeEntryCode\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"worktag\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"comment\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/requestTimeEntry",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "requestTimeEntry"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"descriptor\": \"<string>\",\n  \"date\": \"<date>\",\n  \"hours\": \"<double>\",\n  \"timeEntryCode\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"worktag\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"comment\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:21:42.000Z",
+                      "updatedAt": "2026-06-05T15:21:42.000Z",
+                      "uid": "35240-d08d2e13-cca6-43af-ad5d-55b75991c1ad"
+                    },
+                    {
+                      "id": "96dd1d4a-f089-4417-849f-00b07e39341a",
+                      "name": "The request was invalid or malformed.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"date\": \"<date>\",\n  \"hours\": \"<double>\",\n  \"timeEntryCode\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"worktag\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"comment\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/requestTimeEntry",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "requestTimeEntry"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:42.000Z",
+                      "updatedAt": "2026-06-05T15:21:42.000Z",
+                      "uid": "35240-96dd1d4a-f089-4417-849f-00b07e39341a"
+                    },
+                    {
+                      "id": "810bb1b9-54e6-499c-900e-48ba7743cd80",
+                      "name": "Authentication credentials were missing or invalid.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"date\": \"<date>\",\n  \"hours\": \"<double>\",\n  \"timeEntryCode\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"worktag\": {\n    \"id\": \"<string>\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<uri>\"\n  },\n  \"comment\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/requestTimeEntry",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "requestTimeEntry"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:21:42.000Z",
+                      "updatedAt": "2026-06-05T15:21:42.000Z",
+                      "uid": "35240-810bb1b9-54e6-499c-900e-48ba7743cd80"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:21:42.000Z",
+                  "updatedAt": "2026-06-05T15:21:42.000Z",
+                  "uid": "35240-b8362da4-140f-4851-81f7-ecf13134c47b"
+                }
+              ],
+              "id": "d61b702f-15dc-478f-a213-f29368c28426",
+              "createdAt": "2026-06-05T15:21:42.000Z",
+              "updatedAt": "2026-06-05T15:21:42.000Z",
+              "uid": "35240-d61b702f-15dc-478f-a213-f29368c28426"
+            }
+          ],
+          "id": "c0cb2b5d-b5aa-45c1-a675-7a65ab0cd0c0",
+          "createdAt": "2026-06-05T15:21:42.000Z",
+          "updatedAt": "2026-06-05T15:21:42.000Z",
+          "uid": "35240-c0cb2b5d-b5aa-45c1-a675-7a65ab0cd0c0"
+        }
+      ],
+      "id": "65c65499-5d09-4240-9611-3d528ecbda28",
+      "createdAt": "2026-06-05T15:21:42.000Z",
+      "updatedAt": "2026-06-05T15:21:42.000Z",
+      "uid": "35240-65c65499-5d09-4240-9611-3d528ecbda28"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "r_timeTracking w_timeTracking",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "tenant",
+      "value": "tenant_name"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://wd2-impl-services1.workday.com/ccx/api/timeTracking/v1/{{tenant}}"
+    }
+  ]
+}
