@@ -422,86 +422,66 @@ apis:
 common:
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/workday/overview
-- type: ArazzoWorkflows
-  url: arazzo/
-  workflows:
-  - url: arazzo/workday-change-benefits-workflow.yml
-    name: Workday Change Benefits
-    summary: Read a worker's current benefit elections and eligible plans, then initiate
-      a benefit change event.
-  - url: arazzo/workday-change-worker-job-workflow.yml
-    name: Workday Change Worker Job
-    summary: Confirm a worker, look up the target job profile and position, then initiate
-      a job change.
-  - url: arazzo/workday-clock-time-event-workflow.yml
-    name: Workday Clock Time Event
-    summary: Confirm a worker and read their recent clock events, then record a new
-      clock in/out event.
-  - url: arazzo/workday-explore-supervisory-org-workflow.yml
-    name: Workday Explore Supervisory Organization
-    summary: Search supervisory organizations, load the first match's detail, and
-      list its workers.
-  - url: arazzo/workday-find-worker-detail-workflow.yml
-    name: Workday Find Worker and Load Detail
-    summary: Search workers by name, then load the matched worker's full detail and
-      recent history.
-  - url: arazzo/workday-give-feedback-badge-workflow.yml
-    name: Workday Give Feedback Badge
-    summary: Confirm a worker and review their existing badges, then give a new feedback
-      badge.
-  - url: arazzo/workday-log-time-entry-workflow.yml
-    name: Workday Log Time Entry
-    summary: Confirm a worker and read their timesheets, then log a new time entry.
-  - url: arazzo/workday-person-contact-360-workflow.yml
-    name: Workday Person Contact 360
-    summary: Search people, load the first match's detail, then gather home and work
-      contact information.
-  - url: arazzo/workday-prism-load-dataset-workflow.yml
-    name: Workday Prism Load Dataset
-    summary: Create a Prism dataset, stage a file container, create a data change
-      task, and confirm its status.
-  - url: arazzo/workday-request-compensation-change-workflow.yml
-    name: Workday Request Compensation Change
-    summary: Read a worker's current compensation and available grades, then request
-      a compensation change.
-  - url: arazzo/workday-request-feedback-workflow.yml
-    name: Workday Request Feedback
-    summary: Read a worker's goals and reviews, then request feedback from respondents.
-  - url: arazzo/workday-request-leave-of-absence-workflow.yml
-    name: Workday Request Leave of Absence
-    summary: Confirm a worker, review existing leaves, then submit a new leave of
-      absence request.
-  - url: arazzo/workday-request-one-time-payment-workflow.yml
-    name: Workday Request One-Time Payment
-    summary: Confirm a worker and read their pay slips, then submit a one-time payment
-      request.
-  - url: arazzo/workday-review-expense-reports-workflow.yml
-    name: Workday Review Expense Reports
-    summary: List expense reports, load the first report's detail, and cross-reference
-      accounting journals.
-  - url: arazzo/workday-review-recruiting-pipeline-workflow.yml
-    name: Workday Review Recruiting Pipeline
-    summary: List job requisitions, load a requisition's detail and its posting, then
-      review job applications.
-  - url: arazzo/workday-review-supplier-spend-workflow.yml
-    name: Workday Review Supplier Spend
-    summary: List suppliers, load the first supplier's detail, then review purchase
-      orders and customer invoices.
-  - url: arazzo/workday-review-talent-profile-workflow.yml
-    name: Workday Review Talent Profile
-    summary: Confirm a worker, then assemble their talent profile, skills, and certifications.
-  - url: arazzo/workday-submit-time-off-workflow.yml
-    name: Workday Submit Time Off
-    summary: Confirm a worker, check eligible absence types and balances, then submit
-      a time-off request.
-  - url: arazzo/workday-terminate-worker-workflow.yml
-    name: Workday Terminate Worker
-    summary: Confirm a worker and review their organization assignments, then initiate
-      a termination event.
-  - url: arazzo/workday-wql-discover-and-query-workflow.yml
-    name: Workday WQL Discover and Query
-    summary: Discover a WQL data source and its fields, then execute a WQL query against
-      it.
+- type: Arazzo
+  url: arazzo/workday-change-benefits-workflow.yml
+  name: Workday Change Benefits
+- type: Arazzo
+  url: arazzo/workday-change-worker-job-workflow.yml
+  name: Workday Change Worker Job
+- type: Arazzo
+  url: arazzo/workday-clock-time-event-workflow.yml
+  name: Workday Clock Time Event
+- type: Arazzo
+  url: arazzo/workday-explore-supervisory-org-workflow.yml
+  name: Workday Explore Supervisory Organization
+- type: Arazzo
+  url: arazzo/workday-find-worker-detail-workflow.yml
+  name: Workday Find Worker and Load Detail
+- type: Arazzo
+  url: arazzo/workday-give-feedback-badge-workflow.yml
+  name: Workday Give Feedback Badge
+- type: Arazzo
+  url: arazzo/workday-log-time-entry-workflow.yml
+  name: Workday Log Time Entry
+- type: Arazzo
+  url: arazzo/workday-person-contact-360-workflow.yml
+  name: Workday Person Contact 360
+- type: Arazzo
+  url: arazzo/workday-prism-load-dataset-workflow.yml
+  name: Workday Prism Load Dataset
+- type: Arazzo
+  url: arazzo/workday-request-compensation-change-workflow.yml
+  name: Workday Request Compensation Change
+- type: Arazzo
+  url: arazzo/workday-request-feedback-workflow.yml
+  name: Workday Request Feedback
+- type: Arazzo
+  url: arazzo/workday-request-leave-of-absence-workflow.yml
+  name: Workday Request Leave of Absence
+- type: Arazzo
+  url: arazzo/workday-request-one-time-payment-workflow.yml
+  name: Workday Request One-Time Payment
+- type: Arazzo
+  url: arazzo/workday-review-expense-reports-workflow.yml
+  name: Workday Review Expense Reports
+- type: Arazzo
+  url: arazzo/workday-review-recruiting-pipeline-workflow.yml
+  name: Workday Review Recruiting Pipeline
+- type: Arazzo
+  url: arazzo/workday-review-supplier-spend-workflow.yml
+  name: Workday Review Supplier Spend
+- type: Arazzo
+  url: arazzo/workday-review-talent-profile-workflow.yml
+  name: Workday Review Talent Profile
+- type: Arazzo
+  url: arazzo/workday-submit-time-off-workflow.yml
+  name: Workday Submit Time Off
+- type: Arazzo
+  url: arazzo/workday-terminate-worker-workflow.yml
+  name: Workday Terminate Worker
+- type: Arazzo
+  url: arazzo/workday-wql-discover-and-query-workflow.yml
+  name: Workday WQL Discover and Query
 - type: LinkedIn
   url: https://www.linkedin.com/company/workday
 - type: GettingStarted
@@ -524,7 +504,7 @@ common:
   url: https://blog.workday.com/en-us/application-development.html
 - type: GitHubOrganization
   url: https://github.com/workday
-- type: SignUp
+- type: Signup
   url: https://resourcecenter.workday.com/
 - type: Support
   url: https://www.workday.com/en-us/services/support.html

@@ -3,19 +3,12 @@
   "feeds": [
     {
       "source": "https://blog.workday.com/en-us/application-development.html",
-      "feed_url": "https://blog.workday.com/en-us/application-development.html",
-      "title": "",
+      "feed_url": "",
       "saved": 0,
-      "method": "none"
-    },
-    {
-      "source": "https://developer.workday.com/about",
-      "feed_url": "https://developer.workday.com/about",
-      "title": "",
-      "saved": 0,
-      "method": "none"
+      "method": "agent-scrape"
     }
   ],
-  "post_count": 5,
-  "fetched": "2026-06-14T20:42:17Z"
+  "post_count": 7,
+  "fetched": "2026-06-27T13:21:31Z",
+  "agent_pulled": "2026-06-27"
 }
