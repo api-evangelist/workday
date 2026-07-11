@@ -420,6 +420,10 @@ apis:
   - type: JSONLD
     url: json-ld/wql-context.jsonld
 common:
+- type: TrustCenter
+  url: security/workday-trust-center.yml
+- type: DomainSecurity
+  url: security/workday-domain-security.yml
 - type: Authentication
   url: authentication/workday-authentication.yml
 - type: OAuthScopes

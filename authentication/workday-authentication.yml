@@ -1,0 +1,42 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/absenceManagement.yml, openapi/benefits.yml, openapi/common.yml, openapi/compensation.yml,
+  openapi/financialManagement.yml, openapi/hcm.yml, openapi/payroll.yml, openapi/performanceManagement.yml,
+  openapi/person.yml, openapi/prismAnalytics.yml, openapi/raas.yml, openapi/recruiting.yml ...
+summary:
+  types:
+  - http
+  - oauth2
+  oauth2_flows:
+  - authorizationCode
+schemes:
+- name: OAuth2
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
+    tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
+    scopes: 2
+  sources:
+  - openapi/absenceManagement.yml
+  - openapi/benefits.yml
+  - openapi/common.yml
+  - openapi/compensation.yml
+  - openapi/financialManagement.yml
+  - openapi/hcm.yml
+  - openapi/payroll.yml
+  - openapi/performanceManagement.yml
+  - openapi/person.yml
+  - openapi/prismAnalytics.yml
+  - openapi/raas.yml
+  - openapi/recruiting.yml
+  - openapi/staffing.yml
+  - openapi/talent.yml
+  - openapi/timeTracking.yml
+  - openapi/wql.yml
+- name: BasicAuth
+  type: http
+  scheme: basic
+  description: Basic authentication with Workday ISU credentials.
+  sources:
+  - openapi/raas.yml
