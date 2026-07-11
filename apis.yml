@@ -420,6 +420,10 @@ apis:
   - type: JSONLD
     url: json-ld/wql-context.jsonld
 common:
+- type: Authentication
+  url: authentication/workday-authentication.yml
+- type: OAuthScopes
+  url: scopes/workday-scopes.yml
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/workday/overview
 - type: Arazzo

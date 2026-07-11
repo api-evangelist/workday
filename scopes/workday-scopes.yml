@@ -1,0 +1,278 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/absenceManagement.yml, openapi/benefits.yml, openapi/common.yml, openapi/compensation.yml,
+  openapi/financialManagement.yml, openapi/hcm.yml, openapi/payroll.yml, openapi/performanceManagement.yml,
+  openapi/person.yml, openapi/prismAnalytics.yml, openapi/raas.yml, openapi/recruiting.yml,
+  openapi/staffing.yml, openapi/talent.yml, openapi/timeTracking.yml, openapi/wql.yml
+schemes:
+- name: OAuth2
+  source: openapi/absenceManagement.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
+    tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
+- name: OAuth2
+  source: openapi/benefits.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
+    tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
+- name: OAuth2
+  source: openapi/common.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
+    tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
+- name: OAuth2
+  source: openapi/compensation.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
+    tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
+- name: OAuth2
+  source: openapi/financialManagement.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
+    tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
+- name: OAuth2
+  source: openapi/hcm.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
+    tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
+- name: OAuth2
+  source: openapi/payroll.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
+    tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
+- name: OAuth2
+  source: openapi/performanceManagement.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
+    tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
+- name: OAuth2
+  source: openapi/person.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
+    tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
+- name: OAuth2
+  source: openapi/prismAnalytics.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
+    tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
+- name: OAuth2
+  source: openapi/raas.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
+    tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
+- name: OAuth2
+  source: openapi/recruiting.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
+    tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
+- name: OAuth2
+  source: openapi/staffing.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
+    tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
+- name: OAuth2
+  source: openapi/talent.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
+    tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
+- name: OAuth2
+  source: openapi/timeTracking.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
+    tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
+- name: OAuth2
+  source: openapi/wql.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
+    tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
+scopes:
+- scope: r_absence
+  description: Read absence data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/absenceManagement.yml
+- scope: r_benefits
+  description: Read benefits data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/benefits.yml
+- scope: r_common
+  description: Read common reference data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/common.yml
+- scope: r_compensation
+  description: Read compensation data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/compensation.yml
+- scope: r_financials
+  description: Read financial data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/financialManagement.yml
+- scope: r_payroll
+  description: Read payroll data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/payroll.yml
+- scope: r_performance
+  description: Read performance data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/performanceManagement.yml
+- scope: r_person
+  description: Read person data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/person.yml
+- scope: r_prism
+  description: Read Prism Analytics data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/prismAnalytics.yml
+- scope: r_recruiting
+  description: Read recruiting data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/recruiting.yml
+- scope: r_reports
+  description: Read report data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/raas.yml
+- scope: r_staffing
+  description: Read staffing data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/staffing.yml
+- scope: r_talent
+  description: Read talent data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/talent.yml
+- scope: r_timeTracking
+  description: Read time tracking data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/timeTracking.yml
+- scope: r_worker
+  description: Read worker data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/hcm.yml
+- scope: r_wql
+  description: Execute WQL queries
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/wql.yml
+- scope: w_absence
+  description: Write absence data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/absenceManagement.yml
+- scope: w_benefits
+  description: Write benefits data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/benefits.yml
+- scope: w_compensation
+  description: Write compensation data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/compensation.yml
+- scope: w_financials
+  description: Write financial data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/financialManagement.yml
+- scope: w_payroll
+  description: Write payroll data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/payroll.yml
+- scope: w_performance
+  description: Write performance data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/performanceManagement.yml
+- scope: w_person
+  description: Write person data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/person.yml
+- scope: w_prism
+  description: Write Prism Analytics data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/prismAnalytics.yml
+- scope: w_recruiting
+  description: Write recruiting data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/recruiting.yml
+- scope: w_staffing
+  description: Write staffing data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/staffing.yml
+- scope: w_talent
+  description: Write talent data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/talent.yml
+- scope: w_timeTracking
+  description: Write time tracking data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/timeTracking.yml
+- scope: w_worker
+  description: Write worker data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/hcm.yml
