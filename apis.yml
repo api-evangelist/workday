@@ -420,6 +420,8 @@ apis:
   - type: JSONLD
     url: json-ld/wql-context.jsonld
 common:
+- type: AgenticAccess
+  url: agentic-access/workday-agentic-access.yml
 - type: TrustCenter
   url: security/workday-trust-center.yml
 - type: DomainSecurity
