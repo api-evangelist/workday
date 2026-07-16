@@ -1,0 +1,20 @@
+generated: '2026-06-20'
+method: searched
+source: community.workday.com REST/SOAP API docs + Workday Trust status page
+versioning:
+  scheme: uri-path (REST) + WWS version (SOAP)
+  rest_current: v1 (v3 for Prism Analytics)
+  wws_current: v45.x
+  release_cadence: 'Two major feature releases per year: R1 (March), R2 (September).'
+  docs: https://community.workday.com/api
+deprecation:
+  policy: Deprecations announced in advance through customer communication channels; SOAP WWS versions
+    supported a minimum of ~18 months before retirement. Deprecate-then-retire model across releases.
+  sunset_header: false
+  deprecation_header: false
+sla:
+  url: https://www.workday.com/en-us/legal.html
+  note: Uptime commitments are contractual per customer agreement.
+status_page: https://community.workday.com/trust/status
+changelog: changelog/workday-changelog.yml
+deprecated_operations: []

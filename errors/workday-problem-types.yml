@@ -1,0 +1,43 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/*.yml (4xx/5xx responses) + docs error reference
+format: custom
+note: Workday REST APIs return a JSON error envelope (not RFC 9457 application/problem+json).
+envelope:
+  media_type: application/json
+  schema: ErrorResponse
+  fields:
+    error: string — human-readable message describing the error
+    errors: array — per-field validation errors, each {error, field}
+docs: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+problems:
+- status: 400
+  title: Bad Request
+  remediation: The request was invalid or malformed. Check required fields and parameter formats.
+  occurrences: 19
+  example_operations:
+  - openapi/absenceManagement.yml#requestTimeOff
+  - openapi/absenceManagement.yml#requestLeaveOfAbsence
+  - openapi/benefits.yml#changeBenefits
+  - openapi/compensation.yml#requestCompensationChange
+  - openapi/compensation.yml#requestOneTimePayment
+- status: 401
+  title: Unauthorized
+  remediation: Authentication credentials were missing or invalid. Provide a valid OAuth 2.0 bearer token.
+  occurrences: 104
+  example_operations:
+  - openapi/absenceManagement.yml#getEligibleAbsenceTypes
+  - openapi/absenceManagement.yml#requestTimeOff
+  - openapi/absenceManagement.yml#getTimeOffEntries
+  - openapi/absenceManagement.yml#getTimeOffBalances
+  - openapi/absenceManagement.yml#getLeavesOfAbsence
+- status: 404
+  title: Not Found
+  remediation: The requested resource does not exist or is not visible to the tenant.
+  occurrences: 61
+  example_operations:
+  - openapi/absenceManagement.yml#getEligibleAbsenceTypes
+  - openapi/absenceManagement.yml#requestTimeOff
+  - openapi/absenceManagement.yml#getTimeOffEntries
+  - openapi/absenceManagement.yml#getTimeOffBalances
+  - openapi/absenceManagement.yml#getLeavesOfAbsence

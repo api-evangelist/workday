@@ -7,7 +7,7 @@ description: Collection of Workday REST and SOAP APIs for human capital manageme
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/workday/refs/heads/main/apis.yml
 created: '2024-01-15'
-modified: '2026-05-30'
+modified: '2026-06-20'
 tags:
 - Cloud Computing
 - Enterprise Software
@@ -422,6 +422,78 @@ apis:
 common:
 - type: AgenticAccess
   url: agentic-access/workday-agentic-access.yml
+- type: Packages
+  url: packages/workday-packages.yml
+- type: CLI
+  url: cli/workday-cli.yml
+- type: Components
+  url: components/workday-components.yml
+- type: MCPServer
+  url: mcp/workday-mcp.yml
+- type: LLMsTxt
+  url: llms/workday-llms.txt
+- type: Conformance
+  url: conformance/workday-conformance.yml
+- type: ErrorCatalog
+  url: errors/workday-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/workday-lifecycle.yml
+- type: Conventions
+  url: conventions/workday-conventions.yml
+- type: DataModel
+  url: data-model/workday-data-model.yml
+- type: ChangeLog
+  url: changelog/workday-changelog.yml
+- type: WellKnown
+  url: well-known/workday-well-known.yml
+- type: Overlay
+  url: overlays/workday-hcm-overlay.yaml
+  name: Workday HCM enhancements
+- type: Overlay
+  url: overlays/workday-financialManagement-overlay.yaml
+  name: Workday Financial Management enhancements
+- type: Overlay
+  url: overlays/workday-recruiting-overlay.yaml
+  name: Workday Recruiting enhancements
+- type: Overlay
+  url: overlays/workday-timeTracking-overlay.yaml
+  name: Workday Time Tracking enhancements
+- type: Overlay
+  url: overlays/workday-benefits-overlay.yaml
+  name: Workday Benefits enhancements
+- type: Overlay
+  url: overlays/workday-absenceManagement-overlay.yaml
+  name: Workday Absence Management enhancements
+- type: Overlay
+  url: overlays/workday-compensation-overlay.yaml
+  name: Workday Compensation enhancements
+- type: Overlay
+  url: overlays/workday-payroll-overlay.yaml
+  name: Workday Payroll enhancements
+- type: Overlay
+  url: overlays/workday-person-overlay.yaml
+  name: Workday Person enhancements
+- type: Overlay
+  url: overlays/workday-performanceManagement-overlay.yaml
+  name: Workday Performance Management enhancements
+- type: Overlay
+  url: overlays/workday-talent-overlay.yaml
+  name: Workday Talent enhancements
+- type: Overlay
+  url: overlays/workday-staffing-overlay.yaml
+  name: Workday Staffing enhancements
+- type: Overlay
+  url: overlays/workday-common-overlay.yaml
+  name: Workday Common enhancements
+- type: Overlay
+  url: overlays/workday-prismAnalytics-overlay.yaml
+  name: Workday Prism Analytics enhancements
+- type: Overlay
+  url: overlays/workday-raas-overlay.yaml
+  name: Workday RaaS enhancements
+- type: Overlay
+  url: overlays/workday-wql-overlay.yaml
+  name: Workday WQL enhancements
 - type: TrustCenter
   url: security/workday-trust-center.yml
 - type: DomainSecurity

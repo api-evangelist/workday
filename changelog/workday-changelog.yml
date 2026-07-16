@@ -1,0 +1,27 @@
+generated: '2026-06-20'
+method: searched
+source: community.workday.com/api changelog links + Adaptive Planning API changelog
+scheme: Per-service changelogs tied to Workday feature releases (R1 March, R2 September) and, for SOAP,
+  WWS version numbers.
+current:
+  wws: v45.x (2025R2)
+  rest: v1 / v3 (Prism)
+changelog_urls:
+- service: REST + SOAP API directory
+  url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+- service: Adaptive Planning REST API
+  url: https://doc.workday.com/adaptive-planning/en-us/workday-adaptive-planning-documentation/integration/managing-data-integration/api-documentation/understanding-the-adaptive-planning-rest-api/vmo1623708512342.html
+- service: Strategic Sourcing API
+  url: https://apidocs.workdayspend.com/
+entries:
+- release: 2025R2
+  date: 2025-09
+  type: feature-release
+  highlights: Second 2025 major release; new WWS version, REST API additions, and Extend/Prism enhancements.
+- release: 2025R1
+  date: 2025-03
+  type: feature-release
+  highlights: First 2025 major release; new WWS version and REST additions.
+note: Workday does not publish a single dated public changelog feed; changes are delivered on the twice-yearly
+  release train and documented per-service. Recent-window entries above reflect the release cadence, not
+  fabricated per-endpoint diffs.

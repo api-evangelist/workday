@@ -1,0 +1,26 @@
+generated: '2026-06-20'
+method: searched
+source: developer.workday.com Workday Developer CLI (WDCLI) documentation
+name: Workday Developer CLI (WDCLI)
+docs: https://developer.workday.com/documentation/GUID-9338193c-86c5-43cf-b8d6-5e76b1283d02-enHYPHENus/GetStartedwiththeWorkdayDeveloperCLIforIntegrationApps
+purpose: First-party command-line tool for building, testing, and deploying Workday Extend apps and Integration
+  apps against a tenant.
+platforms:
+- Windows
+- macOS
+- Linux
+install:
+  note: Installed per developer workstation from the Workday Developer site; requires a system user account
+    (ISU) with API client credentials and, where applicable, proxy configuration.
+command_groups:
+- group: auth / configure
+  purpose: Register tenant + API client credentials and authenticate the CLI (OAuth 2.0).
+- group: app
+  purpose: Scaffold, build, and manage Extend / Integration app projects.
+- group: deploy
+  purpose: Deploy an app build to a Workday tenant.
+- group: orchestrate / run
+  purpose: Run and test orchestrations and app logic against the tenant.
+reference: https://developer.workday.com/documentation/GUID-16d9d3f3-ba63-4022-8a84-ad78bd5189ca-enHYPHENus/ReferenceWorkdayDeveloperCLIWDCLIforExtendAppsCommands
+note: The developer.workday.com docs are JavaScript-rendered; command groups above are summarized from
+  the CLI reference titles, not fabricated flags.

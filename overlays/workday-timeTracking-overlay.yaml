@@ -1,0 +1,23 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Workday Time Tracking API
+  version: 1.0.0
+extends: openapi/timeTracking.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: workday
+    x-apievangelist-service: timeTracking
+    x-apievangelist-enriched: '2026-06-20'
+    x-apievangelist-artifacts:
+    - authentication
+    - scopes
+    - conformance
+    - errors
+    - data-model
+    - conventions
+    - lifecycle
+    - agentic-access
+- target: $.info
+  update:
+    x-apievangelist-docs: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html

@@ -1,0 +1,52 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/*.yml + community.workday.com REST API docs
+docs: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+authentication:
+  style: OAuth 2.0 bearer token
+  flows:
+  - authorizationCode
+  token_endpoint: https://{host}/ccx/oauth2/{tenant}/token
+  authorization_endpoint: https://{host}/ccx/oauth2/{tenant}/authorize
+  notes: Registered API Client per tenant; access tokens are tenant-scoped. See authentication/workday-authentication.yml
+    and scopes/workday-scopes.yml.
+  ref: authentication/workday-authentication.yml
+base_path:
+  pattern: /ccx/api/{service}/v{n}/{tenant}
+  tenant_in_path: true
+  note: The Workday tenant identifier is a required path variable; the host is the tenant data center
+    (e.g. wd2-impl-services1.workday.com for implementation).
+pagination:
+  style: offset-limit
+  params:
+  - limit
+  - offset
+  defaults:
+    limit: 20
+    max_limit: 100
+  response_fields:
+  - data
+  - total
+  note: 'Collection endpoints return {data: [...], total: N}; page with limit + offset.'
+versioning:
+  style: uri-path
+  example: v1 (most services), v3 (Prism Analytics)
+  wws: SOAP Web Services carry an independent WWS version (currently v45.x), released twice yearly (R1
+    March, R2 September).
+  ref: lifecycle/workday-lifecycle.yml
+error_envelope:
+  media_type: application/json
+  shape: '{ error: string, errors: [{ error, field }] }'
+  rfc9457: false
+  ref: errors/workday-problem-types.yml
+idempotency:
+  header: null
+  note: No documented Idempotency-Key header; write safety relies on business-process validation.
+field_selection:
+  supported: true
+  note: Many collection endpoints support field-level selection and a search parameter for filtering.
+rate_limit_signaling:
+  note: Per-tenant integration throughput limits apply; see rate-limits/ and https://community.workday.com/articles/16827.
+  ref: rate-limits/
+query_language:
+  wql: Workday Query Language (WQL) offers SQL-like querying via the WQL REST API (openapi/wql.yml).

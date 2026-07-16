@@ -1,0 +1,40 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/*.yml + docs compliance claims
+standards:
+- id: oauth2
+  conforms: true
+  evidence: OpenAPI securitySchemes declare OAuth2 authorizationCode flow (authorization/token URLs under
+    /ccx/oauth2/{tenant})
+- id: oauth2-authorization-code
+  conforms: true
+  evidence: authorizationCode flow present across all 16 REST specs
+- id: openid-connect
+  conforms: false
+  evidence: No openIdConnect scheme or /.well-known/openid-configuration document published (developer.workday.com
+    returns SPA shell)
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use a custom application/json ErrorResponse envelope, not application/problem+json
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: No Sunset/Deprecation header support documented; deprecation handled via versioned WWS releases
+- id: pagination
+  conforms: true
+  evidence: limit/offset query parameters with total in response body across collection endpoints
+- id: scim2
+  conforms: false
+  evidence: No /scim/v2 paths; identity/provisioning handled via HCM + partner connectors
+- id: odata
+  conforms: false
+  evidence: No OData query conventions; Workday exposes WQL for SQL-like querying instead
+- id: fhir
+  conforms: false
+  evidence: Not a healthcare data API
+- id: graphql
+  conforms: true
+  evidence: GraphQL surface documented (graphql/workday-graphql.md); Workday exposes a GraphQL API for
+    Extend
+- id: soap-wsdl
+  conforms: true
+  evidence: Workday SOAP Web Services (WWS) publish WSDL/XSD for 55+ service areas

@@ -1,0 +1,29 @@
+generated: '2026-06-20'
+method: searched
+source: npmjs.com @workday scope, github.com/Workday/canvas-kit, canvas.workday.com
+design_system: Workday Canvas Design System
+design_system_url: https://canvas.workday.com/
+repo: https://github.com/Workday/canvas-kit
+license: Apache-2.0
+families:
+- family: Canvas Kit React
+  loader: '@workday/canvas-kit-react'
+  version: 15.1.1
+  url: https://www.npmjs.com/package/@workday/canvas-kit-react
+  install: yarn add @workday/canvas-kit-react @workday/canvas-tokens-web
+  description: Parent module containing all Canvas Kit React components (built with emotion CSS-in-JS).
+- family: Canvas Kit CSS
+  loader: '@workday/canvas-kit-css'
+  url: https://www.npmjs.com/package/@workday/canvas-kit-css
+  description: Framework-agnostic CSS implementation of Canvas components.
+- family: Canvas Tokens
+  loader: '@workday/canvas-tokens-web'
+  description: Design tokens (color, type, space) required by Canvas Kit v11+.
+- family: Canvas Icons
+  loader: '@workday/canvas-system-icons-web'
+  description: System / accent / applet / expressive icon libraries for web.
+- family: Canvas Kit Codemod
+  loader: '@workday/canvas-kit-codemod'
+  description: Codemods for migrating between Canvas Kit major versions.
+note: Client-side UI component libraries for building Workday-consistent experiences and Extend apps.
+  Distinct from the API client SDKs in packages/.

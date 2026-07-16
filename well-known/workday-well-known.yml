@@ -1,0 +1,48 @@
+generated: '2026-06-20'
+method: searched
+note: Probed .well-known discovery surface on all public Workday hosts. developer.workday.com returns
+  HTTP 200 for every path but the body is the SPA HTML shell (text/html), not a genuine discovery document
+  — recorded as spa-shell, no raw files saved. No real well-known documents are published.
+hosts:
+- host: https://developer.workday.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    content_type: text/html
+    result: spa-shell
+  - path: /.well-known/openid-configuration
+    status: 200
+    content_type: text/html
+    result: spa-shell
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    content_type: text/html
+    result: spa-shell
+  - path: /.well-known/api-catalog
+    status: 200
+    content_type: text/html
+    result: spa-shell
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    content_type: text/html
+    result: spa-shell
+- host: https://community.workday.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+- host: https://www.workday.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+- host: https://api.adaptiveinsights.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404

@@ -1,0 +1,325 @@
+generated: '2026-06-20'
+method: derived
+status: candidate
+source: openapi/*.yml operations (one candidate tool per operationId)
+note: No official Workday-hosted MCP server is published (only third-party bridges via Composio, CData,
+  Zapier, StackOne as of 2026-07). Workday stated intent to expose platform capabilities via MCP + A2A
+  (DevCon 2025). This is a derived candidate tool surface, not an operational server.
+server:
+  name: workday
+  transport: http
+  url: null
+tool_count: 104
+tools:
+- name: getEligibleAbsenceTypes
+  description: Get Eligible Absence Types
+  source_operation: openapi/absenceManagement.yml#getEligibleAbsenceTypes
+- name: requestTimeOff
+  description: Request Time Off
+  source_operation: openapi/absenceManagement.yml#requestTimeOff
+- name: getTimeOffEntries
+  description: Get Time Off Entries
+  source_operation: openapi/absenceManagement.yml#getTimeOffEntries
+- name: getTimeOffBalances
+  description: Get Time Off Balances
+  source_operation: openapi/absenceManagement.yml#getTimeOffBalances
+- name: getLeavesOfAbsence
+  description: Get Leaves of Absence
+  source_operation: openapi/absenceManagement.yml#getLeavesOfAbsence
+- name: requestLeaveOfAbsence
+  description: Request Leave of Absence
+  source_operation: openapi/absenceManagement.yml#requestLeaveOfAbsence
+- name: getBenefitElections
+  description: Get Benefit Elections
+  source_operation: openapi/benefits.yml#getBenefitElections
+- name: getEligibleBenefitPlans
+  description: Get Eligible Benefit Plans
+  source_operation: openapi/benefits.yml#getEligibleBenefitPlans
+- name: getDependents
+  description: Get Dependents
+  source_operation: openapi/benefits.yml#getDependents
+- name: changeBenefits
+  description: Change Benefits
+  source_operation: openapi/benefits.yml#changeBenefits
+- name: getBenefitPlans
+  description: Get Benefit Plans
+  source_operation: openapi/benefits.yml#getBenefitPlans
+- name: getCountries
+  description: Get Countries
+  source_operation: openapi/common.yml#getCountries
+- name: getCountryById
+  description: Get Country by Id
+  source_operation: openapi/common.yml#getCountryById
+- name: getCurrencies
+  description: Get Currencies
+  source_operation: openapi/common.yml#getCurrencies
+- name: getCurrencyById
+  description: Get Currency by Id
+  source_operation: openapi/common.yml#getCurrencyById
+- name: getLanguages
+  description: Get Languages
+  source_operation: openapi/common.yml#getLanguages
+- name: getGenders
+  description: Get Genders
+  source_operation: openapi/common.yml#getGenders
+- name: getMaritalStatuses
+  description: Get Marital Statuses
+  source_operation: openapi/common.yml#getMaritalStatuses
+- name: getCompensationPlans
+  description: Get Compensation Plans
+  source_operation: openapi/compensation.yml#getCompensationPlans
+- name: requestCompensationChange
+  description: Request Compensation Change
+  source_operation: openapi/compensation.yml#requestCompensationChange
+- name: getCompensationScorecards
+  description: Get Compensation Scorecards
+  source_operation: openapi/compensation.yml#getCompensationScorecards
+- name: getCompensationScorecardById
+  description: Get Compensation Scorecard by Id
+  source_operation: openapi/compensation.yml#getCompensationScorecardById
+- name: getCompensationScorecardResults
+  description: Get Compensation Scorecard Results
+  source_operation: openapi/compensation.yml#getCompensationScorecardResults
+- name: requestOneTimePayment
+  description: Request One-time Payment
+  source_operation: openapi/compensation.yml#requestOneTimePayment
+- name: getCompensationGrades
+  description: Get Compensation Grades
+  source_operation: openapi/compensation.yml#getCompensationGrades
+- name: getAccountingJournals
+  description: Get Accounting Journals
+  source_operation: openapi/financialManagement.yml#getAccountingJournals
+- name: getAccountingJournalById
+  description: Get Accounting Journal by Id
+  source_operation: openapi/financialManagement.yml#getAccountingJournalById
+- name: getSuppliers
+  description: Get Suppliers
+  source_operation: openapi/financialManagement.yml#getSuppliers
+- name: getSupplierById
+  description: Get Supplier by Id
+  source_operation: openapi/financialManagement.yml#getSupplierById
+- name: getPurchaseOrders
+  description: Get Purchase Orders
+  source_operation: openapi/financialManagement.yml#getPurchaseOrders
+- name: getExpenseReports
+  description: Get Expense Reports
+  source_operation: openapi/financialManagement.yml#getExpenseReports
+- name: getExpenseReportById
+  description: Get Expense Report by Id
+  source_operation: openapi/financialManagement.yml#getExpenseReportById
+- name: getCustomerInvoices
+  description: Get Customer Invoices
+  source_operation: openapi/financialManagement.yml#getCustomerInvoices
+- name: getWorkers
+  description: Get Workers
+  source_operation: openapi/hcm.yml#getWorkers
+- name: getWorkerById
+  description: Get Worker by Id
+  source_operation: openapi/hcm.yml#getWorkerById
+- name: getWorkerHistory
+  description: Get Worker History
+  source_operation: openapi/hcm.yml#getWorkerHistory
+- name: getWorkerPhoto
+  description: Get Worker Photo
+  source_operation: openapi/hcm.yml#getWorkerPhoto
+- name: getWorkerBusinessTitleChanges
+  description: Get Business Title Changes
+  source_operation: openapi/hcm.yml#getWorkerBusinessTitleChanges
+- name: getWorkerInboxTasks
+  description: Get Worker Inbox Tasks
+  source_operation: openapi/hcm.yml#getWorkerInboxTasks
+- name: getSupervisoryOrganizations
+  description: Get Supervisory Organizations
+  source_operation: openapi/hcm.yml#getSupervisoryOrganizations
+- name: getSupervisoryOrganizationById
+  description: Get Supervisory Organization by Id
+  source_operation: openapi/hcm.yml#getSupervisoryOrganizationById
+- name: getLocations
+  description: Get Locations
+  source_operation: openapi/hcm.yml#getLocations
+- name: getLocationById
+  description: Get Location by Id
+  source_operation: openapi/hcm.yml#getLocationById
+- name: getPayGroups
+  description: Get Pay Groups
+  source_operation: openapi/payroll.yml#getPayGroups
+- name: getPayGroupById
+  description: Get Pay Group by Id
+  source_operation: openapi/payroll.yml#getPayGroupById
+- name: getPayGroupDetails
+  description: Get Pay Group Details
+  source_operation: openapi/payroll.yml#getPayGroupDetails
+- name: getPayrollInputs
+  description: Get Payroll Inputs
+  source_operation: openapi/payroll.yml#getPayrollInputs
+- name: getPaySlips
+  description: Get Pay Slips
+  source_operation: openapi/payroll.yml#getPaySlips
+- name: getWorkerGoals
+  description: Get Worker Goals
+  source_operation: openapi/performanceManagement.yml#getWorkerGoals
+- name: getPerformanceReviews
+  description: Get Performance Reviews
+  source_operation: openapi/performanceManagement.yml#getPerformanceReviews
+- name: getFeedbackBadges
+  description: Get Feedback Badges
+  source_operation: openapi/performanceManagement.yml#getFeedbackBadges
+- name: giveFeedbackBadge
+  description: Give Feedback Badge
+  source_operation: openapi/performanceManagement.yml#giveFeedbackBadge
+- name: requestFeedback
+  description: Request Feedback
+  source_operation: openapi/performanceManagement.yml#requestFeedback
+- name: getPeople
+  description: Get People
+  source_operation: openapi/person.yml#getPeople
+- name: getPersonById
+  description: Get Person by Id
+  source_operation: openapi/person.yml#getPersonById
+- name: getHomeContactInformation
+  description: Get Home Contact Information
+  source_operation: openapi/person.yml#getHomeContactInformation
+- name: getWorkContactInformation
+  description: Get Work Contact Information
+  source_operation: openapi/person.yml#getWorkContactInformation
+- name: getPersonalInformation
+  description: Get Personal Information
+  source_operation: openapi/person.yml#getPersonalInformation
+- name: getDatasets
+  description: Get Datasets
+  source_operation: openapi/prismAnalytics.yml#getDatasets
+- name: createDataset
+  description: Create Dataset
+  source_operation: openapi/prismAnalytics.yml#createDataset
+- name: getDatasetById
+  description: Get Dataset by Id
+  source_operation: openapi/prismAnalytics.yml#getDatasetById
+- name: updateDataset
+  description: Update Dataset
+  source_operation: openapi/prismAnalytics.yml#updateDataset
+- name: deleteDataset
+  description: Delete Dataset
+  source_operation: openapi/prismAnalytics.yml#deleteDataset
+- name: getDataChangeTasks
+  description: Get Data Change Tasks
+  source_operation: openapi/prismAnalytics.yml#getDataChangeTasks
+- name: createDataChangeTask
+  description: Create Data Change Task
+  source_operation: openapi/prismAnalytics.yml#createDataChangeTask
+- name: getDataChangeTaskById
+  description: Get Data Change Task by Id
+  source_operation: openapi/prismAnalytics.yml#getDataChangeTaskById
+- name: getDataChangeTaskActivities
+  description: Get Data Change Task Activities
+  source_operation: openapi/prismAnalytics.yml#getDataChangeTaskActivities
+- name: createFileContainer
+  description: Create File Container
+  source_operation: openapi/prismAnalytics.yml#createFileContainer
+- name: getFileContainerById
+  description: Get File Container by Id
+  source_operation: openapi/prismAnalytics.yml#getFileContainerById
+- name: getTables
+  description: Get Tables
+  source_operation: openapi/prismAnalytics.yml#getTables
+- name: getTableById
+  description: Get Table by Id
+  source_operation: openapi/prismAnalytics.yml#getTableById
+- name: getCustomReport
+  description: Get Custom Report Data
+  source_operation: openapi/raas.yml#getCustomReport
+- name: getJobRequisitions
+  description: Get Job Requisitions
+  source_operation: openapi/recruiting.yml#getJobRequisitions
+- name: getJobRequisitionById
+  description: Get Job Requisition by Id
+  source_operation: openapi/recruiting.yml#getJobRequisitionById
+- name: getJobPostings
+  description: Get Job Postings
+  source_operation: openapi/recruiting.yml#getJobPostings
+- name: getJobPostingById
+  description: Get Job Posting by Id
+  source_operation: openapi/recruiting.yml#getJobPostingById
+- name: getCandidates
+  description: Get Candidates
+  source_operation: openapi/recruiting.yml#getCandidates
+- name: getCandidateById
+  description: Get Candidate by Id
+  source_operation: openapi/recruiting.yml#getCandidateById
+- name: getJobApplications
+  description: Get Job Applications
+  source_operation: openapi/recruiting.yml#getJobApplications
+- name: getJobApplicationById
+  description: Get Job Application by Id
+  source_operation: openapi/recruiting.yml#getJobApplicationById
+- name: getProspects
+  description: Get Prospects
+  source_operation: openapi/recruiting.yml#getProspects
+- name: getOrganizationAssignments
+  description: Get Organization Assignments
+  source_operation: openapi/staffing.yml#getOrganizationAssignments
+- name: createJobChange
+  description: Create Job Change
+  source_operation: openapi/staffing.yml#createJobChange
+- name: getJobProfiles
+  description: Get Job Profiles
+  source_operation: openapi/staffing.yml#getJobProfiles
+- name: getJobProfileById
+  description: Get Job Profile by Id
+  source_operation: openapi/staffing.yml#getJobProfileById
+- name: getPositions
+  description: Get Positions
+  source_operation: openapi/staffing.yml#getPositions
+- name: getPositionById
+  description: Get Position by Id
+  source_operation: openapi/staffing.yml#getPositionById
+- name: requestOneTimePayment
+  description: Request One-time Payment
+  source_operation: openapi/staffing.yml#requestOneTimePayment
+- name: terminateWorker
+  description: Terminate Worker
+  source_operation: openapi/staffing.yml#terminateWorker
+- name: getTalentProfile
+  description: Get Talent Profile
+  source_operation: openapi/talent.yml#getTalentProfile
+- name: getMentorships
+  description: Get Mentorships
+  source_operation: openapi/talent.yml#getMentorships
+- name: getWorkerSkills
+  description: Get Worker Skills
+  source_operation: openapi/talent.yml#getWorkerSkills
+- name: getWorkerCertifications
+  description: Get Worker Certifications
+  source_operation: openapi/talent.yml#getWorkerCertifications
+- name: getSuccessionPlans
+  description: Get Succession Plans
+  source_operation: openapi/talent.yml#getSuccessionPlans
+- name: getSuccessionPlanById
+  description: Get Succession Plan by Id
+  source_operation: openapi/talent.yml#getSuccessionPlanById
+- name: getTimeClockEvents
+  description: Get Time Clock Events
+  source_operation: openapi/timeTracking.yml#getTimeClockEvents
+- name: createTimeClockEvent
+  description: Create Time Clock Event
+  source_operation: openapi/timeTracking.yml#createTimeClockEvent
+- name: getTimeEntries
+  description: Get Time Entries
+  source_operation: openapi/timeTracking.yml#getTimeEntries
+- name: getTimesheets
+  description: Get Timesheets
+  source_operation: openapi/timeTracking.yml#getTimesheets
+- name: requestTimeEntry
+  description: Request Time Entry
+  source_operation: openapi/timeTracking.yml#requestTimeEntry
+- name: executeWqlQuery
+  description: Execute Wql Query
+  source_operation: openapi/wql.yml#executeWqlQuery
+- name: getDataSources
+  description: Get Data Sources
+  source_operation: openapi/wql.yml#getDataSources
+- name: getDataSourceById
+  description: Get Data Source by Id
+  source_operation: openapi/wql.yml#getDataSourceById
+- name: getDataSourceFields
+  description: Get Data Source Fields
+  source_operation: openapi/wql.yml#getDataSourceFields

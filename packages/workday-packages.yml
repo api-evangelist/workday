@@ -1,0 +1,41 @@
+generated: '2026-06-20'
+method: searched
+source: github.com/Workday, npmjs.com (@workday scope), PyPI
+packages:
+- language: python
+  registry: github
+  name: Workday/prism-python
+  url: https://github.com/Workday/prism-python
+  install: pip install git+https://github.com/Workday/prism-python.git
+  official: true
+  api: Prism Analytics REST API V3
+  license: Apache-2.0
+  note: Official Workday Python client + CLI for the Prism Analytics API. Not published to PyPI; installed
+    from Git.
+- language: python
+  registry: github
+  name: Workday/raas-python
+  url: https://github.com/Workday/raas-python
+  install: pip install git+https://github.com/Workday/raas-python.git
+  official: true
+  api: Report-as-a-Service (RaaS)
+  license: Apache-2.0
+  note: Official Workday Report-as-a-Service Python API client.
+- language: python
+  registry: pypi
+  name: workday
+  url: https://pypi.org/project/workday/
+  install: pip install workday
+  official: false
+  version: 0.4.0
+  note: Community client (tonybaloney) for Workday Web Services (SOAP) — not operated by Workday.
+- language: multiple
+  registry: cli
+  name: Workday Developer CLI (WDCLI)
+  url: https://developer.workday.com/documentation/GUID-16d9d3f3-ba63-4022-8a84-ad78bd5189ca-enHYPHENus/ReferenceWorkdayDeveloperCLIWDCLIforExtendAppsCommands
+  official: true
+  note: First-party CLI for building/deploying Extend and Integration Apps. Command surface catalogued
+    in cli/workday-cli.yml.
+related:
+  ui_components: components/workday-components.yml (Canvas Kit — @workday/canvas-kit-react etc., catalogued
+    separately as UI components, not SDKs).
