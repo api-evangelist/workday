@@ -1,10 +1,7 @@
 openapi: 3.1.0
 info:
-  title: Workday WQL API
-  description: >-
-    Workday Query Language (WQL) API enabling SQL-like querying of Workday data
-    through REST endpoints. Provides high-performance data access controlled
-    via OAuth 2.0 tokens.
+  title: Workday Absence Management Absence Types Data Sources API
+  description: Absence Management API for managing leave balances, time-off requests, leaves of absence, and eligible absence types for workers.
   version: v1
   contact:
     name: Workday Support
@@ -14,7 +11,7 @@ info:
     name: Proprietary
     url: https://www.workday.com/en-us/legal.html
 servers:
-- url: https://wd2-impl-services1.workday.com/ccx/api/wql/v1/{tenant}
+- url: https://wd2-impl-services1.workday.com/ccx/api/absenceManagement/v1/{tenant}
   description: Workday REST API Server
   variables:
     tenant:
@@ -22,64 +19,12 @@ servers:
       description: The Workday tenant identifier
 security:
 - OAuth2:
-  - r_wql
+  - r_absence
+  - w_absence
+tags:
+- name: Data Sources
+  description: Endpoints for discovering available data sources and fields.
 paths:
-  /data:
-    get:
-      operationId: executeWqlQuery
-      summary: Execute Wql Query
-      description: >-
-        Executes a WQL query and returns the result set. Supports pagination
-        through limit and offset parameters.
-      tags:
-      - Query
-      parameters:
-      - name: query
-        in: query
-        required: true
-        description: >-
-          The WQL query string. Example: SELECT workdayID, fullName,
-          businessTitle FROM allWorkers WHERE isActive = true
-        schema:
-          type: string
-        example: example_value
-      - $ref: '#/components/parameters/limit'
-      - $ref: '#/components/parameters/offset'
-      responses:
-        '200':
-          description: Successful response containing the WQL query results.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/WqlQueryResult'
-              examples:
-                Executewqlquery200Example:
-                  summary: Default executeWqlQuery 200 response
-                  x-microcks-default: true
-                  value:
-                    data:
-                    - {}
-                    total: 10
-        '400':
-          description: The WQL query syntax is invalid.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-              examples:
-                Executewqlquery400Example:
-                  summary: Default executeWqlQuery 400 response
-                  x-microcks-default: true
-                  value:
-                    error: example_value
-                    errors:
-                    - error: example_value
-                      field: example_value
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-      x-microcks-operation:
-        delay: 0
-        dispatcher: FALLBACK
   /dataSources:
     get:
       operationId: getDataSources
@@ -217,23 +162,15 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  securitySchemes:
-    OAuth2:
-      type: oauth2
-      flows:
-        authorizationCode:
-          authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
-          tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
-          scopes:
-            r_wql: Execute WQL queries
   parameters:
-    ID:
-      name: ID
-      in: path
-      required: true
-      description: The Workday ID of the resource.
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: The zero-based index of the first object in a response collection.
       schema:
-        type: string
+        type: integer
+        default: 0
     limit:
       name: limit
       in: query
@@ -243,55 +180,27 @@ components:
         type: integer
         default: 20
         maximum: 100
-    offset:
-      name: offset
-      in: query
-      required: false
-      description: The zero-based index of the first object in a response collection.
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the resource.
       schema:
-        type: integer
-        default: 0
+        type: string
+  responses:
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    WqlQueryResult:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            type: object
-            additionalProperties: true
-            description: A result row with field names as keys and their values.
-          description: The array of result rows from the WQL query.
-          example: []
-        total:
-          type: integer
-          description: The total number of results available.
-          example: 10
-    DataSource:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The Workday ID of the data source.
-          example: abc123
-        descriptor:
-          type: string
-          description: A display descriptor for the data source.
-          example: example_value
-        name:
-          type: string
-          description: The name of the data source used in WQL FROM clauses.
-          example: Example Title
-        pluralName:
-          type: string
-          description: The plural name of the data source.
-          example: example_value
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/DataSourceField'
-          description: The fields available in this data source.
-          example: []
     DataSourceField:
       type: object
       properties:
@@ -322,19 +231,31 @@ components:
         isFilterable:
           type: boolean
           example: true
-    ResourceReference:
+    DataSource:
       type: object
       properties:
         id:
           type: string
+          description: The Workday ID of the data source.
           example: abc123
         descriptor:
           type: string
+          description: A display descriptor for the data source.
           example: example_value
-        href:
+        name:
           type: string
-          format: uri
-          example: https://www.example.com
+          description: The name of the data source used in WQL FROM clauses.
+          example: Example Title
+        pluralName:
+          type: string
+          description: The plural name of the data source.
+          example: example_value
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataSourceField'
+          description: The fields available in this data source.
+          example: []
     ErrorResponse:
       type: object
       properties:
@@ -351,21 +272,13 @@ components:
               field:
                 type: string
           example: []
-  responses:
-    Unauthorized:
-      description: Authentication credentials were missing or invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-tags:
-- name: Query
-  description: Endpoints for executing WQL queries.
-- name: Data Sources
-  description: Endpoints for discovering available data sources and fields.
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
+          tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
+          scopes:
+            r_absence: Read absence data
+            w_absence: Write absence data

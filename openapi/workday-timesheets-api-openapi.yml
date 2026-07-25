@@ -1,0 +1,211 @@
+openapi: 3.1.0
+info:
+  title: Workday Absence Management Absence Types Timesheets API
+  description: Absence Management API for managing leave balances, time-off requests, leaves of absence, and eligible absence types for workers.
+  version: v1
+  contact:
+    name: Workday Support
+    email: support@workday.com
+    url: https://www.workday.com/en-us/customer-service/support.html
+  license:
+    name: Proprietary
+    url: https://www.workday.com/en-us/legal.html
+servers:
+- url: https://wd2-impl-services1.workday.com/ccx/api/absenceManagement/v1/{tenant}
+  description: Workday REST API Server
+  variables:
+    tenant:
+      default: tenant_name
+      description: The Workday tenant identifier
+security:
+- OAuth2:
+  - r_absence
+  - w_absence
+tags:
+- name: Timesheets
+  description: Endpoints for managing timesheets.
+paths:
+  /workers/{ID}/timesheets:
+    get:
+      operationId: getTimesheets
+      summary: Get Timesheets
+      description: Returns timesheets for a worker.
+      tags:
+      - Timesheets
+      parameters:
+      - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Successful response containing timesheets.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Timesheet'
+                  total:
+                    type: integer
+              examples:
+                Gettimesheets200Example:
+                  summary: Default getTimesheets 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      periodStartDate: '2026-01-15'
+                      periodEndDate: '2026-01-15'
+                      totalHours: 42.5
+                      status: example_value
+                      calculatedEntries:
+                      - {}
+                    total: 10
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  parameters:
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: The zero-based index of the first object in a response collection.
+      schema:
+        type: integer
+        default: 0
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: The maximum number of objects in a single response.
+      schema:
+        type: integer
+        default: 20
+        maximum: 100
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the worker.
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: example_value
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+          example: []
+    TimeEntry:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        date:
+          type: string
+          format: date
+          example: '2026-01-15'
+        hours:
+          type: number
+          format: double
+          description: The number of hours entered.
+          example: 42.5
+        timeEntryCode:
+          $ref: '#/components/schemas/ResourceReference'
+        worktag:
+          $ref: '#/components/schemas/ResourceReference'
+        comment:
+          type: string
+          example: example_value
+        status:
+          type: string
+          example: example_value
+    ResourceReference:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        href:
+          type: string
+          format: uri
+          example: https://www.example.com
+    Timesheet:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        periodStartDate:
+          type: string
+          format: date
+          example: '2026-01-15'
+        periodEndDate:
+          type: string
+          format: date
+          example: '2026-01-15'
+        totalHours:
+          type: number
+          format: double
+          example: 42.5
+        status:
+          type: string
+          description: The status of the timesheet (e.g., Draft, Submitted, Approved).
+          example: example_value
+        calculatedEntries:
+          type: array
+          items:
+            $ref: '#/components/schemas/TimeEntry'
+          example: []
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
+          tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
+          scopes:
+            r_absence: Read absence data
+            w_absence: Write absence data

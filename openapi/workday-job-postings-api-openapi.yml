@@ -1,0 +1,242 @@
+openapi: 3.1.0
+info:
+  title: Workday Absence Management Absence Types Job Postings API
+  description: Absence Management API for managing leave balances, time-off requests, leaves of absence, and eligible absence types for workers.
+  version: v1
+  contact:
+    name: Workday Support
+    email: support@workday.com
+    url: https://www.workday.com/en-us/customer-service/support.html
+  license:
+    name: Proprietary
+    url: https://www.workday.com/en-us/legal.html
+servers:
+- url: https://wd2-impl-services1.workday.com/ccx/api/absenceManagement/v1/{tenant}
+  description: Workday REST API Server
+  variables:
+    tenant:
+      default: tenant_name
+      description: The Workday tenant identifier
+security:
+- OAuth2:
+  - r_absence
+  - w_absence
+tags:
+- name: Job Postings
+  description: Endpoints for managing job postings.
+paths:
+  /jobPostings:
+    get:
+      operationId: getJobPostings
+      summary: Get Job Postings
+      description: Returns a collection of job postings.
+      tags:
+      - Job Postings
+      parameters:
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: Successful response containing job postings.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/JobPosting'
+                  total:
+                    type: integer
+              examples:
+                Getjobpostings200Example:
+                  summary: Default getJobPostings 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      title: Example Title
+                      startDate: '2026-01-15'
+                      endDate: '2026-01-15'
+                      jobDescription: example_value
+                      isInternal: true
+                      isExternal: true
+                      postedOn: '2026-01-15T10:30:00Z'
+                    total: 10
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /jobPostings/{ID}:
+    get:
+      operationId: getJobPostingById
+      summary: Get Job Posting by Id
+      description: Returns details for a specific job posting.
+      tags:
+      - Job Postings
+      parameters:
+      - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          description: Successful response containing job posting details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobPosting'
+              examples:
+                Getjobpostingbyid200Example:
+                  summary: Default getJobPostingById 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    descriptor: example_value
+                    title: Example Title
+                    jobRequisition:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    startDate: '2026-01-15'
+                    endDate: '2026-01-15'
+                    jobDescription: example_value
+                    location:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    isInternal: true
+                    isExternal: true
+                    postedOn: '2026-01-15T10:30:00Z'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  parameters:
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: The zero-based index of the first object in a response collection.
+      schema:
+        type: integer
+        default: 0
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: The maximum number of objects in a single response.
+      schema:
+        type: integer
+        default: 20
+        maximum: 100
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the resource.
+      schema:
+        type: string
+    search:
+      name: search
+      in: query
+      required: false
+      description: Searches resources by name. The search is case-insensitive.
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: example_value
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+          example: []
+    JobPosting:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        title:
+          type: string
+          description: The title of the job posting.
+          example: Example Title
+        jobRequisition:
+          $ref: '#/components/schemas/ResourceReference'
+        startDate:
+          type: string
+          format: date
+          example: '2026-01-15'
+        endDate:
+          type: string
+          format: date
+          example: '2026-01-15'
+        jobDescription:
+          type: string
+          example: example_value
+        location:
+          $ref: '#/components/schemas/ResourceReference'
+        isInternal:
+          type: boolean
+          example: true
+        isExternal:
+          type: boolean
+          example: true
+        postedOn:
+          type: string
+          format: date-time
+          example: '2026-01-15T10:30:00Z'
+    ResourceReference:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        href:
+          type: string
+          format: uri
+          example: https://www.example.com
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
+          tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
+          scopes:
+            r_absence: Read absence data
+            w_absence: Write absence data

@@ -1,0 +1,254 @@
+openapi: 3.1.0
+info:
+  title: Workday Absence Management Absence Types Job Requisitions API
+  description: Absence Management API for managing leave balances, time-off requests, leaves of absence, and eligible absence types for workers.
+  version: v1
+  contact:
+    name: Workday Support
+    email: support@workday.com
+    url: https://www.workday.com/en-us/customer-service/support.html
+  license:
+    name: Proprietary
+    url: https://www.workday.com/en-us/legal.html
+servers:
+- url: https://wd2-impl-services1.workday.com/ccx/api/absenceManagement/v1/{tenant}
+  description: Workday REST API Server
+  variables:
+    tenant:
+      default: tenant_name
+      description: The Workday tenant identifier
+security:
+- OAuth2:
+  - r_absence
+  - w_absence
+tags:
+- name: Job Requisitions
+  description: Endpoints for managing job requisitions.
+paths:
+  /jobRequisitions:
+    get:
+      operationId: getJobRequisitions
+      summary: Get Job Requisitions
+      description: Returns a collection of job requisitions.
+      tags:
+      - Job Requisitions
+      parameters:
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: Successful response containing job requisitions.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/JobRequisition'
+                  total:
+                    type: integer
+              examples:
+                Getjobrequisitions200Example:
+                  summary: Default getJobRequisitions 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      requisitionNumber: example_value
+                      jobTitle: example_value
+                      status: example_value
+                      numberOfOpenings: 10
+                      createdOn: '2026-01-15T10:30:00Z'
+                      targetHireDate: '2026-01-15'
+                    total: 10
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /jobRequisitions/{ID}:
+    get:
+      operationId: getJobRequisitionById
+      summary: Get Job Requisition by Id
+      description: Returns details for a specific job requisition.
+      tags:
+      - Job Requisitions
+      parameters:
+      - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          description: Successful response containing job requisition details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobRequisition'
+              examples:
+                Getjobrequisitionbyid200Example:
+                  summary: Default getJobRequisitionById 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    descriptor: example_value
+                    requisitionNumber: example_value
+                    jobTitle: example_value
+                    jobProfile:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    supervisoryOrganization:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    hiringManager:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    recruiter:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    status: example_value
+                    numberOfOpenings: 10
+                    createdOn: '2026-01-15T10:30:00Z'
+                    targetHireDate: '2026-01-15'
+                    location:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  parameters:
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: The zero-based index of the first object in a response collection.
+      schema:
+        type: integer
+        default: 0
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: The maximum number of objects in a single response.
+      schema:
+        type: integer
+        default: 20
+        maximum: 100
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the resource.
+      schema:
+        type: string
+    search:
+      name: search
+      in: query
+      required: false
+      description: Searches resources by name. The search is case-insensitive.
+      schema:
+        type: string
+  schemas:
+    JobRequisition:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        requisitionNumber:
+          type: string
+          example: example_value
+        jobTitle:
+          type: string
+          example: example_value
+        jobProfile:
+          $ref: '#/components/schemas/ResourceReference'
+        supervisoryOrganization:
+          $ref: '#/components/schemas/ResourceReference'
+        hiringManager:
+          $ref: '#/components/schemas/ResourceReference'
+        recruiter:
+          $ref: '#/components/schemas/ResourceReference'
+        status:
+          type: string
+          description: The status of the requisition (e.g., Open, Filled, Closed).
+          example: example_value
+        numberOfOpenings:
+          type: integer
+          example: 10
+        createdOn:
+          type: string
+          format: date-time
+          example: '2026-01-15T10:30:00Z'
+        targetHireDate:
+          type: string
+          format: date
+          example: '2026-01-15'
+        location:
+          $ref: '#/components/schemas/ResourceReference'
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: example_value
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+          example: []
+    ResourceReference:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        href:
+          type: string
+          format: uri
+          example: https://www.example.com
+  responses:
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
+          tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
+          scopes:
+            r_absence: Read absence data
+            w_absence: Write absence data

@@ -1,0 +1,260 @@
+openapi: 3.1.0
+info:
+  title: Workday Absence Management Absence Types Time Clock API
+  description: Absence Management API for managing leave balances, time-off requests, leaves of absence, and eligible absence types for workers.
+  version: v1
+  contact:
+    name: Workday Support
+    email: support@workday.com
+    url: https://www.workday.com/en-us/customer-service/support.html
+  license:
+    name: Proprietary
+    url: https://www.workday.com/en-us/legal.html
+servers:
+- url: https://wd2-impl-services1.workday.com/ccx/api/absenceManagement/v1/{tenant}
+  description: Workday REST API Server
+  variables:
+    tenant:
+      default: tenant_name
+      description: The Workday tenant identifier
+security:
+- OAuth2:
+  - r_absence
+  - w_absence
+tags:
+- name: Time Clock
+  description: Endpoints for managing time clock events.
+paths:
+  /workers/{ID}/timeClockEvents:
+    get:
+      operationId: getTimeClockEvents
+      summary: Get Time Clock Events
+      description: Returns time clock events for a worker.
+      tags:
+      - Time Clock
+      parameters:
+      - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
+      - name: fromDate
+        in: query
+        description: Filter events from this date.
+        schema:
+          type: string
+          format: date
+        example: '2026-01-15'
+      - name: toDate
+        in: query
+        description: Filter events to this date.
+        schema:
+          type: string
+          format: date
+        example: '2026-01-15'
+      responses:
+        '200':
+          description: Successful response containing time clock events.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/TimeClockEvent'
+                  total:
+                    type: integer
+              examples:
+                Gettimeclockevents200Example:
+                  summary: Default getTimeClockEvents 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      clockEventType: example_value
+                      clockEventTime: '2026-01-15T10:30:00Z'
+                      timeZone: example_value
+                    total: 10
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: createTimeClockEvent
+      summary: Create Time Clock Event
+      description: Creates a time clock event (clock in/out) for a worker.
+      tags:
+      - Time Clock
+      parameters:
+      - $ref: '#/components/parameters/ID'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TimeClockEventRequest'
+            examples:
+              CreatetimeclockeventRequestExample:
+                summary: Default createTimeClockEvent request
+                x-microcks-default: true
+                value:
+                  clockEventType:
+                    id: abc123
+                    descriptor: example_value
+                    href: https://www.example.com
+                  clockEventTime: '2026-01-15T10:30:00Z'
+                  timeZone: example_value
+      responses:
+        '201':
+          description: Time clock event created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimeClockEvent'
+              examples:
+                Createtimeclockevent201Example:
+                  summary: Default createTimeClockEvent 201 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    descriptor: example_value
+                    clockEventType: example_value
+                    clockEventTime: '2026-01-15T10:30:00Z'
+                    timeZone: example_value
+                    location:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  parameters:
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: The zero-based index of the first object in a response collection.
+      schema:
+        type: integer
+        default: 0
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: The maximum number of objects in a single response.
+      schema:
+        type: integer
+        default: 20
+        maximum: 100
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the worker.
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: The request was invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: example_value
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+          example: []
+    ResourceReference:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        href:
+          type: string
+          format: uri
+          example: https://www.example.com
+    TimeClockEvent:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        clockEventType:
+          type: string
+          description: The type of event (e.g., Clock In, Clock Out, Meal Start, Meal End).
+          example: example_value
+        clockEventTime:
+          type: string
+          format: date-time
+          example: '2026-01-15T10:30:00Z'
+        timeZone:
+          type: string
+          example: example_value
+        location:
+          $ref: '#/components/schemas/ResourceReference'
+    TimeClockEventRequest:
+      type: object
+      properties:
+        clockEventType:
+          $ref: '#/components/schemas/ResourceReference'
+        clockEventTime:
+          type: string
+          format: date-time
+          example: '2026-01-15T10:30:00Z'
+        timeZone:
+          type: string
+          example: example_value
+      required:
+      - clockEventType
+      - clockEventTime
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
+          tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
+          scopes:
+            r_absence: Read absence data
+            w_absence: Write absence data

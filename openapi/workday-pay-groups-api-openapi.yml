@@ -1,9 +1,7 @@
 openapi: 3.1.0
 info:
-  title: Workday Payroll API
-  description: >-
-    Payroll API for managing pay groups, pay group details, tax rates, payroll
-    inputs, and pay components.
+  title: Workday Absence Management Absence Types Pay Groups API
+  description: Absence Management API for managing leave balances, time-off requests, leaves of absence, and eligible absence types for workers.
   version: v1
   contact:
     name: Workday Support
@@ -13,7 +11,7 @@ info:
     name: Proprietary
     url: https://www.workday.com/en-us/legal.html
 servers:
-- url: https://wd2-impl-services1.workday.com/ccx/api/payroll/v1/{tenant}
+- url: https://wd2-impl-services1.workday.com/ccx/api/absenceManagement/v1/{tenant}
   description: Workday REST API Server
   variables:
     tenant:
@@ -21,8 +19,11 @@ servers:
       description: The Workday tenant identifier
 security:
 - OAuth2:
-  - r_payroll
-  - w_payroll
+  - r_absence
+  - w_absence
+tags:
+- name: Pay Groups
+  description: Endpoints for managing pay groups and pay periods.
 paths:
   /payGroups:
     get:
@@ -153,119 +154,16 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
-  /workers/{ID}/payrollInputs:
-    get:
-      operationId: getPayrollInputs
-      summary: Get Payroll Inputs
-      description: Returns payroll inputs for a worker.
-      tags:
-      - Payroll Inputs
-      parameters:
-      - $ref: '#/components/parameters/ID'
-      - $ref: '#/components/parameters/limit'
-      - $ref: '#/components/parameters/offset'
-      responses:
-        '200':
-          description: Successful response containing payroll inputs.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  data:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/PayrollInput'
-                  total:
-                    type: integer
-              examples:
-                Getpayrollinputs200Example:
-                  summary: Default getPayrollInputs 200 response
-                  x-microcks-default: true
-                  value:
-                    data:
-                    - id: abc123
-                      descriptor: example_value
-                      inputType: example_value
-                      amount: 42.5
-                      startDate: '2026-01-15'
-                      endDate: '2026-01-15'
-                      comment: example_value
-                    total: 10
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
-      x-microcks-operation:
-        delay: 0
-        dispatcher: FALLBACK
-  /workers/{ID}/paySlips:
-    get:
-      operationId: getPaySlips
-      summary: Get Pay Slips
-      description: Returns pay slips for a worker.
-      tags:
-      - Pay Slips
-      parameters:
-      - $ref: '#/components/parameters/ID'
-      - $ref: '#/components/parameters/limit'
-      - $ref: '#/components/parameters/offset'
-      responses:
-        '200':
-          description: Successful response containing pay slips.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  data:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/PaySlip'
-                  total:
-                    type: integer
-              examples:
-                Getpayslips200Example:
-                  summary: Default getPaySlips 200 response
-                  x-microcks-default: true
-                  value:
-                    data:
-                    - id: abc123
-                      descriptor: example_value
-                      payPeriodStartDate: '2026-01-15'
-                      payPeriodEndDate: '2026-01-15'
-                      payDate: '2026-01-15'
-                      grossPay: 42.5
-                      netPay: 42.5
-                      totalDeductions: 42.5
-                      totalTaxes: 42.5
-                    total: 10
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
-      x-microcks-operation:
-        delay: 0
-        dispatcher: FALLBACK
 components:
-  securitySchemes:
-    OAuth2:
-      type: oauth2
-      flows:
-        authorizationCode:
-          authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
-          tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
-          scopes:
-            r_payroll: Read payroll data
-            w_payroll: Write payroll data
   parameters:
-    ID:
-      name: ID
-      in: path
-      required: true
-      description: The Workday ID of the resource.
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: The zero-based index of the first object in a response collection.
       schema:
-        type: string
+        type: integer
+        default: 0
     limit:
       name: limit
       in: query
@@ -275,14 +173,13 @@ components:
         type: integer
         default: 20
         maximum: 100
-    offset:
-      name: offset
-      in: query
-      required: false
-      description: The zero-based index of the first object in a response collection.
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the resource.
       schema:
-        type: integer
-        default: 0
+        type: string
   schemas:
     PayGroup:
       type: object
@@ -305,6 +202,22 @@ components:
         isActive:
           type: boolean
           example: true
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: example_value
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+          example: []
     PayGroupDetail:
       type: object
       properties:
@@ -329,78 +242,6 @@ components:
         payRunStatus:
           type: string
           example: example_value
-    PayrollInput:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        descriptor:
-          type: string
-          example: example_value
-        inputType:
-          type: string
-          example: example_value
-        payComponent:
-          $ref: '#/components/schemas/ResourceReference'
-        amount:
-          type: number
-          format: double
-          example: 42.5
-        currency:
-          $ref: '#/components/schemas/ResourceReference'
-        startDate:
-          type: string
-          format: date
-          example: '2026-01-15'
-        endDate:
-          type: string
-          format: date
-          example: '2026-01-15'
-        comment:
-          type: string
-          example: example_value
-    PaySlip:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        descriptor:
-          type: string
-          example: example_value
-        payPeriodStartDate:
-          type: string
-          format: date
-          example: '2026-01-15'
-        payPeriodEndDate:
-          type: string
-          format: date
-          example: '2026-01-15'
-        payDate:
-          type: string
-          format: date
-          example: '2026-01-15'
-        grossPay:
-          type: number
-          format: double
-          example: 42.5
-        netPay:
-          type: number
-          format: double
-          example: 42.5
-        totalDeductions:
-          type: number
-          format: double
-          example: 42.5
-        totalTaxes:
-          type: number
-          format: double
-          example: 42.5
-        currency:
-          $ref: '#/components/schemas/ResourceReference'
-        payGroup:
-          $ref: '#/components/schemas/ResourceReference'
     ResourceReference:
       type: object
       properties:
@@ -414,22 +255,6 @@ components:
           type: string
           format: uri
           example: https://www.example.com
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          example: example_value
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              error:
-                type: string
-              field:
-                type: string
-          example: []
   responses:
     Unauthorized:
       description: Authentication credentials were missing or invalid.
@@ -443,10 +268,13 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-tags:
-- name: Pay Groups
-  description: Endpoints for managing pay groups and pay periods.
-- name: Payroll Inputs
-  description: Endpoints for managing payroll inputs.
-- name: Pay Slips
-  description: Endpoints for accessing pay slips.
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
+          tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
+          scopes:
+            r_absence: Read absence data
+            w_absence: Write absence data

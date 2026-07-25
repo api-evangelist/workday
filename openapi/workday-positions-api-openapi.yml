@@ -1,0 +1,254 @@
+openapi: 3.1.0
+info:
+  title: Workday Absence Management Absence Types Positions API
+  description: Absence Management API for managing leave balances, time-off requests, leaves of absence, and eligible absence types for workers.
+  version: v1
+  contact:
+    name: Workday Support
+    email: support@workday.com
+    url: https://www.workday.com/en-us/customer-service/support.html
+  license:
+    name: Proprietary
+    url: https://www.workday.com/en-us/legal.html
+servers:
+- url: https://wd2-impl-services1.workday.com/ccx/api/absenceManagement/v1/{tenant}
+  description: Workday REST API Server
+  variables:
+    tenant:
+      default: tenant_name
+      description: The Workday tenant identifier
+security:
+- OAuth2:
+  - r_absence
+  - w_absence
+tags:
+- name: Positions
+  description: Endpoints for managing positions.
+paths:
+  /positions:
+    get:
+      operationId: getPositions
+      summary: Get Positions
+      description: Returns a collection of positions.
+      tags:
+      - Positions
+      parameters:
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: Successful response containing positions.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Position'
+                  total:
+                    type: integer
+              examples:
+                Getpositions200Example:
+                  summary: Default getPositions 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      positionID: '500123'
+                      isFilled: true
+                      isAvailableForRecruit: true
+                      isClosed: true
+                    total: 10
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /positions/{ID}:
+    get:
+      operationId: getPositionById
+      summary: Get Position by Id
+      description: Returns detailed information for a specific position.
+      tags:
+      - Positions
+      parameters:
+      - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          description: Successful response containing position details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Position'
+              examples:
+                Getpositionbyid200Example:
+                  summary: Default getPositionById 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    descriptor: example_value
+                    positionID: '500123'
+                    isFilled: true
+                    isAvailableForRecruit: true
+                    isClosed: true
+                    jobProfile:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    supervisoryOrganization:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    worker:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    positionTimeType:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    workerType:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    location:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  parameters:
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: The zero-based index of the first object in a response collection.
+      schema:
+        type: integer
+        default: 0
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: The maximum number of objects in a single response. The default is 20. The maximum is 100.
+      schema:
+        type: integer
+        default: 20
+        maximum: 100
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the resource.
+      schema:
+        type: string
+    search:
+      name: search
+      in: query
+      required: false
+      description: Searches resources by name. The search is case-insensitive.
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: example_value
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+          example: []
+    ResourceReference:
+      type: object
+      description: A reference to a Workday resource.
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        href:
+          type: string
+          format: uri
+          example: https://www.example.com
+    Position:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The Workday ID of the position.
+          example: abc123
+        descriptor:
+          type: string
+          description: A display descriptor for the position.
+          example: example_value
+        positionID:
+          type: string
+          description: The position reference ID.
+          example: '500123'
+        isFilled:
+          type: boolean
+          description: Whether the position is currently filled.
+          example: true
+        isAvailableForRecruit:
+          type: boolean
+          description: Whether the position is available for recruiting.
+          example: true
+        isClosed:
+          type: boolean
+          description: Whether the position has been closed.
+          example: true
+        jobProfile:
+          $ref: '#/components/schemas/ResourceReference'
+        supervisoryOrganization:
+          $ref: '#/components/schemas/ResourceReference'
+        worker:
+          $ref: '#/components/schemas/ResourceReference'
+        positionTimeType:
+          $ref: '#/components/schemas/ResourceReference'
+        workerType:
+          $ref: '#/components/schemas/ResourceReference'
+        location:
+          $ref: '#/components/schemas/ResourceReference'
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
+          tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
+          scopes:
+            r_absence: Read absence data
+            w_absence: Write absence data

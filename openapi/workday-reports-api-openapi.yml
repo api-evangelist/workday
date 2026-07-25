@@ -1,10 +1,7 @@
 openapi: 3.1.0
 info:
-  title: Workday Report-as-a-Service API
-  description: >-
-    Report-as-a-Service (RaaS) exposes custom reports as RESTful web services,
-    enabling programmatic access to report data. Supports query parameters for
-    filtering and returns data in multiple formats including JSON, CSV, and XML.
+  title: Workday Absence Management Absence Types Reports API
+  description: Absence Management API for managing leave balances, time-off requests, leaves of absence, and eligible absence types for workers.
   version: v1
   contact:
     name: Workday Support
@@ -14,25 +11,25 @@ info:
     name: Proprietary
     url: https://www.workday.com/en-us/legal.html
 servers:
-- url: https://wd2-impl-services1.workday.com/ccx/service/customreport2/{tenant}
-  description: Workday RaaS Server
+- url: https://wd2-impl-services1.workday.com/ccx/api/absenceManagement/v1/{tenant}
+  description: Workday REST API Server
   variables:
     tenant:
       default: tenant_name
       description: The Workday tenant identifier
 security:
 - OAuth2:
-  - r_reports
-- BasicAuth: []
+  - r_absence
+  - w_absence
+tags:
+- name: Reports
+  description: Endpoints for accessing custom report data via RaaS.
 paths:
   /{reportOwner}/{reportName}:
     get:
       operationId: getCustomReport
       summary: Get Custom Report Data
-      description: >-
-        Returns data from a custom report published as a web service.
-        The report owner and report name form the path to the report.
-        Supports filtering via report-specific prompt parameters.
+      description: Returns data from a custom report published as a web service. The report owner and report name form the path to the report. Supports filtering via report-specific prompt parameters.
       tags:
       - Reports
       parameters:
@@ -52,9 +49,7 @@ paths:
         example: example_value
       - name: format
         in: query
-        description: >-
-          The output format for the report data. Supported values are json,
-          csv, simplexml, and gdata.
+        description: The output format for the report data. Supported values are json, csv, simplexml, and gdata.
         schema:
           type: string
           enum:
@@ -132,19 +127,6 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  securitySchemes:
-    OAuth2:
-      type: oauth2
-      flows:
-        authorizationCode:
-          authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
-          tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
-          scopes:
-            r_reports: Read report data
-    BasicAuth:
-      type: http
-      scheme: basic
-      description: Basic authentication with Workday ISU credentials.
   schemas:
     ReportResponse:
       type: object
@@ -154,27 +136,10 @@ components:
           items:
             type: object
             additionalProperties: true
-            description: >-
-              A report row with column names as keys. The actual fields depend
-              on the report definition.
+            description: A report row with column names as keys. The actual fields depend on the report definition.
           description: The array of report data rows.
           example: []
-      description: >-
-        The report response containing an array of report entries. Column
-        names correspond to the report field definitions.
-    ResourceReference:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        descriptor:
-          type: string
-          example: example_value
-        href:
-          type: string
-          format: uri
-          example: https://www.example.com
+      description: The report response containing an array of report entries. Column names correspond to the report field definitions.
     ErrorResponse:
       type: object
       properties:
@@ -204,6 +169,13 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-tags:
-- name: Reports
-  description: Endpoints for accessing custom report data via RaaS.
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
+          tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
+          scopes:
+            r_absence: Read absence data
+            w_absence: Write absence data

@@ -1,0 +1,395 @@
+openapi: 3.1.0
+info:
+  title: Workday Absence Management Absence Types Talent Profiles API
+  description: Absence Management API for managing leave balances, time-off requests, leaves of absence, and eligible absence types for workers.
+  version: v1
+  contact:
+    name: Workday Support
+    email: support@workday.com
+    url: https://www.workday.com/en-us/customer-service/support.html
+  license:
+    name: Proprietary
+    url: https://www.workday.com/en-us/legal.html
+servers:
+- url: https://wd2-impl-services1.workday.com/ccx/api/absenceManagement/v1/{tenant}
+  description: Workday REST API Server
+  variables:
+    tenant:
+      default: tenant_name
+      description: The Workday tenant identifier
+security:
+- OAuth2:
+  - r_absence
+  - w_absence
+tags:
+- name: Talent Profiles
+  description: Endpoints for managing talent profiles and skills.
+paths:
+  /workers/{ID}/talentProfile:
+    get:
+      operationId: getTalentProfile
+      summary: Get Talent Profile
+      description: Returns the talent profile for a worker.
+      tags:
+      - Talent Profiles
+      parameters:
+      - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          description: Successful response containing the talent profile.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TalentProfile'
+              examples:
+                Gettalentprofile200Example:
+                  summary: Default getTalentProfile 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    descriptor: example_value
+                    worker:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    jobHistory:
+                    - id: abc123
+                      company: example_value
+                      jobTitle: example_value
+                      startDate: '2026-01-15'
+                      endDate: '2026-01-15'
+                      description: A sample description.
+                    education:
+                    - id: abc123
+                      school: example_value
+                      fieldOfStudy: example_value
+                      startDate: '2026-01-15'
+                      endDate: '2026-01-15'
+                    skills:
+                    - id: abc123
+                      descriptor: example_value
+                      name: Example Title
+                    certifications:
+                    - id: abc123
+                      descriptor: example_value
+                      name: Example Title
+                      issuer: example_value
+                      issuedDate: '2026-01-15'
+                      expirationDate: '2026-01-15'
+                    languages:
+                    - id: abc123
+                      descriptor: example_value
+                      isNative: true
+                    careerInterests: example_value
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /workers/{ID}/skills:
+    get:
+      operationId: getWorkerSkills
+      summary: Get Worker Skills
+      description: Returns skills for a worker.
+      tags:
+      - Talent Profiles
+      parameters:
+      - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Successful response containing worker skills.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Skill'
+                  total:
+                    type: integer
+              examples:
+                Getworkerskills200Example:
+                  summary: Default getWorkerSkills 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      name: Example Title
+                    total: 10
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /workers/{ID}/certifications:
+    get:
+      operationId: getWorkerCertifications
+      summary: Get Worker Certifications
+      description: Returns certifications for a worker.
+      tags:
+      - Talent Profiles
+      parameters:
+      - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Successful response containing certifications.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Certification'
+                  total:
+                    type: integer
+              examples:
+                Getworkercertifications200Example:
+                  summary: Default getWorkerCertifications 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      name: Example Title
+                      issuer: example_value
+                      issuedDate: '2026-01-15'
+                      expirationDate: '2026-01-15'
+                    total: 10
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  parameters:
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: The zero-based index of the first object in a response collection.
+      schema:
+        type: integer
+        default: 0
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: The maximum number of objects in a single response.
+      schema:
+        type: integer
+        default: 20
+        maximum: 100
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the resource.
+      schema:
+        type: string
+  schemas:
+    Language:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        language:
+          $ref: '#/components/schemas/ResourceReference'
+        proficiency:
+          $ref: '#/components/schemas/ResourceReference'
+        isNative:
+          type: boolean
+          example: true
+    Skill:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        name:
+          type: string
+          example: Example Title
+        category:
+          $ref: '#/components/schemas/ResourceReference'
+        proficiencyLevel:
+          $ref: '#/components/schemas/ResourceReference'
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: example_value
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+          example: []
+    JobHistoryEntry:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        company:
+          type: string
+          example: example_value
+        jobTitle:
+          type: string
+          example: example_value
+        startDate:
+          type: string
+          format: date
+          example: '2026-01-15'
+        endDate:
+          type: string
+          format: date
+          example: '2026-01-15'
+        description:
+          type: string
+          example: A sample description.
+    EducationEntry:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        school:
+          type: string
+          example: example_value
+        degree:
+          $ref: '#/components/schemas/ResourceReference'
+        fieldOfStudy:
+          type: string
+          example: example_value
+        startDate:
+          type: string
+          format: date
+          example: '2026-01-15'
+        endDate:
+          type: string
+          format: date
+          example: '2026-01-15'
+    ResourceReference:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        href:
+          type: string
+          format: uri
+          example: https://www.example.com
+    Certification:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        name:
+          type: string
+          example: Example Title
+        issuer:
+          type: string
+          example: example_value
+        issuedDate:
+          type: string
+          format: date
+          example: '2026-01-15'
+        expirationDate:
+          type: string
+          format: date
+          example: '2026-01-15'
+    TalentProfile:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        worker:
+          $ref: '#/components/schemas/ResourceReference'
+        jobHistory:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobHistoryEntry'
+          example: []
+        education:
+          type: array
+          items:
+            $ref: '#/components/schemas/EducationEntry'
+          example: []
+        skills:
+          type: array
+          items:
+            $ref: '#/components/schemas/Skill'
+          example: []
+        certifications:
+          type: array
+          items:
+            $ref: '#/components/schemas/Certification'
+          example: []
+        languages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Language'
+          example: []
+        careerInterests:
+          type: string
+          example: example_value
+  responses:
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
+          tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
+          scopes:
+            r_absence: Read absence data
+            w_absence: Write absence data

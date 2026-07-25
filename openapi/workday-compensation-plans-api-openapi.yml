@@ -1,0 +1,361 @@
+openapi: 3.1.0
+info:
+  title: Workday Absence Management Absence Types Compensation Plans API
+  description: Absence Management API for managing leave balances, time-off requests, leaves of absence, and eligible absence types for workers.
+  version: v1
+  contact:
+    name: Workday Support
+    email: support@workday.com
+    url: https://www.workday.com/en-us/customer-service/support.html
+  license:
+    name: Proprietary
+    url: https://www.workday.com/en-us/legal.html
+servers:
+- url: https://wd2-impl-services1.workday.com/ccx/api/absenceManagement/v1/{tenant}
+  description: Workday REST API Server
+  variables:
+    tenant:
+      default: tenant_name
+      description: The Workday tenant identifier
+security:
+- OAuth2:
+  - r_absence
+  - w_absence
+tags:
+- name: Compensation Plans
+  description: Endpoints for managing compensation plans and grades.
+paths:
+  /workers/{ID}/compensationPlans:
+    get:
+      operationId: getCompensationPlans
+      summary: Get Compensation Plans
+      description: Returns compensation plans assigned to a worker.
+      tags:
+      - Compensation Plans
+      parameters:
+      - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Successful response containing compensation plans.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CompensationPlan'
+                  total:
+                    type: integer
+              examples:
+                Getcompensationplans200Example:
+                  summary: Default getCompensationPlans 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      compensationPlanType: example_value
+                      amount: 42.5
+                      effectiveDate: '2026-01-15'
+                    total: 10
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /workers/{ID}/requestCompensationChange:
+    post:
+      operationId: requestCompensationChange
+      summary: Request Compensation Change
+      description: Initiates a compensation change request for a worker.
+      tags:
+      - Compensation Plans
+      parameters:
+      - $ref: '#/components/parameters/ID'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CompensationChangeRequest'
+            examples:
+              RequestcompensationchangeRequestExample:
+                summary: Default requestCompensationChange request
+                x-microcks-default: true
+                value:
+                  effectiveDate: '2026-01-15'
+                  reason:
+                    id: abc123
+                    descriptor: example_value
+                    href: https://www.example.com
+                  proposedCompensation:
+                    amount: 42.5
+                    currency:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    frequency:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    compensationGrade:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    compensationStep:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+      responses:
+        '201':
+          description: Compensation change request created successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  descriptor:
+                    type: string
+              examples:
+                Requestcompensationchange201Example:
+                  summary: Default requestCompensationChange 201 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    descriptor: example_value
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /compensationGrades:
+    get:
+      operationId: getCompensationGrades
+      summary: Get Compensation Grades
+      description: Returns a collection of compensation grades.
+      tags:
+      - Compensation Plans
+      parameters:
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Successful response containing compensation grades.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CompensationGrade'
+                  total:
+                    type: integer
+              examples:
+                Getcompensationgrades200Example:
+                  summary: Default getCompensationGrades 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      name: Example Title
+                      isInactive: true
+                      minimumAmount: 42.5
+                      midpointAmount: 42.5
+                      maximumAmount: 42.5
+                    total: 10
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  parameters:
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: The zero-based index of the first object in a response collection.
+      schema:
+        type: integer
+        default: 0
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the resource.
+      schema:
+        type: string
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: The maximum number of objects in a single response.
+      schema:
+        type: integer
+        default: 20
+        maximum: 100
+  schemas:
+    CompensationPlan:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The Workday ID of the compensation plan.
+          example: abc123
+        descriptor:
+          type: string
+          description: A display descriptor for the plan.
+          example: example_value
+        compensationPlanType:
+          type: string
+          description: The type of compensation plan (e.g., Salary, Allowance, Bonus).
+          example: example_value
+        compensationPlan:
+          $ref: '#/components/schemas/ResourceReference'
+        amount:
+          type: number
+          format: double
+          description: The compensation amount.
+          example: 42.5
+        currency:
+          $ref: '#/components/schemas/ResourceReference'
+        frequency:
+          $ref: '#/components/schemas/ResourceReference'
+        effectiveDate:
+          type: string
+          format: date
+          example: '2026-01-15'
+        compensationGrade:
+          $ref: '#/components/schemas/ResourceReference'
+        compensationStep:
+          $ref: '#/components/schemas/ResourceReference'
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: example_value
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+          example: []
+    CompensationChangeRequest:
+      type: object
+      properties:
+        effectiveDate:
+          type: string
+          format: date
+          description: The effective date of the compensation change.
+          example: '2026-01-15'
+        reason:
+          $ref: '#/components/schemas/ResourceReference'
+        proposedCompensation:
+          type: object
+          properties:
+            amount:
+              type: number
+              format: double
+            currency:
+              $ref: '#/components/schemas/ResourceReference'
+            frequency:
+              $ref: '#/components/schemas/ResourceReference'
+            compensationGrade:
+              $ref: '#/components/schemas/ResourceReference'
+            compensationStep:
+              $ref: '#/components/schemas/ResourceReference'
+          example: example_value
+      required:
+      - effectiveDate
+      - reason
+    CompensationGrade:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        name:
+          type: string
+          example: Example Title
+        isInactive:
+          type: boolean
+          example: true
+        compensationGradeProfile:
+          $ref: '#/components/schemas/ResourceReference'
+        minimumAmount:
+          type: number
+          format: double
+          example: 42.5
+        midpointAmount:
+          type: number
+          format: double
+          example: 42.5
+        maximumAmount:
+          type: number
+          format: double
+          example: 42.5
+        currency:
+          $ref: '#/components/schemas/ResourceReference'
+    ResourceReference:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        href:
+          type: string
+          format: uri
+          example: https://www.example.com
+  responses:
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: The request was invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
+          tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
+          scopes:
+            r_absence: Read absence data
+            w_absence: Write absence data

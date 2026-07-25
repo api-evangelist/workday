@@ -1,0 +1,350 @@
+openapi: 3.1.0
+info:
+  title: Workday Absence Management Absence Types Time Off API
+  description: Absence Management API for managing leave balances, time-off requests, leaves of absence, and eligible absence types for workers.
+  version: v1
+  contact:
+    name: Workday Support
+    email: support@workday.com
+    url: https://www.workday.com/en-us/customer-service/support.html
+  license:
+    name: Proprietary
+    url: https://www.workday.com/en-us/legal.html
+servers:
+- url: https://wd2-impl-services1.workday.com/ccx/api/absenceManagement/v1/{tenant}
+  description: Workday REST API Server
+  variables:
+    tenant:
+      default: tenant_name
+      description: The Workday tenant identifier
+security:
+- OAuth2:
+  - r_absence
+  - w_absence
+tags:
+- name: Time Off
+  description: Endpoints for managing time-off requests and entries.
+paths:
+  /workers/{ID}/requestTimeOff:
+    post:
+      operationId: requestTimeOff
+      summary: Request Time Off
+      description: Submits a time-off request for a worker.
+      tags:
+      - Time Off
+      parameters:
+      - $ref: '#/components/parameters/ID'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TimeOffRequest'
+            examples:
+              RequesttimeoffRequestExample:
+                summary: Default requestTimeOff request
+                x-microcks-default: true
+                value:
+                  days:
+                  - date: '2026-01-15'
+                    dailyQuantity: 42.5
+                    comment: example_value
+      responses:
+        '201':
+          description: Time-off request created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimeOffEntry'
+              examples:
+                Requesttimeoff201Example:
+                  summary: Default requestTimeOff 201 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    descriptor: example_value
+                    date: '2026-01-15'
+                    dailyQuantity: 42.5
+                    unit:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    timeOffType:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    status: example_value
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /workers/{ID}/timeOffEntries:
+    get:
+      operationId: getTimeOffEntries
+      summary: Get Time Off Entries
+      description: Returns time-off entries for a worker.
+      tags:
+      - Time Off
+      parameters:
+      - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
+      - name: fromDate
+        in: query
+        description: Filters entries on or after this date.
+        schema:
+          type: string
+          format: date
+        example: '2026-01-15'
+      - name: toDate
+        in: query
+        description: Filters entries on or before this date.
+        schema:
+          type: string
+          format: date
+        example: '2026-01-15'
+      responses:
+        '200':
+          description: Successful response containing time-off entries.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/TimeOffEntry'
+                  total:
+                    type: integer
+              examples:
+                Gettimeoffentries200Example:
+                  summary: Default getTimeOffEntries 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      date: '2026-01-15'
+                      dailyQuantity: 42.5
+                      status: example_value
+                    total: 10
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /workers/{ID}/timeOffBalances:
+    get:
+      operationId: getTimeOffBalances
+      summary: Get Time Off Balances
+      description: Returns time-off plan balances for a worker.
+      tags:
+      - Time Off
+      parameters:
+      - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Successful response containing time-off balances.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/TimeOffBalance'
+                  total:
+                    type: integer
+              examples:
+                Gettimeoffbalances200Example:
+                  summary: Default getTimeOffBalances 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      balance: 42.5
+                      unit: example_value
+                      asOfDate: '2026-01-15'
+                    total: 10
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  parameters:
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: The zero-based index of the first object in a response collection.
+      schema:
+        type: integer
+        default: 0
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: The maximum number of objects in a single response.
+      schema:
+        type: integer
+        default: 20
+        maximum: 100
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the worker.
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: The request was invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    TimeOffEntry:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The Workday ID of the time-off entry.
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        date:
+          type: string
+          format: date
+          description: The date of the time off.
+          example: '2026-01-15'
+        dailyQuantity:
+          type: number
+          format: double
+          description: The quantity of time off taken.
+          example: 42.5
+        unit:
+          $ref: '#/components/schemas/ResourceReference'
+        timeOffType:
+          $ref: '#/components/schemas/ResourceReference'
+        status:
+          type: string
+          description: The status of the time-off entry.
+          example: example_value
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: example_value
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+          example: []
+    TimeOffBalance:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        timeOffPlan:
+          $ref: '#/components/schemas/ResourceReference'
+        balance:
+          type: number
+          format: double
+          description: The current balance.
+          example: 42.5
+        unit:
+          type: string
+          description: The unit of the balance (e.g., Hours, Days).
+          example: example_value
+        asOfDate:
+          type: string
+          format: date
+          description: The effective date of the balance.
+          example: '2026-01-15'
+    ResourceReference:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        href:
+          type: string
+          format: uri
+          example: https://www.example.com
+    TimeOffRequest:
+      type: object
+      properties:
+        days:
+          type: array
+          items:
+            type: object
+            properties:
+              date:
+                type: string
+                format: date
+                description: The date for time off.
+              dailyQuantity:
+                type: number
+                format: double
+                description: The quantity of time off for the day.
+              comment:
+                type: string
+                description: A comment for the time-off day.
+              timeOffType:
+                $ref: '#/components/schemas/ResourceReference'
+          description: The list of days included in the time-off request.
+          example: []
+      required:
+      - days
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
+          tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
+          scopes:
+            r_absence: Read absence data
+            w_absence: Write absence data
