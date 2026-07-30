@@ -1,10 +1,23 @@
 aid: workday
+accessModel:
+  pricing: enterprise
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Enterprise · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.19'
 type: Index
 name: Workday
 description: Collection of Workday REST and SOAP APIs for human capital management,
   financial management, enterprise planning, analytics, and platform extensibility.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/workday.png
 url: https://raw.githubusercontent.com/api-evangelist/workday/refs/heads/main/apis.yml
 created: '2024-01-15'
 modified: '2026-06-20'
@@ -15,282 +28,11 @@ tags:
 - HCM
 - SaaS
 apis:
-- aid: workday:hcm-api
-  name: Workday HCM API
-  description: Human Capital Management API for managing workforce data, recruiting,
-    talent management, and payroll. Provides RESTful endpoints for core HR operations.
-  image: https://www.workday.com/content/dam/web/images/logo/workday-logo.svg
-  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
-  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
-  tags:
-  - Human Capital Management
-  - Human Resources
-  - Payroll
-  - Talent Management
-  - Workforce
-  properties:
-  - type: Documentation
-    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
-  - type: OpenAPI
-    url: openapi/hcm.yml
-  - type: JSONSchema
-    url: json-schema/worker.json
-  - type: JSONSchema
-    url: json-schema/organization.json
-  - type: JSONLD
-    url: json-ld/hcm-context.jsonld
-  - type: Authentication
-    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - url: graphql/workday-graphql.md
-    type: GraphQL
-  contact:
-  - FN: Workday Support
-    email: support@workday.com
-    url: https://www.workday.com/en-us/customer-service/support.html
-- aid: workday:financial-management-api
-  name: Workday Financial Management API
-  description: Financial Management API for accounting, procurement, expenses, and
-    financial reporting. Enables programmatic access to financial data and workflows.
-  image: https://www.workday.com/content/dam/web/images/logo/workday-logo.svg
-  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
-  baseURL: https://wd2-impl-services1.workday.com/ccx/api/financialManagement/
-  tags:
-  - Accounting
-  - Expenses
-  - Financial Management
-  - Procurement
-  - Revenue
-  properties:
-  - type: Documentation
-    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
-  - type: OpenAPI
-    url: openapi/financialManagement.yml
-  - type: JSONLD
-    url: json-ld/financialManagement-context.jsonld
-- aid: workday:recruiting-api
-  name: Workday Recruiting API
-  description: Recruiting API for managing job postings, candidates, applications,
-    and hiring workflows. Supports interview feedback and prospect management.
-  image: https://www.workday.com/content/dam/web/images/logo/workday-logo.svg
-  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
-  baseURL: https://wd2-impl-services1.workday.com/ccx/api/recruiting/
-  tags:
-  - Applications
-  - Candidates
-  - Hiring
-  - Job Postings
-  - Recruiting
-  properties:
-  - type: Documentation
-    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
-  - type: OpenAPI
-    url: openapi/recruiting.yml
-  - type: JSONLD
-    url: json-ld/recruiting-context.jsonld
-- aid: workday:time-tracking-api
-  name: Workday Time Tracking API
-  description: Time Tracking API for managing employee time entry, timesheets, time
-    clock events, and time validations.
-  image: https://www.workday.com/content/dam/web/images/logo/workday-logo.svg
-  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
-  baseURL: https://wd2-impl-services1.workday.com/ccx/api/timeTracking/
-  tags:
-  - Absence
-  - Leave Management
-  - Time Tracking
-  - Timesheets
-  properties:
-  - type: Documentation
-    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
-  - type: OpenAPI
-    url: openapi/timeTracking.yml
-  - type: JSONLD
-    url: json-ld/timeTracking-context.jsonld
-- aid: workday:benefits-api
-  name: Workday Benefits API
-  description: Benefits API for managing employee benefits, enrollments, and coverage.
-    Provides endpoints for benefits administration workflows.
-  image: https://www.workday.com/content/dam/web/images/logo/workday-logo.svg
-  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
-  baseURL: https://wd2-impl-services1.workday.com/ccx/api/benefits/
-  tags:
-  - Benefits
-  - Coverage
-  - Enrollments
-  - Health Insurance
-  properties:
-  - type: Documentation
-    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
-  - type: OpenAPI
-    url: openapi/benefits.yml
-  - type: JSONLD
-    url: json-ld/benefits-context.jsonld
-- aid: workday:absence-management-api
-  name: Workday Absence Management API
-  description: Absence Management API for managing leave balances, time-off requests,
-    leaves of absence, and eligible absence types for workers.
-  image: https://www.workday.com/content/dam/web/images/logo/workday-logo.svg
-  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
-  baseURL: https://wd2-impl-services1.workday.com/ccx/api/absenceManagement/
-  tags:
-  - Absence Management
-  - Leave Balances
-  - Leave of Absence
-  - Time Off
-  properties:
-  - type: Documentation
-    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
-  - type: OpenAPI
-    url: openapi/absenceManagement.yml
-  - type: JSONSchema
-    url: json-schema/time-off.json
-  - type: JSONLD
-    url: json-ld/absenceManagement-context.jsonld
-- aid: workday:compensation-api
-  name: Workday Compensation API
-  description: Compensation API for managing employee compensation plans, scorecards,
-    scorecard results, and one-time payment requests.
-  image: https://www.workday.com/content/dam/web/images/logo/workday-logo.svg
-  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
-  baseURL: https://wd2-impl-services1.workday.com/ccx/api/compensation/
-  tags:
-  - Compensation
-  - One-Time Payments
-  - Pay Plans
-  - Scorecards
-  properties:
-  - type: Documentation
-    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
-  - type: OpenAPI
-    url: openapi/compensation.yml
-  - type: JSONSchema
-    url: json-schema/compensation.json
-  - type: JSONLD
-    url: json-ld/compensation-context.jsonld
-- aid: workday:payroll-api
-  name: Workday Payroll API
-  description: Payroll API for managing pay groups, pay group details, tax rates,
-    payroll inputs, and pay components.
-  image: https://www.workday.com/content/dam/web/images/logo/workday-logo.svg
-  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
-  baseURL: https://wd2-impl-services1.workday.com/ccx/api/payroll/
-  tags:
-  - Pay Components
-  - Pay Groups
-  - Payroll
-  - Tax Rates
-  properties:
-  - type: Documentation
-    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
-  - type: OpenAPI
-    url: openapi/payroll.yml
-  - type: JSONLD
-    url: json-ld/payroll-context.jsonld
-- aid: workday:person-api
-  name: Workday Person API
-  description: Person API for managing worker person data including personal information,
-    contact details, and organizational relationships.
-  image: https://www.workday.com/content/dam/web/images/logo/workday-logo.svg
-  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
-  baseURL: https://wd2-impl-services1.workday.com/ccx/api/person/
-  tags:
-  - Contact Information
-  - Employee Data
-  - Person
-  - Workers
-  properties:
-  - type: Documentation
-    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
-  - type: OpenAPI
-    url: openapi/person.yml
-  - type: JSONSchema
-    url: json-schema/worker.json
-  - type: JSONLD
-    url: json-ld/person-context.jsonld
-- aid: workday:performance-management-api
-  name: Workday Performance Management API
-  description: Performance Management API for managing performance reviews, feedback
-    badges, goals, and employee performance evaluations.
-  image: https://www.workday.com/content/dam/web/images/logo/workday-logo.svg
-  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
-  baseURL: https://wd2-impl-services1.workday.com/ccx/api/performanceManagement/
-  tags:
-  - Feedback
-  - Goals
-  - Performance Management
-  - Reviews
-  properties:
-  - type: Documentation
-    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
-  - type: OpenAPI
-    url: openapi/performanceManagement.yml
-  - type: JSONLD
-    url: json-ld/performanceManagement-context.jsonld
-- aid: workday:talent-management-api
-  name: Workday Talent Management API
-  description: Talent Management API for managing mentorships, talent profiles, career
-    development, and succession planning.
-  image: https://www.workday.com/content/dam/web/images/logo/workday-logo.svg
-  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
-  baseURL: https://wd2-impl-services1.workday.com/ccx/api/talent/
-  tags:
-  - Career Development
-  - Mentorships
-  - Succession Planning
-  - Talent Management
-  properties:
-  - type: Documentation
-    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
-  - type: OpenAPI
-    url: openapi/talent.yml
-  - type: JSONLD
-    url: json-ld/talent-context.jsonld
-- aid: workday:common-api
-  name: Workday Common API
-  description: Common API providing shared reference data, lookup values, and utility
-    endpoints used across other Workday REST API services.
-  image: https://www.workday.com/content/dam/web/images/logo/workday-logo.svg
-  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
-  baseURL: https://wd2-impl-services1.workday.com/ccx/api/common/
-  tags:
-  - Common
-  - Lookup Values
-  - Reference Data
-  - Shared Services
-  properties:
-  - type: Documentation
-    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
-  - type: OpenAPI
-    url: openapi/common.yml
-  - type: JSONLD
-    url: json-ld/common-context.jsonld
-- aid: workday:staffing-api
-  name: Workday Staffing API
-  description: Staffing API for managing organizational assignments, job profiles,
-    positions, supervisory organizations, and worker staffing events.
-  image: https://www.workday.com/content/dam/web/images/logo/workday-logo.svg
-  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
-  baseURL: https://wd2-impl-services1.workday.com/ccx/api/staffing/
-  tags:
-  - Job Profiles
-  - Organizations
-  - Positions
-  - Staffing
-  properties:
-  - type: Documentation
-    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
-  - type: OpenAPI
-    url: openapi/staffing.yml
-  - type: JSONSchema
-    url: json-schema/position.json
-  - type: JSONSchema
-    url: json-schema/organization.json
-  - type: JSONLD
-    url: json-ld/staffing-context.jsonld
 - aid: workday:strategic-sourcing-api
   name: Workday Strategic Sourcing API
-  description: Strategic Sourcing API for managing sourcing events, awards, contracts,
-    suppliers, spend categories, and procurement workflows.
+  description: >-
+    Strategic Sourcing API for managing sourcing events, awards, contracts, suppliers, spend categories,
+    and procurement workflows.
   image: https://www.workday.com/content/dam/web/images/logo/workday-logo.svg
   humanURL: https://apidocs.workdayspend.com/
   baseURL: https://api.workdayspend.com/services/
@@ -307,9 +49,10 @@ apis:
     url: https://apidocs.workdayspend.com/services/events/v1.html
 - aid: workday:soap-web-services-api
   name: Workday SOAP Web Services API
-  description: Standards-based SOAP API providing programmatic access to Workday business
-    management services with WSDL and XML Schema definitions. Covers 55 service areas
-    including Human Resources, Payroll, Benefits, and Financial Management.
+  description: >-
+    Standards-based SOAP API providing programmatic access to Workday business management services with
+    WSDL and XML Schema definitions. Covers 55 service areas including Human Resources, Payroll, Benefits,
+    and Financial Management.
   image: https://www.workday.com/content/dam/web/images/logo/workday-logo.svg
   humanURL: https://community.workday.com/api
   baseURL: https://wd2-impl-services1.workday.com/ccx/service/
@@ -323,31 +66,11 @@ apis:
     url: https://community.workday.com/api
   - type: APIReference
     url: https://community.workday.com/sites/default/files/file-hosting/productionapi/index.html
-- aid: workday:prism-analytics-api
-  name: Workday Prism Analytics API
-  description: Prism Analytics REST API for working with Workday Prism Analytics tables,
-    data change tasks, and datasets. Enables programmatic creation and management
-    of analytics data.
-  image: https://www.workday.com/content/dam/web/images/logo/workday-logo.svg
-  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
-  baseURL: https://wd2-impl-services1.workday.com/ccx/api/prismAnalytics/
-  tags:
-  - Analytics
-  - Business Intelligence
-  - Datasets
-  - Prism Analytics
-  properties:
-  - type: Documentation
-    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
-  - type: OpenAPI
-    url: openapi/prismAnalytics.yml
-  - type: JSONLD
-    url: json-ld/prismAnalytics-context.jsonld
 - aid: workday:extend-api
   name: Workday Extend API
-  description: Workday Extend platform for building custom applications that integrate
-    with Workday. Provides low-code and no-code developer tools for creating business
-    solutions.
+  description: >-
+    Workday Extend platform for building custom applications that integrate with Workday. Provides low-code
+    and no-code developer tools for creating business solutions.
   image: https://www.workday.com/content/dam/web/images/logo/workday-logo.svg
   humanURL: https://www.workday.com/en-us/products/platform-product-extensions/app-development.html
   baseURL: https://wd2-impl-services1.workday.com/ccx/api/
@@ -361,33 +84,14 @@ apis:
     url: https://www.workday.com/en-us/products/platform-product-extensions/app-development.html
   - type: GettingStarted
     url: https://developer.workday.com/about
-- aid: workday:raas-api
-  name: Workday Report-as-a-Service API
-  description: Report-as-a-Service (RaaS) exposes custom reports as RESTful web services,
-    enabling programmatic access to report data. Supports query parameters for filtering
-    and returns data in multiple formats.
-  image: https://www.workday.com/content/dam/web/images/logo/workday-logo.svg
-  humanURL: https://community.workday.com/api
-  baseURL: https://wd2-impl-services1.workday.com/ccx/service/
-  tags:
-  - Custom Reports
-  - Data Export
-  - Report as a Service
-  - Reporting
-  properties:
-  - type: Documentation
-    url: https://community.workday.com/api
-  - type: OpenAPI
-    url: openapi/raas.yml
-  - type: JSONLD
-    url: json-ld/raas-context.jsonld
 - aid: workday:adaptive-planning-api
   name: Workday Adaptive Planning API
-  description: Adaptive Planning REST and XML APIs for managing planning data, accounts,
-    dimensions, and custom reports. Supports integration with enterprise planning
-    and budgeting workflows.
+  description: >-
+    Adaptive Planning REST and XML APIs for managing planning data, accounts, dimensions, and custom reports.
+    Supports integration with enterprise planning and budgeting workflows.
   image: https://www.workday.com/content/dam/web/images/logo/workday-logo.svg
-  humanURL: https://doc.workday.com/adaptive-planning/en-us/integration/managing-data-integration/api-documentation/understanding-the-adaptive-planning-rest-api/api-methods/brk1623709249507.html
+  humanURL: >-
+    https://doc.workday.com/adaptive-planning/en-us/integration/managing-data-integration/api-documentation/understanding-the-adaptive-planning-rest-api/api-methods/brk1623709249507.html
   baseURL: https://api.adaptiveinsights.com/api/
   tags:
   - Adaptive Planning
@@ -396,27 +100,2815 @@ apis:
   - Forecasting
   properties:
   - type: Documentation
-    url: https://doc.workday.com/adaptive-planning/en-us/integration/managing-data-integration/api-documentation/understanding-the-adaptive-planning-rest-api/api-methods/brk1623709249507.html
+    url: >-
+      https://doc.workday.com/adaptive-planning/en-us/integration/managing-data-integration/api-documentation/understanding-the-adaptive-planning-rest-api/api-methods/brk1623709249507.html
   - type: ChangeLog
-    url: https://doc.workday.com/adaptive-planning/en-us/workday-adaptive-planning-documentation/integration/managing-data-integration/api-documentation/understanding-the-adaptive-planning-rest-api/vmo1623708512342.html
-- aid: workday:wql-api
-  name: Workday WQL API
-  description: Workday Query Language (WQL) API enabling SQL-like querying of Workday
-    data through REST endpoints. Provides high-performance data access controlled
-    via OAuth 2.0 tokens.
-  image: https://www.workday.com/content/dam/web/images/logo/workday-logo.svg
+    url: >-
+      https://doc.workday.com/adaptive-planning/en-us/workday-adaptive-planning-documentation/integration/managing-data-integration/api-documentation/understanding-the-adaptive-planning-rest-api/vmo1623708512342.html
+- aid: workday:workday-absence-types-api
+  name: Workday Absence Types API
+  description: Endpoints for managing absence types.
   humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
-  baseURL: https://wd2-impl-services1.workday.com/ccx/api/wql/
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
   tags:
-  - Analytics
-  - Data Access
-  - Query Language
-  - Reporting
+  - Absence Types
   properties:
+  - type: OpenAPI
+    url: openapi/workday-absence-types-api-openapi.yml
   - type: Documentation
     url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-accounting-api
+  name: Workday Accounting API
+  description: Endpoints for managing accounting journals.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Accounting
+  properties:
   - type: OpenAPI
-    url: openapi/wql.yml
+    url: openapi/workday-accounting-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-benefit-elections-api
+  name: Workday Benefit Elections API
+  description: Endpoints for managing benefit elections.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Benefit Elections
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-benefit-elections-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-benefit-plans-api
+  name: Workday Benefit Plans API
+  description: Endpoints for managing benefit plans.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Benefit Plans
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-benefit-plans-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-candidates-api
+  name: Workday Candidates API
+  description: Endpoints for managing candidates.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Candidates
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-candidates-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-compensation-plans-api
+  name: Workday Compensation Plans API
+  description: Endpoints for managing compensation plans and grades.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Compensation Plans
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-compensation-plans-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-contact-information-api
+  name: Workday Contact Information API
+  description: Endpoints for managing contact information.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Contact Information
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-contact-information-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-data-change-tasks-api
+  name: Workday Data Change Tasks API
+  description: Endpoints for managing data loading tasks.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Data Change Tasks
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-data-change-tasks-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-data-sources-api
+  name: Workday Data Sources API
+  description: Endpoints for discovering available data sources and fields.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Data Sources
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-data-sources-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-datasets-api
+  name: Workday Datasets API
+  description: Endpoints for managing Prism Analytics datasets.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Datasets
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-datasets-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-dependents-api
+  name: Workday Dependents API
+  description: Endpoints for managing worker dependents.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Dependents
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-dependents-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-expenses-api
+  name: Workday Expenses API
+  description: Endpoints for managing expense reports.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Expenses
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-expenses-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-feedback-api
+  name: Workday Feedback API
+  description: Endpoints for managing feedback and feedback badges.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Feedback
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-feedback-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-file-containers-api
+  name: Workday File Containers API
+  description: Endpoints for file upload containers.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - File Containers
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-file-containers-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-goals-api
+  name: Workday Goals API
+  description: Endpoints for managing worker goals.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Goals
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-goals-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-job-applications-api
+  name: Workday Job Applications API
+  description: Endpoints for managing job applications.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Job Applications
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-job-applications-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-job-postings-api
+  name: Workday Job Postings API
+  description: Endpoints for managing job postings.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Job Postings
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-job-postings-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-job-profiles-api
+  name: Workday Job Profiles API
+  description: Endpoints for managing job profiles.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Job Profiles
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-job-profiles-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-job-requisitions-api
+  name: Workday Job Requisitions API
+  description: Endpoints for managing job requisitions.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Job Requisitions
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-job-requisitions-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-leave-of-absence-api
+  name: Workday Leave of Absence API
+  description: Endpoints for managing leaves of absence.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Leave of Absence
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-leave-of-absence-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-locations-api
+  name: Workday Locations API
+  description: Endpoints for managing location data.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Locations
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-locations-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-mentorships-api
+  name: Workday Mentorships API
+  description: Endpoints for managing mentorship relationships.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Mentorships
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-mentorships-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-one-time-payments-api
+  name: Workday One-Time Payments API
+  description: Endpoints for one-time payment requests.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - One-Time Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-one-time-payments-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-organizations-api
+  name: Workday Organizations API
+  description: Endpoints for managing organizational data.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Organizations
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-organizations-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-pay-groups-api
+  name: Workday Pay Groups API
+  description: Endpoints for managing pay groups and pay periods.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Pay Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-pay-groups-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-pay-slips-api
+  name: Workday Pay Slips API
+  description: Endpoints for accessing pay slips.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Pay Slips
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-pay-slips-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-payroll-inputs-api
+  name: Workday Payroll Inputs API
+  description: Endpoints for managing payroll inputs.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Payroll Inputs
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-payroll-inputs-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-people-api
+  name: Workday People API
+  description: Endpoints for managing person data.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - People
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-people-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-performance-reviews-api
+  name: Workday Performance Reviews API
+  description: Endpoints for managing performance reviews.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Performance Reviews
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-performance-reviews-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-positions-api
+  name: Workday Positions API
+  description: Endpoints for managing positions.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Positions
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-positions-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-procurement-api
+  name: Workday Procurement API
+  description: Endpoints for managing suppliers and purchase orders.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Procurement
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-procurement-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-prospects-api
+  name: Workday Prospects API
+  description: Endpoints for managing recruiting prospects.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Prospects
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-prospects-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-query-api
+  name: Workday Query API
+  description: Endpoints for executing WQL queries.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Query
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-query-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-reference-data-api
+  name: Workday Reference Data API
+  description: Endpoints for accessing common reference data and lookup values.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Reference Data
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-reference-data-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-reports-api
+  name: Workday Reports API
+  description: Endpoints for accessing custom report data via RaaS.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Reports
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-reports-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-revenue-api
+  name: Workday Revenue API
+  description: Endpoints for managing customer invoices.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Revenue
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-revenue-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-scorecards-api
+  name: Workday Scorecards API
+  description: Endpoints for managing compensation scorecards and results.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Scorecards
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-scorecards-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-staffing-api
+  name: Workday Staffing API
+  description: Endpoints for staffing events and organization assignments.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Staffing
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-staffing-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-succession-planning-api
+  name: Workday Succession Planning API
+  description: Endpoints for managing succession plans.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Succession Planning
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-succession-planning-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-tables-api
+  name: Workday Tables API
+  description: Endpoints for managing Prism Analytics tables.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Tables
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-tables-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-talent-profiles-api
+  name: Workday Talent Profiles API
+  description: Endpoints for managing talent profiles and skills.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Talent Profiles
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-talent-profiles-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-time-clock-api
+  name: Workday Time Clock API
+  description: Endpoints for managing time clock events.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Time Clock
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-time-clock-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-time-entries-api
+  name: Workday Time Entries API
+  description: Endpoints for managing time entries.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Time Entries
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-time-entries-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-time-off-api
+  name: Workday Time Off API
+  description: Endpoints for managing time-off requests and entries.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Time Off
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-time-off-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-timesheets-api
+  name: Workday Timesheets API
+  description: Endpoints for managing timesheets.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Timesheets
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-timesheets-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-workers-api
+  name: Workday Workers API
+  description: Endpoints for managing worker data.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
+  tags:
+  - Workers
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-workers-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
   - type: JSONLD
     url: json-ld/wql-context.jsonld
 common:
