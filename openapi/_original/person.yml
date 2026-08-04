@@ -1,0 +1,505 @@
+openapi: 3.1.0
+info:
+  title: Workday Person API
+  description: >-
+    Person API for managing worker person data including personal information,
+    contact details, and organizational relationships.
+  version: v1
+  contact:
+    name: Workday Support
+    email: support@workday.com
+    url: https://www.workday.com/en-us/customer-service/support.html
+  license:
+    name: Proprietary
+    url: https://www.workday.com/en-us/legal.html
+servers:
+- url: https://wd2-impl-services1.workday.com/ccx/api/person/v1/{tenant}
+  description: Workday REST API Server
+  variables:
+    tenant:
+      default: tenant_name
+      description: The Workday tenant identifier
+security:
+- OAuth2:
+  - r_person
+  - w_person
+paths:
+  /people:
+    get:
+      operationId: getPeople
+      summary: Get People
+      description: Returns a collection of people.
+      tags:
+      - People
+      parameters:
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: Successful response containing people.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PersonSummary'
+                  total:
+                    type: integer
+              examples:
+                Getpeople200Example:
+                  summary: Default getPeople 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    total: 10
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /people/{ID}:
+    get:
+      operationId: getPersonById
+      summary: Get Person by Id
+      description: Returns detailed person data for a specific individual.
+      tags:
+      - People
+      parameters:
+      - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          description: Successful response containing person details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+              examples:
+                Getpersonbyid200Example:
+                  summary: Default getPersonById 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    descriptor: example_value
+                    legalName:
+                      firstName: example_value
+                      middleName: example_value
+                      lastName: example_value
+                      fullName: example_value
+                      prefix: example_value
+                      suffix: example_value
+                    preferredName:
+                      firstName: example_value
+                      middleName: example_value
+                      lastName: example_value
+                      fullName: example_value
+                      prefix: example_value
+                      suffix: example_value
+                    dateOfBirth: '2026-01-15'
+                    gender:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    nationality:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    citizenship:
+                    - id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    maritalStatus:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /people/{ID}/homeContactInformation:
+    get:
+      operationId: getHomeContactInformation
+      summary: Get Home Contact Information
+      description: Returns home contact information for a person.
+      tags:
+      - Contact Information
+      parameters:
+      - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          description: Successful response containing home contact information.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactInformation'
+              examples:
+                Gethomecontactinformation200Example:
+                  summary: Default getHomeContactInformation 200 response
+                  x-microcks-default: true
+                  value:
+                    emails:
+                    - emailAddress: user@example.com
+                      isPrimary: true
+                    phones:
+                    - phoneNumber: example_value
+                      isPrimary: true
+                      countryCode: example_value
+                    addresses:
+                    - addressLine1: example_value
+                      addressLine2: example_value
+                      city: example_value
+                      postalCode: example_value
+                      isPrimary: true
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /people/{ID}/workContactInformation:
+    get:
+      operationId: getWorkContactInformation
+      summary: Get Work Contact Information
+      description: Returns work contact information for a person.
+      tags:
+      - Contact Information
+      parameters:
+      - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          description: Successful response containing work contact information.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactInformation'
+              examples:
+                Getworkcontactinformation200Example:
+                  summary: Default getWorkContactInformation 200 response
+                  x-microcks-default: true
+                  value:
+                    emails:
+                    - emailAddress: user@example.com
+                      isPrimary: true
+                    phones:
+                    - phoneNumber: example_value
+                      isPrimary: true
+                      countryCode: example_value
+                    addresses:
+                    - addressLine1: example_value
+                      addressLine2: example_value
+                      city: example_value
+                      postalCode: example_value
+                      isPrimary: true
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /people/{ID}/personalInformation:
+    get:
+      operationId: getPersonalInformation
+      summary: Get Personal Information
+      description: Returns personal information for a person (name, date of birth, etc.).
+      tags:
+      - People
+      parameters:
+      - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          description: Successful response containing personal information.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonalInformation'
+              examples:
+                Getpersonalinformation200Example:
+                  summary: Default getPersonalInformation 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    legalName:
+                      firstName: example_value
+                      middleName: example_value
+                      lastName: example_value
+                      fullName: example_value
+                      prefix: example_value
+                      suffix: example_value
+                    preferredName:
+                      firstName: example_value
+                      middleName: example_value
+                      lastName: example_value
+                      fullName: example_value
+                      prefix: example_value
+                      suffix: example_value
+                    dateOfBirth: '2026-01-15'
+                    gender:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    maritalStatus:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    ethnicity:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    militaryStatus:
+                      id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+                    disability:
+                    - id: abc123
+                      descriptor: example_value
+                      href: https://www.example.com
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
+          tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
+          scopes:
+            r_person: Read person data
+            w_person: Write person data
+  parameters:
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the person.
+      schema:
+        type: string
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: The maximum number of objects in a single response.
+      schema:
+        type: integer
+        default: 20
+        maximum: 100
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: The zero-based index of the first object in a response collection.
+      schema:
+        type: integer
+        default: 0
+    search:
+      name: search
+      in: query
+      required: false
+      description: Searches resources by name.
+      schema:
+        type: string
+  schemas:
+    PersonSummary:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        href:
+          type: string
+          format: uri
+          example: https://www.example.com
+    Person:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        legalName:
+          $ref: '#/components/schemas/PersonName'
+        preferredName:
+          $ref: '#/components/schemas/PersonName'
+        dateOfBirth:
+          type: string
+          format: date
+          example: '2026-01-15'
+        gender:
+          $ref: '#/components/schemas/ResourceReference'
+        nationality:
+          $ref: '#/components/schemas/ResourceReference'
+        citizenship:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResourceReference'
+          example: []
+        maritalStatus:
+          $ref: '#/components/schemas/ResourceReference'
+    PersonName:
+      type: object
+      properties:
+        firstName:
+          type: string
+          example: example_value
+        middleName:
+          type: string
+          example: example_value
+        lastName:
+          type: string
+          example: example_value
+        fullName:
+          type: string
+          example: example_value
+        prefix:
+          type: string
+          example: example_value
+        suffix:
+          type: string
+          example: example_value
+    PersonalInformation:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        legalName:
+          $ref: '#/components/schemas/PersonName'
+        preferredName:
+          $ref: '#/components/schemas/PersonName'
+        dateOfBirth:
+          type: string
+          format: date
+          example: '2026-01-15'
+        gender:
+          $ref: '#/components/schemas/ResourceReference'
+        maritalStatus:
+          $ref: '#/components/schemas/ResourceReference'
+        ethnicity:
+          $ref: '#/components/schemas/ResourceReference'
+        militaryStatus:
+          $ref: '#/components/schemas/ResourceReference'
+        disability:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResourceReference'
+          example: []
+    ContactInformation:
+      type: object
+      properties:
+        emails:
+          type: array
+          items:
+            type: object
+            properties:
+              emailAddress:
+                type: string
+                format: email
+              type:
+                $ref: '#/components/schemas/ResourceReference'
+              isPrimary:
+                type: boolean
+          example: user@example.com
+        phones:
+          type: array
+          items:
+            type: object
+            properties:
+              phoneNumber:
+                type: string
+              type:
+                $ref: '#/components/schemas/ResourceReference'
+              isPrimary:
+                type: boolean
+              countryCode:
+                type: string
+          example: []
+        addresses:
+          type: array
+          items:
+            type: object
+            properties:
+              addressLine1:
+                type: string
+              addressLine2:
+                type: string
+              city:
+                type: string
+              stateProvince:
+                $ref: '#/components/schemas/ResourceReference'
+              postalCode:
+                type: string
+              country:
+                $ref: '#/components/schemas/ResourceReference'
+              type:
+                $ref: '#/components/schemas/ResourceReference'
+              isPrimary:
+                type: boolean
+          example: []
+    ResourceReference:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        href:
+          type: string
+          format: uri
+          example: https://www.example.com
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: example_value
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+          example: []
+  responses:
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+tags:
+- name: People
+  description: Endpoints for managing person data.
+- name: Contact Information
+  description: Endpoints for managing contact information.

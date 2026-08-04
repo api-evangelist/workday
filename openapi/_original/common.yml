@@ -1,0 +1,441 @@
+openapi: 3.1.0
+info:
+  title: Workday Common API
+  description: >-
+    Common API providing shared reference data, lookup values, and utility
+    endpoints used across other Workday REST API services.
+  version: v1
+  contact:
+    name: Workday Support
+    email: support@workday.com
+    url: https://www.workday.com/en-us/customer-service/support.html
+  license:
+    name: Proprietary
+    url: https://www.workday.com/en-us/legal.html
+servers:
+- url: https://wd2-impl-services1.workday.com/ccx/api/common/v1/{tenant}
+  description: Workday REST API Server
+  variables:
+    tenant:
+      default: tenant_name
+      description: The Workday tenant identifier
+security:
+- OAuth2:
+  - r_common
+paths:
+  /countries:
+    get:
+      operationId: getCountries
+      summary: Get Countries
+      description: Returns a collection of countries.
+      tags:
+      - Reference Data
+      parameters:
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: Successful response containing countries.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Country'
+                  total:
+                    type: integer
+              examples:
+                Getcountries200Example:
+                  summary: Default getCountries 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      countryCode: example_value
+                      alpha2Code: example_value
+                      name: Example Title
+                    total: 10
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /countries/{ID}:
+    get:
+      operationId: getCountryById
+      summary: Get Country by Id
+      description: Returns details for a specific country.
+      tags:
+      - Reference Data
+      parameters:
+      - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          description: Successful response containing country details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Country'
+              examples:
+                Getcountrybyid200Example:
+                  summary: Default getCountryById 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    descriptor: example_value
+                    countryCode: example_value
+                    alpha2Code: example_value
+                    name: Example Title
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /currencies:
+    get:
+      operationId: getCurrencies
+      summary: Get Currencies
+      description: Returns a collection of currencies.
+      tags:
+      - Reference Data
+      parameters:
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Successful response containing currencies.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Currency'
+                  total:
+                    type: integer
+              examples:
+                Getcurrencies200Example:
+                  summary: Default getCurrencies 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      currencyCode: example_value
+                      name: Example Title
+                      numericCode: example_value
+                    total: 10
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /currencies/{ID}:
+    get:
+      operationId: getCurrencyById
+      summary: Get Currency by Id
+      description: Returns details for a specific currency.
+      tags:
+      - Reference Data
+      parameters:
+      - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          description: Successful response containing currency details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Currency'
+              examples:
+                Getcurrencybyid200Example:
+                  summary: Default getCurrencyById 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    descriptor: example_value
+                    currencyCode: example_value
+                    name: Example Title
+                    numericCode: example_value
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /languages:
+    get:
+      operationId: getLanguages
+      summary: Get Languages
+      description: Returns a collection of languages.
+      tags:
+      - Reference Data
+      parameters:
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Successful response containing languages.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Language'
+                  total:
+                    type: integer
+              examples:
+                Getlanguages200Example:
+                  summary: Default getLanguages 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      languageCode: example_value
+                      name: Example Title
+                    total: 10
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /genders:
+    get:
+      operationId: getGenders
+      summary: Get Genders
+      description: Returns a collection of gender values.
+      tags:
+      - Reference Data
+      parameters:
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Successful response containing genders.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ReferenceValue'
+                  total:
+                    type: integer
+              examples:
+                Getgenders200Example:
+                  summary: Default getGenders 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                    total: 10
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /maritalStatuses:
+    get:
+      operationId: getMaritalStatuses
+      summary: Get Marital Statuses
+      description: Returns a collection of marital status values.
+      tags:
+      - Reference Data
+      parameters:
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Successful response containing marital statuses.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ReferenceValue'
+                  total:
+                    type: integer
+              examples:
+                Getmaritalstatuses200Example:
+                  summary: Default getMaritalStatuses 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                    total: 10
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
+          tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
+          scopes:
+            r_common: Read common reference data
+  parameters:
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the resource.
+      schema:
+        type: string
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: The maximum number of objects in a single response.
+      schema:
+        type: integer
+        default: 20
+        maximum: 100
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: The zero-based index of the first object in a response collection.
+      schema:
+        type: integer
+        default: 0
+    search:
+      name: search
+      in: query
+      required: false
+      description: Searches resources by name.
+      schema:
+        type: string
+  schemas:
+    Country:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        countryCode:
+          type: string
+          description: The ISO 3166-1 alpha-3 country code.
+          example: example_value
+        alpha2Code:
+          type: string
+          description: The ISO 3166-1 alpha-2 country code.
+          example: example_value
+        name:
+          type: string
+          example: Example Title
+    Currency:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        currencyCode:
+          type: string
+          description: The ISO 4217 currency code.
+          example: example_value
+        name:
+          type: string
+          example: Example Title
+        numericCode:
+          type: string
+          example: example_value
+    Language:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        languageCode:
+          type: string
+          example: example_value
+        name:
+          type: string
+          example: Example Title
+    ReferenceValue:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+    ResourceReference:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        href:
+          type: string
+          format: uri
+          example: https://www.example.com
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: example_value
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+          example: []
+  responses:
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+tags:
+- name: Reference Data
+  description: Endpoints for accessing common reference data and lookup values.

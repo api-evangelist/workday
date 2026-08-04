@@ -1,0 +1,371 @@
+openapi: 3.1.0
+info:
+  title: Workday WQL API
+  description: >-
+    Workday Query Language (WQL) API enabling SQL-like querying of Workday data
+    through REST endpoints. Provides high-performance data access controlled
+    via OAuth 2.0 tokens.
+  version: v1
+  contact:
+    name: Workday Support
+    email: support@workday.com
+    url: https://www.workday.com/en-us/customer-service/support.html
+  license:
+    name: Proprietary
+    url: https://www.workday.com/en-us/legal.html
+servers:
+- url: https://wd2-impl-services1.workday.com/ccx/api/wql/v1/{tenant}
+  description: Workday REST API Server
+  variables:
+    tenant:
+      default: tenant_name
+      description: The Workday tenant identifier
+security:
+- OAuth2:
+  - r_wql
+paths:
+  /data:
+    get:
+      operationId: executeWqlQuery
+      summary: Execute Wql Query
+      description: >-
+        Executes a WQL query and returns the result set. Supports pagination
+        through limit and offset parameters.
+      tags:
+      - Query
+      parameters:
+      - name: query
+        in: query
+        required: true
+        description: >-
+          The WQL query string. Example: SELECT workdayID, fullName,
+          businessTitle FROM allWorkers WHERE isActive = true
+        schema:
+          type: string
+        example: example_value
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Successful response containing the WQL query results.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WqlQueryResult'
+              examples:
+                Executewqlquery200Example:
+                  summary: Default executeWqlQuery 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - {}
+                    total: 10
+        '400':
+          description: The WQL query syntax is invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Executewqlquery400Example:
+                  summary: Default executeWqlQuery 400 response
+                  x-microcks-default: true
+                  value:
+                    error: example_value
+                    errors:
+                    - error: example_value
+                      field: example_value
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /dataSources:
+    get:
+      operationId: getDataSources
+      summary: Get Data Sources
+      description: Returns a collection of available WQL data sources that can be queried.
+      tags:
+      - Data Sources
+      parameters:
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
+      - name: search
+        in: query
+        description: Filter data sources by name.
+        schema:
+          type: string
+        example: example_value
+      responses:
+        '200':
+          description: Successful response containing data sources.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DataSource'
+                  total:
+                    type: integer
+              examples:
+                Getdatasources200Example:
+                  summary: Default getDataSources 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      name: Example Title
+                      pluralName: example_value
+                      fields:
+                      - {}
+                    total: 10
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /dataSources/{ID}:
+    get:
+      operationId: getDataSourceById
+      summary: Get Data Source by Id
+      description: Returns detailed information for a specific data source including its available fields.
+      tags:
+      - Data Sources
+      parameters:
+      - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          description: Successful response containing data source details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataSource'
+              examples:
+                Getdatasourcebyid200Example:
+                  summary: Default getDataSourceById 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    descriptor: example_value
+                    name: Example Title
+                    pluralName: example_value
+                    fields:
+                    - id: abc123
+                      descriptor: example_value
+                      alias: example_value
+                      columnName: example_value
+                      type: example_value
+                      isRequired: true
+                      isSortable: true
+                      isFilterable: true
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /dataSources/{ID}/fields:
+    get:
+      operationId: getDataSourceFields
+      summary: Get Data Source Fields
+      description: Returns the fields available for a specific data source.
+      tags:
+      - Data Sources
+      parameters:
+      - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Successful response containing data source fields.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DataSourceField'
+                  total:
+                    type: integer
+              examples:
+                Getdatasourcefields200Example:
+                  summary: Default getDataSourceFields 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: abc123
+                      descriptor: example_value
+                      alias: example_value
+                      columnName: example_value
+                      type: example_value
+                      isRequired: true
+                      isSortable: true
+                      isFilterable: true
+                    total: 10
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
+          tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
+          scopes:
+            r_wql: Execute WQL queries
+  parameters:
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the resource.
+      schema:
+        type: string
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: The maximum number of objects in a single response.
+      schema:
+        type: integer
+        default: 20
+        maximum: 100
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: The zero-based index of the first object in a response collection.
+      schema:
+        type: integer
+        default: 0
+  schemas:
+    WqlQueryResult:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+            description: A result row with field names as keys and their values.
+          description: The array of result rows from the WQL query.
+          example: []
+        total:
+          type: integer
+          description: The total number of results available.
+          example: 10
+    DataSource:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The Workday ID of the data source.
+          example: abc123
+        descriptor:
+          type: string
+          description: A display descriptor for the data source.
+          example: example_value
+        name:
+          type: string
+          description: The name of the data source used in WQL FROM clauses.
+          example: Example Title
+        pluralName:
+          type: string
+          description: The plural name of the data source.
+          example: example_value
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataSourceField'
+          description: The fields available in this data source.
+          example: []
+    DataSourceField:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        alias:
+          type: string
+          description: The alias used to reference this field in WQL queries.
+          example: example_value
+        columnName:
+          type: string
+          description: The column name for the field.
+          example: example_value
+        type:
+          type: string
+          description: The data type of the field (e.g., Text, Numeric, Date, Boolean).
+          example: example_value
+        isRequired:
+          type: boolean
+          example: true
+        isSortable:
+          type: boolean
+          example: true
+        isFilterable:
+          type: boolean
+          example: true
+    ResourceReference:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        href:
+          type: string
+          format: uri
+          example: https://www.example.com
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: example_value
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+          example: []
+  responses:
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+tags:
+- name: Query
+  description: Endpoints for executing WQL queries.
+- name: Data Sources
+  description: Endpoints for discovering available data sources and fields.
