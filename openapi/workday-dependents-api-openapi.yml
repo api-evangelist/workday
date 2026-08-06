@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
-  title: Workday Absence Management Absence Types Dependents API
-  description: Absence Management API for managing leave balances, time-off requests, leaves of absence, and eligible absence types for workers.
+  title: Workday Benefits Dependents API
+  description: Benefits API for managing employee benefits, enrollments, and coverage. Provides endpoints for benefits administration workflows.
   version: v1
   contact:
     name: Workday Support
@@ -11,7 +11,7 @@ info:
     name: Proprietary
     url: https://www.workday.com/en-us/legal.html
 servers:
-- url: https://wd2-impl-services1.workday.com/ccx/api/absenceManagement/v1/{tenant}
+- url: https://wd2-impl-services1.workday.com/ccx/api/benefits/v1/{tenant}
   description: Workday REST API Server
   variables:
     tenant:
@@ -19,8 +19,8 @@ servers:
       description: The Workday tenant identifier
 security:
 - OAuth2:
-  - r_absence
-  - w_absence
+  - r_benefits
+  - w_benefits
 tags:
 - name: Dependents
   description: Endpoints for managing worker dependents.
@@ -69,56 +69,6 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  schemas:
-    Dependent:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        descriptor:
-          type: string
-          example: example_value
-        fullName:
-          type: string
-          example: example_value
-        relationship:
-          $ref: '#/components/schemas/ResourceReference'
-        dateOfBirth:
-          type: string
-          format: date
-          example: '2026-01-15'
-        gender:
-          $ref: '#/components/schemas/ResourceReference'
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          example: example_value
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              error:
-                type: string
-              field:
-                type: string
-          example: []
-    ResourceReference:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        descriptor:
-          type: string
-          example: example_value
-        href:
-          type: string
-          format: uri
-          example: https://www.example.com
   parameters:
     offset:
       name: offset
@@ -144,6 +94,56 @@ components:
       description: The Workday ID of the worker.
       schema:
         type: string
+  schemas:
+    ResourceReference:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        href:
+          type: string
+          format: uri
+          example: https://www.example.com
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: example_value
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+          example: []
+    Dependent:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        fullName:
+          type: string
+          example: example_value
+        relationship:
+          $ref: '#/components/schemas/ResourceReference'
+        dateOfBirth:
+          type: string
+          format: date
+          example: '2026-01-15'
+        gender:
+          $ref: '#/components/schemas/ResourceReference'
   responses:
     Unauthorized:
       description: Authentication credentials were missing or invalid.
@@ -165,5 +165,5 @@ components:
           authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
           tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
           scopes:
-            r_absence: Read absence data
-            w_absence: Write absence data
+            r_benefits: Read benefits data
+            w_benefits: Write benefits data

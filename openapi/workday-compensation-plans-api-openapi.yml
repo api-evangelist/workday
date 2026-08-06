@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
-  title: Workday Absence Management Absence Types Compensation Plans API
-  description: Absence Management API for managing leave balances, time-off requests, leaves of absence, and eligible absence types for workers.
+  title: Workday Compensation Compensation Plans API
+  description: Compensation API for managing employee compensation plans, scorecards, scorecard results, and one-time payment requests.
   version: v1
   contact:
     name: Workday Support
@@ -11,7 +11,7 @@ info:
     name: Proprietary
     url: https://www.workday.com/en-us/legal.html
 servers:
-- url: https://wd2-impl-services1.workday.com/ccx/api/absenceManagement/v1/{tenant}
+- url: https://wd2-impl-services1.workday.com/ccx/api/compensation/v1/{tenant}
   description: Workday REST API Server
   variables:
     tenant:
@@ -19,8 +19,8 @@ servers:
       description: The Workday tenant identifier
 security:
 - OAuth2:
-  - r_absence
-  - w_absence
+  - r_compensation
+  - w_compensation
 tags:
 - name: Compensation Plans
   description: Endpoints for managing compensation plans and grades.
@@ -191,13 +191,6 @@ components:
       schema:
         type: integer
         default: 0
-    ID:
-      name: ID
-      in: path
-      required: true
-      description: The Workday ID of the resource.
-      schema:
-        type: string
     limit:
       name: limit
       in: query
@@ -207,7 +200,71 @@ components:
         type: integer
         default: 20
         maximum: 100
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the resource.
+      schema:
+        type: string
   schemas:
+    CompensationChangeRequest:
+      type: object
+      properties:
+        effectiveDate:
+          type: string
+          format: date
+          description: The effective date of the compensation change.
+          example: '2026-01-15'
+        reason:
+          $ref: '#/components/schemas/ResourceReference'
+        proposedCompensation:
+          type: object
+          properties:
+            amount:
+              type: number
+              format: double
+            currency:
+              $ref: '#/components/schemas/ResourceReference'
+            frequency:
+              $ref: '#/components/schemas/ResourceReference'
+            compensationGrade:
+              $ref: '#/components/schemas/ResourceReference'
+            compensationStep:
+              $ref: '#/components/schemas/ResourceReference'
+          example: example_value
+      required:
+      - effectiveDate
+      - reason
+    ResourceReference:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        href:
+          type: string
+          format: uri
+          example: https://www.example.com
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: example_value
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+          example: []
     CompensationPlan:
       type: object
       properties:
@@ -242,50 +299,6 @@ components:
           $ref: '#/components/schemas/ResourceReference'
         compensationStep:
           $ref: '#/components/schemas/ResourceReference'
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          example: example_value
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              error:
-                type: string
-              field:
-                type: string
-          example: []
-    CompensationChangeRequest:
-      type: object
-      properties:
-        effectiveDate:
-          type: string
-          format: date
-          description: The effective date of the compensation change.
-          example: '2026-01-15'
-        reason:
-          $ref: '#/components/schemas/ResourceReference'
-        proposedCompensation:
-          type: object
-          properties:
-            amount:
-              type: number
-              format: double
-            currency:
-              $ref: '#/components/schemas/ResourceReference'
-            frequency:
-              $ref: '#/components/schemas/ResourceReference'
-            compensationGrade:
-              $ref: '#/components/schemas/ResourceReference'
-            compensationStep:
-              $ref: '#/components/schemas/ResourceReference'
-          example: example_value
-      required:
-      - effectiveDate
-      - reason
     CompensationGrade:
       type: object
       properties:
@@ -317,19 +330,6 @@ components:
           example: 42.5
         currency:
           $ref: '#/components/schemas/ResourceReference'
-    ResourceReference:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        descriptor:
-          type: string
-          example: example_value
-        href:
-          type: string
-          format: uri
-          example: https://www.example.com
   responses:
     Unauthorized:
       description: Authentication credentials were missing or invalid.
@@ -337,14 +337,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: The requested resource was not found.
+    BadRequest:
+      description: The request was invalid or malformed.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: The request was invalid or malformed.
+    NotFound:
+      description: The requested resource was not found.
       content:
         application/json:
           schema:
@@ -357,5 +357,5 @@ components:
           authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
           tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
           scopes:
-            r_absence: Read absence data
-            w_absence: Write absence data
+            r_compensation: Read compensation data
+            w_compensation: Write compensation data

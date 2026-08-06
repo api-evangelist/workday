@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
-  title: Workday Absence Management Absence Types People API
-  description: Absence Management API for managing leave balances, time-off requests, leaves of absence, and eligible absence types for workers.
+  title: Workday Person People API
+  description: Person API for managing worker person data including personal information, contact details, and organizational relationships.
   version: v1
   contact:
     name: Workday Support
@@ -11,7 +11,7 @@ info:
     name: Proprietary
     url: https://www.workday.com/en-us/legal.html
 servers:
-- url: https://wd2-impl-services1.workday.com/ccx/api/absenceManagement/v1/{tenant}
+- url: https://wd2-impl-services1.workday.com/ccx/api/person/v1/{tenant}
   description: Workday REST API Server
   variables:
     tenant:
@@ -19,8 +19,8 @@ servers:
       description: The Workday tenant identifier
 security:
 - OAuth2:
-  - r_absence
-  - w_absence
+  - r_person
+  - w_person
 tags:
 - name: People
   description: Endpoints for managing person data.
@@ -200,6 +200,13 @@ components:
       schema:
         type: integer
         default: 0
+    search:
+      name: search
+      in: query
+      required: false
+      description: Searches resources by name.
+      schema:
+        type: string
     limit:
       name: limit
       in: query
@@ -216,14 +223,84 @@ components:
       description: The Workday ID of the person.
       schema:
         type: string
-    search:
-      name: search
-      in: query
-      required: false
-      description: Searches resources by name.
-      schema:
-        type: string
   schemas:
+    PersonName:
+      type: object
+      properties:
+        firstName:
+          type: string
+          example: example_value
+        middleName:
+          type: string
+          example: example_value
+        lastName:
+          type: string
+          example: example_value
+        fullName:
+          type: string
+          example: example_value
+        prefix:
+          type: string
+          example: example_value
+        suffix:
+          type: string
+          example: example_value
+    PersonalInformation:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        legalName:
+          $ref: '#/components/schemas/PersonName'
+        preferredName:
+          $ref: '#/components/schemas/PersonName'
+        dateOfBirth:
+          type: string
+          format: date
+          example: '2026-01-15'
+        gender:
+          $ref: '#/components/schemas/ResourceReference'
+        maritalStatus:
+          $ref: '#/components/schemas/ResourceReference'
+        ethnicity:
+          $ref: '#/components/schemas/ResourceReference'
+        militaryStatus:
+          $ref: '#/components/schemas/ResourceReference'
+        disability:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResourceReference'
+          example: []
+    ResourceReference:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        href:
+          type: string
+          format: uri
+          example: https://www.example.com
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: example_value
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+          example: []
     Person:
       type: object
       properties:
@@ -252,56 +329,6 @@ components:
           example: []
         maritalStatus:
           $ref: '#/components/schemas/ResourceReference'
-    PersonName:
-      type: object
-      properties:
-        firstName:
-          type: string
-          example: example_value
-        middleName:
-          type: string
-          example: example_value
-        lastName:
-          type: string
-          example: example_value
-        fullName:
-          type: string
-          example: example_value
-        prefix:
-          type: string
-          example: example_value
-        suffix:
-          type: string
-          example: example_value
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          example: example_value
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              error:
-                type: string
-              field:
-                type: string
-          example: []
-    ResourceReference:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        descriptor:
-          type: string
-          example: example_value
-        href:
-          type: string
-          format: uri
-          example: https://www.example.com
     PersonSummary:
       type: object
       properties:
@@ -315,33 +342,6 @@ components:
           type: string
           format: uri
           example: https://www.example.com
-    PersonalInformation:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        legalName:
-          $ref: '#/components/schemas/PersonName'
-        preferredName:
-          $ref: '#/components/schemas/PersonName'
-        dateOfBirth:
-          type: string
-          format: date
-          example: '2026-01-15'
-        gender:
-          $ref: '#/components/schemas/ResourceReference'
-        maritalStatus:
-          $ref: '#/components/schemas/ResourceReference'
-        ethnicity:
-          $ref: '#/components/schemas/ResourceReference'
-        militaryStatus:
-          $ref: '#/components/schemas/ResourceReference'
-        disability:
-          type: array
-          items:
-            $ref: '#/components/schemas/ResourceReference'
-          example: []
   responses:
     Unauthorized:
       description: Authentication credentials were missing or invalid.
@@ -363,5 +363,5 @@ components:
           authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
           tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
           scopes:
-            r_absence: Read absence data
-            w_absence: Write absence data
+            r_person: Read person data
+            w_person: Write person data

@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Workday Absence Management Absence Types Time Off API
+  title: Workday Absence Management Time Off API
   description: Absence Management API for managing leave balances, time-off requests, leaves of absence, and eligible absence types for workers.
   version: v1
   contact:
@@ -211,26 +211,86 @@ components:
       description: The Workday ID of the worker.
       schema:
         type: string
-  responses:
-    Unauthorized:
-      description: Authentication credentials were missing or invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: The request was invalid or malformed.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   schemas:
+    ResourceReference:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        href:
+          type: string
+          format: uri
+          example: https://www.example.com
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: example_value
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+          example: []
+    TimeOffRequest:
+      type: object
+      properties:
+        days:
+          type: array
+          items:
+            type: object
+            properties:
+              date:
+                type: string
+                format: date
+                description: The date for time off.
+              dailyQuantity:
+                type: number
+                format: double
+                description: The quantity of time off for the day.
+              comment:
+                type: string
+                description: A comment for the time-off day.
+              timeOffType:
+                $ref: '#/components/schemas/ResourceReference'
+          description: The list of days included in the time-off request.
+          example: []
+      required:
+      - days
+    TimeOffBalance:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        timeOffPlan:
+          $ref: '#/components/schemas/ResourceReference'
+        balance:
+          type: number
+          format: double
+          description: The current balance.
+          example: 42.5
+        unit:
+          type: string
+          description: The unit of the balance (e.g., Hours, Days).
+          example: example_value
+        asOfDate:
+          type: string
+          format: date
+          description: The effective date of the balance.
+          example: '2026-01-15'
     TimeOffEntry:
       type: object
       properties:
@@ -259,85 +319,25 @@ components:
           type: string
           description: The status of the time-off entry.
           example: example_value
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          example: example_value
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              error:
-                type: string
-              field:
-                type: string
-          example: []
-    TimeOffBalance:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        descriptor:
-          type: string
-          example: example_value
-        timeOffPlan:
-          $ref: '#/components/schemas/ResourceReference'
-        balance:
-          type: number
-          format: double
-          description: The current balance.
-          example: 42.5
-        unit:
-          type: string
-          description: The unit of the balance (e.g., Hours, Days).
-          example: example_value
-        asOfDate:
-          type: string
-          format: date
-          description: The effective date of the balance.
-          example: '2026-01-15'
-    ResourceReference:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        descriptor:
-          type: string
-          example: example_value
-        href:
-          type: string
-          format: uri
-          example: https://www.example.com
-    TimeOffRequest:
-      type: object
-      properties:
-        days:
-          type: array
-          items:
-            type: object
-            properties:
-              date:
-                type: string
-                format: date
-                description: The date for time off.
-              dailyQuantity:
-                type: number
-                format: double
-                description: The quantity of time off for the day.
-              comment:
-                type: string
-                description: A comment for the time-off day.
-              timeOffType:
-                $ref: '#/components/schemas/ResourceReference'
-          description: The list of days included in the time-off request.
-          example: []
-      required:
-      - days
+  responses:
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: The request was invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     OAuth2:
       type: oauth2

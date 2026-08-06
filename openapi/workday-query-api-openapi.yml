@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
-  title: Workday Absence Management Absence Types Query API
-  description: Absence Management API for managing leave balances, time-off requests, leaves of absence, and eligible absence types for workers.
+  title: Workday WQL Query API
+  description: Workday Query Language (WQL) API enabling SQL-like querying of Workday data through REST endpoints. Provides high-performance data access controlled via OAuth 2.0 tokens.
   version: v1
   contact:
     name: Workday Support
@@ -11,7 +11,7 @@ info:
     name: Proprietary
     url: https://www.workday.com/en-us/legal.html
 servers:
-- url: https://wd2-impl-services1.workday.com/ccx/api/absenceManagement/v1/{tenant}
+- url: https://wd2-impl-services1.workday.com/ccx/api/wql/v1/{tenant}
   description: Workday REST API Server
   variables:
     tenant:
@@ -19,8 +19,7 @@ servers:
       description: The Workday tenant identifier
 security:
 - OAuth2:
-  - r_absence
-  - w_absence
+  - r_wql
 tags:
 - name: Query
   description: Endpoints for executing WQL queries.
@@ -96,22 +95,14 @@ components:
         type: integer
         default: 20
         maximum: 100
+  responses:
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    WqlQueryResult:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            type: object
-            additionalProperties: true
-            description: A result row with field names as keys and their values.
-          description: The array of result rows from the WQL query.
-          example: []
-        total:
-          type: integer
-          description: The total number of results available.
-          example: 10
     ErrorResponse:
       type: object
       properties:
@@ -128,13 +119,21 @@ components:
               field:
                 type: string
           example: []
-  responses:
-    Unauthorized:
-      description: Authentication credentials were missing or invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+    WqlQueryResult:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+            description: A result row with field names as keys and their values.
+          description: The array of result rows from the WQL query.
+          example: []
+        total:
+          type: integer
+          description: The total number of results available.
+          example: 10
   securitySchemes:
     OAuth2:
       type: oauth2
@@ -143,5 +142,4 @@ components:
           authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
           tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
           scopes:
-            r_absence: Read absence data
-            w_absence: Write absence data
+            r_wql: Execute WQL queries

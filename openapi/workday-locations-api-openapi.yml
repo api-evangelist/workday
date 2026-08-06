@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
-  title: Workday Absence Management Absence Types Locations API
-  description: Absence Management API for managing leave balances, time-off requests, leaves of absence, and eligible absence types for workers.
+  title: Workday HCM Locations API
+  description: Human Capital Management API for managing workforce data, recruiting, talent management, and payroll. Provides RESTful endpoints for core HR operations including workers, organizations, and job data.
   version: v1
   contact:
     name: Workday Support
@@ -11,7 +11,7 @@ info:
     name: Proprietary
     url: https://www.workday.com/en-us/legal.html
 servers:
-- url: https://wd2-impl-services1.workday.com/ccx/api/absenceManagement/v1/{tenant}
+- url: https://wd2-impl-services1.workday.com/ccx/api/v1/{tenant}
   description: Workday REST API Server
   variables:
     tenant:
@@ -19,8 +19,8 @@ servers:
       description: The Workday tenant identifier
 security:
 - OAuth2:
-  - r_absence
-  - w_absence
+  - r_worker
+  - w_worker
 tags:
 - name: Locations
   description: Endpoints for managing location data.
@@ -124,6 +124,13 @@ components:
       schema:
         type: integer
         default: 0
+    search:
+      name: search
+      in: query
+      required: false
+      description: Searches workers by name. The search is case-insensitive.
+      schema:
+        type: string
     limit:
       name: limit
       in: query
@@ -140,27 +147,41 @@ components:
       description: The Workday ID of the resource.
       schema:
         type: string
-    search:
-      name: search
-      in: query
-      required: false
-      description: Searches workers by name. The search is case-insensitive.
-      schema:
-        type: string
-  responses:
-    Unauthorized:
-      description: Authentication credentials were missing or invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   schemas:
+    ResourceReference:
+      type: object
+      description: A reference to a Workday resource.
+      properties:
+        id:
+          type: string
+          description: The Workday ID of the referenced resource.
+          example: abc123
+        descriptor:
+          type: string
+          description: A display descriptor for the referenced resource.
+          example: example_value
+        href:
+          type: string
+          format: uri
+          description: A link to the referenced resource.
+          example: https://www.example.com
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: A message describing the error.
+          example: example_value
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+          example: []
     Location:
       type: object
       properties:
@@ -192,40 +213,19 @@ components:
           items:
             $ref: '#/components/schemas/ResourceReference'
           example: []
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          description: A message describing the error.
-          example: example_value
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              error:
-                type: string
-              field:
-                type: string
-          example: []
-    ResourceReference:
-      type: object
-      description: A reference to a Workday resource.
-      properties:
-        id:
-          type: string
-          description: The Workday ID of the referenced resource.
-          example: abc123
-        descriptor:
-          type: string
-          description: A display descriptor for the referenced resource.
-          example: example_value
-        href:
-          type: string
-          format: uri
-          description: A link to the referenced resource.
-          example: https://www.example.com
+  responses:
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     OAuth2:
       type: oauth2
@@ -234,5 +234,5 @@ components:
           authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
           tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
           scopes:
-            r_absence: Read absence data
-            w_absence: Write absence data
+            r_worker: Read worker data
+            w_worker: Write worker data

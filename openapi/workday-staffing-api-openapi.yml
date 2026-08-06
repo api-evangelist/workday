@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
-  title: Workday Absence Management Absence Types Staffing API
-  description: Absence Management API for managing leave balances, time-off requests, leaves of absence, and eligible absence types for workers.
+  title: Workday Staffing API
+  description: Staffing API for managing organizational assignments, job profiles, positions, supervisory organizations, and worker staffing events.
   version: v1
   contact:
     name: Workday Support
@@ -11,7 +11,7 @@ info:
     name: Proprietary
     url: https://www.workday.com/en-us/legal.html
 servers:
-- url: https://wd2-impl-services1.workday.com/ccx/api/absenceManagement/v1/{tenant}
+- url: https://wd2-impl-services1.workday.com/ccx/api/staffing/v1/{tenant}
   description: Workday REST API Server
   variables:
     tenant:
@@ -19,8 +19,8 @@ servers:
       description: The Workday tenant identifier
 security:
 - OAuth2:
-  - r_absence
-  - w_absence
+  - r_staffing
+  - w_staffing
 tags:
 - name: Staffing
   description: Endpoints for staffing events and organization assignments.
@@ -254,31 +254,99 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: The zero-based index of the first object in a response collection.
+      schema:
+        type: integer
+        default: 0
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: The maximum number of objects in a single response. The default is 20. The maximum is 100.
+      schema:
+        type: integer
+        default: 20
+        maximum: 100
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the resource.
+      schema:
+        type: string
   schemas:
-    TerminationRequest:
+    ResourceReference:
+      type: object
+      description: A reference to a Workday resource.
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        href:
+          type: string
+          format: uri
+          example: https://www.example.com
+    ErrorResponse:
       type: object
       properties:
-        terminationDate:
+        error:
+          type: string
+          example: example_value
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+          example: []
+    JobChange:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        effectiveDate:
           type: string
           format: date
           example: '2026-01-15'
-        lastDayOfWork:
+        worker:
+          $ref: '#/components/schemas/ResourceReference'
+        reason:
+          $ref: '#/components/schemas/ResourceReference'
+    OneTimePaymentRequest:
+      type: object
+      properties:
+        effectiveDate:
           type: string
           format: date
           example: '2026-01-15'
-        primaryReason:
+        reason:
           $ref: '#/components/schemas/ResourceReference'
-        localTerminationReason:
+        currency:
           $ref: '#/components/schemas/ResourceReference'
-        regrettable:
-          type: boolean
-          example: true
-        notifyEmployee:
-          type: boolean
-          example: true
+        amount:
+          type: number
+          format: double
+          example: 42.5
+        payComponent:
+          $ref: '#/components/schemas/ResourceReference'
       required:
-      - terminationDate
-      - primaryReason
+      - effectiveDate
+      - amount
     OrganizationAssignment:
       type: object
       properties:
@@ -318,98 +386,30 @@ components:
       required:
       - effectiveDate
       - reason
-    ErrorResponse:
+    TerminationRequest:
       type: object
       properties:
-        error:
-          type: string
-          example: example_value
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              error:
-                type: string
-              field:
-                type: string
-          example: []
-    JobChange:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        descriptor:
-          type: string
-          example: example_value
-        effectiveDate:
+        terminationDate:
           type: string
           format: date
           example: '2026-01-15'
-        worker:
-          $ref: '#/components/schemas/ResourceReference'
-        reason:
-          $ref: '#/components/schemas/ResourceReference'
-    ResourceReference:
-      type: object
-      description: A reference to a Workday resource.
-      properties:
-        id:
-          type: string
-          example: abc123
-        descriptor:
-          type: string
-          example: example_value
-        href:
-          type: string
-          format: uri
-          example: https://www.example.com
-    OneTimePaymentRequest:
-      type: object
-      properties:
-        effectiveDate:
+        lastDayOfWork:
           type: string
           format: date
           example: '2026-01-15'
-        reason:
+        primaryReason:
           $ref: '#/components/schemas/ResourceReference'
-        currency:
+        localTerminationReason:
           $ref: '#/components/schemas/ResourceReference'
-        amount:
-          type: number
-          format: double
-          example: 42.5
-        payComponent:
-          $ref: '#/components/schemas/ResourceReference'
+        regrettable:
+          type: boolean
+          example: true
+        notifyEmployee:
+          type: boolean
+          example: true
       required:
-      - effectiveDate
-      - amount
-  parameters:
-    limit:
-      name: limit
-      in: query
-      required: false
-      description: The maximum number of objects in a single response. The default is 20. The maximum is 100.
-      schema:
-        type: integer
-        default: 20
-        maximum: 100
-    ID:
-      name: ID
-      in: path
-      required: true
-      description: The Workday ID of the resource.
-      schema:
-        type: string
-    offset:
-      name: offset
-      in: query
-      required: false
-      description: The zero-based index of the first object in a response collection.
-      schema:
-        type: integer
-        default: 0
+      - terminationDate
+      - primaryReason
   responses:
     Unauthorized:
       description: Authentication credentials were missing or invalid.
@@ -417,14 +417,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: The requested resource was not found.
+    BadRequest:
+      description: The request was invalid or malformed.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: The request was invalid or malformed.
+    NotFound:
+      description: The requested resource was not found.
       content:
         application/json:
           schema:
@@ -437,5 +437,5 @@ components:
           authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
           tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
           scopes:
-            r_absence: Read absence data
-            w_absence: Write absence data
+            r_staffing: Read staffing data
+            w_staffing: Write staffing data

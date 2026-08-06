@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
-  title: Workday Absence Management Absence Types Scorecards API
-  description: Absence Management API for managing leave balances, time-off requests, leaves of absence, and eligible absence types for workers.
+  title: Workday Compensation Scorecards API
+  description: Compensation API for managing employee compensation plans, scorecards, scorecard results, and one-time payment requests.
   version: v1
   contact:
     name: Workday Support
@@ -11,7 +11,7 @@ info:
     name: Proprietary
     url: https://www.workday.com/en-us/legal.html
 servers:
-- url: https://wd2-impl-services1.workday.com/ccx/api/absenceManagement/v1/{tenant}
+- url: https://wd2-impl-services1.workday.com/ccx/api/compensation/v1/{tenant}
   description: Workday REST API Server
   variables:
     tenant:
@@ -19,8 +19,8 @@ servers:
       description: The Workday tenant identifier
 security:
 - OAuth2:
-  - r_absence
-  - w_absence
+  - r_compensation
+  - w_compensation
 tags:
 - name: Scorecards
   description: Endpoints for managing compensation scorecards and results.
@@ -175,36 +175,40 @@ components:
       description: The Workday ID of the resource.
       schema:
         type: string
-  responses:
-    Unauthorized:
-      description: Authentication credentials were missing or invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    ErrorResponse:
+    ScorecardResult:
       type: object
       properties:
-        error:
+        id:
+          type: string
+          example: abc123
+        descriptor:
           type: string
           example: example_value
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              error:
-                type: string
-              field:
-                type: string
-          example: []
+        worker:
+          $ref: '#/components/schemas/ResourceReference'
+        currentBasePayAmount:
+          type: number
+          format: double
+          example: 42.5
+        proposedBasePayAmount:
+          type: number
+          format: double
+          example: 42.5
+        currency:
+          $ref: '#/components/schemas/ResourceReference'
+        percentChange:
+          type: number
+          format: double
+          example: 42.5
+        meritAmount:
+          type: number
+          format: double
+          example: 42.5
+        promotionAmount:
+          type: number
+          format: double
+          example: 42.5
     CompensationScorecard:
       type: object
       properties:
@@ -239,39 +243,35 @@ components:
           type: string
           format: uri
           example: https://www.example.com
-    ScorecardResult:
+    ErrorResponse:
       type: object
       properties:
-        id:
-          type: string
-          example: abc123
-        descriptor:
+        error:
           type: string
           example: example_value
-        worker:
-          $ref: '#/components/schemas/ResourceReference'
-        currentBasePayAmount:
-          type: number
-          format: double
-          example: 42.5
-        proposedBasePayAmount:
-          type: number
-          format: double
-          example: 42.5
-        currency:
-          $ref: '#/components/schemas/ResourceReference'
-        percentChange:
-          type: number
-          format: double
-          example: 42.5
-        meritAmount:
-          type: number
-          format: double
-          example: 42.5
-        promotionAmount:
-          type: number
-          format: double
-          example: 42.5
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+          example: []
+  responses:
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     OAuth2:
       type: oauth2
@@ -280,5 +280,5 @@ components:
           authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
           tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
           scopes:
-            r_absence: Read absence data
-            w_absence: Write absence data
+            r_compensation: Read compensation data
+            w_compensation: Write compensation data

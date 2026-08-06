@@ -3088,6 +3088,13 @@ common:
   url: https://www.workday.com/en-us/company/partners/overview.html
 - type: APIReference
   url: https://community.workday.com/sites/default/files/file-hosting/productionapi/index.html
+- type: WSDL
+  url: soap/workday-wsdl-index.yml
+  name: Workday SOAP Web Services WSDL index
+  description: The 55 SOAP services Workday publishes as downloadable WSDL and XSD at v46.2 —
+    the only machine-readable contracts obtainable without a Workday Community login (verified
+    2026-08-06). The rating has no WSDL or SOAP check, so this surface scores nothing; see
+    api-evangelist/roadmap#11.
 - type: JSONLD
   url: json-ld/context.jsonld
 - type: SpectralRules

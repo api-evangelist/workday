@@ -1,8 +1,8 @@
 openapi: 3.1.0
 info:
-  title: Workday Absence Management Absence Types Datasets API
-  description: Absence Management API for managing leave balances, time-off requests, leaves of absence, and eligible absence types for workers.
-  version: v1
+  title: Workday Prism Analytics Datasets API
+  description: Prism Analytics REST API for working with Workday Prism Analytics tables, data change tasks, and datasets. Enables programmatic creation and management of analytics data.
+  version: v3
   contact:
     name: Workday Support
     email: support@workday.com
@@ -11,7 +11,7 @@ info:
     name: Proprietary
     url: https://www.workday.com/en-us/legal.html
 servers:
-- url: https://wd2-impl-services1.workday.com/ccx/api/absenceManagement/v1/{tenant}
+- url: https://wd2-impl-services1.workday.com/ccx/api/prismAnalytics/v3/{tenant}
   description: Workday REST API Server
   variables:
     tenant:
@@ -19,8 +19,8 @@ servers:
       description: The Workday tenant identifier
 security:
 - OAuth2:
-  - r_absence
-  - w_absence
+  - r_prism
+  - w_prism
 tags:
 - name: Datasets
   description: Endpoints for managing Prism Analytics datasets.
@@ -276,7 +276,118 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: The zero-based index of the first object in a response collection.
+      schema:
+        type: integer
+        default: 0
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the resource.
+      schema:
+        type: string
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: The maximum number of objects in a single response.
+      schema:
+        type: integer
+        default: 20
+        maximum: 100
   schemas:
+    DatasetCreateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name for the new dataset.
+          example: Example Title
+        displayName:
+          type: string
+          description: The display name for the dataset.
+          example: example_value
+        description:
+          type: string
+          example: A sample description.
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/DatasetField'
+          example: []
+        tags:
+          type: array
+          items:
+            type: string
+          example: []
+      required:
+      - name
+      - fields
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: example_value
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+          example: []
+    Dataset:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The Workday ID of the dataset.
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        name:
+          type: string
+          description: The name of the dataset.
+          example: Example Title
+        displayName:
+          type: string
+          description: The display name of the dataset.
+          example: example_value
+        description:
+          type: string
+          example: A sample description.
+        tags:
+          type: array
+          items:
+            type: string
+          example: []
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/DatasetField'
+          example: []
+        rowCount:
+          type: integer
+          description: The number of rows in the dataset.
+          example: 10
+        createdOn:
+          type: string
+          format: date-time
+          example: '2026-01-15T10:30:00Z'
+        updatedOn:
+          type: string
+          format: date-time
+          example: '2026-01-15T10:30:00Z'
     DatasetUpdateRequest:
       type: object
       properties:
@@ -326,117 +437,6 @@ components:
         externalId:
           type: string
           example: '500123'
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          example: example_value
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              error:
-                type: string
-              field:
-                type: string
-          example: []
-    DatasetCreateRequest:
-      type: object
-      properties:
-        name:
-          type: string
-          description: The name for the new dataset.
-          example: Example Title
-        displayName:
-          type: string
-          description: The display name for the dataset.
-          example: example_value
-        description:
-          type: string
-          example: A sample description.
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/DatasetField'
-          example: []
-        tags:
-          type: array
-          items:
-            type: string
-          example: []
-      required:
-      - name
-      - fields
-    Dataset:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The Workday ID of the dataset.
-          example: abc123
-        descriptor:
-          type: string
-          example: example_value
-        name:
-          type: string
-          description: The name of the dataset.
-          example: Example Title
-        displayName:
-          type: string
-          description: The display name of the dataset.
-          example: example_value
-        description:
-          type: string
-          example: A sample description.
-        tags:
-          type: array
-          items:
-            type: string
-          example: []
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/DatasetField'
-          example: []
-        rowCount:
-          type: integer
-          description: The number of rows in the dataset.
-          example: 10
-        createdOn:
-          type: string
-          format: date-time
-          example: '2026-01-15T10:30:00Z'
-        updatedOn:
-          type: string
-          format: date-time
-          example: '2026-01-15T10:30:00Z'
-  parameters:
-    offset:
-      name: offset
-      in: query
-      required: false
-      description: The zero-based index of the first object in a response collection.
-      schema:
-        type: integer
-        default: 0
-    limit:
-      name: limit
-      in: query
-      required: false
-      description: The maximum number of objects in a single response.
-      schema:
-        type: integer
-        default: 20
-        maximum: 100
-    ID:
-      name: ID
-      in: path
-      required: true
-      description: The Workday ID of the resource.
-      schema:
-        type: string
   responses:
     Unauthorized:
       description: Authentication credentials were missing or invalid.
@@ -444,14 +444,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: The requested resource was not found.
+    BadRequest:
+      description: The request was invalid or malformed.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: The request was invalid or malformed.
+    NotFound:
+      description: The requested resource was not found.
       content:
         application/json:
           schema:
@@ -464,5 +464,5 @@ components:
           authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
           tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
           scopes:
-            r_absence: Read absence data
-            w_absence: Write absence data
+            r_prism: Read Prism Analytics data
+            w_prism: Write Prism Analytics data

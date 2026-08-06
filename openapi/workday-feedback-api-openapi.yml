@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
-  title: Workday Absence Management Absence Types Feedback API
-  description: Absence Management API for managing leave balances, time-off requests, leaves of absence, and eligible absence types for workers.
+  title: Workday Performance Management Feedback API
+  description: Performance Management API for managing performance reviews, feedback badges, goals, and employee performance evaluations.
   version: v1
   contact:
     name: Workday Support
@@ -11,7 +11,7 @@ info:
     name: Proprietary
     url: https://www.workday.com/en-us/legal.html
 servers:
-- url: https://wd2-impl-services1.workday.com/ccx/api/absenceManagement/v1/{tenant}
+- url: https://wd2-impl-services1.workday.com/ccx/api/performanceManagement/v1/{tenant}
   description: Workday REST API Server
   variables:
     tenant:
@@ -19,8 +19,8 @@ servers:
       description: The Workday tenant identifier
 security:
 - OAuth2:
-  - r_absence
-  - w_absence
+  - r_performance
+  - w_performance
 tags:
 - name: Feedback
   description: Endpoints for managing feedback and feedback badges.
@@ -202,42 +202,7 @@ components:
       description: The Workday ID of the worker.
       schema:
         type: string
-  responses:
-    Unauthorized:
-      description: Authentication credentials were missing or invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: The request was invalid or malformed.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          example: example_value
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              error:
-                type: string
-              field:
-                type: string
-          example: []
     FeedbackBadge:
       type: object
       properties:
@@ -258,6 +223,16 @@ components:
           type: string
           format: date-time
           example: '2026-01-15T10:30:00Z'
+    FeedbackBadgeRequest:
+      type: object
+      properties:
+        badge:
+          $ref: '#/components/schemas/ResourceReference'
+        comment:
+          type: string
+          example: example_value
+      required:
+      - badge
     ResourceReference:
       type: object
       properties:
@@ -271,6 +246,22 @@ components:
           type: string
           format: uri
           example: https://www.example.com
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: example_value
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+          example: []
     FeedbackRequest:
       type: object
       properties:
@@ -290,16 +281,25 @@ components:
           example: '2026-01-15'
       required:
       - respondents
-    FeedbackBadgeRequest:
-      type: object
-      properties:
-        badge:
-          $ref: '#/components/schemas/ResourceReference'
-        comment:
-          type: string
-          example: example_value
-      required:
-      - badge
+  responses:
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: The request was invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     OAuth2:
       type: oauth2
@@ -308,5 +308,5 @@ components:
           authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
           tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
           scopes:
-            r_absence: Read absence data
-            w_absence: Write absence data
+            r_performance: Read performance data
+            w_performance: Write performance data

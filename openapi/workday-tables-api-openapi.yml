@@ -1,8 +1,8 @@
 openapi: 3.1.0
 info:
-  title: Workday Absence Management Absence Types Tables API
-  description: Absence Management API for managing leave balances, time-off requests, leaves of absence, and eligible absence types for workers.
-  version: v1
+  title: Workday Prism Analytics Tables API
+  description: Prism Analytics REST API for working with Workday Prism Analytics tables, data change tasks, and datasets. Enables programmatic creation and management of analytics data.
+  version: v3
   contact:
     name: Workday Support
     email: support@workday.com
@@ -11,7 +11,7 @@ info:
     name: Proprietary
     url: https://www.workday.com/en-us/legal.html
 servers:
-- url: https://wd2-impl-services1.workday.com/ccx/api/absenceManagement/v1/{tenant}
+- url: https://wd2-impl-services1.workday.com/ccx/api/prismAnalytics/v3/{tenant}
   description: Workday REST API Server
   variables:
     tenant:
@@ -19,8 +19,8 @@ servers:
       description: The Workday tenant identifier
 security:
 - OAuth2:
-  - r_absence
-  - w_absence
+  - r_prism
+  - w_prism
 tags:
 - name: Tables
   description: Endpoints for managing Prism Analytics tables.
@@ -145,6 +145,22 @@ components:
       schema:
         type: string
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: example_value
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+          example: []
     Table:
       type: object
       properties:
@@ -206,22 +222,6 @@ components:
         externalId:
           type: string
           example: '500123'
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          example: example_value
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              error:
-                type: string
-              field:
-                type: string
-          example: []
   responses:
     Unauthorized:
       description: Authentication credentials were missing or invalid.
@@ -243,5 +243,5 @@ components:
           authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
           tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
           scopes:
-            r_absence: Read absence data
-            w_absence: Write absence data
+            r_prism: Read Prism Analytics data
+            w_prism: Write Prism Analytics data

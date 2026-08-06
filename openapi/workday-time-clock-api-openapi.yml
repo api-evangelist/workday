@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
-  title: Workday Absence Management Absence Types Time Clock API
-  description: Absence Management API for managing leave balances, time-off requests, leaves of absence, and eligible absence types for workers.
+  title: Workday Time Tracking Time Clock API
+  description: Time Tracking API for managing employee time entry, timesheets, time clock events, and time validations.
   version: v1
   contact:
     name: Workday Support
@@ -11,7 +11,7 @@ info:
     name: Proprietary
     url: https://www.workday.com/en-us/legal.html
 servers:
-- url: https://wd2-impl-services1.workday.com/ccx/api/absenceManagement/v1/{tenant}
+- url: https://wd2-impl-services1.workday.com/ccx/api/timeTracking/v1/{tenant}
   description: Workday REST API Server
   variables:
     tenant:
@@ -19,8 +19,8 @@ servers:
       description: The Workday tenant identifier
 security:
 - OAuth2:
-  - r_absence
-  - w_absence
+  - r_timeTracking
+  - w_timeTracking
 tags:
 - name: Time Clock
   description: Endpoints for managing time clock events.
@@ -162,26 +162,20 @@ components:
       description: The Workday ID of the worker.
       schema:
         type: string
-  responses:
-    Unauthorized:
-      description: Authentication credentials were missing or invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: The request was invalid or malformed.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   schemas:
+    ResourceReference:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        href:
+          type: string
+          format: uri
+          example: https://www.example.com
     ErrorResponse:
       type: object
       properties:
@@ -198,19 +192,21 @@ components:
               field:
                 type: string
           example: []
-    ResourceReference:
+    TimeClockEventRequest:
       type: object
       properties:
-        id:
+        clockEventType:
+          $ref: '#/components/schemas/ResourceReference'
+        clockEventTime:
           type: string
-          example: abc123
-        descriptor:
+          format: date-time
+          example: '2026-01-15T10:30:00Z'
+        timeZone:
           type: string
           example: example_value
-        href:
-          type: string
-          format: uri
-          example: https://www.example.com
+      required:
+      - clockEventType
+      - clockEventTime
     TimeClockEvent:
       type: object
       properties:
@@ -233,21 +229,25 @@ components:
           example: example_value
         location:
           $ref: '#/components/schemas/ResourceReference'
-    TimeClockEventRequest:
-      type: object
-      properties:
-        clockEventType:
-          $ref: '#/components/schemas/ResourceReference'
-        clockEventTime:
-          type: string
-          format: date-time
-          example: '2026-01-15T10:30:00Z'
-        timeZone:
-          type: string
-          example: example_value
-      required:
-      - clockEventType
-      - clockEventTime
+  responses:
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: The request was invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     OAuth2:
       type: oauth2
@@ -256,5 +256,5 @@ components:
           authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
           tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
           scopes:
-            r_absence: Read absence data
-            w_absence: Write absence data
+            r_timeTracking: Read time tracking data
+            w_timeTracking: Write time tracking data

@@ -1,8 +1,8 @@
 openapi: 3.1.0
 info:
-  title: Workday Absence Management Absence Types Data Change Tasks API
-  description: Absence Management API for managing leave balances, time-off requests, leaves of absence, and eligible absence types for workers.
-  version: v1
+  title: Workday Prism Analytics Data Change Tasks API
+  description: Prism Analytics REST API for working with Workday Prism Analytics tables, data change tasks, and datasets. Enables programmatic creation and management of analytics data.
+  version: v3
   contact:
     name: Workday Support
     email: support@workday.com
@@ -11,7 +11,7 @@ info:
     name: Proprietary
     url: https://www.workday.com/en-us/legal.html
 servers:
-- url: https://wd2-impl-services1.workday.com/ccx/api/absenceManagement/v1/{tenant}
+- url: https://wd2-impl-services1.workday.com/ccx/api/prismAnalytics/v3/{tenant}
   description: Workday REST API Server
   variables:
     tenant:
@@ -19,8 +19,8 @@ servers:
       description: The Workday tenant identifier
 security:
 - OAuth2:
-  - r_absence
-  - w_absence
+  - r_prism
+  - w_prism
 tags:
 - name: Data Change Tasks
   description: Endpoints for managing data loading tasks.
@@ -259,6 +259,86 @@ components:
       schema:
         type: string
   schemas:
+    DataChangeTaskCreateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name for the data change task.
+          example: Example Title
+        targetDataset:
+          $ref: '#/components/schemas/ResourceReference'
+        operation:
+          type: object
+          properties:
+            id:
+              type: string
+              description: The operation type identifier (FullReplace or Append).
+          example: example_value
+        fileContainer:
+          $ref: '#/components/schemas/ResourceReference'
+      required:
+      - name
+      - targetDataset
+      - operation
+    ResourceReference:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        href:
+          type: string
+          format: uri
+          example: https://www.example.com
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: example_value
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+          example: []
+    DataChangeTaskActivity:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        activityType:
+          type: string
+          example: example_value
+        status:
+          type: string
+          example: example_value
+        startedOn:
+          type: string
+          format: date-time
+          example: '2026-01-15T10:30:00Z'
+        completedOn:
+          type: string
+          format: date-time
+          example: '2026-01-15T10:30:00Z'
+        rowsProcessed:
+          type: integer
+          example: 10
+        rowsFailed:
+          type: integer
+          example: 10
     DataChangeTask:
       type: object
       properties:
@@ -302,86 +382,6 @@ components:
           type: string
           format: date-time
           example: '2026-01-15T10:30:00Z'
-    DataChangeTaskCreateRequest:
-      type: object
-      properties:
-        name:
-          type: string
-          description: The name for the data change task.
-          example: Example Title
-        targetDataset:
-          $ref: '#/components/schemas/ResourceReference'
-        operation:
-          type: object
-          properties:
-            id:
-              type: string
-              description: The operation type identifier (FullReplace or Append).
-          example: example_value
-        fileContainer:
-          $ref: '#/components/schemas/ResourceReference'
-      required:
-      - name
-      - targetDataset
-      - operation
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          example: example_value
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              error:
-                type: string
-              field:
-                type: string
-          example: []
-    ResourceReference:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        descriptor:
-          type: string
-          example: example_value
-        href:
-          type: string
-          format: uri
-          example: https://www.example.com
-    DataChangeTaskActivity:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        descriptor:
-          type: string
-          example: example_value
-        activityType:
-          type: string
-          example: example_value
-        status:
-          type: string
-          example: example_value
-        startedOn:
-          type: string
-          format: date-time
-          example: '2026-01-15T10:30:00Z'
-        completedOn:
-          type: string
-          format: date-time
-          example: '2026-01-15T10:30:00Z'
-        rowsProcessed:
-          type: integer
-          example: 10
-        rowsFailed:
-          type: integer
-          example: 10
   responses:
     Unauthorized:
       description: Authentication credentials were missing or invalid.
@@ -389,14 +389,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: The requested resource was not found.
+    BadRequest:
+      description: The request was invalid or malformed.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: The request was invalid or malformed.
+    NotFound:
+      description: The requested resource was not found.
       content:
         application/json:
           schema:
@@ -409,5 +409,5 @@ components:
           authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
           tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
           scopes:
-            r_absence: Read absence data
-            w_absence: Write absence data
+            r_prism: Read Prism Analytics data
+            w_prism: Write Prism Analytics data

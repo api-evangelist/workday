@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
-  title: Workday Absence Management Absence Types Time Entries API
-  description: Absence Management API for managing leave balances, time-off requests, leaves of absence, and eligible absence types for workers.
+  title: Workday Time Tracking Time Entries API
+  description: Time Tracking API for managing employee time entry, timesheets, time clock events, and time validations.
   version: v1
   contact:
     name: Workday Support
@@ -11,7 +11,7 @@ info:
     name: Proprietary
     url: https://www.workday.com/en-us/legal.html
 servers:
-- url: https://wd2-impl-services1.workday.com/ccx/api/absenceManagement/v1/{tenant}
+- url: https://wd2-impl-services1.workday.com/ccx/api/timeTracking/v1/{tenant}
   description: Workday REST API Server
   variables:
     tenant:
@@ -19,8 +19,8 @@ servers:
       description: The Workday tenant identifier
 security:
 - OAuth2:
-  - r_absence
-  - w_absence
+  - r_timeTracking
+  - w_timeTracking
 tags:
 - name: Time Entries
   description: Endpoints for managing time entries.
@@ -158,13 +158,6 @@ components:
       schema:
         type: integer
         default: 0
-    ID:
-      name: ID
-      in: path
-      required: true
-      description: The Workday ID of the worker.
-      schema:
-        type: string
     limit:
       name: limit
       in: query
@@ -174,28 +167,27 @@ components:
         type: integer
         default: 20
         maximum: 100
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the worker.
+      schema:
+        type: string
   schemas:
-    TimeEntryRequest:
+    ResourceReference:
       type: object
       properties:
-        date:
+        id:
           type: string
-          format: date
-          example: '2026-01-15'
-        hours:
-          type: number
-          format: double
-          example: 42.5
-        timeEntryCode:
-          $ref: '#/components/schemas/ResourceReference'
-        worktag:
-          $ref: '#/components/schemas/ResourceReference'
-        comment:
+          example: abc123
+        descriptor:
           type: string
           example: example_value
-      required:
-      - date
-      - hours
+        href:
+          type: string
+          format: uri
+          example: https://www.example.com
     ErrorResponse:
       type: object
       properties:
@@ -240,19 +232,27 @@ components:
         status:
           type: string
           example: example_value
-    ResourceReference:
+    TimeEntryRequest:
       type: object
       properties:
-        id:
+        date:
           type: string
-          example: abc123
-        descriptor:
+          format: date
+          example: '2026-01-15'
+        hours:
+          type: number
+          format: double
+          example: 42.5
+        timeEntryCode:
+          $ref: '#/components/schemas/ResourceReference'
+        worktag:
+          $ref: '#/components/schemas/ResourceReference'
+        comment:
           type: string
           example: example_value
-        href:
-          type: string
-          format: uri
-          example: https://www.example.com
+      required:
+      - date
+      - hours
   responses:
     Unauthorized:
       description: Authentication credentials were missing or invalid.
@@ -260,14 +260,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: The requested resource was not found.
+    BadRequest:
+      description: The request was invalid or malformed.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: The request was invalid or malformed.
+    NotFound:
+      description: The requested resource was not found.
       content:
         application/json:
           schema:
@@ -280,5 +280,5 @@ components:
           authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
           tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
           scopes:
-            r_absence: Read absence data
-            w_absence: Write absence data
+            r_timeTracking: Read time tracking data
+            w_timeTracking: Write time tracking data

@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
-  title: Workday Absence Management Absence Types Reference Data API
-  description: Absence Management API for managing leave balances, time-off requests, leaves of absence, and eligible absence types for workers.
+  title: Workday Common Reference Data API
+  description: Common API providing shared reference data, lookup values, and utility endpoints used across other Workday REST API services.
   version: v1
   contact:
     name: Workday Support
@@ -11,7 +11,7 @@ info:
     name: Proprietary
     url: https://www.workday.com/en-us/legal.html
 servers:
-- url: https://wd2-impl-services1.workday.com/ccx/api/absenceManagement/v1/{tenant}
+- url: https://wd2-impl-services1.workday.com/ccx/api/common/v1/{tenant}
   description: Workday REST API Server
   variables:
     tenant:
@@ -19,8 +19,7 @@ servers:
       description: The Workday tenant identifier
 security:
 - OAuth2:
-  - r_absence
-  - w_absence
+  - r_common
 tags:
 - name: Reference Data
   description: Endpoints for accessing common reference data and lookup values.
@@ -300,6 +299,13 @@ components:
       schema:
         type: integer
         default: 0
+    search:
+      name: search
+      in: query
+      required: false
+      description: Searches resources by name.
+      schema:
+        type: string
     limit:
       name: limit
       in: query
@@ -316,45 +322,7 @@ components:
       description: The Workday ID of the resource.
       schema:
         type: string
-    search:
-      name: search
-      in: query
-      required: false
-      description: Searches resources by name.
-      schema:
-        type: string
   schemas:
-    Language:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        descriptor:
-          type: string
-          example: example_value
-        languageCode:
-          type: string
-          example: example_value
-        name:
-          type: string
-          example: Example Title
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          example: example_value
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              error:
-                type: string
-              field:
-                type: string
-          example: []
     ReferenceValue:
       type: object
       properties:
@@ -364,6 +332,26 @@ components:
         descriptor:
           type: string
           example: example_value
+    Country:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        countryCode:
+          type: string
+          description: The ISO 3166-1 alpha-3 country code.
+          example: example_value
+        alpha2Code:
+          type: string
+          description: The ISO 3166-1 alpha-2 country code.
+          example: example_value
+        name:
+          type: string
+          example: Example Title
     Currency:
       type: object
       properties:
@@ -383,7 +371,23 @@ components:
         numericCode:
           type: string
           example: example_value
-    Country:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: example_value
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+          example: []
+    Language:
       type: object
       properties:
         id:
@@ -392,13 +396,8 @@ components:
         descriptor:
           type: string
           example: example_value
-        countryCode:
+        languageCode:
           type: string
-          description: The ISO 3166-1 alpha-3 country code.
-          example: example_value
-        alpha2Code:
-          type: string
-          description: The ISO 3166-1 alpha-2 country code.
           example: example_value
         name:
           type: string
@@ -424,5 +423,4 @@ components:
           authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
           tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
           scopes:
-            r_absence: Read absence data
-            w_absence: Write absence data
+            r_common: Read common reference data

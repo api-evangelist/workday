@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
-  title: Workday Absence Management Absence Types Talent Profiles API
-  description: Absence Management API for managing leave balances, time-off requests, leaves of absence, and eligible absence types for workers.
+  title: Workday Talent Management Talent Profiles API
+  description: Talent Management API for managing mentorships, talent profiles, career development, and succession planning.
   version: v1
   contact:
     name: Workday Support
@@ -11,7 +11,7 @@ info:
     name: Proprietary
     url: https://www.workday.com/en-us/legal.html
 servers:
-- url: https://wd2-impl-services1.workday.com/ccx/api/absenceManagement/v1/{tenant}
+- url: https://wd2-impl-services1.workday.com/ccx/api/talent/v1/{tenant}
   description: Workday REST API Server
   variables:
     tenant:
@@ -19,8 +19,8 @@ servers:
       description: The Workday tenant identifier
 security:
 - OAuth2:
-  - r_absence
-  - w_absence
+  - r_talent
+  - w_talent
 tags:
 - name: Talent Profiles
   description: Endpoints for managing talent profiles and skills.
@@ -202,7 +202,7 @@ components:
       schema:
         type: string
   schemas:
-    Language:
+    ResourceReference:
       type: object
       properties:
         id:
@@ -211,29 +211,10 @@ components:
         descriptor:
           type: string
           example: example_value
-        language:
-          $ref: '#/components/schemas/ResourceReference'
-        proficiency:
-          $ref: '#/components/schemas/ResourceReference'
-        isNative:
-          type: boolean
-          example: true
-    Skill:
-      type: object
-      properties:
-        id:
+        href:
           type: string
-          example: abc123
-        descriptor:
-          type: string
-          example: example_value
-        name:
-          type: string
-          example: Example Title
-        category:
-          $ref: '#/components/schemas/ResourceReference'
-        proficiencyLevel:
-          $ref: '#/components/schemas/ResourceReference'
+          format: uri
+          example: https://www.example.com
     ErrorResponse:
       type: object
       properties:
@@ -250,6 +231,22 @@ components:
               field:
                 type: string
           example: []
+    Skill:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        name:
+          type: string
+          example: Example Title
+        category:
+          $ref: '#/components/schemas/ResourceReference'
+        proficiencyLevel:
+          $ref: '#/components/schemas/ResourceReference'
     JobHistoryEntry:
       type: object
       properties:
@@ -273,64 +270,22 @@ components:
         description:
           type: string
           example: A sample description.
-    EducationEntry:
+    Language:
       type: object
       properties:
         id:
           type: string
           example: abc123
-        school:
+        descriptor:
           type: string
           example: example_value
-        degree:
+        language:
           $ref: '#/components/schemas/ResourceReference'
-        fieldOfStudy:
-          type: string
-          example: example_value
-        startDate:
-          type: string
-          format: date
-          example: '2026-01-15'
-        endDate:
-          type: string
-          format: date
-          example: '2026-01-15'
-    ResourceReference:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        descriptor:
-          type: string
-          example: example_value
-        href:
-          type: string
-          format: uri
-          example: https://www.example.com
-    Certification:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        descriptor:
-          type: string
-          example: example_value
-        name:
-          type: string
-          example: Example Title
-        issuer:
-          type: string
-          example: example_value
-        issuedDate:
-          type: string
-          format: date
-          example: '2026-01-15'
-        expirationDate:
-          type: string
-          format: date
-          example: '2026-01-15'
+        proficiency:
+          $ref: '#/components/schemas/ResourceReference'
+        isNative:
+          type: boolean
+          example: true
     TalentProfile:
       type: object
       properties:
@@ -370,6 +325,51 @@ components:
         careerInterests:
           type: string
           example: example_value
+    EducationEntry:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        school:
+          type: string
+          example: example_value
+        degree:
+          $ref: '#/components/schemas/ResourceReference'
+        fieldOfStudy:
+          type: string
+          example: example_value
+        startDate:
+          type: string
+          format: date
+          example: '2026-01-15'
+        endDate:
+          type: string
+          format: date
+          example: '2026-01-15'
+    Certification:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        name:
+          type: string
+          example: Example Title
+        issuer:
+          type: string
+          example: example_value
+        issuedDate:
+          type: string
+          format: date
+          example: '2026-01-15'
+        expirationDate:
+          type: string
+          format: date
+          example: '2026-01-15'
   responses:
     Unauthorized:
       description: Authentication credentials were missing or invalid.
@@ -391,5 +391,5 @@ components:
           authorizationUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize
           tokenUrl: https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token
           scopes:
-            r_absence: Read absence data
-            w_absence: Write absence data
+            r_talent: Read talent data
+            w_talent: Write talent data
