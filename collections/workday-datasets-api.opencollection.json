@@ -1,0 +1,137 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Workday Prism Analytics Datasets API",
+    "version": "v3"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize",
+      "accessTokenUrl": "https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Datasets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Datasets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://wd2-impl-services1.workday.com/ccx/api/prismAnalytics/v3/{tenant}/datasets",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of objects in a single response."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The zero-based index of the first object in a response collection."
+              },
+              {
+                "name": "name",
+                "value": "Example Title",
+                "type": "query",
+                "description": "Filter datasets by name."
+              }
+            ]
+          },
+          "docs": "Returns a collection of Prism Analytics datasets."
+        },
+        {
+          "info": {
+            "name": "Create Dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://wd2-impl-services1.workday.com/ccx/api/prismAnalytics/v3/{tenant}/datasets",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new Prism Analytics dataset with a specified schema."
+        },
+        {
+          "info": {
+            "name": "Get Dataset by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://wd2-impl-services1.workday.com/ccx/api/prismAnalytics/v3/{tenant}/datasets/:ID",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path",
+                "description": "The Workday ID of the resource."
+              }
+            ]
+          },
+          "docs": "Returns detailed information for a specific dataset."
+        },
+        {
+          "info": {
+            "name": "Update Dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://wd2-impl-services1.workday.com/ccx/api/prismAnalytics/v3/{tenant}/datasets/:ID",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path",
+                "description": "The Workday ID of the resource."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a dataset schema or metadata."
+        },
+        {
+          "info": {
+            "name": "Delete Dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://wd2-impl-services1.workday.com/ccx/api/prismAnalytics/v3/{tenant}/datasets/:ID",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path",
+                "description": "The Workday ID of the resource."
+              }
+            ]
+          },
+          "docs": "Deletes a dataset."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

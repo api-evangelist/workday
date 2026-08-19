@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Workday Person Contact Information API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize",
+      "accessTokenUrl": "https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Contact Information",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Home Contact Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://wd2-impl-services1.workday.com/ccx/api/person/v1/{tenant}/people/:ID/homeContactInformation",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path",
+                "description": "The Workday ID of the person."
+              }
+            ]
+          },
+          "docs": "Returns home contact information for a person."
+        },
+        {
+          "info": {
+            "name": "Get Work Contact Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://wd2-impl-services1.workday.com/ccx/api/person/v1/{tenant}/people/:ID/workContactInformation",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path",
+                "description": "The Workday ID of the person."
+              }
+            ]
+          },
+          "docs": "Returns work contact information for a person."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,61 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Workday WQL Query API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize",
+      "accessTokenUrl": "https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Query",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Execute Wql Query",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://wd2-impl-services1.workday.com/ccx/api/wql/v1/{tenant}/data",
+            "params": [
+              {
+                "name": "query",
+                "value": "example_value",
+                "type": "query",
+                "description": "The WQL query string. Example: SELECT workdayID, fullName, businessTitle FROM allWorkers WHERE isActive = true"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of objects in a single response."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The zero-based index of the first object in a response collection."
+              }
+            ]
+          },
+          "docs": "Executes a WQL query and returns the result set. Supports pagination through limit and offset parameters."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

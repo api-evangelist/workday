@@ -1,0 +1,199 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Workday Common Reference Data API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize",
+      "accessTokenUrl": "https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reference Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Countries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://wd2-impl-services1.workday.com/ccx/api/common/v1/{tenant}/countries",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of objects in a single response."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The zero-based index of the first object in a response collection."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Searches resources by name."
+              }
+            ]
+          },
+          "docs": "Returns a collection of countries."
+        },
+        {
+          "info": {
+            "name": "Get Country by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://wd2-impl-services1.workday.com/ccx/api/common/v1/{tenant}/countries/:ID",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path",
+                "description": "The Workday ID of the resource."
+              }
+            ]
+          },
+          "docs": "Returns details for a specific country."
+        },
+        {
+          "info": {
+            "name": "Get Currencies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://wd2-impl-services1.workday.com/ccx/api/common/v1/{tenant}/currencies",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of objects in a single response."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The zero-based index of the first object in a response collection."
+              }
+            ]
+          },
+          "docs": "Returns a collection of currencies."
+        },
+        {
+          "info": {
+            "name": "Get Currency by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://wd2-impl-services1.workday.com/ccx/api/common/v1/{tenant}/currencies/:ID",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path",
+                "description": "The Workday ID of the resource."
+              }
+            ]
+          },
+          "docs": "Returns details for a specific currency."
+        },
+        {
+          "info": {
+            "name": "Get Languages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://wd2-impl-services1.workday.com/ccx/api/common/v1/{tenant}/languages",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of objects in a single response."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The zero-based index of the first object in a response collection."
+              }
+            ]
+          },
+          "docs": "Returns a collection of languages."
+        },
+        {
+          "info": {
+            "name": "Get Genders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://wd2-impl-services1.workday.com/ccx/api/common/v1/{tenant}/genders",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of objects in a single response."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The zero-based index of the first object in a response collection."
+              }
+            ]
+          },
+          "docs": "Returns a collection of gender values."
+        },
+        {
+          "info": {
+            "name": "Get Marital Statuses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://wd2-impl-services1.workday.com/ccx/api/common/v1/{tenant}/maritalStatuses",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of objects in a single response."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The zero-based index of the first object in a response collection."
+              }
+            ]
+          },
+          "docs": "Returns a collection of marital status values."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

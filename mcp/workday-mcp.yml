@@ -323,3 +323,9 @@ tools:
 - name: getDataSourceFields
   description: Get Data Source Fields
   source_operation: openapi/wql.yml#getDataSourceFields
+deployment:
+  mode: none
+  verified: derived
+  tools: 104
+  checked: '2026-08-12'
+  source: catalog MCP census

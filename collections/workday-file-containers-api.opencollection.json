@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Workday Prism Analytics File Containers API",
+    "version": "v3"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/authorize",
+      "accessTokenUrl": "https://wd2-impl-services1.workday.com/ccx/oauth2/{tenant}/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "File Containers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create File Container",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://wd2-impl-services1.workday.com/ccx/api/prismAnalytics/v3/{tenant}/fileContainers"
+          },
+          "docs": "Creates a file container for uploading data files for a data change task."
+        },
+        {
+          "info": {
+            "name": "Get File Container by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://wd2-impl-services1.workday.com/ccx/api/prismAnalytics/v3/{tenant}/fileContainers/:ID",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path",
+                "description": "The Workday ID of the resource."
+              }
+            ]
+          },
+          "docs": "Returns details of a file container."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
