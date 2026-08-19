@@ -12,7 +12,7 @@ accessModel:
   - authentication
   generated: '2026-07-22'
   method: derived
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 type: Index
 name: Workday
 description: Collection of Workday REST and SOAP APIs for human capital management,
