@@ -26,6 +26,12 @@ tags:
 - Enterprise Software
 - Financial Management
 - HCM
+- Software-as-a-Service
+tags_raw:
+- Cloud Computing
+- Enterprise Software
+- Financial Management
+- HCM
 - SaaS
 apis:
 - aid: workday:strategic-sourcing-api
@@ -75,6 +81,11 @@ apis:
   humanURL: https://www.workday.com/en-us/products/platform-product-extensions/app-development.html
   baseURL: https://wd2-impl-services1.workday.com/ccx/api/
   tags:
+  - App Development
+  - Custom Applications
+  - Low-Code
+  - Platform Extensibility
+  tags_raw:
   - App Development
   - Custom Applications
   - Low Code
@@ -1514,6 +1525,8 @@ apis:
   humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
   baseURL: https://wd2-impl-services1.workday.com/ccx/api/
   tags:
+  - Organization
+  tags_raw:
   - Organizations
   properties:
   - type: OpenAPI
@@ -1636,6 +1649,8 @@ apis:
   humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
   baseURL: https://wd2-impl-services1.workday.com/ccx/api/
   tags:
+  - Payslips
+  tags_raw:
   - Pay Slips
   properties:
   - type: OpenAPI
