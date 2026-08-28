@@ -1,4 +1,16 @@
 aid: workday
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: enterprise
   onboarding: self-serve
@@ -2927,6 +2939,9 @@ apis:
   - type: JSONLD
     url: json-ld/wql-context.jsonld
 common:
+- type: CapabilityMap
+  url: capabilities/workday-capability-edges.yml
+  name: Workday Business Capability Map
 - type: AgenticAccess
   url: agentic-access/workday-agentic-access.yml
 - type: Packages
