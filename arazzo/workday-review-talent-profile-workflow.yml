@@ -9,11 +9,11 @@ info:
     read and executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: hcmApi
-  url: ../openapi/hcm.yml
+- name: talentProfilesApi
+  url: ../openapi/workday-talent-profiles-api-openapi.yml
   type: openapi
-- name: talentApi
-  url: ../openapi/talent.yml
+- name: workersApi
+  url: ../openapi/workday-workers-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: review-talent-profile

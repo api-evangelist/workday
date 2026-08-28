@@ -10,11 +10,11 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: hcmApi
-  url: ../openapi/hcm.yml
+- name: timeClockApi
+  url: ../openapi/workday-time-clock-api-openapi.yml
   type: openapi
-- name: timeTrackingApi
-  url: ../openapi/timeTracking.yml
+- name: workersApi
+  url: ../openapi/workday-workers-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: clock-time-event

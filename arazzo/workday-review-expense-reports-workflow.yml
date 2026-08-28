@@ -11,8 +11,11 @@ info:
     the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: financialManagementApi
-  url: ../openapi/financialManagement.yml
+- name: accountingApi
+  url: ../openapi/workday-accounting-api-openapi.yml
+  type: openapi
+- name: expensesApi
+  url: ../openapi/workday-expenses-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: review-expense-reports

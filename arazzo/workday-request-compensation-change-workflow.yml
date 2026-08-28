@@ -10,11 +10,11 @@ info:
     opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: hcmApi
-  url: ../openapi/hcm.yml
+- name: compensationPlansApi
+  url: ../openapi/workday-compensation-plans-api-openapi.yml
   type: openapi
-- name: compensationApi
-  url: ../openapi/compensation.yml
+- name: workersApi
+  url: ../openapi/workday-workers-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: request-compensation-change

@@ -10,11 +10,14 @@ info:
     executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: hcmApi
-  url: ../openapi/hcm.yml
+- name: benefitElectionsApi
+  url: ../openapi/workday-benefit-elections-api-openapi.yml
   type: openapi
-- name: benefitsApi
-  url: ../openapi/benefits.yml
+- name: benefitPlansApi
+  url: ../openapi/workday-benefit-plans-api-openapi.yml
+  type: openapi
+- name: workersApi
+  url: ../openapi/workday-workers-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: change-benefits

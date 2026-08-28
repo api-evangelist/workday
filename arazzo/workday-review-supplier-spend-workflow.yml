@@ -11,8 +11,11 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: financialManagementApi
-  url: ../openapi/financialManagement.yml
+- name: procurementApi
+  url: ../openapi/workday-procurement-api-openapi.yml
+  type: openapi
+- name: revenueApi
+  url: ../openapi/workday-revenue-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: review-supplier-spend

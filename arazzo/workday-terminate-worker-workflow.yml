@@ -10,11 +10,11 @@ info:
     without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: hcmApi
-  url: ../openapi/hcm.yml
-  type: openapi
 - name: staffingApi
-  url: ../openapi/staffing.yml
+  url: ../openapi/workday-staffing-api-openapi.yml
+  type: openapi
+- name: workersApi
+  url: ../openapi/workday-workers-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: terminate-worker

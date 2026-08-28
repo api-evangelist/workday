@@ -10,11 +10,11 @@ info:
     without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: hcmApi
-  url: ../openapi/hcm.yml
+- name: leaveOfAbsenceApi
+  url: ../openapi/workday-leave-of-absence-api-openapi.yml
   type: openapi
-- name: absenceManagementApi
-  url: ../openapi/absenceManagement.yml
+- name: workersApi
+  url: ../openapi/workday-workers-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: request-leave-of-absence

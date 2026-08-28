@@ -10,8 +10,11 @@ info:
     can be read and executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: wqlApi
-  url: ../openapi/wql.yml
+- name: dataSourcesApi
+  url: ../openapi/workday-data-sources-api-openapi.yml
+  type: openapi
+- name: queryApi
+  url: ../openapi/workday-query-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: wql-discover-and-query

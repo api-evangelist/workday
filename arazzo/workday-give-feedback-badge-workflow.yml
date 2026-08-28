@@ -10,11 +10,11 @@ info:
     OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: hcmApi
-  url: ../openapi/hcm.yml
+- name: feedbackApi
+  url: ../openapi/workday-feedback-api-openapi.yml
   type: openapi
-- name: performanceManagementApi
-  url: ../openapi/performanceManagement.yml
+- name: workersApi
+  url: ../openapi/workday-workers-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: give-feedback-badge

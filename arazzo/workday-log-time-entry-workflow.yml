@@ -10,11 +10,14 @@ info:
     without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: hcmApi
-  url: ../openapi/hcm.yml
+- name: timeEntriesApi
+  url: ../openapi/workday-time-entries-api-openapi.yml
   type: openapi
-- name: timeTrackingApi
-  url: ../openapi/timeTracking.yml
+- name: timesheetsApi
+  url: ../openapi/workday-timesheets-api-openapi.yml
+  type: openapi
+- name: workersApi
+  url: ../openapi/workday-workers-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: log-time-entry

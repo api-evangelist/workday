@@ -11,8 +11,11 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: personApi
-  url: ../openapi/person.yml
+- name: contactInformationApi
+  url: ../openapi/workday-contact-information-api-openapi.yml
+  type: openapi
+- name: peopleApi
+  url: ../openapi/workday-people-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: person-contact-360

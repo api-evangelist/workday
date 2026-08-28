@@ -10,11 +10,14 @@ info:
     be read and executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: hcmApi
-  url: ../openapi/hcm.yml
+- name: absenceTypesApi
+  url: ../openapi/workday-absence-types-api-openapi.yml
   type: openapi
-- name: absenceManagementApi
-  url: ../openapi/absenceManagement.yml
+- name: timeOffApi
+  url: ../openapi/workday-time-off-api-openapi.yml
+  type: openapi
+- name: workersApi
+  url: ../openapi/workday-workers-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: submit-time-off

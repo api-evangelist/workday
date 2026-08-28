@@ -10,11 +10,17 @@ info:
     underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: hcmApi
-  url: ../openapi/hcm.yml
+- name: feedbackApi
+  url: ../openapi/workday-feedback-api-openapi.yml
   type: openapi
-- name: performanceManagementApi
-  url: ../openapi/performanceManagement.yml
+- name: goalsApi
+  url: ../openapi/workday-goals-api-openapi.yml
+  type: openapi
+- name: performanceReviewsApi
+  url: ../openapi/workday-performance-reviews-api-openapi.yml
+  type: openapi
+- name: workersApi
+  url: ../openapi/workday-workers-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: request-feedback

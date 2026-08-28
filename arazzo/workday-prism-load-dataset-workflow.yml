@@ -10,8 +10,14 @@ info:
     be read and executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: prismAnalyticsApi
-  url: ../openapi/prismAnalytics.yml
+- name: dataChangeTasksApi
+  url: ../openapi/workday-data-change-tasks-api-openapi.yml
+  type: openapi
+- name: datasetsApi
+  url: ../openapi/workday-datasets-api-openapi.yml
+  type: openapi
+- name: fileContainersApi
+  url: ../openapi/workday-file-containers-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: prism-load-dataset

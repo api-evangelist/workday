@@ -11,8 +11,14 @@ info:
     the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: recruitingApi
-  url: ../openapi/recruiting.yml
+- name: jobApplicationsApi
+  url: ../openapi/workday-job-applications-api-openapi.yml
+  type: openapi
+- name: jobPostingsApi
+  url: ../openapi/workday-job-postings-api-openapi.yml
+  type: openapi
+- name: jobRequisitionsApi
+  url: ../openapi/workday-job-requisitions-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: review-recruiting-pipeline
