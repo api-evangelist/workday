@@ -22,6 +22,9 @@ info:
       confidence: 0.85
     model: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities, CC BY 4.0
 sourceDescriptions:
+- name: oneTimePaymentsApi
+  url: ../openapi/workday-one-time-payments-api-openapi.yml
+  type: openapi
 - name: paySlipsApi
   url: ../openapi/workday-pay-slips-api-openapi.yml
   type: openapi
@@ -97,7 +100,7 @@ workflows:
       paySlips: $response.body#/data
   - stepId: requestPayment
     description: Submit the one-time payment request for the worker.
-    operationPath: '{$sourceDescriptions.compensationApi.url}#/paths/~1workers~1{ID}~1requestOneTimePayment/post'
+    operationPath: '{$sourceDescriptions.oneTimePaymentsApi.url}#/paths/~1workers~1{ID}~1requestOneTimePayment/post'
     parameters:
     - name: Authorization
       in: header
