@@ -95,7 +95,7 @@ apis:
   tags:
   - App Development
   - Custom Applications
-  - Low-Code
+  - Low Code
   - Platform Extensibility
   tags_raw:
   - App Development
@@ -1661,7 +1661,7 @@ apis:
   humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
   baseURL: https://wd2-impl-services1.workday.com/ccx/api/
   tags:
-  - Payslips
+  - Pay Slips
   tags_raw:
   - Pay Slips
   properties:
