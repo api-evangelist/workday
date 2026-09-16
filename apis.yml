@@ -1655,69 +1655,6 @@ apis:
     url: json-ld/raas-context.jsonld
   - type: JSONLD
     url: json-ld/wql-context.jsonld
-- aid: workday:workday-pay-slips-api
-  name: Workday Pay Slips API
-  description: Endpoints for accessing pay slips.
-  humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
-  baseURL: https://wd2-impl-services1.workday.com/ccx/api/
-  tags:
-  - Payslips
-  tags_raw:
-  - Pay Slips
-  properties:
-  - type: OpenAPI
-    url: openapi/workday-pay-slips-api-openapi.yml
-  - type: Documentation
-    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
-  - type: JSONSchema
-    url: json-schema/worker.json
-  - type: JSONSchema
-    url: json-schema/organization.json
-  - type: JSONLD
-    url: json-ld/hcm-context.jsonld
-  - type: Authentication
-    url: >-
-      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
-  - type: JSONLD
-    url: json-ld/financialManagement-context.jsonld
-  - type: JSONLD
-    url: json-ld/recruiting-context.jsonld
-  - type: JSONLD
-    url: json-ld/timeTracking-context.jsonld
-  - type: JSONLD
-    url: json-ld/benefits-context.jsonld
-  - type: JSONSchema
-    url: json-schema/time-off.json
-  - type: JSONLD
-    url: json-ld/absenceManagement-context.jsonld
-  - type: JSONSchema
-    url: json-schema/compensation.json
-  - type: JSONLD
-    url: json-ld/compensation-context.jsonld
-  - type: JSONLD
-    url: json-ld/payroll-context.jsonld
-  - type: JSONLD
-    url: json-ld/person-context.jsonld
-  - type: JSONLD
-    url: json-ld/performanceManagement-context.jsonld
-  - type: JSONLD
-    url: json-ld/talent-context.jsonld
-  - type: JSONLD
-    url: json-ld/common-context.jsonld
-  - type: JSONSchema
-    url: json-schema/position.json
-  - type: JSONLD
-    url: json-ld/staffing-context.jsonld
-  - type: JSONLD
-    url: json-ld/prismAnalytics-context.jsonld
-  - type: Documentation
-    url: https://community.workday.com/api
-  - type: JSONLD
-    url: json-ld/raas-context.jsonld
-  - type: JSONLD
-    url: json-ld/wql-context.jsonld
 - aid: workday:workday-payroll-inputs-api
   name: Workday Payroll Inputs API
   description: Endpoints for managing payroll inputs.
@@ -2887,6 +2824,67 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/workday-workers-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: JSONSchema
+    url: json-schema/worker.json
+  - type: JSONSchema
+    url: json-schema/organization.json
+  - type: JSONLD
+    url: json-ld/hcm-context.jsonld
+  - type: Authentication
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
+  - type: GraphQL
+    url: graphql/workday-graphql.md
+  - type: JSONLD
+    url: json-ld/financialManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/recruiting-context.jsonld
+  - type: JSONLD
+    url: json-ld/timeTracking-context.jsonld
+  - type: JSONLD
+    url: json-ld/benefits-context.jsonld
+  - type: JSONSchema
+    url: json-schema/time-off.json
+  - type: JSONLD
+    url: json-ld/absenceManagement-context.jsonld
+  - type: JSONSchema
+    url: json-schema/compensation.json
+  - type: JSONLD
+    url: json-ld/compensation-context.jsonld
+  - type: JSONLD
+    url: json-ld/payroll-context.jsonld
+  - type: JSONLD
+    url: json-ld/person-context.jsonld
+  - type: JSONLD
+    url: json-ld/performanceManagement-context.jsonld
+  - type: JSONLD
+    url: json-ld/talent-context.jsonld
+  - type: JSONLD
+    url: json-ld/common-context.jsonld
+  - type: JSONSchema
+    url: json-schema/position.json
+  - type: JSONLD
+    url: json-ld/staffing-context.jsonld
+  - type: JSONLD
+    url: json-ld/prismAnalytics-context.jsonld
+  - type: Documentation
+    url: https://community.workday.com/api
+  - type: JSONLD
+    url: json-ld/raas-context.jsonld
+  - type: JSONLD
+    url: json-ld/wql-context.jsonld
+- aid: workday:workday-payslips-api
+  name: Workday Payslips API
+  description: Endpoints for accessing pay slips.
+  humanURL: https://apidocs.workdayspend.com/
+  baseURL: https://api.workdayspend.com/services/
+  tags:
+  - Payslips
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-payslips-api-openapi.yml
   - type: Documentation
     url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
   - type: JSONSchema
