@@ -1354,6 +1354,8 @@ apis:
   humanURL: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
   baseURL: https://wd2-impl-services1.workday.com/ccx/api/
   tags:
+  - Location
+  tags_raw:
   - Locations
   properties:
   - type: OpenAPI
