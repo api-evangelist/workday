@@ -146,7 +146,8 @@ edges:
     performance evaluations"
   reason: Worker performance goals are part of performance and development management under HCM.
 - tag: Pay Slips
-  spec_file: workday-pay-slips-api-openapi.yml
+  spec_file: workday-payslips-api-openapi.yml
+  reanchored_from: workday-pay-slips-api-openapi.yml
   capability_id: BC-300.70
   capability_id_l1: BC-300
   capability_name: HR Operations Management
