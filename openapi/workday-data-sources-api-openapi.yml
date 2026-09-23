@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Workday WQL Data Sources API
   description: Workday Query Language (WQL) API enabling SQL-like querying of Workday data through REST endpoints. Provides high-performance data access controlled via OAuth 2.0 tokens.
@@ -162,14 +162,6 @@ paths:
         dispatcher: FALLBACK
 components:
   parameters:
-    offset:
-      name: offset
-      in: query
-      required: false
-      description: The zero-based index of the first object in a response collection.
-      schema:
-        type: integer
-        default: 0
     limit:
       name: limit
       in: query
@@ -186,6 +178,27 @@ components:
       description: The Workday ID of the resource.
       schema:
         type: string
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: The zero-based index of the first object in a response collection.
+      schema:
+        type: integer
+        default: 0
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
     ErrorResponse:
       type: object
@@ -202,31 +215,6 @@ components:
                 type: string
               field:
                 type: string
-          example: []
-    DataSource:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The Workday ID of the data source.
-          example: abc123
-        descriptor:
-          type: string
-          description: A display descriptor for the data source.
-          example: example_value
-        name:
-          type: string
-          description: The name of the data source used in WQL FROM clauses.
-          example: Example Title
-        pluralName:
-          type: string
-          description: The plural name of the data source.
-          example: example_value
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/DataSourceField'
-          description: The fields available in this data source.
           example: []
     DataSourceField:
       type: object
@@ -258,19 +246,31 @@ components:
         isFilterable:
           type: boolean
           example: true
-  responses:
-    Unauthorized:
-      description: Authentication credentials were missing or invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+    DataSource:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The Workday ID of the data source.
+          example: abc123
+        descriptor:
+          type: string
+          description: A display descriptor for the data source.
+          example: example_value
+        name:
+          type: string
+          description: The name of the data source used in WQL FROM clauses.
+          example: Example Title
+        pluralName:
+          type: string
+          description: The plural name of the data source.
+          example: example_value
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataSourceField'
+          description: The fields available in this data source.
+          example: []
   securitySchemes:
     OAuth2:
       type: oauth2

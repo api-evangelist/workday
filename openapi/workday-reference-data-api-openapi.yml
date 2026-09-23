@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Workday Common Reference Data API
   description: Common API providing shared reference data, lookup values, and utility endpoints used across other Workday REST API services.
@@ -299,13 +299,6 @@ components:
       schema:
         type: integer
         default: 0
-    search:
-      name: search
-      in: query
-      required: false
-      description: Searches resources by name.
-      schema:
-        type: string
     limit:
       name: limit
       in: query
@@ -322,8 +315,15 @@ components:
       description: The Workday ID of the resource.
       schema:
         type: string
+    search:
+      name: search
+      in: query
+      required: false
+      description: Searches resources by name.
+      schema:
+        type: string
   schemas:
-    ReferenceValue:
+    Currency:
       type: object
       properties:
         id:
@@ -332,6 +332,47 @@ components:
         descriptor:
           type: string
           example: example_value
+        currencyCode:
+          type: string
+          description: The ISO 4217 currency code.
+          example: example_value
+        name:
+          type: string
+          example: Example Title
+        numericCode:
+          type: string
+          example: example_value
+    Language:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        languageCode:
+          type: string
+          example: example_value
+        name:
+          type: string
+          example: Example Title
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: example_value
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+          example: []
     Country:
       type: object
       properties:
@@ -352,7 +393,7 @@ components:
         name:
           type: string
           example: Example Title
-    Currency:
+    ReferenceValue:
       type: object
       properties:
         id:
@@ -361,56 +402,15 @@ components:
         descriptor:
           type: string
           example: example_value
-        currencyCode:
-          type: string
-          description: The ISO 4217 currency code.
-          example: example_value
-        name:
-          type: string
-          example: Example Title
-        numericCode:
-          type: string
-          example: example_value
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          example: example_value
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              error:
-                type: string
-              field:
-                type: string
-          example: []
-    Language:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        descriptor:
-          type: string
-          example: example_value
-        languageCode:
-          type: string
-          example: example_value
-        name:
-          type: string
-          example: Example Title
   responses:
-    Unauthorized:
-      description: Authentication credentials were missing or invalid.
+    NotFound:
+      description: The requested resource was not found.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: The requested resource was not found.
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
       content:
         application/json:
           schema:

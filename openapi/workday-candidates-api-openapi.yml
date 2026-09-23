@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Workday Recruiting Candidates API
   description: Recruiting API for managing job postings, candidates, applications, and hiring workflows. Supports interview feedback and prospect management.
@@ -124,13 +124,6 @@ components:
       schema:
         type: integer
         default: 0
-    search:
-      name: search
-      in: query
-      required: false
-      description: Searches resources by name. The search is case-insensitive.
-      schema:
-        type: string
     limit:
       name: limit
       in: query
@@ -147,36 +140,27 @@ components:
       description: The Workday ID of the resource.
       schema:
         type: string
+    search:
+      name: search
+      in: query
+      required: false
+      description: Searches resources by name. The search is case-insensitive.
+      schema:
+        type: string
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    Candidate:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        descriptor:
-          type: string
-          example: example_value
-        name:
-          type: string
-          description: The full name of the candidate.
-          example: Example Title
-        email:
-          type: string
-          format: email
-          example: user@example.com
-        phone:
-          type: string
-          example: example_value
-        source:
-          $ref: '#/components/schemas/ResourceReference'
-        referredBy:
-          $ref: '#/components/schemas/ResourceReference'
-        attachments:
-          type: array
-          items:
-            $ref: '#/components/schemas/ResourceReference'
-          example: []
     ResourceReference:
       type: object
       properties:
@@ -206,19 +190,35 @@ components:
               field:
                 type: string
           example: []
-  responses:
-    Unauthorized:
-      description: Authentication credentials were missing or invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+    Candidate:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        name:
+          type: string
+          description: The full name of the candidate.
+          example: Example Title
+        email:
+          type: string
+          format: email
+          example: user@example.com
+        phone:
+          type: string
+          example: example_value
+        source:
+          $ref: '#/components/schemas/ResourceReference'
+        referredBy:
+          $ref: '#/components/schemas/ResourceReference'
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResourceReference'
+          example: []
   securitySchemes:
     OAuth2:
       type: oauth2
