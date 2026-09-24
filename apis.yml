@@ -149,8 +149,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -210,8 +208,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -271,8 +267,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -332,8 +326,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -393,8 +385,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -454,8 +444,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -515,8 +503,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -576,8 +562,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -637,8 +621,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -698,8 +680,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -759,8 +739,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -820,8 +798,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -881,8 +857,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -942,8 +916,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -1003,8 +975,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -1064,8 +1034,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -1125,8 +1093,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -1186,8 +1152,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -1247,8 +1211,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -1308,8 +1270,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -1371,8 +1331,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -1432,8 +1390,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -1493,8 +1449,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -1556,8 +1510,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -1617,8 +1569,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -1678,8 +1628,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -1739,8 +1687,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -1800,8 +1746,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -1861,8 +1805,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -1922,8 +1864,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -1983,8 +1923,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -2044,8 +1982,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -2105,8 +2041,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -2166,8 +2100,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -2227,8 +2159,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -2288,8 +2218,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -2349,8 +2277,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -2410,8 +2336,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -2471,8 +2395,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -2532,8 +2454,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -2593,8 +2513,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -2654,8 +2572,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -2715,8 +2631,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -2776,8 +2690,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -2837,8 +2749,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
@@ -2898,8 +2808,6 @@ apis:
   - type: Authentication
     url: >-
       https://community.workday.com/sites/default/files/file-hosting/restapi/index.html#authentication
-  - type: GraphQL
-    url: graphql/workday-graphql.md
   - type: JSONLD
     url: json-ld/financialManagement-context.jsonld
   - type: JSONLD
