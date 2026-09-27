@@ -87,6 +87,26 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    OneTimePaymentRequest:
+      type: object
+      properties:
+        effectiveDate:
+          type: string
+          format: date
+          example: '2026-01-15'
+        reason:
+          $ref: '#/components/schemas/ResourceReference'
+        currency:
+          $ref: '#/components/schemas/ResourceReference'
+        amount:
+          type: number
+          format: double
+          example: 42.5
+        payComponent:
+          $ref: '#/components/schemas/ResourceReference'
+      required:
+      - effectiveDate
+      - amount
     ResourceReference:
       type: object
       properties:
@@ -116,34 +136,6 @@ components:
               field:
                 type: string
           example: []
-    OneTimePaymentRequest:
-      type: object
-      properties:
-        effectiveDate:
-          type: string
-          format: date
-          example: '2026-01-15'
-        reason:
-          $ref: '#/components/schemas/ResourceReference'
-        currency:
-          $ref: '#/components/schemas/ResourceReference'
-        amount:
-          type: number
-          format: double
-          example: 42.5
-        payComponent:
-          $ref: '#/components/schemas/ResourceReference'
-      required:
-      - effectiveDate
-      - amount
-  parameters:
-    ID:
-      name: ID
-      in: path
-      required: true
-      description: The Workday ID of the resource.
-      schema:
-        type: string
   responses:
     BadRequest:
       description: The request was invalid or malformed.
@@ -157,6 +149,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the resource.
+      schema:
+        type: string
   securitySchemes:
     OAuth2:
       type: oauth2

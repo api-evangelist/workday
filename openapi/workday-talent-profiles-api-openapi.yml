@@ -202,84 +202,6 @@ components:
         type: integer
         default: 0
   schemas:
-    Certification:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        descriptor:
-          type: string
-          example: example_value
-        name:
-          type: string
-          example: Example Title
-        issuer:
-          type: string
-          example: example_value
-        issuedDate:
-          type: string
-          format: date
-          example: '2026-01-15'
-        expirationDate:
-          type: string
-          format: date
-          example: '2026-01-15'
-    JobHistoryEntry:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        company:
-          type: string
-          example: example_value
-        jobTitle:
-          type: string
-          example: example_value
-        startDate:
-          type: string
-          format: date
-          example: '2026-01-15'
-        endDate:
-          type: string
-          format: date
-          example: '2026-01-15'
-        description:
-          type: string
-          example: A sample description.
-    Language:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        descriptor:
-          type: string
-          example: example_value
-        language:
-          $ref: '#/components/schemas/ResourceReference'
-        proficiency:
-          $ref: '#/components/schemas/ResourceReference'
-        isNative:
-          type: boolean
-          example: true
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          example: example_value
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              error:
-                type: string
-              field:
-                type: string
-          example: []
     Skill:
       type: object
       properties:
@@ -296,41 +218,6 @@ components:
           $ref: '#/components/schemas/ResourceReference'
         proficiencyLevel:
           $ref: '#/components/schemas/ResourceReference'
-    ResourceReference:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        descriptor:
-          type: string
-          example: example_value
-        href:
-          type: string
-          format: uri
-          example: https://www.example.com
-    EducationEntry:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        school:
-          type: string
-          example: example_value
-        degree:
-          $ref: '#/components/schemas/ResourceReference'
-        fieldOfStudy:
-          type: string
-          example: example_value
-        startDate:
-          type: string
-          format: date
-          example: '2026-01-15'
-        endDate:
-          type: string
-          format: date
-          example: '2026-01-15'
     TalentProfile:
       type: object
       properties:
@@ -370,15 +257,128 @@ components:
         careerInterests:
           type: string
           example: example_value
+    Language:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        language:
+          $ref: '#/components/schemas/ResourceReference'
+        proficiency:
+          $ref: '#/components/schemas/ResourceReference'
+        isNative:
+          type: boolean
+          example: true
+    Certification:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        name:
+          type: string
+          example: Example Title
+        issuer:
+          type: string
+          example: example_value
+        issuedDate:
+          type: string
+          format: date
+          example: '2026-01-15'
+        expirationDate:
+          type: string
+          format: date
+          example: '2026-01-15'
+    ResourceReference:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        href:
+          type: string
+          format: uri
+          example: https://www.example.com
+    JobHistoryEntry:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        company:
+          type: string
+          example: example_value
+        jobTitle:
+          type: string
+          example: example_value
+        startDate:
+          type: string
+          format: date
+          example: '2026-01-15'
+        endDate:
+          type: string
+          format: date
+          example: '2026-01-15'
+        description:
+          type: string
+          example: A sample description.
+    EducationEntry:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        school:
+          type: string
+          example: example_value
+        degree:
+          $ref: '#/components/schemas/ResourceReference'
+        fieldOfStudy:
+          type: string
+          example: example_value
+        startDate:
+          type: string
+          format: date
+          example: '2026-01-15'
+        endDate:
+          type: string
+          format: date
+          example: '2026-01-15'
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: example_value
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+          example: []
   responses:
-    NotFound:
-      description: The requested resource was not found.
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Authentication credentials were missing or invalid.
+    NotFound:
+      description: The requested resource was not found.
       content:
         application/json:
           schema:

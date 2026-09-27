@@ -175,6 +175,27 @@ components:
         type: integer
         default: 0
   schemas:
+    TimeEntryRequest:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+          example: '2026-01-15'
+        hours:
+          type: number
+          format: double
+          example: 42.5
+        timeEntryCode:
+          $ref: '#/components/schemas/ResourceReference'
+        worktag:
+          $ref: '#/components/schemas/ResourceReference'
+        comment:
+          type: string
+          example: example_value
+      required:
+      - date
+      - hours
     TimeEntry:
       type: object
       properties:
@@ -203,27 +224,19 @@ components:
         status:
           type: string
           example: example_value
-    TimeEntryRequest:
+    ResourceReference:
       type: object
       properties:
-        date:
+        id:
           type: string
-          format: date
-          example: '2026-01-15'
-        hours:
-          type: number
-          format: double
-          example: 42.5
-        timeEntryCode:
-          $ref: '#/components/schemas/ResourceReference'
-        worktag:
-          $ref: '#/components/schemas/ResourceReference'
-        comment:
+          example: abc123
+        descriptor:
           type: string
           example: example_value
-      required:
-      - date
-      - hours
+        href:
+          type: string
+          format: uri
+          example: https://www.example.com
     ErrorResponse:
       type: object
       properties:
@@ -240,26 +253,7 @@ components:
               field:
                 type: string
           example: []
-    ResourceReference:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        descriptor:
-          type: string
-          example: example_value
-        href:
-          type: string
-          format: uri
-          example: https://www.example.com
   responses:
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     BadRequest:
       description: The request was invalid or malformed.
       content:
@@ -268,6 +262,12 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
     Unauthorized:
       description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found.
       content:
         application/json:
           schema:

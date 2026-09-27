@@ -96,6 +96,21 @@ components:
         type: integer
         default: 0
   schemas:
+    WqlQueryResult:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+            description: A result row with field names as keys and their values.
+          description: The array of result rows from the WQL query.
+          example: []
+        total:
+          type: integer
+          description: The total number of results available.
+          example: 10
     ErrorResponse:
       type: object
       properties:
@@ -112,21 +127,6 @@ components:
               field:
                 type: string
           example: []
-    WqlQueryResult:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            type: object
-            additionalProperties: true
-            description: A result row with field names as keys and their values.
-          description: The array of result rows from the WQL query.
-          example: []
-        total:
-          type: integer
-          description: The total number of results available.
-          example: 10
   responses:
     Unauthorized:
       description: Authentication credentials were missing or invalid.

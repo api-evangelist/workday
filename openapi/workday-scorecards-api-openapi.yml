@@ -150,7 +150,53 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: The maximum number of objects in a single response.
+      schema:
+        type: integer
+        default: 20
+        maximum: 100
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the resource.
+      schema:
+        type: string
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: The zero-based index of the first object in a response collection.
+      schema:
+        type: integer
+        default: 0
   schemas:
+    CompensationScorecard:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        name:
+          type: string
+          example: Example Title
+        effectiveDate:
+          type: string
+          format: date
+          example: '2026-01-15'
+        compensationReviewPeriod:
+          $ref: '#/components/schemas/ResourceReference'
+        status:
+          type: string
+          example: example_value
     ScorecardResult:
       type: object
       properties:
@@ -213,61 +259,15 @@ components:
               field:
                 type: string
           example: []
-    CompensationScorecard:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        descriptor:
-          type: string
-          example: example_value
-        name:
-          type: string
-          example: Example Title
-        effectiveDate:
-          type: string
-          format: date
-          example: '2026-01-15'
-        compensationReviewPeriod:
-          $ref: '#/components/schemas/ResourceReference'
-        status:
-          type: string
-          example: example_value
-  parameters:
-    limit:
-      name: limit
-      in: query
-      required: false
-      description: The maximum number of objects in a single response.
-      schema:
-        type: integer
-        default: 20
-        maximum: 100
-    ID:
-      name: ID
-      in: path
-      required: true
-      description: The Workday ID of the resource.
-      schema:
-        type: string
-    offset:
-      name: offset
-      in: query
-      required: false
-      description: The zero-based index of the first object in a response collection.
-      schema:
-        type: integer
-        default: 0
   responses:
-    NotFound:
-      description: The requested resource was not found.
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Authentication credentials were missing or invalid.
+    NotFound:
+      description: The requested resource was not found.
       content:
         application/json:
           schema:

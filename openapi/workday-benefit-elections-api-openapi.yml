@@ -156,26 +156,21 @@ components:
       schema:
         type: integer
         default: 0
-  responses:
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: The request was invalid or malformed.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Authentication credentials were missing or invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   schemas:
+    BenefitChangeRequest:
+      type: object
+      properties:
+        benefitEventType:
+          $ref: '#/components/schemas/ResourceReference'
+        eventDate:
+          type: string
+          format: date
+          example: '2026-01-15'
+        reason:
+          $ref: '#/components/schemas/ResourceReference'
+      required:
+      - benefitEventType
+      - eventDate
     BenefitElection:
       type: object
       properties:
@@ -221,6 +216,19 @@ components:
           items:
             $ref: '#/components/schemas/ResourceReference'
           example: []
+    ResourceReference:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        href:
+          type: string
+          format: uri
+          example: https://www.example.com
     ErrorResponse:
       type: object
       properties:
@@ -237,33 +245,25 @@ components:
               field:
                 type: string
           example: []
-    ResourceReference:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        descriptor:
-          type: string
-          example: example_value
-        href:
-          type: string
-          format: uri
-          example: https://www.example.com
-    BenefitChangeRequest:
-      type: object
-      properties:
-        benefitEventType:
-          $ref: '#/components/schemas/ResourceReference'
-        eventDate:
-          type: string
-          format: date
-          example: '2026-01-15'
-        reason:
-          $ref: '#/components/schemas/ResourceReference'
-      required:
-      - benefitEventType
-      - eventDate
+  responses:
+    BadRequest:
+      description: The request was invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     OAuth2:
       type: oauth2

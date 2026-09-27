@@ -293,6 +293,13 @@ components:
         type: integer
         default: 20
         maximum: 100
+    search:
+      name: search
+      in: query
+      required: false
+      description: Searches workers by name. The search is case-insensitive.
+      schema:
+        type: string
     ID:
       name: ID
       in: path
@@ -308,15 +315,8 @@ components:
       schema:
         type: integer
         default: 0
-    search:
-      name: search
-      in: query
-      required: false
-      description: Searches workers by name. The search is case-insensitive.
-      schema:
-        type: string
   schemas:
-    BusinessTitleChange:
+    WorkerHistoryEntry:
       type: object
       properties:
         id:
@@ -325,13 +325,47 @@ components:
         descriptor:
           type: string
           example: example_value
-        proposedBusinessTitle:
-          type: string
-          example: example_value
         effectiveDate:
           type: string
           format: date
           example: '2026-01-15'
+        businessProcess:
+          $ref: '#/components/schemas/ResourceReference'
+    WorkerSummary:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The Workday ID of the worker.
+          example: abc123
+        descriptor:
+          type: string
+          description: A display descriptor for the worker (typically full name).
+          example: example_value
+        href:
+          type: string
+          format: uri
+          description: A link to the full worker resource.
+          example: https://www.example.com
+        primaryWorkEmail:
+          type: string
+          format: email
+          description: The primary work email address.
+          example: user@example.com
+        primaryWorkPhone:
+          type: string
+          description: The primary work phone number.
+          example: example_value
+        isPrimaryJob:
+          type: boolean
+          description: Whether this is the primary job for the worker.
+          example: true
+        businessTitle:
+          type: string
+          description: The business title for the worker.
+          example: example_value
+        primarySupervisoryOrganization:
+          $ref: '#/components/schemas/ResourceReference'
     Worker:
       type: object
       properties:
@@ -381,58 +415,6 @@ components:
           type: string
           description: The external ID for the worker.
           example: '500123'
-    WorkerSummary:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The Workday ID of the worker.
-          example: abc123
-        descriptor:
-          type: string
-          description: A display descriptor for the worker (typically full name).
-          example: example_value
-        href:
-          type: string
-          format: uri
-          description: A link to the full worker resource.
-          example: https://www.example.com
-        primaryWorkEmail:
-          type: string
-          format: email
-          description: The primary work email address.
-          example: user@example.com
-        primaryWorkPhone:
-          type: string
-          description: The primary work phone number.
-          example: example_value
-        isPrimaryJob:
-          type: boolean
-          description: Whether this is the primary job for the worker.
-          example: true
-        businessTitle:
-          type: string
-          description: The business title for the worker.
-          example: example_value
-        primarySupervisoryOrganization:
-          $ref: '#/components/schemas/ResourceReference'
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          description: A message describing the error.
-          example: example_value
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              error:
-                type: string
-              field:
-                type: string
-          example: []
     ResourceReference:
       type: object
       description: A reference to a Workday resource.
@@ -450,7 +432,7 @@ components:
           format: uri
           description: A link to the referenced resource.
           example: https://www.example.com
-    WorkerHistoryEntry:
+    BusinessTitleChange:
       type: object
       properties:
         id:
@@ -459,12 +441,13 @@ components:
         descriptor:
           type: string
           example: example_value
+        proposedBusinessTitle:
+          type: string
+          example: example_value
         effectiveDate:
           type: string
           format: date
           example: '2026-01-15'
-        businessProcess:
-          $ref: '#/components/schemas/ResourceReference'
     InboxTask:
       type: object
       properties:
@@ -489,13 +472,24 @@ components:
           example: true
         subject:
           $ref: '#/components/schemas/ResourceReference'
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: A message describing the error.
+          example: example_value
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+          example: []
   responses:
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     BadRequest:
       description: The request was invalid or malformed.
       content:
@@ -504,6 +498,12 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
     Unauthorized:
       description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found.
       content:
         application/json:
           schema:

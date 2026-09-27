@@ -125,18 +125,18 @@ components:
         type: integer
         default: 20
         maximum: 100
-    ID:
-      name: ID
-      in: path
-      required: true
-      description: The Workday ID of the resource.
-      schema:
-        type: string
     search:
       name: search
       in: query
       required: false
       description: Searches workers by name. The search is case-insensitive.
+      schema:
+        type: string
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the resource.
       schema:
         type: string
     offset:
@@ -148,6 +148,40 @@ components:
         type: integer
         default: 0
   schemas:
+    ResourceReference:
+      type: object
+      description: A reference to a Workday resource.
+      properties:
+        id:
+          type: string
+          description: The Workday ID of the referenced resource.
+          example: abc123
+        descriptor:
+          type: string
+          description: A display descriptor for the referenced resource.
+          example: example_value
+        href:
+          type: string
+          format: uri
+          description: A link to the referenced resource.
+          example: https://www.example.com
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: A message describing the error.
+          example: example_value
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+          example: []
     Location:
       type: object
       properties:
@@ -179,49 +213,15 @@ components:
           items:
             $ref: '#/components/schemas/ResourceReference'
           example: []
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          description: A message describing the error.
-          example: example_value
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              error:
-                type: string
-              field:
-                type: string
-          example: []
-    ResourceReference:
-      type: object
-      description: A reference to a Workday resource.
-      properties:
-        id:
-          type: string
-          description: The Workday ID of the referenced resource.
-          example: abc123
-        descriptor:
-          type: string
-          description: A display descriptor for the referenced resource.
-          example: example_value
-        href:
-          type: string
-          format: uri
-          description: A link to the referenced resource.
-          example: https://www.example.com
   responses:
-    NotFound:
-      description: The requested resource was not found.
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Authentication credentials were missing or invalid.
+    NotFound:
+      description: The requested resource was not found.
       content:
         application/json:
           schema:

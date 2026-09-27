@@ -214,35 +214,34 @@ components:
           example: 42.5
         currency:
           $ref: '#/components/schemas/ResourceReference'
-    ErrorResponse:
+    CompensationChangeRequest:
       type: object
       properties:
-        error:
+        effectiveDate:
           type: string
+          format: date
+          description: The effective date of the compensation change.
+          example: '2026-01-15'
+        reason:
+          $ref: '#/components/schemas/ResourceReference'
+        proposedCompensation:
+          type: object
+          properties:
+            amount:
+              type: number
+              format: double
+            currency:
+              $ref: '#/components/schemas/ResourceReference'
+            frequency:
+              $ref: '#/components/schemas/ResourceReference'
+            compensationGrade:
+              $ref: '#/components/schemas/ResourceReference'
+            compensationStep:
+              $ref: '#/components/schemas/ResourceReference'
           example: example_value
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              error:
-                type: string
-              field:
-                type: string
-          example: []
-    ResourceReference:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        descriptor:
-          type: string
-          example: example_value
-        href:
-          type: string
-          format: uri
-          example: https://www.example.com
+      required:
+      - effectiveDate
+      - reason
     CompensationPlan:
       type: object
       properties:
@@ -277,34 +276,35 @@ components:
           $ref: '#/components/schemas/ResourceReference'
         compensationStep:
           $ref: '#/components/schemas/ResourceReference'
-    CompensationChangeRequest:
+    ResourceReference:
       type: object
       properties:
-        effectiveDate:
+        id:
           type: string
-          format: date
-          description: The effective date of the compensation change.
-          example: '2026-01-15'
-        reason:
-          $ref: '#/components/schemas/ResourceReference'
-        proposedCompensation:
-          type: object
-          properties:
-            amount:
-              type: number
-              format: double
-            currency:
-              $ref: '#/components/schemas/ResourceReference'
-            frequency:
-              $ref: '#/components/schemas/ResourceReference'
-            compensationGrade:
-              $ref: '#/components/schemas/ResourceReference'
-            compensationStep:
-              $ref: '#/components/schemas/ResourceReference'
+          example: abc123
+        descriptor:
+          type: string
           example: example_value
-      required:
-      - effectiveDate
-      - reason
+        href:
+          type: string
+          format: uri
+          example: https://www.example.com
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: example_value
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+          example: []
   parameters:
     limit:
       name: limit
@@ -331,12 +331,6 @@ components:
         type: integer
         default: 0
   responses:
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     BadRequest:
       description: The request was invalid or malformed.
       content:
@@ -345,6 +339,12 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
     Unauthorized:
       description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found.
       content:
         application/json:
           schema:
