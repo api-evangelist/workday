@@ -177,31 +177,6 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    limit:
-      name: limit
-      in: query
-      required: false
-      description: The maximum number of objects in a single response.
-      schema:
-        type: integer
-        default: 20
-        maximum: 100
-    ID:
-      name: ID
-      in: path
-      required: true
-      description: The Workday ID of the worker.
-      schema:
-        type: string
-    offset:
-      name: offset
-      in: query
-      required: false
-      description: The zero-based index of the first object in a response collection.
-      schema:
-        type: integer
-        default: 0
   schemas:
     FeedbackRequest:
       type: object
@@ -222,6 +197,19 @@ components:
           example: '2026-01-15'
       required:
       - respondents
+    ResourceReference:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        href:
+          type: string
+          format: uri
+          example: https://www.example.com
     FeedbackBadge:
       type: object
       properties:
@@ -242,29 +230,6 @@ components:
           type: string
           format: date-time
           example: '2026-01-15T10:30:00Z'
-    ResourceReference:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        descriptor:
-          type: string
-          example: example_value
-        href:
-          type: string
-          format: uri
-          example: https://www.example.com
-    FeedbackBadgeRequest:
-      type: object
-      properties:
-        badge:
-          $ref: '#/components/schemas/ResourceReference'
-        comment:
-          type: string
-          example: example_value
-      required:
-      - badge
     ErrorResponse:
       type: object
       properties:
@@ -281,6 +246,16 @@ components:
               field:
                 type: string
           example: []
+    FeedbackBadgeRequest:
+      type: object
+      properties:
+        badge:
+          $ref: '#/components/schemas/ResourceReference'
+        comment:
+          type: string
+          example: example_value
+      required:
+      - badge
   responses:
     BadRequest:
       description: The request was invalid or malformed.
@@ -300,6 +275,31 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: The maximum number of objects in a single response.
+      schema:
+        type: integer
+        default: 20
+        maximum: 100
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: The zero-based index of the first object in a response collection.
+      schema:
+        type: integer
+        default: 0
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the worker.
+      schema:
+        type: string
   securitySchemes:
     OAuth2:
       type: oauth2

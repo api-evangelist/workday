@@ -118,6 +118,13 @@ paths:
         dispatcher: FALLBACK
 components:
   parameters:
+    search:
+      name: search
+      in: query
+      required: false
+      description: Searches resources by name. The search is case-insensitive.
+      schema:
+        type: string
     limit:
       name: limit
       in: query
@@ -127,20 +134,6 @@ components:
         type: integer
         default: 20
         maximum: 100
-    search:
-      name: search
-      in: query
-      required: false
-      description: Searches resources by name. The search is case-insensitive.
-      schema:
-        type: string
-    ID:
-      name: ID
-      in: path
-      required: true
-      description: The Workday ID of the resource.
-      schema:
-        type: string
     offset:
       name: offset
       in: query
@@ -149,7 +142,43 @@ components:
       schema:
         type: integer
         default: 0
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the resource.
+      schema:
+        type: string
   schemas:
+    ResourceReference:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        href:
+          type: string
+          format: uri
+          example: https://www.example.com
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: example_value
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+          example: []
     JobPosting:
       type: object
       properties:
@@ -188,35 +217,6 @@ components:
           type: string
           format: date-time
           example: '2026-01-15T10:30:00Z'
-    ResourceReference:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        descriptor:
-          type: string
-          example: example_value
-        href:
-          type: string
-          format: uri
-          example: https://www.example.com
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          example: example_value
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              error:
-                type: string
-              field:
-                type: string
-          example: []
   responses:
     Unauthorized:
       description: Authentication credentials were missing or invalid.

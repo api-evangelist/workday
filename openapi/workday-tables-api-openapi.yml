@@ -119,31 +119,6 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    limit:
-      name: limit
-      in: query
-      required: false
-      description: The maximum number of objects in a single response.
-      schema:
-        type: integer
-        default: 20
-        maximum: 100
-    ID:
-      name: ID
-      in: path
-      required: true
-      description: The Workday ID of the resource.
-      schema:
-        type: string
-    offset:
-      name: offset
-      in: query
-      required: false
-      description: The zero-based index of the first object in a response collection.
-      schema:
-        type: integer
-        default: 0
   schemas:
     Table:
       type: object
@@ -176,6 +151,22 @@ components:
         documentCount:
           type: integer
           example: 10
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: example_value
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+          example: []
     DatasetField:
       type: object
       properties:
@@ -206,22 +197,31 @@ components:
         externalId:
           type: string
           example: '500123'
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          example: example_value
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              error:
-                type: string
-              field:
-                type: string
-          example: []
+  parameters:
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: The maximum number of objects in a single response.
+      schema:
+        type: integer
+        default: 20
+        maximum: 100
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: The zero-based index of the first object in a response collection.
+      schema:
+        type: integer
+        default: 0
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the resource.
+      schema:
+        type: string
   responses:
     Unauthorized:
       description: Authentication credentials were missing or invalid.

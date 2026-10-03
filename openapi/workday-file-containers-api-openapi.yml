@@ -126,20 +126,6 @@ components:
       schema:
         type: string
   schemas:
-    FileContainer:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The Workday ID of the file container.
-          example: abc123
-        descriptor:
-          type: string
-          example: example_value
-        expirationTime:
-          type: string
-          format: date-time
-          example: '2026-01-15T10:30:00Z'
     ErrorResponse:
       type: object
       properties:
@@ -156,6 +142,20 @@ components:
               field:
                 type: string
           example: []
+    FileContainer:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The Workday ID of the file container.
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        expirationTime:
+          type: string
+          format: date-time
+          example: '2026-01-15T10:30:00Z'
   securitySchemes:
     OAuth2:
       type: oauth2

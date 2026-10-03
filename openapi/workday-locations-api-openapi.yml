@@ -116,6 +116,13 @@ paths:
         dispatcher: FALLBACK
 components:
   parameters:
+    search:
+      name: search
+      in: query
+      required: false
+      description: Searches workers by name. The search is case-insensitive.
+      schema:
+        type: string
     limit:
       name: limit
       in: query
@@ -125,20 +132,6 @@ components:
         type: integer
         default: 20
         maximum: 100
-    search:
-      name: search
-      in: query
-      required: false
-      description: Searches workers by name. The search is case-insensitive.
-      schema:
-        type: string
-    ID:
-      name: ID
-      in: path
-      required: true
-      description: The Workday ID of the resource.
-      schema:
-        type: string
     offset:
       name: offset
       in: query
@@ -147,6 +140,13 @@ components:
       schema:
         type: integer
         default: 0
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the resource.
+      schema:
+        type: string
   schemas:
     ResourceReference:
       type: object
@@ -165,23 +165,6 @@ components:
           format: uri
           description: A link to the referenced resource.
           example: https://www.example.com
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          description: A message describing the error.
-          example: example_value
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              error:
-                type: string
-              field:
-                type: string
-          example: []
     Location:
       type: object
       properties:
@@ -212,6 +195,23 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ResourceReference'
+          example: []
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: A message describing the error.
+          example: example_value
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
           example: []
   responses:
     Unauthorized:

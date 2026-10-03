@@ -170,6 +170,13 @@ paths:
         dispatcher: FALLBACK
 components:
   parameters:
+    search:
+      name: search
+      in: query
+      required: false
+      description: Searches resources by name.
+      schema:
+        type: string
     limit:
       name: limit
       in: query
@@ -179,20 +186,6 @@ components:
         type: integer
         default: 20
         maximum: 100
-    search:
-      name: search
-      in: query
-      required: false
-      description: Searches resources by name.
-      schema:
-        type: string
-    ID:
-      name: ID
-      in: path
-      required: true
-      description: The Workday ID of the resource.
-      schema:
-        type: string
     offset:
       name: offset
       in: query
@@ -201,7 +194,70 @@ components:
       schema:
         type: integer
         default: 0
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the resource.
+      schema:
+        type: string
   schemas:
+    ResourceReference:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        href:
+          type: string
+          format: uri
+          example: https://www.example.com
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: example_value
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+          example: []
+    PurchaseOrder:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        purchaseOrderNumber:
+          type: string
+          example: example_value
+        supplier:
+          $ref: '#/components/schemas/ResourceReference'
+        orderDate:
+          type: string
+          format: date
+          example: '2026-01-15'
+        totalAmount:
+          type: number
+          format: double
+          example: 42.5
+        currency:
+          $ref: '#/components/schemas/ResourceReference'
+        status:
+          type: string
+          example: example_value
     Supplier:
       type: object
       properties:
@@ -241,62 +297,6 @@ components:
             country:
               $ref: '#/components/schemas/ResourceReference'
           example: example_value
-    PurchaseOrder:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        descriptor:
-          type: string
-          example: example_value
-        purchaseOrderNumber:
-          type: string
-          example: example_value
-        supplier:
-          $ref: '#/components/schemas/ResourceReference'
-        orderDate:
-          type: string
-          format: date
-          example: '2026-01-15'
-        totalAmount:
-          type: number
-          format: double
-          example: 42.5
-        currency:
-          $ref: '#/components/schemas/ResourceReference'
-        status:
-          type: string
-          example: example_value
-    ResourceReference:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        descriptor:
-          type: string
-          example: example_value
-        href:
-          type: string
-          format: uri
-          example: https://www.example.com
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          example: example_value
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              error:
-                type: string
-              field:
-                type: string
-          example: []
   responses:
     Unauthorized:
       description: Authentication credentials were missing or invalid.

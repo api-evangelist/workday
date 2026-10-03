@@ -69,6 +69,13 @@ paths:
         dispatcher: FALLBACK
 components:
   parameters:
+    search:
+      name: search
+      in: query
+      required: false
+      description: Searches resources by name. The search is case-insensitive.
+      schema:
+        type: string
     limit:
       name: limit
       in: query
@@ -78,13 +85,6 @@ components:
         type: integer
         default: 20
         maximum: 100
-    search:
-      name: search
-      in: query
-      required: false
-      description: Searches resources by name. The search is case-insensitive.
-      schema:
-        type: string
     offset:
       name: offset
       in: query

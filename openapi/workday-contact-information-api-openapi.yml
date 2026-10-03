@@ -108,14 +108,6 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    ID:
-      name: ID
-      in: path
-      required: true
-      description: The Workday ID of the person.
-      schema:
-        type: string
   schemas:
     ResourceReference:
       type: object
@@ -198,6 +190,14 @@ components:
               field:
                 type: string
           example: []
+  parameters:
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the person.
+      schema:
+        type: string
   responses:
     Unauthorized:
       description: Authentication credentials were missing or invalid.

@@ -283,54 +283,7 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    limit:
-      name: limit
-      in: query
-      required: false
-      description: The maximum number of objects in a single response. The default is 20. The maximum is 100.
-      schema:
-        type: integer
-        default: 20
-        maximum: 100
-    search:
-      name: search
-      in: query
-      required: false
-      description: Searches workers by name. The search is case-insensitive.
-      schema:
-        type: string
-    ID:
-      name: ID
-      in: path
-      required: true
-      description: The Workday ID of the resource.
-      schema:
-        type: string
-    offset:
-      name: offset
-      in: query
-      required: false
-      description: The zero-based index of the first object in a response collection.
-      schema:
-        type: integer
-        default: 0
   schemas:
-    WorkerHistoryEntry:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        descriptor:
-          type: string
-          example: example_value
-        effectiveDate:
-          type: string
-          format: date
-          example: '2026-01-15'
-        businessProcess:
-          $ref: '#/components/schemas/ResourceReference'
     WorkerSummary:
       type: object
       properties:
@@ -366,6 +319,95 @@ components:
           example: example_value
         primarySupervisoryOrganization:
           $ref: '#/components/schemas/ResourceReference'
+    BusinessTitleChange:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        proposedBusinessTitle:
+          type: string
+          example: example_value
+        effectiveDate:
+          type: string
+          format: date
+          example: '2026-01-15'
+    InboxTask:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        status:
+          $ref: '#/components/schemas/ResourceReference'
+        assigned:
+          type: string
+          format: date-time
+          example: '2026-01-15T10:30:00Z'
+        due:
+          type: string
+          format: date-time
+          example: '2026-01-15T10:30:00Z'
+        overdue:
+          type: boolean
+          example: true
+        subject:
+          $ref: '#/components/schemas/ResourceReference'
+    ResourceReference:
+      type: object
+      description: A reference to a Workday resource.
+      properties:
+        id:
+          type: string
+          description: The Workday ID of the referenced resource.
+          example: abc123
+        descriptor:
+          type: string
+          description: A display descriptor for the referenced resource.
+          example: example_value
+        href:
+          type: string
+          format: uri
+          description: A link to the referenced resource.
+          example: https://www.example.com
+    WorkerHistoryEntry:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        effectiveDate:
+          type: string
+          format: date
+          example: '2026-01-15'
+        businessProcess:
+          $ref: '#/components/schemas/ResourceReference'
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: A message describing the error.
+          example: example_value
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+          example: []
     Worker:
       type: object
       properties:
@@ -415,80 +457,38 @@ components:
           type: string
           description: The external ID for the worker.
           example: '500123'
-    ResourceReference:
-      type: object
-      description: A reference to a Workday resource.
-      properties:
-        id:
-          type: string
-          description: The Workday ID of the referenced resource.
-          example: abc123
-        descriptor:
-          type: string
-          description: A display descriptor for the referenced resource.
-          example: example_value
-        href:
-          type: string
-          format: uri
-          description: A link to the referenced resource.
-          example: https://www.example.com
-    BusinessTitleChange:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        descriptor:
-          type: string
-          example: example_value
-        proposedBusinessTitle:
-          type: string
-          example: example_value
-        effectiveDate:
-          type: string
-          format: date
-          example: '2026-01-15'
-    InboxTask:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        descriptor:
-          type: string
-          example: example_value
-        status:
-          $ref: '#/components/schemas/ResourceReference'
-        assigned:
-          type: string
-          format: date-time
-          example: '2026-01-15T10:30:00Z'
-        due:
-          type: string
-          format: date-time
-          example: '2026-01-15T10:30:00Z'
-        overdue:
-          type: boolean
-          example: true
-        subject:
-          $ref: '#/components/schemas/ResourceReference'
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          description: A message describing the error.
-          example: example_value
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              error:
-                type: string
-              field:
-                type: string
-          example: []
+  parameters:
+    search:
+      name: search
+      in: query
+      required: false
+      description: Searches workers by name. The search is case-insensitive.
+      schema:
+        type: string
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: The maximum number of objects in a single response. The default is 20. The maximum is 100.
+      schema:
+        type: integer
+        default: 20
+        maximum: 100
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: The zero-based index of the first object in a response collection.
+      schema:
+        type: integer
+        default: 0
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the resource.
+      schema:
+        type: string
   responses:
     BadRequest:
       description: The request was invalid or malformed.

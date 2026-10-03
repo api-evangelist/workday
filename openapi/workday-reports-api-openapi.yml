@@ -127,32 +127,7 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  responses:
-    Unauthorized:
-      description: Authentication credentials were missing or invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: The request was invalid or malformed.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    ReportResponse:
-      type: object
-      properties:
-        Report_Entry:
-          type: array
-          items:
-            type: object
-            additionalProperties: true
-            description: A report row with column names as keys. The actual fields depend on the report definition.
-          description: The array of report data rows.
-          example: []
-      description: The report response containing an array of report entries. Column names correspond to the report field definitions.
     ErrorResponse:
       type: object
       properties:
@@ -169,6 +144,31 @@ components:
               field:
                 type: string
           example: []
+    ReportResponse:
+      type: object
+      properties:
+        Report_Entry:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+            description: A report row with column names as keys. The actual fields depend on the report definition.
+          description: The array of report data rows.
+          example: []
+      description: The report response containing an array of report entries. Column names correspond to the report field definitions.
+  responses:
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: The request was invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     OAuth2:
       type: oauth2

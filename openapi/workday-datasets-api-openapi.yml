@@ -276,32 +276,99 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    limit:
-      name: limit
-      in: query
-      required: false
-      description: The maximum number of objects in a single response.
-      schema:
-        type: integer
-        default: 20
-        maximum: 100
-    ID:
-      name: ID
-      in: path
-      required: true
-      description: The Workday ID of the resource.
-      schema:
-        type: string
-    offset:
-      name: offset
-      in: query
-      required: false
-      description: The zero-based index of the first object in a response collection.
-      schema:
-        type: integer
-        default: 0
   schemas:
+    DatasetCreateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name for the new dataset.
+          example: Example Title
+        displayName:
+          type: string
+          description: The display name for the dataset.
+          example: example_value
+        description:
+          type: string
+          example: A sample description.
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/DatasetField'
+          example: []
+        tags:
+          type: array
+          items:
+            type: string
+          example: []
+      required:
+      - name
+      - fields
+    DatasetUpdateRequest:
+      type: object
+      properties:
+        displayName:
+          type: string
+          example: example_value
+        description:
+          type: string
+          example: A sample description.
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/DatasetField'
+          example: []
+        tags:
+          type: array
+          items:
+            type: string
+          example: []
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: example_value
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+          example: []
+    DatasetField:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The field name.
+          example: Example Title
+        displayName:
+          type: string
+          description: The display name of the field.
+          example: example_value
+        ordinal:
+          type: integer
+          description: The ordinal position of the field.
+          example: 10
+        type:
+          type: object
+          properties:
+            id:
+              type: string
+            descriptor:
+              type: string
+          description: The data type of the field.
+          example: example_value
+        required:
+          type: boolean
+          example: true
+        externalId:
+          type: string
+          example: '500123'
     Dataset:
       type: object
       properties:
@@ -345,98 +412,6 @@ components:
           type: string
           format: date-time
           example: '2026-01-15T10:30:00Z'
-    DatasetUpdateRequest:
-      type: object
-      properties:
-        displayName:
-          type: string
-          example: example_value
-        description:
-          type: string
-          example: A sample description.
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/DatasetField'
-          example: []
-        tags:
-          type: array
-          items:
-            type: string
-          example: []
-    DatasetField:
-      type: object
-      properties:
-        name:
-          type: string
-          description: The field name.
-          example: Example Title
-        displayName:
-          type: string
-          description: The display name of the field.
-          example: example_value
-        ordinal:
-          type: integer
-          description: The ordinal position of the field.
-          example: 10
-        type:
-          type: object
-          properties:
-            id:
-              type: string
-            descriptor:
-              type: string
-          description: The data type of the field.
-          example: example_value
-        required:
-          type: boolean
-          example: true
-        externalId:
-          type: string
-          example: '500123'
-    DatasetCreateRequest:
-      type: object
-      properties:
-        name:
-          type: string
-          description: The name for the new dataset.
-          example: Example Title
-        displayName:
-          type: string
-          description: The display name for the dataset.
-          example: example_value
-        description:
-          type: string
-          example: A sample description.
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/DatasetField'
-          example: []
-        tags:
-          type: array
-          items:
-            type: string
-          example: []
-      required:
-      - name
-      - fields
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          example: example_value
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              error:
-                type: string
-              field:
-                type: string
-          example: []
   responses:
     BadRequest:
       description: The request was invalid or malformed.
@@ -456,6 +431,31 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: The maximum number of objects in a single response.
+      schema:
+        type: integer
+        default: 20
+        maximum: 100
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: The zero-based index of the first object in a response collection.
+      schema:
+        type: integer
+        default: 0
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the resource.
+      schema:
+        type: string
   securitySchemes:
     OAuth2:
       type: oauth2
