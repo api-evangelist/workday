@@ -132,12 +132,6 @@ paths:
         dispatcher: FALLBACK
 components:
   responses:
-    BadRequest:
-      description: The request was invalid or malformed.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     Unauthorized:
       description: Authentication credentials were missing or invalid.
       content:
@@ -150,34 +144,38 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: The request was invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: The zero-based index of the first object in a response collection.
+      schema:
+        type: integer
+        default: 0
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: The maximum number of objects in a single response.
+      schema:
+        type: integer
+        default: 20
+        maximum: 100
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the worker.
+      schema:
+        type: string
   schemas:
-    ResourceReference:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        descriptor:
-          type: string
-          example: example_value
-        href:
-          type: string
-          format: uri
-          example: https://www.example.com
-    BenefitChangeRequest:
-      type: object
-      properties:
-        benefitEventType:
-          $ref: '#/components/schemas/ResourceReference'
-        eventDate:
-          type: string
-          format: date
-          example: '2026-01-15'
-        reason:
-          $ref: '#/components/schemas/ResourceReference'
-      required:
-      - benefitEventType
-      - eventDate
     BenefitElection:
       type: object
       properties:
@@ -239,31 +237,33 @@ components:
               field:
                 type: string
           example: []
-  parameters:
-    limit:
-      name: limit
-      in: query
-      required: false
-      description: The maximum number of objects in a single response.
-      schema:
-        type: integer
-        default: 20
-        maximum: 100
-    offset:
-      name: offset
-      in: query
-      required: false
-      description: The zero-based index of the first object in a response collection.
-      schema:
-        type: integer
-        default: 0
-    ID:
-      name: ID
-      in: path
-      required: true
-      description: The Workday ID of the worker.
-      schema:
-        type: string
+    ResourceReference:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        href:
+          type: string
+          format: uri
+          example: https://www.example.com
+    BenefitChangeRequest:
+      type: object
+      properties:
+        benefitEventType:
+          $ref: '#/components/schemas/ResourceReference'
+        eventDate:
+          type: string
+          format: date
+          example: '2026-01-15'
+        reason:
+          $ref: '#/components/schemas/ResourceReference'
+      required:
+      - benefitEventType
+      - eventDate
   securitySchemes:
     OAuth2:
       type: oauth2

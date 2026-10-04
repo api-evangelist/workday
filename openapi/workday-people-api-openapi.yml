@@ -191,40 +191,8 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    search:
-      name: search
-      in: query
-      required: false
-      description: Searches resources by name.
-      schema:
-        type: string
-    limit:
-      name: limit
-      in: query
-      required: false
-      description: The maximum number of objects in a single response.
-      schema:
-        type: integer
-        default: 20
-        maximum: 100
-    offset:
-      name: offset
-      in: query
-      required: false
-      description: The zero-based index of the first object in a response collection.
-      schema:
-        type: integer
-        default: 0
-    ID:
-      name: ID
-      in: path
-      required: true
-      description: The Workday ID of the person.
-      schema:
-        type: string
   schemas:
-    ResourceReference:
+    PersonSummary:
       type: object
       properties:
         id:
@@ -237,22 +205,6 @@ components:
           type: string
           format: uri
           example: https://www.example.com
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          example: example_value
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              error:
-                type: string
-              field:
-                type: string
-          example: []
     PersonalInformation:
       type: object
       properties:
@@ -280,40 +232,6 @@ components:
           items:
             $ref: '#/components/schemas/ResourceReference'
           example: []
-    PersonName:
-      type: object
-      properties:
-        firstName:
-          type: string
-          example: example_value
-        middleName:
-          type: string
-          example: example_value
-        lastName:
-          type: string
-          example: example_value
-        fullName:
-          type: string
-          example: example_value
-        prefix:
-          type: string
-          example: example_value
-        suffix:
-          type: string
-          example: example_value
-    PersonSummary:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        descriptor:
-          type: string
-          example: example_value
-        href:
-          type: string
-          format: uri
-          example: https://www.example.com
     Person:
       type: object
       properties:
@@ -342,6 +260,56 @@ components:
           example: []
         maritalStatus:
           $ref: '#/components/schemas/ResourceReference'
+    PersonName:
+      type: object
+      properties:
+        firstName:
+          type: string
+          example: example_value
+        middleName:
+          type: string
+          example: example_value
+        lastName:
+          type: string
+          example: example_value
+        fullName:
+          type: string
+          example: example_value
+        prefix:
+          type: string
+          example: example_value
+        suffix:
+          type: string
+          example: example_value
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: example_value
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              error:
+                type: string
+              field:
+                type: string
+          example: []
+    ResourceReference:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        href:
+          type: string
+          format: uri
+          example: https://www.example.com
   responses:
     Unauthorized:
       description: Authentication credentials were missing or invalid.
@@ -355,6 +323,38 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: The zero-based index of the first object in a response collection.
+      schema:
+        type: integer
+        default: 0
+    search:
+      name: search
+      in: query
+      required: false
+      description: Searches resources by name.
+      schema:
+        type: string
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: The maximum number of objects in a single response.
+      schema:
+        type: integer
+        default: 20
+        maximum: 100
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the person.
+      schema:
+        type: string
   securitySchemes:
     OAuth2:
       type: oauth2

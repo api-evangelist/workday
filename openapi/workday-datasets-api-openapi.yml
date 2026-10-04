@@ -276,7 +276,94 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  responses:
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: The request was invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: The zero-based index of the first object in a response collection.
+      schema:
+        type: integer
+        default: 0
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: The maximum number of objects in a single response.
+      schema:
+        type: integer
+        default: 20
+        maximum: 100
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the resource.
+      schema:
+        type: string
   schemas:
+    Dataset:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The Workday ID of the dataset.
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        name:
+          type: string
+          description: The name of the dataset.
+          example: Example Title
+        displayName:
+          type: string
+          description: The display name of the dataset.
+          example: example_value
+        description:
+          type: string
+          example: A sample description.
+        tags:
+          type: array
+          items:
+            type: string
+          example: []
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/DatasetField'
+          example: []
+        rowCount:
+          type: integer
+          description: The number of rows in the dataset.
+          example: 10
+        createdOn:
+          type: string
+          format: date-time
+          example: '2026-01-15T10:30:00Z'
+        updatedOn:
+          type: string
+          format: date-time
+          example: '2026-01-15T10:30:00Z'
     DatasetCreateRequest:
       type: object
       properties:
@@ -304,25 +391,6 @@ components:
       required:
       - name
       - fields
-    DatasetUpdateRequest:
-      type: object
-      properties:
-        displayName:
-          type: string
-          example: example_value
-        description:
-          type: string
-          example: A sample description.
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/DatasetField'
-          example: []
-        tags:
-          type: array
-          items:
-            type: string
-          example: []
     ErrorResponse:
       type: object
       properties:
@@ -369,93 +437,25 @@ components:
         externalId:
           type: string
           example: '500123'
-    Dataset:
+    DatasetUpdateRequest:
       type: object
       properties:
-        id:
-          type: string
-          description: The Workday ID of the dataset.
-          example: abc123
-        descriptor:
-          type: string
-          example: example_value
-        name:
-          type: string
-          description: The name of the dataset.
-          example: Example Title
         displayName:
           type: string
-          description: The display name of the dataset.
           example: example_value
         description:
           type: string
           example: A sample description.
-        tags:
-          type: array
-          items:
-            type: string
-          example: []
         fields:
           type: array
           items:
             $ref: '#/components/schemas/DatasetField'
           example: []
-        rowCount:
-          type: integer
-          description: The number of rows in the dataset.
-          example: 10
-        createdOn:
-          type: string
-          format: date-time
-          example: '2026-01-15T10:30:00Z'
-        updatedOn:
-          type: string
-          format: date-time
-          example: '2026-01-15T10:30:00Z'
-  responses:
-    BadRequest:
-      description: The request was invalid or malformed.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Authentication credentials were missing or invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-  parameters:
-    limit:
-      name: limit
-      in: query
-      required: false
-      description: The maximum number of objects in a single response.
-      schema:
-        type: integer
-        default: 20
-        maximum: 100
-    offset:
-      name: offset
-      in: query
-      required: false
-      description: The zero-based index of the first object in a response collection.
-      schema:
-        type: integer
-        default: 0
-    ID:
-      name: ID
-      in: path
-      required: true
-      description: The Workday ID of the resource.
-      schema:
-        type: string
+        tags:
+          type: array
+          items:
+            type: string
+          example: []
   securitySchemes:
     OAuth2:
       type: oauth2
