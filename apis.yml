@@ -2847,6 +2847,10 @@ apis:
   - type: JSONLD
     url: json-ld/wql-context.jsonld
 common:
+- type: Plans
+  url: plans/workday-plans-pricing.yml
+- type: FinOps
+  url: finops/workday-finops.yml
 - type: Website
   url: https://www.workday.com/
 - type: CapabilityMap
