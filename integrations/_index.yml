@@ -44,7 +44,6 @@
   arazzo: null
 - slug: workday-monday-com
   label: monday.com
-  partner: monday-com
   partner_name: monday.com
   category: Project Management
   type: marketplace
@@ -52,7 +51,7 @@
   channel: ipaas-usage
   evidence: https://zapier.com/apps/workday/integrations/monday
   source: edge
-  status: pending-generation
+  status: pending-partner-spec
   arazzo: null
 - slug: workday-hubspot
   label: HubSpot
@@ -103,7 +102,6 @@
   arazzo: null
 - slug: workday-blink
   label: Blink
-  partner: blink
   partner_name: Blink
   category: Team Collaboration
   type: marketplace
@@ -111,7 +109,7 @@
   channel: ipaas-usage
   evidence: https://zapier.com/apps/workday/integrations/blink
   source: edge
-  status: pending-generation
+  status: pending-partner-spec
   arazzo: null
 - slug: workday-shopify
   label: Shopify
@@ -127,7 +125,6 @@
   arazzo: null
 - slug: workday-microsoft-excel
   label: Microsoft Excel
-  partner: microsoft-excel
   partner_name: Microsoft Excel
   category: Microsoft
   type: marketplace
@@ -135,7 +132,7 @@
   channel: ipaas-usage
   evidence: https://zapier.com/apps/workday/integrations/excel
   source: edge
-  status: pending-generation
+  status: pending-partner-spec
   arazzo: null
 - slug: workday-microsoft-outlook
   label: Microsoft Outlook
@@ -580,7 +577,6 @@
   arazzo: null
 - slug: workday-linkedin
   label: LinkedIn
-  partner: linkedin
   partner_name: LinkedIn
   category: Region & Country
   type: marketplace
@@ -593,7 +589,6 @@
   arazzo: null
 - slug: workday-adp
   label: ADP
-  partner: adp
   partner_name: ADP
   category: Payroll
   type: marketplace
@@ -2706,7 +2701,6 @@
   arazzo: null
 - slug: workday-docusign
   label: Docusign
-  partner: docusign
   partner_name: Docusign
   category: Region & Country
   type: marketplace
@@ -3295,7 +3289,6 @@
   arazzo: null
 - slug: workday-ibm
   label: IBM
-  partner: ibm
   partner_name: IBM
   category: Region & Country
   type: marketplace
@@ -3428,7 +3421,6 @@
   arazzo: null
 - slug: workday-unum
   label: Unum
-  partner: unum
   partner_name: Unum
   category: Partners
   type: marketplace
@@ -3513,7 +3505,6 @@
   arazzo: null
 - slug: workday-360learning
   label: 360Learning
-  partner: 360learning
   partner_name: 360Learning
   category: Region & Country
   type: marketplace
@@ -3598,7 +3589,6 @@
   arazzo: null
 - slug: workday-dailypay
   label: DailyPay
-  partner: dailypay
   partner_name: DailyPay
   category: Payroll
   type: marketplace
@@ -3995,7 +3985,6 @@
   arazzo: null
 - slug: workday-benevity
   label: Benevity
-  partner: benevity
   partner_name: Benevity
   category: Region & Country
   type: marketplace
@@ -4020,7 +4009,6 @@
   arazzo: null
 - slug: workday-indeed
   label: Indeed
-  partner: indeed
   partner_name: Indeed
   category: Region & Country
   type: marketplace
@@ -4129,7 +4117,6 @@
   arazzo: null
 - slug: workday-go1
   label: Go1
-  partner: go1
   partner_name: Go1
   category: Region & Country
   type: marketplace
@@ -4262,7 +4249,6 @@
   arazzo: null
 - slug: workday-saviynt
   label: Saviynt
-  partner: saviynt
   partner_name: Saviynt
   category: Buying Center
   type: marketplace
@@ -4347,7 +4333,6 @@
   arazzo: null
 - slug: workday-sana
   label: Sana
-  partner: sana
   partner_name: Sana
   category: Region & Country
   type: marketplace
@@ -4552,7 +4537,6 @@
   arazzo: null
 - slug: workday-laurel
   label: Laurel
-  partner: laurel
   partner_name: Laurel
   category: Region & Country
   type: marketplace
@@ -4565,7 +4549,6 @@
   arazzo: null
 - slug: workday-nayya
   label: Nayya
-  partner: nayya
   partner_name: Nayya
   category: Partners
   type: marketplace
@@ -4674,7 +4657,6 @@
   arazzo: null
 - slug: workday-noyo
   label: Noyo
-  partner: noyo
   partner_name: Noyo
   category: Deployment Method
   type: marketplace
@@ -4975,7 +4957,6 @@
   arazzo: null
 - slug: workday-box
   label: Box
-  partner: box
   partner_name: Box
   category: Region & Country
   type: marketplace
@@ -5168,7 +5149,6 @@
   arazzo: null
 - slug: workday-duo-security
   label: Duo Security
-  partner: duo-security
   partner_name: Duo Security
   category: Buying Center
   type: marketplace
