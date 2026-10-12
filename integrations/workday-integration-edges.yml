@@ -1,0 +1,577 @@
+generated: '2026-10-12'
+method: searched
+source:
+- https://zapier.com/apps/workday/integrations
+- https://composio.dev/toolkits/workday
+checked:
+- https://composio.dev/toolkits/workday
+- https://monid.ai/tools/workday
+- https://n8n.io/integrations/workday/
+- https://zapier.com/apps/workday/integrations
+summary: null
+marketplace_apps:
+- marketplace: zapier
+  channel: ipaas-listing
+  app: workday
+  url: https://zapier.com/apps/workday/integrations
+  external_url: https://www.workday.com/
+  partner_tier: BRONZE
+  triggers:
+  - key: business_process_completed
+    label: Business Process Event Completed
+  - key: employee_terminated
+    label: Employee Terminated
+  - key: expense_report_submitted
+    label: Expense Report Submitted
+  - key: leave_request_submitted
+    label: Leave Request Submitted
+  - key: list_suppliers_trigger
+    label: New Supplier
+  - key: new_candidate
+    label: New Candidate
+  - key: new_feedback_added
+    label: New Feedback Added to Worker
+  - key: new_hire_created
+    label: New Hire Created
+  - key: new_inbox_task
+    label: New Inbox Task
+  - key: new_supplier_invoice
+    label: New Supplier Invoice
+  - key: run_wql_query
+    label: Run WQL Query
+  - key: updated_candidate
+    label: Updated Candidate
+  - key: updated_supplier
+    label: Updated Supplier
+  actions:
+  - key: approve_task
+    label: Approve Task
+  - key: change_job
+    label: Change Job
+  - key: contract_contingent_worker
+    label: Contract Contingent Worker
+  - key: create_job_requisition
+    label: Create Job Requisition
+  - key: create_new_hire
+    label: Hire Employee
+  - key: create_position
+    label: Create Position
+  - key: create_pre_hire
+    label: Create Pre-Hire
+  - key: create_supplier_credit_memo
+    label: Create Supplier Credit Memo
+  - key: create_time_off_request
+    label: Create Time Off Request
+  - key: create_worker_time_block
+    label: Create Worker Time Block
+  - key: submit_feedback
+    label: Submit Feedback for Worker
+  - key: update_compensation
+    label: Update Compensation
+  - key: update_supplier
+    label: Update Supplier
+  - key: update_supplier_invoice
+    label: Update Supplier Invoice
+  searches:
+  - key: find_purchase_order
+    label: Find Purchase Order
+  - key: find_records
+    label: Find Records
+  - key: find_supplier
+    label: Find Supplier
+  - key: find_supplier_invoice
+    label: Find Supplier Invoice
+  - key: find_worker_by_email
+    label: Find Worker by Email
+  - key: get_worker_documents
+    label: Get Worker Documents
+  - key: search_suppliers_payments
+    label: Find Supplier Payment
+- marketplace: composio
+  channel: agent-gateway
+  app: workday
+  url: https://composio.dev/toolkits/workday
+  identity: action-prefix
+  actions:
+  - key: WORKDAY_ABSENCE_BALANCE_CHANGED_TRIGGER
+  - key: WORKDAY_BALANCE_DETAILS_CHANGED_TRIGGER
+  - key: WORKDAY_CREATE_BUSINESS_TITLE_CHANGE
+  - key: WORKDAY_CREATE_JOB_CHANGE
+  - key: WORKDAY_CREATE_PAYROLL_INPUTS
+  - key: WORKDAY_CREATE_TIME_OFF_REQUEST
+  - key: WORKDAY_GET_ABSENCE_BALANCE
+  - key: WORKDAY_GET_ASSIGNMENT_CHANGE_GROUP_COST_CENTERS
+  - key: WORKDAY_GET_ASSIGNMENT_CHANGE_GROUP_JOBS
+  - key: WORKDAY_GET_ASSIGNMENT_TYPES
+  - key: WORKDAY_GET_BALANCE_DETAILS
+  - key: WORKDAY_GET_BUSINESS_TITLE_CHANGE
+  - key: WORKDAY_GET_BUSINESS_TITLE_CHANGE_FOR_WORKER
+  - key: WORKDAY_GET_CANDIDATE_AVAILABILITY_TEMPLATE
+  - key: WORKDAY_GET_COLLECTION_OF_JOBS
+  - key: WORKDAY_GET_COLLECTION_OF_PAYROLL
+  - key: WORKDAY_GET_COMPANY_INSIDER_TYPES
+  - key: WORKDAY_GET_CONTINGENT_WORKER_TYPES
+  - key: WORKDAY_GET_COUNTRY_INFO
+  - key: WORKDAY_GET_CURRENCIES
+  - key: WORKDAY_GET_CURRENT_USER
+  - key: WORKDAY_GET_GRANTS
+  - key: WORKDAY_GET_HEADCOUNT_OPTIONS
+  - key: WORKDAY_GET_HISTORY_INSTANCE_FOR_WORKER
+  - key: WORKDAY_GET_HISTORY_ITEMS_FOR_WORKER
+  - key: WORKDAY_GET_HOLIDAY_EVENTS
+  - key: WORKDAY_GET_INTERVIEW
+  - key: WORKDAY_GET_INTERVIEW_FEEDBACK2
+  - key: WORKDAY_GET_JOB_BY_ID
+  - key: WORKDAY_GET_JOB_CHANGES_GROUP_TEMPLATES
+  - key: WORKDAY_GET_JOB_CHANGES_JOB_VALUES
+  - key: WORKDAY_GET_JOB_CHANGES_WORKER_VALUES
+  - key: WORKDAY_GET_JOB_CHANGE_FREQUENCIES
+  - key: WORKDAY_GET_JOB_CHANGE_LOCATION_INFO
+  - key: WORKDAY_GET_JOB_CHANGE_POSITION
+  - key: WORKDAY_GET_JOB_CHANGE_REASONS
+  - key: WORKDAY_GET_JOB_CHANGE_REASON_INSTANCE
+  - key: WORKDAY_GET_JOB_CHANGE_REASON_VALUES
+  - key: WORKDAY_GET_JOB_CLASSIFICATIONS
+  - key: WORKDAY_GET_JOB_POSTING
+  - key: WORKDAY_GET_JOB_POSTING_QUESTIONNAIRE
+  - key: WORKDAY_GET_JOB_PROFILES_VALUES
+  - key: WORKDAY_GET_JOB_REQUISITION_VALUES
+  - key: WORKDAY_GET_JOB_WORKSPACE
+  - key: WORKDAY_GET_JOB_WORKSPACES
+  - key: WORKDAY_GET_LEAVE_STATUS_VALUES
+  - key: WORKDAY_GET_MY_JOB_POSTINGS
+  - key: WORKDAY_GET_ORGANIZATION_ASSIGNMENT_BUSINESS_UNITS
+  - key: WORKDAY_GET_ORGANIZATION_ASSIGNMENT_CUSTOMS
+  - key: WORKDAY_GET_ORGANIZATION_ASSIGNMENT_FUNDS
+  - key: WORKDAY_GET_ORGANIZATION_ASSIGNMENT_REGIONS
+  - key: WORKDAY_GET_ORGANIZATION_ASSIGNMENT_WORKERS
+  - key: WORKDAY_GET_PAYROLL_INPUT_INSTANCE
+  - key: WORKDAY_GET_PAY_GROUP_BY_JOB_ID
+  - key: WORKDAY_GET_PAY_SLIPS_FOR_WORKER
+  - key: WORKDAY_GET_PAY_SLIP_INSTANCES_FOR_WORKER
+  - key: WORKDAY_GET_PROPOSED_POSITION_VALUES
+  - key: WORKDAY_GET_PROSPECT
+  - key: WORKDAY_GET_PROSPECT_EDUCATIONS
+  - key: WORKDAY_GET_PROSPECT_EXPERIENCES
+  - key: WORKDAY_GET_PROSPECT_RESUME_ATTACHMENTS
+  - key: WORKDAY_GET_PROSPECT_SKILLS
+  - key: WORKDAY_GET_SUPERVISORY_ORG_VALUES
+  - key: WORKDAY_GET_TIME_OFF_ENTRIES_FOR_WORKER
+  - key: WORKDAY_GET_TIME_OFF_PLANS_FOR_WORKER
+  - key: WORKDAY_GET_TIME_OFF_STATUS_VALUES
+  - key: WORKDAY_GET_TIME_TYPES
+  - key: WORKDAY_GET_WORKERS_COLLECTION_STAFFING
+  - key: WORKDAY_GET_WORKER_BUSINESS_TITLE_CHANGES
+  - key: WORKDAY_GET_WORKER_ELIGIBLE_ABSENCE_TYPES
+  - key: WORKDAY_GET_WORKER_INFO
+  - key: WORKDAY_GET_WORKER_LEAVES_OF_ABSENCE
+  - key: WORKDAY_GET_WORKER_SERVICE_DATES
+  - key: WORKDAY_GET_WORKER_STAFFING_INFORMATION
+  - key: WORKDAY_GET_WORKER_TIME_OFF_DETAILS
+  - key: WORKDAY_GET_WORKER_TYPES
+  - key: WORKDAY_GET_WORKER_VALID_TIME_OFF_DATES
+  - key: WORKDAY_GET_WORKSPACE_INSTANCES
+  - key: WORKDAY_GET_WORK_STUDY_AWARDS
+  - key: WORKDAY_INTERVIEW_FEEDBACK_SUBMITTED_TRIGGER
+  - key: WORKDAY_JOB_POSTING_CHANGED_TRIGGER
+  - key: WORKDAY_JOB_POSTING_QUESTIONNAIRE_CHANGED_TRIGGER
+  - key: WORKDAY_LIST_COUNTRIES
+  - key: WORKDAY_LIST_INTERVIEWS
+  - key: WORKDAY_LIST_JOBS
+  - key: WORKDAY_LIST_JOB_POSTINGS
+  - key: WORKDAY_NEW_ABSENCE_BALANCE_TRIGGER
+  - key: WORKDAY_NEW_INTERVIEW_SCHEDULED_TRIGGER
+  - key: WORKDAY_NEW_JOB_POSTING_TRIGGER
+  - key: WORKDAY_PROSPECT_PROFILE_CHANGED_TRIGGER
+  - key: WORKDAY_PROSPECT_RESUME_ATTACHMENT_ADDED_TRIGGER
+  - key: WORKDAY_RETRIEVE_WORKER_LEAVE_OF_ABSENCE_SUBRESOURCE
+  - key: WORKDAY_UPDATE_AN_EXISTING_PAYROLL
+  - key: WORKDAY_UPDATE_JOB_CHANGE_BUSINESS_TITLE
+  - key: WORKDAY_UPDATE_MESSAGE_TEMPLATE_BY_ID
+  - key: WORKDAY_WORKER_ELIGIBLE_ABSENCE_TYPE_CHANGED_TRIGGER
+  - key: WORKDAY_WORKER_LEAVE_OF_ABSENCE_CHANGED_TRIGGER
+  - key: WORKDAY_WORKER_LEAVE_OF_ABSENCE_CREATED_TRIGGER
+edges:
+- partner_name: Greenhouse
+  partner: greenhouse
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/workday/integrations/greenhouse
+  direction: third-party
+  category: HR Talent & Recruitment
+  partner_url: https://www.greenhouse.io/
+- partner_name: monday.com
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/workday/integrations/monday
+  direction: third-party
+  category: Project Management
+  partner_url: https://monday.com/
+- partner_name: HubSpot
+  partner: hubspot
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/workday/integrations/hubspot
+  direction: third-party
+  category: Marketing Automation
+  partner_url: http://www.hubspot.com/
+- partner_name: Google Calendar
+  partner: google-calendar
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/workday/integrations/google-calendar
+  direction: third-party
+  category: Calendar
+  partner_url: https://calendar.google.com/
+- partner_name: Google Drive
+  partner: google-drive
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/workday/integrations/google-drive
+  direction: third-party
+  category: File Management & Storage
+  partner_url: https://www.google.com/drive/
+- partner_name: Google Workspace Admin
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/workday/integrations/google-workspace-admin
+  direction: third-party
+  category: Google
+  partner_url: https://workspace.google.com/
+- partner_name: Slack
+  partner: slack
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/workday/integrations/slack
+  direction: third-party
+  category: Team Chat
+  partner_url: https://slack.com/
+- partner_name: Blink
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/workday/integrations/blink
+  direction: third-party
+  category: Team Collaboration
+  partner_url: http://joinblink.com/
+- partner_name: Shopify
+  partner: shopify
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/workday/integrations/shopify
+  direction: third-party
+  category: eCommerce
+  partner_url: https://www.shopify.com/
+- partner_name: Microsoft Excel
+  partner: null
+  partner_match: null
+  partner_candidate: zapier
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/workday/integrations/excel
+  direction: third-party
+  category: Microsoft
+  partner_url: https://zapier.com/office.com
+- partner_name: Microsoft Outlook
+  partner: microsoft-outlook
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/workday/integrations/microsoft-outlook
+  direction: third-party
+  category: Calendar
+  partner_url: https://outlook.live.com/
+- partner_name: Webflow
+  partner: webflow
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/workday/integrations/webflow
+  direction: third-party
+  category: Website Builders
+  partner_url: https://webflow.com/
+- partner_name: Gmail
+  partner: gmail
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/workday/integrations/gmail
+  direction: third-party
+  category: Email
+  partner_url: https://mail.google.com/
+- partner_name: Jotform
+  partner: jotform
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/workday/integrations/jotform
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: http://www.jotform.com/
+- partner_name: Clockify
+  partner: clockify
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/workday/integrations/clockify
+  direction: third-party
+  category: Time Tracking Software
+  partner_url: https://clockify.me/
+- partner_name: Calendly
+  partner: calendly
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/workday/integrations/calendly
+  direction: third-party
+  category: Scheduling & Booking
+  partner_url: https://calendly.com/?utm_medium=partner&utm_source=zapier&utm_campaign=main_partner_page&utm_content=main_inbound_link
+- partner_name: Freshservice
+  partner: freshservice
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/workday/integrations/freshservice
+  direction: third-party
+  category: Server Monitoring
+  partner_url: https://freshservice.com/
+- partner_name: Okta
+  partner: okta
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/workday/integrations/okta
+  direction: third-party
+  category: Security & Identity Tools
+  partner_url: https://www.okta.com/
+- partner_name: actiTIME
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/workday/integrations/actitime
+  direction: third-party
+  category: Time Tracking Software
+  partner_url: https://www.actitime.com/
+- partner_name: eGifter Rewards
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/workday/integrations/egifter-rewards
+  direction: third-party
+  category: Payment Processing
+  partner_url: https://egifterrewards.com/
+- partner_name: Google Sheets
+  partner: google-sheets
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/workday/integrations/google-sheets
+  direction: third-party
+  category: Google
+  partner_url: http://sheets.google.com/
+- partner_name: Google Forms
+  partner: google-forms
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/workday/integrations/google-forms
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: http://google.com/
+- partner_name: Asana
+  partner: asana
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/workday/integrations/asana
+  direction: third-party
+  category: Project Management
+  partner_url: http://asana.com/
+- partner_name: QuickBooks Online
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/workday/integrations/quickbooks
+  direction: third-party
+  category: Accounting
+  partner_url: http://intuit.com/
+- partner_name: RingCentral
+  partner: ringcentral
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/workday/integrations/ringcentral
+  direction: third-party
+  category: Phone & SMS
+  partner_url: http://www.ringcentral.com/
+- partner_name: Smartsheet
+  partner: smartsheet
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/workday/integrations/smartsheet
+  direction: third-party
+  category: Spreadsheets
+  partner_url: https://www.smartsheet.com/
+- partner_name: Mighty Networks
+  partner: mighty-networks
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/workday/integrations/mightynetworks
+  direction: third-party
+  category: Website Builders
+  partner_url: http://www.mightynetworks.com/
+- partner_name: Onepage
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/workday/integrations/onepage
+  direction: third-party
+  category: App Builder
+  partner_url: http://onepage.io/
+- partner_name: SignNow
+  partner: signnow
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/workday/integrations/signnow
+  direction: third-party
+  category: Signatures
+  partner_url: https://www.signnow.com/
+- partner_name: Google Groups
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/workday/integrations/google-groups
+  direction: third-party
+  category: Google
+  partner_url: https://groups.google.com/
+templates:
+- title: Approve new tasks in Workday when new time off requests are made in BambooHR
+  url: https://zapier.com/apps/bamboohr/integrations/workday/255608029/approve-new-tasks-in-workday-when-new-time-off-requests-are-made-in-bamboohr
+  apps:
+  - bamboohr
+  - workday
+- title: Approve tasks in Workday when records are updated in Zoho Recruit
+  url: https://zapier.com/apps/workday/integrations/zoho-recruit/255612346/approve-tasks-in-workday-when-records-are-updated-in-zoho-recruit
+  apps:
+  - zoho-recruit
+  - workday
+- title: Add new time off events in Resource Guru to Workday
+  url: https://zapier.com/apps/resource-guru/integrations/workday/255627506/add-new-time-off-events-in-resource-guru-to-workday
+  apps:
+  - resource-guru
+  - workday
+- title: Request video interviews with Vocal Video when new business process events are completed in Workday
+  url: https://zapier.com/apps/vocal-video/integrations/workday/255683121/request-video-interviews-with-vocal-video-when-new-business-process-events-are-completed-in-workday
+  apps:
+  - workday
+  - vocal-video
+- title: Approve Workday tasks for new responses in Vocal Video
+  url: https://zapier.com/apps/vocal-video/integrations/workday/255683125/approve-workday-tasks-for-new-responses-in-vocal-video
+  apps:
+  - vocal-video
+  - workday
+- title: Create comprehensive Workday hires from newly Hired matches in Manatal
+  url: https://zapier.com/apps/manatal/integrations/workday/255704559/create-comprehensive-workday-hires-from-newly-hired-matches-in-manatal
+  apps:
+  - manatal
+  - filter
+  - workday
+- title: Run Fastkey criminal record checks for new Workday employees
+  url: https://zapier.com/apps/fastkey/integrations/workday/255716425/run-fastkey-criminal-record-checks-for-new-workday-employees
+  apps:
+  - workday
+  - fastkey
+- title: Update LogicManager taxonomy elements from new Workday WQL queries
+  url: https://zapier.com/apps/logicmanager/integrations/workday/255720174/update-logicmanager-taxonomy-elements-from-new-workday-wql-queries
+  apps:
+  - workday
+  - logicmanager
+- title: Send private channel messages in Slack when employees are terminated in Workday
+  url: https://zapier.com/apps/slack/integrations/workday/255725560/send-private-channel-messages-in-slack-when-employees-are-terminated-in-workday
+  apps:
+  - workday
+  - slack
+- title: Send eGifter Rewards gift cards for new Workday hires
+  url: https://zapier.com/apps/egifter-rewards/integrations/workday/255731818/send-egifter-rewards-gift-cards-for-new-workday-hires
+  apps:
+  - workday
+  - egifter-rewards
+template_total: 10
