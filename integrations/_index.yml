@@ -361,3 +361,5445 @@
   source: edge
   status: pending-partner-spec
   arazzo: null
+- slug: workday-kainos-worksmart-limited
+  label: Kainos Worksmart Limited
+  partner_name: Kainos Worksmart Limited
+  category: Buying Center
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414752/kainos-smart-test
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-talent-sentiment-agent
+  label: Talent Sentiment Agent
+  partner_name: Talent Sentiment Agent
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/856474/talent-sentiment-agent
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-self-service-agent
+  label: Self Service Agent
+  partner_name: Self Service Agent
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/535082/self-service-agent
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-workday-vndly-vendor-management-system
+  label: Workday VNDLY, Vendor Management System
+  partner_name: Workday VNDLY, Vendor Management System
+  category: Workday VNDLY
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/832261/workday-vndly-vendor-management-system
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-e-invoicing-ar
+  label: E-invoicing AR
+  partner_name: E-invoicing AR
+  category: Partners
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/413915/e-invoicing-ar
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-nextsource
+  label: nextSource
+  partner_name: nextSource
+  category: Industry
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/440501/nextsource-contingent-workforce-management
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-workday-flex-credits
+  label: Workday Flex Credits
+  partner_name: Workday Flex Credits
+  category: Buying Center
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/816919/workday-flex-credits
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-allegis-global-solutions-inc
+  label: Allegis Global Solutions, Inc.
+  partner_name: Allegis Global Solutions, Inc.
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/440502/allegis-global-solutions-managed-service-provider-msp
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-adoption-agent
+  label: Adoption Agent
+  partner_name: Adoption Agent
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/851509/adoption-agent
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-e-invoicing-ap
+  label: E-invoicing AP
+  partner_name: E-invoicing AP
+  category: Partners
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/413907/e-invoicing-ap
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-payroll-agent
+  label: Payroll Agent
+  partner_name: Payroll Agent
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/535062/payroll-agent
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-talent-solutions-tapfin
+  label: Talent Solutions TAPFIN
+  partner_name: Talent Solutions TAPFIN
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/440500/tapfin-managed-service-provider-msp
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-business-network-builders-s-l-spain
+  label: Business Network Builders S.L. [Spain]
+  partner_name: Business Network Builders S.L. [Spain]
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/458141/goal-assistant
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-onward-software-solutions-inc
+  label: Onward Software Solutions Inc
+  partner_name: Onward Software Solutions Inc
+  category: Buying Center
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/535708/onsurvey
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-onesource-virtual
+  label: OneSource Virtual
+  partner_name: OneSource Virtual
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/847672/direct-deposit-switching---us
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-create-a-work-event
+  label: Create a Work Event
+  partner_name: Create a Work Event
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/425531/create-a-work-event
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-deloitte
+  label: Deloitte
+  partner: deloitte
+  partner_name: Deloitte
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/448702/insureacceleration
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-multi-rater-employee-reviews
+  label: Multi Rater Employee Reviews
+  partner_name: Multi Rater Employee Reviews
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/454478/multi-rater-employee-reviews
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-linkedin
+  label: LinkedIn
+  partner: linkedin
+  partner_name: LinkedIn
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414954/linkedin-workday-learning-integration
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-adp
+  label: ADP
+  partner: adp
+  partner_name: ADP
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414957/adp-smartconnect-for-employment-verificationworkday-payroll
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-chronus
+  label: Chronus
+  partner_name: Chronus
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/739758/chronus-workday-integration
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-workday-adaptive-planning-financial-planning
+  label: 'Workday Adaptive Planning: Financial Planning'
+  partner_name: 'Workday Adaptive Planning: Financial Planning'
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/813854/workday-adaptive-planning-financial-planning
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-knowbrist-corp-d-b-a-three-link-solutions
+  label: Knowbrist Corp d/b/a Three Link Solutions
+  partner_name: Knowbrist Corp d/b/a Three Link Solutions
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/844824/premium-billing---life-disability-pc
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-terryberry
+  label: Terryberry
+  partner_name: Terryberry
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/622814/be-recognized
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-vehicle-registration
+  label: Vehicle Registration
+  partner_name: Vehicle Registration
+  category: Buying Center
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/414050/vehicle-registration
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-pricewaterhousecoopers-global
+  label: PricewaterhouseCoopers Global
+  partner_name: PricewaterhouseCoopers Global
+  category: Platform and Product Extensions
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414383/p11d
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-semos-software
+  label: Semos Software
+  partner_name: Semos Software
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/547955/employee-communications---internal-comms-surveys
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-bizlibrary
+  label: BizLibrary
+  partner_name: BizLibrary
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/678533/bizlibrary-content-connector
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-noahface
+  label: NoahFace
+  partner_name: NoahFace
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/424874/the-smart-time-clock
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-o-c-tanner-recognition-company
+  label: O.C.Tanner Recognition Company
+  partner_name: O.C.Tanner Recognition Company
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414500/oc-tanner-employee-recognition
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-shl-group-limited
+  label: SHL Group Limited
+  partner_name: SHL Group Limited
+  category: Partners
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414153/shl-inline-assessment-integration
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-the-stepstone-group
+  label: The Stepstone Group
+  partner_name: The Stepstone Group
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/659239/appcast-connect
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-intecrowd-llc
+  label: Intecrowd LLC
+  partner_name: Intecrowd LLC
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/817351/charitable-donations
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-vertex-inc
+  label: Vertex, Inc.
+  partner_name: Vertex, Inc.
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414855/vertex-for-workday
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-league-inc
+  label: League, Inc.
+  partner_name: League, Inc.
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414764/league-workday-connector
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-accu-time-systems-inc
+  label: Accu-Time Systems, Inc.
+  partner_name: Accu-Time Systems, Inc.
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/413714/ats-timecom-for-workday
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-tray-ai
+  label: Tray.ai
+  partner: tray-ai
+  partner_name: Tray.ai
+  category: Deployment Method
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/537697/trayai-universal-automation-cloud
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-appzen-inc
+  label: AppZen Inc
+  partner: appzen
+  partner_name: AppZen Inc
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/777832/appzen-expense-audit
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-korn-ferry
+  label: Korn Ferry
+  partner: korn-ferry
+  partner_name: Korn Ferry
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/648334/korn-ferry-assess
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-workday-expert-assist-for-compensation-annual-processing
+  label: Workday Expert Assist for Compensation Annual Processing
+  partner_name: Workday Expert Assist for Compensation Annual Processing
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/457137/workday-expert-assist-for-compensation-annual-processing
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-makse-group-llc
+  label: Makse Group LLC
+  partner_name: Makse Group LLC
+  category: Partners
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/724905/veritas-whistleblowing
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-euna-solutions
+  label: Euna Solutions
+  partner_name: Euna Solutions
+  category: Financial Management
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/822944/euna-payments
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-skills-mining-with-the-ai-gateway
+  label: Skills Mining with the AI Gateway
+  partner_name: Skills Mining with the AI Gateway
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/438029/skills-mining-with-the-ai-gateway
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-kognitiv-inc
+  label: Kognitiv, Inc.
+  partner_name: Kognitiv, Inc.
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/587879/task-management-for-financials
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-bi-worldwide
+  label: BI WORLDWIDE
+  partner_name: BI WORLDWIDE
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/467368/engagement-integrator
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-huron-consulting-services-llc
+  label: Huron Consulting Services LLC
+  partner: huron-consulting-group
+  partner_name: Huron Consulting Services LLC
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/474916/user-access-provisioning-by-huron
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-accenture
+  label: Accenture
+  partner: accenture
+  partner_name: Accenture
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/441612/feedback-coach
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-aquera
+  label: Aquera
+  partner_name: Aquera
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/577549/aquera-workday-to-active-directory-integration
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-samsara
+  label: Samsara
+  partner: samsara
+  partner_name: Samsara
+  category: Deployment Method
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/727603/workday-connect-for-samsara
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-compensation-agent
+  label: Compensation Agent
+  partner_name: Compensation Agent
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/856480/compensation-agent
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-tabulera
+  label: Tabulera
+  partner_name: Tabulera
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/644424/tabulera-benefits-reconciliation
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-edflex
+  label: Edflex
+  partner_name: Edflex
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/778567/edflex
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-axonify
+  label: Axonify
+  partner_name: Axonify
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/449200/axonify
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-quebit
+  label: QueBIT
+  partner_name: QueBIT
+  category: Workday Adaptive Planning
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414841/insurance-planning-analytics
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-ascender
+  label: Ascender
+  partner_name: Ascender
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/413832/ascender-connector
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-docusign-esignature-for-workday
+  label: Docusign eSignature For Workday
+  partner_name: Docusign eSignature For Workday
+  category: Buying Center
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/414120/docusign-esignature-for-workday
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-cloudapper-ai
+  label: CloudApper AI
+  partner_name: CloudApper AI
+  category: Deployment Method
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/584456/hrpad
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-codesignal
+  label: CodeSignal
+  partner: codesignal
+  partner_name: CodeSignal
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/588865/codesignal-ai-native-skills-assessments
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-three-plus-consulting
+  label: Three Plus Consulting
+  partner_name: Three Plus Consulting
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/520957/work-together
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-aconso-ag
+  label: aconso AG
+  partner_name: aconso AG
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/791656/digital-personnel-file
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-cloudrock-partners-ltd
+  label: CloudRock Partners Ltd
+  partner_name: CloudRock Partners Ltd
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/567130/accessily
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-okorio
+  label: Okorio
+  partner_name: Okorio
+  category: Workday Adaptive Planning
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/418364/long-range-strategic-planning
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-ziprecruiter-inc
+  label: ZipRecruiter, Inc.
+  partner_name: ZipRecruiter, Inc.
+  category: Partners
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/505890/ziprecruiter-zipapply
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-mercer
+  label: Mercer
+  partner_name: Mercer
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/644421/vendor-check
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-escriba-ag
+  label: ESCRIBA AG
+  partner_name: ESCRIBA AG
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/701591/escriba-document-automation-connector
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-financial-audit-agent
+  label: Financial Audit Agent
+  partner_name: Financial Audit Agent
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/844743/financial-audit-agent
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-workday-training-credits-for-partners
+  label: Workday Training Credits (for Partners)
+  partner_name: Workday Training Credits (for Partners)
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/805710/workday-training-credits-for-partners
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-icit-business-intelligence-ltd
+  label: ICit Business Intelligence Ltd
+  partner_name: ICit Business Intelligence Ltd
+  category: Workday Adaptive Planning
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/423967/active-sustainability-planning
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-modo-labs
+  label: Modo Labs
+  partner_name: Modo Labs
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/804988/workday-student-sis
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-strada
+  label: Strada
+  partner_name: Strada
+  category: Deployment Method
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/509984/qmcso-assistant
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-forecasting-with-the-ai-gateway
+  label: Forecasting with the AI Gateway
+  partner_name: Forecasting with the AI Gateway
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/425533/forecasting-with-the-ai-gateway
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-contract-workflow-agent
+  label: Contract Workflow Agent
+  partner_name: Contract Workflow Agent
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/856491/contract-workflow-agent
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-zuora
+  label: Zuora
+  partner: zuora
+  partner_name: Zuora
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/592767/zuora-connector-billing-revenue
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-sodales
+  label: Sodales
+  partner_name: Sodales
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/650128/sodales-solutions
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-rooster-technologies-inc
+  label: 'Rooster Technologies, Inc. '
+  partner_name: 'Rooster Technologies, Inc. '
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/455015/rooster---interview-scheduling-for-workday
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-avalara-inc
+  label: Avalara, Inc.
+  partner: avalara
+  partner_name: Avalara, Inc.
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/452509/avalara-e-invoicing-and-live-reporting
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-experian-employer-services
+  label: Experian Employer Services
+  partner_name: Experian Employer Services
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414728/experians-tax-withholding-integration
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-n2n-services-inc
+  label: N2N Services Inc.
+  partner_name: N2N Services Inc.
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/457292/real-time-course-data-synchronization
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-capital-project-planning
+  label: Capital Project Planning
+  partner_name: Capital Project Planning
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/848128/capital-project-planning
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-sisscorp
+  label: SISSCORP
+  partner_name: SISSCORP
+  category: Partners
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/553522/texsiss
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-datix-usa-inc
+  label: Datix (USA) Inc.
+  partner_name: Datix (USA) Inc.
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/836213/optima
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-lightcast
+  label: Lightcast
+  partner_name: Lightcast
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/425499/lightcast-talent-transform-enriching-job-profiles-with-skills
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-syssero-inc
+  label: Syssero, Inc.
+  partner_name: Syssero, Inc.
+  category: Buying Center
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/500083/syncstream
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-coursera
+  label: Coursera
+  partner: coursera
+  partner_name: Coursera
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/756152/coursera-integration-for-workday-learning
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-rain
+  label: Rain
+  partner_name: Rain
+  category: Workforce Management
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/872645/rain-financial-health
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-startex-software-llc-dba-ehs-insight
+  label: StarTex Software LLC dba EHS Insight
+  partner_name: StarTex Software LLC dba EHS Insight
+  category: Partners
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/829724/ehs-insight
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-adp-check-printing-connector
+  label: ADP Check Printing Connector
+  partner_name: ADP Check Printing Connector
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/417446/adp-check-printing-connector
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-touchnet-a-global-payments-company
+  label: TouchNet, A Global Payments Company
+  partner_name: TouchNet, A Global Payments Company
+  category: Category
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/452407/secure-integrated-payments-for-higher-education
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-cloverleaf
+  label: Cloverleaf
+  partner_name: Cloverleaf
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/483759/cloverleaf-assess-coach-connect
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-trintech
+  label: Trintech
+  partner_name: Trintech
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/561665/trintech-advanced-reconciliation-and-close-for-workday-financials
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-crossvue-llc
+  label: CrossVue, LLC
+  partner_name: CrossVue, LLC
+  category: Deployment Method
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/762403/crossvue-focus-bulk-address-validation
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-metlife
+  label: MetLife
+  partner: metlife
+  partner_name: MetLife
+  category: Industry
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/586497/metlife-benefits-bridge-workday-wellness
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-revelwood
+  label: Revelwood
+  partner_name: Revelwood
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/427423/customer-satisfaction-for-professional-services
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-edume
+  label: eduMe
+  partner_name: eduMe
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/428026/edume---frontline-training-in-workday
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-checkr-inc
+  label: Checkr, Inc
+  partner: checkr
+  partner_name: Checkr, Inc
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/446018/checkr-streamline-your-background-checks-with-checkr-in-workday
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-clearstar
+  label: ClearStar
+  partner_name: ClearStar
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/556798/clearstar-global-background-screening
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-udemy-business
+  label: Udemy Business
+  partner_name: Udemy Business
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/613546/enhanced-udemy-business-workday-integration
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-emtrain
+  label: Emtrain
+  partner_name: Emtrain
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/598304/emtrain-compliance-training-and-risk-intelligence
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-org-modeling-agent
+  label: Org Modeling Agent
+  partner_name: Org Modeling Agent
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/852892/org-modeling-agent
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-workhuman
+  label: Workhuman
+  partner_name: Workhuman
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414952/workhuman-connector
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-tenstreet
+  label: Tenstreet
+  partner_name: Tenstreet
+  category: Deployment Method
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/453890/tenstreet
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-kyriba
+  label: Kyriba
+  partner_name: Kyriba
+  category: Partners
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/441605/ai-fraud-detection
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-mulesoft-inc
+  label: Mulesoft, Inc.
+  partner_name: Mulesoft, Inc.
+  category: Partners
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414483/mulesoft-active-directory-integration
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-brighthire
+  label: BrightHire
+  partner: brighthire
+  partner_name: BrightHire
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/539082/brighthire-interview-intelligence-for-workday
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-contract-intelligence-agent
+  label: Contract Intelligence Agent
+  partner_name: Contract Intelligence Agent
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/529306/contract-intelligence-agent
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-qbix-analytics
+  label: QBIX Analytics
+  partner_name: QBIX Analytics
+  category: Workday Adaptive Planning
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414839/sales-commission-planning
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-salary-com-llc
+  label: Salary.com, LLC
+  partner_name: Salary.com, LLC
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/836211/salarycom-companalyst
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-hackerrank
+  label: HackerRank
+  partner: hackerrank
+  partner_name: HackerRank
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414921/hackerrank-technical-skills-assessments
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-wrkr-ltd
+  label: Wrkr Ltd
+  partner_name: Wrkr Ltd
+  category: Deployment Method
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/804979/wrkr-super-tfn-declaration
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-trusaic
+  label: Trusaic
+  partner_name: Trusaic
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/449384/pay-equity-and-pay-transparency-solutions
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-apply-with-seek
+  label: Apply with SEEK
+  partner_name: Apply with SEEK
+  category: Deployment Method
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/414150/apply-with-seek
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-globalization-partners
+  label: Globalization Partners
+  partner_name: Globalization Partners
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/598298/g-p-gia-ai-for-global-hr-compliance
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-workato-inc
+  label: Workato, Inc.
+  partner: workato
+  partner_name: Workato, Inc.
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414856/workato-worker-onboarding-automation
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-erpa
+  label: ERPA
+  partner_name: ERPA
+  category: Partners
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/474934/student-attendance
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-the-hartford
+  label: The Hartford
+  partner_name: The Hartford
+  category: Industry
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/586498/workday-wellness
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-invisors-llc
+  label: Invisors LLC
+  partner_name: Invisors LLC
+  category: Workday Adaptive Planning
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/446360/invisors-distribution-waterfall-planning
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-commutifi
+  label: Commutifi
+  partner_name: Commutifi
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/727592/obfusgate-data-governance-for-vendor-integrations
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-interview-scheduling-by-workday-for-google
+  label: Interview Scheduling by Workday (for Google)
+  partner_name: Interview Scheduling by Workday (for Google)
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/414158/interview-scheduling-by-workday-for-google
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-censia-ai
+  label: Censia AI
+  partner_name: Censia AI
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/836198/censia-ai-employee-profile-skills-enrichment-assistant
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-cloudcard
+  label: CloudCard
+  partner_name: CloudCard
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/703880/remotephoto-id-photo-capture-for-workday
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-create-accounting-journal
+  label: Create Accounting Journal
+  partner_name: Create Accounting Journal
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/457306/create-accounting-journal
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-healthstream
+  label: HealthStream
+  partner_name: HealthStream
+  category: Workforce Management
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/505872/shiftwizard-by-healthstream
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-workday-for-slack
+  label: Workday for Slack
+  partner_name: Workday for Slack
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/414159/workday-for-slack
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-aequivalent
+  label: Aequivalent
+  partner_name: Aequivalent
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/608684/aequivalent-background-checks
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-alert-enterprise-inc
+  label: Alert Enterprise, Inc.
+  partner_name: Alert Enterprise, Inc.
+  category: Partners
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/786235/guardian
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-workboard-inc
+  label: Workboard Inc.
+  partner_name: Workboard Inc.
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414777/workboard-strategy-execution-and-okr-platform-with-genai
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-sun-life-assurance-company-of-canada
+  label: Sun Life Assurance Company of Canada
+  partner: sun-life
+  partner_name: Sun Life Assurance Company of Canada
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/586503/sun-life-link
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-compa-technologies
+  label: Compa Technologies
+  partner_name: Compa Technologies
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/537021/real-time-employee-benchmarks
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-incline-alchemy-inc
+  label: Incline Alchemy, Inc.
+  partner_name: Incline Alchemy, Inc.
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/424800/course-section-materials-manager
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-harver-b-v
+  label: Harver B.V.
+  partner: harver
+  partner_name: Harver B.V.
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/457475/harver
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-workday-expert-assist-for-integrations
+  label: Workday Expert Assist for Integrations
+  partner_name: Workday Expert Assist for Integrations
+  category: Buying Center
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/457135/workday-expert-assist-for-integrations
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-nimbeely-extend-solutions
+  label: Nimbeely Extend Solutions
+  partner_name: Nimbeely Extend Solutions
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/779256/fdm-maintenance-manager
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-intelex-technologies-inc
+  label: Intelex Technologies Inc.
+  partner_name: Intelex Technologies Inc.
+  category: Buying Center
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414802/intelex-workday-gateway
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-kpmg
+  label: KPMG
+  partner: kpmg
+  partner_name: KPMG
+  category: Financial Management
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/864797/kpmg-accounting-center-reclassification
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-icertis
+  label: Icertis
+  partner: icertis
+  partner_name: Icertis
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414776/icertis-contract-intelligence-ici-for-workday
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-hirevue
+  label: HireVue
+  partner: hirevue
+  partner_name: HireVue
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414744/hirevue-for-workday
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-indeavor
+  label: Indeavor
+  partner_name: Indeavor
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/650137/indeavor-employee-demographics-connector
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-biddle-consulting-group
+  label: Biddle Consulting Group
+  partner_name: Biddle Consulting Group
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/485215/testgenius
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-asure-software
+  label: Asure Software
+  partner_name: Asure Software
+  category: Partners
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/427540/asure-payroll-tax-management
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-tecsys-inc
+  label: Tecsys Inc.
+  partner_name: Tecsys Inc.
+  category: Deployment Method
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/452641/tecsys-elite-healthcare-point-of-use
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-points-north
+  label: Points North
+  partner_name: Points North
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/583544/certified-payroll-union-payroll-compliance
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-dossier-inc
+  label: Dossier, Inc.
+  partner_name: Dossier, Inc.
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/822962/dossier
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-hyland-software-inc
+  label: 'Hyland Software, Inc. '
+  partner_name: 'Hyland Software, Inc. '
+  category: Student
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/806082/hyland-for-workday-student
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-guidehouse-inc
+  label: Guidehouse Inc
+  partner_name: Guidehouse Inc
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/846818/fdm-management
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-cielo-inc
+  label: Cielo, Inc.
+  partner_name: Cielo, Inc.
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/789388/cielo-source-engage
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-harvard-business-publishing
+  label: Harvard Business Publishing
+  partner_name: Harvard Business Publishing
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/727594/harvard-business-impact
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-snaplogic-inc
+  label: SnapLogic, Inc.
+  partner: snaplogic
+  partner_name: SnapLogic, Inc.
+  category: Buying Center
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414678/snaplogic-salesforce-for-quote-to-cash-connector
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-rapid
+  label: rapid!
+  partner_name: rapid!
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/782768/rapid-ewa
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-gofluent
+  label: goFLUENT
+  partner_name: goFLUENT
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/537984/gofluent-language-assessment
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-developer-agent
+  label: Developer Agent
+  partner_name: Developer Agent
+  category: Buying Center
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/853399/developer-agent
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-samsung-sds-co-ltd
+  label: Samsung SDS Co., Ltd.
+  partner_name: Samsung SDS Co., Ltd.
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/529391/gifts-and-condolences
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-thomson-reuters
+  label: Thomson Reuters
+  partner_name: Thomson Reuters
+  category: Partners
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/608682/onesource-indirect-tax-for-workday-financials
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-deel
+  label: Deel
+  partner_name: Deel
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/537691/deel-global-payroll
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-dayforce-tax-and-payment-services
+  label: Dayforce Tax and Payment Services
+  partner_name: Dayforce Tax and Payment Services
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/414026/dayforce-tax-and-payment-services
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-ramp
+  label: Ramp
+  partner: ramp
+  partner_name: Ramp
+  category: Deployment Method
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/451603/ramp-for-workday-financial-management
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-sprypoint-services-inc
+  label: SpryPoint Services Inc.
+  partner: sprypoint
+  partner_name: SpryPoint Services Inc.
+  category: Deployment Method
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/870913/sprypoint
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-ajinga
+  label: AJINGA
+  partner_name: AJINGA
+  category: Deployment Method
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/765051/china-compliant-recruiting
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-relish-iq
+  label: Relish IQ
+  partner_name: Relish IQ
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/786715/relish-data-assure-for-human-capital-management---built-on-workday-edition
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-dxc-technology-services-llc
+  label: DXC Technology Services LLC
+  partner: dxc-technology
+  partner_name: DXC Technology Services LLC
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/520955/conflict-of-interest-approval
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-aws-driver-s-license-processing
+  label: AWS Driver's License Processing
+  partner_name: AWS Driver's License Processing
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/457302/aws-drivers-license-processing
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-group-elephant
+  label: Group Elephant
+  partner_name: Group Elephant
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/618414/group-elephant-workday-to-sap-payroll-integration
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-talentnet-inc
+  label: TalentNet Inc.
+  partner_name: TalentNet Inc.
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/478121/direct-sourcing-platform-total-talent-solution
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-miagen
+  label: Miagen
+  partner_name: Miagen
+  category: Workday Adaptive Planning
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414826/leasegen-for-aircraft-leasing
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-techwolf
+  label: TechWolf
+  partner_name: TechWolf
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/427599/techwolf-skill-engine
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-varicent
+  label: Varicent
+  partner_name: Varicent
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/502983/sales-performance-management-by-varicent
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-boomi-inc
+  label: Boomi, Inc.
+  partner_name: Boomi, Inc.
+  category: Buying Center
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/413986/boomi-active-directory-integration
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-fispan
+  label: FISPAN
+  partner_name: FISPAN
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/598302/bank-feeds-for-workday-financial-management
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-pluralsight-llc
+  label: Pluralsight, LLC
+  partner_name: Pluralsight, LLC
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414269/pluralsight-workday-learning-integration
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-cloudrock
+  label: CloudRock
+  partner_name: CloudRock
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/868476/holiday-credit-manager
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-guardian-life
+  label: Guardian Life
+  partner_name: Guardian Life
+  category: Industry
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/586501/guardian-life-integrations
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-gt-clocks-grosvenor-technology-llc
+  label: GT Clocks (Grosvenor Technology LLC)
+  partner_name: GT Clocks (Grosvenor Technology LLC)
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/682231/gt-time
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-stream-platforms-ltd
+  label: Stream Platforms Ltd
+  partner_name: Stream Platforms Ltd
+  category: Partners
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/871573/stream-workplace-finance
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-workday-for-microsoft-teams
+  label: Workday for Microsoft Teams
+  partner_name: Workday for Microsoft Teams
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/414143/workday-for-microsoft-teams
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-flexspring
+  label: Flexspring
+  partner_name: Flexspring
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/538361/workday-to-adp-integration-by-flexspring
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-aon
+  label: Aon
+  partner_name: Aon
+  category: Partners
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/448674/skillsgraph-accelerate-your-skills-based-journey
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-ulabs-inc
+  label: Ulabs, Inc.
+  partner_name: Ulabs, Inc.
+  category: Deployment Method
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/873317/udext---employee-texting-for-workday
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-work-from-almost-anywhere
+  label: Work From Almost Anywhere
+  partner_name: Work From Almost Anywhere
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/427132/work-from-almost-anywhere
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-worker-badges
+  label: Worker Badges
+  partner_name: Worker Badges
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/414243/worker-badges
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-ghx-for-edi-supplier-integrations
+  label: GHX for EDI Supplier Integrations
+  partner_name: GHX for EDI Supplier Integrations
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/414505/ghx-for-edi-supplier-integrations
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-firstup
+  label: Firstup
+  partner_name: Firstup
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/549276/firstup-user-sync
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-toshiba-digital-solutions-corporation
+  label: Toshiba Digital Solutions Corporation
+  partner_name: Toshiba Digital Solutions Corporation
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414709/toshiba-generalist-global-payroll-connector
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-talent-mobility-agent
+  label: Talent Mobility Agent
+  partner_name: Talent Mobility Agent
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/529304/talent-mobility-agent
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-planning-agent
+  label: Planning Agent
+  partner_name: Planning Agent
+  category: Workday Adaptive Planning
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/601658/planning-agent
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-capitalize-analytics
+  label: Capitalize Analytics
+  partner_name: Capitalize Analytics
+  category: Workday Adaptive Planning
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/439513/integrating-google-sheets-with-adaptive-planning
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-rsm
+  label: RSM
+  partner_name: RSM
+  category: Workday Adaptive Planning
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/415160/staff-adjustment-calculator
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-e1-consulting
+  label: E1 Consulting
+  partner_name: E1 Consulting
+  category: Deployment Method
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/569908/ozonboard
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-private-eyes-screening-group
+  label: Private Eyes Screening Group
+  partner_name: Private Eyes Screening Group
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/765049/private-eyes-talent-screening-solution
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-linkedin-recruiter-system-connect
+  label: LinkedIn Recruiter System Connect
+  partner_name: LinkedIn Recruiter System Connect
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/418336/linkedin-recruiter-system-connect
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-candidate-experience-agent
+  label: Candidate Experience Agent
+  partner_name: Candidate Experience Agent
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/833583/candidate-experience-agent
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-benifex
+  label: Benifex
+  partner_name: Benifex
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/539068/benify-user-data-connector
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-o-reilly-media
+  label: O'Reilly Media
+  partner_name: O'Reilly Media
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/575754/oreilly-workday-learning-integration
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-oloid
+  label: Oloid
+  partner_name: Oloid
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/507635/oloid-passwordless-authenticator-for-workday
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-intelagree
+  label: IntelAgree
+  partner_name: IntelAgree
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414792/intelagree
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-docusign
+  label: Docusign
+  partner: docusign
+  partner_name: Docusign
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/665538/docusign-intelligent-agreement-management-for-workday
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-core-reporting-agent
+  label: Core Reporting Agent
+  partner_name: Core Reporting Agent
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/856493/core-reporting-agent
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-cognexo
+  label: Cognexo
+  partner_name: Cognexo
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/762206/cognexo
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-factura-ai
+  label: Factura.ai
+  partner_name: Factura.ai
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/467856/facturaai-ap-automation-for-workday
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-mutual-of-omaha
+  label: Mutual of Omaha
+  partner_name: Mutual of Omaha
+  category: Partners
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/586499/workday-wellness
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-benivo
+  label: Benivo
+  partner_name: Benivo
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/864861/benivo-global-mobility-platform
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-cognizant
+  label: Cognizant
+  partner_name: Cognizant
+  category: Partners
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/457311/cognizant-employee-relations-manager
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-document-intelligence-with-the-ai-gateway
+  label: Document Intelligence with the AI Gateway
+  partner_name: Document Intelligence with the AI Gateway
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/425535/document-intelligence-with-the-ai-gateway
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-cloudpay
+  label: CloudPay
+  partner_name: CloudPay
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414032/cloudpay-global-payroll-cloud-connector
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-bp-optimize-agent
+  label: BP Optimize Agent
+  partner_name: BP Optimize Agent
+  category: Buying Center
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/535073/bp-optimize-agent
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-incubane
+  label: Incubane
+  partner_name: Incubane
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/487575/ai-powered-goal-management
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-broadbean-technology
+  label: Broadbean Technology
+  partner_name: Broadbean Technology
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414860/veritone-hire-formally-broadbean
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-imocha-inc
+  label: iMocha Inc.
+  partner_name: iMocha Inc.
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/822958/skills-intelligence
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-global-it-factory-pty-ltd
+  label: Global IT Factory Pty Ltd
+  partner_name: Global IT Factory Pty Ltd
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/822960/curriculum-management-for-workday-student
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-big-think
+  label: Big Think+
+  partner_name: Big Think+
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/581847/big-think
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-casechek-inc
+  label: Casechek, Inc.
+  partner_name: Casechek, Inc.
+  category: Partners
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/864202/casechek-bill-only-workflow-platform-for-workday
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-activpayroll-limited
+  label: activpayroll Limited
+  partner_name: activpayroll Limited
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/413825/activpayroll-gpc-connector
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-flywire
+  label: Flywire
+  partner_name: Flywire
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/670446/flywire-global-payments
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-ascend-learning-llc
+  label: Ascend Learning, LLC
+  partner_name: Ascend Learning, LLC
+  category: Financial Management
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/806126/staffgarden-healthcare-workforce-development-platform
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-ascend-software-inc
+  label: Ascend Software, Inc.
+  partner_name: Ascend Software, Inc.
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/413828/ascend---accounts-payable-automation-for-effortless-invoice-processing
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-xactly-corporation
+  label: Xactly Corporation
+  partner_name: Xactly Corporation
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/799663/xactly-workday-connector
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-bargain-technologies-pvt-ltd-dba-vantage-circle
+  label: Bargain Technologies Pvt Ltd. DBA Vantage Circle
+  partner_name: Bargain Technologies Pvt Ltd. DBA Vantage Circle
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/850976/vantage-recognition
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-okta-integration-for-account-provisioning
+  label: OKTA Integration for Account Provisioning
+  partner_name: OKTA Integration for Account Provisioning
+  category: Buying Center
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/414502/okta-integration-for-account-provisioning
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-workday-expert-assist-for-compensation-survey-management
+  label: Workday Expert Assist for Compensation Survey Management
+  partner_name: Workday Expert Assist for Compensation Survey Management
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/457133/workday-expert-assist-for-compensation-survey-management
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-bountyjobs-inc
+  label: BountyJobs, Inc.
+  partner_name: BountyJobs, Inc.
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/413993/bountyjobs-integration-to-workday-human-capital-management
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-training-orchestra-instructor-led-training-management-system
+  label: Training Orchestra Instructor-Led Training Management System
+  partner_name: Training Orchestra Instructor-Led Training Management System
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414718/training-orchestra-instructor-led-training-management-system
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-ghx-global-healthcare-exchange-llc
+  label: GHX, Global Healthcare Exchange, LLC
+  partner_name: GHX, Global Healthcare Exchange, LLC
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414359/ghx-marketplace-for-workday
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-crunchtime
+  label: CrunchTime
+  partner_name: CrunchTime
+  category: Partners
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/416207/crunchtime-integration
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-workday-adaptive-planning
+  label: Workday Adaptive Planning
+  partner_name: Workday Adaptive Planning
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/813855/workday-adaptive-planning
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-globalli-workforce-technology-solutions-inc
+  label: Globalli Workforce Technology Solutions Inc.
+  partner_name: Globalli Workforce Technology Solutions Inc.
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/856982/globalli
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-shapein
+  label: SHAPEiN
+  partner_name: SHAPEiN
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/473852/workday-sap-payroll-integration
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-neosystems-llc
+  label: NeoSystems LLC
+  partner_name: NeoSystems LLC
+  category: Workday Adaptive Planning
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414830/workday-adaptive-planning-for-government-contractors
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-radancy
+  label: Radancy
+  partner_name: Radancy
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/610660/radancys-programmatic-adtech
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-rsm-us-llp
+  label: RSM US LLP
+  partner_name: RSM US LLP
+  category: Partners
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/788946/rsm-smartlaunch-nfp-association
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-microsoft-interview-management
+  label: Microsoft Interview Management
+  partner_name: Microsoft Interview Management
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/414066/microsoft-interview-management
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-metanet
+  label: Metanet
+  partner_name: Metanet
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/430594/metapay
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-travel-agent
+  label: Travel Agent
+  partner_name: Travel Agent
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/856489/travel-agent
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-mevitae
+  label: MeVitae
+  partner_name: MeVitae
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/775441/mevitae-anonymized-recruiting
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-incorta
+  label: Incorta
+  partner_name: Incorta
+  category: Workday Adaptive Planning
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/474908/incorta-sap-ecc-data-workbench-for-workday-adaptive-planning
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-achievers
+  label: Achievers
+  partner_name: Achievers
+  category: Partners
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/562374/achievers-learn-recognize
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-skedulo-inc
+  label: Skedulo Inc.
+  partner_name: Skedulo Inc.
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/816929/skedulo-frontline-scheduling-optimization
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-employee-relations-incident-management
+  label: Employee Relations Incident Management
+  partner_name: Employee Relations Incident Management
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/616250/employee-relations-incident-management
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-avaap-usa-llc
+  label: Avaap USA, LLC
+  partner_name: Avaap USA, LLC
+  category: Category
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/630706/instructor-assignment-manager
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-helios-consulting-llc
+  label: Helios Consulting LLC
+  partner_name: Helios Consulting LLC
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/830173/helios-employee-rewards
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-accurate-background
+  label: Accurate Background
+  partner_name: Accurate Background
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414858/accurate-background
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-workday-vndly-smart-start
+  label: Workday VNDLY Smart Start
+  partner_name: Workday VNDLY Smart Start
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/459174/workday-vndly-smart-start
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-disa-global-solutions
+  label: DISA Global Solutions
+  partner_name: DISA Global Solutions
+  category: Deployment Method
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/872500/disa-pre-employment-screening-simplified
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-premier
+  label: Premier
+  partner_name: Premier
+  category: Deployment Method
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/590574/premier---workday-data-extraction-process
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-tapcheck
+  label: Tapcheck
+  partner_name: Tapcheck
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/486227/tapcheck
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-ibm
+  label: IBM
+  partner: ibm
+  partner_name: IBM
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414115/financial-planning-accelerator
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-performance-management-agent
+  label: Performance Management Agent
+  partner_name: Performance Management Agent
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/851517/performance-management-agent
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-awardco
+  label: Awardco
+  partner_name: Awardco
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/649336/awardco-rewards-recognition-workday-data-sync
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-workaxle
+  label: WorkAxle
+  partner_name: WorkAxle
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/650133/workaxle-employee-scheduling
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-payslip
+  label: Payslip
+  partner_name: Payslip
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/429215/payslip-peci-connector
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-excelity-global
+  label: Excelity Global
+  partner_name: Excelity Global
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/415075/excelity-global-payroll-connector
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-peakon-employee-voice
+  label: Peakon Employee Voice
+  partner_name: Peakon Employee Voice
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/832282/peakon-employee-voice
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-tmf-group-b-v
+  label: TMF Group B.V.
+  partner_name: TMF Group B.V.
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/415083/tmf-group-global-payroll-connector
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-adway-ab
+  label: Adway AB
+  partner_name: Adway AB
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/485214/adway
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-help-case-creation
+  label: Help Case Creation
+  partner_name: Help Case Creation
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/414053/help-case-creation
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-rare-technology
+  label: Rare Technology
+  partner_name: Rare Technology
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/551835/candid-early-talent
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-unum
+  label: Unum
+  partner: unum
+  partner_name: Unum
+  category: Partners
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/586496/unum-hr-connect-for-workday-wellness
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-cloudcapcha-limited
+  label: CloudCapcha Limited
+  partner_name: CloudCapcha Limited
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/843368/cloudcapcha
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-quick-add-additional-job
+  label: Quick Add Additional Job
+  partner_name: Quick Add Additional Job
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/414247/quick-add-additional-job
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-tcp-software
+  label: TCP Software
+  partner_name: TCP Software
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/551173/tcp-direct
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-peopleflow
+  label: PeopleFlow
+  partner_name: PeopleFlow
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/670336/peopleflow-workday-automation-testing-platform
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-auditoria-ai
+  label: Auditoria.AI
+  partner_name: Auditoria.AI
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/424216/smartvendor-ap-helpdesk
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-bsi
+  label: BSI
+  partner_name: BSI
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414018/taxprofilefactory
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-360learning
+  label: 360Learning
+  partner: 360learning
+  partner_name: 360Learning
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/598306/360learning
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-sapia-ai
+  label: Sapia.ai
+  partner_name: Sapia.ai
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/762204/sapiaai-for-workday
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-impact-advisors-llc
+  label: Impact Advisors, LLC.
+  partner_name: Impact Advisors, LLC.
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/868456/optix-workforce-intelligence
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-gotransverse-llc
+  label: Gotransverse LLC
+  partner_name: Gotransverse LLC
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414209/gotransverse-connector-for-workday
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-sailpoint-technologies
+  label: Sailpoint Technologies
+  partner_name: Sailpoint Technologies
+  category: Buying Center
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414414/sailpoint-identity-governance-for-workday
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-hiredscore
+  label: HiredScore
+  partner_name: HiredScore
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/421790/hiredscore
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-sui-tax-rates
+  label: SUI Tax Rates
+  partner_name: SUI Tax Rates
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/414245/sui-tax-rates
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-dailypay
+  label: DailyPay
+  partner: dailypay
+  partner_name: DailyPay
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414920/dailypay
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-loop-works
+  label: Loop Works
+  partner_name: Loop Works
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/572220/loop-flow-messenger-for-workday
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-interlay
+  label: Interlay
+  partner_name: Interlay
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/816547/interlay-workforce-compliance
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-workday-expert-assist-for-reporting-analytics
+  label: Workday Expert Assist for Reporting & Analytics
+  partner_name: Workday Expert Assist for Reporting & Analytics
+  category: Buying Center
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/457134/workday-expert-assist-for-reporting-analytics
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-payspace
+  label: PaySpace
+  partner_name: PaySpace
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/415081/payspace-global-payroll-cloud-connector
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-jac-software
+  label: JAC Software
+  partner_name: JAC Software
+  category: Partners
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/610653/virtual-team-manager
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-testlify-inc
+  label: Testlify, Inc.
+  partner_name: Testlify, Inc.
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/537987/testlify
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-contract-negotiation-agent
+  label: Contract Negotiation Agent
+  partner_name: Contract Negotiation Agent
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/532301/contract-negotiation-agent
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-financial-test-suite
+  label: Financial Test Suite
+  partner_name: Financial Test Suite
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/535077/financial-test-suite
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-nelnet-business-solutions-inc
+  label: Nelnet Business Solutions, Inc.
+  partner_name: Nelnet Business Solutions, Inc.
+  category: Deployment Method
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414494/nelnet-campus-commerce
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-reward-gateway-uk-ltd
+  label: Reward Gateway (UK) Ltd
+  partner_name: Reward Gateway (UK) Ltd
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/800064/reward-gateway-edenred-employee-engagement-platform
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-first-advantage
+  label: First Advantage
+  partner_name: First Advantage
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414140/first-advantage-software-integration-for-background-check
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-sift-enterprises
+  label: Sift Enterprises
+  partner_name: Sift Enterprises
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/632770/sift
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-stormloop-technologies-llc
+  label: Stormloop Technologies LLC
+  partner_name: Stormloop Technologies LLC
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/597610/multi-tenant-workday-account-manager
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-deployment-agent
+  label: Deployment Agent
+  partner_name: Deployment Agent
+  category: Talent Management
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/783991/deployment-agent
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-negotiatus-corp-dba-order
+  label: Negotiatus Corp. (dba Order)
+  partner_name: Negotiatus Corp. (dba Order)
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/818799/orderco---bring-all-purchasing-into-workday
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-relias
+  label: Relias
+  partner_name: Relias
+  category: Deployment Method
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/611351/relias
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-groundswell-corporation
+  label: Groundswell Corporation
+  partner_name: Groundswell Corporation
+  category: Platform and Product Extensions
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/446352/securechat-ai
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-tesorio
+  label: Tesorio
+  partner_name: Tesorio
+  category: Deployment Method
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/416214/connected-finance-operations-platform
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-traitify
+  label: Traitify
+  partner_name: Traitify
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/813438/traitify-assessments
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-hr-acuity
+  label: HR Acuity
+  partner_name: HR Acuity
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/537711/employee-relations-and-investigations-case-management
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-verified-first
+  label: Verified First
+  partner_name: Verified First
+  category: Deployment Method
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/567125/verified-first-background-check-connector-for-workday
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-immedis
+  label: Immedis
+  partner_name: Immedis
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414779/immedis-payroll-effective-change-interface-peci-connector
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-onepoint
+  label: Onepoint
+  partner_name: Onepoint
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/606684/work-from-home
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-mivada-pty-ltd
+  label: Mivada Pty Ltd
+  partner_name: Mivada Pty Ltd
+  category: Deployment Method
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/617657/mivada-mytfn-and-supermate
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-financial-close-agent
+  label: Financial Close Agent
+  partner_name: Financial Close Agent
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/844817/financial-close-agent
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-intake-orchestration-agent
+  label: Intake Orchestration Agent
+  partner_name: Intake Orchestration Agent
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/853397/intake-orchestration-agent
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-dayshape
+  label: Dayshape
+  partner_name: Dayshape
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/626516/dayshape-intelligent-staffing
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-informatica-llc
+  label: Informatica LLC
+  partner_name: Informatica LLC
+  category: Buying Center
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414782/informatica-q2c-integration-to-salesforce
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-workday-expert-assist-for-ad-hoc-compensation-changes
+  label: Workday Expert Assist for Ad Hoc Compensation Changes
+  partner_name: Workday Expert Assist for Ad Hoc Compensation Changes
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/457136/workday-expert-assist-for-ad-hoc-compensation-changes
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-experis-health-solutions
+  label: Experis Health Solutions
+  partner_name: Experis Health Solutions
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/582761/revmax360
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-dayforce-check-printing-service-connector
+  label: Dayforce Check Printing Service Connector
+  partner_name: Dayforce Check Printing Service Connector
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/414024/dayforce-check-printing-service-connector
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-qgenda-llc
+  label: QGenda, LLC
+  partner_name: QGenda, LLC
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/782764/qgenda
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-benevity
+  label: Benevity
+  partner: benevity
+  partner_name: Benevity
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/412243/benevity-workday-integration
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-recruiting-agent
+  label: Recruiting Agent
+  partner_name: Recruiting Agent
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/529302/recruiting-agent
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-indeed
+  label: Indeed
+  partner: indeed
+  partner_name: Indeed
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/660848/indeed-ats-sync
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-knowbe4-inc
+  label: KnowBe4, Inc
+  partner_name: KnowBe4, Inc
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/854465/knowbe4-security-awareness-training
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-one-identity
+  label: One Identity
+  partner_name: One Identity
+  category: Buying Center
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/415172/one-identity-manager
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-helios-consulting
+  label: Helios Consulting
+  partner_name: Helios Consulting
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/773505/helios-work-schedule
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-beamery-inc
+  label: Beamery Inc.
+  partner_name: Beamery Inc.
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/413864/beamery-skills-cloud-integration
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-groove-global-llc
+  label: Groove Global LLC
+  partner_name: Groove Global LLC
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/818608/modern-connect
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-poksundo
+  label: Poksundo
+  partner_name: Poksundo
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/653288/jay-cloud
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-equest
+  label: eQuest
+  partner_name: eQuest
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414131/equest-job-board-posting-for-workday-recruiting
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-tapwage-inc
+  label: Tapwage Inc.
+  partner_name: Tapwage Inc.
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/555462/datapeople
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-go1
+  label: Go1
+  partner: go1
+  partner_name: Go1
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/437009/go1-learning-workday-integration
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-irvine-consolidated
+  label: Irvine Consolidated
+  partner_name: Irvine Consolidated
+  category: Partners
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/800465/organization-manager
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-intelligo-software-limited
+  label: Intelligo Software Limited
+  partner_name: Intelligo Software Limited
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414805/intelligo-certified-peci-connector
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-pathoslogos
+  label: PathosLogos
+  partner_name: PathosLogos
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/704225/pathoslogos-global-payroll-connect
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-workforce-optimizer
+  label: Workforce Optimizer
+  partner_name: Workforce Optimizer
+  category: Deployment Method
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/777829/workforce-optimizer
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-workday-pay-transparency-analyzer-powered-by-kainos
+  label: Workday Pay Transparency Analyzer Powered by Kainos
+  partner_name: Workday Pay Transparency Analyzer Powered by Kainos
+  category: Human Capital Management
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/846812/workday-pay-transparency-analyzer-powered-by-kainos
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-the-danville-group-dba-rootstock-software
+  label: The Danville Group (dba Rootstock Software)
+  partner_name: The Danville Group (dba Rootstock Software)
+  category: Industry
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/415057/rootstock-integration-to-workday-financials
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-novoed-inc
+  label: NovoEd, Inc.
+  partner_name: NovoEd, Inc.
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/806123/novoed-workday-learning-ccl-integration
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-supplier-contract-agent
+  label: Supplier Contract Agent
+  partner_name: Supplier Contract Agent
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/535067/supplier-contract-agent
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-skillsoft
+  label: Skillsoft
+  partner_name: Skillsoft
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/416786/skillsoft
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-randstad-sourceright
+  label: Randstad Sourceright
+  partner_name: Randstad Sourceright
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/569401/randstad-sourcerights-managed-services-programs-msp
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-saviynt
+  label: Saviynt
+  partner: saviynt
+  partner_name: Saviynt
+  category: Buying Center
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414845/saviynt-for-workday
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-apex-systems-llc-dba-topbloc
+  label: Apex Systems, LLC dba TopBloc
+  partner_name: Apex Systems, LLC dba TopBloc
+  category: Workforce Management
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/872647/crewtime
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-sopra-hr-software
+  label: Sopra HR Software
+  partner_name: Sopra HR Software
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414716/sopra-hr-global-payroll-cloud-connector
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-equus-software
+  label: Equus Software
+  partner_name: Equus Software
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/500859/equus-platform-workday-integration
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-request-credit-card
+  label: Request Credit Card
+  partner_name: Request Credit Card
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/414237/request-credit-card
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-nga-human-resources
+  label: NGA Human Resources
+  partner_name: NGA Human Resources
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/415079/nga-global-payroll-connector
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-payroll-inc
+  label: Payroll Inc.
+  partner_name: Payroll Inc.
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414251/payroll-inc-global-payroll-connector
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-sana
+  label: Sana
+  partner: sana
+  partner_name: Sana
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/783992/sana
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-asset-barcoding
+  label: Asset Barcoding
+  partner_name: Asset Barcoding
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/414196/asset-barcoding
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-jitterbit-inc
+  label: Jitterbit Inc.
+  partner_name: Jitterbit Inc.
+  category: Buying Center
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414814/jitterbit-connector
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-invisors
+  label: Invisors
+  partner_name: Invisors
+  category: Partners
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/868454/billable-time-management
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-remote-technology-services-inc
+  label: Remote Technology Services, Inc.
+  partner_name: Remote Technology Services, Inc.
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/846828/remote-eor-contractor-management-for-workday
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-kahuna-workforce-solutions
+  label: Kahuna Workforce Solutions
+  partner_name: Kahuna Workforce Solutions
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/482062/kahuna
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-armanino-advisory-llc
+  label: Armanino Advisory LLC
+  partner_name: Armanino Advisory LLC
+  category: Workday Adaptive Planning
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/430426/dynamics-365-erp-workday-adaptive-planning-integration
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-payactiv
+  label: Payactiv
+  partner_name: Payactiv
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/539075/payactiv
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-moss-adams
+  label: Moss Adams
+  partner_name: Moss Adams
+  category: Workday Adaptive Planning
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/415169/budgeting-and-forecasting-for-retail
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-bipo-service-singapore-pte-ltd
+  label: BIPO Service (Singapore) Pte Ltd
+  partner_name: BIPO Service (Singapore) Pte Ltd
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/800070/bipo-global-payroll-connect
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-workday-success-plan-accelerate-essentials
+  label: Workday Success Plan Accelerate Essentials
+  partner_name: Workday Success Plan Accelerate Essentials
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/457147/workday-success-plan-accelerate-essentials
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-asurint
+  label: Asurint
+  partner_name: Asurint
+  category: Deployment Method
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/537713/asurint-background-screening-solutions
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-jdp
+  label: JDP
+  partner_name: JDP
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/606498/identity-first-background-screening-with-jdp
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-hireclix-llc
+  label: HireClix LLC
+  partner_name: HireClix LLC
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/864200/hireclixs-career-site-solution
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-joveo
+  label: Joveo
+  partner_name: Joveo
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/617683/joveo-ai-job-advertising
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-adobe-inc
+  label: Adobe Inc.
+  partner_name: Adobe Inc.
+  category: Buying Center
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414852/adobe-sign
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-zinc
+  label: Zinc
+  partner_name: Zinc
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/537709/zinc---global-background-checking
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-laurel
+  label: Laurel
+  partner: laurel
+  partner_name: Laurel
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/701593/laurel-ai-time-tracking
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-nayya
+  label: Nayya
+  partner: nayya
+  partner_name: Nayya
+  category: Partners
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/526683/nayya-choose
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-sentiment-analysis-with-the-ai-gateway
+  label: Sentiment Analysis with the AI Gateway
+  partner_name: Sentiment Analysis with the AI Gateway
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/438040/sentiment-analysis-with-the-ai-gateway
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-dispatch-integration
+  label: Dispatch Integration
+  partner_name: Dispatch Integration
+  category: Partners
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/653299/sentinel
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-employee-recognition
+  label: Employee Recognition
+  partner_name: Employee Recognition
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/414229/employee-recognition
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-symmetric-health-solutions-llc
+  label: Symmetric Health Solutions LLC
+  partner_name: Symmetric Health Solutions LLC
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/864246/symmetric-health-solutions
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-opensesame
+  label: OpenSesame
+  partner_name: OpenSesame
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/451605/opensesame-marketplace
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-draup
+  label: Draup
+  partner_name: Draup
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/727606/data-integration-accelerator-for-workday
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-microsoft-corporation
+  label: Microsoft Corporation
+  partner_name: Microsoft Corporation
+  category: Buying Center
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414328/workday-sso-using-microsoft-entra-id
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-opkey-inc
+  label: Opkey Inc.
+  partner_name: Opkey Inc.
+  category: Buying Center
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/453885/opkey-for-workday
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-noyo
+  label: Noyo
+  partner: noyo
+  partner_name: Noyo
+  category: Deployment Method
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/547968/benefits-copilot
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-syndio-solutions
+  label: Syndio Solutions
+  partner_name: Syndio Solutions
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/806121/syndio-pay-intelligence-for-workday
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-recolabs-inc
+  label: Recolabs Inc.
+  partner_name: Recolabs Inc.
+  category: Industry
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/869509/reco
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-microsoft-document-editing-for-workday-strategic-sourcing-contracts-module
+  label: Microsoft Document Editing for Workday Strategic Sourcing Contracts Module
+  partner_name: Microsoft Document Editing for Workday Strategic Sourcing Contracts Module
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/414062/microsoft-document-editing-for-workday-strategic-sourcing-contracts-module
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-benefits-for-self-service-agent
+  label: Benefits for Self-Service Agent
+  partner_name: Benefits for Self-Service Agent
+  category: Solution Type
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/856477/benefits-for-self-service-agent
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-group-elephant-limited
+  label: Group Elephant Limited
+  partner_name: Group Elephant Limited
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/842042/easypark
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-yardstik
+  label: Yardstik
+  partner_name: Yardstik
+  category: Partners
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/860043/yardstik
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-neeyamo-enterprise-solutions-pvt-ltd
+  label: Neeyamo Enterprise Solutions Pvt. Ltd.
+  partner_name: Neeyamo Enterprise Solutions Pvt. Ltd.
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414488/neeyamo-workday-global-payroll-connector
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-workday-training-credits-for-customers
+  label: Workday Training Credits (for Customers)
+  partner_name: Workday Training Credits (for Customers)
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/805712/workday-training-credits-for-customers
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-workday-success-plan-accelerate
+  label: Workday Success Plan Accelerate
+  partner_name: Workday Success Plan Accelerate
+  category: Buying Center
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/457148/workday-success-plan-accelerate
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-blackline
+  label: BlackLine
+  partner_name: BlackLine
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/632779/blackline-financial-close
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-frontline-agent
+  label: Frontline Agent
+  partner_name: Frontline Agent
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/852887/frontline-agent
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-upwardly-global
+  label: Upwardly Global
+  partner_name: Upwardly Global
+  category: Deployment Method
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/549280/upwardly-global-fetch
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-hrsoft
+  label: HRSoft
+  partner_name: HRSoft
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/649332/hrsoft-compensation-platform
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-prudential
+  label: Prudential
+  partner_name: Prudential
+  category: Industry
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/586502/pruexchange-with-workday-wellness
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-monument-consulting
+  label: Monument Consulting
+  partner_name: Monument Consulting
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/440953/contingent-workforce-solutions-advisory-and-msp
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-dormakaba
+  label: dormakaba
+  partner_name: dormakaba
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414126/dormakaba-b-comm-for-workday
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-iipay-ltd
+  label: iiPay Ltd
+  partner_name: iiPay Ltd
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414926/iipay-gpms
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-vidcruiter
+  label: VidCruiter
+  partner_name: VidCruiter
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/467361/vidcruiter-hosted-apply-and-interview-management-system-for-workday-recruiting
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-tridant
+  label: Tridant
+  partner_name: Tridant
+  category: Workday Adaptive Planning
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414851/apac-workforce-planning-app
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-transact-campus
+  label: Transact Campus
+  partner_name: Transact Campus
+  category: Deployment Method
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414743/transact-integrated-payments
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-accounts-payable-agent
+  label: Accounts Payable Agent
+  partner_name: Accounts Payable Agent
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/844745/accounts-payable-agent
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-charitable-donations
+  label: Charitable Donations
+  partner_name: Charitable Donations
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/414231/charitable-donations
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-workday-adaptive-planning-workforce-planning
+  label: 'Workday Adaptive Planning: Workforce Planning'
+  partner_name: 'Workday Adaptive Planning: Workforce Planning'
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/813856/workday-adaptive-planning-workforce-planning
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-vertical-screen
+  label: Vertical Screen
+  partner_name: Vertical Screen
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/773509/vertical-screen-integration-for-background-checks-and-forms-i-9
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-box
+  label: Box
+  partner: box
+  partner_name: Box
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/780903/box-sign-for-workday
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-pulsora
+  label: Pulsora
+  partner_name: Pulsora
+  category: Workday Adaptive Planning
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/453815/pulsora-sustainability-and-carbon-management
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-cdp-group
+  label: CDP Group
+  partner_name: CDP Group
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414022/gpc---certified-cdp-china-peci-extract
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-workday-tenant-management
+  label: Workday Tenant Management
+  partner_name: Workday Tenant Management
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/813441/workday-tenant-management
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-contingent-sourcing-agent
+  label: Contingent Sourcing Agent
+  partner_name: Contingent Sourcing Agent
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/532304/contingent-sourcing-agent
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-simpplr
+  label: Simpplr
+  partner_name: Simpplr
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/539080/simpplr-for-workday
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-mercans-solutions-ltd
+  label: Mercans Solutions Ltd.
+  partner_name: Mercans Solutions Ltd.
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/860040/mercans
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-hrtms-inc
+  label: HRTMS Inc.
+  partner_name: HRTMS Inc.
+  category: Deployment Method
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/543906/jdxpert-enterprise
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-rezme
+  label: Rezme
+  partner_name: Rezme
+  category: Partners
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/485572/the-restorative-record
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-aws-integration-starter-kit
+  label: AWS Integration Starter Kit
+  partner_name: AWS Integration Starter Kit
+  category: Buying Center
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/457304/aws-integration-starter-kit
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-eisner-advisory-group-llc
+  label: Eisner Advisory Group LLC
+  partner_name: Eisner Advisory Group LLC
+  category: Partners
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/824375/eisnerampers-adaptive-planning-accelerator-for-zoos-aquariums-museums-and-performing-arts-center
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-micro-focus-software-inc
+  label: Micro Focus Software Inc.
+  partner_name: Micro Focus Software Inc.
+  category: Buying Center
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414469/workday-driver-for-netiq-identity-manager
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-apriora
+  label: Apriora
+  partner_name: Apriora
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/617678/ai-recruiter-for-workday-recruiting
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-softdocs-sc
+  label: Softdocs SC
+  partner_name: Softdocs SC
+  category: Partners
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/813069/softdocs-intelligent-transcript-processing-for-workday
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-advantage-club-technologies-inc
+  label: Advantage Club Technologies Inc
+  partner_name: Advantage Club Technologies Inc
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/835721/advantageclubai
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-jobsync-llc
+  label: JobSync, LLC
+  partner_name: JobSync, LLC
+  category: Buying Center
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/864280/jobsync-apply
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-duo-security
+  label: Duo Security
+  partner: duo-security
+  partner_name: Duo Security
+  category: Buying Center
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/415167/duo-security
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-fiton-health
+  label: FitOn Health
+  partner_name: FitOn Health
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/830171/fiton-health
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-deem-inc
+  label: Deem, Inc.
+  partner_name: Deem, Inc.
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414119/deem
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-tma-systems
+  label: TMA Systems
+  partner_name: TMA Systems
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/641376/webtma-to-workday-integration
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-workday-success-plan-accelerate-plus
+  label: Workday Success Plan Accelerate Plus
+  partner_name: Workday Success Plan Accelerate Plus
+  category: Buying Center
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/457149/workday-success-plan-accelerate-plus
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-par-agent
+  label: PAR Agent
+  partner_name: PAR Agent
+  category: Solution Type
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/872476/par-agent
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-betterup-inc
+  label: BetterUp, Inc.
+  partner_name: BetterUp, Inc.
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/413872/betterup
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-reliance-matrix
+  label: Reliance Matrix
+  partner_name: Reliance Matrix
+  category: Workday Adaptive Planning
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/871502/absence-blueprint
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-opengov-inc
+  label: OpenGov, Inc.
+  partner_name: OpenGov, Inc.
+  category: Buying Center
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/829721/opengov-public-service-platform
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-job-architecture-agent
+  label: Job Architecture Agent
+  partner_name: Job Architecture Agent
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/852889/job-architecture-agent
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-nreach-online-services-pvt-ltd-xoxoday
+  label: Nreach Online Services Pvt Ltd (Xoxoday)
+  partner_name: Nreach Online Services Pvt Ltd (Xoxoday)
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/873338/empuls-by-xoxoday
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-datacom
+  label: Datacom
+  partner_name: Datacom
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414105/datapays-global-payroll-cloud-connector-for-workday
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-crisis-outreach
+  label: Crisis Outreach
+  partner_name: Crisis Outreach
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/464357/crisis-outreach
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-moseeker
+  label: MoSeeker
+  partner_name: MoSeeker
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/459172/moseeker-apply-sync
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-benefit-harbor-ai-solutions-lp
+  label: Benefit Harbor AI Solutions, LP
+  partner_name: Benefit Harbor AI Solutions, LP
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/480021/benefitbridge
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-careerbuilder
+  label: CareerBuilder
+  partner_name: CareerBuilder
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/413631/careerbuilder-talent-acquisition-suite-connector
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-mangoapps-inc
+  label: MangoApps, Inc.
+  partner_name: MangoApps, Inc.
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/822947/mangoapps-workday-widgets
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-zkteco-wfm
+  label: ZKTeco WFM
+  partner_name: ZKTeco WFM
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414769/integrated-timeclock-solution
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-vizient-inc
+  label: Vizient, Inc.
+  partner_name: Vizient, Inc.
+  category: Partners
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/442967/vizient-cloud-to-cloud-spend-data-acquisition
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-pageup-clinch
+  label: PageUp Clinch
+  partner_name: PageUp Clinch
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/703861/clinch-recruitment-marketing-crm
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-sd-worx
+  label: SD Worx
+  partner_name: SD Worx
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414847/sd-worx-global-payroll-connector
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-workiva
+  label: Workiva
+  partner_name: Workiva
+  category: Deployment Method
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414774/workiva-integration-for-connected-budgeting-reporting-and-grc-in-state-local-government
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-guild-education
+  label: Guild Education
+  partner_name: Guild Education
+  category: Deployment Method
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/864759/guild-tuition-assistance
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-nimbello
+  label: Nimbello
+  partner_name: Nimbello
+  category: Deployment Method
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/497640/nimbello-ap-automation-for-higher-education
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-can-am-technologies
+  label: Can/Am Technologies
+  partner_name: Can/Am Technologies
+  category: Deployment Method
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/756324/teller
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-case-agent
+  label: Case Agent
+  partner_name: Case Agent
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/856505/case-agent
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-goodtime
+  label: GoodTime
+  partner_name: GoodTime
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/456886/goodtime-interview-scheduling-for-workday
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-3together-inc
+  label: 3Together, Inc.
+  partner_name: 3Together, Inc.
+  category: Deployment Method
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/548112/swellspace
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-guidant-global
+  label: Guidant Global
+  partner_name: Guidant Global
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/440507/guidant-global-workforce-management-solutions
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-project-forecasting
+  label: Project Forecasting
+  partner_name: Project Forecasting
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/414057/project-forecasting
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-epayslip
+  label: ePayslip
+  partner_name: ePayslip
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414772/epayslip-gpayroll
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-onebeacon
+  label: OneBeacon
+  partner_name: OneBeacon
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/459171/onebeacon-managed-service-provider-msp
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-degreed
+  label: Degreed
+  partner_name: Degreed
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/537704/degreed-learning-and-skills
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-remofirst
+  label: RemoFirst
+  partner_name: RemoFirst
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/829978/remofirst-eor
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-orgchart-llc
+  label: OrgChart, LLC
+  partner_name: OrgChart, LLC
+  category: Partners
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/464345/orgchart
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-chime-workplace
+  label: Chime Workplace
+  partner_name: Chime Workplace
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/645206/chime-workplace
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-cyberark-software-ltd
+  label: CyberArk Software Ltd.
+  partner_name: CyberArk Software Ltd.
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414042/cyberark-identity-sso-and-lifecycle-management-for-active-directory
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-lincoln-financial
+  label: Lincoln Financial
+  partner_name: Lincoln Financial
+  category: Industry
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/586500/lincoln-financial-lincsmart
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-strategic-sourcing-agent
+  label: Strategic Sourcing Agent
+  partner_name: Strategic Sourcing Agent
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/852903/strategic-sourcing-agent
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-tuition-reimbursement
+  label: Tuition Reimbursement
+  partner_name: Tuition Reimbursement
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/414235/tuition-reimbursement
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-workday-bank-connectivity
+  label: Workday Bank Connectivity
+  partner_name: Workday Bank Connectivity
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/438647/workday-bank-connectivity
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-cisive
+  label: Cisive
+  partner_name: Cisive
+  category: Partners
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414919/background-screening-solutions-by-cisive
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-ping-identity-corporation
+  label: Ping Identity Corporation
+  partner_name: Ping Identity Corporation
+  category: Buying Center
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414267/ping-identity-integration-for-account-provisioning-identity-management
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-seekout
+  label: SeekOut
+  partner_name: SeekOut
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/415050/seekout
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-tilt
+  label: Tilt
+  partner_name: Tilt
+  category: Partners
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/449561/tilt-leave-management
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-securiti-inc
+  label: Securiti, Inc.
+  partner_name: Securiti, Inc.
+  category: Buying Center
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414148/securiti
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-hireright-llc
+  label: HireRight LLC
+  partner_name: HireRight LLC
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414738/hireright-certified-integration-for-background-screening-and-i-9
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-vector-solutions
+  label: Vector Solutions
+  partner_name: Vector Solutions
+  category: Category
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/837138/vector-solutions
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-revenue-contract-agent
+  label: Revenue Contract Agent
+  partner_name: Revenue Contract Agent
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/532307/revenue-contract-agent
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-quartz-insight
+  label: Quartz Insight
+  partner_name: Quartz Insight
+  category: Partners
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/549278/workday-adaptive-planning-esg-starter-kit-powered-by-quartz-insight
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-ramco-systems-limited
+  label: Ramco Systems Limited
+  partner_name: Ramco Systems Limited
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/414402/ramco-workday-global-payroll-connector
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-relish-data-assure-for-workday-strategic-sourcing
+  label: Relish Data Assure for Workday Strategic Sourcing
+  partner_name: Relish Data Assure for Workday Strategic Sourcing
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/423120/relish-data-assure-for-workday-strategic-sourcing
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-commuting-emissions-survey
+  label: Commuting Emissions Survey
+  partner_name: Commuting Emissions Survey
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  evidence: https://marketplace.workday.com/apps/413939/commuting-emissions-survey
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
