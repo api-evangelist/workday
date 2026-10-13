@@ -15,8 +15,8 @@
   evidence: https://zapier.com/apps/slack/integrations/workday/255725560/send-private-channel-messages-in-slack-when-employees-are-terminated-in-workday
   template: https://zapier.com/apps/slack/integrations/workday/255725560/send-private-channel-messages-in-slack-when-employees-are-terminated-in-workday
   source: template
-  status: pending-generation
-  arazzo: null
+  arazzo: workday-slack-termination-private-channel-message.yml
+  status: arazzo
 - slug: workday-send-egifter-rewards-gift-cards-for-new-workday-hires
   label: Send eGifter Rewards gift cards for new Workday hires
   partner_name: eGifter Rewards
@@ -40,8 +40,8 @@
   channel: ipaas-usage
   evidence: https://zapier.com/apps/workday/integrations/greenhouse
   source: edge
-  status: pending-generation
-  arazzo: null
+  arazzo: workday-greenhouse-candidate-sync.yml
+  status: arazzo
 - slug: workday-monday-com
   label: monday.com
   partner_name: monday.com
@@ -75,8 +75,8 @@
   channel: ipaas-usage
   evidence: https://zapier.com/apps/workday/integrations/google-calendar
   source: edge
-  status: pending-generation
-  arazzo: null
+  arazzo: workday-google-calendar-time-off-events.yml
+  status: arazzo
 - slug: workday-google-drive
   label: Google Drive
   partner: google-drive
@@ -87,8 +87,8 @@
   channel: ipaas-usage
   evidence: https://zapier.com/apps/workday/integrations/google-drive
   source: edge
-  status: pending-generation
-  arazzo: null
+  arazzo: workday-google-drive-new-worker-folder.yml
+  status: arazzo
 - slug: workday-google-workspace-admin
   label: Google Workspace Admin
   partner_name: Google Workspace Admin
@@ -228,8 +228,8 @@
   channel: ipaas-usage
   evidence: https://zapier.com/apps/workday/integrations/okta
   source: edge
-  status: pending-generation
-  arazzo: null
+  arazzo: workday-okta-new-worker-okta-user.yml
+  status: arazzo
 - slug: workday-actitime
   label: actiTIME
   partner_name: actiTIME

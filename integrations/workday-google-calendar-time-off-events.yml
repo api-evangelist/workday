@@ -1,0 +1,102 @@
+arazzo: 1.0.1
+info:
+  title: Workday Google Calendar time off events
+  summary: Put a Workday time-off entry on a Google Calendar
+  description: Reads a worker and their Workday time-off entries for a date range and creates an all-day Google Calendar event for the first entry.
+  version: 1.0.0
+sourceDescriptions:
+- name: workdayWorkers
+  url: https://raw.githubusercontent.com/api-evangelist/workday/refs/heads/main/openapi/workday-workers-api-openapi.yml
+  type: openapi
+- name: workdayTimeOff
+  url: https://raw.githubusercontent.com/api-evangelist/workday/refs/heads/main/openapi/workday-time-off-api-openapi.yml
+  type: openapi
+- name: googleCalendar
+  url: https://raw.githubusercontent.com/api-evangelist/google-calendar/refs/heads/main/openapi/google-calendar-calendars-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: workday-time-off-google-calendar
+  summary: Put a Workday time-off entry on a Google Calendar
+  description: Reads a worker and their Workday time-off entries for a date range and creates an all-day Google Calendar event for the first entry.
+  inputs:
+    type: object
+    required:
+    - workerId
+    properties:
+      workerId:
+        type: string
+        description: Workday ID of the worker
+      fromDate:
+        type: string
+        format: date
+      toDate:
+        type: string
+        format: date
+      calendarId:
+        type: string
+  steps:
+  - stepId: get-worker
+    description: Read the Workday worker record.
+    operationId: $sourceDescriptions.workdayWorkers.getWorkerById
+    parameters:
+    - name: ID
+      in: path
+      value: $inputs.workerId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      workerId: $response.body#/id
+      name: $response.body#/descriptor
+      email: $response.body#/primaryWorkEmail
+      businessTitle: $response.body#/businessTitle
+  - stepId: get-time-off
+    description: List the worker time-off entries in range.
+    operationId: $sourceDescriptions.workdayTimeOff.getTimeOffEntries
+    parameters:
+    - name: ID
+      in: path
+      value: $inputs.workerId
+    - name: fromDate
+      in: query
+      value: $inputs.fromDate
+    - name: toDate
+      in: query
+      value: $inputs.toDate
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      date: $response.body#/data/0/date
+      type: $response.body#/data/0/descriptor
+  - stepId: create-event
+    description: Create an all-day calendar event for the time off.
+    operationId: $sourceDescriptions.googleCalendar.createEvent
+    parameters:
+    - name: calendarId
+      in: path
+      value: $inputs.calendarId
+    requestBody:
+      contentType: application/json
+      payload:
+        summary: 'Out of office: $steps.get-worker.outputs.name'
+        description: $steps.get-time-off.outputs.type
+        start:
+          date: $steps.get-time-off.outputs.date
+        end:
+          date: $steps.get-time-off.outputs.date
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      eventId: $response.body#/id
+  outputs:
+    eventId: $steps.create-event.outputs.eventId
+x-integration:
+  partner: google-calendar
+  edge_evidence: https://zapier.com/apps/workday/integrations/google-calendar
+  edge_type: marketplace
+  method: generated
+  generated: '2026-10-13'
+  generator: claude-opus-5.5 market-workflows
+  guessed_steps:
+  - step: create-event
+    cause: catalog
+    why: Google Calendar all-day events need an exclusive end date (the next day); Arazzo cannot add a day, so end.date reuses the entry date and only the first entry is handled

@@ -1,0 +1,83 @@
+arazzo: 1.0.1
+info:
+  title: Workday Google Drive new worker folder
+  summary: Create a Google Drive folder for a Workday worker
+  description: Reads a worker from Workday and creates a named Google Drive folder for their onboarding documents, then shares it with the worker work email.
+  version: 1.0.0
+sourceDescriptions:
+- name: workdayWorkers
+  url: https://raw.githubusercontent.com/api-evangelist/workday/refs/heads/main/openapi/workday-workers-api-openapi.yml
+  type: openapi
+- name: googleDriveFiles
+  url: https://raw.githubusercontent.com/api-evangelist/google-drive/refs/heads/main/openapi/google-drive-files-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: workday-worker-drive-folder
+  summary: Create a Google Drive folder for a Workday worker
+  description: Reads a worker from Workday and creates a named Google Drive folder for their onboarding documents, then shares it with the worker work email.
+  inputs:
+    type: object
+    required:
+    - workerId
+    properties:
+      workerId:
+        type: string
+        description: Workday ID of the worker
+      parentFolderId:
+        type: string
+  steps:
+  - stepId: get-worker
+    description: Read the Workday worker record.
+    operationId: $sourceDescriptions.workdayWorkers.getWorkerById
+    parameters:
+    - name: ID
+      in: path
+      value: $inputs.workerId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      workerId: $response.body#/id
+      name: $response.body#/descriptor
+      email: $response.body#/primaryWorkEmail
+      businessTitle: $response.body#/businessTitle
+  - stepId: create-folder
+    description: Create the worker folder.
+    operationId: $sourceDescriptions.googleDriveFiles.createFile
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $steps.get-worker.outputs.name
+        mimeType: application/vnd.google-apps.folder
+        parents:
+        - $inputs.parentFolderId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      folderId: $response.body#/id
+  - stepId: share-folder
+    description: Share the folder with the worker.
+    operationId: $sourceDescriptions.googleDriveFiles.createPermission
+    parameters:
+    - name: fileId
+      in: path
+      value: $steps.create-folder.outputs.folderId
+    requestBody:
+      contentType: application/json
+      payload:
+        type: user
+        role: writer
+        emailAddress: $steps.get-worker.outputs.email
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      permissionId: $response.body#/id
+  outputs:
+    folderId: $steps.create-folder.outputs.folderId
+x-integration:
+  partner: google-drive
+  edge_evidence: https://zapier.com/apps/workday/integrations/google-drive
+  edge_type: marketplace
+  method: generated
+  generated: '2026-10-13'
+  generator: claude-opus-5.5 market-workflows
+  guessed_steps: []

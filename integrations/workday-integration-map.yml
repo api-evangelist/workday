@@ -1,0 +1,248 @@
+# DERIVED by derive-integration-map.py (roadmap#949): each integration workflow, step by step,
+# resolved to spec file -> tag -> business capability (Turbo EA, CC BY 4.0) and the operation's
+# phrasing intent. Read from our own files; an unmapped link says why.
+slug: workday
+workflows:
+- file: workday-google-calendar-time-off-events.yml
+  title: Workday Google Calendar time off events
+  partner: google-calendar
+  template: null
+  repos:
+  - workday
+  - google-calendar
+  steps:
+  - step: get-worker
+    repo: workday
+    spec_file: workday-workers-api-openapi.yml
+    operationId: getWorkerById
+    tag: Workers
+    capability_id: BC-300.70
+    capability: HR Operations Management
+    capability_l1: BC-300
+    intent: null
+    effect: null
+    unmapped: null
+  - step: get-time-off
+    repo: workday
+    spec_file: workday-time-off-api-openapi.yml
+    operationId: getTimeOffEntries
+    tag: Time Off
+    capability_id: BC-300.70
+    capability: HR Operations Management
+    capability_l1: BC-300
+    intent: null
+    effect: null
+    unmapped: null
+  - step: create-event
+    repo: google-calendar
+    spec_file: google-calendar-calendars-api-openapi.yml
+    operationId: createEvent
+    tag: Calendars
+    capability_id: null
+    capability: null
+    capability_l1: null
+    intent: null
+    effect: null
+    unmapped: no capability edge for this spec file
+  connects:
+    workday:
+      capabilities:
+      - BC-300.70
+      tags:
+      - Time Off
+      - Workers
+    google-calendar:
+      capabilities: []
+      tags:
+      - Calendars
+  intents: []
+- file: workday-google-drive-new-worker-folder.yml
+  title: Workday Google Drive new worker folder
+  partner: google-drive
+  template: null
+  repos:
+  - workday
+  - google-drive
+  steps:
+  - step: get-worker
+    repo: workday
+    spec_file: workday-workers-api-openapi.yml
+    operationId: getWorkerById
+    tag: Workers
+    capability_id: BC-300.70
+    capability: HR Operations Management
+    capability_l1: BC-300
+    intent: null
+    effect: null
+    unmapped: null
+  - step: create-folder
+    repo: google-drive
+    spec_file: google-drive-files-api-openapi.yml
+    operationId: createFile
+    tag: Files
+    capability_id: null
+    capability: null
+    capability_l1: null
+    intent: null
+    effect: null
+    unmapped: no capability edge for this spec file
+  - step: share-folder
+    repo: google-drive
+    spec_file: google-drive-files-api-openapi.yml
+    operationId: createPermission
+    tag: Files
+    capability_id: null
+    capability: null
+    capability_l1: null
+    intent: null
+    effect: null
+    unmapped: no capability edge for this spec file
+  connects:
+    workday:
+      capabilities:
+      - BC-300.70
+      tags:
+      - Workers
+    google-drive:
+      capabilities: []
+      tags:
+      - Files
+  intents: []
+- file: workday-greenhouse-candidate-sync.yml
+  title: Workday Greenhouse candidate sync
+  partner: greenhouse
+  template: null
+  repos:
+  - workday
+  - greenhouse
+  steps:
+  - step: get-candidate
+    repo: workday
+    spec_file: workday-candidates-api-openapi.yml
+    operationId: getCandidateById
+    tag: Candidates
+    capability_id: BC-300.10
+    capability: Talent Acquisition Management
+    capability_l1: BC-300
+    intent: null
+    effect: null
+    unmapped: null
+  - step: create-greenhouse-candidate
+    repo: greenhouse
+    spec_file: greenhouse-candidates-api-openapi.yml
+    operationId: postCandidates
+    tag: Candidates
+    capability_id: BC-300.10
+    capability: Talent Acquisition Management
+    capability_l1: BC-300
+    intent: null
+    effect: null
+    unmapped: null
+  connects:
+    workday:
+      capabilities:
+      - BC-300.10
+      tags:
+      - Candidates
+    greenhouse:
+      capabilities:
+      - BC-300.10
+      tags:
+      - Candidates
+  intents: []
+- file: workday-okta-new-worker-okta-user.yml
+  title: Workday Okta new worker user provisioning
+  partner: okta
+  template: null
+  repos:
+  - workday
+  - okta
+  steps:
+  - step: get-worker
+    repo: workday
+    spec_file: workday-workers-api-openapi.yml
+    operationId: getWorkerById
+    tag: Workers
+    capability_id: BC-300.70
+    capability: HR Operations Management
+    capability_l1: BC-300
+    intent: null
+    effect: null
+    unmapped: null
+  - step: create-okta-user
+    repo: okta
+    spec_file: okta-user-api-openapi.yml
+    operationId: createUser
+    tag: User
+    capability_id: BC-620.20
+    capability: Identity & Access Management
+    capability_l1: BC-620
+    intent: null
+    effect: null
+    unmapped: null
+  connects:
+    workday:
+      capabilities:
+      - BC-300.70
+      tags:
+      - Workers
+    okta:
+      capabilities:
+      - BC-620.20
+      tags:
+      - User
+  intents: []
+- file: workday-slack-termination-private-channel-message.yml
+  title: Workday Slack termination private channel message
+  partner: slack
+  template: https://zapier.com/apps/slack/integrations/workday/255725560/send-private-channel-messages-in-slack-when-employees-are-terminated-in-workday
+  repos:
+  - workday
+  - slack
+  steps:
+  - step: terminate-worker
+    repo: workday
+    spec_file: workday-staffing-api-openapi.yml
+    operationId: terminateWorker
+    tag: Staffing
+    capability_id: BC-300.70
+    capability: HR Operations Management
+    capability_l1: BC-300
+    intent: null
+    effect: null
+    unmapped: null
+  - step: get-worker
+    repo: workday
+    spec_file: workday-workers-api-openapi.yml
+    operationId: getWorkerById
+    tag: Workers
+    capability_id: BC-300.70
+    capability: HR Operations Management
+    capability_l1: BC-300
+    intent: null
+    effect: null
+    unmapped: null
+  - step: post-slack-message
+    repo: slack
+    spec_file: slack-chat-api-openapi.yml
+    operationId: postChatPostmessage
+    tag: Chat
+    capability_id: null
+    capability: null
+    capability_l1: null
+    intent: Send a message to a channel
+    effect: write
+    unmapped: no capability edge for this spec file
+  connects:
+    workday:
+      capabilities:
+      - BC-300.70
+      tags:
+      - Staffing
+      - Workers
+    slack:
+      capabilities: []
+      tags:
+      - Chat
+  intents:
+  - Send a message to a channel

@@ -1,0 +1,105 @@
+arazzo: 1.0.1
+info:
+  title: Workday Slack termination private channel message
+  summary: Send a private Slack channel message when a Workday worker is terminated
+  description: Initiates a termination for a Workday worker, reads the worker record, and posts a notice to a private Slack channel. Recreated from the Zapier template linked in x-integration; Workday publishes
+    no termination event, so the workflow starts from the termination call itself.
+  version: 1.0.0
+sourceDescriptions:
+- name: workdayStaffing
+  url: https://raw.githubusercontent.com/api-evangelist/workday/refs/heads/main/openapi/workday-staffing-api-openapi.yml
+  type: openapi
+- name: workdayWorkers
+  url: https://raw.githubusercontent.com/api-evangelist/workday/refs/heads/main/openapi/workday-workers-api-openapi.yml
+  type: openapi
+- name: slackChat
+  url: https://raw.githubusercontent.com/api-evangelist/slack/refs/heads/main/openapi/slack-chat-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: workday-termination-slack-notice
+  summary: Send a private Slack channel message when a Workday worker is terminated
+  description: Initiates a termination for a Workday worker, reads the worker record, and posts a notice to a private Slack channel. Recreated from the Zapier template linked in x-integration; Workday publishes
+    no termination event, so the workflow starts from the termination call itself.
+  inputs:
+    type: object
+    required:
+    - workerId
+    properties:
+      workerId:
+        type: string
+        description: Workday ID of the worker
+      terminationDate:
+        type: string
+        format: date
+      lastDayOfWork:
+        type: string
+        format: date
+      channel:
+        type: string
+        description: Private Slack channel ID
+      slackToken:
+        type: string
+  steps:
+  - stepId: terminate-worker
+    description: Initiate the Workday termination.
+    operationId: $sourceDescriptions.workdayStaffing.terminateWorker
+    parameters:
+    - name: ID
+      in: path
+      value: $inputs.workerId
+    requestBody:
+      contentType: application/json
+      payload:
+        terminationDate: $inputs.terminationDate
+        lastDayOfWork: $inputs.lastDayOfWork
+        notifyEmployee: false
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      terminationId: $response.body#/id
+  - stepId: get-worker
+    description: Read the Workday worker record.
+    operationId: $sourceDescriptions.workdayWorkers.getWorkerById
+    parameters:
+    - name: ID
+      in: path
+      value: $inputs.workerId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      workerId: $response.body#/id
+      name: $response.body#/descriptor
+      email: $response.body#/primaryWorkEmail
+      businessTitle: $response.body#/businessTitle
+  - stepId: post-slack-message
+    description: Post the termination notice to the private channel.
+    operationId: $sourceDescriptions.slackChat.postChatPostmessage
+    parameters:
+    - name: token
+      in: header
+      value: $inputs.slackToken
+    requestBody:
+      contentType: application/x-www-form-urlencoded
+      payload:
+        channel: $inputs.channel
+        text: Workday termination recorded for $steps.get-worker.outputs.name, effective $inputs.terminationDate
+    successCriteria:
+    - condition: $statusCode == 200
+    - condition: $response.body#/ok == true
+    outputs:
+      ts: $response.body#/ts
+  outputs:
+    terminationId: $steps.terminate-worker.outputs.terminationId
+    messageTs: $steps.post-slack-message.outputs.ts
+x-integration:
+  partner: slack
+  template: https://zapier.com/apps/slack/integrations/workday/255725560/send-private-channel-messages-in-slack-when-employees-are-terminated-in-workday
+  edge_evidence: https://zapier.com/apps/slack/integrations/workday/255725560/send-private-channel-messages-in-slack-when-employees-are-terminated-in-workday
+  edge_type: marketplace
+  method: generated
+  generated: '2026-10-13'
+  generator: claude-opus-5.5 market-workflows
+  guessed_steps:
+  - step: terminate-worker
+    cause: provider-contract
+    why: the template triggers on a termination event; the Workday contract has no termination event or listing, so the workflow starts by calling terminateWorker

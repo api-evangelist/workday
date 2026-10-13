@@ -1,0 +1,70 @@
+arazzo: 1.0.1
+info:
+  title: Workday Greenhouse candidate sync
+  summary: Copy a Workday recruiting candidate into Greenhouse
+  description: Reads a candidate from Workday Recruiting and creates the matching candidate in Greenhouse via the Harvest/partner API.
+  version: 1.0.0
+sourceDescriptions:
+- name: workdayCandidates
+  url: https://raw.githubusercontent.com/api-evangelist/workday/refs/heads/main/openapi/workday-candidates-api-openapi.yml
+  type: openapi
+- name: greenhouseCandidates
+  url: https://raw.githubusercontent.com/api-evangelist/greenhouse/refs/heads/main/openapi/greenhouse-candidates-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: workday-candidate-greenhouse
+  summary: Copy a Workday recruiting candidate into Greenhouse
+  description: Reads a candidate from Workday Recruiting and creates the matching candidate in Greenhouse via the Harvest/partner API.
+  inputs:
+    type: object
+    required:
+    - candidateId
+    properties:
+      candidateId:
+        type: string
+        description: Workday candidate ID
+  steps:
+  - stepId: get-candidate
+    description: Read the Workday candidate.
+    operationId: $sourceDescriptions.workdayCandidates.getCandidateById
+    parameters:
+    - name: ID
+      in: path
+      value: $inputs.candidateId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      name: $response.body#/name
+      email: $response.body#/email
+      phone: $response.body#/phone
+  - stepId: create-greenhouse-candidate
+    description: Create the Greenhouse candidate.
+    operationId: $sourceDescriptions.greenhouseCandidates.postCandidates
+    requestBody:
+      contentType: application/json
+      payload:
+        first_name: $steps.get-candidate.outputs.name
+        email_addresses:
+        - value: $steps.get-candidate.outputs.email
+          type: personal
+        phone_numbers:
+        - value: $steps.get-candidate.outputs.phone
+          type: mobile
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      greenhouseCandidateId: $response.body#/id
+  outputs:
+    greenhouseCandidateId: $steps.create-greenhouse-candidate.outputs.greenhouseCandidateId
+x-integration:
+  partner: greenhouse
+  edge_evidence: https://zapier.com/apps/workday/integrations/greenhouse
+  edge_type: marketplace
+  method: generated
+  generated: '2026-10-13'
+  generator: claude-opus-5.5 market-workflows
+  guessed_steps:
+  - step: create-greenhouse-candidate
+    cause: partner-contract
+    why: postCandidates declares no request body or response schema, so the payload fields (first_name, email_addresses, phone_numbers) and the /id output path are not settled by the spec; the full Workday
+      name is passed as first_name
