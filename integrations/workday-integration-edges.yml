@@ -4,6 +4,7 @@ source:
 - https://zapier.com/apps/workday/integrations
 - https://composio.dev/toolkits/workday
 checked:
+- docusign/integrations/docusign-integration-edges.yml
 - https://composio.dev/toolkits/workday
 - https://hightouch.com/docs/destinations/workday
 - https://marketplace.workday.com/
@@ -15583,6 +15584,23 @@ edges:
       - upsert
   detected_by: sweep-cdp.py
   first_seen: '2026-10-14'
+- partner_name: Docusign (partner-store)
+  partner: docusign
+  partner_match: mirror
+  mirror_match: domain+verified
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: partner-store
+  evidence: https://marketplace.workday.com/en-US/apps/414120/Docusign-for-workday/overview
+  mirror_of: docusign/integrations/docusign-integration-edges.yml
+  apps:
+  - eSignature for Workday
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: Integrations
 templates:
 - title: Approve new tasks in Workday when new time off requests are made in BambooHR
   url: https://zapier.com/apps/bamboohr/integrations/workday/255608029/approve-new-tasks-in-workday-when-new-time-off-requests-are-made-in-bamboohr

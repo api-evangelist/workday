@@ -5795,3 +5795,16 @@
   relationship: connector-coverage
   status: not-a-workflow
   arazzo: null
+- slug: workday-docusign-partner-store
+  label: Docusign (partner-store)
+  partner: docusign
+  partner_name: Docusign (partner-store)
+  category: Integrations
+  type: marketplace
+  marketplace: partner-store
+  channel: partner-built
+  evidence: https://marketplace.workday.com/en-US/apps/414120/Docusign-for-workday/overview
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
