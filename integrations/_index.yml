@@ -5783,3 +5783,15 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: workday-hightouch
+  label: Hightouch
+  partner: hightouch
+  partner_name: Hightouch
+  type: coverage
+  marketplace: coverage
+  channel: partner-built
+  evidence: https://hightouch.com/docs/destinations/workday
+  source: edge
+  relationship: connector-coverage
+  status: not-a-workflow
+  arazzo: null

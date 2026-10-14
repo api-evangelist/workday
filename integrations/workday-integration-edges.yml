@@ -5,6 +5,7 @@ source:
 - https://composio.dev/toolkits/workday
 checked:
 - https://composio.dev/toolkits/workday
+- https://hightouch.com/docs/destinations/workday
 - https://marketplace.workday.com/
 - https://monid.ai/tools/workday
 - https://n8n.io/integrations/workday/
@@ -15553,6 +15554,35 @@ edges:
   detected: '2026-10-12'
   badges:
   - Workday Packaged Solution
+- partner_name: Hightouch
+  partner: hightouch
+  partner_match: aggregator
+  marketplace: coverage
+  channel: partner-built
+  direction: partner-built
+  type: coverage
+  relationship: connector-coverage
+  evidence: https://hightouch.com/docs/destinations/workday
+  coverage_role:
+  - destination
+  cdp_signals:
+    destination:
+      catalog_entries:
+      - workday
+      - workday-adaptive-planning
+      status: released
+      sync_types:
+      - Modeled sheets
+      - Organizations
+      - Positions
+      - Workers
+      sync_modes:
+      - insert
+      - mirror
+      - update
+      - upsert
+  detected_by: sweep-cdp.py
+  first_seen: '2026-10-14'
 templates:
 - title: Approve new tasks in Workday when new time off requests are made in BambooHR
   url: https://zapier.com/apps/bamboohr/integrations/workday/255608029/approve-new-tasks-in-workday-when-new-time-off-requests-are-made-in-bamboohr
