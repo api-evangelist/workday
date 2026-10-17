@@ -75,6 +75,19 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    ResourceReference:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        descriptor:
+          type: string
+          example: example_value
+        href:
+          type: string
+          format: uri
+          example: https://www.example.com
     PaySlip:
       type: object
       properties:
@@ -132,41 +145,27 @@ components:
               field:
                 type: string
           example: []
-    ResourceReference:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        descriptor:
-          type: string
-          example: example_value
-        href:
-          type: string
-          format: uri
-          example: https://www.example.com
   responses:
-    Unauthorized:
-      description: Authentication credentials were missing or invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     NotFound:
       description: The requested resource was not found.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   parameters:
-    offset:
-      name: offset
-      in: query
-      required: false
-      description: The zero-based index of the first object in a response collection.
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the resource.
       schema:
-        type: integer
-        default: 0
+        type: string
     limit:
       name: limit
       in: query
@@ -176,13 +175,14 @@ components:
         type: integer
         default: 20
         maximum: 100
-    ID:
-      name: ID
-      in: path
-      required: true
-      description: The Workday ID of the resource.
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: The zero-based index of the first object in a response collection.
       schema:
-        type: string
+        type: integer
+        default: 0
   securitySchemes:
     OAuth2:
       type: oauth2

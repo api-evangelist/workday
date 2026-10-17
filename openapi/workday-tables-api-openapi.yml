@@ -119,45 +119,37 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  responses:
-    Unauthorized:
-      description: Authentication credentials were missing or invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-  parameters:
-    offset:
-      name: offset
-      in: query
-      required: false
-      description: The zero-based index of the first object in a response collection.
-      schema:
-        type: integer
-        default: 0
-    limit:
-      name: limit
-      in: query
-      required: false
-      description: The maximum number of objects in a single response.
-      schema:
-        type: integer
-        default: 20
-        maximum: 100
-    ID:
-      name: ID
-      in: path
-      required: true
-      description: The Workday ID of the resource.
-      schema:
-        type: string
   schemas:
+    DatasetField:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The field name.
+          example: Example Title
+        displayName:
+          type: string
+          description: The display name of the field.
+          example: example_value
+        ordinal:
+          type: integer
+          description: The ordinal position of the field.
+          example: 10
+        type:
+          type: object
+          properties:
+            id:
+              type: string
+            descriptor:
+              type: string
+          description: The data type of the field.
+          example: example_value
+        required:
+          type: boolean
+          example: true
+        externalId:
+          type: string
+          example: '500123'
     Table:
       type: object
       properties:
@@ -205,36 +197,44 @@ components:
               field:
                 type: string
           example: []
-    DatasetField:
-      type: object
-      properties:
-        name:
-          type: string
-          description: The field name.
-          example: Example Title
-        displayName:
-          type: string
-          description: The display name of the field.
-          example: example_value
-        ordinal:
-          type: integer
-          description: The ordinal position of the field.
-          example: 10
-        type:
-          type: object
-          properties:
-            id:
-              type: string
-            descriptor:
-              type: string
-          description: The data type of the field.
-          example: example_value
-        required:
-          type: boolean
-          example: true
-        externalId:
-          type: string
-          example: '500123'
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    ID:
+      name: ID
+      in: path
+      required: true
+      description: The Workday ID of the resource.
+      schema:
+        type: string
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: The maximum number of objects in a single response.
+      schema:
+        type: integer
+        default: 20
+        maximum: 100
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: The zero-based index of the first object in a response collection.
+      schema:
+        type: integer
+        default: 0
   securitySchemes:
     OAuth2:
       type: oauth2
