@@ -4,6 +4,7 @@ generated_by: planning/capability-mapping/scripts/classify_capabilities.py
 model: claude-opus-5
 frame:
 - Banking & Capital Markets
+- Education
 - Software & Technology
 min_confidence: 0.7
 capability_model:
@@ -12,7 +13,7 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 37
+edge_count: 39
 edges:
 - tag: Compensation Plans
   spec_file: workday-compensation-plans-api-openapi.yml
@@ -33,15 +34,35 @@ edges:
   evidence: '"Recruiting API for managing job postings, candidates, applications, and hiring workflows";
     GET /jobApplications'
   reason: Job application retrieval within recruiting is Talent Acquisition Management.
+- tag: Benefit Elections
+  spec_file: workday-benefit-elections-api-openapi.yml
+  capability_id: BC-300.30
+  capability_id_l1: BC-300
+  capability_name: Compensation & Benefits Management
+  confidence: 0.93
+  evidence: GET /workers/{ID}/benefitElections and POST /workers/{ID}/changeBenefits — 'Benefits API for
+    managing employee benefits, enrollments, and coverage'
+  reason: Employee benefit election and change operations are plainly benefits administration under Compensation
+    & Benefits Management.
+- tag: Candidates
+  spec_file: workday-candidates-api-openapi.yml
+  capability_id: BC-300.10
+  capability_id_l1: BC-300
+  capability_name: Talent Acquisition Management
+  confidence: 0.93
+  evidence: GET /candidates — 'Get Candidates'; 'Recruiting API for managing job postings, candidates,
+    applications, and hiring workflows'
+  reason: Candidate records in a recruiting API directly realise talent acquisition (sourcing, recruiting,
+    hiring).
 - tag: Job Postings
   spec_file: workday-job-postings-api-openapi.yml
   capability_id: BC-300.10
   capability_id_l1: BC-300
   capability_name: Talent Acquisition Management
-  confidence: 0.92
-  evidence: GET /jobPostings "Get Job Postings"; "Recruiting API for managing job postings, candidates,
-    applications, and hiring workflows"
-  reason: Job posting management is a core recruiting/sourcing activity under Talent Acquisition.
+  confidence: 0.93
+  evidence: GET /jobPostings  getJobPostings  Get Job Postings; "Recruiting API for managing job postings,
+    candidates, applications, and hiring workflows"
+  reason: Job postings are the sourcing/advertising artefact of recruiting, i.e. Talent Acquisition.
 - tag: Accounting
   spec_file: workday-accounting-api-openapi.yml
   capability_id: BC-200.10
@@ -51,15 +72,6 @@ edges:
   evidence: GET /accountingJournals Get Accounting Journals; schema AccountingJournal; 'Financial Management
     API for accounting'
   reason: Accounting journal retrieval is core General Ledger Management.
-- tag: Benefit Elections
-  spec_file: workday-benefit-elections-api-openapi.yml
-  capability_id: BC-300.30
-  capability_id_l1: BC-300
-  capability_name: Compensation & Benefits Management
-  confidence: 0.9
-  evidence: GET /workers/{ID}/benefitElections Get Benefit Elections; POST /workers/{ID}/changeBenefits
-    Change Benefits; schema BenefitChangeRequest
-  reason: Employee benefit enrolment and change operations are Compensation & Benefits Management.
 - tag: Benefit Plans
   spec_file: workday-benefit-plans-api-openapi.yml
   capability_id: BC-300.30
@@ -70,15 +82,6 @@ edges:
     BenefitPlan
   reason: Benefit plan catalogue and worker eligibility is benefits administration under Compensation
     & Benefits Management.
-- tag: Candidates
-  spec_file: workday-candidates-api-openapi.yml
-  capability_id: BC-300.10
-  capability_id_l1: BC-300
-  capability_name: Talent Acquisition Management
-  confidence: 0.9
-  evidence: GET /candidates Get Candidates; 'Recruiting API for managing job postings, candidates, applications,
-    and hiring workflows'
-  reason: Recruiting candidate records map directly to Talent Acquisition Management.
 - tag: Succession Planning
   spec_file: workday-succession-planning-api-openapi.yml
   capability_id: BC-300.20
@@ -164,6 +167,23 @@ edges:
   evidence: GET /workers/{ID}/payrollInputs "Get Payroll Inputs"; "Payroll API for managing pay groups,
     pay group details, tax rates, payroll inputs"
   reason: Payroll input data per worker is payroll administration under HR Operations Management.
+- tag: Payslips
+  spec_file: workday-payslips-api-openapi.yml
+  capability_id: BC-300.70
+  capability_id_l1: BC-300
+  capability_name: HR Operations Management
+  confidence: 0.85
+  evidence: GET /workers/{ID}/paySlips  Get Pay Slips
+  reason: Payslip retrieval is payroll administration, squarely HR Operations Management.
+- tag: Revenue
+  spec_file: workday-revenue-api-openapi.yml
+  capability_id: BC-200.30
+  capability_id_l1: BC-200
+  capability_name: Accounts Receivable Management
+  confidence: 0.85
+  evidence: GET /customerInvoices  getCustomerInvoices  Get Customer Invoices; schema CustomerInvoice
+  reason: Operations retrieve customer invoices, which is accounts receivable / customer invoicing within
+    Financial Management.
 - tag: Scorecards
   spec_file: workday-scorecards-api-openapi.yml
   capability_id: BC-300.30
@@ -215,6 +235,15 @@ edges:
   confidence: 0.85
   evidence: GET /workers/{ID}/history  Get Worker History; schemas Worker, WorkerSummary, BusinessTitleChange
   reason: Core worker/employee record data and job history — employee records management under HCM.
+- tag: Dependents
+  spec_file: workday-dependents-api-openapi.yml
+  capability_id: BC-300.30
+  capability_id_l1: BC-300
+  capability_name: Compensation & Benefits Management
+  confidence: 0.82
+  evidence: GET /workers/{ID}/dependents — 'Get Dependents'; 'Benefits API for managing employee benefits,
+    enrollments, and coverage'
+  reason: Dependent records exist here for benefits coverage enrolment, placing them under benefits administration.
 - tag: Mentorships
   spec_file: workday-mentorships-api-openapi.yml
   capability_id: BC-300.20
@@ -224,22 +253,6 @@ edges:
   evidence: '"Talent Management API for managing mentorships, talent profiles, career development, and
     succession planning"; GET /workers/{ID}/mentorships'
   reason: Mentorship records serve career development within talent management, matching Talent Management.
-- tag: Revenue
-  spec_file: workday-revenue-api-openapi.yml
-  capability_id: BC-200.30
-  capability_id_l1: BC-200
-  capability_name: Accounts Receivable Management
-  confidence: 0.82
-  evidence: GET /customerInvoices  getCustomerInvoices  Get Customer Invoices; schema CustomerInvoice
-  reason: Customer invoice retrieval is accounts receivable within financial management.
-- tag: Dependents
-  spec_file: workday-dependents-api-openapi.yml
-  capability_id: BC-300.30
-  capability_id_l1: BC-300
-  capability_name: Compensation & Benefits Management
-  confidence: 0.8
-  evidence: '"Benefits API for managing employee benefits, enrollments, and coverage"; GET /workers/{ID}/dependents'
-  reason: Dependents are benefit-coverage dependents of a worker, part of benefits administration.
 - tag: Leave of Absence
   spec_file: workday-leave-of-absence-api-openapi.yml
   capability_id: BC-300
@@ -260,6 +273,15 @@ edges:
     components"; GET /payGroups'
   reason: Pay group configuration is payroll administration, covered by HR Operations Management (payroll
     administration).
+- tag: People
+  spec_file: workday-people-api-openapi.yml
+  capability_id: BC-300.70
+  capability_id_l1: BC-300
+  capability_name: HR Operations Management
+  confidence: 0.8
+  evidence: Person API for managing worker person data including personal information, contact details,
+    and organizational relationships
+  reason: Employee/worker person records — HR employee records management.
 - tag: Procurement
   spec_file: workday-procurement-api-openapi.yml
   capability_id: BC-500.30
@@ -289,16 +311,6 @@ edges:
     GET /people/{ID}/homeContactInformation'
   reason: Worker personal/contact records maintenance is employee record keeping under HR Operations;
     not a customer-data capability since the subject is a worker.
-- tag: People
-  spec_file: workday-people-api-openapi.yml
-  capability_id: BC-300.70
-  capability_id_l1: BC-300
-  capability_name: HR Operations Management
-  confidence: 0.78
-  evidence: '"Person API for managing worker person data including personal information, contact details,
-    and organizational relationships"; GET /people/{ID}/personalInformation'
-  reason: Worker/person records and personal information maintenance is employee-record keeping in HR
-    Operations Management, not customer CRM data.
 - tag: Absence Types
   spec_file: workday-absence-types-api-openapi.yml
   capability_id: BC-300.70
@@ -329,6 +341,15 @@ edges:
   evidence: POST /workers/{ID}/jobChanges  createJobChange; POST /workers/{ID}/terminate  terminateWorker
   reason: Worker job change and termination transactions are employee lifecycle/HR operations processing
     within HCM.
+- tag: Organizations
+  spec_file: workday-organizations-api-openapi.yml
+  capability_id: BC-300.70
+  capability_id_l1: BC-300
+  capability_name: HR Operations Management
+  confidence: 0.72
+  evidence: GET /supervisoryOrganizations  Get Supervisory Organizations; schema SupervisoryOrganization
+  reason: Workday HCM supervisory organization structures — core HR master data/org records, part of Human
+    Capital Management operations.
 - tag: Expenses
   spec_file: workday-expenses-api-openapi.yml
   capability_id: BC-200
@@ -339,16 +360,6 @@ edges:
     expenses, and financial reporting"
   reason: Employee expense report data belongs to financial management/accounting; evidence is too thin
     to pick a specific sub-capability such as accounts payable.
-- tag: Organizations
-  spec_file: workday-organizations-api-openapi.yml
-  capability_id: BC-300
-  capability_id_l1: BC-300
-  capability_name: Human Capital Management
-  confidence: 0.7
-  evidence: GET /supervisoryOrganizations "Get Supervisory Organizations"; "core HR operations including
-    workers, organizations, and job data"
-  reason: Supervisory organization hierarchy is HR organizational structure data; too generic to pin an
-    L2.
 - tag: Positions
   spec_file: workday-positions-api-openapi.yml
   capability_id: BC-300.50
@@ -360,3 +371,13 @@ edges:
   reason: Positions are staffing/headcount structures within HCM; closest fit is workforce planning (position
     management), though HR Operations is an alternative reading — hence moderate confidence at L2 with
     firm L1.
+- tag: Tables
+  spec_file: workday-tables-api-openapi.yml
+  capability_id: BC-610.50
+  capability_id_l1: BC-610
+  capability_name: Analytics & BI Management
+  confidence: 0.7
+  evidence: Prism Analytics REST API for working with Workday Prism Analytics tables, data change tasks,
+    and datasets
+  reason: Analytics dataset/table management supports BI and analytics delivery; generic CRUD on tables
+    but clearly analytics-platform scoped.
