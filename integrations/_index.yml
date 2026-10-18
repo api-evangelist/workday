@@ -5926,7 +5926,7 @@
     - connectors/applications/workday-strategic-sourcing
     vendor_link: https://www.workday.com/en-us/products/adaptive-planning/overview.html
     builder: Fivetran
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: workday-meltano
   label: Meltano
@@ -5955,7 +5955,7 @@
     quality:
     - silver
     builder: 'community (Meltano Hub variant maintainers: singer-io)'
-  status: pending-partner-spec
+  status: not-a-workflow
   arazzo: null
 - slug: workday-google-workspace-own
   label: Google Workspace (own)
