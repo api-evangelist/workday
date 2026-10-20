@@ -358,6 +358,168 @@
   source: edge
   status: pending-partner-spec
   arazzo: null
+- slug: workday-docusign-partner-store
+  label: Docusign (partner-store)
+  partner: docusign
+  partner_name: Docusign (partner-store)
+  category: Integrations
+  type: marketplace
+  marketplace: partner-store
+  channel: partner-built
+  evidence: https://marketplace.workday.com/en-US/apps/414120/Docusign-for-workday/overview
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-google-workspace-own
+  label: Google Workspace (own)
+  partner: google-workspace
+  partner_name: Google Workspace (own)
+  category: Google Workspace app
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://workspace.google.com/marketplace/app/workday_for_google_sheets/154487802303
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-microsoft-teams-own
+  label: Microsoft Teams (own)
+  partner: microsoft-teams
+  partner_name: Microsoft Teams (own)
+  category: Microsoft Teams app
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://appsource.microsoft.com/en-us/product/office/WA200009753
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-slack-own
+  label: Slack (own)
+  partner: slack
+  partner_name: Slack (own)
+  category: Slack app
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://slack.com/marketplace/ABH43V9RN-workday
+  source: edge
+  relationship: platform-app
+  arazzo: workday-slack-termination-private-channel-message.yml
+  status: arazzo
+- slug: workday-hightouch
+  label: Hightouch
+  partner: hightouch
+  partner_name: Hightouch
+  type: coverage
+  marketplace: coverage
+  channel: partner-built
+  evidence: https://hightouch.com/docs/destinations/workday
+  source: edge
+  relationship: connector-coverage
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-fivetran
+  label: Fivetran
+  partner: fivetran
+  partner_name: Fivetran
+  type: marketplace
+  marketplace: fivetran-connectors
+  channel: elt-connector
+  evidence: https://fivetran.com/docs/connectors/applications/workday-adaptive-planning
+  source: edge
+  relationship: ipaas-bridge
+  contract_reference:
+    register: Fivetran connectors (fivetran.com/docs/connectors, docs-sitemap.xml + Partner-Built program)
+    spec_file: null
+    role: elt-connector:fivetran
+    registered_name: Workday Adaptive Planning
+    matched_domain: workday.com
+    matched_by: domain+name-among-holders
+    detected_by: sweep-data-integration.py
+    detected: '2026-10-18'
+    signal_note: one edge per (provider, platform); connectors, streams, packages and usage are context, never read
+    connector_paths:
+    - connectors/applications/workday-adaptive-planning
+    - connectors/applications/workday-financial-management
+    - connectors/applications/workday-hcm
+    - connectors/applications/workday-raas
+    - connectors/applications/workday-strategic-sourcing
+    vendor_link: https://www.workday.com/en-us/products/adaptive-planning/overview.html
+    builder: Fivetran
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-meltano
+  label: Meltano
+  partner: meltano
+  partner_name: Meltano
+  type: marketplace
+  marketplace: meltano-hub
+  channel: elt-connector
+  evidence: https://hub.meltano.com/extractors/tap-workday-raas--singer-io
+  source: edge
+  relationship: ipaas-bridge
+  contract_reference:
+    register: Meltano Hub (github.com/meltano/hub _data/meltano extractors + loaders)
+    spec_file: null
+    role: elt-connector:meltano-hub
+    registered_name: Workday
+    matched_domain: workday.com
+    matched_by: domain+name-among-holders
+    detected_by: sweep-data-integration.py
+    detected: '2026-10-18'
+    signal_note: one edge per (provider, platform); connectors, streams, packages and usage are context, never read
+    plugins:
+    - tap-workday-raas--singer-io
+    maintenance_status:
+    - active
+    quality:
+    - silver
+    builder: 'community (Meltano Hub variant maintainers: singer-io)'
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-fedramp
+  label: FedRAMP
+  partner_name: FedRAMP
+  category: FedRAMP authorization
+  type: contract
+  channel: regulator-register
+  evidence: https://marketplace.fedramp.gov/products/FR2103344623
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: FedRAMP Marketplace data (github.com/18F/fedramp-data data/data.json @4b73d9247f)
+    standard: FedRAMP
+    spec_file: null
+    role: fedramp-authorized
+    registered_name: Workday Inc.
+    register_id: FR2103344623
+    matched_domain: workday.com
+    matched_by: domain+name-among-holders
+    domain_source: website
+    designations:
+    - Compliant
+    packages:
+    - Workday Government Cloud (WGC)
+    service_models:
+    - SaaS
+    paths:
+    - Agency
+    signal_note: certified_products = one entry per AUTHORIZED impact level, never per package; packages, service
+      models, paths and leveraging agencies are context, never counted. The register lists current designations
+      only (revoked / expired are removed), so lapsed is always false
+    detected_by: sweep-gov-cloud.py
+    detected: '2026-10-15'
+    certified_products:
+    - product: FedRAMP Moderate
+      impact_level: Moderate
+      lapsed: false
+      latest_authorization: '2022-04-04'
+  status: not-a-workflow
+  arazzo: null
 - slug: workday-kainos-worksmart-limited
   label: Kainos Worksmart Limited
   partner_name: Kainos Worksmart Limited
@@ -383,8 +545,8 @@
   status: not-a-workflow
   arazzo: null
 - slug: workday-self-service-agent
-  label: Self Service Agent
-  partner_name: Self Service Agent
+  label: Self-Service Agent
+  partner_name: Self-Service Agent
   category: Region & Country
   type: marketplace
   marketplace: own
@@ -661,6 +823,7 @@
   arazzo: null
 - slug: workday-pricewaterhousecoopers-global
   label: PricewaterhouseCoopers Global
+  partner: pricewaterhousecoopers
   partner_name: PricewaterhouseCoopers Global
   category: Platform and Product Extensions
   type: marketplace
@@ -763,18 +926,6 @@
   marketplace: own
   channel: partner-built
   evidence: https://marketplace.workday.com/apps/414855/vertex-for-workday
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: workday-league-inc
-  label: League, Inc.
-  partner_name: League, Inc.
-  category: Region & Country
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://marketplace.workday.com/apps/414764/league-workday-connector
   source: edge
   relationship: platform-app
   status: not-a-workflow
@@ -1292,18 +1443,6 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
-- slug: workday-n2n-services-inc
-  label: N2N Services Inc.
-  partner_name: N2N Services Inc.
-  category: Region & Country
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://marketplace.workday.com/apps/457292/real-time-course-data-synchronization
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
 - slug: workday-capital-project-planning
   label: Capital Project Planning
   partner_name: Capital Project Planning
@@ -1482,6 +1621,18 @@
   marketplace: own
   channel: partner-built
   evidence: https://marketplace.workday.com/apps/427423/customer-satisfaction-for-professional-services
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-motivosity-inc
+  label: Motivosity Inc.
+  partner_name: Motivosity Inc.
+  category: Region & Country
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/873599/motivosity-recognition-rewards-for-workday
   source: edge
   relationship: platform-app
   status: not-a-workflow
@@ -2473,6 +2624,7 @@
   arazzo: null
 - slug: workday-aon
   label: Aon
+  partner: aon
   partner_name: Aon
   category: Partners
   type: marketplace
@@ -3299,14 +3451,14 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
-- slug: workday-performance-management-agent
-  label: Performance Management Agent
-  partner_name: Performance Management Agent
+- slug: workday-sana-coach
+  label: Sana Coach
+  partner_name: Sana Coach
   category: Region & Country
   type: marketplace
   marketplace: own
   channel: provider-built
-  evidence: https://marketplace.workday.com/apps/851517/performance-management-agent
+  evidence: https://marketplace.workday.com/apps/851517/sana-coach
   source: edge
   relationship: platform-app
   status: not-a-workflow
@@ -3331,18 +3483,6 @@
   marketplace: own
   channel: partner-built
   evidence: https://marketplace.workday.com/apps/650133/workaxle-employee-scheduling
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: workday-payslip
-  label: Payslip
-  partner_name: Payslip
-  category: Payroll
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://marketplace.workday.com/apps/429215/payslip-peci-connector
   source: edge
   relationship: platform-app
   status: not-a-workflow
@@ -3535,18 +3675,6 @@
   marketplace: own
   channel: partner-built
   evidence: https://marketplace.workday.com/apps/868456/optix-workforce-intelligence
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: workday-gotransverse-llc
-  label: Gotransverse LLC
-  partner_name: Gotransverse LLC
-  category: Region & Country
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://marketplace.workday.com/apps/414209/gotransverse-connector-for-workday
   source: edge
   relationship: platform-app
   status: not-a-workflow
@@ -4307,18 +4435,6 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
-- slug: workday-nga-human-resources
-  label: NGA Human Resources
-  partner_name: NGA Human Resources
-  category: Payroll
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://marketplace.workday.com/apps/415079/nga-global-payroll-connector
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
 - slug: workday-payroll-inc
   label: Payroll Inc.
   partner_name: Payroll Inc.
@@ -4859,18 +4975,6 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
-- slug: workday-iipay-ltd
-  label: iiPay Ltd
-  partner_name: iiPay Ltd
-  category: Payroll
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://marketplace.workday.com/apps/414926/iipay-gpms
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
 - slug: workday-vidcruiter
   label: VidCruiter
   partner_name: VidCruiter
@@ -4979,18 +5083,6 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
-- slug: workday-cdp-group
-  label: CDP Group
-  partner_name: CDP Group
-  category: Payroll
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://marketplace.workday.com/apps/414022/gpc---certified-cdp-china-peci-extract
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
 - slug: workday-workday-tenant-management
   label: Workday Tenant Management
   partner_name: Workday Tenant Management
@@ -5083,18 +5175,6 @@
   marketplace: own
   channel: partner-built
   evidence: https://marketplace.workday.com/apps/824375/eisnerampers-adaptive-planning-accelerator-for-zoos-aquariums-museums-and-performing-arts-center
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: workday-micro-focus-software-inc
-  label: Micro Focus Software Inc.
-  partner_name: Micro Focus Software Inc.
-  category: Buying Center
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://marketplace.workday.com/apps/414469/workday-driver-for-netiq-identity-manager
   source: edge
   relationship: platform-app
   status: not-a-workflow
@@ -5347,6 +5427,18 @@
   marketplace: own
   channel: partner-built
   evidence: https://marketplace.workday.com/apps/822947/mangoapps-workday-widgets
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: workday-payslip
+  label: Payslip
+  partner_name: Payslip
+  category: Payroll
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.workday.com/apps/473828/payslip-global-payroll-connect
   source: edge
   relationship: platform-app
   status: not-a-workflow
@@ -5687,18 +5779,6 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
-- slug: workday-securiti-inc
-  label: Securiti, Inc.
-  partner_name: Securiti, Inc.
-  category: Buying Center
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://marketplace.workday.com/apps/414148/securiti
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
 - slug: workday-hireright-llc
   label: HireRight LLC
   partner_name: HireRight LLC
@@ -5783,31 +5863,6 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
-- slug: workday-hightouch
-  label: Hightouch
-  partner: hightouch
-  partner_name: Hightouch
-  type: coverage
-  marketplace: coverage
-  channel: partner-built
-  evidence: https://hightouch.com/docs/destinations/workday
-  source: edge
-  relationship: connector-coverage
-  status: not-a-workflow
-  arazzo: null
-- slug: workday-docusign-partner-store
-  label: Docusign (partner-store)
-  partner: docusign
-  partner_name: Docusign (partner-store)
-  category: Integrations
-  type: marketplace
-  marketplace: partner-store
-  channel: partner-built
-  evidence: https://marketplace.workday.com/en-US/apps/414120/Docusign-for-workday/overview
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
 - slug: workday-zapier
   label: Zapier
   partner: zapier
@@ -5840,7 +5895,7 @@
   type: marketplace
   marketplace: pipedream-components
   channel: open-source-node
-  evidence: https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/workday
+  evidence: https://github.com/PipedreamHQ/pipedream/tree/d5872355ef27b4efa769f05352f2820c299a456e/components/workday
   source: edge
   relationship: ipaas-bridge
   contract_reference:
@@ -5859,140 +5914,3 @@
     builder: Pipedream repo (component)
   status: not-a-workflow
   arazzo: null
-- slug: workday-fedramp
-  label: FedRAMP
-  partner_name: FedRAMP
-  category: FedRAMP authorization
-  type: contract
-  channel: regulator-register
-  evidence: https://marketplace.fedramp.gov/products/FR2103344623
-  source: edge
-  relationship: standard-participant
-  contract_reference:
-    register: FedRAMP Marketplace data (github.com/18F/fedramp-data data/data.json @4b73d9247f)
-    standard: FedRAMP
-    spec_file: null
-    role: fedramp-authorized
-    registered_name: Workday Inc.
-    register_id: FR2103344623
-    matched_domain: workday.com
-    matched_by: domain+name-among-holders
-    domain_source: website
-    designations:
-    - Compliant
-    packages:
-    - Workday Government Cloud (WGC)
-    service_models:
-    - SaaS
-    paths:
-    - Agency
-    signal_note: certified_products = one entry per AUTHORIZED impact level, never per package; packages, service
-      models, paths and leveraging agencies are context, never counted. The register lists current designations
-      only (revoked / expired are removed), so lapsed is always false
-    detected_by: sweep-gov-cloud.py
-    detected: '2026-10-15'
-    certified_products:
-    - product: FedRAMP Moderate
-      impact_level: Moderate
-      lapsed: false
-      latest_authorization: '2022-04-04'
-  status: not-a-workflow
-  arazzo: null
-- slug: workday-fivetran
-  label: Fivetran
-  partner: fivetran
-  partner_name: Fivetran
-  type: marketplace
-  marketplace: fivetran-connectors
-  channel: elt-connector
-  evidence: https://fivetran.com/docs/connectors/applications/workday-adaptive-planning
-  source: edge
-  relationship: ipaas-bridge
-  contract_reference:
-    register: Fivetran connectors (fivetran.com/docs/connectors, docs-sitemap.xml + Partner-Built program)
-    spec_file: null
-    role: elt-connector:fivetran
-    registered_name: Workday Adaptive Planning
-    matched_domain: workday.com
-    matched_by: domain+name-among-holders
-    detected_by: sweep-data-integration.py
-    detected: '2026-10-18'
-    signal_note: one edge per (provider, platform); connectors, streams, packages and usage are context, never read
-    connector_paths:
-    - connectors/applications/workday-adaptive-planning
-    - connectors/applications/workday-financial-management
-    - connectors/applications/workday-hcm
-    - connectors/applications/workday-raas
-    - connectors/applications/workday-strategic-sourcing
-    vendor_link: https://www.workday.com/en-us/products/adaptive-planning/overview.html
-    builder: Fivetran
-  status: not-a-workflow
-  arazzo: null
-- slug: workday-meltano
-  label: Meltano
-  partner: meltano
-  partner_name: Meltano
-  type: marketplace
-  marketplace: meltano-hub
-  channel: elt-connector
-  evidence: https://hub.meltano.com/extractors/tap-workday-raas--singer-io
-  source: edge
-  relationship: ipaas-bridge
-  contract_reference:
-    register: Meltano Hub (github.com/meltano/hub _data/meltano extractors + loaders)
-    spec_file: null
-    role: elt-connector:meltano-hub
-    registered_name: Workday
-    matched_domain: workday.com
-    matched_by: domain+name-among-holders
-    detected_by: sweep-data-integration.py
-    detected: '2026-10-18'
-    signal_note: one edge per (provider, platform); connectors, streams, packages and usage are context, never read
-    plugins:
-    - tap-workday-raas--singer-io
-    maintenance_status:
-    - active
-    quality:
-    - silver
-    builder: 'community (Meltano Hub variant maintainers: singer-io)'
-  status: not-a-workflow
-  arazzo: null
-- slug: workday-google-workspace-own
-  label: Google Workspace (own)
-  partner: google-workspace
-  partner_name: Google Workspace (own)
-  category: Google Workspace app
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://workspace.google.com/marketplace/app/workday_for_google_sheets/154487802303
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: workday-microsoft-teams-own
-  label: Microsoft Teams (own)
-  partner: microsoft-teams
-  partner_name: Microsoft Teams (own)
-  category: Microsoft Teams app
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://appsource.microsoft.com/en-us/product/office/WA200009753
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: workday-slack-own
-  label: Slack (own)
-  partner: slack
-  partner_name: Slack (own)
-  category: Slack app
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://slack.com/marketplace/ABH43V9RN-workday
-  source: edge
-  relationship: platform-app
-  arazzo: workday-slack-termination-private-channel-message.yml
-  status: arazzo
