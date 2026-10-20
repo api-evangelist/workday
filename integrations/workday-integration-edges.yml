@@ -6,7 +6,9 @@ source:
 checked:
 - docusign/integrations/docusign-integration-edges.yml
 - google-workspace/integrations/google-workspace-integration-edges.yml
+- https://cloudsecurityalliance.org/star/registry
 - https://composio.dev/toolkits/workday
+- https://eucoc.cloud/en/public-register/list-of-adherent-services
 - https://fivetran.com/docs-sitemap.xml
 - https://fivetran.com/docs/connectors/partner-built-program
 - https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/
@@ -15672,6 +15674,72 @@ edges:
     builder: Pipedream repo (component)
   detected_by: sweep-workflow-automation.py
   first_seen: '2026-10-15'
+- partner_name: Cloud Security Alliance STAR Registry
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://cloudsecurityalliance.org/star/registry/workday-inc/services/workday-inc
+  category: Cloud security assurance
+  contract_reference:
+    register: CSA STAR Registry (cloudsecurityalliance.org/star/registry)
+    spec_file: null
+    standard: CSA STAR
+    role: star-level-1
+    registered_name: Workday Inc.
+    registry_id: workday-inc
+    service_url: https://workday.com/
+    matched_domain: workday.com
+    matched_by: domain+name-among-holders
+    identity_source: the service URL the organisation filed on its STAR listing (no lookup)
+    levels:
+    - EU Cloud CoC
+    - ISO/IEC 42001
+    - Partner Entries
+    - STAR Level 1
+    certified_products: []
+    signal_note: STAR Level 1 (CAIQ self-assessment) = participation; certified_products = one entry per STAR Level
+      2 / STAR for AI Level 2 assessment TYPE (third-party certification, attestation, C-STAR, ValidAIted); lapsed
+      = every instance marked (Deprecated) by the registry; service counts never recorded
+    detected_by: sweep-compliance-assurance.py
+    detected: '2026-10-20'
+  detected_by: sweep-compliance-assurance.py
+  first_seen: '2026-10-20'
+- partner_name: EU Cloud Code of Conduct (SCOPE Europe monitoring body)
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://eucoc.cloud/en/public-register/list-of-adherent-services
+  category: Cloud data-protection assurance
+  contract_reference:
+    register: EU Cloud Code of Conduct public register (eucoc.cloud, list of adherent services)
+    spec_file: null
+    standard: EU Cloud CoC
+    role: eu-cloud-coc-adherent
+    registered_name: Workday Limited
+    register_id: 2019LVL02SCOPE001
+    service_url: https://workday.com
+    matched_domain: workday.com
+    matched_by: domain+name-among-holders
+    identity_source: the service URL on the register (filed by the adherent, verified by the monitoring body)
+    level_of_compliance: 2
+    latest_assessment: '2026-07-31'
+    due_date: '2027-08-04'
+    certified_products:
+    - product: EU Cloud CoC verified declaration of adherence
+      lapsed: false
+      level: 2
+    signal_note: 'one certified product: adherence verified by the accredited monitoring body (GDPR Art. 41); lapsed
+      when the due date has passed; level is context; services never counted'
+    detected_by: sweep-compliance-assurance.py
+    detected: '2026-10-20'
+  detected_by: sweep-compliance-assurance.py
+  first_seen: '2026-10-20'
 templates:
 - title: Approve new tasks in Workday when new time off requests are made in BambooHR
   url: https://zapier.com/apps/bamboohr/integrations/workday/255608029/approve-new-tasks-in-workday-when-new-time-off-requests-are-made-in-bamboohr
