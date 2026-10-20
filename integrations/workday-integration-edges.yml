@@ -1,8 +1,9 @@
-generated: '2026-10-12'
+generated: '2026-10-20'
 method: searched
 source:
 - https://zapier.com/apps/workday/integrations
 - https://composio.dev/toolkits/workday
+- https://marketplace.workday.com/
 checked:
 - docusign/integrations/docusign-integration-edges.yml
 - google-workspace/integrations/google-workspace-integration-edges.yml
@@ -27,6 +28,14 @@ checked:
 - slack/integrations/slack-integration-edges.yml
 summary: null
 marketplace_apps:
+- marketplace: own
+  channel: partner-built
+  app: workday
+  url: https://marketplace.workday.com/
+  app_count: 896
+  adapter: sweep-hr-stores.py:appdirect
+  listed: 896
+  detail_fetched: 250
 - marketplace: zapier
   channel: ipaas-listing
   app: workday
@@ -111,442 +120,607 @@ marketplace_apps:
   identity: action-prefix
   actions:
   - key: WORKDAY_ABSENCE_BALANCE_CHANGED_TRIGGER
+  - key: WORKDAY_APPROVE_BUSINESS_PROCESS_EVENT_STEP
   - key: WORKDAY_BALANCE_DETAILS_CHANGED_TRIGGER
+  - key: WORKDAY_BULK_IMPORT_UPDATE_EMPLOYEE_REVIEW_RATING
+  - key: WORKDAY_CANCEL_BUSINESS_PROCESS_EVENT
+  - key: WORKDAY_CHANGE_BENEFITS
+  - key: WORKDAY_CHANGE_WORKER_MARITAL_STATUS
+  - key: WORKDAY_CHANGE_WORKER_MILITARY_SERVICE
+  - key: WORKDAY_CLOSE_REQUEST
   - key: WORKDAY_CREATE_BUSINESS_TITLE_CHANGE
-  - key: WORKDAY_CREATE_JOB_CHANGE
+  - key: WORKDAY_CREATE_CASE
+  - key: WORKDAY_CREATE_COMPENSATION_SCORECARD
+  - key: WORKDAY_CREATE_CUSTOM_FIELD_TYPE
+  - key: WORKDAY_CREATE_CUSTOM_FIELD_TYPE_LIST_VALUE
+  - key: WORKDAY_CREATE_CUSTOM_OBJECT
+  - key: WORKDAY_CREATE_CUSTOM_OBJECT_DEFINITION_CONDITION_RULE
+  - key: WORKDAY_CREATE_CUSTOM_OBJECT_DEFINITION_FIELD
+  - key: WORKDAY_CREATE_CUSTOM_OBJECT_DEFINITION_VALIDATION
+  - key: WORKDAY_CREATE_EXPENSE_ENTRY
+  - key: WORKDAY_CREATE_EXPENSE_ENTRY_ATTACHMENT
+  - key: WORKDAY_CREATE_EXPENSE_REPORT
+  - key: WORKDAY_CREATE_EXPENSE_REPORT_LINE
+  - key: WORKDAY_CREATE_HOME_CONTACT_CHANGE_ADDRESS
+  - key: WORKDAY_CREATE_HOME_CONTACT_CHANGE_EMAIL_ADDRESS
+  - key: WORKDAY_CREATE_HOME_CONTACT_CHANGE_INSTANT_MESSENGER
+  - key: WORKDAY_CREATE_HOME_CONTACT_CHANGE_PHONE_NUMBER
+  - key: WORKDAY_CREATE_HOME_CONTACT_CHANGE_WEB_ADDRESS
+  - key: WORKDAY_CREATE_JOB_CHANGE_WORKER
+  - key: WORKDAY_CREATE_MENTORSHIP_FOR_ME
+  - key: WORKDAY_CREATE_MENTORSHIP_FOR_WORKER
+  - key: WORKDAY_CREATE_MESSAGE_TEMPLATE
+  - key: WORKDAY_CREATE_ORGANIZATION_ASSIGNMENT_CHANGE
+  - key: WORKDAY_CREATE_ORGANIZATION_GOAL
   - key: WORKDAY_CREATE_PAYROLL_INPUTS
+  - key: WORKDAY_CREATE_PROSPECT
+  - key: WORKDAY_CREATE_PROSPECT_EDUCATION
+  - key: WORKDAY_CREATE_PROSPECT_EXPERIENCE
+  - key: WORKDAY_CREATE_PROSPECT_SKILL
+  - key: WORKDAY_CREATE_REFERENCE_LETTER_FOR_WORKER
+  - key: WORKDAY_CREATE_REQUEST
+  - key: WORKDAY_CREATE_SCORECARD_RESULT
+  - key: WORKDAY_CREATE_SUCCESSION_PLAN
+  - key: WORKDAY_CREATE_TAX_RATE
+  - key: WORKDAY_CREATE_TIME_CLOCK_EVENT
   - key: WORKDAY_CREATE_TIME_OFF_REQUEST
+  - key: WORKDAY_CREATE_WORKER_ANYTIME_FEEDBACK_EVENT
+  - key: WORKDAY_CREATE_WORKER_EXPLICIT_SKILLS
+  - key: WORKDAY_CREATE_WORKER_REQUESTED_FEEDBACK_ON_SELF_EVENT
+  - key: WORKDAY_CREATE_WORKER_REQUESTED_FEEDBACK_ON_WORKER_EVENT
+  - key: WORKDAY_CREATE_WORKER_SKILL_ITEMS
+  - key: WORKDAY_CREATE_WORKER_TIME_BLOCK
+  - key: WORKDAY_CREATE_WORKER_TIME_REVIEW_EVENT
+  - key: WORKDAY_CREATE_WORK_CONTACT_CHANGE_ADDRESS
+  - key: WORKDAY_CREATE_WORK_CONTACT_CHANGE_EMAIL_ADDRESS
+  - key: WORKDAY_CREATE_WORK_CONTACT_CHANGE_INSTANT_MESSENGER
+  - key: WORKDAY_CREATE_WORK_CONTACT_CHANGE_PHONE_NUMBER
+  - key: WORKDAY_CREATE_WORK_CONTACT_CHANGE_WEB_ADDRESS
+  - key: WORKDAY_DELETE_COMPENSATION_SCORECARD
+  - key: WORKDAY_DELETE_CUSTOM_OBJECT
+  - key: WORKDAY_DELETE_CUSTOM_OBJECT_DEFINITION_CONDITION_RULE
+  - key: WORKDAY_DELETE_CUSTOM_OBJECT_DEFINITION_VALIDATION
+  - key: WORKDAY_DELETE_EXPENSE_ENTRY
+  - key: WORKDAY_DELETE_HOME_CONTACT_CHANGE_ADDRESS
+  - key: WORKDAY_DELETE_HOME_CONTACT_CHANGE_INSTANT_MESSENGER
+  - key: WORKDAY_DELETE_HOME_CONTACT_CHANGE_PHONE_NUMBER
+  - key: WORKDAY_DELETE_HOME_CONTACT_CHANGE_WEB_ADDRESS
+  - key: WORKDAY_DELETE_PAYROLL_INPUT
+  - key: WORKDAY_DELETE_SCORECARD_RESULT
+  - key: WORKDAY_DELETE_TIME_CLOCK_EVENT
+  - key: WORKDAY_DELETE_WORK_CONTACT_CHANGE_ADDRESS
+  - key: WORKDAY_DELETE_WORK_CONTACT_CHANGE_EMAIL_ADDRESS
+  - key: WORKDAY_DELETE_WORK_CONTACT_CHANGE_PHONE_NUMBER
+  - key: WORKDAY_DELETE_WORK_CONTACT_CHANGE_WEB_ADDRESS
+  - key: WORKDAY_DENY_BUSINESS_PROCESS_EVENT_STEP
+  - key: WORKDAY_DISCOVER_ONE_TIME_PAYMENT_OPTIONS
+  - key: WORKDAY_DISCOVER_REFERENCE_VALUES
   - key: WORKDAY_GET_ABSENCE_BALANCE
+  - key: WORKDAY_GET_ABSENCE_MANAGEMENT_WORKER
+  - key: WORKDAY_GET_ADDITIONAL_NAMES
+  - key: WORKDAY_GET_AND_SET_UP_SCORES_ON_SCORECARD_RESULTS
   - key: WORKDAY_GET_ASSIGNMENT_CHANGE_GROUP_COST_CENTERS
   - key: WORKDAY_GET_ASSIGNMENT_CHANGE_GROUP_JOBS
   - key: WORKDAY_GET_ASSIGNMENT_TYPES
+  - key: WORKDAY_GET_ATTACHMENT_BUSINESS_PROCESS_EVENT
+  - key: WORKDAY_GET_ATTACHMENT_BY_EXTERNAL_ID
+  - key: WORKDAY_GET_AUDIENCE_SELECTION
+  - key: WORKDAY_GET_AUDIENCE_TYPES
   - key: WORKDAY_GET_BALANCE_DETAILS
+  - key: WORKDAY_GET_BUSINESS_PROCESS
+  - key: WORKDAY_GET_BUSINESS_PROCESS_EVENT_STEP
+  - key: WORKDAY_GET_BUSINESS_PROCESS_TYPE
   - key: WORKDAY_GET_BUSINESS_TITLE_CHANGE
   - key: WORKDAY_GET_BUSINESS_TITLE_CHANGE_FOR_WORKER
-  - key: WORKDAY_GET_CANDIDATE_AVAILABILITY_TEMPLATE
-  - key: WORKDAY_GET_COLLECTION_OF_JOBS
+  - key: WORKDAY_GET_CASE
+  - key: WORKDAY_GET_CASE_TYPE
+  - key: WORKDAY_GET_CERTIFICATIONS
+  - key: WORKDAY_GET_CERTIFICATION_ISSUERS
+  - key: WORKDAY_GET_CHECK_INS
+  - key: WORKDAY_GET_CHECK_IN_TOPICS
   - key: WORKDAY_GET_COLLECTION_OF_PAYROLL
+  - key: WORKDAY_GET_COMPANIES_VALUES
   - key: WORKDAY_GET_COMPANY_INSIDER_TYPES
+  - key: WORKDAY_GET_COMPENSATION_SCORECARDS
+  - key: WORKDAY_GET_COMPENSATION_SCORE_CARD_INFO
+  - key: WORKDAY_GET_COMPETENCIES
+  - key: WORKDAY_GET_COMPETENCY_CATEGORIES
+  - key: WORKDAY_GET_COMPLETED_STEPS_BUSINESS_PROCESS
   - key: WORKDAY_GET_CONTINGENT_WORKER_TYPES
+  - key: WORKDAY_GET_COUNTRIES
+  - key: WORKDAY_GET_COUNTRY_ADDRESS_COMPONENTS
   - key: WORKDAY_GET_COUNTRY_INFO
   - key: WORKDAY_GET_CURRENCIES
+  - key: WORKDAY_GET_CURRENCY
   - key: WORKDAY_GET_CURRENT_USER
+  - key: WORKDAY_GET_CUSTOM_FIELD_TYPE
+  - key: WORKDAY_GET_CUSTOM_FIELD_TYPE_LIST_VALUE
+  - key: WORKDAY_GET_CUSTOM_OBJECT
+  - key: WORKDAY_GET_CUSTOM_OBJECT_DEFINITION
+  - key: WORKDAY_GET_CUSTOM_OBJECT_DEFINITION_CONDITION_RULE
+  - key: WORKDAY_GET_CUSTOM_OBJECT_DEFINITION_FIELD
+  - key: WORKDAY_GET_CUSTOM_OBJECT_DEFINITION_VALIDATION
+  - key: WORKDAY_GET_DEGREES
+  - key: WORKDAY_GET_EMPLOYEE_COMPENSATION
+  - key: WORKDAY_GET_EMPLOYEE_ENROLLMENT_EVENT
+  - key: WORKDAY_GET_EMPLOYEE_REVIEWS
+  - key: WORKDAY_GET_EMPLOYEE_REVIEW_TEMPLATES
+  - key: WORKDAY_GET_EMPLOYEE_TYPES
+  - key: WORKDAY_GET_EXPENSE_ENTRY
+  - key: WORKDAY_GET_EXPENSE_ITEM
+  - key: WORKDAY_GET_EXPENSE_REPORT
+  - key: WORKDAY_GET_FEEDBACK_BADGES
+  - key: WORKDAY_GET_FEEDBACK_BADGE_BY_ID
+  - key: WORKDAY_GET_FEEDBACK_QUESTIONS
+  - key: WORKDAY_GET_FIELDS_OF_STUDY
+  - key: WORKDAY_GET_GIFTS
+  - key: WORKDAY_GET_GIVE_REQUESTED_FEEDBACK_EVENT_BY_ID
+  - key: WORKDAY_GET_GOAL_PAYOUT_BANDS
+  - key: WORKDAY_GET_GOAL_UNITS
   - key: WORKDAY_GET_GRANTS
+  - key: WORKDAY_GET_GRAPH_API_VERSION
   - key: WORKDAY_GET_HEADCOUNT_OPTIONS
-  - key: WORKDAY_GET_HISTORY_INSTANCE_FOR_WORKER
   - key: WORKDAY_GET_HISTORY_ITEMS_FOR_WORKER
   - key: WORKDAY_GET_HOLIDAY_EVENTS
+  - key: WORKDAY_GET_HOME_CONTACT_CHANGE_ADDRESS
+  - key: WORKDAY_GET_HOME_CONTACT_CHANGE_EMAIL_ADDRESS
+  - key: WORKDAY_GET_HOME_CONTACT_CHANGE_EMAIL_ADDRESSES
+  - key: WORKDAY_GET_HOME_CONTACT_CHANGE_EVENT_INFORMATION
+  - key: WORKDAY_GET_HOME_CONTACT_CHANGE_INSTANT_MESSENGER
+  - key: WORKDAY_GET_HOME_CONTACT_CHANGE_INSTANT_MESSENGERS
+  - key: WORKDAY_GET_HOME_CONTACT_CHANGE_PHONE_NUMBER
+  - key: WORKDAY_GET_HOME_CONTACT_CHANGE_PHONE_NUMBERS
+  - key: WORKDAY_GET_HOME_CONTACT_CHANGE_WEB_ADDRESS
+  - key: WORKDAY_GET_HOME_CONTACT_CHANGE_WEB_ADDRESSES
+  - key: WORKDAY_GET_HOME_CONTACT_INFORMATION_CHANGE
+  - key: WORKDAY_GET_HOME_WEB_ADDRESSES
+  - key: WORKDAY_GET_IMPORT_PROCESSES
+  - key: WORKDAY_GET_IMPORT_PROCESS_MESSAGES
   - key: WORKDAY_GET_INTERVIEW
+  - key: WORKDAY_GET_INTERVIEW_FEEDBACK
   - key: WORKDAY_GET_INTERVIEW_FEEDBACK2
+  - key: WORKDAY_GET_IN_PROCESS_STEPS_BUSINESS_PROCESS_EVENT
   - key: WORKDAY_GET_JOB_BY_ID
+  - key: WORKDAY_GET_JOB_CHANGES_ADMINISTRATIVE
+  - key: WORKDAY_GET_JOB_CHANGES_ADMINISTRATIVE_BY_ID
+  - key: WORKDAY_GET_JOB_CHANGES_BUSINESS_TITLE
+  - key: WORKDAY_GET_JOB_CHANGES_BUSINESS_TITLE_BY_ID
+  - key: WORKDAY_GET_JOB_CHANGES_BY_ID
+  - key: WORKDAY_GET_JOB_CHANGES_COMMENT_BY_ID
+  - key: WORKDAY_GET_JOB_CHANGES_COMMENT_BY_SUBRESOURCE_ID
+  - key: WORKDAY_GET_JOB_CHANGES_CONTRACT
+  - key: WORKDAY_GET_JOB_CHANGES_CONTRACT_OPTIONS
   - key: WORKDAY_GET_JOB_CHANGES_GROUP_TEMPLATES
+  - key: WORKDAY_GET_JOB_CHANGES_JOB_CLASSIFICATION
+  - key: WORKDAY_GET_JOB_CHANGES_JOB_CLASSIFICATION_BY_ID
+  - key: WORKDAY_GET_JOB_CHANGES_JOB_PROFILE
+  - key: WORKDAY_GET_JOB_CHANGES_JOB_PROFILE_BY_ID
   - key: WORKDAY_GET_JOB_CHANGES_JOB_VALUES
+  - key: WORKDAY_GET_JOB_CHANGES_LOCATION_BY_ID
+  - key: WORKDAY_GET_JOB_CHANGES_MOVE_TEAM
+  - key: WORKDAY_GET_JOB_CHANGES_MOVE_TEAM_BY_ID
+  - key: WORKDAY_GET_JOB_CHANGES_OPENING_OPTIONS
+  - key: WORKDAY_GET_JOB_CHANGES_OPENING_OPTIONS2
+  - key: WORKDAY_GET_JOB_CHANGES_POSITION_BY_ID
+  - key: WORKDAY_GET_JOB_CHANGES_POSITION_BY_SUBRESOURCE_ID
+  - key: WORKDAY_GET_JOB_CHANGES_START_DETAILS
+  - key: WORKDAY_GET_JOB_CHANGES_START_DETAILS_BY_ID
   - key: WORKDAY_GET_JOB_CHANGES_WORKER_VALUES
   - key: WORKDAY_GET_JOB_CHANGE_FREQUENCIES
   - key: WORKDAY_GET_JOB_CHANGE_LOCATION_INFO
-  - key: WORKDAY_GET_JOB_CHANGE_POSITION
-  - key: WORKDAY_GET_JOB_CHANGE_REASONS
-  - key: WORKDAY_GET_JOB_CHANGE_REASON_INSTANCE
+  - key: WORKDAY_GET_JOB_CHANGE_REASON
   - key: WORKDAY_GET_JOB_CHANGE_REASON_VALUES
   - key: WORKDAY_GET_JOB_CLASSIFICATIONS
+  - key: WORKDAY_GET_JOB_FAMILY
   - key: WORKDAY_GET_JOB_POSTING
+  - key: WORKDAY_GET_JOB_POSTING_CANDIDATE_AVAILABILITY_TEMPLATE
   - key: WORKDAY_GET_JOB_POSTING_QUESTIONNAIRE
+  - key: WORKDAY_GET_JOB_POSTING_QUESTIONNAIRE_BY_ID
+  - key: WORKDAY_GET_JOB_PROFILE
   - key: WORKDAY_GET_JOB_PROFILES_VALUES
   - key: WORKDAY_GET_JOB_REQUISITION_VALUES
   - key: WORKDAY_GET_JOB_WORKSPACE
   - key: WORKDAY_GET_JOB_WORKSPACES
+  - key: WORKDAY_GET_LEARNING_CONTENT
+  - key: WORKDAY_GET_LEARNING_CONTENT_LESSON
+  - key: WORKDAY_GET_LEARNING_RECORD
   - key: WORKDAY_GET_LEAVE_STATUS_VALUES
+  - key: WORKDAY_GET_LOCATION_VALUES
+  - key: WORKDAY_GET_MENTORSHIP
+  - key: WORKDAY_GET_MESSAGE_TEMPLATE_BY_ID
+  - key: WORKDAY_GET_MINIMUM_WAGE_RATES_COUNTRIES_VALUES
+  - key: WORKDAY_GET_MINIMUM_WAGE_RATES_TAX_AUTHORITIES_VALUES
   - key: WORKDAY_GET_MY_JOB_POSTINGS
+  - key: WORKDAY_GET_NAME_COMPONENTS
+  - key: WORKDAY_GET_NAME_PRONUNCIATIONS
+  - key: WORKDAY_GET_NOTIFICATION_TYPE_BY_ID
+  - key: WORKDAY_GET_ORGANIZATION
   - key: WORKDAY_GET_ORGANIZATION_ASSIGNMENT_BUSINESS_UNITS
+  - key: WORKDAY_GET_ORGANIZATION_ASSIGNMENT_CHANGE
+  - key: WORKDAY_GET_ORGANIZATION_ASSIGNMENT_CHANGES_BUSINESS_UNIT
+  - key: WORKDAY_GET_ORGANIZATION_ASSIGNMENT_CHANGES_COMMENT
+  - key: WORKDAY_GET_ORGANIZATION_ASSIGNMENT_CHANGES_COMMENT_BY_ID
+  - key: WORKDAY_GET_ORGANIZATION_ASSIGNMENT_CHANGES_COMPANY
+  - key: WORKDAY_GET_ORGANIZATION_ASSIGNMENT_CHANGES_COMPANY_BY_ID
+  - key: WORKDAY_GET_ORGANIZATION_ASSIGNMENT_CHANGES_COST_CENTER
+  - key: WORKDAY_GET_ORGANIZATION_ASSIGNMENT_CHANGES_REGION
+  - key: WORKDAY_GET_ORGANIZATION_ASSIGNMENT_CHANGES_REGION_BY_ID
+  - key: WORKDAY_GET_ORGANIZATION_ASSIGNMENT_CHANGES_START_DETAILS
   - key: WORKDAY_GET_ORGANIZATION_ASSIGNMENT_CUSTOMS
   - key: WORKDAY_GET_ORGANIZATION_ASSIGNMENT_FUNDS
   - key: WORKDAY_GET_ORGANIZATION_ASSIGNMENT_REGIONS
   - key: WORKDAY_GET_ORGANIZATION_ASSIGNMENT_WORKERS
+  - key: WORKDAY_GET_ORGANIZATION_GOALS
+  - key: WORKDAY_GET_ORGANIZATION_TYPE
+  - key: WORKDAY_GET_ORG_ASSIGN_CHANGES_BUSINESS_UNIT_BY_ID
+  - key: WORKDAY_GET_ORG_ASSIGN_CHANGES_COST_CENTER_BY_ID
+  - key: WORKDAY_GET_ORG_ASSIGN_CHANGES_CUSTOM_ORGS
+  - key: WORKDAY_GET_ORG_ASSIGN_CHANGES_CUSTOM_ORGS_BY_ID
+  - key: WORKDAY_GET_ORG_ASSIGN_CHANGES_START_DETAILS_BY_ID
+  - key: WORKDAY_GET_ORG_FOR_WORKER
   - key: WORKDAY_GET_PAYROLL_INPUT_INSTANCE
+  - key: WORKDAY_GET_PAYROLL_INTERFACE_PAY_GROUP
+  - key: WORKDAY_GET_PAYROLL_INTERFACE_PAY_GROUP_PERIOD
+  - key: WORKDAY_GET_PAYROLL_JOB
+  - key: WORKDAY_GET_PAYROLL_JOB_PAY_GROUP
+  - key: WORKDAY_GET_PAY_GROUP
   - key: WORKDAY_GET_PAY_GROUP_BY_JOB_ID
+  - key: WORKDAY_GET_PAY_GROUP_DETAIL
+  - key: WORKDAY_GET_PAY_RATE_TYPES_VALUES
   - key: WORKDAY_GET_PAY_SLIPS_FOR_WORKER
   - key: WORKDAY_GET_PAY_SLIP_INSTANCES_FOR_WORKER
+  - key: WORKDAY_GET_PERFORMANCE_WORKER_BY_ID
+  - key: WORKDAY_GET_PERSON
+  - key: WORKDAY_GET_PERSON_HOME_ADDRESS
+  - key: WORKDAY_GET_PERSON_HOME_ADDRESSES
+  - key: WORKDAY_GET_PERSON_HOME_EMAIL
+  - key: WORKDAY_GET_PERSON_HOME_EMAILS
+  - key: WORKDAY_GET_PERSON_HOME_INSTANT_MESSENGER
+  - key: WORKDAY_GET_PERSON_HOME_INSTANT_MESSENGERS
+  - key: WORKDAY_GET_PERSON_HOME_PHONE
+  - key: WORKDAY_GET_PERSON_HOME_PHONES
+  - key: WORKDAY_GET_PERSON_LEGAL_NAME
+  - key: WORKDAY_GET_PERSON_LEGAL_NAME_BY_ID
+  - key: WORKDAY_GET_PERSON_PERSONAL_INFORMATION
+  - key: WORKDAY_GET_PERSON_PHOTO
+  - key: WORKDAY_GET_PERSON_PHOTOS
+  - key: WORKDAY_GET_PERSON_PREFERRED_NAME
+  - key: WORKDAY_GET_PERSON_PREFERRED_NAME_BY_ID
+  - key: WORKDAY_GET_PERSON_PUBLIC_CONTACT_INFORMATION
+  - key: WORKDAY_GET_PERSON_WORK_ADDRESS
+  - key: WORKDAY_GET_PERSON_WORK_ADDRESSES
+  - key: WORKDAY_GET_PERSON_WORK_EMAIL
+  - key: WORKDAY_GET_PERSON_WORK_EMAILS
+  - key: WORKDAY_GET_PERSON_WORK_INSTANT_MESSENGER
+  - key: WORKDAY_GET_PERSON_WORK_INSTANT_MESSENGERS
+  - key: WORKDAY_GET_PERSON_WORK_PHONE
+  - key: WORKDAY_GET_PERSON_WORK_PHONES
+  - key: WORKDAY_GET_PERSON_WORK_WEB_ADDRESS
+  - key: WORKDAY_GET_PERSON_WORK_WEB_ADDRESSES
+  - key: WORKDAY_GET_PHONE_DEVICE_TYPES
+  - key: WORKDAY_GET_POSITION_VALUES
+  - key: WORKDAY_GET_PROGRAMS
+  - key: WORKDAY_GET_PROJECT_BY_EXTERNAL_ID
+  - key: WORKDAY_GET_PROJECT_MILESTONE_REPORT_SCHEMA
+  - key: WORKDAY_GET_PROJECT_TYPE
   - key: WORKDAY_GET_PROPOSED_POSITION_VALUES
   - key: WORKDAY_GET_PROSPECT
   - key: WORKDAY_GET_PROSPECT_EDUCATIONS
+  - key: WORKDAY_GET_PROSPECT_EDUCATION_BY_ID
   - key: WORKDAY_GET_PROSPECT_EXPERIENCES
+  - key: WORKDAY_GET_PROSPECT_EXPERIENCE_BY_ID
+  - key: WORKDAY_GET_PROSPECT_LANGUAGES
   - key: WORKDAY_GET_PROSPECT_RESUME_ATTACHMENTS
   - key: WORKDAY_GET_PROSPECT_SKILLS
+  - key: WORKDAY_GET_PROSPECT_SKILL_BY_ID
+  - key: WORKDAY_GET_RATING_SCALES
+  - key: WORKDAY_GET_REQUEST
+  - key: WORKDAY_GET_REQUESTED_FEEDBACK_EVENTS_ON_WORKER
+  - key: WORKDAY_GET_REQUEST_TYPE
+  - key: WORKDAY_GET_REQUISITION_TEMPLATE
+  - key: WORKDAY_GET_REVIEW_QUESTIONS
+  - key: WORKDAY_GET_REVIEW_QUESTION_CATEGORIES
+  - key: WORKDAY_GET_REVIEW_TYPES
+  - key: WORKDAY_GET_SCHOOL_TYPES
+  - key: WORKDAY_GET_SKILL_SOURCE_PRECEDENCES
+  - key: WORKDAY_GET_SUPERVISORY_ORGANIZATION
+  - key: WORKDAY_GET_SUPERVISORY_ORGANIZATION_MEMBER
+  - key: WORKDAY_GET_SUPERVISORY_ORGANIZATION_MEMBERS
+  - key: WORKDAY_GET_SUPERVISORY_ORGANIZATION_ORG_CHART
+  - key: WORKDAY_GET_SUPERVISORY_ORGANIZATION_ORG_CHART_INSTANCE
+  - key: WORKDAY_GET_SUPERVISORY_ORGS_MANAGED_BY_WORKER
+  - key: WORKDAY_GET_SUPERVISORY_ORG_MANAGED_BY_WORKER
   - key: WORKDAY_GET_SUPERVISORY_ORG_VALUES
+  - key: WORKDAY_GET_TAX_RATES_COMPANY_INSTANCES_VALUES
+  - key: WORKDAY_GET_TAX_RATES_STATE_INSTANCES_VALUES
+  - key: WORKDAY_GET_TIME_CLOCK_EVENT
   - key: WORKDAY_GET_TIME_OFF_ENTRIES_FOR_WORKER
+  - key: WORKDAY_GET_TIME_OFF_ENTRY_FOR_WORKER
+  - key: WORKDAY_GET_TIME_OFF_PLAN
   - key: WORKDAY_GET_TIME_OFF_PLANS_FOR_WORKER
   - key: WORKDAY_GET_TIME_OFF_STATUS_VALUES
   - key: WORKDAY_GET_TIME_TYPES
-  - key: WORKDAY_GET_WORKERS_COLLECTION_STAFFING
+  - key: WORKDAY_GET_UPDATE_EMPLOYEE_REVIEW_RATINGS
+  - key: WORKDAY_GET_WORKER
+  - key: WORKDAY_GET_WORKER2
+  - key: WORKDAY_GET_WORKERS_COMPENSATION_CODE_OVERRIDES
+  - key: WORKDAY_GET_WORKERS_IN_SUPERVISORY_ORG
+  - key: WORKDAY_GET_WORKER_ANYTIME_FEEDBACK_EVENT_BY_ID
   - key: WORKDAY_GET_WORKER_BUSINESS_TITLE_CHANGES
+  - key: WORKDAY_GET_WORKER_CHECK_IN
+  - key: WORKDAY_GET_WORKER_CHECK_INS
+  - key: WORKDAY_GET_WORKER_CHECK_IN_TOPIC
+  - key: WORKDAY_GET_WORKER_CHECK_IN_TOPICS
+  - key: WORKDAY_GET_WORKER_DEVELOPMENT_ITEM_BY_ID
   - key: WORKDAY_GET_WORKER_ELIGIBLE_ABSENCE_TYPES
-  - key: WORKDAY_GET_WORKER_INFO
+  - key: WORKDAY_GET_WORKER_EXPLICIT_SKILL
+  - key: WORKDAY_GET_WORKER_EXPLICIT_SKILLS
+  - key: WORKDAY_GET_WORKER_EXTERNAL_SKILL_LEVELS
+  - key: WORKDAY_GET_WORKER_FOR_SUPERVISORY_ORG
+  - key: WORKDAY_GET_WORKER_GOAL_BY_ID
+  - key: WORKDAY_GET_WORKER_HISTORY_ITEM
   - key: WORKDAY_GET_WORKER_LEAVES_OF_ABSENCE
-  - key: WORKDAY_GET_WORKER_SERVICE_DATES
-  - key: WORKDAY_GET_WORKER_STAFFING_INFORMATION
+  - key: WORKDAY_GET_WORKER_LEAVE_OF_ABSENCE
+  - key: WORKDAY_GET_WORKER_MANAGER
+  - key: WORKDAY_GET_WORKER_ORGANIZATION
+  - key: WORKDAY_GET_WORKER_REPORTS
+  - key: WORKDAY_GET_WORKER_REQUESTED_FEEDBACK_ON_SELF_EVENT_BY_ID
+  - key: WORKDAY_GET_WORKER_REQUESTED_FEEDBACK_ON_WORKER_EVENT_BY_ID
+  - key: WORKDAY_GET_WORKER_SERVICE_DATE
+  - key: WORKDAY_GET_WORKER_SKILL_ITEM
+  - key: WORKDAY_GET_WORKER_SKILL_ITEMS
+  - key: WORKDAY_GET_WORKER_STOCK_PLAN_ASSIGNMENTS
+  - key: WORKDAY_GET_WORKER_TIME_OFF_DETAIL
   - key: WORKDAY_GET_WORKER_TIME_OFF_DETAILS
   - key: WORKDAY_GET_WORKER_TYPES
   - key: WORKDAY_GET_WORKER_VALID_TIME_OFF_DATES
   - key: WORKDAY_GET_WORKSPACE_INSTANCES
+  - key: WORKDAY_GET_WORK_CONTACT_CHANGE
+  - key: WORKDAY_GET_WORK_CONTACT_CHANGE_ADDRESSES
+  - key: WORKDAY_GET_WORK_CONTACT_CHANGE_EMAIL_ADDRESS
+  - key: WORKDAY_GET_WORK_CONTACT_CHANGE_EMAIL_ADDRESSES
+  - key: WORKDAY_GET_WORK_CONTACT_CHANGE_INSTANT_MESSENGER
+  - key: WORKDAY_GET_WORK_CONTACT_CHANGE_INSTANT_MESSENGERS
+  - key: WORKDAY_GET_WORK_CONTACT_CHANGE_PHONE_NUMBER
+  - key: WORKDAY_GET_WORK_CONTACT_CHANGE_PHONE_NUMBERS
+  - key: WORKDAY_GET_WORK_CONTACT_CHANGE_WEB_ADDRESS
+  - key: WORKDAY_GET_WORK_CONTACT_CHANGE_WEB_ADDRESSES
+  - key: WORKDAY_GET_WORK_CONTACT_INFORMATION_CHANGE
+  - key: WORKDAY_GET_WORK_CONTACT_INFORMATION_CHANGES_ADDRESS_AS_STAGED
+  - key: WORKDAY_GET_WORK_SHIFTS
   - key: WORKDAY_GET_WORK_STUDY_AWARDS
+  - key: WORKDAY_GET_WQL_DATA_SOURCE
+  - key: WORKDAY_GET_WQL_DATA_SOURCE_FIELD
+  - key: WORKDAY_GET_WQL_DATA_SOURCE_FILTER
+  - key: WORKDAY_GIVE_FEEDBACK
+  - key: WORKDAY_IMPORT_EMPLOYEE_REVIEWS
+  - key: WORKDAY_INITIATE_HOME_CONTACT_INFORMATION_CHANGE
+  - key: WORKDAY_INITIATE_WORKER_ORGANIZATION_ASSIGNMENT_CHANGE
+  - key: WORKDAY_INITIATE_WORK_CONTACT_INFORMATION_CHANGE
   - key: WORKDAY_INTERVIEW_FEEDBACK_SUBMITTED_TRIGGER
   - key: WORKDAY_JOB_POSTING_CHANGED_TRIGGER
   - key: WORKDAY_JOB_POSTING_QUESTIONNAIRE_CHANGED_TRIGGER
+  - key: WORKDAY_LIST_ABSENCE_BALANCES
+  - key: WORKDAY_LIST_ABSENCE_MANAGEMENT_WORKERS
+  - key: WORKDAY_LIST_ACTIVE_MARITAL_STATUSES
+  - key: WORKDAY_LIST_ACTIVE_TASKS
+  - key: WORKDAY_LIST_ACTIVE_USER_SESSIONS
+  - key: WORKDAY_LIST_ACTIVITY_LOGGING
+  - key: WORKDAY_LIST_ALLOWED_PERSONAL_INFORMATION_COUNTRIES
+  - key: WORKDAY_LIST_ATTENDANCE_STATUS_VALUES
+  - key: WORKDAY_LIST_BALANCES
+  - key: WORKDAY_LIST_BUSINESS_PROCESS_EVENTS
+  - key: WORKDAY_LIST_BUSINESS_PROCESS_EVENT_COMMENTS
+  - key: WORKDAY_LIST_BUSINESS_PROCESS_EVENT_REMAINING_STEPS
+  - key: WORKDAY_LIST_BUSINESS_PROCESS_EVENT_STEPS
+  - key: WORKDAY_LIST_BUSINESS_PROCESS_TYPES
+  - key: WORKDAY_LIST_BUSINESS_PROCESS_TYPE_ATTACHMENT_CATEGORIES
+  - key: WORKDAY_LIST_CASCADE_GOAL_TALENT_POOLS
+  - key: WORKDAY_LIST_CASE_TYPES
+  - key: WORKDAY_LIST_COMPENSATION_PLANS
+  - key: WORKDAY_LIST_COMPENSATION_WORKERS
   - key: WORKDAY_LIST_COUNTRIES
+  - key: WORKDAY_LIST_COUNTRY_COMPONENTS_COUNTRY
+  - key: WORKDAY_LIST_COUNTRY_COMPONENTS_COUNTRY_CITY
+  - key: WORKDAY_LIST_COUNTRY_COMPONENTS_COUNTRY_REGION
+  - key: WORKDAY_LIST_COUNTRY_PHONE_CODES
+  - key: WORKDAY_LIST_CURRENCIES
+  - key: WORKDAY_LIST_CUSTOM_FIELD_TYPES
+  - key: WORKDAY_LIST_CUSTOM_FIELD_TYPE_LIST_VALUES
+  - key: WORKDAY_LIST_CUSTOM_OBJECTS_MULTI_INSTANCE
+  - key: WORKDAY_LIST_CUSTOM_OBJECT_DEFINITIONS
+  - key: WORKDAY_LIST_CUSTOM_OBJECT_DEFINITION_CONDITION_RULES
+  - key: WORKDAY_LIST_CUSTOM_OBJECT_DEFINITION_FIELDS
+  - key: WORKDAY_LIST_CUSTOM_OBJECT_DEFINITION_VALIDATIONS
+  - key: WORKDAY_LIST_DURATION_UNIT_VALUES
+  - key: WORKDAY_LIST_EMPLOYEE_ENROLLMENT_EVENTS
+  - key: WORKDAY_LIST_EXPENSE_ENTRIES
+  - key: WORKDAY_LIST_EXPENSE_ITEMS
+  - key: WORKDAY_LIST_EXPENSE_REPORTS
+  - key: WORKDAY_LIST_FEDERAL_W4_ELECTIONS
+  - key: WORKDAY_LIST_FEEDBACK_BADGES
+  - key: WORKDAY_LIST_FEEDBACK_ON_WORKER_VALUES
+  - key: WORKDAY_LIST_FEEDBACK_RESPONDER_VALUES
+  - key: WORKDAY_LIST_FEEDBACK_TEMPLATE_VALUES
+  - key: WORKDAY_LIST_GIVE_REQUESTED_FEEDBACK_EVENTS
+  - key: WORKDAY_LIST_GRADE_VALUES
+  - key: WORKDAY_LIST_GRAPH_API_VERSIONS
+  - key: WORKDAY_LIST_HELP_CASE_CONFIGURATIONS
+  - key: WORKDAY_LIST_HOME_CONTACT_CHANGE_ADDRESSES
   - key: WORKDAY_LIST_INTERVIEWS
   - key: WORKDAY_LIST_JOBS
+  - key: WORKDAY_LIST_JOB_CHANGE_REASONS
+  - key: WORKDAY_LIST_JOB_FAMILIES
   - key: WORKDAY_LIST_JOB_POSTINGS
+  - key: WORKDAY_LIST_JOB_POSTING_FILTER_VALUES
+  - key: WORKDAY_LIST_JOB_PROFILES
+  - key: WORKDAY_LIST_LEARNING_CONTENT
+  - key: WORKDAY_LIST_LEARNING_CONTENT_LESSONS
+  - key: WORKDAY_LIST_LEARNING_RECORDS
+  - key: WORKDAY_LIST_MANAGE_GOALS_CATEGORIES
+  - key: WORKDAY_LIST_MANAGE_GOALS_STATUS
+  - key: WORKDAY_LIST_MENTORSHIPS
+  - key: WORKDAY_LIST_MESSAGE_TEMPLATES
+  - key: WORKDAY_LIST_MINIMUM_WAGE_RATES
+  - key: WORKDAY_LIST_NAME_COMPONENTS_ACADEMIC
+  - key: WORKDAY_LIST_NAME_COMPONENTS_HEREDITARY
+  - key: WORKDAY_LIST_NAME_COMPONENTS_HONORARY
+  - key: WORKDAY_LIST_NAME_COMPONENTS_PROFESSIONAL
+  - key: WORKDAY_LIST_NAME_COMPONENTS_RELIGIOUS
+  - key: WORKDAY_LIST_NAME_COMPONENTS_ROYAL
+  - key: WORKDAY_LIST_NAME_COMPONENTS_SALUTATION
+  - key: WORKDAY_LIST_NAME_COMPONENTS_SOCIAL
+  - key: WORKDAY_LIST_NAME_COMPONENTS_TITLE
+  - key: WORKDAY_LIST_NOTIFICATION_TYPES
+  - key: WORKDAY_LIST_ONE_TIME_PAYMENT_PLANS
+  - key: WORKDAY_LIST_ONE_TIME_PAYMENT_REASON_CANDIDATES
+  - key: WORKDAY_LIST_ORGANIZATIONS2
+  - key: WORKDAY_LIST_ORGANIZATION_GOAL_GOAL_PERIODS
+  - key: WORKDAY_LIST_ORGANIZATION_GOAL_ORGANIZATIONS
+  - key: WORKDAY_LIST_ORGANIZATION_GOAL_SUPPORTING_INITIATIVES
+  - key: WORKDAY_LIST_ORGANIZATION_TYPES
+  - key: WORKDAY_LIST_O_AUTH_CLIENT_DETAILS
+  - key: WORKDAY_LIST_PAYMENT_ELECTION_ENROLLMENTS
+  - key: WORKDAY_LIST_PAYROLL_INTERFACE_PAY_GROUPS
+  - key: WORKDAY_LIST_PAYROLL_INTERFACE_PAY_GROUP_PERIODS
+  - key: WORKDAY_LIST_PAYROLL_JOBS
+  - key: WORKDAY_LIST_PAYROLL_RESULTS
+  - key: WORKDAY_LIST_PAY_GROUPS
+  - key: WORKDAY_LIST_PAY_GROUP_DETAILS
+  - key: WORKDAY_LIST_PEOPLE
+  - key: WORKDAY_LIST_PERFORMANCE_WORKERS
+  - key: WORKDAY_LIST_PERIOD_SCHEDULES
+  - key: WORKDAY_LIST_POPULATED_PERSONAL_INFORMATION_COUNTRIES
+  - key: WORKDAY_LIST_REFERRAL_REQUISITION_CANDIDATES
+  - key: WORKDAY_LIST_RELATES_TO_VALUES
+  - key: WORKDAY_LIST_REQUESTS
+  - key: WORKDAY_LIST_REQUEST_TYPES
+  - key: WORKDAY_LIST_REQUISITION_TEMPLATES
+  - key: WORKDAY_LIST_SCORECARD_RESULTS
+  - key: WORKDAY_LIST_SEND_BACK_TO_VALUES
+  - key: WORKDAY_LIST_SUCCESSION_PLANS
+  - key: WORKDAY_LIST_SUCCESSION_PLAN_EVENTS
+  - key: WORKDAY_LIST_SUCCESSION_PLAN_MEMBER_VALUES
+  - key: WORKDAY_LIST_SUCCESSION_PLAN_READINESS_VALUES
+  - key: WORKDAY_LIST_SUCCESSION_PLAN_STRATEGY_VALUES
+  - key: WORKDAY_LIST_SUPERVISORY_ORGANIZATIONS
+  - key: WORKDAY_LIST_SYSTEM_METRICS_OVERVIEW
+  - key: WORKDAY_LIST_TAX_RATES
+  - key: WORKDAY_LIST_TEMPLATE_FOR_MY_PERFORMANCE_REVIEW
+  - key: WORKDAY_LIST_TIME_CLOCK_EVENTS
+  - key: WORKDAY_LIST_TIME_CLOCK_OPTIONS
+  - key: WORKDAY_LIST_WORKED_TIME_OPTIONS
+  - key: WORKDAY_LIST_WORKERS
+  - key: WORKDAY_LIST_WORKERS2
+  - key: WORKDAY_LIST_WORKERS_TO_NOTIFY_VALUES
+  - key: WORKDAY_LIST_WORKER_ANYTIME_FEEDBACK_EVENTS
+  - key: WORKDAY_LIST_WORKER_DEPENDENTS
+  - key: WORKDAY_LIST_WORKER_DEVELOPMENT_ITEMS
+  - key: WORKDAY_LIST_WORKER_GOALS
+  - key: WORKDAY_LIST_WORKER_GOAL_EVENTS
+  - key: WORKDAY_LIST_WORKER_INBOX_TASKS
+  - key: WORKDAY_LIST_WORKER_REQUESTED_FEEDBACK_ON_SELF_EVENTS
+  - key: WORKDAY_LIST_WORKER_SERVICE_DATES
+  - key: WORKDAY_LIST_WORKER_TIME_BLOCKS
+  - key: WORKDAY_LIST_WQL_DATA_SOURCES
+  - key: WORKDAY_LIST_WQL_DATA_SOURCE_FIELDS
+  - key: WORKDAY_LIST_WQL_DATA_SOURCE_FILTERS
+  - key: WORKDAY_LOAD_EMPLOYEE_REVIEWS
+  - key: WORKDAY_MANAGE_GOALS
   - key: WORKDAY_NEW_ABSENCE_BALANCE_TRIGGER
   - key: WORKDAY_NEW_INTERVIEW_SCHEDULED_TRIGGER
   - key: WORKDAY_NEW_JOB_POSTING_TRIGGER
+  - key: WORKDAY_PATCH_CASE
+  - key: WORKDAY_PATCH_EXPENSE_ENTRY
+  - key: WORKDAY_PATCH_GIVE_REQUESTED_FEEDBACK_EVENT
+  - key: WORKDAY_PATCH_MESSAGE_TEMPLATE_BY_ID
+  - key: WORKDAY_PATCH_ORGANIZATION_GOAL
+  - key: WORKDAY_PATCH_PAYROLL_INTERFACE_PAY_GROUP_PERIOD
+  - key: WORKDAY_PATCH_WORKER_DEVELOPMENT_ITEM
+  - key: WORKDAY_POST_WQL_QUERY
   - key: WORKDAY_PROSPECT_PROFILE_CHANGED_TRIGGER
   - key: WORKDAY_PROSPECT_RESUME_ATTACHMENT_ADDED_TRIGGER
-  - key: WORKDAY_RETRIEVE_WORKER_LEAVE_OF_ABSENCE_SUBRESOURCE
+  - key: WORKDAY_PUT_CERTIFICATION
+  - key: WORKDAY_PUT_CERTIFICATION_ISSUER
+  - key: WORKDAY_PUT_CHECK_IN
+  - key: WORKDAY_PUT_CHECK_IN_TOPIC
+  - key: WORKDAY_PUT_COMPETENCY
+  - key: WORKDAY_PUT_COMPETENCY_CATEGORY
+  - key: WORKDAY_PUT_DEGREE
+  - key: WORKDAY_PUT_FEEDBACK_BADGE
+  - key: WORKDAY_PUT_FEEDBACK_QUESTION
+  - key: WORKDAY_PUT_FIELD_OF_STUDY
+  - key: WORKDAY_PUT_GOAL_PAYOUT_BAND
+  - key: WORKDAY_PUT_GOAL_UNIT
+  - key: WORKDAY_PUT_ORGANIZATION_GOAL
+  - key: WORKDAY_PUT_REVIEW_QUESTION
+  - key: WORKDAY_PUT_REVIEW_QUESTION_CATEGORY
+  - key: WORKDAY_PUT_REVIEW_TYPE
+  - key: WORKDAY_PUT_SCHOOL_TYPE
+  - key: WORKDAY_REASSIGN_BUSINESS_PROCESS_EVENT_STEP
+  - key: WORKDAY_REFER_CANDIDATE
+  - key: WORKDAY_REMOVE_HOME_CONTACT_INFORMATION_EMAIL_ADDRESS
+  - key: WORKDAY_REPLACE_HOME_CONTACT_CHANGE_ADDRESS
+  - key: WORKDAY_REQUEST_ONE_TIME_PAYMENT
+  - key: WORKDAY_RESCIND_BUSINESS_PROCESS_EVENT
+  - key: WORKDAY_RETRIEVE_ABSENCE_PLAN_BALANCES
+  - key: WORKDAY_RUN_WQL_QUERY
+  - key: WORKDAY_SEND_BACK_BUSINESS_PROCESS_EVENT_STEP
+  - key: WORKDAY_SEND_MESSAGE
+  - key: WORKDAY_SEND_SUPPLIER_INVOICE_ATTACHMENTS_FOR_SCANNING
+  - key: WORKDAY_START_PERFORMANCE_REVIEW
+  - key: WORKDAY_SUBMIT_BUSINESS_PROCESS_EVENT_STEP_QUESTIONNAIRE
+  - key: WORKDAY_SUBMIT_BUSINESS_PROCESS_EVENT_STEP_TO_DO
+  - key: WORKDAY_SUBMIT_HOME_CONTACT_CHANGE
+  - key: WORKDAY_SUBMIT_JOB_CHANGE
+  - key: WORKDAY_SUBMIT_ORGANIZATION_ASSIGNMENT_CHANGE
+  - key: WORKDAY_SUBMIT_WORK_CONTACT_CHANGE
   - key: WORKDAY_UPDATE_AN_EXISTING_PAYROLL
+  - key: WORKDAY_UPDATE_COMPENSATION_SCORECARD
+  - key: WORKDAY_UPDATE_CUSTOM_FIELD_TYPE
+  - key: WORKDAY_UPDATE_CUSTOM_FIELD_TYPE_LIST_VALUE
+  - key: WORKDAY_UPDATE_CUSTOM_OBJECT
+  - key: WORKDAY_UPDATE_CUSTOM_OBJECT_DEFINITION_CONDITION_RULE
+  - key: WORKDAY_UPDATE_CUSTOM_OBJECT_DEFINITION_FIELD
+  - key: WORKDAY_UPDATE_CUSTOM_OBJECT_DEFINITION_VALIDATION
+  - key: WORKDAY_UPDATE_EMPLOYEE_REVIEW_RATING
+  - key: WORKDAY_UPDATE_EXPENSE_ENTRY
+  - key: WORKDAY_UPDATE_HOME_CONTACT_CHANGE_EMAIL_ADDRESS
+  - key: WORKDAY_UPDATE_HOME_CONTACT_CHANGE_INSTANT_MESSENGER
+  - key: WORKDAY_UPDATE_HOME_CONTACT_CHANGE_PHONE_NUMBER
+  - key: WORKDAY_UPDATE_HOME_CONTACT_CHANGE_WEB_ADDRESS
+  - key: WORKDAY_UPDATE_JOB_CHANGES_ADMINISTRATIVE
+  - key: WORKDAY_UPDATE_JOB_CHANGES_CONTRACT
+  - key: WORKDAY_UPDATE_JOB_CHANGES_JOB_PROFILE
+  - key: WORKDAY_UPDATE_JOB_CHANGES_LOCATION
+  - key: WORKDAY_UPDATE_JOB_CHANGES_MOVE_TEAM
+  - key: WORKDAY_UPDATE_JOB_CHANGES_OPENING
+  - key: WORKDAY_UPDATE_JOB_CHANGES_POSITION_OPTIONS
+  - key: WORKDAY_UPDATE_JOB_CHANGES_START_DETAILS
   - key: WORKDAY_UPDATE_JOB_CHANGE_BUSINESS_TITLE
+  - key: WORKDAY_UPDATE_JOB_CHANGE_COMMENT
+  - key: WORKDAY_UPDATE_JOB_CLASSIFICATION_OPTIONS
   - key: WORKDAY_UPDATE_MESSAGE_TEMPLATE_BY_ID
+  - key: WORKDAY_UPDATE_ORGANIZATION_ASSIGNMENT_CHANGES_BUSINESS_UNIT
+  - key: WORKDAY_UPDATE_ORGANIZATION_ASSIGNMENT_CHANGES_COMMENT
+  - key: WORKDAY_UPDATE_ORGANIZATION_ASSIGNMENT_CHANGES_COMPANY
+  - key: WORKDAY_UPDATE_ORGANIZATION_ASSIGNMENT_CHANGES_COST_CENTER
+  - key: WORKDAY_UPDATE_ORGANIZATION_ASSIGNMENT_CHANGES_REGION
+  - key: WORKDAY_UPDATE_ORGANIZATION_ASSIGNMENT_CHANGES_START_DETAILS
+  - key: WORKDAY_UPDATE_ORG_ASSIGN_CHANGES_CUSTOM_ORGS
+  - key: WORKDAY_UPDATE_SCORECARD_RESULT_SCORE
+  - key: WORKDAY_UPDATE_WORKER_CHECK_IN
+  - key: WORKDAY_UPDATE_WORKER_CHECK_IN_TOPIC
+  - key: WORKDAY_UPDATE_WORK_CONTACT_CHANGE
+  - key: WORKDAY_UPDATE_WORK_CONTACT_CHANGE_EMAIL_ADDRESS
+  - key: WORKDAY_UPDATE_WORK_CONTACT_CHANGE_INSTANT_MESSENGER
+  - key: WORKDAY_UPDATE_WORK_CONTACT_CHANGE_WEB_ADDRESS
+  - key: WORKDAY_UPDATE_WORK_CONTACT_PHONE_NUMBER
+  - key: WORKDAY_VALIDATE_PHONE_NUMBER
   - key: WORKDAY_WORKER_ELIGIBLE_ABSENCE_TYPE_CHANGED_TRIGGER
   - key: WORKDAY_WORKER_LEAVE_OF_ABSENCE_CHANGED_TRIGGER
   - key: WORKDAY_WORKER_LEAVE_OF_ABSENCE_CREATED_TRIGGER
-- marketplace: own
-  channel: partner-built
-  app: workday
-  url: https://marketplace.workday.com/
-  app_count: 896
-  adapter: sweep-hr-stores.py:appdirect
-  listed: 896
-  detail_fetched: 250
 edges:
-- partner_name: Greenhouse
-  partner: greenhouse
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/workday/integrations/greenhouse
-  direction: third-party
-  category: HR Talent & Recruitment
-  partner_url: https://www.greenhouse.io/
-- partner_name: monday.com
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/workday/integrations/monday
-  direction: third-party
-  category: Project Management
-  partner_url: https://monday.com/
-- partner_name: HubSpot
-  partner: hubspot
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/workday/integrations/hubspot
-  direction: third-party
-  category: Marketing Automation
-  partner_url: http://www.hubspot.com/
-- partner_name: Google Calendar
-  partner: google-calendar
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/workday/integrations/google-calendar
-  direction: third-party
-  category: Calendar
-  partner_url: https://calendar.google.com/
-- partner_name: Google Drive
-  partner: google-drive
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/workday/integrations/google-drive
-  direction: third-party
-  category: File Management & Storage
-  partner_url: https://www.google.com/drive/
-- partner_name: Google Workspace Admin
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/workday/integrations/google-workspace-admin
-  direction: third-party
-  category: Google
-  partner_url: https://workspace.google.com/
-- partner_name: Slack
-  partner: slack
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/workday/integrations/slack
-  direction: third-party
-  category: Team Chat
-  partner_url: https://slack.com/
-- partner_name: Blink
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/workday/integrations/blink
-  direction: third-party
-  category: Team Collaboration
-  partner_url: http://joinblink.com/
-- partner_name: Shopify
-  partner: shopify
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/workday/integrations/shopify
-  direction: third-party
-  category: eCommerce
-  partner_url: https://www.shopify.com/
-- partner_name: Microsoft Excel
-  partner: null
-  partner_match: null
-  partner_candidate: zapier
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/workday/integrations/excel
-  direction: third-party
-  category: Microsoft
-  partner_url: https://zapier.com/office.com
-- partner_name: Microsoft Outlook
-  partner: microsoft-outlook
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/workday/integrations/microsoft-outlook
-  direction: third-party
-  category: Calendar
-  partner_url: https://outlook.live.com/
-- partner_name: Webflow
-  partner: webflow
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/workday/integrations/webflow
-  direction: third-party
-  category: Website Builders
-  partner_url: https://webflow.com/
-- partner_name: Gmail
-  partner: gmail
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/workday/integrations/gmail
-  direction: third-party
-  category: Email
-  partner_url: https://mail.google.com/
-- partner_name: Jotform
-  partner: jotform
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/workday/integrations/jotform
-  direction: third-party
-  category: Forms & Surveys
-  partner_url: http://www.jotform.com/
-- partner_name: Clockify
-  partner: clockify
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/workday/integrations/clockify
-  direction: third-party
-  category: Time Tracking Software
-  partner_url: https://clockify.me/
-- partner_name: Calendly
-  partner: calendly
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/workday/integrations/calendly
-  direction: third-party
-  category: Scheduling & Booking
-  partner_url: https://calendly.com/?utm_medium=partner&utm_source=zapier&utm_campaign=main_partner_page&utm_content=main_inbound_link
-- partner_name: Freshservice
-  partner: freshservice
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/workday/integrations/freshservice
-  direction: third-party
-  category: Server Monitoring
-  partner_url: https://freshservice.com/
-- partner_name: Okta
-  partner: okta
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/workday/integrations/okta
-  direction: third-party
-  category: Security & Identity Tools
-  partner_url: https://www.okta.com/
-- partner_name: actiTIME
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/workday/integrations/actitime
-  direction: third-party
-  category: Time Tracking Software
-  partner_url: https://www.actitime.com/
-- partner_name: eGifter Rewards
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/workday/integrations/egifter-rewards
-  direction: third-party
-  category: Payment Processing
-  partner_url: https://egifterrewards.com/
-- partner_name: Google Sheets
-  partner: google-sheets
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/workday/integrations/google-sheets
-  direction: third-party
-  category: Google
-  partner_url: http://sheets.google.com/
-- partner_name: Google Forms
-  partner: google-forms
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/workday/integrations/google-forms
-  direction: third-party
-  category: Forms & Surveys
-  partner_url: http://google.com/
-- partner_name: Asana
-  partner: asana
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/workday/integrations/asana
-  direction: third-party
-  category: Project Management
-  partner_url: http://asana.com/
-- partner_name: QuickBooks Online
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/workday/integrations/quickbooks
-  direction: third-party
-  category: Accounting
-  partner_url: http://intuit.com/
-- partner_name: RingCentral
-  partner: ringcentral
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/workday/integrations/ringcentral
-  direction: third-party
-  category: Phone & SMS
-  partner_url: http://www.ringcentral.com/
-- partner_name: Smartsheet
-  partner: smartsheet
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/workday/integrations/smartsheet
-  direction: third-party
-  category: Spreadsheets
-  partner_url: https://www.smartsheet.com/
-- partner_name: Mighty Networks
-  partner: mighty-networks
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/workday/integrations/mightynetworks
-  direction: third-party
-  category: Website Builders
-  partner_url: http://www.mightynetworks.com/
-- partner_name: Onepage
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/workday/integrations/onepage
-  direction: third-party
-  category: App Builder
-  partner_url: http://onepage.io/
-- partner_name: SignNow
-  partner: signnow
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/workday/integrations/signnow
-  direction: third-party
-  category: Signatures
-  partner_url: https://www.signnow.com/
-- partner_name: Google Groups
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/workday/integrations/google-groups
-  direction: third-party
-  category: Google
-  partner_url: https://groups.google.com/
 - partner_name: Docusign (partner-store)
   partner: docusign
   partner_match: mirror
@@ -15740,6 +15914,366 @@ edges:
     detected: '2026-10-20'
   detected_by: sweep-compliance-assurance.py
   first_seen: '2026-10-20'
+- partner_name: monday.com
+  partner: monday-com
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/workday/integrations/monday
+  direction: third-party
+  category: Project Management
+  partner_url: https://monday.com/
+- partner_name: HubSpot
+  partner: hubspot
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/workday/integrations/hubspot
+  direction: third-party
+  category: Marketing Automation
+  partner_url: http://www.hubspot.com/
+- partner_name: Google Calendar
+  partner: google-calendar
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/workday/integrations/google-calendar
+  direction: third-party
+  category: Calendar
+  partner_url: https://calendar.google.com/
+- partner_name: Google Drive
+  partner: google-drive
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/workday/integrations/google-drive
+  direction: third-party
+  category: File Management & Storage
+  partner_url: https://www.google.com/drive/
+- partner_name: Google Workspace Admin
+  partner: google-workspace
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/workday/integrations/google-workspace-admin
+  direction: third-party
+  category: Google
+  partner_url: https://workspace.google.com/
+- partner_name: Slack
+  partner: slack
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/workday/integrations/slack
+  direction: third-party
+  category: Team Chat
+  partner_url: https://slack.com/
+- partner_name: Blink
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/workday/integrations/blink
+  direction: third-party
+  category: Team Collaboration
+  partner_url: http://joinblink.com/
+- partner_name: Microsoft Excel
+  partner: null
+  partner_match: null
+  partner_candidate: zapier
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/workday/integrations/excel
+  direction: third-party
+  category: Microsoft
+  partner_url: https://zapier.com/office.com
+- partner_name: Microsoft Outlook
+  partner: microsoft-outlook
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/workday/integrations/microsoft-outlook
+  direction: third-party
+  category: Calendar
+  partner_url: https://outlook.live.com/
+- partner_name: Gmail
+  partner: gmail
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/workday/integrations/gmail
+  direction: third-party
+  category: Email
+  partner_url: https://mail.google.com/
+- partner_name: Webflow
+  partner: webflow
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/workday/integrations/webflow
+  direction: third-party
+  category: Website Builders
+  partner_url: https://webflow.com/
+- partner_name: Jotform
+  partner: jotform
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/workday/integrations/jotform
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: http://www.jotform.com/
+- partner_name: Shopify
+  partner: shopify
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/workday/integrations/shopify
+  direction: third-party
+  category: eCommerce
+  partner_url: https://www.shopify.com/
+- partner_name: Clockify
+  partner: clockify
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/workday/integrations/clockify
+  direction: third-party
+  category: Time Tracking Software
+  partner_url: https://clockify.me/
+- partner_name: Calendly
+  partner: calendly
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/workday/integrations/calendly
+  direction: third-party
+  category: Scheduling & Booking
+  partner_url: https://calendly.com/?utm_medium=partner&utm_source=zapier&utm_campaign=main_partner_page&utm_content=main_inbound_link
+- partner_name: Freshservice
+  partner: freshservice
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/workday/integrations/freshservice
+  direction: third-party
+  category: Server Monitoring
+  partner_url: https://freshservice.com/
+- partner_name: Greenhouse
+  partner: greenhouse
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/workday/integrations/greenhouse
+  direction: third-party
+  category: HR Talent & Recruitment
+  partner_url: https://www.greenhouse.io/
+- partner_name: Okta
+  partner: okta
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/workday/integrations/okta
+  direction: third-party
+  category: Security & Identity Tools
+  partner_url: https://www.okta.com/
+- partner_name: actiTIME
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/workday/integrations/actitime
+  direction: third-party
+  category: Time Tracking Software
+  partner_url: https://www.actitime.com/
+- partner_name: eGifter Rewards
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/workday/integrations/egifter-rewards
+  direction: third-party
+  category: Payment Processing
+  partner_url: https://egifterrewards.com/
+- partner_name: Google Sheets
+  partner: google-sheets
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/workday/integrations/google-sheets
+  direction: third-party
+  category: Google
+  partner_url: http://sheets.google.com/
+- partner_name: Google Forms
+  partner: google-forms
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/workday/integrations/google-forms
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: http://google.com/
+- partner_name: Asana
+  partner: asana
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/workday/integrations/asana
+  direction: third-party
+  category: Project Management
+  partner_url: http://asana.com/
+- partner_name: Microsoft Teams
+  partner: microsoft-teams
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/workday/integrations/microsoft-teams
+  direction: third-party
+  category: Microsoft
+  partner_url: https://products.office.com/en-us/microsoft-teams/group-chat-software
+- partner_name: RingCentral
+  partner: ringcentral
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/workday/integrations/ringcentral
+  direction: third-party
+  category: Phone & SMS
+  partner_url: http://www.ringcentral.com/
+- partner_name: Smartsheet
+  partner: smartsheet
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/workday/integrations/smartsheet
+  direction: third-party
+  category: Spreadsheets
+  partner_url: https://www.smartsheet.com/
+- partner_name: Mighty Networks
+  partner: mighty-networks
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/workday/integrations/mightynetworks
+  direction: third-party
+  category: Website Builders
+  partner_url: http://www.mightynetworks.com/
+- partner_name: Onepage
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/workday/integrations/onepage
+  direction: third-party
+  category: App Builder
+  partner_url: http://onepage.io/
+- partner_name: SignNow
+  partner: signnow
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/workday/integrations/signnow
+  direction: third-party
+  category: Signatures
+  partner_url: https://www.signnow.com/
+- partner_name: Google Groups
+  partner: google
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/workday/integrations/google-groups
+  direction: third-party
+  category: Google
+  partner_url: https://groups.google.com/
 templates:
 - title: Approve new tasks in Workday when new time off requests are made in BambooHR
   url: https://zapier.com/apps/bamboohr/integrations/workday/255608029/approve-new-tasks-in-workday-when-new-time-off-requests-are-made-in-bamboohr
@@ -15792,4 +16326,11 @@ templates:
   apps:
   - workday
   - egifter-rewards
-template_total: 10
+- title: Create Folderit DMS folders for newly active Workday employees
+  url: https://zapier.com/apps/folderit-dms/integrations/workday/255734664/create-folderit-dms-folders-for-newly-active-workday-employees
+  apps:
+  - workday
+  - code
+  - delay
+  - folderit-dms
+template_total: 11
